@@ -29,5 +29,13 @@ Route::namespace('Student')->group(function()
 
 	});
 
+	Route::middleware('auth')->namespace('Dashboard')->prefix('dashboard')->group(function()
+	{
+
+		Route::get('/','DashboardController@layout');
+		Route::get('/profile','DashboardController@profile');
+
+	});
+
 
 });
