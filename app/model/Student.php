@@ -15,5 +15,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Student extends Authenticatable
 {
 	use SoftDeletes;
+
 	protected $table = 'student';
+
+	protected $fillable = ['mobile', 'email', 'password'];
 }
