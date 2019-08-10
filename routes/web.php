@@ -11,6 +11,31 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+use Illuminate\Support\Facades\Route;
+
+
+Route::get('/', function()
+{
+	return view('welcome');
+});
+
+Route::namespace('Student')->group(function()
+{
+
+	Route::namespace('Auth')->group(function()
+	{
+		Route::get('loginView', 'LoginController@show');
+		Route::post('login', 'LoginController@login');
+
+	});
+
+	Route::middleware('auth')->namespace('Dashboard')->prefix('dashboard')->group(function()
+	{
+
+		Route::get('/','DashboardController@layout');
+		Route::get('/profile','DashboardController@profile');
+
+	});
+
+
 });
