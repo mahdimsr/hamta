@@ -20,7 +20,7 @@ class CreateAdminTable extends Migration
 			$table->string('fullName');
 			$table->string('mobile');
 			$table->string('password');
-			$table->enum('level', ['A', 'B', 'C', 'D']);
+			$table->enum('level', ['A', 'B', 'C', 'D'])->default('B');
 			$table->timestamps();
 			$table->softDeletes();
 		});

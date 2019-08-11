@@ -45,16 +45,16 @@
 			</div>
 
 			<ul class="nav text-right ">
-				<li class="{{\Illuminate\Support\Facades\Request::is('dashboard/') ? 'active' : ''}}">
-					<a href="dashboard.html">
+				<li class="{{\Illuminate\Support\Facades\Route::currentRouteName() == 'admin_dashboard' ? 'active' : ''}}">
+					<a href="{{route('admin_dashboard')}}">
 						<i class="pe-7s-graph "></i>
 						<p>پنل کاربری</p>
 					</a>
 				</li>
-				<li class="{{\Illuminate\Support\Facades\Request::is('dashboard/profile') ? 'active' : ''}}">
-					<a href="{{action('Student\\Dashboard\\DashboardController@profile')}}">
+				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_exams' ? 'active' : ''}}">
+					<a href="{{route('admin_exams')}}">
 						<i class="pe-7s-user"></i>
-						<p>ویرایش پروفابل</p>
+						<p>آزمون ها</p>
 					</a>
 				</li>
 				<li>

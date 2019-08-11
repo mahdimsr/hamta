@@ -41,7 +41,16 @@ Route::namespace('Admin')->group(function()
 
 	Route::middleware('auth:admin')->namespace('Dashboard')->prefix('admin/dashboard')->group(function()
 	{
-		Route::get('/','DashboardController@dashboard')->name('admin_dashboard');
+		Route::get('/', 'DashboardController@dashboard')->name('admin_dashboard');
+
+		Route::prefix('exams')->group(function()
+		{
+			Route::get('/', 'LessonExamController@exams')->name('admin_exams');
+			Route::get('/add', 'LessonExamController@addShow')->name('admin_exams_addShow');
+			Route::post('/add', 'LessonExamController@add')->name('admin_lExam_add');
+
+		});
+
 
 	});
 
