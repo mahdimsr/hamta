@@ -14,28 +14,17 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function()
-{
-	return view('welcome');
-});
-
+Route::get('/','Content\ContentController@index')->name('homepage');
 Route::namespace('Student')->group(function()
 {
-
 	Route::namespace('Auth')->group(function()
 	{
-		Route::get('loginView', 'LoginController@show');
-		Route::post('login', 'LoginController@login');
-
+		Route::get('/students/login', 'LoginController@show')->name('student_login_show');
+        Route::post('/students/login', 'LoginController@login')->name('student_login_submit');
 	});
-
 	Route::middleware('auth')->namespace('Dashboard')->prefix('dashboard')->group(function()
 	{
-
-		Route::get('/','DashboardController@layout');
-		Route::get('/profile','DashboardController@profile');
-
+		Route::get('/','DashboardController@layout')->name('admin_dashboard');
+		Route::get('/profile','DashboardController@profile')->name('admin_dashboard_profile');
 	});
-
-
 });

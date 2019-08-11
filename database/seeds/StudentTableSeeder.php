@@ -24,5 +24,5 @@ class StudentTableSeeder extends Seeder
 			'updated_at' => Carbon::now(),
 
 		]);
-	}
+    }
 }
