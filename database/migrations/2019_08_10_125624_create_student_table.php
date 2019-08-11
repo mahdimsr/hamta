@@ -16,16 +16,15 @@ class CreateStudentTable extends Migration
 	{
 		Schema::create('student', function(Blueprint $table)
 		{
-			//mobile is set for username
-
 			$table->bigIncrements('id');
-			$table->string('fullName');
+			$table->string('fullName')->nullable();
 			$table->string('mobile');
-			$table->string('password');
+            $table->string('password');
+            $table->string('email')->nullable();
 			$table->string('nationalCode')->nullable();
-			$table->enum('verifyMobile', ['Y', 'N'])->default('N');
+			$table->integer('verifymobile')->default(0);
 			$table->string('verifyCode')->nullable();
-			$table->enum('verifyEmail', ['Y', 'N'])->default('N');
+			$table->integer('verifyemail')->default(0);
 			$table->string('verifyToken')->nullable();
 			$table->string('average')->nullable();
 			$table->timestamp('birthday')->nullable();
@@ -33,9 +32,11 @@ class CreateStudentTable extends Migration
 			$table->string('homePhone')->nullable();
 			$table->string('parentPhone')->nullable();
 			$table->integer('wallet')->default(0);
-			$table->integer('cityId')->nullable();
-			$table->integer('orientationId')->nullable();
-			$table->integer('gradeId')->nullable();
+			$table->integer('city')->nullable();
+			$table->integer('orientation')->nullable();
+            $table->integer('grade')->nullable();
+            $table->integer('isActive')->default(0);
+            $table->rememberToken();
 			$table->timestamps();
 			$table->softDeletes();
 		});

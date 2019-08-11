@@ -14,11 +14,11 @@ class CreateOrientationTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('orientation', function(Blueprint $table)
+		Schema::create('orientations', function(Blueprint $table)
 		{
 			$table->bigIncrements('id');
 			$table->string('code');
-			$table->string('persianTitle');
+			$table->string('title');
 			$table->timestamps();
 			$table->softDeletes();
 		});

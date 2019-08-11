@@ -8,19 +8,19 @@
 </head>
 <body>
 
-<form method="post" action="{{action('Student\\Auth\\LoginController@login')}}">
+<form method="post" action="{{ route('student_login_submit')}}">
 
 	{{csrf_field()}}
 
 	<div>
-		<input name="username">
+		<input name="mobile-email">
 	</div>
 
 	<div>
 		<input name="password">
 	</div>
 
-	{{$errors->first('username')}}
+	{{$errors->first('mobile-email')}}
 
 	<button type="submit">submit</button>
 

@@ -40,12 +40,11 @@ return [
 			'driver'   => 'session',
 			'provider' => 'student',
 		],
-
 		'api' => [
 			'driver'   => 'token',
 			'provider' => 'users',
 			'hash'     => false,
-		],
+        ],
 	],
 
 	/*
@@ -70,7 +69,6 @@ return [
 			'driver' => 'eloquent',
 			'model'  => App\model\Student::class,
 		],
-
 		// 'users' => [
 		//     'driver' => 'database',
 		//     'table' => 'users',
