@@ -14,7 +14,7 @@ class AdminTableSeeder extends Seeder
      */
     public function run()
     {
-		DB::table('student')->insert([
+		DB::table('admin')->insert([
 
 			'fullName'   => 'علی رضا ربیعی',
 			'mobile'     => '09386721318',
