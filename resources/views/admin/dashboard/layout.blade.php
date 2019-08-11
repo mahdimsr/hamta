@@ -191,13 +191,12 @@
 <!--  Notifications Plugin    -->
 <script src="{{asset('js/admin/dashboard/bootstrap-notify.js')}}"></script>
 
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="{{asset('js/admin/dashboard/dashboard.js')}}"></script>
 
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="{{asset('js/admin/dashboard/demo.js')}}"></script>
+
+@yield('script')
 
 </html>

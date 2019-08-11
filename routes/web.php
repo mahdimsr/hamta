@@ -50,6 +50,7 @@ Route::namespace('Admin')->group(function()
 			Route::get('/', 'LessonExamController@exams')->name('admin_exams');
 			Route::get('/add', 'LessonExamController@addShow')->name('admin_exams_addShow');
 			Route::post('/add', 'LessonExamController@add')->name('admin_lExam_add');
+			Route::post('/remove', 'LessonExamController@remove')->name('admin_lExam_remove');
 
 		});
 
