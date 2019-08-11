@@ -17,24 +17,26 @@ class CreateStudentTable extends Migration
 		Schema::create('student', function(Blueprint $table)
 		{
 			$table->bigIncrements('id');
-			$table->string('fullName')->nullable();
+            $table->string('name')->nullable();
+            $table->string('familyname')->nullable();
 			$table->string('mobile');
             $table->string('password');
             $table->string('email')->nullable();
-			$table->string('nationalCode')->nullable();
+            $table->string('address')->nullable();
+			$table->string('nationalcode')->nullable();
 			$table->integer('verifymobile')->default(0);
 			$table->string('verifyCode')->nullable();
 			$table->integer('verifyemail')->default(0);
 			$table->string('verifyToken')->nullable();
 			$table->string('average')->nullable();
-			$table->timestamp('birthday')->nullable();
+			$table->date('birthday')->nullable();
 			$table->string('school')->nullable();
-			$table->string('homePhone')->nullable();
-			$table->string('parentPhone')->nullable();
+			$table->string('telephone')->nullable();
+			$table->string('parentphone')->nullable();
 			$table->integer('wallet')->default(0);
-			$table->integer('city')->nullable();
-			$table->integer('orientation')->nullable();
-            $table->integer('grade')->nullable();
+			$table->string('city')->nullable();
+			$table->string('orientation')->nullable();
+            $table->string('grade')->nullable();
             $table->integer('isActive')->default(0);
             $table->rememberToken();
 			$table->timestamps();

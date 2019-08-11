@@ -38,39 +38,78 @@
 		-->
 
 		<div class="sidebar-wrapper">
-			<div class="logo">
-				<a href="http://www.creative-tim.com" class="simple-text">
-					سامانه همتا
-				</a>
+			<div class="logo" dir="rtl"  >
+				<a  class="simple-text">
+					دانش آموز گرامی خوش آمدید.
+                </a>
 			</div>
-
 			<ul class="nav text-right ">
-				<li class="{{\Illuminate\Support\Facades\Request::is('dashboard/') ? 'active' : ''}}">
-					<a href="dashboard.html">
-						<i class="pe-7s-graph "></i>
-						<p>پنل کاربری</p>
-					</a>
-				</li>
-				<li class="{{\Illuminate\Support\Facades\Request::is('dashboard/profile') ? 'active' : ''}}">
-					<a href="{{action('Student\\Dashboard\\DashboardController@profile')}}">
-						<i class="pe-7s-user"></i>
-						<p>ویرایش پروفابل</p>
-					</a>
-				</li>
-				<li>
-					<a href="table.html">
-						<i class="pe-7s-note2"></i>
-						<p>نوت 9 محمد</p>
-					</a>
-				</li>
-				<li>
-					<a href="typography.html">
-						<i class="pe-7s-news-paper"></i>
-						<p>آزمون ها</p>
-					</a>
-				</li>
-
-
+                <li class="{{\Illuminate\Support\Facades\Request::is('dashboard/profile') ? 'active' : ''}}">
+                        <a href="{{ route('student_dashboard_profile')}}">
+                            <i class="pe-7s-user"></i>
+                            <p>تکمیل اطلاعات</p>
+                        </a>
+                </li>
+                <li>
+                            <a href="#">
+                                <i class="pe-7s-user"></i>
+                                <p>آزمون های آنلاین</p>
+                            </a>
+                </li>
+                <li>
+                        <a href="#">
+                            <i class="pe-7s-user"></i>
+                            <p>بورسیه</p>
+                        </a>
+                 </li>
+                <li>
+                            <a href="#">
+                                <i class="pe-7s-user"></i>
+                                <p>ویدیو آموزشی</p>
+                            </a>
+                </li>
+                <li>
+                        <a href="#">
+                            <i class="pe-7s-user"></i>
+                            <p>کلاس های آنلاین</p>
+                        </a>
+                 </li>
+                 <li>
+                        <a href="#">
+                            <i class="pe-7s-user"></i>
+                            <p>من و مشاورم</p>
+                        </a>
+                 </li>
+                 <li>
+                        <a href="#">
+                            <i class="pe-7s-user"></i>
+                            <p>کتاب های کمک درسی</p>
+                        </a>
+                 </li>
+                 <li>
+                        <a href="#">
+                            <i class="pe-7s-user"></i>
+                            <p>فرصتی تا کنکور</p>
+                        </a>
+                 </li>
+                 <li>
+                        <a href="#">
+                            <i class="pe-7s-user"></i>
+                            <p>بازی و سرگرمی</p>
+                        </a>
+                 </li>
+                 <li>
+                        <a href="#">
+                            <i class="pe-7s-user"></i>
+                            <p>معرفی دبیر</p>
+                        </a>
+                 </li>
+                 <li>
+                        <a href="#">
+                            <i class="pe-7s-user"></i>
+                            <p>بحث و گفتگو</p>
+                        </a>
+                 </li>
 			</ul>
 		</div>
 	</div>
@@ -85,7 +124,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a dir="rtl" class="navbar-brand" href="#">داشبورد</a>
+					<a dir="rtl" class="navbar-brand" href="{{ route('student_dashboard') }}">داشبورد</a>
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
@@ -122,8 +161,7 @@
 
 					<ul  class="nav navbar-nav text-right">
 						<li>
-							<a href="#">
-
+							<a href="{{ route('student_logout') }}">
 								<p >خارج شو</p>
 							</a>
 

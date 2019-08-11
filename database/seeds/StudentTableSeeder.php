@@ -16,13 +16,10 @@ class StudentTableSeeder extends Seeder
 	public function run()
 	{
 		DB::table('student')->insert([
-
-			'fullName'   => 'محمد مهدی منصوری',
-			'mobile'     => '09351603029',
+			'mobile'     => '09386721318',
 			'password'   => Hash::make('123456789'),
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
-
 		]);
     }
 }
