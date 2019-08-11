@@ -19,12 +19,12 @@ Route::namespace('Student')->group(function()
 {
 	Route::namespace('Auth')->group(function()
 	{
-		Route::get('/students/login', 'LoginController@show')->name('student_login_show');
-        Route::post('/students/login', 'LoginController@login')->name('student_login_submit');
+		Route::get('/login', 'LoginController@show')->name('student_login_show');
+        Route::post('/login', 'LoginController@login')->name('student_login_submit');
 	});
 	Route::middleware('auth')->namespace('Dashboard')->prefix('dashboard')->group(function()
 	{
-		Route::get('/','DashboardController@layout')->name('admin_dashboard');
-		Route::get('/profile','DashboardController@profile')->name('admin_dashboard_profile');
+		Route::get('/','DashboardController@layout')->name('student_dashboard');
+		Route::get('/profile','DashboardController@profile')->name('student_dashboard_profile');
 	});
 });
