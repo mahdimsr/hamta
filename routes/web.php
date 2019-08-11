@@ -14,7 +14,7 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/','Content\ContentController@index')->name('homepage');
+Route::get('/', 'Content\ContentController@index')->name('homepage');
 Route::namespace('Student')->group(function()
 {
 	Route::namespace('Auth')->group(function()
@@ -29,4 +29,31 @@ Route::namespace('Student')->group(function()
         Route::get('/profile','DashboardController@profile')->name('student_dashboard_profile');
         Route::post('/profile','DashboardController@update')->name('student_dashboard_profile_update');
 	});
+});
+
+Route::namespace('Admin')->group(function()
+{
+
+	Route::namespace('Auth')->group(function()
+	{
+		Route::get('/adminLogin', 'LoginController@show')->name('admin_login_show');
+		Route::post('/adminLogin', 'LoginController@login')->name('admin_login_submit');
+		Route::get('/adminLogOut', 'LoginController@logout')->name('admin_logout');
+	});
+
+	Route::middleware('auth:admin')->namespace('Dashboard')->prefix('admin/dashboard')->group(function()
+	{
+		Route::get('/', 'DashboardController@dashboard')->name('admin_dashboard');
+
+		Route::prefix('exams')->group(function()
+		{
+			Route::get('/', 'LessonExamController@exams')->name('admin_exams');
+			Route::get('/add', 'LessonExamController@addShow')->name('admin_exams_addShow');
+			Route::post('/add', 'LessonExamController@add')->name('admin_lExam_add');
+
+		});
+
+
+	});
+
 });
