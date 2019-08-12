@@ -50,9 +50,9 @@ class GradeController extends Controller
 
 
 
-	public function remove($url)
+	public function remove(Request $r)
 	{
-		$grade = Grade::query()->where('url', $url)->first();
+		$grade = Grade::query()->where('url', $r->input('url'))->first();
 
 		$grade->delete();
 

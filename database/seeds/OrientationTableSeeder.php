@@ -18,7 +18,7 @@ class OrientationTableSeeder extends Seeder
 
 			'code'       => '01',
 			'title'      => 'ریاضی و فیزیک',
-			'query'      => 'mathematics',
+			'url'        => 'mathematics',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
@@ -28,7 +28,7 @@ class OrientationTableSeeder extends Seeder
 
 			'code'       => '02',
 			'title'      => 'تجربی',
-			'query'      => 'experimental',
+			'url'        => 'experimental',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
@@ -38,7 +38,7 @@ class OrientationTableSeeder extends Seeder
 
 			'code'       => '03',
 			'title'      => 'انسانی',
-			'query'      => 'human-discipline',
+			'url'        => 'human-discipline',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 

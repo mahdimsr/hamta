@@ -64,9 +64,9 @@
 					</a>
 				</li>
 				<li>
-					<a href="typography.html">
+					<a href="{{route('admin_orientations')}}">
 						<i class="pe-7s-news-paper"></i>
-						<p>آزمون ها</p>
+						<p>گرایش ها</p>
 					</a>
 				</li>
 

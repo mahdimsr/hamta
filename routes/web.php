@@ -58,12 +58,23 @@ Route::namespace('Admin')->group(function()
 		Route::prefix('grades')->group(function()
 		{
 			Route::get('/', 'GradeController@grades')->name('admin_grades');
-			Route::get('/remove/{url}', 'GradeController@remove')->name('admin_grades_remove');
+			Route::get('/remove', 'GradeController@remove')->name('admin_grades_remove');
 			Route::get('/add', 'GradeController@addShow')->name('admin_grades_addShow');
 			Route::post('/add', 'GradeController@add')->name('admin_grades_add');
 			Route::get('/edit', 'GradeController@editShow')->name('admin_grades_editShow');
 			Route::post('/edit', 'GradeController@edit')->name('admin_grades_edit');
 
+		});
+
+
+		Route::prefix('orientations')->group(function()
+		{
+			Route::get('/','OrientationController@orientations')->name('admin_orientations');
+			Route::get('/remove','OrientationController@remove')->name('admin_orientations_remove');
+			Route::get('/add','OrientationController@addShow')->name('admin_orientations_addShow');
+			Route::post('/add','OrientationController@add')->name('admin_orientations_add');
+			Route::get('/edit','OrientationController@editShow')->name('admin_orientations_editShow');
+			Route::post('/edit','OrientationController@edit')->name('admin_orientations_edit');
 		});
 
 
