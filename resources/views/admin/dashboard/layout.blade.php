@@ -39,7 +39,7 @@
 
 		<div class="sidebar-wrapper">
 			<div class="logo">
-				<a href="http://www.creative-tim.com" class="simple-text">
+				<a href="#" class="simple-text">
 					سامانه همتا
 				</a>
 			</div>
@@ -58,9 +58,9 @@
 					</a>
 				</li>
 				<li>
-					<a href="table.html">
+					<a href="{{route('admin_grades')}}">
 						<i class="pe-7s-note2"></i>
-						<p>نوت 9 محمد</p>
+						<p>مقاطع تحصیلی</p>
 					</a>
 				</li>
 				<li>

@@ -4,20 +4,21 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use \Carbon\Carbon;
 
+
 class GradeTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
 		DB::table('grade')->insert([
 
 			'code'       => '10',
 			'title'      => 'دهم',
-			'query'      => 'tenth-grade',
+			'url'        => 'tenth-grade',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
@@ -27,7 +28,7 @@ class GradeTableSeeder extends Seeder
 
 			'code'       => '11',
 			'title'      => 'یازدهم',
-			'query'      => 'eleventh-grade',
+			'url'        => 'eleventh-grade',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
@@ -37,10 +38,10 @@ class GradeTableSeeder extends Seeder
 
 			'code'       => '12',
 			'title'      => 'دوازدهم',
-			'query'      => 'twelfth-grade',
+			'url'        => 'twelfth-grade',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
 		]);
-    }
+	}
 }
