@@ -6,19 +6,20 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\model\Student as Student;
 use Illuminate\Support\Facades\Auth;
-
+use App\model\City as City;
+use App\model\State as State;
 class DashboardController extends Controller
 {
-    public function __construct(Student $student)
+    public function __construct(Student $student,City $city,State $state)
     {
         $this->students=$student;
+        $this->citys=$city->all();
+        $this->states=$state->all();
     }
 	public function layout()
 	{
 		return view('student.dashboard.layout');
     }
-
-
 	public function profile()
 	{
         $data=[];
@@ -34,10 +35,11 @@ class DashboardController extends Controller
         $data['orientation']=$student_data->orientation;
         $data['grade']=$student_data->grade;
         $data['school']=$student_data->school;
-        $data['telephone']=$student_data->telephone;
+        $data['telephone']=substr($student_data->telephone,6);
         $data['parentphone']=$student_data->parentphone;
         $data['average1']=substr($student_data->average, 0, 2);
         $data['average2']=substr($student_data->average, 3, 2);
+        $data['citys']=$this->citys;
 		return view('student.dashboard.profile',$data);
     }
     public function update(Request $request)
@@ -78,6 +80,8 @@ class DashboardController extends Controller
         ]
         );
         $id=Auth::id();
+        $city_data=$this->citys->where('cityname',$request->input('city'))->first();
+        $state_data=$this->states->find($city_data->stateid);
         $average=$request->input('average1').'/'.$request->input('average2');
         $student_data=$this->students->find($id);
         $student_data->name=$request->input('name');
@@ -88,11 +92,13 @@ class DashboardController extends Controller
         $student_data->average=$average;
         $student_data->birthday=$request->input('birthday');
         $student_data->school=$request->input('school');
-        $student_data->telephone=$request->input('telephone');
+        $student_data->telephone=$state_data->areacode.' - '.$request->input('telephone');
         $student_data->parentphone=$request->input('parentphone');
         $student_data->city=$request->input('city');
+        $student_data->state=$state_data->statename;
         $student_data->orientation=$request->input('orientation');
         $student_data->grade=$request->input('grade');
+        $student_data->isComplete=1;
         $student_data->save();
         return redirect()->route('student_dashboard_profile');
     }

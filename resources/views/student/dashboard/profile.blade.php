@@ -62,10 +62,9 @@
                                     <label for="city">شهر</label>
                                     <select dir="rtl" name="city" class="form-control" id="city">
                                         <option selected disabled >شهر خود را انتخاب نمایید</option>
-                                        <option {{ old('city')=='اراک'? 'selected' : '' }} {{ $city=='اراک'? 'selected' : ''}}>اراک</option>
-                                        <option>اصفهان</option>
-                                        <option>مشهد</option>
-                                        <option>تهران</option>
+                                        @foreach ( $citys as $city1 )
+                                        <option value="{{ $city1->cityname }}" {{ old('city')==$city1->cityname? 'selected' : '' }} {{ $city==$city1->cityname? 'selected' : ''}}>{{ $city1->cityname }}</option>
+                                        @endforeach
                                     </select>
                                     <small>{{ $errors->first('city') }}</small>
                                 </div>

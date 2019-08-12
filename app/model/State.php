@@ -3,8 +3,8 @@
 namespace App\model;
 
 use Illuminate\Database\Eloquent\Model;
-class City extends Model
+class State extends Model
 {
     //
-    protected $table = 'citys';
+    protected $table = 'states';
 }
