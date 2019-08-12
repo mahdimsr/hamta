@@ -39,7 +39,7 @@
 
 		<div class="sidebar-wrapper">
 			<div class="logo">
-				<a href="http://www.creative-tim.com" class="simple-text">
+				<a href="#" class="simple-text">
 					سامانه همتا
 				</a>
 			</div>
@@ -58,15 +58,15 @@
 					</a>
 				</li>
 				<li>
-					<a href="table.html">
+					<a href="{{route('admin_grades')}}">
 						<i class="pe-7s-note2"></i>
-						<p>نوت 9 محمد</p>
+						<p>مقاطع تحصیلی</p>
 					</a>
 				</li>
 				<li>
-					<a href="typography.html">
+					<a href="{{route('admin_orientations')}}">
 						<i class="pe-7s-news-paper"></i>
-						<p>آزمون ها</p>
+						<p>گرایش ها</p>
 					</a>
 				</li>
 
@@ -191,13 +191,12 @@
 <!--  Notifications Plugin    -->
 <script src="{{asset('js/admin/dashboard/bootstrap-notify.js')}}"></script>
 
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="{{asset('js/admin/dashboard/dashboard.js')}}"></script>
 
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="{{asset('js/admin/dashboard/demo.js')}}"></script>
+
+@yield('script')
 
 </html>

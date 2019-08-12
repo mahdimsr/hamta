@@ -18,6 +18,10 @@ class DatabaseSeeder extends Seeder
 			AdminTableSeeder::class,
             StateTableSeeder::class,
             CityTableSeeder::class,
+			OrientationTableSeeder::class,
+			GradeTableSeeder::class,
+			LessonTableSeeder::class,
+
 		]);
 	}
 }

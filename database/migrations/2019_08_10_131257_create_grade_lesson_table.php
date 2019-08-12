@@ -20,6 +20,8 @@ class CreateGradeLessonTable extends Migration
 			$table->integer('lessonId');
 			$table->integer('gradeId');
 			$table->integer('orientationId');
+			$table->integer('ration');
+			$table->enum('type', ['EXPERT', 'GENERAL']);
 			$table->timestamps();
 			$table->softDeletes();
 		});

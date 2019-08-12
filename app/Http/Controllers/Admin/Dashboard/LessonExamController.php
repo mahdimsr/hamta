@@ -16,9 +16,7 @@ class LessonExamController extends Controller
 	{
 		$lessonExam = LessonExam::all();
 
-		return $lessonExam;
-
-		return view('admin.dashboard.lessonExam.exams');
+		return view('admin.dashboard.lessonExam.exams',compact('lessonExam'));
 	}
 
 
@@ -52,5 +50,14 @@ class LessonExamController extends Controller
 		Storage::disk('lessonExam')->put($lessonExam->exm, $answerFile);
 
 		return redirect()->route('admin_exams');
+	}
+
+
+
+	public function remove(Request $r)
+	{
+		$exam = LessonExam::query()->where('exm',$r->input('exm'))->first();
+
+		return response()->json(['success'=>'Data is successfully added']);
 	}
 }

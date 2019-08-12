@@ -19,7 +19,7 @@ class CreateLessonTable extends Migration
 			$table->bigIncrements('id');
 			$table->string('code');
 			$table->string('title');
-			$table->enum('type', ['EXPERT', 'GENERAL']);
+			$table->string('query');
 			$table->timestamps();
 			$table->softDeletes();
 		});
