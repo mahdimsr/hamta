@@ -66,7 +66,7 @@ class AuthController extends Controller
     }
     public function logout()
     {
-        Auth::logout();
+        Auth::guard('student')->logout();
         return redirect()->route('student_login_show');
 	}
 	public function register(Request $request,Student $student )

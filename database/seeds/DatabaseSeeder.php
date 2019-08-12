@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,13 +13,13 @@ class DatabaseSeeder extends Seeder
 	{
 		$this->call([
 
-			StudentTableSeeder::class,
-			AdminTableSeeder::class,
+            StudentTableSeeder::class,
+            AdminTableSeeder::class,
             StateTableSeeder::class,
             CityTableSeeder::class,
 			OrientationTableSeeder::class,
 			GradeTableSeeder::class,
-			LessonTableSeeder::class,
+            LessonTableSeeder::class,
 
 		]);
 	}
