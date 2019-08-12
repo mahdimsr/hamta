@@ -19,7 +19,7 @@ class CreateLessonTable extends Migration
 			$table->bigIncrements('id');
 			$table->string('code');
 			$table->string('title');
-			$table->string('query');
+			$table->string('url');
 			$table->timestamps();
 			$table->softDeletes();
 		});
