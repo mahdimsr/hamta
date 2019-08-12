@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder
 
 			StudentTableSeeder::class,
 			AdminTableSeeder::class,
+			OrientationTableSeeder::class,
+			GradeTableSeeder::class,
+			LessonTableSeeder::class,
 
 		]);
 	}

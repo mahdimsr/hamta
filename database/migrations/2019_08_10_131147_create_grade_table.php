@@ -14,11 +14,12 @@ class CreateGradeTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('grades', function(Blueprint $table)
+		Schema::create('grade', function(Blueprint $table)
 		{
 			$table->bigIncrements('id');
 			$table->string('code');
 			$table->string('title');
+			$table->string('query');
 			$table->timestamps();
 			$table->softDeletes();
 		});
