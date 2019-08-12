@@ -19,8 +19,8 @@ class DashboardController extends Controller
 	public function profile()
 	{
         $data=[];
-        $id=Auth::id();
-        $user = Auth::user();
+        $id=Auth::guard('student')->id();
+        $user = Auth::guard('student')->user();
         $student_data=$this->students->find($id);
         $data['name']=$student_data->name;
         $data['familyname']=$student_data->familyname;
@@ -77,7 +77,7 @@ class DashboardController extends Controller
             'parentphone.required'=>'تلفن یکی از والدین را وارد کنید.',
         ]
         );
-        $id=Auth::id();
+        $id=Auth::guard('student')->id();
         $city_data=$this->citys->where('cityname',$request->input('city'))->first();
         $state_data=$this->states->find($city_data->stateid);
         $average=$request->input('average1').'/'.$request->input('average2');

@@ -16,7 +16,7 @@ class AdminTableSeeder extends Seeder
     {
 		DB::table('admin')->insert([
 
-			'fullName'   => 'علی رضا ربیعی',
+			'fullName'   => 'علیرضا ربیعی',
 			'mobile'     => '09386721318',
 			'password'   => Hash::make('123456789'),
 			'created_at' => Carbon::now(),
