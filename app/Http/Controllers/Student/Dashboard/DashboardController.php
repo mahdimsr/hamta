@@ -16,14 +16,11 @@ class DashboardController extends Controller
         $this->citys=$city->all();
         $this->states=$state->all();
     }
-	public function layout()
-	{
-		return view('student.dashboard.layout');
-    }
 	public function profile()
 	{
         $data=[];
         $id=Auth::id();
+        $user = Auth::user();
         $student_data=$this->students->find($id);
         $data['name']=$student_data->name;
         $data['familyname']=$student_data->familyname;
@@ -39,6 +36,7 @@ class DashboardController extends Controller
         $data['parentphone']=$student_data->parentphone;
         $data['average1']=substr($student_data->average, 0, 2);
         $data['average2']=substr($student_data->average, 3, 2);
+        $data['update']=$user->isComplete;
         $data['citys']=$this->citys;
 		return view('student.dashboard.profile',$data);
     }
