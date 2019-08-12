@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
 
 			StudentTableSeeder::class,
 			AdminTableSeeder::class,
-
+            StateTableSeeder::class,
+            CityTableSeeder::class,
 		]);
 	}
 }
