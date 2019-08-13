@@ -19,7 +19,7 @@ class LessonTableSeeder extends Seeder
 
 			'code'       => '01',
 			'title'      => 'ادبیات',
-			'query'      => 'literature',
+			'url'      => 'literature',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
@@ -29,7 +29,7 @@ class LessonTableSeeder extends Seeder
 
 			'code'       => '02',
 			'title'      => 'عربی',
-			'query'      => 'arabic',
+			'url'      => 'arabic',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
@@ -39,7 +39,7 @@ class LessonTableSeeder extends Seeder
 
 			'code'       => '03',
 			'title'      => 'دین و زندگی',
-			'query'      => 'religion-and-life',
+			'url'      => 'religion-and-life',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
@@ -49,7 +49,7 @@ class LessonTableSeeder extends Seeder
 
 			'code'       => '04',
 			'title'      => 'زبان انگلیسی',
-			'query'      => 'english',
+			'url'      => 'english',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
@@ -61,7 +61,7 @@ class LessonTableSeeder extends Seeder
 
 			'code'       => '11',
 			'title'      => 'ریاضی',
-			'query'      => 'math',
+			'url'      => 'math',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
@@ -71,7 +71,7 @@ class LessonTableSeeder extends Seeder
 
 			'code'       => '12',
 			'title'      => 'هندسه',
-			'query'      => 'geometry',
+			'url'      => 'geometry',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
@@ -81,7 +81,7 @@ class LessonTableSeeder extends Seeder
 
 			'code'       => '13',
 			'title'      => 'آمار',
-			'query'      => 'statistics',
+			'url'      => 'statistics',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
@@ -91,7 +91,7 @@ class LessonTableSeeder extends Seeder
 
 			'code'       => '14',
 			'title'      => 'ریاضیات گسسته',
-			'query'      => 'discrete-mathematics',
+			'url'      => 'discrete-mathematics',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
@@ -103,7 +103,7 @@ class LessonTableSeeder extends Seeder
 
 			'code'       => '22',
 			'title'      => 'فیزیک',
-			'query'      => 'physics',
+			'url'      => 'physics',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
@@ -115,7 +115,7 @@ class LessonTableSeeder extends Seeder
 
 			'code'       => '33',
 			'title'      => 'شیمی',
-			'query'      => 'chemistry',
+			'url'      => 'chemistry',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
