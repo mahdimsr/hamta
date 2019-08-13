@@ -17,4 +17,11 @@ class Lesson extends Model
     use SoftDeletes;
 
     protected $table = 'lesson';
+
+
+
+	public function gradeLessons()
+	{
+		return $this->hasMany(GradeLesson::class,'id');
+    }
 }

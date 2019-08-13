@@ -19,4 +19,11 @@ class Orientation extends Model
 {
     use SoftDeletes;
     protected $table = 'orientation';
+
+
+
+	public function gradeLessons()
+	{
+		return $this->hasMany(GradeLesson::class,'id');
+    }
 }
