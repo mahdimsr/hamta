@@ -8,11 +8,11 @@
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/xb-roya" type="text/css"/>
 
-  
-  
+
+
       <link rel="stylesheet" href="{{asset('css/student/auth/style.css')}}">
 
-  
+
 </head>
 
 <body>
@@ -40,11 +40,11 @@
       <div class="login">
         <h2>ورود</h2>
         <div class="inputbox">
-		  <form action="{{route('student_login_submit')}}" method='post'>
+		  <form action="{{route('student_login')}}" method='post'>
 				{{csrf_field()}}
-		  <input type="text" name="mobile-email" placeholder="شماره تلفن همراه یا پست الکترونیکی خود را وارد کنید" value="{{old('mobile-email')}}">
+		  <input type="text" name="mobile-email" placeholder="شماره تلفن همراه یا پست الکترونیکی خود را وارد نمایید" value="{{old('mobile-email')}}">
 		  <small>{{$errors->first('mobile-email')}}</small>
-      <input type="password" name="password" placeholder="کلمه عبور خود را وارد کنید">
+      <input type="password" name="password" placeholder="کلمه عبور خود را وارد نمایید">
 			<small>{{$errors->first('password')}}</small>
 		  <button type="submit">وارد شو</button>
 		</form>
@@ -56,25 +56,26 @@
         <div class="inputbox">
 				<form action="{{route('student_register')}}" method='post'>
 						{{csrf_field()}}
-          <input type="text" name="mobile" placeholder="شماره تلفن همراه خود را وارد کنید" value="{{old('mobile')}}">
-		  <small>{{$errors->first('mobile')}}</small>
-      <input type="password" name="password_signup" placeholder="کلمه عبور خود را وارد کنید">
-      <small>{{$errors->first('password_signup')}}</small>
-      <input type="password" name="password_confirmation" placeholder="تکرار کلمه عبور را وارد کنید">
-		  <button type="submit">ثبت نام</button>
+          <input type="text" name="studentmobile" placeholder="شماره تلفن همراه خود را وارد نمایید" value="{{old('studentmobile')}}">
+		  <small>{{$errors->first('studentmobile')}}</small>
+      <input type="password" name="password_signup" placeholder="کلمه عبور خود را وارد نمایید">
+      <small>{{ $errors->first('password_signup')}}</small>
+      <input type="password" name="password_confirmation" placeholder="تکرار کلمه عبور را وارد نمایید">
+      <small>{{ $errors->first('password_confirmation')}}</small>
+      <button type="submit">ثبت نام</button>
 				</form>
         </div>
       </div>
 
-      
+
     </div>
     <!-- frontbox -->
   </div>
 </body>
 
 </html>
-  
-  
+
+
 
     <script src="{{asset('js/student/auth/index.js')}}"></script>
 </body>

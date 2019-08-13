@@ -15,19 +15,24 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', 'Content\ContentController@index')->name('homepage');
+
 Route::namespace('Student')->group(function()
 {
 	Route::namespace('Auth')->group(function()
 	{
-		Route::get('/student', 'AuthController@show')->name('student_login_show');
-		Route::post('/login', 'AuthController@login')->name('student_login_submit');
+
+		Route::get('/auth', 'AuthController@show')->name('student');
+		Route::post('/login', 'AuthController@login')->name('student_login');
 		Route::post('/register', 'AuthController@register')->name('student_register');
         Route::get('/logout','AuthController@logout')->name('student_logout');
+
 	});
 	Route::middleware('auth:student')->namespace('Dashboard')->prefix('dashboard')->group(function()
 	{
+
         Route::get('/profile','DashboardController@profile')->name('student_dashboard_profile');
         Route::post('/profile','DashboardController@update')->name('student_dashboard_profile_update');
+
 	});
 });
 

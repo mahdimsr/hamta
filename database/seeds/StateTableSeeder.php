@@ -14,217 +14,217 @@ class StateTableSeeder extends Seeder
         //
         DB::table('state')->insert(
             [
-			'statename'     => 'آذربایجان شرقی',
+			'name'     => 'آذربایجان شرقی',
 			'areacode'   => '041',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'آذربایجان غربی',
+			'name'     => 'آذربایجان غربی',
 			'areacode'   => '044',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'اردبیل',
+			'name'     => 'اردبیل',
 			'areacode'   => '045',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'اصفهان',
+			'name'     => 'اصفهان',
 			'areacode'   => '031',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'البرز',
+			'name'     => 'البرز',
 			'areacode'   => '026',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-            'statename'     => 'البرز',
+            'name'     => 'البرز',
                 'areacode'   => '026',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'بوشهر',
+			'name'     => 'بوشهر',
 			'areacode'   => '077',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'تهران',
+			'name'     => 'تهران',
 			'areacode'   => '021',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'چهارمحال بختیاری',
+			'name'     => 'چهارمحال بختیاری',
 			'areacode'   => '038',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'خراسان جنوبی',
+			'name'     => 'خراسان جنوبی',
 			'areacode'   => '056',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'خراسان رضوی',
+			'name'     => 'خراسان رضوی',
 			'areacode'   => '051',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'خراسان شمالی',
+			'name'     => 'خراسان شمالی',
 			'areacode'   => '058',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'خوزستان',
+			'name'     => 'خوزستان',
 			'areacode'   => '061',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'زنجان',
+			'name'     => 'زنجان',
 			'areacode'   => '024',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'سمنان',
+			'name'     => 'سمنان',
 			'areacode'   => '023',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'سیستان و بلوچستان',
+			'name'     => 'سیستان و بلوچستان',
 			'areacode'   => '054',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'فارس',
+			'name'     => 'فارس',
 			'areacode'   => '071',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'قزوین',
+			'name'     => 'قزوین',
 			'areacode'   => '028',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'قم',
+			'name'     => 'قم',
 			'areacode'   => '025',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'کردستان',
+			'name'     => 'کردستان',
 			'areacode'   => '087',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'کرمان',
+			'name'     => 'کرمان',
 			'areacode'   => '034',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'کرمانشاه',
+			'name'     => 'کرمانشاه',
 			'areacode'   => '083',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'کهگیلویه و بویراحمد',
+			'name'     => 'کهگیلویه و بویراحمد',
 			'areacode'   => '074',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'گلستان',
+			'name'     => 'گلستان',
 			'areacode'   => '017',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'گیلان',
+			'name'     => 'گیلان',
 			'areacode'   => '013',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'لرستان',
+			'name'     => 'لرستان',
 			'areacode'   => '066',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'مازندران',
+			'name'     => 'مازندران',
 			'areacode'   => '011',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'مرکزی',
+			'name'     => 'مرکزی',
 			'areacode'   => '086',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'هرمزگان',
+			'name'     => 'هرمزگان',
 			'areacode'   => '076',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'همدان',
+			'name'     => 'همدان',
 			'areacode'   => '081',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
         ]);
         DB::table('state')->insert(
             [
-			'statename'     => 'یزد',
+			'name'     => 'یزد',
 			'areacode'   => '035',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
