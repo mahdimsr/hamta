@@ -79,12 +79,23 @@ Route::namespace('Admin')->group(function()
 
 		Route::prefix('gradeLessons')->group(function()
 		{
-			Route::get('/','GradeLessonController@gradeLessons')->name('admin_gradeLessons');
-			Route::get('/remove','GradeLessonController@remove')->name('admin_gradeLessons_remove');
-			Route::get('/add','GradeLessonController@addShow')->name('admin_gradeLessons_addShow');
-			Route::post('/add','GradeLessonController@add')->name('admin_gradeLessons_add');
-			Route::get('/edit','GradeLessonController@editShow')->name('admin_gradeLessons_editShow');
-			Route::post('/edit','GradeLessonController@edit')->name('admin_gradeLessons_edit');
+			Route::get('/', 'GradeLessonController@gradeLessons')->name('admin_gradeLessons');
+			Route::get('/remove', 'GradeLessonController@remove')->name('admin_gradeLessons_remove');
+			Route::get('/add', 'GradeLessonController@addShow')->name('admin_gradeLessons_addShow');
+			Route::post('/add', 'GradeLessonController@add')->name('admin_gradeLessons_add');
+			Route::get('/edit', 'GradeLessonController@editShow')->name('admin_gradeLessons_editShow');
+			Route::post('/edit', 'GradeLessonController@edit')->name('admin_gradeLessons_edit');
+		});
+
+
+		Route::prefix('lessons')->group(function()
+		{
+			Route::get('/', 'LessonController@lessons')->name('admin_lessons');
+			Route::get('/remove', 'LessonController@remove')->name('admin_lessons_remove');
+			Route::get('/add', 'LessonController@addShow')->name('admin_lessons_addShow');
+			Route::post('/add', 'LessonController@add')->name('admin_lessons_add');
+			Route::get('/edit', 'LessonController@editShow')->name('admin_lessons_editShow');
+			Route::post('/edit', 'LessonController@edit')->name('admin_lessons_edit');
 		});
 
 
