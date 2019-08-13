@@ -69,6 +69,18 @@
 						<p>گرایش ها</p>
 					</a>
 				</li>
+				<li>
+					<a href="{{route('admin_gradeLessons')}}">
+						<i class="pe-7s-news-paper"></i>
+						<p>درس های هر پایه</p>
+					</a>
+				</li>
+				<li>
+					<a href="{{route('admin_lessons')}}">
+						<i class="pe-7s-news-paper"></i>
+						<p>درس های به صورت جداگانه</p>
+					</a>
+				</li>
 
 
 			</ul>

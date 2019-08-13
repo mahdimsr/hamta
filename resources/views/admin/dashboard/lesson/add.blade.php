@@ -6,7 +6,7 @@
 		<div class="col-md-12">
 			<div class="card text-right">
 				<div class="header ">
-					<h4 class="title">افزودن گرایش</h4>
+					<h4 class="title">افزودن درس</h4>
 				</div>
 
 
@@ -21,30 +21,30 @@
 				@endif
 
 				<div class="content">
-					<form method="post" action="{{route('admin_orientations_add')}}">
+					<form method="post" action="{{route('admin_lessons_add')}}">
 
 						{{csrf_field()}}
 
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
-									<label>پارامتر گرایش</label>
-									<input name="urlOrientation" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: mathematics" value="{{old('url')}}">
+									<label>پارامتر درس</label>
+									<input name="urlLesson" dir="rtl" type="text" class="form-control"
+										   placeholder="مثلا: tenth-grade" value="{{old('urlLesson')}}">
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
-									<label>کد گرایش</label>
-									<input name="codeOrientation" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: 10" value="{{old('code')}}">
+									<label>کد درس</label>
+									<input name="codeLesson" dir="rtl" type="text" class="form-control"
+										   placeholder="مثلا: 10" value="{{old('codeLesson')}}">
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
-									<label>عنوان گرایش</label>
-									<input name="titleOrientation" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: ریاضی" value="{{old('title')}}">
+									<label>عنوان درس</label>
+									<input name="titleLesson" dir="rtl" type="text" class="form-control"
+										   placeholder="مثلا: مقطع دهم" value="{{old('titleLesson')}}">
 								</div>
 							</div>
 						</div>
