@@ -42,17 +42,17 @@ class OrientationController extends Controller
 
 		$this->validate($r, [
 
-			'title' => 'required|alpha|max:10',
-			'code'  => 'required|numeric|digits:2|unique:orientation,code',
-			'url'   => 'required|string|unique:orientation,url',
+			'titleOrientation' => 'required|alpha|max:10',
+			'codeOrientation'  => 'required|numeric|digits:2|unique:orientation,code',
+			'urlOrientation'   => 'required|string|unique:orientation,url',
 
 		]);
 
 		$orientation = new Orientation();
 
-		$orientation->title = $r->input('title');
-		$orientation->code  = $r->input('code');
-		$orientation->url   = $r->input('url');
+		$orientation->title = $r->input('titleOrientation');
+		$orientation->code  = $r->input('codeOrientation');
+		$orientation->url   = $r->input('urlOrientation');
 
 		$orientation->save();
 
@@ -78,16 +78,21 @@ class OrientationController extends Controller
 
 		$this->validate($r, [
 
-			'title' => 'required|alpha|max:10',
-			'code'  => ['required', 'numeric', 'digits:2', Rule::unique('orientation')->ignore($orientation)],
-			'url'   => ['required', 'string', Rule::unique('orientation')->ignore($orientation)],
+			'titleOrientation' => 'required|alpha|max:10',
+			'codeOrientation'  => [
+				'required',
+				'numeric',
+				'digits:2',
+				Rule::unique('orientation', 'code')->ignore($orientation),
+			],
+			'urlOrientation'   => ['required', 'string', Rule::unique('orientation', 'url')->ignore($orientation)],
 
 		]);
 
 
-		$orientation->title = $r->input('title');
-		$orientation->code  = $r->input('code');
-		$orientation->url   = $r->input('url');
+		$orientation->title = $r->input('titleOrientation');
+		$orientation->code  = $r->input('codeOrientation');
+		$orientation->url   = $r->input('urlOrientation');
 
 		$orientation->update();
 

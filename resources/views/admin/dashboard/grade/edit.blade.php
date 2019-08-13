@@ -31,21 +31,21 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>پارامتر مقطع</label>
-									<input name="url" dir="rtl" type="text" class="form-control"
+									<input name="urlGrade" dir="rtl" type="text" class="form-control"
 										   placeholder="مثلا: tenth-grade" value="{{$grade->url}}">
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>کد مقطع</label>
-									<input name="code" dir="rtl" type="text" class="form-control"
+									<input name="codeGrade" dir="rtl" type="text" class="form-control"
 										   placeholder="مثلا: 10" value="{{$grade->code}}">
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>عنوان مقطع</label>
-									<input name="title" dir="rtl" type="text" class="form-control"
+									<input name="titleGrade" dir="rtl" type="text" class="form-control"
 										   placeholder="مثلا: مقطع دهم" value="{{$grade->title}}">
 								</div>
 							</div>
