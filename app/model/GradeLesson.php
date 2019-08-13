@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int $lessonId
  * @property int $gradeId
  * @property int $orientationId
+ * @property string $code
  * @property int $ratio
  * @property string $type
  * @property \Carbon\Carbon $deleted_at
@@ -27,21 +28,21 @@ class GradeLesson extends Model
 
 	public function orientation()
 	{
-		return $this->belongsTo(Orientation::class,'orientationsId');
+		return $this->belongsTo(Orientation::class, 'orientationId');
 	}
 
 
 
 	public function grade()
 	{
-		return $this->belongsTo(Grade::class,'gradeId');
+		return $this->belongsTo(Grade::class, 'gradeId');
 	}
 
 
 
 	public function lesson()
 	{
-		return $this->belongsTo(Lesson::class,'lessonId');
+		return $this->belongsTo(Lesson::class, 'lessonId');
 	}
 
 

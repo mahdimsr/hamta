@@ -22,12 +22,12 @@ Route::namespace('Student')->group(function()
 		Route::get('/student', 'AuthController@show')->name('student_login_show');
 		Route::post('/login', 'AuthController@login')->name('student_login_submit');
 		Route::post('/register', 'AuthController@register')->name('student_register');
-        Route::get('/logout','AuthController@logout')->name('student_logout');
+		Route::get('/logout', 'AuthController@logout')->name('student_logout');
 	});
 	Route::middleware('auth:student')->namespace('Dashboard')->prefix('dashboard')->group(function()
 	{
-        Route::get('/profile','DashboardController@profile')->name('student_dashboard_profile');
-        Route::post('/profile','DashboardController@update')->name('student_dashboard_profile_update');
+		Route::get('/profile', 'DashboardController@profile')->name('student_dashboard_profile');
+		Route::post('/profile', 'DashboardController@update')->name('student_dashboard_profile_update');
 	});
 });
 
@@ -69,12 +69,22 @@ Route::namespace('Admin')->group(function()
 
 		Route::prefix('orientations')->group(function()
 		{
-			Route::get('/','OrientationController@orientations')->name('admin_orientations');
-			Route::get('/remove','OrientationController@remove')->name('admin_orientations_remove');
-			Route::get('/add','OrientationController@addShow')->name('admin_orientations_addShow');
-			Route::post('/add','OrientationController@add')->name('admin_orientations_add');
-			Route::get('/edit','OrientationController@editShow')->name('admin_orientations_editShow');
-			Route::post('/edit','OrientationController@edit')->name('admin_orientations_edit');
+			Route::get('/', 'OrientationController@orientations')->name('admin_orientations');
+			Route::get('/remove', 'OrientationController@remove')->name('admin_orientations_remove');
+			Route::get('/add', 'OrientationController@addShow')->name('admin_orientations_addShow');
+			Route::post('/add', 'OrientationController@add')->name('admin_orientations_add');
+			Route::get('/edit', 'OrientationController@editShow')->name('admin_orientations_editShow');
+			Route::post('/edit', 'OrientationController@edit')->name('admin_orientations_edit');
+		});
+
+		Route::prefix('gradeLessons')->group(function()
+		{
+			Route::get('/','GradeLessonController@gradeLessons')->name('admin_gradeLessons');
+			Route::get('/remove','GradeLessonController@remove')->name('admin_gradeLessons_remove');
+			Route::get('/add','GradeLessonController@addShow')->name('admin_gradeLessons_addShow');
+			Route::post('/add','GradeLessonController@add')->name('admin_gradeLessons_add');
+			Route::get('/edit','GradeLessonController@editShow')->name('admin_gradeLessons_editShow');
+			Route::post('/edit','GradeLessonController@edit')->name('admin_gradeLessons_edit');
 		});
 
 

@@ -13,7 +13,7 @@ class DashboardController extends Controller
 	{
 		$admin = Auth::user();
 
-		return view('admin.dashboard.layout',compact('admin'));
+		return view('layouts.admin_dashboard',compact('admin'));
 	}
 
 
