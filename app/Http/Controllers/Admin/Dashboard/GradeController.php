@@ -31,17 +31,17 @@ class GradeController extends Controller
 	{
 		$this->validate($r, [
 
-			'title' => 'required|alpha|max:10',
-			'code'  => 'required|numeric|digits:2|unique:grade,code',
-			'url'   => 'required|string|unique:grade,url',
+			'titleGrade' => 'required|alpha|max:10',
+			'codeGrade'  => 'required|numeric|digits:2|unique:grade,code',
+			'urlGrade'   => 'required|string|unique:grade,url',
 
 		]);
 
 		$grade = new Grade();
 
-		$grade->title = $r->input('title');
-		$grade->code  = $r->input('code');
-		$grade->url   = $r->input('url');
+		$grade->title = $r->input('titleGrade');
+		$grade->code  = $r->input('codeGrade');
+		$grade->url   = $r->input('urlGrade');
 
 		$grade->save();
 
@@ -77,16 +77,16 @@ class GradeController extends Controller
 
 		$this->validate($r, [
 
-			'title' => 'required|alpha|max:10',
-			'code'  => ['required', 'numeric', 'digits:2', Rule::unique('grade')->ignore($grade)],
-			'url'   => ['required', 'string', Rule::unique('grade')->ignore($grade)],
+			'titleGrade' => 'required|alpha|max:10',
+			'codeGrade'  => ['required', 'numeric', 'digits:2', Rule::unique('grade','code')->ignore($grade)],
+			'urlGrade'   => ['required', 'string', Rule::unique('grade','url')->ignore($grade)],
 
 		]);
 
 
-		$grade->title = $r->input('title');
-		$grade->code  = $r->input('code');
-		$grade->url   = $r->input('url');
+		$grade->title = $r->input('titleGrade');
+		$grade->code  = $r->input('codeGrade');
+		$grade->url   = $r->input('urlGrade');
 
 		$grade->update();
 

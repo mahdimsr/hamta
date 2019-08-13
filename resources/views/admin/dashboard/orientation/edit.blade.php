@@ -31,21 +31,21 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>پارامتر گرایش</label>
-									<input name="url" dir="rtl" type="text" class="form-control"
+									<input name="urlOrientation" dir="rtl" type="text" class="form-control"
 										   placeholder="مثلا: tenth-grade" value="{{$orientation->url}}">
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>کد گرایش</label>
-									<input name="code" dir="rtl" type="text" class="form-control"
+									<input name="codeOrientation" dir="rtl" type="text" class="form-control"
 										   placeholder="مثلا: 10" value="{{$orientation->code}}">
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>عنوان گرایش</label>
-									<input name="title" dir="rtl" type="text" class="form-control"
+									<input name="titleOrientation" dir="rtl" type="text" class="form-control"
 										   placeholder="مثلا: مقطع دهم" value="{{$orientation->title}}">
 								</div>
 							</div>
