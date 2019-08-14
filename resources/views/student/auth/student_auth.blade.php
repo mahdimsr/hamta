@@ -119,7 +119,7 @@
 
 
 
-            <input type="password" id="password-confirm" name="password_confirmation" placeholder="تکرار کلمه عبور" required>
+            <input type="password" id="password-confirm" class="basic-slide" name="password_confirmation" placeholder="تکرار کلمه عبور" required>
 
             <label for="password-confirm" class="c">تکرار کلمه عبور</label>
 
