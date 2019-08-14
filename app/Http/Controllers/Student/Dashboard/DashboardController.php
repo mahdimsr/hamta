@@ -8,20 +8,23 @@ use App\model\Student as Student;
 use Illuminate\Support\Facades\Auth;
 use App\model\City as City;
 use App\model\State as State;
+use App\model\Grade as Grade;
+use App\model\Orientation as Orientation;
 class DashboardController extends Controller
 {
-    public function __construct(Student $student,City $city,State $state)
+    public function __construct(Student $student,City $city,State $state,Grade $grade,Orientation $orientation)
     {
         $this->students=$student;
-        $this->citys=$city->all();
+        $this->cities=$city->all();
         $this->states=$state->all();
+        $this->grades=$grade->all();
+        $this->orientations=$orientation->all();
     }
 	public function profile()
 	{
         $data=[];
-        $id=Auth::guard('student')->id();
         $user = Auth::guard('student')->user();
-        $student_data=$this->students->find($id);
+        $student_data=$this->students->find($user->id);
         $data['name']=$student_data->name;
         $data['familyname']=$student_data->familyname;
         $data['birthday']=$student_data->birthday;
@@ -34,10 +37,12 @@ class DashboardController extends Controller
         $data['school']=$student_data->school;
         $data['telephone']=substr($student_data->telephone,6);
         $data['parentphone']=$student_data->parentphone;
-        $data['average1']=substr($student_data->average, 0, 2);
-        $data['average2']=substr($student_data->average, 3, 2);
+        $data['averageup']=substr($student_data->average, 0, 2);
+        $data['averagedown']=substr($student_data->average, 3, 2);
         $data['update']=$user->isComplete;
-        $data['citys']=$this->citys;
+        $data['cities']=$this->cities;
+        $data['grades']=$this->grades;
+        $data['orientations']=$this->orientations;
 		return view('student.dashboard.profile',$data);
     }
     public function update(Request $request)
@@ -48,39 +53,31 @@ class DashboardController extends Controller
             'familyname'=>'required',
             'birthday'=>'required',
             'email'=>'required|email',
-            'nationalcode'=>'required',
+            'nationalcode'=>'required|digits:10',
             'city'=>'required',
             'address'=>'required',
             'orientation'=>'required',
             'grade'=>'required',
             'school'=>'required',
-            'average1'=>'required',
-            'average2'=>'required',
-            'telephone'=>'required',
-            'parentphone'=>'required',
-        ],
-        [
-            'name.required'=>'نام خود را وارد کنید.',
-            'familyname.required'=>'نام خانوادگی خود را وارد کنید.',
-            'birthday.required'=>'تاریح تولد خود را وارد کنید.',
-            'email.required'=>'ایمیل خود را وارد کنید.',
-            'email.required'=>'ایمیل وارد شده صحیح نیست.',
-            'nationalcode.required'=>'کد ملی خود را وارد کنید.',
-            'city.required'=>'شهر خود را انتخاب کنید.',
-            'address.required'=>'آدرس خود را وارد کنید',
-            'orientation.required'=>'گرایش خود را انتخاب کنید.',
-            'grade.required'=>'مقطع تحصیلی خود را وارد کنید.',
-            'school.required'=>'نام مدرسه خود را وارد کنید.',
-            'average1.required'=>'عدد قبل از / را وارد کنید.',
-            'average2.required'=>'عدد بعد از / را وارد کنید.',
-            'telephone.required'=>'تلفن منزل را وارد کنید.',
-            'parentphone.required'=>'تلفن یکی از والدین را وارد کنید.',
+            'averageup'=>'required|digits_between:1,2|min:5|max:20|numeric',
+            'averagedown'=>'required|digits:2|min:00|max:99|numeric',
+            'telephone'=>'required|digits:8',
+            'parentphone'=>'required|digits:11',
         ]
         );
         $id=Auth::guard('student')->id();
-        $city_data=$this->citys->where('cityname',$request->input('city'))->first();
+        $city_data=$this->cities->where('name',$request->input('city'))->first();
         $state_data=$this->states->find($city_data->stateid);
-        $average=$request->input('average1').'/'.$request->input('average2');
+
+        if($request->input('averageup')=='20')
+        {
+        $average=$request->input('averageup').'/00';
+        }
+        else
+        {
+        $average=$request->input('averageup').'/'.$request->input('averagedown');
+        }
+
         $student_data=$this->students->find($id);
         $student_data->name=$request->input('name');
         $student_data->familyname=$request->input('familyname');
@@ -93,7 +90,7 @@ class DashboardController extends Controller
         $student_data->telephone=$state_data->areacode.' - '.$request->input('telephone');
         $student_data->parentphone=$request->input('parentphone');
         $student_data->city=$request->input('city');
-        $student_data->state=$state_data->statename;
+        $student_data->state=$state_data->name;
         $student_data->orientation=$request->input('orientation');
         $student_data->grade=$request->input('grade');
         $student_data->isComplete=1;

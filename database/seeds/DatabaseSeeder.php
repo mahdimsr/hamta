@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
 			OrientationTableSeeder::class,
 			GradeTableSeeder::class,
             LessonTableSeeder::class,
+			GradeLessonTableSeeder::class,
 
 		]);
 	}

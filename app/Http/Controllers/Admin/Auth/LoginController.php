@@ -27,7 +27,7 @@ class LoginController extends Controller
 		}
 		else
 		{
-			return redirect()->route('admin_login_show');
+			return redirect()->route('admin.auth.show');
 		}
 
 	}
@@ -38,6 +38,6 @@ class LoginController extends Controller
 	{
 		Auth::guard('admin')->logout();
 
-		return redirect()->route('admin_login_show');
+		return redirect()->route('admin.auth.show');
 	}
 }

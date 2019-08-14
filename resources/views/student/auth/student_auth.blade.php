@@ -1,82 +1,65 @@
 <!DOCTYPE html>
 <html lang="per" >
 <head>
-  <meta charset="UTF-8">
-  <title>سامانه همتا | دانش آموزان</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/xb-roya" type="text/css"/>
-
-  
-  
-      <link rel="stylesheet" href="{{asset('css/student/auth/style.css')}}">
-
-  
+	<title>LogIn</title>
+</head><link rel="stylesheet" href="{{ asset('css/student/auth/style.css') }}">
 </head>
-
 <body>
-
-  <div class="container">
-    <div class="backbox">
-      <div class="loginMsg">
-        <div class="textcontent">
-          <p class="title">هنوز حساب کاربری نداری ؟</p>
-          <p>تو چند ثانیه درستش کن و راحت تو سایت بگرد</p>
-          <button id="switch1">ثبت نام</button>
-        </div>
-      </div>
-      <div class="signupMsg visibility">
-        <div class="textcontent">
-          <p class="title">از قبل حساب کاربری داری؟</p>
-          <p>خیلی خوبه. اطلاعات رو بنویس و وارد شو</p>
-          <button id="switch2">ورود</button>
-        </div>
-      </div>
-    </div>
-    <!-- backbox -->
-
-    <div class="frontbox" dir="rtl">
-      <div class="login">
-        <h2>ورود</h2>
-        <div class="inputbox">
-		  <form action="{{route('student_login_submit')}}" method='post'>
-				{{csrf_field()}}
-		  <input type="text" name="mobile-email" placeholder="شماره تلفن همراه یا پست الکترونیکی خود را وارد کنید" value="{{old('mobile-email')}}">
-		  <small>{{$errors->first('mobile-email')}}</small>
-      <input type="password" name="password" placeholder="کلمه عبور خود را وارد کنید">
+<section class="forms-section">
+  <h1 class="section-title">همتا</h1>
+  <div class="forms">
+    <div class="form-wrapper is-active">
+      <button type="button" class="switcher switcher-login">
+        ورود
+        <span class="underline"></span>
+      </button>
+      <form class="form form-login" action="{{route('student_login')}}" method='post'>
+          {{ csrf_field() }}
+        <fieldset>
+          <div class="input-block">
+            <label for="mobile-email">شماره تلفن همراه یا پست الکترونیکی</label>
+            <input type="text" id="mobile-email" name="mobile-email" placeholder="شماره تلفن همراه یا پست الکترونیکی خود را وارد نمایید" value="{{old('mobile-email')}}" required>
+            <small>{{$errors->first('mobile-email')}}</small>
+          </div>
+          <div class="input-block">
+            <label for="password">کلمه عبور</label>
+            <input type="password" id="password" name="password" placeholder="کلمه عبور خود را وارد نمایید" required>
 			<small>{{$errors->first('password')}}</small>
-		  <button type="submit">وارد شو</button>
-		</form>
-        </div>
-        <p>فراموشی رمز عبور؟</p>
-      </div>
-      <div class="signup hide">
-        <h2>ثبت نام</h2>
-        <div class="inputbox">
-				<form action="{{route('student_register')}}" method='post'>
-						{{csrf_field()}}
-          <input type="text" name="mobile" placeholder="شماره تلفن همراه خود را وارد کنید" value="{{old('mobile')}}">
-		  <small>{{$errors->first('mobile')}}</small>
-      <input type="password" name="password_signup" placeholder="کلمه عبور خود را وارد کنید">
-      <small>{{$errors->first('password_signup')}}</small>
-      <input type="password" name="password_confirmation" placeholder="تکرار کلمه عبور را وارد کنید">
-		  <button type="submit">ثبت نام</button>
-				</form>
-        </div>
-      </div>
-
-      
+          </div>
+        </fieldset>
+        <button type="submit" class="btn-login">ورود</button>
+      </form>
     </div>
-    <!-- frontbox -->
+    <div class="form-wrapper">
+      <button type="button" class="switcher switcher-signup">
+        ثبت نام
+        <span class="underline"></span>
+      </button>
+      <form class="form form-signup" action="{{route('student_register')}}" method='post'>
+            {{ csrf_field() }}
+        <fieldset>
+          <div class="input-block">
+            <label for="studentmobile">شماره تلفن همراه</label>
+            <input type="text" id="studentmobile"  name="studentmobile" placeholder="شماره تلفن همراه خود را وارد نمایید" value="{{old('studentmobile')}}" required>
+            <small>{{$errors->first('studentmobile')}}</small>
+          </div>
+          <div class="input-block">
+            <label for="password">کلمه عبور</label>
+            <input type="password" id="password" name="password_signup" placeholder="کلمه عبور خود را وارد نمایید" required>
+            <small>{{ $errors->first('password_signup')}}</small>
+          </div>
+          <div class="input-block">
+            <label for="password-confirm">تکرار کلمه عبور</label>
+            <input type="password" id="password-confirm" name="password_confirmation" placeholder="تکرار کلمه عبور را وارد نمایید" required>
+            <small>{{ $errors->first('password_confirmation')}}</small>
+          </div>
+        </fieldset>
+        <button type="submit" class="btn-signup">ثبت نام</button>
+      </form>
+    </div>
   </div>
+</section>
+  <script  src="{{ asset('js/student/auth/script.js')}}"></script>
+
 </body>
-
-</html>
-  
-  
-
-    <script src="{{asset('js/student/auth/index.js')}}"></script>
-</body>
-
 </html>

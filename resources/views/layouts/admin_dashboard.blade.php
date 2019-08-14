@@ -57,16 +57,28 @@
 						<p>آزمون ها</p>
 					</a>
 				</li>
-				<li>
+				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_grades' ? 'active' : ''}}">
 					<a href="{{route('admin_grades')}}">
 						<i class="pe-7s-note2"></i>
 						<p>مقاطع تحصیلی</p>
 					</a>
 				</li>
-				<li>
+				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_orientations' ? 'active' : ''}}">
 					<a href="{{route('admin_orientations')}}">
 						<i class="pe-7s-news-paper"></i>
 						<p>گرایش ها</p>
+					</a>
+				</li>
+				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_gradeLessons' ? 'active' : ''}}">
+					<a href="{{route('admin_gradeLessons')}}">
+						<i class="pe-7s-news-paper"></i>
+						<p>درس های هر پایه</p>
+					</a>
+				</li>
+				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_lessons' ? 'active' : ''}}">
+					<a href="{{route('admin_lessons')}}">
+						<i class="pe-7s-news-paper"></i>
+						<p>درس های به صورت جداگانه</p>
 					</a>
 				</li>
 
