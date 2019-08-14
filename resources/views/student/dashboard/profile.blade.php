@@ -2,7 +2,7 @@
 @section('welcome')
 <div class="logo" dir="rtl">
         <a  class="simple-text">
-         {{$user->isComplete==0 ? 'دانش آموز گرامی خوش آمدی!' :$user->name.' '.$user->familyname.' خوش آمدی!' }}
+         {{$user->isComplete==0 ? 'دانش آموز گرامی خوش آمدی!' :$user->name.' '.$user->familyName.' خوش آمدی!' }}
         </a>
     </div>
 @endsection
@@ -39,7 +39,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>نام خانوادگی</label>
-                                        <input dir="rtl" type="text" name="familyname" class="form-control" placeholder="نام خانوادگی خود را وارد نمایید" value="{{ old('familyname')? old('familyname') : $user->familyname }}" required>
+                                        <input dir="rtl" type="text" name="familyname" class="form-control" placeholder="نام خانوادگی خود را وارد نمایید" value="{{ old('familyname')? old('familyname') : $user->familyName }}" required>
                                         <small>{{ $errors->first('familyname') }}</small>
                                         <div class="invalid-feedback">
 
@@ -61,7 +61,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>کد ملی</label>
-									<input dir="rtl" type="text" name="nationalcode" class="form-control" placeholder="کد ملی خود را وارد نمایید" value="{{ old('nationalcode') ? old('nationalcode') : $user->nationalcode}}" required>
+									<input dir="rtl" type="text" name="nationalcode" class="form-control" placeholder="کد ملی خود را وارد نمایید" value="{{ old('nationalcode') ? old('nationalcode') : $user->nationalCode}}" required>
                                     <small>{{ $errors->first('nationalcode') }}</small>
                                     <div class="invalid-feedback">
 
@@ -95,7 +95,7 @@
                                     <select dir="rtl" name="city" class="form-control" id="city" required>
                                         <option selected disabled >شهر خود را انتخاب نمایید</option>
                                         @foreach ( $cities as $cityname )
-                                        <option value="{{ $cityname->name }}" {{ old('city')==$cityname->name? 'selected' : '' }} {{ $user->city==$cityname->name? 'selected' : ''}}>{{ $cityname->name }}</option>
+                                        <option value="{{ $cityname->name }}" {{ old('city')==$cityname->name? 'selected' : '' }} {{ $city==$cityname->name? 'selected' : ''}}>{{ $cityname->name }}</option>
                                         @endforeach
                                     </select>
                                     <small>{{ $errors->first('city') }}</small>
@@ -143,7 +143,7 @@
                                     <select dir="rtl" name="grade" class="form-control" id="grade" required>
                                         <option selected disabled >مقطع تحصیلی خود را انتخاب نمایید</option>
                                         @foreach ( $grades as $gradetitle )
-                                        <option value="{{ $gradetitle->title }}" {{ old('grade')==$gradetitle->title? 'selected' : '' }} {{ $user->grade==$gradetitle->title? 'selected' : ''}}>{{ $gradetitle->title }}</option>
+                                        <option value="{{ $gradetitle->title }}" {{ old('grade')==$gradetitle->title? 'selected' : '' }} {{ $grade==$gradetitle->title? 'selected' : ''}}>{{ $gradetitle->title }}</option>
                                         @endforeach
                                     </select>
                                     <small>{{ $errors->first('grade') }}</small>
@@ -156,7 +156,7 @@
                                     <select dir="rtl" name="orientation" class="form-control" id="orientation" required>
                                         <option selected disabled >گرایش خود را انتخاب نمایید</option>
                                         @foreach ( $orientations as $orientationtitle )
-                                        <option value="{{ $orientationtitle->title }}" {{ old('orientation')==$orientationtitle->title? 'selected' : '' }} {{ $user->orientation==$orientationtitle->title? 'selected' : ''}}>{{ $orientationtitle->title }}</option>
+                                        <option value="{{ $orientationtitle->title }}" {{ old('orientation')==$orientationtitle->title? 'selected' : '' }} {{ $orientation==$orientationtitle->title? 'selected' : ''}}>{{ $orientationtitle->title }}</option>
                                         @endforeach
                                     </select>
                                     <small>{{ $errors->first('orientation') }}</small>
@@ -169,7 +169,7 @@
                             <div class="col-md-6">
                                     <div class="form-group">
                                             <label>شماره تلفن همراه یکی از والدین</label>
-                                            <input dir="rtl" name="parentphone" type="text" class="form-control" value="{{ old('parentphone')? old('parentphone') : $user->parentphone}}" required>
+                                            <input dir="rtl" name="parentphone" type="text" class="form-control" value="{{ old('parentphone')? old('parentphone') : $user->parentPhone}}" required>
                                             <small>{{ $errors->first('parentphone') }}</small>
                                             <div class="invalid-feedback">
 
@@ -179,7 +179,7 @@
                             <div class="col-md-6">
                                     <div class="form-group">
                                             <label>شماره تلفن منزل بدون پیش شماره</label>
-                                            <input dir="rtl" name="telephone" type="text" class="form-control" value="{{ old('telephone')? old('telephone') : substr($user->telephone,6) }}" required>
+                                            <input dir="rtl" name="telephone" type="text" class="form-control" value="{{ old('telephone')? old('telephone') : substr($user->telePhone,6) }}" required>
                                             <small>{{ $errors->first('telephone') }}</small>
                                             <div class="invalid-feedback">
 

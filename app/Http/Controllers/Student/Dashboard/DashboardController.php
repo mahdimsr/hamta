@@ -4,22 +4,37 @@ namespace App\Http\Controllers\Student\Dashboard;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\model\Student as Student;
 use Illuminate\Support\Facades\Auth;
 use App\model\City as City;
-use App\model\State as State;
 use App\model\Grade as Grade;
 use App\model\Orientation as Orientation;
+
+
 class DashboardController extends Controller
 {
 
 	public function profile()
 	{
-        $data=[];
+        $student=Auth::guard('student')->user();
         $cities=new City();
         $grades=new Grade();
         $orientations=new Orientation();
-        $data['user']= Auth::guard('student')->user();
+
+        $data['city']='';
+        $data['grade']='';
+        $data['orientation']='';
+
+        if($student->isComplete==1)
+        {
+        $city_data=$cities->where('id', $student->city)->first();
+        $grade_data=$grades->where('id', $student->grade)->first();
+        $orientation_data=$orientations->where('id', $student->orientation)->first();
+        $data['city']=$city_data->name;
+        $data['grade']=$grade_data->title;
+        $data['orientation']=$orientation_data->title;
+        }
+
+        $data['user']= $student;
         $data['cities']=$cities->all();
         $data['grades']=$grades->all();
         $data['orientations']=$orientations->all();
@@ -29,6 +44,12 @@ class DashboardController extends Controller
 
     public function update(Request $request)
     {
+
+        $student=Auth::guard('student')->user();
+        $cities=new City();
+        $orientations=new Orientation();
+        $grades=new Grade();
+
         $this->validate($request,
         [
             'name'=>'required',
@@ -48,11 +69,10 @@ class DashboardController extends Controller
         ]
         );
 
-        $cities=new City;
-        $student=new Student();
-        $id=Auth::guard('student')->id();
         $city_data=$cities->where('name',$request->input('city'))->first();
+        $grade_data=$grades->where('title',$request->input('grade'))->first();
         $state_data=$city_data->state()->first();
+        $orientation_data=$orientations->where('title',$request->input('orientation'))->first();
 
         if($request->input('averageup')=='20')
         {
@@ -63,23 +83,21 @@ class DashboardController extends Controller
         $average=$request->input('averageup').'/'.$request->input('averagedown');
         }
 
-        $student_data=$student->find($id);
-        $student_data->name=$request->input('name');
-        $student_data->familyname=$request->input('familyname');
-        $student_data->email=$request->input('email');
-        $student_data->nationalcode=$request->input('nationalcode');
-        $student_data->address=$request->input('address');
-        $student_data->average=$average;
-        $student_data->birthday=$request->input('birthday');
-        $student_data->school=$request->input('school');
-        $student_data->telephone=$state_data->areacode.' - '.$request->input('telephone');
-        $student_data->parentphone=$request->input('parentphone');
-        $student_data->city=$request->input('city');
-        $student_data->state=$state_data->name;
-        $student_data->orientation=$request->input('orientation');
-        $student_data->grade=$request->input('grade');
-        $student_data->isComplete=1;
-        $student_data->save();
+        $student->name=$request->input('name');
+        $student->familyName=$request->input('familyname');
+        $student->email=$request->input('email');
+        $student->nationalCode=$request->input('nationalcode');
+        $student->address=$request->input('address');
+        $student->average=$average;
+        $student->birthday=$request->input('birthday');
+        $student->school=$request->input('school');
+        $student->telePhone=$state_data->areaCode.' - '.$request->input('telephone');
+        $student->parentPhone=$request->input('parentphone');
+        $student->city=$city_data->id;
+        $student->orientation=$orientation_data->id;
+        $student->grade=$grade_data->id;
+        $student->isComplete=1;
+        $student->save();
         return redirect()->route('student_dashboard_profile');
     }
 

@@ -16,7 +16,7 @@ class CreateStateTable extends Migration
         Schema::create('state', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('areacode');
+            $table->string('areaCode');
             $table->timestamps();
         });
     }
