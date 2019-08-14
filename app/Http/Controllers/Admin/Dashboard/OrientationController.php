@@ -42,7 +42,7 @@ class OrientationController extends Controller
 
 		$this->validate($r, [
 
-			'titleOrientation' => 'required|alpha|max:10',
+			'titleOrientation' => 'required|max:20',
 			'codeOrientation'  => 'required|numeric|digits:2|unique:orientation,code',
 			'urlOrientation'   => 'required|string|unique:orientation,url',
 
@@ -78,7 +78,7 @@ class OrientationController extends Controller
 
 		$this->validate($r, [
 
-			'titleOrientation' => 'required|alpha|max:10',
+			'titleOrientation' => 'required|max:20',
 			'codeOrientation'  => [
 				'required',
 				'numeric',

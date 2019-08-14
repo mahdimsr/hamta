@@ -17,8 +17,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Orientation extends Model
 {
-    use SoftDeletes;
-    protected $table = 'orientation';
+	use SoftDeletes;
+
+	protected $table = 'orientation';
+
+
 
 	protected static function boot()
 	{
@@ -28,11 +31,25 @@ class Orientation extends Model
 		{
 			$model->gradeLessons()->delete();
 		});
+
+		self::updating(function($model)
+		{
+			foreach ($model->gradeLessons as $gradeLesson)
+			{
+				//$lgCode is abbreviation of lesson grade code
+
+				$lgCode = substr($gradeLesson->code,0,4);
+
+				$gradeLesson->code = $lgCode.$model->code;
+				$gradeLesson->update();
+			}
+		});
 	}
+
 
 
 	public function gradeLessons()
 	{
-		return $this->hasMany(GradeLesson::class,'orientationId');
-    }
+		return $this->hasMany(GradeLesson::class, 'orientationId');
+	}
 }

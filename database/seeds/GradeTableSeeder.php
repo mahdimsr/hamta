@@ -16,7 +16,7 @@ class GradeTableSeeder extends Seeder
 	{
 		DB::table('grade')->insert([
 
-			'code'       => '1',
+			'code'       => '01',
 			'title'      => 'اول',
 			'url'        => 'first-grade',
 			'created_at' => Carbon::now(),
@@ -26,7 +26,7 @@ class GradeTableSeeder extends Seeder
 
 		DB::table('grade')->insert([
 
-			'code'       => '2',
+			'code'       => '02',
 			'title'      => 'دوم',
 			'url'        => 'second-grade',
 			'created_at' => Carbon::now(),
@@ -36,7 +36,7 @@ class GradeTableSeeder extends Seeder
 
 		DB::table('grade')->insert([
 
-			'code'       => '3',
+			'code'       => '03',
 			'title'      => 'سوم',
 			'url'        => 'third-grade',
 			'created_at' => Carbon::now(),
@@ -46,7 +46,7 @@ class GradeTableSeeder extends Seeder
 
 		DB::table('grade')->insert([
 
-			'code'       => '4',
+			'code'       => '04',
 			'title'      => 'چهارم',
 			'url'        => 'fourth-grade',
 			'created_at' => Carbon::now(),
@@ -56,7 +56,7 @@ class GradeTableSeeder extends Seeder
 
 		DB::table('grade')->insert([
 
-			'code'       => '5',
+			'code'       => '05',
 			'title'      => 'پنجم',
 			'url'        => 'fifth-grade',
 			'created_at' => Carbon::now(),
@@ -66,7 +66,7 @@ class GradeTableSeeder extends Seeder
 
 		DB::table('grade')->insert([
 
-			'code'       => '6',
+			'code'       => '06',
 			'title'      => 'ششم',
 			'url'        => 'sixth-grade',
 			'created_at' => Carbon::now(),
@@ -76,7 +76,7 @@ class GradeTableSeeder extends Seeder
 
 		DB::table('grade')->insert([
 
-			'code'       => '7',
+			'code'       => '07',
 			'title'      => 'هفتم',
 			'url'        => 'seventh-grade',
 			'created_at' => Carbon::now(),
@@ -86,7 +86,7 @@ class GradeTableSeeder extends Seeder
 
 		DB::table('grade')->insert([
 
-			'code'       => '8',
+			'code'       => '08',
 			'title'      => 'هشتم',
 			'url'        => 'eighth-grade',
 			'created_at' => Carbon::now(),
@@ -96,7 +96,7 @@ class GradeTableSeeder extends Seeder
 
 		DB::table('grade')->insert([
 
-			'code'       => '9',
+			'code'       => '09',
 			'title'      => 'نهم',
 			'url'        => 'ninth-grade',
 			'created_at' => Carbon::now(),

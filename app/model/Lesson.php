@@ -31,6 +31,24 @@ class Lesson extends Model
 		{
 			$model->gradeLessons()->delete();
 		});
+
+		self::updating(function($model)
+		{
+
+			foreach ($model->gradeLessons as $gradeLesson)
+			{
+				//$goCode is abbreviation of grade orientation code
+
+				$goCode = substr($gradeLesson->code, 2, 4);
+
+
+				$gradeLesson->code = $model->code . $goCode;
+				$gradeLesson->update();
+			}
+
+
+
+		});
 	}
 
 
