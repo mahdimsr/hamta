@@ -178,7 +178,7 @@ return [
 
         ],
 
-        'familyname' => [
+        'familyName' => [
 
 			'required' => 'نام خانوادگی خود را وارد نمایید.',
 
@@ -197,7 +197,7 @@ return [
 
         ],
 
-        'nationalcode' => [
+        'nationalCode' => [
 
             'required' => 'کد ملی خود را وارد نمایید.',
             'digits'   => 'کدملی باید 10 رقم باشد.'
@@ -233,21 +233,21 @@ return [
 
         ],
 
-        'telephone' => [
+        'telePhone' => [
 
             'required' => 'شماره تلفن منزل را وارد نمایید.',
             'digits'   => 'شماره تلفن منزل باید 8 رقم باشد.',
 
         ],
 
-        'parentphone' => [
+        'parentPhone' => [
 
             'required' => 'شماره تلفن همراه والدین را وارد نمایید.',
             'digits'   => 'شماره تلفن همراه باید 11 رقم باشد.'
 
         ],
 
-        'averageup' => [
+        'averageUp' => [
 
             'required' => 'دو رقم سمت چپ معدل خود را وارد نمایید.',
             'digits_between'   => 'باید 1 یا 2 رقم باشد.',
@@ -255,7 +255,7 @@ return [
             'max'      => 'حداکثر می تواند 20 باشد.',
         ],
 
-        'averagedown' => [
+        'averageDown' => [
 
             'required' => 'دو رقم سمت راست معدل خود را وارد نمایید.',
             'digits'   => 'باید 2 رقم باشد.',
@@ -279,15 +279,15 @@ return [
 	'attributes' => [
 
         'name'=>'نام',
-        'familyname'=>'نام خانوادگی',
+        'familyName'=>'نام خانوادگی',
         'birthday'=>'تاریخ توالد',
         'email'=>'پست الکترونیکی',
-        'nationalcode'=>'کد ملی',
+        'nationalCode'=>'کد ملی',
         'city'=>'شهر',
         'address'=>'آدرس',
         'school'=>'مدرسه',
-        'telephone'=>'شماره تلفن منزل',
-        'parentphone'=>'شماره تلفن همراه والدین',
+        'telePhone'=>'شماره تلفن منزل',
+        'parentPhone'=>'شماره تلفن همراه والدین',
         'password_confirmation' => 'تکرار کلمه عبور',
         'password_signup'       => 'کلمه عبور',
         'studentmobile'         => 'شماره تلفن همراه',
