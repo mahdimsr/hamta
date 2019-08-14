@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
             StudentTableSeeder::class,
             AdminTableSeeder::class,
             StateTableSeeder::class,
-            CityTableSeeder::class,
+          //  CityTableSeeder::class,
 			OrientationTableSeeder::class,
 			GradeTableSeeder::class,
             LessonTableSeeder::class,
