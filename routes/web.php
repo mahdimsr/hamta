@@ -43,7 +43,7 @@ Route::namespace('Admin')->group(function()
 	{
 		Route::get('/adminLogin', 'LoginController@show')->name('admin.auth.show');
 		Route::post('/adminLogin', 'LoginController@login')->name('admin_login_submit');
-		Route::get('/adminLogOut', 'LoginController@logout')->name('admin.logout');
+		Route::get('/adminLogOut', 'LoginController@logout')->name('admin_logout');
 	});
 
 	Route::middleware('auth:admin')->namespace('Dashboard')->prefix('admin/dashboard')->group(function()
