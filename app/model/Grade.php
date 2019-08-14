@@ -17,14 +17,26 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Grade extends Model
 {
-    use SoftDeletes;
+	use SoftDeletes;
 
-    protected $table = 'grade';
+	protected $table = 'grade';
+
+
+
+	protected static function boot()
+	{
+		parent::boot();
+
+		self::deleting(function($model)
+		{
+			$model->gradeLessons()->delete();
+		});
+	}
 
 
 
 	public function gradeLessons()
 	{
-		return $this->hasMany(GradeLesson::class,'id');
-    }
+		return $this->hasMany(GradeLesson::class, 'gradeId');
+	}
 }

@@ -41,9 +41,9 @@ Route::namespace('Admin')->group(function()
 
 	Route::namespace('Auth')->group(function()
 	{
-		Route::get('/adminLogin', 'LoginController@show')->name('admin_login_show');
+		Route::get('/adminLogin', 'LoginController@show')->name('admin.auth.show');
 		Route::post('/adminLogin', 'LoginController@login')->name('admin_login_submit');
-		Route::get('/adminLogOut', 'LoginController@logout')->name('admin_logout');
+		Route::get('/adminLogOut', 'LoginController@logout')->name('admin.logout');
 	});
 
 	Route::middleware('auth:admin')->namespace('Dashboard')->prefix('admin/dashboard')->group(function()

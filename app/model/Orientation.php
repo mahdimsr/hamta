@@ -20,10 +20,19 @@ class Orientation extends Model
     use SoftDeletes;
     protected $table = 'orientation';
 
+	protected static function boot()
+	{
+		parent::boot();
+
+		self::deleting(function($model)
+		{
+			$model->gradeLessons()->delete();
+		});
+	}
 
 
 	public function gradeLessons()
 	{
-		return $this->hasMany(GradeLesson::class,'id');
+		return $this->hasMany(GradeLesson::class,'orientationId');
     }
 }
