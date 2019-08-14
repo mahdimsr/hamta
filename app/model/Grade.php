@@ -31,6 +31,18 @@ class Grade extends Model
 		{
 			$model->gradeLessons()->delete();
 		});
+
+		self::updating(function($model)
+		{
+			foreach ($model->gradeLessons as $gradeLesson)
+			{
+				$lessonCode      = substr($gradeLesson->code, 0, 2);
+				$orientationCode = substr($gradeLesson->code, 4, 2);
+
+				$gradeLesson->code = $lessonCode.$model->code.$orientationCode;
+				$gradeLesson->update();
+			}
+		});
 	}
 
 

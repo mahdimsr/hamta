@@ -38,7 +38,7 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>کد درس</label>
-									<input name="codeGrade" dir="rtl" type="text" class="form-control"
+									<input name="codeLesson" dir="rtl" type="text" class="form-control"
 										   placeholder="مثلا: 10" value="{{$lesson->code}}">
 								</div>
 							</div>

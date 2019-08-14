@@ -107,3 +107,14 @@ Route::namespace('Admin')->group(function()
 	});
 
 });
+
+
+Route::get('/test',function(){
+
+	$gradeLesson = \App\model\GradeLesson::query()->first();
+
+	$code = substr($gradeLesson->code,2,4);
+
+	return $code;
+
+});
