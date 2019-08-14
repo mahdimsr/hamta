@@ -12,39 +12,21 @@ use App\model\Grade as Grade;
 use App\model\Orientation as Orientation;
 class DashboardController extends Controller
 {
-    public function __construct(Student $student,City $city,State $state,Grade $grade,Orientation $orientation)
-    {
-        $this->students=$student;
-        $this->cities=$city->all();
-        $this->states=$state->all();
-        $this->grades=$grade->all();
-        $this->orientations=$orientation->all();
-    }
+
 	public function profile()
 	{
         $data=[];
-        $user = Auth::guard('student')->user();
-        $student_data=$this->students->find($user->id);
-        $data['name']=$student_data->name;
-        $data['familyname']=$student_data->familyname;
-        $data['birthday']=$student_data->birthday;
-        $data['email']=$student_data->email;
-        $data['nationalcode']=$student_data->nationalcode;
-        $data['city']=$student_data->city;
-        $data['address']=$student_data->address;
-        $data['orientation']=$student_data->orientation;
-        $data['grade']=$student_data->grade;
-        $data['school']=$student_data->school;
-        $data['telephone']=substr($student_data->telephone,6);
-        $data['parentphone']=$student_data->parentphone;
-        $data['averageup']=substr($student_data->average, 0, 2);
-        $data['averagedown']=substr($student_data->average, 3, 2);
-        $data['update']=$user->isComplete;
-        $data['cities']=$this->cities;
-        $data['grades']=$this->grades;
-        $data['orientations']=$this->orientations;
+        $cities=new City();
+        $grades=new Grade();
+        $orientations=new Orientation();
+        $data['user']= Auth::guard('student')->user();
+        $data['cities']=$cities->all();
+        $data['grades']=$grades->all();
+        $data['orientations']=$orientations->all();
 		return view('student.dashboard.profile',$data);
     }
+
+
     public function update(Request $request)
     {
         $this->validate($request,
@@ -65,9 +47,12 @@ class DashboardController extends Controller
             'parentphone'=>'required|digits:11',
         ]
         );
+
+        $cities=new City;
+        $student=new Student();
         $id=Auth::guard('student')->id();
-        $city_data=$this->cities->where('name',$request->input('city'))->first();
-        $state_data=$this->states->find($city_data->stateid);
+        $city_data=$cities->where('name',$request->input('city'))->first();
+        $state_data=$city_data->state()->first();
 
         if($request->input('averageup')=='20')
         {
@@ -78,7 +63,7 @@ class DashboardController extends Controller
         $average=$request->input('averageup').'/'.$request->input('averagedown');
         }
 
-        $student_data=$this->students->find($id);
+        $student_data=$student->find($id);
         $student_data->name=$request->input('name');
         $student_data->familyname=$request->input('familyname');
         $student_data->email=$request->input('email');
@@ -97,5 +82,6 @@ class DashboardController extends Controller
         $student_data->save();
         return redirect()->route('student_dashboard_profile');
     }
+
 
 }
