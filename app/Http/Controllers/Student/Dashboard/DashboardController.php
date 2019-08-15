@@ -15,30 +15,13 @@ class DashboardController extends Controller
 
 	public function profile()
 	{
+
         $student=Auth::guard('student')->user();
-        $cities=new City();
-        $grades=new Grade();
-        $orientations=new Orientation();
+        $cities=City::all();
+        $grades=Grade::all();
+        $orientations=Orientation::all();
+        return view('student.dashboard.profile',compact('student','cities','grades','orientations'));
 
-        $data['city']='';
-        $data['grade']='';
-        $data['orientation']='';
-
-        if($student->isComplete==1)
-        {
-        $city_data=$cities->where('id', $student->city)->first();
-        $grade_data=$grades->where('id', $student->grade)->first();
-        $orientation_data=$orientations->where('id', $student->orientation)->first();
-        $data['city']=$city_data->name;
-        $data['grade']=$grade_data->title;
-        $data['orientation']=$orientation_data->title;
-        }
-
-        $data['user']= $student;
-        $data['cities']=$cities->all();
-        $data['grades']=$grades->all();
-        $data['orientations']=$orientations->all();
-		return view('student.dashboard.profile',$data);
     }
 
 
@@ -46,59 +29,58 @@ class DashboardController extends Controller
     {
 
         $student=Auth::guard('student')->user();
-        $cities=new City();
-        $orientations=new Orientation();
-        $grades=new Grade();
+        $city=City::where('name',$request->input('city'))->first();
+        $grade=Grade::where('title',$request->input('grade'))->first();
+        $state=$city->state()->first();
+        $orientation=Orientation::where('title',$request->input('orientation'))->first();
 
         $this->validate($request,
         [
             'name'=>'required',
-            'familyname'=>'required',
+            'familyName'=>'required',
             'birthday'=>'required',
             'email'=>'required|email',
-            'nationalcode'=>'required|digits:10',
+            'nationalCode'=>'required|digits:10',
             'city'=>'required',
             'address'=>'required',
             'orientation'=>'required',
             'grade'=>'required',
             'school'=>'required',
-            'averageup'=>'required|digits_between:1,2|min:5|max:20|numeric',
-            'averagedown'=>'required|digits:2|min:00|max:99|numeric',
-            'telephone'=>'required|digits:8',
-            'parentphone'=>'required|digits:11',
+            'averageUp'=>'required|digits_between:1,2|min:5|max:20|numeric',
+            'averageDown'=>'required|digits:2|min:00|max:99|numeric',
+            'telePhone'=>'required|digits:8',
+            'parentPhone'=>'required|digits:11',
         ]
         );
 
-        $city_data=$cities->where('name',$request->input('city'))->first();
-        $grade_data=$grades->where('title',$request->input('grade'))->first();
-        $state_data=$city_data->state()->first();
-        $orientation_data=$orientations->where('title',$request->input('orientation'))->first();
 
-        if($request->input('averageup')=='20')
+        if($request->input('averageUp')=='20')
         {
-        $average=$request->input('averageup').'/00';
+        $average=$request->input('averageUp').'/00';
         }
         else
         {
-        $average=$request->input('averageup').'/'.$request->input('averagedown');
+        $average=$request->input('averageUp').'/'.$request->input('averageDown');
         }
 
         $student->name=$request->input('name');
-        $student->familyName=$request->input('familyname');
+        $student->familyName=$request->input('familyName');
         $student->email=$request->input('email');
-        $student->nationalCode=$request->input('nationalcode');
+        $student->nationalCode=$request->input('nationalCode');
         $student->address=$request->input('address');
         $student->average=$average;
         $student->birthday=$request->input('birthday');
         $student->school=$request->input('school');
-        $student->telePhone=$state_data->areaCode.' - '.$request->input('telephone');
-        $student->parentPhone=$request->input('parentphone');
-        $student->city=$city_data->id;
-        $student->orientation=$orientation_data->id;
-        $student->grade=$grade_data->id;
+        $student->telePhone=$state->areaCode.' - '.$request->input('telePhone');
+        $student->parentPhone=$request->input('parentPhone');
+        $student->cityId=$city->id;
+        $student->orientationId=$orientation->id;
+        $student->gradeId=$grade->id;
         $student->isComplete=1;
+
         $student->save();
         return redirect()->route('student_dashboard_profile');
+
     }
 
 

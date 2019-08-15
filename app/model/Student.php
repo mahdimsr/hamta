@@ -17,6 +17,22 @@ class Student extends Authenticatable
 	use SoftDeletes;
 
 	protected $table = 'student';
+    protected $fillable = ['mobile-email', 'password'];
 
-	protected $fillable = ['mobile-email', 'password'];
+    public function city()
+    {
+        return $this->hasOne('App\model\City','id','cityId');
+    }
+
+    public function orientation()
+    {
+        return $this->hasOne('App\model\Orientation','id','orientationId');
+    }
+
+    public function grade()
+    {
+        return $this->hasOne('App\model\Grade','id','gradeId');
+    }
+
 }
+

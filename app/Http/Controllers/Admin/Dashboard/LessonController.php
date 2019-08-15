@@ -19,9 +19,9 @@ class LessonController extends Controller
 
 
 
-	public function remove(Request $r)
+	public function remove(Request $request)
 	{
-		$lesson = Lesson::query()->where('url', $r->input('url'))->first();
+		$lesson = Lesson::query()->where('url', $request->input('url'))->first();
 
 		$lesson->delete();
 
@@ -32,14 +32,16 @@ class LessonController extends Controller
 
 	public function addShow()
 	{
-		return view('admin.dashboard.lesson.add');
+		$modify = 0;
+
+		return view('admin.dashboard.lesson.form', compact('modify'));
 	}
 
 
 
-	public function add(Request $r)
+	public function add(Request $request)
 	{
-		$this->validate($r, [
+		$this->validate($request, [
 
 			'titleLesson' => 'required|alpha|max:10',
 			'codeLesson'  => 'required|numeric|digits:2|unique:lesson,code',
@@ -49,9 +51,9 @@ class LessonController extends Controller
 
 		$lesson = new Lesson();
 
-		$lesson->title = $r->input('titleLesson');
-		$lesson->code  = $r->input('codeLesson');
-		$lesson->url   = $r->input('urlLesson');
+		$lesson->title = $request->input('titleLesson');
+		$lesson->code  = $request->input('codeLesson');
+		$lesson->url   = $request->input('urlLesson');
 
 		$lesson->save();
 
@@ -60,20 +62,22 @@ class LessonController extends Controller
 
 
 
-	public function editShow(Request $r)
+	public function editShow($url)
 	{
-		$lesson = Lesson::query()->where('url', $r->input('url'))->first();
+		$modify = 1;
 
-		return view('admin.dashboard.lesson.edit', compact('lesson'));
+		$lesson = Lesson::query()->where('url', $url)->first();
+
+		return view('admin.dashboard.lesson.form', compact('lesson', 'modify'));
 	}
 
 
 
-	public function edit(Request $r)
+	public function edit(Request $request,$url)
 	{
-		$lesson = Lesson::query()->find($r->input('id'));
+		$lesson = Lesson::query()->where('url', $url)->first();
 
-		$this->validate($r, [
+		$this->validate($request, [
 
 			'titleLesson' => 'required|string|max:20',
 			'codeLesson'  => ['required', 'numeric', 'digits:2', Rule::unique('lesson', 'code')->ignore($lesson)],
@@ -82,9 +86,9 @@ class LessonController extends Controller
 		]);
 
 
-		$lesson->title = $r->input('titleLesson');
-		$lesson->code  = $r->input('codeLesson');
-		$lesson->url   = $r->input('urlLesson');
+		$lesson->title = $request->input('titleLesson');
+		$lesson->code  = $request->input('codeLesson');
+		$lesson->url   = $request->input('urlLesson');
 
 		$lesson->update();
 

@@ -19,9 +19,9 @@ class OrientationController extends Controller
 
 
 
-	public function remove(Request $r)
+	public function remove(Request $request)
 	{
-		$orientation = Orientation::query()->where('url', $r->input('url'))->first();
+		$orientation = Orientation::query()->where('url', $request->input('url'))->first();
 
 		$orientation->delete();
 
@@ -32,15 +32,17 @@ class OrientationController extends Controller
 
 	public function addShow()
 	{
-		return view('admin.dashboard.orientation.add');
+		$modify = 0;
+
+		return view('admin.dashboard.orientation.form', compact('modify'));
 	}
 
 
 
-	public function add(Request $r)
+	public function add(Request $request)
 	{
 
-		$this->validate($r, [
+		$this->validate($request, [
 
 			'titleOrientation' => 'required|max:20',
 			'codeOrientation'  => 'required|numeric|digits:2|unique:orientation,code',
@@ -50,9 +52,9 @@ class OrientationController extends Controller
 
 		$orientation = new Orientation();
 
-		$orientation->title = $r->input('titleOrientation');
-		$orientation->code  = $r->input('codeOrientation');
-		$orientation->url   = $r->input('urlOrientation');
+		$orientation->title = $request->input('titleOrientation');
+		$orientation->code  = $request->input('codeOrientation');
+		$orientation->url   = $request->input('urlOrientation');
 
 		$orientation->save();
 
@@ -62,21 +64,23 @@ class OrientationController extends Controller
 
 
 
-	public function editShow(Request $r)
+	public function editShow($url)
 	{
-		$orientation = Orientation::query()->where('url', $r->input('url'))->first();
+		$modify = 1;
+
+		$orientation = Orientation::query()->where('url', $url)->first();
 
 
-		return view('admin.dashboard.orientation.edit', compact('orientation'));
+		return view('admin.dashboard.orientation.form', compact('orientation', 'modify'));
 	}
 
 
 
-	public function edit(Request $r)
+	public function edit(Request $request, $url)
 	{
-		$orientation = Orientation::query()->find($r->input('id'));
+		$orientation = Orientation::query()->where('url', $url)->first();
 
-		$this->validate($r, [
+		$this->validate($request, [
 
 			'titleOrientation' => 'required|max:20',
 			'codeOrientation'  => [
@@ -90,9 +94,9 @@ class OrientationController extends Controller
 		]);
 
 
-		$orientation->title = $r->input('titleOrientation');
-		$orientation->code  = $r->input('codeOrientation');
-		$orientation->url   = $r->input('urlOrientation');
+		$orientation->title = $request->input('titleOrientation');
+		$orientation->code  = $request->input('codeOrientation');
+		$orientation->url   = $request->input('urlOrientation');
 
 		$orientation->update();
 

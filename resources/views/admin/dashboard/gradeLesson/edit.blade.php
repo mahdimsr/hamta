@@ -21,11 +21,10 @@
 				@endif
 
 				<div class="content">
-					<form method="post" action="{{route('admin_gradeLessons_edit')}}">
+					<form method="post" action="{{route('admin_gradeLessons_edit',['code' => $gradeLesson->code])}}">
 
 						{{csrf_field()}}
 
-						<input name="id" hidden value="{{$gradeLesson->id}}">
 
 						<div class="row">
 							<div class="col-md-4">

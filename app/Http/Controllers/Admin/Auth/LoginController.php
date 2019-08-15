@@ -16,10 +16,10 @@ class LoginController extends Controller
 
 
 
-	public function login(Request $r)
+	public function login(Request $request)
 	{
-		$mobile   = $r->input('mobile');
-		$password = $r->input('password');
+		$mobile   = $request->input('mobile');
+		$password = $request->input('password');
 
 		if (Auth::guard('admin')->attempt(['mobile' => $mobile, 'password' => $password]))
 		{
@@ -27,7 +27,7 @@ class LoginController extends Controller
 		}
 		else
 		{
-			return redirect()->route('admin.auth.show');
+			return redirect()->route('admin_auth_show');
 		}
 
 	}
@@ -38,6 +38,6 @@ class LoginController extends Controller
 	{
 		Auth::guard('admin')->logout();
 
-		return redirect()->route('homepage');
+		return redirect()->route('admin_auth_show');
 	}
 }

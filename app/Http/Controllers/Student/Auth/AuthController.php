@@ -29,27 +29,32 @@ class AuthController extends Controller
 
 		if (Auth::attempt(['mobile'=> $request->input('mobile-email'),'password' => $request->input('password'),], $request->input('remember')))
 		{
+
 			if ($request->has('remember'))
 			{
 				Cookie::queue('studentuser', $request->input('mobile-email'), 90 * 24 * 60);
 				Cookie::queue('studentpass', $request->input('password'), 90* 24 * 60);
-			}
+            }
+
 			else
 			{
 				Cookie::queue('studentuser', '');
 				Cookie::queue('studentpass', '');
 			}
 
-			return redirect()->route('student_dashboard_profile');
+            return redirect()->route('student_dashboard_profile');
+
         }
 
 		else if (Auth::attempt(['email'=> $request->input('mobile-email'),'password' => $request->input('password'),], $request->input('remember')))
 		{
+
 			if ($request->has('remember'))
 			{
 				Cookie::queue('studentuser', $request->input('mobile-email'), 90 * 24 * 60);
 				Cookie::queue('studentpass', $request->input('password'), 90 * 24 * 60);
-			}
+            }
+
 			else
 			{
 				Cookie::queue('studentuser', '');
@@ -57,7 +62,8 @@ class AuthController extends Controller
 
 			}
 
-			return redirect()->route('student_dashboard_profile');
+            return redirect()->route('student_dashboard_profile');
+
         }
 
 		else
@@ -86,10 +92,11 @@ class AuthController extends Controller
         ]
         );
 
-	$data['mobile']=$request->input('mobile');
-	$data['password']=Hash::make($request->input('password_signup'));
-	$student->insert($data);
-    return redirect()->route('student');
+        $data['mobile']=$request->input('mobile');
+        $data['password']=Hash::make($request->input('password_signup'));
+        $student->insert($data);
+        return redirect()->route('student');
+
     }
 
 
