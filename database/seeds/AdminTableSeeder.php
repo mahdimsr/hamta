@@ -24,5 +24,15 @@ class AdminTableSeeder extends Seeder
 			'updated_at' => Carbon::now(),
 
 		]);
+
+		DB::table('admin')->insert([
+
+			'fullName'   => 'ممد میتی منصوری',
+			'username'   => 'mahdi-username',
+			'password'   => Hash::make('123456789'),
+			'created_at' => Carbon::now(),
+			'updated_at' => Carbon::now(),
+
+		]);
 	}
 }
