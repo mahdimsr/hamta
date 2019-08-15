@@ -22,9 +22,9 @@ class GradeLessonController extends Controller
 
 
 
-	public function remove(Request $r)
+	public function remove($code)
 	{
-		$gradeLesson = GradeLesson::query()->where('code', $r->input('code'));
+		$gradeLesson = GradeLesson::query()->where('code', $code);
 
 		$gradeLesson->delete();
 

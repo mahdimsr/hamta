@@ -75,7 +75,7 @@ Route::namespace('Admin')->group(function()
 		Route::prefix('orientations')->group(function()
 		{
 			Route::get('/', 'OrientationController@orientations')->name('admin_orientations');
-			Route::get('/remove', 'OrientationController@remove')->name('admin_orientations_remove');
+			Route::get('/remove/{url}', 'OrientationController@remove')->name('admin_orientations_remove');
 			Route::get('/add', 'OrientationController@addShow')->name('admin_orientations_addShow');
 			Route::post('/add', 'OrientationController@add')->name('admin_orientations_add');
 			Route::get('/edit/{url}', 'OrientationController@editShow')->name('admin_orientations_editShow');
@@ -85,7 +85,7 @@ Route::namespace('Admin')->group(function()
 		Route::prefix('gradeLessons')->group(function()
 		{
 			Route::get('/', 'GradeLessonController@gradeLessons')->name('admin_gradeLessons');
-			Route::get('/remove', 'GradeLessonController@remove')->name('admin_gradeLessons_remove');
+			Route::get('/remove/{code}', 'GradeLessonController@remove')->name('admin_gradeLessons_remove');
 			Route::get('/add', 'GradeLessonController@addShow')->name('admin_gradeLessons_addShow');
 			Route::post('/add', 'GradeLessonController@add')->name('admin_gradeLessons_add');
 			Route::get('/edit/{code}', 'GradeLessonController@editShow')->name('admin_gradeLessons_editShow');
@@ -96,7 +96,7 @@ Route::namespace('Admin')->group(function()
 		Route::prefix('lessons')->group(function()
 		{
 			Route::get('/', 'LessonController@lessons')->name('admin_lessons');
-			Route::get('/remove', 'LessonController@remove')->name('admin_lessons_remove');
+			Route::get('/remove/{url}', 'LessonController@remove')->name('admin_lessons_remove');
 			Route::get('/add', 'LessonController@addShow')->name('admin_lessons_addShow');
 			Route::post('/add', 'LessonController@add')->name('admin_lessons_add');
 			Route::get('/edit/{url}', 'LessonController@editShow')->name('admin_lessons_editShow');
