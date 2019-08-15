@@ -14,7 +14,6 @@
 </svg>
 
 <section class="forms-section">
-  <h1 class="section-title">همتا</h1>
   <div class="forms">
     <div class="form-wrapper is-active">
       <button type="button" class="switcher btn">
@@ -62,14 +61,30 @@
           </div>
 
 
+          <div class="con">
+              <label>مرا به خاطر داشته باش
+                  <input type="checkbox" checked="checked">
+                  <span class="checkmark"></span>
+                </label>
+                </div>
+          <a href="#">رمز خود را فراموش کردید؟
 
+          </a>
 
 
 
 
 
         </fieldset>
-        <button type="submit" class="btn-login">ورود</button>
+        <button type="submit" class="btn btn-blow">
+          
+        <span>
+        
+      
+        ورود
+</span>
+      
+      </button>
       </form>
     </div>
     <div class="form-wrapper">
@@ -126,8 +141,24 @@
 
             <small>{{ $errors->first('password_confirmation')}}</small>
           </div>
+
+          <div class="con">
+          <label>مرا به خاطر داشته باش
+              <input type="checkbox" checked="checked">
+              <span class="checkmark"></span>
+            </label>
+            </div>
+
         </fieldset>
-        <button type="submit" class="btn-signup">ثبت نام</button>
+        <button type="submit" class="btn btn-blow">
+          
+        
+        <span>
+        ثبت نام
+      
+</span>
+      
+      </button>
       </form>
     </div>
   </div>
