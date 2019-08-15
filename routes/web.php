@@ -41,7 +41,7 @@ Route::namespace('Admin')->group(function()
 
 	Route::namespace('Auth')->group(function()
 	{
-		Route::get('/adminLogin', 'LoginController@show')->name('admin.auth.show');
+		Route::get('/adminLogin', 'LoginController@show')->name('admin_auth_show');
 		Route::post('/adminLogin', 'LoginController@login')->name('admin_login_submit');
 		Route::get('/adminLogOut', 'LoginController@logout')->name('admin_logout');
 	});
@@ -63,11 +63,11 @@ Route::namespace('Admin')->group(function()
 		Route::prefix('grades')->group(function()
 		{
 			Route::get('/', 'GradeController@grades')->name('admin_grades');
-			Route::get('/remove', 'GradeController@remove')->name('admin_grades_remove');
+			Route::get('/remove/{url}', 'GradeController@remove')->name('admin_grades_remove');
 			Route::get('/add', 'GradeController@addShow')->name('admin_grades_addShow');
 			Route::post('/add', 'GradeController@add')->name('admin_grades_add');
-			Route::get('/edit', 'GradeController@editShow')->name('admin_grades_editShow');
-			Route::post('/edit', 'GradeController@edit')->name('admin_grades_edit');
+			Route::get('/edit/{url}', 'GradeController@editShow')->name('admin_grades_editShow');
+			Route::post('/edit/{url}', 'GradeController@edit')->name('admin_grades_edit');
 
 		});
 

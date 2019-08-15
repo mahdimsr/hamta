@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
 
-
 class GradeController extends Controller
 {
 	public function grades()
@@ -22,14 +21,15 @@ class GradeController extends Controller
 
 	public function addShow()
 	{
-		return view('admin.dashboard.grade.add');
+        $modify=0;
+		return view('admin.dashboard.grade.form',compact('modify'));
 	}
 
 
 
-	public function add(Request $r)
+	public function add(Request $request)
 	{
-		$this->validate($r, [
+		$this->validate($request, [
 
 			'titleGrade' => 'required|alpha|max:10',
 			'codeGrade'  => 'required|numeric|digits:2|unique:grade,code',
@@ -39,9 +39,9 @@ class GradeController extends Controller
 
 		$grade = new Grade();
 
-		$grade->title = $r->input('titleGrade');
-		$grade->code  = $r->input('codeGrade');
-		$grade->url   = $r->input('urlGrade');
+		$grade->title = $request->input('titleGrade');
+		$grade->code  = $request->input('codeGrade');
+		$grade->url   = $request->input('urlGrade');
 
 		$grade->save();
 
@@ -50,9 +50,9 @@ class GradeController extends Controller
 
 
 
-	public function remove(Request $r)
+	public function remove(Request $request,$url)
 	{
-		$grade = Grade::query()->where('url', $r->input('url'))->first();
+		$grade = Grade::query()->where('url', $url)->first();
 
 		$grade->delete();
 
@@ -61,21 +61,21 @@ class GradeController extends Controller
 
 
 
-	public function editShow(Request $r)
+	public function editShow(Request $request,$url)
 	{
+        $modify=1;
+		$grade = Grade::query()->where('url', $url)->first();
 
-		$grade = Grade::query()->where('url', $r->input('url'))->first();
-
-		return view('admin.dashboard.grade.edit', compact('grade'));
+		return view('admin.dashboard.grade.form', compact('grade','modify'));
 	}
 
 
 
-	public function edit(Request $r)
+	public function edit(Request $request,$url)
 	{
-		$grade = Grade::query()->find($r->input('id'));
+		$grade = Grade::query()->where('url', $url)->first();
 
-		$this->validate($r, [
+		$this->validate($request, [
 
 			'titleGrade' => 'required|alpha|max:10',
 			'codeGrade'  => ['required', 'numeric', 'digits:2', Rule::unique('grade','code')->ignore($grade)],
@@ -84,9 +84,9 @@ class GradeController extends Controller
 		]);
 
 
-		$grade->title = $r->input('titleGrade');
-		$grade->code  = $r->input('codeGrade');
-		$grade->url   = $r->input('urlGrade');
+		$grade->title = $request->input('titleGrade');
+		$grade->code  = $request->input('codeGrade');
+		$grade->url   = $request->input('urlGrade');
 
 		$grade->update();
 

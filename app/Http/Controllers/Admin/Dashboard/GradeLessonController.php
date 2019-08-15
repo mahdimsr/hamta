@@ -86,14 +86,15 @@ class GradeLessonController extends Controller
 
 	public function editShow(Request $r)
 	{
-		$gradeLesson = GradeLesson::query()->where('code', $r->input('code'))->first();
 
+		$gradeLesson = GradeLesson::query()->where('code', $r->input('code'))->first();
 		$orientations = Orientation::all();
 		$grades       = Grade::all();
 		$lessons      = Lesson::all();
 
 		return view('admin.dashboard.gradeLesson.edit', compact('orientations', 'grades', 'lessons', 'gradeLesson'));
-	}
+
+    }
 
 
 

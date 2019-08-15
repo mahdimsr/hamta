@@ -21,32 +21,30 @@
 				@endif
 
 				<div class="content">
-					<form method="post" action="{{route('admin_grades_edit')}}">
+					<form method="post" action="{{  $modify == 0 ? route('admin_grades_add') : route('admin_grades_edit', ['url' => $grade->url]) }}">
 
 						{{csrf_field()}}
-
-						<input name="id" hidden value="{{$grade->id}}">
 
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>پارامتر مقطع</label>
 									<input name="urlGrade" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: tenth-grade" value="{{$grade->url}}">
+										   placeholder="مثلا: tenth-grade" value="{{old('url') ? old('url') : ''}} {{ $modify==1 && !old('url') ? $grade->url : '' }}">
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>کد مقطع</label>
 									<input name="codeGrade" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: 10" value="{{$grade->code}}">
+										   placeholder="مثلا: 10" value="{{old('code') ? old('code') : ''}} {{ $modify==1 && !old('code') ? $grade->code : '' }}">
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>عنوان مقطع</label>
 									<input name="titleGrade" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: مقطع دهم" value="{{$grade->title}}">
+										   placeholder="مثلا: مقطع دهم" value="{{old('title') ? old('title') : '' }} {{ $modify==1 && !old('title') ? $grade->title : '' }}">
 								</div>
 							</div>
 						</div>
