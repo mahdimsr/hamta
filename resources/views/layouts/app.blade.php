@@ -75,24 +75,24 @@
         </div>
         <div class="col-lg-3 col-md-6 col-sm-6">
           <div class="single-footer-widget">
-            <h6>Navigation Links</h6>
+            <h6>سربرگ</h6>
             <div class="row">
               <div class="col">
-                <ul>
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#">Feature</a></li>
-                  <li><a href="#">Services</a></li>
-                  <li><a href="#">Portfolio</a></li>
+              <ul>
+                  <li><a href="#">لینک</a></li>
+                  <li><a href="#">لینک</a></li>
+                  <li><a href="#">لینک</a></li>
+                  <li><a href="#">لینک</a></li>
                 </ul>
               </div>
               <div class="col">
                 <ul>
-                  <li><a href="#">Team</a></li>
-                  <li><a href="#">Pricing</a></li>
-                  <li><a href="#">Blog</a></li>
-                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">لینک</a></li>
+                  <li><a href="#">لینک</a></li>
+                  <li><a href="#">لینک</a></li>
+                  <li><a href="#">لینک</a></li>
                 </ul>
-              </div>
+              </div>	
             </div>
           </div>
         </div>
@@ -112,22 +112,6 @@
               </form>
             </div>
           </div>
-        </div>
-        <div class="col-lg-3  col-md-6 col-sm-6">
-          <div class="single-footer-widget mail-chimp">
-            <h6 class="mb-20">InstaFeed</h6>
-            <ul class="instafeed d-flex flex-wrap">
-              <li><img src="{{asset('image/homepage/img/instagram/i1.jpg')}}" alt=""></li>
-              <li><img src="{{asset('image/homepage/img/instagram/i2.jpg')}}" alt=""></li>
-              <li><img src="{{asset('image/homepage/img/instagram/i3.jpg')}}" alt=""></li>
-              <li><img src="{{asset('image/homepage/img/instagram/i4.jpg')}}" alt=""></li>
-              <li><img src="{{asset('image/homepage/img/instagram/i5.jpg')}}" alt=""></li>
-              <li><img src="{{asset('image/homepage/img/instagram/i6.jpg')}}" alt=""></li>
-              <li><img src="{{asset('image/homepage/img/instagram/i7.jpg')}}" alt=""></li>
-              <li><img src="{{asset('image/homepage/img/instagram/i8.jpg')}}" alt=""></li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
     <div class="footer-bottom">
@@ -150,7 +134,6 @@
 
   <script src="{{asset('vendors/jquery/jquery-3.2.1.min.js')}}"></script>
   <script src="{{asset('vendors/bootstrap/bootstrap.bundle.min.js')}}"></script>
-  <script src="{{asset('vendors/owl-carousel/owl.carousel.min.js')}}"></script>
   <script src="{{asset('js/homepage/jquery.ajaxchimp.min.js')}}"></script>
   <script src="{{asset('js/homepage/main.js')}}"></script>
 
