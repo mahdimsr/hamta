@@ -68,11 +68,12 @@ class AuthController extends Controller
 
 		else
 		{
+
             return redirect()->route('student');
+
         }
 
     }
-
 
     public function logout()
     {
