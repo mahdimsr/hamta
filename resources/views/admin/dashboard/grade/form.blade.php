@@ -30,7 +30,8 @@
 								<div class="form-group">
 									<label>پارامتر مقطع</label>
 									<input name="urlGrade" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: tenth-grade" value="{{old('url') ? old('url') : ''}} {{ $modify==1 && !old('url') ? $grade->url : '' }}">
+										   placeholder="مثلا: tenth-grade"
+										   value="{{old('url') ? old('url') : ''}} {{ $modify==1 && !old('url') ? $grade->url : '' }}">
 								</div>
 							</div>
 							<div class="col-md-4">
