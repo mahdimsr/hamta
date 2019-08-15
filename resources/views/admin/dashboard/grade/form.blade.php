@@ -30,21 +30,21 @@
 								<div class="form-group">
 									<label>پارامتر مقطع</label>
 									<input name="urlGrade" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: tenth-grade" value="{{old('url') ? old('url') : ''}} {{ $modify==1 && !old('url') ? $grade->url : '' }}">
+										   placeholder="مثلا: tenth-grade" value="{{old('urlGrade') ? old('urlGrade') : ''}} {{ $modify==1 && !old('urlGrade') ? $grade->url : '' }}">
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>کد مقطع</label>
 									<input name="codeGrade" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: 10" value="{{old('code') ? old('code') : ''}} {{ $modify==1 && !old('code') ? $grade->code : '' }}">
+										   placeholder="مثلا: 10" value="{{old('codeGrade') ? old('codeGrade') : ''}} {{ $modify==1 && !old('codeGrade') ? $grade->code : '' }}">
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>عنوان مقطع</label>
 									<input name="titleGrade" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: مقطع دهم" value="{{old('title') ? old('title') : '' }} {{ $modify==1 && !old('title') ? $grade->title : '' }}">
+										   placeholder="مثلا: مقطع دهم" value="{{old('titleGrade') ? old('titleGrade') : '' }} {{ $modify==1 && !old('titleGrade') ? $grade->title : '' }}">
 								</div>
 							</div>
 						</div>
