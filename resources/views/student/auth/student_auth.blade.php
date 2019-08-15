@@ -42,7 +42,7 @@
 
 
           <div class="input-block">
-            <input type="text" id="mobile-email" class="basic-slide" name="mobile-email" placeholder="ایمیل"  value="{{  $userInfo ? $userInfo : old('mobile-email')}}" required>
+            <input type="text" id="mobile-email" class="basic-slide" name="mobile-email" placeholder="شماره تلفن همراه یا پست الکترونیکی"  value="{{ $userInfo ? $userInfo : old('mobile-email')}}" required>
             <label for="mobile-email">ایمیل</label>
             <small>{{$errors->first('mobile-email')}}</small>
           </div>
@@ -55,8 +55,8 @@
 
           <div class="input-block">
 
-            <input type="password" id="password" name="password"  class="basic-slide" placeholder="پسورد" value=" {{  $passInfo ? $passInfo : old('password') }}" required>
-            <label for="password" class="a">کلمه عبور</label>
+            <input type="password" id="password" name="password"  class="basic-slide" placeholder="رمز عبور" value="{{ $passInfo ? $passInfo : old('password') }}" required>
+            <label for="password" class="a">رمز عبور</label>
 			<small>{{$errors->first('password')}}</small>
           </div>
 
