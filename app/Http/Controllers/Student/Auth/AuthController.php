@@ -13,7 +13,9 @@ class AuthController extends Controller
 {
 	public function show()
 	{
-		return view('student.auth.student_auth');
+        $userInfo=cookie::get('studentInfo');
+        $passInfo=cookie::get('studentPass');
+		return view('student.auth.student_auth',compact('userInfo','passInfo'));
     }
 
 
@@ -32,14 +34,14 @@ class AuthController extends Controller
 
 			if ($request->has('remember'))
 			{
-				Cookie::queue('studentuser', $request->input('mobile-email'), 90 * 24 * 60);
-				Cookie::queue('studentpass', $request->input('password'), 90* 24 * 60);
+				Cookie::queue('studentInfo', $request->input('mobile-email'), 90 * 24 * 60);
+				Cookie::queue('studentPass', $request->input('password'), 90* 24 * 60);
             }
 
 			else
 			{
-				Cookie::queue('studentuser', '');
-				Cookie::queue('studentpass', '');
+				Cookie::queue('studentInfo', '');
+				Cookie::queue('studentPass', '');
 			}
 
             return redirect()->route('student_dashboard_profile');
@@ -51,17 +53,15 @@ class AuthController extends Controller
 
 			if ($request->has('remember'))
 			{
-				Cookie::queue('studentuser', $request->input('mobile-email'), 90 * 24 * 60);
-				Cookie::queue('studentpass', $request->input('password'), 90 * 24 * 60);
+				Cookie::queue('studentInfo', $request->input('mobile-email'), 90 * 24 * 60);
+				Cookie::queue('studentPass', $request->input('password'), 90 * 24 * 60);
             }
-
-			else
+            else
 			{
-				Cookie::queue('studentuser', '');
-				Cookie::queue('studentpass', '');
+				Cookie::queue('studentInfo', '');
+				Cookie::queue('studentPass', '');
 
 			}
-
             return redirect()->route('student_dashboard_profile');
 
         }
