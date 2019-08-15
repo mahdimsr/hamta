@@ -88,8 +88,8 @@ Route::namespace('Admin')->group(function()
 			Route::get('/remove', 'GradeLessonController@remove')->name('admin_gradeLessons_remove');
 			Route::get('/add', 'GradeLessonController@addShow')->name('admin_gradeLessons_addShow');
 			Route::post('/add', 'GradeLessonController@add')->name('admin_gradeLessons_add');
-			Route::get('/edit', 'GradeLessonController@editShow')->name('admin_gradeLessons_editShow');
-			Route::post('/edit', 'GradeLessonController@edit')->name('admin_gradeLessons_edit');
+			Route::get('/edit/{code}', 'GradeLessonController@editShow')->name('admin_gradeLessons_editShow');
+			Route::post('/edit/{code}', 'GradeLessonController@edit')->name('admin_gradeLessons_edit');
 		});
 
 
