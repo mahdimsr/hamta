@@ -21,32 +21,35 @@
 				@endif
 
 				<div class="content">
-					<form method="post" action="{{route('admin_lessons_edit')}}">
+					<form method="post"
+						  action="{{$modify == 0? route('admin_lessons_add') : route('admin_lessons_edit',['url' => $lesson->url])}}">
 
 						{{csrf_field()}}
 
-						<input name="id" hidden value="{{$lesson->id}}">
 
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>پارامتر درس</label>
 									<input name="urlLesson" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: tenth-grade" value="{{$lesson->url}}">
+										   placeholder="مثلا: tenth-grade"
+										   value="{{old('urlLesson') ? old('urlLesson') : ''}} {{ $modify==1 && !old('urlLesson') ? $lesson->url : '' }}">
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>کد درس</label>
 									<input name="codeLesson" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: 10" value="{{$lesson->code}}">
+										   placeholder="مثلا: 10"
+										   value="{{old('codeLesson') ? old('codeLesson') : ''}} {{ $modify==1 && !old('codeLesson') ? $lesson->code : '' }}">
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>عنوان درس</label>
 									<input name="titleLesson" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: مقطع دهم" value="{{$lesson->title}}">
+										   placeholder="مثلا: مقطع دهم"
+										   value="{{old('titleLesson') ? old('titleLesson') : ''}} {{ $modify==1 && !old('titleLesson') ? $lesson->title : '' }}">
 								</div>
 							</div>
 						</div>

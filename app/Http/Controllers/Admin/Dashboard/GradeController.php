@@ -50,7 +50,7 @@ class GradeController extends Controller
 
 
 
-	public function remove(Request $request,$url)
+	public function remove($url)
 	{
 		$grade = Grade::query()->where('url', $url)->first();
 
@@ -61,7 +61,7 @@ class GradeController extends Controller
 
 
 
-	public function editShow(Request $request,$url)
+	public function editShow($url)
 	{
         $modify=1;
 		$grade = Grade::query()->where('url', $url)->first();

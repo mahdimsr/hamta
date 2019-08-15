@@ -35,17 +35,19 @@ class GradeLessonController extends Controller
 
 	public function addShow()
 	{
+		$modify       = 0;
 		$orientations = Orientation::all();
 		$grades       = Grade::all();
+		$lessons      = Lesson::all();
 
-		return view('admin.dashboard.gradeLesson.add', compact('orientations', 'grades'));
+		return view('admin.dashboard.gradeLesson.add', compact('orientations', 'grades', 'modify'));
 	}
 
 
 
-	public function add(Request $r)
+	public function add(Request $request)
 	{
-		$this->validate($r, [
+		$this->validate($request, [
 
 			'orientation' => 'required|exists:orientation,url',
 			'grade'       => 'required|exists:grade,url',
@@ -57,14 +59,14 @@ class GradeLessonController extends Controller
 
 		]);
 
-		$orientation = Orientation::query()->where('url', $r->input('orientation'))->first();
-		$grade       = Grade::query()->where('url', $r->input('grade'))->first();
+		$orientation = Orientation::query()->where('url', $request->input('orientation'))->first();
+		$grade       = Grade::query()->where('url', $request->input('grade'))->first();
 
 		$lesson = new Lesson();
 
-		$lesson->code  = $r->input('code');
-		$lesson->title = $r->input('title');
-		$lesson->url   = $r->input('url');
+		$lesson->code  = $request->input('code');
+		$lesson->title = $request->input('title');
+		$lesson->url   = $request->input('url');
 
 		$lesson->save();
 
@@ -73,8 +75,8 @@ class GradeLessonController extends Controller
 		$gradeLesson->lessonId      = $lesson->id;
 		$gradeLesson->gradeId       = $grade->id;
 		$gradeLesson->orientationId = $orientation->id;
-		$gradeLesson->ratio         = $r->input('ratio');
-		$gradeLesson->type          = $r->input('type');
+		$gradeLesson->ratio         = $request->input('ratio');
+		$gradeLesson->type          = $request->input('type');
 		$gradeLesson->code          = $lesson->code . $grade->code . $orientation->code;
 
 		$gradeLesson->save();
@@ -84,25 +86,26 @@ class GradeLessonController extends Controller
 
 
 
-	public function editShow(Request $r)
+	public function editShow($code)
 	{
+		$modify = 1;
 
-		$gradeLesson = GradeLesson::query()->where('code', $r->input('code'))->first();
+		$gradeLesson  = GradeLesson::query()->where('code', $code)->first();
 		$orientations = Orientation::all();
 		$grades       = Grade::all();
 		$lessons      = Lesson::all();
 
-		return view('admin.dashboard.gradeLesson.edit', compact('orientations', 'grades', 'lessons', 'gradeLesson'));
+		return view('admin.dashboard.gradeLesson.edit', compact('orientations', 'grades', 'lessons', 'gradeLesson', 'modify'));
 
-    }
+	}
 
 
 
-	public function edit(Request $r)
+	public function edit(Request $request, $code)
 	{
-		$gradeLesson = GradeLesson::query()->find($r->input('id'));
+		$gradeLesson = GradeLesson::query()->where('code', $code)->first();
 
-		$this->validate($r, [
+		$this->validate($request, [
 
 			'orientation' => 'required|exists:orientation,url',
 			'grade'       => 'required|exists:grade,url',
@@ -111,9 +114,9 @@ class GradeLessonController extends Controller
 			'ratio'       => 'required|numeric|digits:1',
 		]);
 
-		$orientation = Orientation::query()->where('url', $r->input('orientation'))->first();
-		$grade       = Grade::query()->where('url', $r->input('grade'))->first();
-		$lesson      = Lesson::query()->where('url', $r->input('lesson'))->first();
+		$orientation = Orientation::query()->where('url', $request->input('orientation'))->first();
+		$grade       = Grade::query()->where('url', $request->input('grade'))->first();
+		$lesson      = Lesson::query()->where('url', $request->input('lesson'))->first();
 
 
 		$code = ['code' => $lesson->code . $grade->code . $orientation->code];
@@ -124,7 +127,7 @@ class GradeLessonController extends Controller
 			'code.unique' => ' این درس با این وابستگی ها قبلا ثبت شده است.',
 		]);
 
-		if ($v->fails())
+		if ($v->fails() && $gradeLesson->ratio == $request->input('ratio'))
 		{
 			return redirect()->back()->with(['errors' => $v->errors()]);
 		}
@@ -133,7 +136,7 @@ class GradeLessonController extends Controller
 			$gradeLesson->lessonId      = $lesson->id;
 			$gradeLesson->gradeId       = $grade->id;
 			$gradeLesson->orientationId = $orientation->id;
-			$gradeLesson->ratio         = $r->input('ratio');
+			$gradeLesson->ratio         = $request->input('ratio');
 			$gradeLesson->code          = $code['code'];
 
 			$gradeLesson->update();
