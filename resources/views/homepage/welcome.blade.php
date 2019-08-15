@@ -18,7 +18,7 @@
       <div class="row">
         <div class="col-lg-6 align-self-center mb-5 mb-lg-0">
           <div class="innovative-wrapper">
-            <h3 class="primary-text">قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان برده‌اند برای تجدید <br class="d-none d-xl-block"> UX Design 2019</h3>
+            <h3 class="primary-text">قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان برده‌اند برای تجدید <br class="d-none d-xl-block"> متن مورد نیاز</h3>
             <p class="h4 primary-text2 mb-3">قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان برده‌اند برای تجدید</p>
             <p>قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان برده‌اند برای تجدید</p>
           </div>
@@ -28,21 +28,21 @@
           <ul class="clockdiv text-center" id="clockdiv">
             <li class="clockdiv-single clockdiv-day">
               <h1 class="days">1</h1>
-              <span class="smalltext">Days</span>
+              <span class="smalltext">آزمون</span>
             </li>
             <li class="clockdiv-single clockdiv-hour">
               <h1 class="hours">30</h1>
-              <span class="smalltext">Hours</span>
+              <span class="smalltext">دانشجو</span>
             </li>
             <li class="clockdiv-single clockdiv-minute">
               <h1 class="minutes">30</h1>
-              <span class="smalltext">Mins</span>
+              <span class="smalltext">هر چی</span>
             </li>
           </ul>
-
+          
           <div class="clockdiv-content text-center">
-            <p class="h4 primary-text2 mb-2">January 20 -22, 2019 in Buffelo City</p>
-            <a class="button button-link" href="#">Get Ticket</a>
+            <p class="h4 primary-text2 mb-2">تاریخ ثبت اطلاعات</p>
+            <a class="button button-link" href="#">ورود</a>
           </div>
         </div>
       </div>
@@ -55,8 +55,8 @@
   <section class="section-margin">
     <div class="container">
       <div class="section-intro text-center pb-98px">
-        <p class="section-intro__title">Join the event</p>
-        <h2 class="primary-text">Why Join Ummet</h2>
+        <p class="section-intro__title">سر برگ</p>
+        <h2 class="primary-text">چرا همتا؟</h2>
         <img src="{{asset('image/homepage/home/section-style.png')}}" alt="">
       </div>
 
@@ -88,8 +88,8 @@
       </div>
       <div class="row mt-5">
         <div class="col-12 text-center">
-          <a class="button mr-3 mb-2" href="#">Learn More</a>
-          <a class="button mb-2" href="#">Buy Ticket</a>
+          <a class="button mr-3 mb-2" href="#">دکمه</a>
+          <a class="button mb-2" href="#">دکمه</a>
         </div>
       </div>
     </div>
@@ -101,8 +101,8 @@
   <section class="speaker-bg section-padding">
     <div class="container">
       <div class="section-intro section-intro-white text-center pb-98px">
-        <p class="section-intro__title">Join the event</p>
-        <h2 class="primary-text">Meet The Speakers</h2>
+      <p class="section-intro__title">سربرگ</p>
+        <h2 class="primary-text">اسم موسسه ها میتونه باشه</h2>
         <img src="{{asset('image/homepage/home/section-style.png')}}" alt="">
       </div>
 
@@ -111,8 +111,8 @@
           <div class="card-speaker">
             <img class="card-img rounded-0" src="{{asset('image/homepage/home/speaker-1.png')}}" alt="">
             <div class="speaker-footer">
-              <h4>Jhon Leonar</h4>
-              <p>UX/UI Designer Microsoft</p>
+            <h4>توضیح</h4>
+              <p>Uتوضیح</p>
             </div>
             <div class="speaker-overlay">
               <ul class="speaker-social">
@@ -128,8 +128,8 @@
           <div class="card-speaker">
             <img class="card-img rounded-0" src="{{asset('image/homepage/home/speaker-2.png')}}" alt="">
             <div class="speaker-footer">
-              <h4>Donald Markin</h4>
-              <p>UX/UI Designer Microsoft</p>
+            <h4>توضیح</h4>
+              <p>توضیح</p>
             </div>
             <div class="speaker-overlay">
               <ul class="speaker-social">
@@ -145,8 +145,8 @@
           <div class="card-speaker">
             <img class="card-img rounded-0" src="{{asset('image/homepage/home/speaker-3.png')}}" alt="">
             <div class="speaker-footer">
-              <h4>Donald Markin</h4>
-              <p>UX/UI Designer Microsoft</p>
+            <h4>توضیح</h4>
+              <p>توضیح</p>
             </div>
             <div class="speaker-overlay">
               <ul class="speaker-social">
@@ -165,8 +165,8 @@
           <div class="card-speaker">
             <img class="card-img rounded-0" src="{{asset('image/homepage/home/speaker-1.png')}}" alt="">
             <div class="speaker-footer">
-              <h4>Donald Markin</h4>
-              <p>UX/UI Designer Microsoft</p>
+            <h4>توضیح</h4>
+              <p>توضیح</p>
             </div>
             <div class="speaker-overlay">
               <ul class="speaker-social">
@@ -182,8 +182,8 @@
           <div class="card-speaker">
             <img class="card-img rounded-0" src="{{asset('image/homepage/home/speaker-2.png')}}" alt="">
             <div class="speaker-footer">
-              <h4>Donald Markin</h4>
-              <p>UX/UI Designer Microsoft</p>
+            <h4>توضیح</h4>
+              <p>توضیح</p>
             </div>
             <div class="speaker-overlay">
               <ul class="speaker-social">
@@ -199,8 +199,8 @@
           <div class="card-speaker">
             <img class="card-img rounded-0" src="{{asset('image/homepage/home/speaker-3.png')}}" alt="">
             <div class="speaker-footer">
-              <h4>Jhon Leonar</h4>
-              <p>UX/UI Designer Microsoft</p>
+            <h4>توضیح</h4>
+              <p>توضیح</p>
             </div>
             <div class="speaker-overlay">
               <ul class="speaker-social">
@@ -695,8 +695,8 @@
   <section class="section-padding gallery-area gallery-bg">
     <div class="container">
       <div class="section-intro section-intro-white text-center pb-98px">
-        <p class="section-intro__title">Join the event</p>
-        <h2 class="primary-text">Event Plan Sponsors</h2>
+      <p class="section-intro__title">سربرگ</p>
+        <h2 class="primary-text">سربرگ</h2>
         <img src="{{asset('image/homepage/home/section-style.png')}}" alt="">
       </div>
 
@@ -792,72 +792,6 @@
 
 
   <!--================ Blog section Start =================-->
-  <section class="section-margin">
-    <div class="container">
-      <div class="section-intro text-center pb-98px">
-        <p class="section-intro__title">Join the event</p>
-        <h2 class="primary-text">Why Join Ummet</h2>
-        <img src="{{asset('image/homepage/home/section-style.png')}}" alt="">
-      </div>
-
-      <div class="owl-theme owl-carousel blogCarousel pb-xl-1">
-        <div class="card-blog">
-          <img class="card-img" src="{{asset('image/homepage/blog/blog1.png')}}" alt="">
-          <div class="blog-body">
-            <a href="#">
-              <h3>Owls should be used to help abused children open <br class="d-none d-xl-block">
-                  up in therapy sessions, says charity boss</h3>
-            </a>
-            <ul class="blog-info">
-              <li><a href="#"><i class="ti-comments-smiley"></i> 03 Feb, 2019</a></li>
-              <li><a href="#"><i class="ti-time"></i> No Comment</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="card-blog">
-          <img class="card-img" src="{{asset('image/homepage/blog/blog2.png')}}" alt="">
-          <div class="blog-body">
-            <a href="#">
-              <h3>Owls should be used to help abused children open <br class="d-none d-xl-block">
-                  up in therapy sessions, says charity boss</h3>
-            </a>
-            <ul class="blog-info">
-              <li><a href="#"><i class="ti-comments-smiley"></i> 03 Feb, 2019</a></li>
-              <li><a href="#"><i class="ti-time"></i> No Comment</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="card-blog">
-          <img class="card-img" src="{{asset('image/homepage/blog/blog1.png')}}" alt="">
-          <div class="blog-body">
-            <a href="#">
-              <h3>Owls should be used to help abused children open <br class="d-none d-xl-block">
-                  up in therapy sessions, says charity boss</h3>
-            </a>
-            <ul class="blog-info">
-              <li><a href="#"><i class="ti-comments-smiley"></i> 03 Feb, 2019</a></li>
-              <li><a href="#"><i class="ti-time"></i> No Comment</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="card-blog">
-          <img class="card-img" src="{{asset('image/homepage/blog/blog2.png')}}" alt="">
-          <div class="blog-body">
-            <a href="#">
-              <h3>Owls should be used to help abused children open <br class="d-none d-xl-block">
-                  up in therapy sessions, says charity boss</h3>
-            </a>
-            <ul class="blog-info">
-              <li><a href="#"><i class="ti-comments-smiley"></i> 03 Feb, 2019</a></li>
-              <li><a href="#"><i class="ti-time"></i> No Comment</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
   <!--================ Blog section End =================-->
 @endsection
