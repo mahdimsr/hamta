@@ -18,10 +18,10 @@ class LoginController extends Controller
 
 	public function login(Request $request)
 	{
-		$mobile   = $request->input('mobile');
+		$username   = $request->input('username');
 		$password = $request->input('password');
 
-		if (Auth::guard('admin')->attempt(['mobile' => $mobile, 'password' => $password]))
+		if (Auth::guard('admin')->attempt(['username' => $username, 'password' => $password]))
 		{
 			return redirect()->route('admin_dashboard');
 		}

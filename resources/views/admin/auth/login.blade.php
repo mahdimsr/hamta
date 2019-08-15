@@ -13,14 +13,14 @@
 	{{csrf_field()}}
 
 	<div>
-		<input name="mobile">
+		<input name="username">
 	</div>
 
 	<div>
 		<input name="password">
 	</div>
 
-	{{$errors->first('mobile')}}
+	{{$errors->first('username')}}
 
 	<button type="submit">submit</button>
 

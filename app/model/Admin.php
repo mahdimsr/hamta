@@ -10,6 +10,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 /**
  * @property \Carbon\Carbon $created_at
  * @property int $id
+ * @property string $fullName
+ * @property string $username
+ * @property string $password
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  */
