@@ -50,6 +50,15 @@ Route::namespace('Admin')->group(function()
 	{
 		Route::get('/', 'DashboardController@dashboard')->name('admin_dashboard');
 
+		Route::prefix('admins')->group(function()
+		{
+			Route::get('/','RegisterController@admins')->name('admin_admins');
+			Route::get('/add','RegisterController@addShow')->name('admin_admins_addShow');
+			Route::post('/add','RegisterController@add')->name('admin_admins_add');
+			Route::get('/edit/{username}','RegisterController@editShow')->name('admin_admins_editShow');
+			Route::post('/edit/{username}','RegisterController@edit')->name('admin_admins_edit');
+		});
+
 		Route::prefix('exams')->group(function()
 		{
 			Route::get('/', 'LessonExamController@exams')->name('admin_exams');

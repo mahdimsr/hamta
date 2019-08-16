@@ -18,7 +18,7 @@ class CreateAdminTable extends Migration
 		{
 			$table->bigIncrements('id');
 			$table->string('fullName');
-			$table->string('mobile');
+			$table->string('username');
 			$table->string('password');
 			$table->enum('level', ['A', 'B', 'C', 'D'])->default('B');
 			$table->timestamps();

@@ -81,6 +81,12 @@
 						<p>درس های به صورت جداگانه</p>
 					</a>
 				</li>
+				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_admins' ? 'active' : ''}}">
+					<a href="{{route('admin_admins')}}">
+						<i class="pe-7s-news-paper"></i>
+						<p>ادمین ها</p>
+					</a>
+				</li>
 
 
 			</ul>
