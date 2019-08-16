@@ -1,15 +1,39 @@
 @extends('layouts.app')
 @section('content')
 <!--================Hero Banner Area Start =================-->
-  <section class="hero-banner">
-    <div class="container text-center">
-      <span class="hero-banner-icon"><i class="flaticon-sing"></i></span>
-      <p>اینجا رو نظری ندارم</p>
-      <h1>سامانه همتا</h1>
-      <a class="button button-header" href="#">دکمه</a>
-    </div>
-  </section>
+
   <!--================Hero Banner Area End =================-->
+
+
+  <!--================ Innovation section Start =================-->
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="{{asset('image/homepage/blue_bubbles_2-wallpaper-1280x800.jpg')}}" alt="First slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="{{asset('image/homepage/city_of_love-wallpaper-3554x1999.jpg')}}" alt="Second slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="{{asset('image/homepage/purple_texture-wallpaper-1280x720.jpg')}}" alt="Third slide">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <!--================Hero Banner Area End =================-->
+
 
 
   <!--================ Innovation section Start =================-->
@@ -57,32 +81,32 @@
       <div class="section-intro text-center pb-98px">
         <p class="section-intro__title">سر برگ</p>
         <h2 class="primary-text">چرا همتا؟</h2>
-        <img src="{{asset('image/homepage/home/section-style.png')}}" alt="">
+      <img src="{{asset('image/homepage/home/section-style.png')}}" alt="">
       </div>
 
 
       <div class="d-lg-flex justify-content-between">
         <div class="card-feature mb-5 mb-lg-0">
           <div class="feature-icon">
-            <i class="flaticon-prize"></i>
+            <i class="fas fa-eye"></i>
           </div>
-          <h3>Always First Service</h3>
+          <h3>سهولت در دسترس</h3>
           <p>قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان برده‌اند برای تجدید</p>
         </div>
 
         <div class="card-feature mb-5 mb-lg-0">
           <div class="feature-icon">
-            <i class="flaticon-earth-globe"></i>
-          </div>
-          <h3>International Business</h3>
+            <i class="fas fa-eye"></i>     
+               </div>
+          <h3>نمیدونم</h3>
           <p>قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان برده‌اند برای تجدید </p>
         </div>
 
         <div class="card-feature mb-5 mb-lg-0">
           <div class="feature-icon">
-            <i class="flaticon-sing"></i>
-          </div>
-          <h3>World Great Speaker</h3>
+            <i class="fas fa-eye"></i>    
+                </div>
+          <h3>نمیدونم</h3>
           <p>قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان برده‌اند برای تجدید</p>
         </div>
       </div>
@@ -101,7 +125,7 @@
   <section class="speaker-bg section-padding">
     <div class="container">
       <div class="section-intro section-intro-white text-center pb-98px">
-      <p class="section-intro__title">سربرگ</p>
+        <p class="section-intro__title">سربرگ</p>
         <h2 class="primary-text">اسم موسسه ها میتونه باشه</h2>
         <img src="{{asset('image/homepage/home/section-style.png')}}" alt="">
       </div>
@@ -111,15 +135,15 @@
           <div class="card-speaker">
             <img class="card-img rounded-0" src="{{asset('image/homepage/home/speaker-1.png')}}" alt="">
             <div class="speaker-footer">
-            <h4>توضیح</h4>
-              <p>Uتوضیح</p>
+              <h4>توضیح</h4>
+              <p>توضیح</p>
             </div>
             <div class="speaker-overlay">
               <ul class="speaker-social">
-                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                <li><a href="#"><i class="ti-instagram"></i></a></li>
-                <li><a href="#"><i class="ti-skype"></i></a></li>
+                <li><a href="#"><i class="fas fa-quote-right"></i></a></li>
+                <li><a href="#"><i class="fas fa-comment"></i></a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i></a></li>
+              
               </ul>
             </div>
           </div>
@@ -128,15 +152,15 @@
           <div class="card-speaker">
             <img class="card-img rounded-0" src="{{asset('image/homepage/home/speaker-2.png')}}" alt="">
             <div class="speaker-footer">
-            <h4>توضیح</h4>
+              <h4>توضیح</h4>
               <p>توضیح</p>
             </div>
             <div class="speaker-overlay">
               <ul class="speaker-social">
-                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                <li><a href="#"><i class="ti-instagram"></i></a></li>
-                <li><a href="#"><i class="ti-skype"></i></a></li>
+                <li><a href="#"><i class="fas fa-quote-right"></i></a></li>
+                <li><a href="#"><i class="fas fa-comment"></i></a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i></a></li>
+              
               </ul>
             </div>
           </div>
@@ -145,15 +169,15 @@
           <div class="card-speaker">
             <img class="card-img rounded-0" src="{{asset('image/homepage/home/speaker-3.png')}}" alt="">
             <div class="speaker-footer">
-            <h4>توضیح</h4>
+              <h4>توضیح</h4>
               <p>توضیح</p>
             </div>
             <div class="speaker-overlay">
               <ul class="speaker-social">
-                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                <li><a href="#"><i class="ti-instagram"></i></a></li>
-                <li><a href="#"><i class="ti-skype"></i></a></li>
+                <li><a href="#"><i class="fas fa-quote-right"></i></a></li>
+                <li><a href="#"><i class="fas fa-comment"></i></a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i></a></li>
+              
               </ul>
             </div>
           </div>
@@ -165,15 +189,15 @@
           <div class="card-speaker">
             <img class="card-img rounded-0" src="{{asset('image/homepage/home/speaker-1.png')}}" alt="">
             <div class="speaker-footer">
-            <h4>توضیح</h4>
+              <h4>توضیح</h4>
               <p>توضیح</p>
             </div>
             <div class="speaker-overlay">
               <ul class="speaker-social">
-                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                <li><a href="#"><i class="ti-instagram"></i></a></li>
-                <li><a href="#"><i class="ti-skype"></i></a></li>
+                <li><a href="#"><i class="fas fa-quote-right"></i></a></li>
+                <li><a href="#"><i class="fas fa-comment"></i></a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i></a></li>
+              
               </ul>
             </div>
           </div>
@@ -182,15 +206,15 @@
           <div class="card-speaker">
             <img class="card-img rounded-0" src="{{asset('image/homepage/home/speaker-2.png')}}" alt="">
             <div class="speaker-footer">
-            <h4>توضیح</h4>
+              <h4>توضیح</h4>
               <p>توضیح</p>
             </div>
             <div class="speaker-overlay">
               <ul class="speaker-social">
-                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                <li><a href="#"><i class="ti-instagram"></i></a></li>
-                <li><a href="#"><i class="ti-skype"></i></a></li>
+                <li><a href="#"><i class="fas fa-quote-right"></i></a></li>
+                <li><a href="#"><i class="fas fa-comment"></i></a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i></a></li>
+              
               </ul>
             </div>
           </div>
@@ -199,15 +223,15 @@
           <div class="card-speaker">
             <img class="card-img rounded-0" src="{{asset('image/homepage/home/speaker-3.png')}}" alt="">
             <div class="speaker-footer">
-            <h4>توضیح</h4>
+              <h4>توضیح</h4>
               <p>توضیح</p>
             </div>
             <div class="speaker-overlay">
               <ul class="speaker-social">
-                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                <li><a href="#"><i class="ti-instagram"></i></a></li>
-                <li><a href="#"><i class="ti-skype"></i></a></li>
+                <li><a href="#"><i class="fas fa-quote-right"></i></a></li>
+                <li><a href="#"><i class="fas fa-comment"></i></a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i></a></li>
+              
               </ul>
             </div>
           </div>
@@ -222,8 +246,8 @@
   <section class="section-margin mb-5 pb-5">
     <div class="container">
       <div class="section-intro text-center pb-98px">
-        <p class="section-intro__title">Join the event</p>
-        <h2 class="primary-text">Conference Schedule</h2>
+        <p class="section-intro__title">سربرگ</p>
+        <h2 class="primary-text">قسمت زمان بندی</h2>
         <img src="{{asset('image/homepage/home/section-style.png')}}" alt="">
       </div>
 
@@ -233,48 +257,48 @@
             <ul class="nav nav-tabs">
               <li class="nav-item text-center">
                 <a data-toggle="tab" href="#day1">
-                  <h4>Day 1</h4>
-                  <p>23 jan, 2019</p>
+                  <h4>سربرگ</h4>
+                  <p>تاریخ</p>
                 </a>
               </li>
               <li class="nav-item text-center">
                 <a class="active" data-toggle="tab" href="#day2">
-                  <h4>Day 2</h4>
-                  <p>23 jan, 2019</p>
+                  <h4>سربرگ</h4>
+                  <p>تاریخ</p>
                 </a>
               </li>
               <li class="nav-item text-center">
                 <a data-toggle="tab" href="#day3">
-                  <h4>Day 2</h4>
-                  <p>23 jan, 2019</p>
+                  <h4>سربرگ</h4>
+                  <p>تاریخ</p>
                 </a>
               </li>
               <li class="nav-item text-center">
                 <a data-toggle="tab" href="#day4">
-                  <h4>Day 2</h4>
-                  <p>23 jan, 2019</p>
+                  <h4>سربرگ</h4>
+                  <p>تاریخ</p>
                 </a>
               </li>
             </ul>
-
+          
             <!-- Tab panes -->
             <div class="tab-content">
               <div id="day1" class="tab-pane">
-
+                
                 <div class="schedule-card">
                   <div class="row no-gutters">
                     <div class="col-md-3">
                       <div class="card-identity">
                         <img src="{{asset('image/homepage/testimonial/testimonial1.png')}}" alt="">
-                        <h3>Adam Jamsmith</h3>
-                        <p>UX/UI Designer</p>
+                        <h4>سربرگ</h4>
+                        <p>تاریخ</p>
                       </div>
                     </div>
                     <div class="col-md-9 align-self-center">
                       <div class="schedule-content">
-                        <p class="schedule-date">9.00 AM - 10.30 AM</p>
+                        <p class="schedule-date">تاریخ</p>
                         <a class="schedule-title" href="#">
-                          <h3>Previous Year achivement</h3>
+                          <h3>عنوان هر چیز</h3>
                         </a>
                         <p>قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان برده‌اند برای تجدید</p>
                       </div>
@@ -286,16 +310,16 @@
                   <div class="row no-gutters">
                     <div class="col-md-3">
                       <div class="card-identity">
-                        <img src="{{asset('image/homepage/testimonial/testimonial2.png')}}" alt="">
-                        <h3>Adam Jamsmith</h3>
-                        <p>UX/UI Designer</p>
+                        <img src="{{asset('image/homepage/testimonial/testimonial1.png')}}" alt="">
+                        <h4>سربرگ</h4>
+                        <p>تاریخ</p>
                       </div>
                     </div>
                     <div class="col-md-9 align-self-center">
                       <div class="schedule-content">
-                        <p class="schedule-date">9.00 AM - 10.30 AM</p>
+                        <p class="schedule-date">تاریخ</p>
                         <a class="schedule-title" href="#">
-                          <h3>Previous Year achivement</h3>
+                          <h3>عنوان</h3>
                         </a>
                         <p>قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان برده‌اند برای تجدید </p>
                       </div>
@@ -305,21 +329,42 @@
 
               </div>
               <div id="day2" class="tab-pane active">
-
+                
                 <div class="schedule-card">
                   <div class="row no-gutters">
                     <div class="col-md-3">
                       <div class="card-identity">
-                        <img src="{{asset('image/homepage/testimonial/testimonial3.png')}}" alt="">
-                        <h3>Adam Jamsmith</h3>
-                        <p>UX/UI Designer</p>
+                        <img src="{{asset('image/homepage/testimonial/testimonial1.png')}}" alt="">
+                        <h3>اسم</h3>
+                        <p>جایگاه</p>
                       </div>
                     </div>
                     <div class="col-md-9 align-self-center">
                       <div class="schedule-content">
-                        <p class="schedule-date">9.00 AM - 10.30 AM</p>
+                        <p class="schedule-date">تاریخ</p>
                         <a class="schedule-title" href="#">
-                          <h3>Previous Year achivement</h3>
+                          <h3>عنوان هر چیز</h3>
+                        </a>
+                        <p>قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان برده‌اند برای تجدید </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="schedule-card">
+                  <div class="row no-gutters">
+                    <div class="col-md-3">
+                      <div class="card-identity">
+                        <img src="{{asset('image/homepage/testimonial/testimonial2.png')}}" alt="">
+                        <h3>اسم</h3>
+                        <p>جایگاه</p>
+                      </div>
+                    </div>
+                    <div class="col-md-9 align-self-center">
+                      <div class="schedule-content">
+                        <p class="schedule-date">تاریخ</p>
+                        <a class="schedule-title" href="#">
+                          <h3>عنوان هر چیز</h3>
                         </a>
                         <p>قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان برده‌اند برای تجدید </p>
                       </div>
@@ -332,36 +377,15 @@
                     <div class="col-md-3">
                       <div class="card-identity">
                         <img src="{{asset('image/homepage/testimonial/testimonial1.png')}}" alt="">
-                        <h3>Adam Jamsmith</h3>
-                        <p>UX/UI Designer</p>
+                        <h3>اسم</h3>
+                        <p>جایگاه</p>
                       </div>
                     </div>
                     <div class="col-md-9 align-self-center">
                       <div class="schedule-content">
-                        <p class="schedule-date">9.00 AM - 10.30 AM</p>
+                        <p class="schedule-date">تاریخ</p>
                         <a class="schedule-title" href="#">
-                          <h3>Previous Year achivement</h3>
-                        </a>
-                        <p>قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان برده‌اند برای تجدید </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="schedule-card">
-                  <div class="row no-gutters">
-                    <div class="col-md-3">
-                      <div class="card-identity">
-                        <img src="{{asset('image/homepage/testimonial/testimonial2.png')}}" alt="">
-                        <h3>Adam Jamsmith</h3>
-                        <p>UX/UI Designer</p>
-                      </div>
-                    </div>
-                    <div class="col-md-9 align-self-center">
-                      <div class="schedule-content">
-                        <p class="schedule-date">9.00 AM - 10.30 AM</p>
-                        <a class="schedule-title" href="#">
-                          <h3>Previous Year achivement</h3>
+                          <h3>عنوان هر چیز</h3>
                         </a>
                         <p>قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان برده‌اند برای تجدید</p>
                       </div>
@@ -375,37 +399,37 @@
                   <div class="row no-gutters">
                     <div class="col-md-3">
                       <div class="card-identity">
-                        <img src="{{asset('image/homepage/testimonial/testimonial3.png')}}" alt="">
-                        <h3>Adam Jamsmith</h3>
-                        <p>UX/UI Designer</p>
+                        <img src="{{asset('image/homepage/testimonial/testimonial2.png')}}" alt="">
+                        <h4>سربرگ</h4>
+                        <p>تاریخ</p>
                       </div>
                     </div>
                     <div class="col-md-9 align-self-center">
                       <div class="schedule-content">
-                        <p class="schedule-date">9.00 AM - 10.30 AM</p>
+                        <p class="schedule-date">تاریخ</p>
                         <a class="schedule-title" href="#">
-                          <h3>Previous Year achivement</h3>
+                          <h3>عنوان هر چیز</h3>
                         </a>
                         <p>قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان برده‌اند برای تجدید</p>
                       </div>
                     </div>
                   </div>
                 </div>
-
+                
                 <div class="schedule-card">
                   <div class="row no-gutters">
                     <div class="col-md-3">
                       <div class="card-identity">
                         <img src="{{asset('image/homepage/testimonial/testimonial1.png')}}" alt="">
-                        <h3>Adam Jamsmith</h3>
-                        <p>UX/UI Designer</p>
+                        <h4>سربرگ</h4>
+                        <p>تاریخ</p>
                       </div>
                     </div>
                     <div class="col-md-9 align-self-center">
                       <div class="schedule-content">
-                        <p class="schedule-date">9.00 AM - 10.30 AM</p>
+                        <p class="schedule-date">تاریخ</p>
                         <a class="schedule-title" href="#">
-                          <h3>Previous Year achivement</h3>
+                          <h3>عنوان هر چیز</h3>
                         </a>
                         <p>قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان برده‌اند برای تجدید </p>
                       </div>
@@ -417,16 +441,16 @@
                   <div class="row no-gutters">
                     <div class="col-md-3">
                       <div class="card-identity">
-                        <img src="{{asset('image/homepage/testimonial/testimonial2.png')}}" alt="">
-                        <h3>Adam Jamsmith</h3>
-                        <p>UX/UI Designer</p>
+                        <img src="{{asset('image/homepage/testimonial/testimonial1.png')}}" alt="">
+                        <h4>سربرگ</h4>
+                        <p>تاریخ</p>
                       </div>
                     </div>
                     <div class="col-md-9 align-self-center">
                       <div class="schedule-content">
-                        <p class="schedule-date">9.00 AM - 10.30 AM</p>
+                        <p class="schedule-date">تاریخ</p>
                         <a class="schedule-title" href="#">
-                          <h3>Previous Year achivement</h3>
+                          <h3>عنوان هر چیز</h3>
                         </a>
                         <p>قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان برده‌اند برای تجدید</p>
                       </div>
@@ -439,39 +463,18 @@
                   <div class="row no-gutters">
                     <div class="col-md-3">
                       <div class="card-identity">
-                        <img src="{{asset('image/homepage/testimonial/testimonial3.png')}}" alt="">
-                        <h3>Adam Jamsmith</h3>
-                        <p>UX/UI Designer</p>
+                        <img src="{{asset('image/homepage/testimonial/testimonial2.png')}}" alt="">
+                        <h4>سربرگ</h4>
+                        <p>تاریخ</p>
                       </div>
                     </div>
                     <div class="col-md-9 align-self-center">
                       <div class="schedule-content">
-                        <p class="schedule-date">9.00 AM - 10.30 AM</p>
+                        <p class="schedule-date">تاریخ</p>
                         <a class="schedule-title" href="#">
-                          <h3>Previous Year achivement</h3>
+                          <h3>عنوان هر چیز</h3>
                         </a>
                         <p>قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان برده‌اند برای تجدید </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="schedule-card">
-                  <div class="row no-gutters">
-                    <div class="col-md-3">
-                      <div class="card-identity">
-                        <img src="{{asset('image/homepage/testimonial/testimonial1.png')}}" alt="">
-                        <h3>Adam Jamsmith</h3>
-                        <p>UX/UI Designer</p>
-                      </div>
-                    </div>
-                    <div class="col-md-9 align-self-center">
-                      <div class="schedule-content">
-                        <p class="schedule-date">9.00 AM - 10.30 AM</p>
-                        <a class="schedule-title" href="#">
-                          <h3>Previous Year achivement</h3>
-                        </a>
-                        <p>قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان برده‌اند برای تجدید</p>
                       </div>
                     </div>
                   </div>
@@ -482,15 +485,36 @@
                     <div class="col-md-3">
                       <div class="card-identity">
                         <img src="{{asset('image/homepage/testimonial/testimonial2.png')}}" alt="">
-                        <h3>Adam Jamsmith</h3>
-                        <p>UX/UI Designer</p>
+                        <h4>سربرگ</h4>
+                        <p>تاریخ</p>
                       </div>
                     </div>
                     <div class="col-md-9 align-self-center">
                       <div class="schedule-content">
-                        <p class="schedule-date">9.00 AM - 10.30 AM</p>
+                        <p class="schedule-date">تاریخ</p>
                         <a class="schedule-title" href="#">
-                          <h3>Previous Year achivement</h3>
+                          <h3>عنوان هر چیز</h3>
+                        </a>
+                        <p>قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان برده‌اند برای تجدید</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="schedule-card">
+                  <div class="row no-gutters">
+                    <div class="col-md-3">
+                      <div class="card-identity">
+                        <img src="{{asset('image/homepage/testimonial/testimonial1.png')}}" alt="">
+                        <h4>سربرگ</h4>
+                        <p>تاریخ</p>
+                      </div>
+                    </div>
+                    <div class="col-md-9 align-self-center">
+                      <div class="schedule-content">
+                        <p class="schedule-date">تاریخ</p>
+                        <a class="schedule-title" href="#">
+                          <h3>عنوان هر چیز</h3>
                         </a>
                         <p>قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان برده‌اند برای تجدید </p>
                       </div>
@@ -502,16 +526,16 @@
                   <div class="row no-gutters">
                     <div class="col-md-3">
                       <div class="card-identity">
-                        <img src="{{asset('image/homepage/testimonial/testimonial3.png')}}" alt="">
-                        <h3>Adam Jamsmith</h3>
-                        <p>UX/UI Designer</p>
+                        <img src="{{asset('image/homepage/testimonial/testimonial2.png')}}" alt="">
+                        <h4>سربرگ</h4>
+                        <p>تاریخ</p>
                       </div>
                     </div>
                     <div class="col-md-9 align-self-center">
                       <div class="schedule-content">
-                        <p class="schedule-date">9.00 AM - 10.30 AM</p>
+                        <p class="schedule-date">تاریخ</p>
                         <a class="schedule-title" href="#">
-                          <h3>Previous Year achivement</h3>
+                          <h3>عنوان هر چیز</h3>
                         </a>
                         <p>قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان برده‌اند برای تجدید </p>
                       </div>
@@ -532,8 +556,8 @@
   <section class="section-padding bg-gray">
     <div class="container">
       <div class="section-intro text-center pb-98px">
-        <p class="section-intro__title">Join the event</p>
-        <h2 class="primary-text">Choose Your Ticket</h2>
+        <p class="section-intro__title">سربرگ</p>
+        <h2 class="primary-text">پلن درامد زایی</h2>
         <img src="{{asset('image/homepage/home/section-style.png')}}" alt="">
       </div>
 
@@ -541,29 +565,29 @@
         <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
           <div class="text-center card-priceTable">
             <div class="priceTable-header">
-              <h3>Normal</h3>
-              <p>Attend only first day</p>
-              <h1 class="priceTable-price"><span>$</span> 45.00</h1>
+              <h3>عادی</h3>
+              <p>سربرگ</p>
+              <h1 class="priceTable-price"> مبلغ</h1>
             </div>
             <ul class="priceTable-list">
               <li>
-                <span class="position"><i class="ti-check"></i></span> Unlimited Entrance
+                <span class="position"><i class="ti-check"></i></span> اپشن
               </li>
               <li>
-                <span class="position"><i class="ti-check"></i></span> Comfortable Seat
+                <span class="position"><i class="ti-check"></i></span> اپشن
               </li>
               <li>
-                <span class="position"><i class="ti-check"></i></span> Paid Certificate
+                <span class="position"><i class="ti-check"></i></span> اپشن
               </li>
               <li>
-                <span class="negative"><i class="ti-close"></i></span> Day One Workshop
+                <span class="position"><i class="ti-check"></i></span> اپشن
               </li>
               <li>
-                <span class="negative"><i class="ti-close"></i></span> One Certificate
+                <span class="negative"><i class="ti-close"></i></span> اپشن
               </li>
             </ul>
             <div class="priceTable-footer">
-              <a class="button" href="#">Buy Now</a>
+              <a class="button" href="#">خرید </a>
             </div>
           </div>
         </div>
@@ -571,29 +595,29 @@
         <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
           <div class="text-center card-priceTable">
             <div class="priceTable-header">
-              <h3>Advance</h3>
-              <p>Attend only first day</p>
-              <h1 class="priceTable-price"><span>$</span> 50.00</h1>
+              <h3>خاص</h3>
+              <p>سربرگ</p>
+              <h1 class="priceTable-price"> مبلغ</h1>
             </div>
             <ul class="priceTable-list">
               <li>
-                <span class="position"><i class="ti-check"></i></span> Unlimited Entrance
+                <span class="position"><i class="ti-check"></i></span> اپشن
               </li>
               <li>
-                <span class="position"><i class="ti-check"></i></span> Comfortable Seat
+                <span class="position"><i class="ti-check"></i></span> اپشن
               </li>
               <li>
-                <span class="position"><i class="ti-check"></i></span> Paid Certificate
+                <span class="position"><i class="ti-check"></i></span> اپشن
               </li>
               <li>
-                <span class="negative"><i class="ti-close"></i></span> Day One Workshop
+                <span class="position"><i class="ti-check"></i></span> اپشن
               </li>
               <li>
-                <span class="negative"><i class="ti-close"></i></span> One Certificate
+                <span class="position"><i class="ti-check"></i></span> اپشن
               </li>
             </ul>
             <div class="priceTable-footer">
-              <a class="button" href="#">Buy Now</a>
+              <a class="button" href="#">خرید</a>
             </div>
           </div>
         </div>
@@ -601,29 +625,29 @@
         <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
           <div class="text-center card-priceTable">
             <div class="priceTable-header">
-              <h3>Ultimate</h3>
-              <p>Attend only first day</p>
-              <h1 class="priceTable-price"><span>$</span> 60.00</h1>
+              <h3>خاص</h3>
+              <p>سربرگ</p>
+              <h1 class="priceTable-price"> مبلغ</h1>
             </div>
             <ul class="priceTable-list">
               <li>
-                <span class="position"><i class="ti-check"></i></span> Unlimited Entrance
+                <span class="position"><i class="ti-check"></i></span> اپشن
               </li>
               <li>
-                <span class="position"><i class="ti-check"></i></span> Comfortable Seat
+                <span class="position"><i class="ti-check"></i></span> اپشن
               </li>
               <li>
-                <span class="position"><i class="ti-check"></i></span> Paid Certificate
+                <span class="position"><i class="ti-check"></i></span> اپشن
               </li>
               <li>
-                <span class="negative"><i class="ti-close"></i></span> Day One Workshop
+                <span class="position"><i class="ti-check"></i></span> اپشن
               </li>
               <li>
-                <span class="negative"><i class="ti-close"></i></span> One Certificate
+                <span class="position"><i class="ti-check"></i></span> اپشن
               </li>
             </ul>
             <div class="priceTable-footer">
-              <a class="button" href="#">Buy Now</a>
+              <a class="button" href="#">خرید</a>
             </div>
           </div>
         </div>
@@ -637,13 +661,13 @@
   <section class="section-padding--small sponsor-bg">
     <div class="container">
       <div class="section-intro text-center pb-80px">
-        <p class="section-intro__title">Join the event</p>
-        <h2 class="primary-text">Event Plan Sponsors</h2>
+        <p class="section-intro__title">سربرگ</p>
+        <h2 class="primary-text">جاهایی که باهاشون کار میکنیم</h2>
         <img src="{{asset('image/homepage/home/section-style.png')}}" alt="">
       </div>
 
       <div class="sponsor-wrapper mb-5 pb-4">
-        <h3 class="sponsor-title mb-5">Gold Sponsor</h3>
+        <h3 class="sponsor-title mb-5">اسپانسر</h3>
         <div class="row">
           <div class="col-sm-6 col-lg-4 mb-3 mb-lg-0">
             <div class="sponsor-single">
@@ -666,7 +690,7 @@
       </div>
 
       <div class="sponsor-wrapper sponsor-wrapper--small">
-        <h3 class="sponsor-title mb-5">Silver Sponsor</h3>
+        <h3 class="sponsor-title mb-5">اسپانسر</h3>
         <div class="row">
           <div class="col-sm-6 col-lg-4 mb-3 mb-lg-0">
             <div class="sponsor-single">
@@ -695,20 +719,20 @@
   <section class="section-padding gallery-area gallery-bg">
     <div class="container">
       <div class="section-intro section-intro-white text-center pb-98px">
-      <p class="section-intro__title">سربرگ</p>
+        <p class="section-intro__title">سربرگ</p>
         <h2 class="primary-text">سربرگ</h2>
         <img src="{{asset('image/homepage/home/section-style.png')}}" alt="">
       </div>
 
       <div class="row no-gutters">
         <div class="col-sm-6 col-md-4">
-          <a href="img/gallery/g1.png" class="img-gal">
-            <div class="single-imgs relative">
-              <img class="card-img rounded-0" src="{{asset('image/homepage/gallery/g1.png')}}" alt="">
+          <a href="img/gallery/g1.jpg" class="img-gal">
+            <div class="single-imgs relative">				
+              <img class="card-img rounded-0" src="{{asset('image/homepage/gallery/g1.jpg')}}" alt="">		
               <div class="overlay">
                 <div class="overlay-content">
                   <div class="overlay-icon">
-                    <i class="ti-plus"></i>
+                    <i class="fas fa-eye"></i>
                   </div>
                 </div>
               </div>
@@ -717,12 +741,12 @@
         </div>
         <div class="col-sm-6 col-md-4">
           <a href="img/gallery/g2.png" class="img-gal">
-            <div class="single-imgs relative">
-              <img class="card-img rounded-0" src="{{asset('image/homepage/gallery/g2.png')}}" alt="">
+            <div class="single-imgs relative">				
+              <img class="card-img rounded-0" src="{{asset('image/homepage/gallery/ge.jpg')}}" alt="">		
               <div class="overlay">
                 <div class="overlay-content">
                   <div class="overlay-icon">
-                    <i class="ti-plus"></i>
+                    <i class="fas fa-eye"></i>
                   </div>
                 </div>
               </div>
@@ -731,12 +755,12 @@
         </div>
         <div class="col-sm-6 col-md-4">
           <a href="img/gallery/g3.png" class="img-gal">
-            <div class="single-imgs relative">
-              <img class="card-img rounded-0" src="{{asset('image/homepage/gallery/g3.png')}}" alt="">
+            <div class="single-imgs relative">				
+              <img class="card-img rounded-0" src="{{asset('image/homepage/gallery/g1.jpg')}}" alt="">		
               <div class="overlay">
                 <div class="overlay-content">
                   <div class="overlay-icon">
-                    <i class="ti-plus"></i>
+                    <i class="fas fa-eye"></i>
                   </div>
                 </div>
               </div>
@@ -745,12 +769,12 @@
         </div>
         <div class="col-sm-6 col-md-4">
           <a href="img/gallery/g4.png" class="img-gal">
-            <div class="single-imgs relative">
-              <img class="card-img rounded-0" src="{{asset('image/homepage/gallery/g4.png')}}" alt="">
+            <div class="single-imgs relative">				
+              <img class="card-img rounded-0" src="{{asset('image/homepage/gallery/ge.jpg')}}" alt="">		
               <div class="overlay">
                 <div class="overlay-content">
                   <div class="overlay-icon">
-                    <i class="ti-plus"></i>
+                    <i class="fas fa-eye"></i>
                   </div>
                 </div>
               </div>
@@ -759,12 +783,12 @@
         </div>
         <div class="col-sm-6 col-md-4">
           <a href="img/gallery/g5.png" class="img-gal">
-            <div class="single-imgs relative">
-              <img class="card-img rounded-0" src="{{asset('image/homepage/gallery/g5.png')}}" alt="">
+            <div class="single-imgs relative">				
+              <img class="card-img rounded-0" src="{{asset('image/homepage/gallery/g1.jpg')}}" alt="">		
               <div class="overlay">
                 <div class="overlay-content">
                   <div class="overlay-icon">
-                    <i class="ti-plus"></i>
+                    <i class="fas fa-eye"></i>
                   </div>
                 </div>
               </div>
@@ -773,12 +797,12 @@
         </div>
         <div class="col-sm-6 col-md-4">
           <a href="img/gallery/g6.png" class="img-gal">
-            <div class="single-imgs relative">
-              <img class="card-img rounded-0" src="{{asset('image/homepage/gallery/g6.png')}}" alt="">
+            <div class="single-imgs relative">				
+              <img class="card-img rounded-0" src="{{asset('image/homepage/gallery/ge.jpg')}}" alt="">		
               <div class="overlay">
                 <div class="overlay-content">
                   <div class="overlay-icon">
-                    <i class="ti-plus"></i>
+                    <i class="fas fa-eye"></i>
                   </div>
                 </div>
               </div>
