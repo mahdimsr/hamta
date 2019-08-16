@@ -28,21 +28,21 @@ class LessonExamController extends Controller
 
 
 
-	public function add(Request $r)
+	public function add(Request $request)
 	{
 		//validate here
 
 
 		//after validate
 
-		$answerFile = $r->file('answerSheet');
+		$answerFile = $request->file('answerSheet');
 
 		$lessonExam = new LessonExam();
 
 		$lessonExam->exm         = 'TextExm';
-		$lessonExam->title       = $r->input('title');
-		$lessonExam->description = $r->input('description');
-		$lessonExam->price       = $r->input('price');
+		$lessonExam->title       = $request->input('title');
+		$lessonExam->description = $request->input('description');
+		$lessonExam->price       = $request->input('price');
 		$lessonExam->answerSheet = $answerFile->hashName();
 
 		$lessonExam->save();
@@ -54,9 +54,9 @@ class LessonExamController extends Controller
 
 
 
-	public function remove(Request $r)
+	public function remove($exm)
 	{
-		$exam = LessonExam::query()->where('exm',$r->input('exm'))->first();
+		$exam = LessonExam::query()->where('exm',$exm)->first();
 
 		return response()->json(['success'=>'Data is successfully added']);
 	}

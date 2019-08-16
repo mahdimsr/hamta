@@ -19,9 +19,9 @@ class OrientationController extends Controller
 
 
 
-	public function remove(Request $request)
+	public function remove($url)
 	{
-		$orientation = Orientation::query()->where('url', $request->input('url'))->first();
+		$orientation = Orientation::query()->where('url', $url)->first();
 
 		$orientation->delete();
 

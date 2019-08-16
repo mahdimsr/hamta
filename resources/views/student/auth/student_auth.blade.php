@@ -42,7 +42,7 @@
 
 
           <div class="input-block">
-            <input type="text" id="mobile-email" class="basic-slide" name="mobile-email" placeholder="ایمیل"  value="{{old('mobile-email')}}" required>
+            <input type="text" id="mobile-email" class="basic-slide" name="mobile-email" placeholder="شماره تلفن همراه یا پست الکترونیکی"  value="{{ $userInfo ? $userInfo : old('mobile-email')}}" required>
             <label for="mobile-email">ایمیل</label>
             <small>{{$errors->first('mobile-email')}}</small>
           </div>
@@ -54,16 +54,16 @@
 
 
           <div class="input-block">
-          
-            <input type="password" id="password" name="password"  class="basic-slide" placeholder="پسورد" required>
-            <label for="password" class="a">کلمه عبور</label>
+
+            <input type="password" id="password" name="password"  class="basic-slide" placeholder="رمز عبور" value="{{ $passInfo ? $passInfo : old('password') }}" required>
+            <label for="password" class="a">رمز عبور</label>
 			<small>{{$errors->first('password')}}</small>
           </div>
 
 
           <div class="con">
               <label>مرا به خاطر داشته باش
-                  <input type="checkbox" checked="checked">
+                  <input type="checkbox" name="remember" {{ $userInfo ? 'checked' : ''  }} >
                   <span class="checkmark"></span>
                 </label>
                 </div>
@@ -77,13 +77,13 @@
 
         </fieldset>
         <button type="submit" class="btn btn-blow">
-          
+
         <span>
-        
-      
+
+
         ورود
 </span>
-      
+
       </button>
       </form>
     </div>
@@ -120,7 +120,7 @@
             <small>{{$errors->first('studentmobile')}}</small>
           </div>
           <div class="input-block">
-          
+
             <input type="password" id="password" class="basic-slide" name="password_signup" placeholder="کلمه عبور خود را وارد نمایید" required>
 
             <label for="password" class="a">کلمه عبور</label>
@@ -130,7 +130,7 @@
             <small>{{ $errors->first('password_signup')}}</small>
           </div>
           <div class="input-block">
-           
+
 
 
 
@@ -151,13 +151,13 @@
 
         </fieldset>
         <button type="submit" class="btn btn-blow">
-          
-        
+
+
         <span>
         ثبت نام
-      
+
 </span>
-      
+
       </button>
       </form>
     </div>

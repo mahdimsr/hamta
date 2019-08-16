@@ -19,9 +19,9 @@ class LessonController extends Controller
 
 
 
-	public function remove(Request $request)
+	public function remove($url)
 	{
-		$lesson = Lesson::query()->where('url', $request->input('url'))->first();
+		$lesson = Lesson::query()->where('url', $url)->first();
 
 		$lesson->delete();
 
