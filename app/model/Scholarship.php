@@ -33,7 +33,7 @@ class Scholarship extends Model
 		self::creating(function($model)
 		{
 
-			while (self::where('hash', $url = substr(md5(uniqid(rand(), true)),0,4))->exists())
+			while (self::where('url', $url = substr(md5(uniqid(rand(), true)),0,4))->exists())
 			{
 				;
 			}
