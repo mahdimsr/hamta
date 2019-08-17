@@ -31,7 +31,9 @@ Route::namespace('Student')->group(function()
 	{
 
 		Route::get('/profile', 'DashboardController@profile')->name('student_dashboard_profile');
-		Route::post('/profile', 'DashboardController@update')->name('student_dashboard_profile_update');
+        Route::post('/profile', 'DashboardController@update')->name('student_dashboard_profile_update');
+        Route::get('/scholarship', 'ScholarshipController@scholarship')->name('student_dashboard_scholarship');
+		Route::post('/scholarship', 'ScholarshipController@submit')->name('student_dashboard_scholarship_submit');
 
 	});
 });

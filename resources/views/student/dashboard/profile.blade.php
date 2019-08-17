@@ -1,19 +1,4 @@
 @extends('layouts.student_dashboard')
-@section('welcome')
-<div class="logo" dir="rtl">
-        <a  class="simple-text">
-         {{$student->isComplete==0 ? 'دانش آموز گرامی خوش آمدی!' :$student->name.' '.$student->familyName.' خوش آمدی!' }}
-        </a>
-    </div>
-@endsection
-@section('updateinfo')
-<li>
-        <a href="{{ route('student_dashboard_profile')}}">
-                <i class="pe-7s-user"></i>
-            <p>{{$student->isComplete==0?'تکمیل اطلاعات' : 'ویرایش اطلاعات'}}</p>
-        </a>
-</li>
-@endsection
 @section('content')
 
 	<div class="row" dir="rtl">
