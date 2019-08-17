@@ -23,6 +23,9 @@ class CreateLessonExamTable extends Migration
 			$table->string('description')->nullable();
 			$table->integer('price')->default(0);
 			$table->string('answerSheet')->nullable();
+			$table->bigInteger('questionCount')->default(0);
+			$table->boolean('isComplete')->default(false);
+			$table->boolean('isPublic')->default(false);
 			$table->timestamps();
 			$table->softDeletes();
 		});
