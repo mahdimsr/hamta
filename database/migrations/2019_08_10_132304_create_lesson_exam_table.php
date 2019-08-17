@@ -17,10 +17,11 @@ class CreateLessonExamTable extends Migration
 		Schema::create('lesson_exam', function(Blueprint $table)
 		{
 			$table->bigIncrements('id');
+			$table->bigInteger('gradeLessonId');
 			$table->string('exm');
 			$table->string('title');
 			$table->string('description')->nullable();
-			$table->integer('price');
+			$table->integer('price')->default(0);
 			$table->string('answerSheet')->nullable();
 			$table->timestamps();
 			$table->softDeletes();

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Dashboard;
 
+use App\model\Grade;
+use App\model\Lesson;
 use App\model\LessonExam;
+use App\model\Orientation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -16,14 +19,18 @@ class LessonExamController extends Controller
 	{
 		$lessonExam = LessonExam::all();
 
-		return view('admin.dashboard.lessonExam.exams',compact('lessonExam'));
+		return view('admin.dashboard.lessonExam.exams', compact('lessonExam'));
 	}
 
 
 
 	public function addShow()
 	{
-		return view('admin.dashboard.lessonExam.add');
+		$lessons      = Lesson::all();
+		$grades       = Grade::all();
+		$orientations = Orientation::all();
+
+		return view('admin.dashboard.lessonExam.form', compact('lessons', 'grades', 'orientations'));
 	}
 
 
@@ -32,6 +39,20 @@ class LessonExamController extends Controller
 	{
 		//validate here
 
+
+		$this->validate($request, [
+
+			'lessonUrl'      => 'required|exists:lesson,url',
+			'gradeUrl'       => 'required|exists:grade,url',
+			'orientationUrl' => 'required|exists:orientation,url',
+			'title'          => 'required|string|between:5,20',
+
+		]);
+
+
+		$lesson      = Lesson::query()->where('url', $request->input('lessonUrl'))->first();
+		$grade       = Grade::query()->where('url', $request->input('gradeUrl'))->first();
+		$orientation = Orientation::query()->where('url', $request->input('orientationUrl'))->first();
 
 		//after validate
 
@@ -56,8 +77,8 @@ class LessonExamController extends Controller
 
 	public function remove($exm)
 	{
-		$exam = LessonExam::query()->where('exm',$exm)->first();
+		$exam = LessonExam::query()->where('exm', $exm)->first();
 
-		return response()->json(['success'=>'Data is successfully added']);
+		return response()->json(['success' => 'Data is successfully added']);
 	}
 }

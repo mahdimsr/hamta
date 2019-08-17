@@ -52,19 +52,26 @@ Route::namespace('Admin')->group(function()
 
 		Route::prefix('admins')->group(function()
 		{
-			Route::get('/','RegisterController@admins')->name('admin_admins');
-			Route::get('/add','RegisterController@addShow')->name('admin_admins_addShow');
-			Route::post('/add','RegisterController@add')->name('admin_admins_add');
-			Route::get('/edit/{username}','RegisterController@editShow')->name('admin_admins_editShow');
-			Route::post('/edit/{username}','RegisterController@edit')->name('admin_admins_edit');
+			Route::get('/', 'RegisterController@admins')->name('admin_admins');
+			Route::get('/add', 'RegisterController@addShow')->name('admin_admins_addShow');
+			Route::post('/add', 'RegisterController@add')->name('admin_admins_add');
+			Route::get('/edit/{username}', 'RegisterController@editShow')->name('admin_admins_editShow');
+			Route::post('/edit/{username}', 'RegisterController@edit')->name('admin_admins_edit');
 		});
 
 		Route::prefix('exams')->group(function()
 		{
-			Route::get('/', 'LessonExamController@exams')->name('admin_exams');
-			Route::get('/add', 'LessonExamController@addShow')->name('admin_exams_addShow');
-			Route::post('/add', 'LessonExamController@add')->name('admin_lExam_add');
-			Route::post('/remove', 'LessonExamController@remove')->name('admin_lExam_remove');
+			Route::get('/', 'DashboardController@exams')->name('admin_exams');
+
+			Route::prefix('/lessonToLesson')->group(function()
+			{
+				Route::get('/', 'LessonExamController@exams')->name('admin_ltl_exams');
+				Route::get('/add', 'LessonExamController@addShow')->name('admin_ltlExams_addShow');
+				Route::post('/add', 'LessonExamController@add')->name('admin_lExam_add');
+				Route::post('/remove', 'LessonExamController@remove')->name('admin_lExam_remove');
+			});
+
+
 
 		});
 
