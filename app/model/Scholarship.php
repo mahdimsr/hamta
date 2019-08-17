@@ -24,6 +24,8 @@ class Scholarship extends Model
 
 	protected $table = 'scholarship';
 
+	protected $appends = ['persianStatus'];
+
 
 
 	protected static function boot()
@@ -33,23 +35,49 @@ class Scholarship extends Model
 		self::creating(function($model)
 		{
 
-			while (self::where('url', $url = substr(md5(uniqid(rand(), true)),0,4))->exists())
+			while (self::where('url', $url = substr(md5(uniqid(rand(), true)), 0, 4))->exists())
 			{
 				;
 			}
 
 			$model->url = $url;
 		});
-    }
+	}
 
-    public function student()
-    {
-        return $this->hasOne('App\model\Student','id','studentId');
-    }
 
-    public function admin()
-    {
-        return $this->hasOne('App\model\Admin','id','adminId');
-    }
+
+	public function getPersianStatusAttribute()
+	{
+		return $this->persianEnum($this->status);
+	}
+
+
+
+	public function student()
+	{
+		return $this->hasOne('App\model\Student', 'id', 'studentId');
+	}
+
+
+
+	public function admin()
+	{
+		return $this->hasOne('App\model\Admin', 'id', 'adminId');
+	}
+
+
+
+	public function persianEnum($enumKey)
+	{
+		$enumArray = [
+
+			'NOT-SEEN'    => 'مشاهده نشده',
+			'IN-PROGRESS' => 'درحال بررسی',
+			'ACCEPT'      => 'پذیرفته شده',
+			'DECLINE'     => 'رد شده',
+		];
+
+		return $enumArray[$enumKey];
+	}
 
 }
