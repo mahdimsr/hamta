@@ -40,7 +40,7 @@ class GradeLessonController extends Controller
 		$grades       = Grade::all();
 		$lessons      = Lesson::all();
 
-		return view('admin.dashboard.gradeLesson.add', compact('orientations', 'grades', 'modify'));
+		return view('admin.dashboard.gradeLesson.form', compact('orientations', 'grades', 'lessons', 'modify'));
 	}
 
 
@@ -51,24 +51,15 @@ class GradeLessonController extends Controller
 
 			'orientation' => 'required|exists:orientation,url',
 			'grade'       => 'required|exists:grade,url',
+			'lesson'      => 'required|exists:lesson,url',
 			'type'        => 'required|exists:grade_lesson,type',
-			'title'       => 'required|string|unique:lesson,title',
-			'code'        => 'required|numeric|digits:2|unique:lesson,code', //it is lesson code
-			'url'         => 'required|alpha|unique:lesson,url', // it is lesson url
 			'ratio'       => 'required|numeric|digits:1', // it is gradeLesson ratio
 
 		]);
 
 		$orientation = Orientation::query()->where('url', $request->input('orientation'))->first();
 		$grade       = Grade::query()->where('url', $request->input('grade'))->first();
-
-		$lesson = new Lesson();
-
-		$lesson->code  = $request->input('code');
-		$lesson->title = $request->input('title');
-		$lesson->url   = $request->input('url');
-
-		$lesson->save();
+		$lesson      = Lesson::query()->where('url', $request->input('lesson'))->first();
 
 		$gradeLesson = new GradeLesson();
 
@@ -95,7 +86,7 @@ class GradeLessonController extends Controller
 		$grades       = Grade::all();
 		$lessons      = Lesson::all();
 
-		return view('admin.dashboard.gradeLesson.edit', compact('orientations', 'grades', 'lessons', 'gradeLesson', 'modify'));
+		return view('admin.dashboard.gradeLesson.form', compact('orientations', 'grades', 'lessons', 'gradeLesson', 'modify'));
 
 	}
 
