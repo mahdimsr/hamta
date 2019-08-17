@@ -136,10 +136,10 @@ Route::namespace('Admin')->group(function()
 Route::get('/test', function()
 {
 
-	$gradeLesson = \App\model\GradeLesson::query()->first();
+	$admin = \Illuminate\Support\Facades\Auth::guard('admin')->user();
+	$admin = \App\model\Admin::query()->with('children')->find(\Illuminate\Support\Facades\Auth::guard('admin')->id());
 
-	$code = substr($gradeLesson->code, 2, 4);
 
-	return $code;
+	return $admin;
 
 });

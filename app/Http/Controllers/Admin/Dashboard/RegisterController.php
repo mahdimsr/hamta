@@ -42,6 +42,7 @@ class RegisterController extends Controller
 
 		$admin = new Admin();
 
+		$admin->parentId = Auth::guard('admin')->id();
 		$admin->fullName = $request->input('fullName');
 		$admin->username = $request->input('username');
 		$admin->password = Hash::make($request->input('password'));

@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 /**
  * @property \Carbon\Carbon $created_at
  * @property int $id
+ * @property int $parentId
  * @property string $fullName
  * @property string $username
  * @property string $password
@@ -23,4 +24,18 @@ class Admin extends Authenticatable
 	protected $guarded = 'admin';
 
 	protected $table = 'admin';
+
+
+
+	public function parent()
+	{
+		return $this->belongsTo(Admin::class, 'id', 'parentId');
+	}
+
+
+
+	public function children()
+	{
+		return $this->hasMany(Admin::class, 'parentId', 'id');
+	}
 }
