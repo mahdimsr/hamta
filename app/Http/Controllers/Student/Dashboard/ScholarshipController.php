@@ -23,7 +23,9 @@ class ScholarshipController extends Controller
 
     public function submit(Request $request)
     {
+
         $student      = Auth::guard('student')->user();
+        $scholarship  = $student->scholarship()->first();
 
         $this->validate($request,
             [
@@ -33,16 +35,26 @@ class ScholarshipController extends Controller
 
 		$studentId = ['stdMessage' => $student->id];
 
-		$validator = Validator::make($studentId ,  [
+        $validator = Validator::make($studentId,
+        [
 			'stdMessage' => 'unique:scholarship,studentId',
-		], [
+        ],
+        [
 			'stdMessage.unique' => 'شما قبلا درخواست بورسیه داده اید.',
-		]);
+        ]
+        );
 
-		if ($validator->fails())
+		if ($validator->fails() && $scholarship->status!='NOT-SEEN')
 		{
 			return redirect()->back()->with(['errors' => $validator->errors()]);
 		}
+
+		else if ($validator->fails() && $scholarship->status=='NOT-SEEN')
+		{
+            $scholarship->stdMessage=$request->input('stdMessage');
+            $scholarship->save();
+            return redirect()->route('student_dashboard_scholarship');
+        }
 
         else
         {
@@ -51,7 +63,7 @@ class ScholarshipController extends Controller
             $scholarship->studentId=Auth::guard('student')->id();
             $scholarship->stdMessage=$request->input('stdMessage');
             $scholarship->save();
-            return redirect()->route('student.dashboard.scholarship');
+            return redirect()->route('student_dashboard_scholarship');
 
         }
 
