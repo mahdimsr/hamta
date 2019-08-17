@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Student\Dashboard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use App\model\Scholarship as Scholarship;
 
 class ScholarshipController extends Controller
@@ -15,22 +16,45 @@ class ScholarshipController extends Controller
     {
 
         $student      = Auth::guard('student')->user();
-        return view('student.dashboard.scholarship',compact('student'));
+        $scholarship  = $student->scholarship()->first();
+        return view('student.dashboard.scholarship',compact('student','scholarship'));
 
     }
 
     public function submit(Request $request)
     {
+        $student      = Auth::guard('student')->user();
+
         $this->validate($request,
             [
                 'stdMessage'   =>  'Required|string|between:10,500'
             ]
         );
-        $scholarship=new Scholarship();
-        $scholarship->studentId=Auth::guard('student')->id();
-        $scholarship->stdMessage=$request->input('stdMessage');
-        $scholarship->save();
-        return redirect()->route('student.dashboard.scholarship');
+
+		$studentId = ['stdMessage' => $student->id];
+
+		$validator = Validator::make($studentId ,  [
+			'stdMessage' => 'unique:scholarship,studentId',
+		], [
+			'stdMessage.unique' => 'شما قبلا درخواست بورسیه داده اید.',
+		]);
+
+		if ($validator->fails())
+		{
+			return redirect()->back()->with(['errors' => $validator->errors()]);
+		}
+
+        else
+        {
+
+            $scholarship=new Scholarship();
+            $scholarship->studentId=Auth::guard('student')->id();
+            $scholarship->stdMessage=$request->input('stdMessage');
+            $scholarship->save();
+            return redirect()->route('student.dashboard.scholarship');
+
+        }
+
     }
 
 }

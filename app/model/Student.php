@@ -34,5 +34,9 @@ class Student extends Authenticatable
         return $this->hasOne('App\model\Grade','id','gradeId');
     }
 
+    public function scholarship()
+    {
+        return $this->hasOne('App\model\Scholarship','studentId','id');
+    }
 }
 
