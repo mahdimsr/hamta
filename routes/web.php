@@ -72,7 +72,6 @@ Route::namespace('Admin')->group(function()
 			});
 
 
-
 		});
 
 
@@ -117,6 +116,12 @@ Route::namespace('Admin')->group(function()
 			Route::post('/add', 'LessonController@add')->name('admin_lessons_add');
 			Route::get('/edit/{url}', 'LessonController@editShow')->name('admin_lessons_editShow');
 			Route::post('/edit/{url}', 'LessonController@edit')->name('admin_lessons_edit');
+		});
+
+		Route::prefix('scholarships')->group(function()
+		{
+			Route::get('/','ScholarshipController@scholarships')->name('admin_scholarships');
+			Route::get('/editShow/{url}','ScholarshipController@editShow')->name('admin_scholarships_editShow');
 		});
 
 

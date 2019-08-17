@@ -5,6 +5,7 @@ namespace App\model;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
 /**
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
@@ -16,11 +17,29 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $adminMessage
  * @property \Carbon\Carbon $deleted_at
  */
-
 class Scholarship extends Model
 {
-    //
-    use SoftDeletes;
-    protected $table='scholarship';
+	//
+	use SoftDeletes;
+
+	protected $table = 'scholarship';
+
+
+
+	protected static function boot()
+	{
+		parent::boot();
+
+		self::creating(function($model)
+		{
+
+			while (self::where('hash', $url = substr(md5(uniqid(rand(), true)),0,4))->exists())
+			{
+				;
+			}
+
+			$model->url = $url;
+		});
+	}
 
 }

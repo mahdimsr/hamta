@@ -87,6 +87,12 @@
 						<p>ادمین ها</p>
 					</a>
 				</li>
+				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_scholarships' ? 'active' : ''}}">
+					<a href="{{route('admin_scholarships')}}">
+						<i class="pe-7s-news-paper"></i>
+						<p>بورسیه ها</p>
+					</a>
+				</li>
 
 
 			</ul>
