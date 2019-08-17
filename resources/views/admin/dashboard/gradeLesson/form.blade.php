@@ -6,7 +6,7 @@
 		<div class="col-md-12">
 			<div class="card text-right">
 				<div class="header ">
-					<h4 class="title">افزودن درس</h4>
+					<h4 class="title">ویرایش درس</h4>
 				</div>
 
 
@@ -21,7 +21,7 @@
 				@endif
 
 				<div class="content">
-					<form method="post" action="{{route('admin_gradeLessons_add')}}">
+					<form method="post" action="{{$modify == 0 ? route('admin_gradeLessons_add') : route('admin_gradeLessons_edit',['code' => $gradeLesson->code])}}">
 
 						{{csrf_field()}}
 
@@ -33,7 +33,7 @@
 									<select dir="rtl" name="orientation" class="form-control" required>
 										<option selected disabled>گرایش درس را انتخاب نمایید</option>
 										@foreach ( $orientations as $orientation )
-											<option value="{{ $orientation->url }}" {{ old('orientation')==$orientation->url? 'selected' : '' }}>{{ $orientation->title }}</option>
+											<option value="{{ $orientation->url }}" {{ $modify == 0 ? old('orientation') : $orientation->url == $gradeLesson->orientation->url? 'selected' : '' }}>{{ $orientation->title }}</option>
 										@endforeach
 									</select>
 								</div>
@@ -43,10 +43,10 @@
 									<label>نوع درس</label>
 									<select dir="rtl" name="type" class="form-control" required>
 										<option selected disabled>نوع درس را انتخاب نمایید</option>
-										<option value="{{ 'GENERAL' }}" {{ old('type')=='GENERAL'? 'selected' : '' }}>
+										<option value="{{ 'GENERAL' }}" {{$modify == 0 ? old('type') : $gradeLesson->type =='GENERAL'? 'selected' : '' }}>
 											عمومی
 										</option>
-										<option value="{{ 'EXPERT' }}" {{ old('type')=='EXPERT'? 'selected' : '' }}>
+										<option value="{{ 'EXPERT' }}" {{$modify == 0 ? old('type') : $gradeLesson->type =='EXPERT'? 'selected' : '' }}>
 											تخصصی
 										</option>
 									</select>
@@ -58,45 +58,35 @@
 									<select dir="rtl" name="grade" class="form-control" required>
 										<option selected disabled>مقطع درس را انتخاب نمایید</option>
 										@foreach ( $grades as $grade )
-											<option value="{{ $grade->url }}" {{ old('grade')==$grade->url? 'selected' : '' }}>{{ $grade->title }}</option>
+											<option value="{{ $grade->url }}" {{$modify == 0 ? old('grade') : $grade->url == $gradeLesson->grade->url? 'selected' : '' }}>{{ $grade->title }}</option>
+										@endforeach
+									</select>
+								</div>
+							</div>
+
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>ضریب درس</label>
+									<input name="ratio" dir="rtl" type="text" class="form-control"
+										   placeholder="مثلا: 4" value="{{$modify == 0 ? old('ratio') : $gradeLesson->ratio}}">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>عنوان درس</label>
+									<select dir="rtl" name="lesson" class="form-control" required>
+										<option selected disabled>درس را انتخاب کنید</option>
+										@foreach ( $lessons as $lesson )
+											<option value="{{ $lesson->url }}" {{ $modify == 0 ? old('ratio') : $gradeLesson->lesson->url == $lesson->url? 'selected' : '' }}>{{ $lesson->title.' - '.$lesson->code }}</option>
 										@endforeach
 									</select>
 								</div>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-2">
-								<div class="form-group">
-									<label>ضریب درس</label>
-									<input name="ratio" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: 4" value="{{old('ratio')}}">
-								</div>
-							</div>
-							<div class="col-md-2">
-								<div class="form-group">
-									<label>کد درس</label>
-									<input name="code" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: 05" value="{{old('code')}}">
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>عنوان لاتین درس</label>
-									<input name="url" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: math" value="{{old('url')}}">
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>عنوان درس</label>
-									<input name="title" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: ریاضی" value="{{old('title')}}">
-								</div>
-							</div>
-						</div>
 
-
-						<button type="submit" class="btn btn-info btn-fill pull-right">افزودن</button>
+						<button type="submit" class="btn btn-info btn-fill pull-right">اعمال</button>
 						<div class="clearfix"></div>
 					</form>
 				</div>
