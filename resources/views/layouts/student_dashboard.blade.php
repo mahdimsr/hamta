@@ -41,7 +41,7 @@
 			font-style: normal;
 			font-weight: bold;
 		}*/
-	
+
 	</style>
 </head>
 <body>
@@ -57,17 +57,26 @@
 		-->
 
 		<div class="sidebar-wrapper">
-			@yield('welcome')
+			<div class="logo" dir="rtl">
+                <a  class="simple-text">
+                 {{$student->isComplete==0 ? 'دانش آموز گرامی خوش آمدی!' :$student->name.' '.$student->familyName.' خوش آمدی!' }}
+                </a>
+            </div>
 			<ul class="nav text-right ">
-				@yield('updateinfo')
-                <li>
+				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_profile' ? 'active' : ''}}">
+                    <a href="{{ route('student_dashboard_profile')}}">
+                            <i class="pe-7s-user"></i>
+                        <p>{{$student->isComplete==0?'تکمیل اطلاعات' : 'ویرایش اطلاعات'}}</p>
+                    </a>
+            </li>
+                <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_exam' ? 'active' : ''}}">
                             <a href="#">
                                 <i class="pe-7s-news-paper"></i>
                                 <p>آزمون های آنلاین</p>
                             </a>
                 </li>
-                <li>
-                        <a href="#">
+                <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_scholarship' ? 'active' : ''}}">
+                        <a href="{{ route('student_dashboard_scholarship')}}">
                                 <i class="pe-7s-note2"></i>
                             <p>بورسیه</p>
                         </a>
