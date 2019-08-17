@@ -23,13 +23,8 @@
 								<td>{{$scholarShip->persianStatus}}</td>
 								<td>
 									<a href="{{route('admin_scholarships_editShow',['url' => $scholarShip->url])}}"
-									   id="remove-btn" type="button"
-									   style="font-size: 12px;" class="btn btn-danger">
-										حذف
-									</a>
-									<a href="{{route('admin_scholarships_editShow',['url' => $scholarShip->url])}}"
 									   style="font-size: 12px;" class="btn btn-info">
-										ویرایش
+										مشاهده
 									</a>
 								</td>
 							</tr>
