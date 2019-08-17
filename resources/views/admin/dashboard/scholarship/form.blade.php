@@ -6,7 +6,25 @@
 		<div class="col-md-12">
 			<div class="card text-right">
 				<div class="header ">
-					<h4 class="title">افزودن مقطع</h4>
+					<h4 class="title">{{$scholarship->student->name . ' ' . $scholarship->student->familyName}}</h4>
+				</div>
+				<div class="content">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label>پیغام دانش آمور</label>
+								<p>{{$scholarship->stdMessage}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-12">
+			<div class="card text-right">
+				<div class="header ">
+					<h4 class="title">پاسخ به درخواست</h4>
 				</div>
 
 
@@ -21,36 +39,33 @@
 				@endif
 
 				<div class="content">
-					<form method="post" action="{{  $modify == 0 ? route('admin_grades_add') : route('admin_grades_edit', ['url' => $grade->url]) }}">
+					<form method="POST" action="{{route('admin_scholarships_edit',['url' => $scholarship->url])}}">
 
 						{{csrf_field()}}
 
 						<div class="row">
-							<div class="col-md-4">
+							<div class="col-md-12">
 								<div class="form-group">
-									<label>پارامتر مقطع</label>
-									<input name="urlGrade" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: tenth-grade" value="{{old('urlGrade') ? old('urlGrade') : ''}} {{ $modify==1 && !old('urlGrade') ? $grade->url : '' }}">
+									<label>پیغام ادمین</label>
+									<textarea dir="rtl" name="adminMessage" rows="5" class="form-control"
+											  placeholder="متن درخواست خود را وارد نمایید" required></textarea>
 								</div>
 							</div>
-							<div class="col-md-4">
+						</div>
+						<div class="row">
+							<div class="col-md-12">
 								<div class="form-group">
-									<label>کد مقطع</label>
-									<input name="codeGrade" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: 10" value="{{old('codeGrade') ? old('codeGrade') : ''}} {{ $modify==1 && !old('codeGrade') ? $grade->code : '' }}">
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>عنوان مقطع</label>
-									<input name="titleGrade" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: مقطع دهم" value="{{old('titleGrade') ? old('titleGrade') : '' }} {{ $modify==1 && !old('titleGrade') ? $grade->title : '' }}">
+									<label>پیغام ادمین</label>
+									<select dir="rtl" name="status" class="form-control" required>
+										<option value="IN-PROGRESS" {{ old('status')==$scholarship->status? 'selected' : '' }}>درحال پردازش</option>
+										<option value="ACCEPT" {{ old('status')==$scholarship->status? 'selected' : '' }}>پذیرش بورسیه</option>
+										<option value="DECLINE" {{ old('status')==$scholarship->status? 'selected' : '' }}>رد کردن درخواست</option>
+									</select>
 								</div>
 							</div>
 						</div>
 
-
-						<button type="submit" class="btn btn-info btn-fill pull-right">افزودن</button>
+						<button type="submit" class="btn btn-info btn-fill pull-right">پردازش</button>
 						<div class="clearfix"></div>
 					</form>
 				</div>

@@ -19,18 +19,18 @@
 						<tbody class="text-center">
 						@foreach($scholarships as $scholarShip)
 							<tr>
-								<td>{{$scholarShip->code}}</td>
-								<td>{{$scholarShip->status}}</td>
+								<td>{{$scholarShip->student->name .' ' .$scholarShip->student->familyName}}</td>
+								<td>{{$scholarShip->persianStatus}}</td>
 								<td>
-
-									<a href="{{route('admin_grades_remove',['url' => $scholarShip->url])}}" id="remove-btn" type="button"
-											style="font-size: 12px;" class="btn btn-danger">
+									<a href="{{route('admin_scholarships_editShow',['url' => $scholarShip->url])}}"
+									   id="remove-btn" type="button"
+									   style="font-size: 12px;" class="btn btn-danger">
 										حذف
 									</a>
-									<a href="{{route('admin_grades_editShow',['url' => $scholarShip->url])}}" style="font-size: 12px;" class="btn btn-info">
+									<a href="{{route('admin_scholarships_editShow',['url' => $scholarShip->url])}}"
+									   style="font-size: 12px;" class="btn btn-info">
 										ویرایش
 									</a>
-
 								</td>
 							</tr>
 						@endforeach
