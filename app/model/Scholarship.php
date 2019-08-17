@@ -40,6 +40,16 @@ class Scholarship extends Model
 
 			$model->url = $url;
 		});
-	}
+    }
+
+    public function student()
+    {
+        return $this->hasOne('App\model\Student','id','studentId');
+    }
+
+    public function admin()
+    {
+        return $this->hasOne('App\model\Admin','id','adminId');
+    }
 
 }
