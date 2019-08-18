@@ -6,7 +6,7 @@
     <title>ورود ادمین</title>
     <link rel='stylesheet' type='text/css' media='screen' href="{{asset('css/admin/auth/style.css')}}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-   
+
 </head>
 <body>
         <form method="post" action="{{ route('admin_login_submit')}}">
@@ -20,25 +20,27 @@
     <h3>ورود ادمین</h3>
 
     <div class="inputbox">
-<input type="text" name="username" placeholder="نام کاربری">
+<input type="text" name="username" placeholder="نام کاربری" value="{{ $adminInfo ? $adminInfo : old('username')}}">
 <span><i class="fas fa-users" aria-hidden="true"></i></span>
     </div>
-
-    <div class="inputbox">
-            <input type="text" name="password" placeholder="رمز عبور">
+    <small>{{  $errors->first('username')}}</small>
+            <input type="text" name="password" placeholder="رمز عبور" value="{{ $adminPass ? $adminPass : old('password') }}">
             <span><i class="fas fa-lock"></i></span>
                 </div>
-                <input type="submit" name="" value="ورود">
+                <small>{{$errors->first('password')}}</small>
+                <input type="submit" value="ورود">
 
 
 				<div class="con">
               <label>مرا به خاطر داشته باش
-                  <input type="checkbox" name="remember">
+                  <input type="checkbox" name="remember" {{ $adminInfo ? 'checked' : ''  }}>
                   <span class="checkmark"></span>
                 </label>
                 </div>
+                @if($errors->any())
+                <small class="err" >{{$errors->first('message')}}</small>
+                @endif
    </div>
-   <p class="err">خطا در اتصال</p>
 </form>
 
 </body>

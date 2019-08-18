@@ -17,16 +17,25 @@
                                                 <p>توضیحات مربوط به درخواست</p>
                                                 <hr>
                                                 <label>توضیحات درخواست</label>
-                                                <textarea dir="rtl" name="stdMessage" rows="5" class="form-control" placeholder="متن درخواست خود را وارد نمایید" required @unless($scholarship=='') {{ $scholarship->status!='NOT-SEEN' ? 'disabled' : '' }} @endunless>@unless ($scholarship==''){{ $scholarship->status!='NOT-SEEN' && !old('stdMessage') ? $scholarship->stdMessage : '' }}@endunless{{ old('stdMessage') ? old('stdMessage') : '' }}</textarea>
+                                                <textarea dir="rtl" name="stdMessage" rows="5" class="form-control" placeholder="متن درخواست خود را وارد نمایید" required @unless(empty($scholarship)) {{ $scholarship->status!='NOT-SEEN' ? 'disabled' : '' }} @endunless>@unless(empty($scholarship)){{ $scholarship->status && !old('stdMessage') ? $scholarship->stdMessage : '' }}@endunless{{ old('stdMessage') ? old('stdMessage') : '' }}</textarea>
                                                 <small>{{ $errors->first('stdMessage') }}</small>
                                                 <div class="invalid-feedback">
 
                                                     </div>
-                                                    <p style="padding:30px;">@unless($scholarship==''){{ $scholarship->adminMessage }}}@endunless</p>
+                                                    <p style="padding:30px;">نتیجه درخواست : @unless(empty($scholarship)){{ $scholarship->adminMessage }}@endunless</p>
                                         </div>
                                 </div>
 
-						<button type="submit" class="btn btn-info btn-fill pull-right">ثبت درخواست</button>
+                                @if(empty($scholarship))
+                                <button type="submit" class="btn btn-info btn-fill pull-right">ثبت درخواست</button>
+                                @endif
+
+                                @if (!empty($scholarship))
+                                        @if ($scholarship->status=='NOT-SEEN')
+                                        <button type="submit" class="btn btn-info btn-fill pull-right">ثبت درخواست</button>
+                                        @endif
+                                @endif
+
 						<div class="clearfix"></div>
 					</form>
 				</div>

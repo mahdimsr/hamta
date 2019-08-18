@@ -13,9 +13,9 @@ class AuthController extends Controller
 {
 	public function show()
 	{
-        $userInfo=cookie::get('studentInfo');
-        $passInfo=cookie::get('studentPass');
-		return view('student.auth.student_auth',compact('userInfo','passInfo'));
+        $studentInfo=cookie::get('studentInfo');
+        $studentPass=cookie::get('studentPass');
+		return view('student.auth.student_auth',compact('studentInfo','studentPass'));
     }
 
 

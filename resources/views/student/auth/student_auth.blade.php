@@ -40,7 +40,7 @@
         <fieldset>
 
           <div class="input-block">
-            <input type="text" id="mobile-email" class="basic-slide" name="mobile-email" placeholder="شماره همراه یا ایمیل"  value="{{ $userInfo ? $userInfo : old('mobile-email')}}" required>
+            <input type="text" id="mobile-email" class="basic-slide" name="mobile-email" placeholder="شماره همراه یا ایمیل"  value="{{ $studentInfo ? $studentInfo : old('mobile-email')}}" required>
             <label for="mobile-email">نام کاربری</label>
             <small>{{$errors->first('mobile-email')}}</small>
           </div>
@@ -49,7 +49,7 @@
 
           <div class="input-block">
 
-            <input type="password" id="password" name="password"  class="basic-slide" placeholder="رمز عبور" value="{{ $passInfo ? $passInfo : old('password') }}" required>
+            <input type="password" id="password" name="password"  class="basic-slide" placeholder="رمز عبور" value="{{ $studentPass? $studentPass : old('password') }}" required>
             <label for="password" class="a">رمز عبور</label>
 			<small>{{$errors->first('password')}}</small>
           </div>
@@ -57,7 +57,7 @@
 
           <div class="con">
               <label>مرا به خاطر داشته باش
-                  <input type="checkbox" name="remember" {{ $userInfo ? 'checked' : ''  }} >
+                  <input type="checkbox" name="remember" {{ $studentInfo ? 'checked' : ''  }} >
                   <span class="checkmark"></span>
                 </label>
                 </div>
@@ -68,7 +68,7 @@
 
         </fieldset>
 
-        
+
         @if($errors->any())
           <small class="err" >{{$errors->first('message')}}</small>
           @endif
@@ -112,10 +112,10 @@
           <div class="input-block">
             <input type="text" id="studentmobile"   name="studentmobile" class="basic-slide" placeholder="شماره تلفن " value="{{old('studentmobile')}}" required>
             <label for="studentmobile" class="j">
-              
-            
-تلفن همراه          
-          
+
+
+تلفن همراه
+
           </label>
 
 
