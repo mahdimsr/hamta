@@ -39,8 +39,8 @@
         <fieldset>
 
           <div class="input-block">
-            <input type="text" id="mobile-email" class="basic-slide" name="mobile-email" placeholder="شماره تلفن همراه یا پست الکترونیکی"  value="{{ $userInfo ? $userInfo : old('mobile-email')}}" required>
-            <label for="mobile-email">ایمیل</label>
+            <input type="text" id="mobile-email" class="basic-slide" name="mobile-email" placeholder="شماره همراه یا ایمیل"  value="{{ $userInfo ? $userInfo : old('mobile-email')}}" required>
+            <label for="mobile-email">نام کاربری</label>
             <small>{{$errors->first('mobile-email')}}</small>
           </div>
 
@@ -71,7 +71,7 @@
 
 
         </fieldset>
-        <button type="submit" class="btn btn-blow">
+        <button type="submit" class="loginbtn ">
 
         <span>
 
@@ -108,7 +108,12 @@
         <fieldset>
           <div class="input-block">
             <input type="text" id="studentmobile"   name="studentmobile" class="basic-slide" placeholder="شماره تلفن " value="{{old('studentmobile')}}" required>
-            <label for="studentmobile">شماره تلفن همراه</label>
+            <label for="studentmobile" class="j">
+              
+            
+تلفن همراه          
+          
+          </label>
 
 
 
@@ -116,9 +121,9 @@
           </div>
           <div class="input-block">
 
-            <input type="password" id="password" class="basic-slide" name="password_signup" placeholder="کلمه عبور خود را وارد نمایید" required>
+            <input type="password" id="password" class="basic-slide" name="password_signup" placeholder="رمز عبور" required>
 
-            <label for="password" class="a">کلمه عبور</label>
+            <label for="password" class="f">رمز عبور</label>
 
 
 
@@ -131,7 +136,7 @@
 
             <input type="password" id="password-confirm" class="basic-slide" name="password_confirmation" placeholder="تکرار کلمه عبور" required>
 
-            <label for="password-confirm" class="c">تکرار کلمه عبور</label>
+            <label for="password-confirm" class="c">تکرار رمز عبور</label>
 
 
             <small>{{ $errors->first('password_confirmation')}}</small>
@@ -145,7 +150,7 @@
             </div>
 
         </fieldset>
-        <button type="submit" class="btn btn-blow">
+        <button type="submit" class="loginbtn">
 
 
         <span>
