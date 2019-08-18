@@ -128,6 +128,16 @@ Route::namespace('Admin')->group(function()
 		});
 
 
+		Route::prefix('students')->group(function()
+		{
+			Route::get('/', 'StudentController@students')->name('admin_students');
+			Route::get('/edit/{nationalCode}', 'StudentController@editShow')->name('admin_students_editShow');
+			Route::post('/edit/{nationalCode}', 'StudentController@edit')->name('admin_students_edit');
+
+
+		});
+
+
 	});
 
 });

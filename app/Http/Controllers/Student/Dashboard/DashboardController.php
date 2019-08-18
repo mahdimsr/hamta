@@ -80,6 +80,7 @@ class DashboardController extends Controller
 		$student->isComplete    = 1;
 
 		$student->save();
+
 		return redirect()->route('student_dashboard_profile');
 
 	}
