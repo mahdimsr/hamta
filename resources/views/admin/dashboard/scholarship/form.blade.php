@@ -6,14 +6,18 @@
 		<div class="col-md-12">
 			<div class="card text-right">
 				<div class="header ">
-					<h4 class="title">{{$scholarship->student->name . ' ' . $scholarship->student->familyName}}</h4>
+					<h4 class="title">مشخصات درخواست دهنده</h4>
 				</div>
 				<div class="content">
 					<div class="row">
 						<div class="col-md-12">
 							<div class="form-group">
-								<label>پیغام دانش آمور</label>
+								<label>اطلاعات</label>
+								<p>{{$scholarship->student->name . ' ' . $scholarship->student->familyName}}</p>
 								<p>{{$scholarship->stdMessage}}</p>
+								<p>{{$scholarship->student->grade->title}}</p>
+								<p>{{$scholarship->student->orientation->title}}</p>
+								<p>{{$scholarship->student->average}}</p>
 							</div>
 						</div>
 					</div>
