@@ -1,29 +1,44 @@
+<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport"
-		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Login</title>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>ورود ادمین</title>
+    <link rel='stylesheet' type='text/css' media='screen' href="{{asset('css/admin/auth/style.css')}}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+   
 </head>
 <body>
+        <form method="post" action="{{ route('admin_login_submit')}}">
 
-<form method="post" action="{{ route('admin_login_submit')}}">
 
-	{{csrf_field()}}
+			{{csrf_field()}}
 
-	<div>
-		<input name="username">
-	</div>
 
-	<div>
-		<input name="password">
-	</div>
+   <div class="loginbox">
+<img src="{{asset('image/admin/auth/man.png')}}" class="user">
+    <h3>ورود ادمین</h3>
 
-	{{$errors->first('username')}}
+    <div class="inputbox">
+<input type="text" name="username" placeholder="نام کاربری">
+<span><i class="fas fa-users" aria-hidden="true"></i></span>
+    </div>
 
-	<button type="submit">submit</button>
+    <div class="inputbox">
+            <input type="text" name="password" placeholder="رمز عبور">
+            <span><i class="fas fa-lock"></i></span>
+                </div>
+                <input type="submit" name="" value="ورود">
 
+
+				<div class="con">
+              <label>مرا به خاطر داشته باش
+                  <input type="checkbox" name="remember">
+                  <span class="checkmark"></span>
+                </label>
+                </div>
+   </div>
+   <p class="err">خطا در اتصال</p>
 </form>
 
 </body>

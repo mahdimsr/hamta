@@ -49,12 +49,16 @@
                   <li class="nav-item"><a class="nav-link" href="#">دکمه ورود</a></li>
                 </ul>
 							</li>
-              <li class="nav-item"><a class="nav-link" href="#">ارتباط</a></li>
             </ul>
 
-            <ul class="nav-right text-center text-lg-right py-4 py-lg-0">
-              <li><a href="#">دکمه ورود</a></li>
+            <ul class="nav-right text-center text-lg-right py-1 py-lg-0">
+            <li class="btn btn-outline-secondary"><a href="#" >دانش آموزان</a></li>
             </ul>
+            <ul class="nav-right text-center text-lg-right py-1 py-lg-0">
+
+            <li class="btn btn-outline-info"><a href="#" > اساتید</a></li>
+            </ul>
+
           </div>
         </div>
       </nav>
