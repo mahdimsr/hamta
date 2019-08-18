@@ -38,18 +38,11 @@
           {{ csrf_field() }}
         <fieldset>
 
-
-
-
           <div class="input-block">
             <input type="text" id="mobile-email" class="basic-slide" name="mobile-email" placeholder="شماره تلفن همراه یا پست الکترونیکی"  value="{{ $userInfo ? $userInfo : old('mobile-email')}}" required>
             <label for="mobile-email">ایمیل</label>
             <small>{{$errors->first('mobile-email')}}</small>
           </div>
-
-
-
-
 
 
 
@@ -72,7 +65,9 @@
           </a>
 
 
-
+          @if($errors->any())
+          <small style="color:white;">{{$errors->first('message')}}</small>
+          @endif
 
 
         </fieldset>
