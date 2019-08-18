@@ -3,6 +3,7 @@
 <head>
 	<title>LogIn</title>
 </head><link rel="stylesheet" href="{{ asset('css/student/auth/style.css') }}">
+
 </head>
 <body>
 
@@ -65,12 +66,14 @@
           </a>
 
 
-          @if($errors->any())
-          <small style="color:white;">{{$errors->first('message')}}</small>
+        </fieldset>
+
+        
+        @if($errors->any())
+          <small class="err" >{{$errors->first('message')}}</small>
           @endif
 
 
-        </fieldset>
         <button type="submit" class="loginbtn ">
 
         <span>
