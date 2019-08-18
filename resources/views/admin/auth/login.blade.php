@@ -3,7 +3,9 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>ورود ادمین</title>
+	<title>ورود ادمین</title>
+	<link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
+
     <link rel='stylesheet' type='text/css' media='screen' href="{{asset('css/admin/auth/style.css')}}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
    
@@ -36,9 +38,10 @@
                   <input type="checkbox" name="remember">
                   <span class="checkmark"></span>
                 </label>
-                </div>
+				</div>
+				<p class="err">خطا در اتصال</p>
+
    </div>
-   <p class="err">خطا در اتصال</p>
 </form>
 
 </body>

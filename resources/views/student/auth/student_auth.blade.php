@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="per" >
 <head>
-	<title>LogIn</title>
+  <title>LogIn</title>
+  <link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
+
 </head><link rel="stylesheet" href="{{ asset('css/student/auth/style.css') }}">
 
 </head>
@@ -145,12 +147,6 @@
             <small>{{ $errors->first('password_confirmation')}}</small>
           </div>
 
-          <div class="con">
-          <label>مرا به خاطر داشته باش
-              <input type="checkbox" checked="checked">
-              <span class="checkmark"></span>
-            </label>
-            </div>
 
         </fieldset>
         <button type="submit" class="loginbtn">

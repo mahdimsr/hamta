@@ -1,24 +1,10 @@
 
-@font-face {
-    font-family:'Yekan';/*تعریف یک نام برای فونت*/
-    src:url('../../fonts/Yekan.eot');/*اکسپلورر 9 به بعد*/
-    src:local('../../fonts/Yekan'),/*بررسی نصب بودن فونت در سیستم کاربر*/
-        local('../../fonts/Yekan'),/*برای برخی از مرورگرها مانند سافاری*/
-        url('../../fonts/Yekan.eot?#iefix') format('embedded-opentype'),/*هک برای اکسپلورر 8 و ماقبل*/
-        url('../../fonts/Yekan.woff') format('woff'),/*مرورگر های جدید*/
-        url('../../fonts/Yekan.ttf') format('truetype'),/*تمام مرورگرها به جزء اکسپلورر*/
-        url('../../fonts/Yekan.svg#Yekan') format('svg');/*نسخه های قدیمی سیستم عامل iOS*/
-    font-style:normal;
-    font-weight:normal;
-}
-
 
 
 
 
 
 body{
-	font-family: Yekan;
 	color:#797979;
 	font-size:16px;
 	font-weight:400;
@@ -198,7 +184,6 @@ h4,.h4{
 }
 .header_area .navbar .nav-right a{
 	text-transform:uppercase;
-	font-family:Yekan;
 	font-size:15px;
 	font-weight:500;
 	color:#3b1d82
@@ -207,7 +192,6 @@ h4,.h4{
 	margin-right:38px
 }
 .header_area .navbar .nav .nav-item .nav-link{
-	font-family:Yekan;
 	color:#242424;
 	text-transform:capitalize;
 	font-weight:400;
@@ -1080,7 +1064,6 @@ h4,.h4{
 }
 .priceTable-price span{
 	font-size:22px;
-	font-family:Yekan;
 	display:inline-block
 }
 @media (min-width: 768px){
@@ -2125,7 +2108,6 @@ h4,.h4{
 	color:#777
 }
 .button{
-	font-family:Yekan;
 	display:inline-block;
 	border:1px solid transparent;
 	font-size:15px;
