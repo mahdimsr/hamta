@@ -19,7 +19,7 @@ class ScholarshipController extends Controller
 
 
 
-	public function editShow($url)
+	public function show($url)
 	{
 		$scholarship = Scholarship::query()->where('url', $url)->first();
 
@@ -28,7 +28,7 @@ class ScholarshipController extends Controller
 
 
 
-	public function edit(Request $request, $url)
+	public function answer(Request $request, $url)
 	{
 		$scholarship = Scholarship::query()->where('url', $url)->first();
 

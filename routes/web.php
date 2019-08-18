@@ -123,8 +123,8 @@ Route::namespace('Admin')->group(function()
 		Route::prefix('scholarships')->group(function()
 		{
 			Route::get('/', 'ScholarshipController@scholarships')->name('admin_scholarships');
-			Route::get('/editShow/{url}', 'ScholarshipController@editShow')->name('admin_scholarships_editShow');
-			Route::post('/edit/{url}', 'ScholarshipController@edit')->name('admin_scholarships_edit');
+			Route::get('/show/{url}', 'ScholarshipController@show')->name('admin_scholarships_show');
+			Route::post('/answer/{url}', 'ScholarshipController@answer')->name('admin_scholarships_answer');
 		});
 
 

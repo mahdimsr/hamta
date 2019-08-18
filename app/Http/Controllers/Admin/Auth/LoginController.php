@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Cookie;
 
 class LoginController extends Controller
 {
+
 	public function show()
 	{
         $adminInfo=cookie::get('adminInfo');
@@ -65,5 +66,6 @@ class LoginController extends Controller
 		Auth::guard('admin')->logout();
 
 		return redirect()->route('admin_auth_show');
-	}
+    }
+
 }

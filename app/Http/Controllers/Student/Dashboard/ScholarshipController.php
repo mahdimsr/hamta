@@ -52,7 +52,7 @@ class ScholarshipController extends Controller
 		else if ($validator->fails() && $scholarship->status=='NOT-SEEN')
 		{
             $scholarship->stdMessage=$request->input('stdMessage');
-            $scholarship->save();
+            $scholarship->update();
             return redirect()->route('student_dashboard_scholarship');
         }
 
