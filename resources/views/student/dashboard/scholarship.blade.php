@@ -17,12 +17,12 @@
                                                 <p>توضیحات مربوط به درخواست</p>
                                                 <hr>
                                                 <label>توضیحات درخواست</label>
-                                                <textarea dir="rtl" name="stdMessage" rows="5" class="form-control" placeholder="متن درخواست خود را وارد نمایید" required @unless($scholarship=='') {{ $scholarship->status=='IN-PROGRESS' ? 'disabled' : '' }} @endunless>@unless ($scholarship==''){{ $scholarship->status=='NOT-SEEN' && !old('stdMessage') || $scholarship->status=='IN-PROGRESS' && !old('stdMessage') ? $scholarship->stdMessage : '' }}@endunless{{ old('stdMessage') ? old('stdMessage') : '' }}</textarea>
+                                                <textarea dir="rtl" name="stdMessage" rows="5" class="form-control" placeholder="متن درخواست خود را وارد نمایید" required @unless($scholarship=='') {{ $scholarship->status!='NOT-SEEN' ? 'disabled' : '' }} @endunless>@unless ($scholarship==''){{ $scholarship->status!='NOT-SEEN' && !old('stdMessage') ? $scholarship->stdMessage : '' }}@endunless{{ old('stdMessage') ? old('stdMessage') : '' }}</textarea>
                                                 <small>{{ $errors->first('stdMessage') }}</small>
                                                 <div class="invalid-feedback">
 
                                                     </div>
-                                                    <p style="padding:150px;">پاسخ ادمین</p>
+                                                    <p style="padding:30px;">@unless($scholarship==''){{ $scholarship->adminMessage }}}@endunless</p>
                                         </div>
                                 </div>
 
