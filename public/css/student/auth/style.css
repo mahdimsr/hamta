@@ -437,7 +437,7 @@ a{
 	top: 104px;
 	left: 0;
 	padding: 7px 19px;
-
+	font-family: Yekan;
 	text-shadow: 0 1px 0 rgba(19, 74, 70, 0.4);
 	background: #2E8BC0;
 	transition: all .3s ease-in-out;
@@ -448,6 +448,8 @@ a{
 	display: inline-block;
 	position: absolute;
 	top: 160px;
+	font-family: Yekan;
+
 	left: 0;
 	padding: 6px 11px;
 	text-shadow: 0 1px 0 rgba(19, 74, 70, 0.4);
@@ -468,6 +470,7 @@ a{
 	padding-left: 29px;
 	padding-right: 30px; 
 
+	font-family: Yekan;
 
 
 	text-shadow: 0 1px 0 rgba(19, 74, 70, 0.4);
@@ -533,12 +536,6 @@ a{
 
 
 
-
-
-
-
-
-
 .btn {
   display: inline-block;
   color: white;
@@ -568,4 +565,18 @@ a{
   stroke: #95e1d3;
   stroke-width: 5;
   transition: stroke-dashoffset 1000ms ease-out;
+}
+
+
+
+
+
+
+
+
+/*   کلاس مروبوط به ارور*/
+
+
+.err{
+	color: white;
 }
