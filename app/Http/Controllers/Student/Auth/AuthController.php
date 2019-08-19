@@ -24,17 +24,17 @@ class AuthController extends Controller
 
 		$this->validate($request,
 			[
-				'mobile-email' => 'required',
+				'mobile_email' => 'required',
 				'password'     => 'required',
 			]
         );
 
-		if (Auth::attempt(['mobile'=> $request->input('mobile-email'),'password' => $request->input('password'),], $request->input('remember')))
+		if (Auth::guard('student')->attempt(['mobile'=> $request->input('mobile_email'),'password' => $request->input('password'),], $request->input('remember')))
 		{
 
 			if ($request->has('remember'))
 			{
-				Cookie::queue('studentInfo', $request->input('mobile-email'), 90 * 24 * 60);
+				Cookie::queue('studentInfo', $request->input('mobile_email'), 90 * 24 * 60);
 				Cookie::queue('studentPass', $request->input('password'), 90* 24 * 60);
             }
 
@@ -48,12 +48,12 @@ class AuthController extends Controller
 
         }
 
-		else if (Auth::attempt(['email'=> $request->input('mobile-email'),'password' => $request->input('password'),], $request->input('remember')))
+		else if (Auth::guard('student')->attempt(['email'=> $request->input('mobile_email'),'password' => $request->input('password'),], $request->input('remember')))
 		{
 
 			if ($request->has('remember'))
 			{
-				Cookie::queue('studentInfo', $request->input('mobile-email'), 90 * 24 * 60);
+				Cookie::queue('studentInfo', $request->input('mobile_email'), 90 * 24 * 60);
 				Cookie::queue('studentPass', $request->input('password'), 90 * 24 * 60);
             }
             else
@@ -82,21 +82,25 @@ class AuthController extends Controller
     }
 
 
-	public function register(Request $request,Student $student )
+	public function register(Request $request)
     {
 
         $this->validate($request,
         [
-            'studentmobile' => 'required|unique:student,mobile|digits:11',
-            'password_signup'     => 'required|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X]).*$/|min:6|confirmed',
+            'student_mobile' => 'required|unique:student,mobile|digits:11',
+            'password_register'     => 'required|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X]).*$/|min:6|confirmed',
             'password_confirmation' =>'required',
         ]
         );
 
-        $data['mobile']=$request->input('mobile');
-        $data['password']=Hash::make($request->input('password_signup'));
-        $student->insert($data);
-        return redirect()->route('student');
+        $student           = new Student();
+		$student->mobile   = $request->input('student_mobile');
+		$student->password = Hash::make($request->input('password_register'));
+        $student->save();
+
+        Auth::guard('student')->login($student, false);
+
+        return redirect()->route('student_dashboard_profile');
 
     }
 

@@ -21,13 +21,13 @@ Route::namespace('Student')->group(function()
 	Route::namespace('Auth')->group(function()
 	{
 
-		Route::get('/auth', 'AuthController@show')->name('student');
+		Route::get('/students', 'AuthController@show')->name('student');
 		Route::post('/login', 'AuthController@login')->name('student_login');
 		Route::post('/register', 'AuthController@register')->name('student_register');
 		Route::get('/logout', 'AuthController@logout')->name('student_logout');
 
 	});
-	Route::middleware('auth:student')->namespace('Dashboard')->prefix('dashboard')->group(function()
+	Route::middleware('auth:student')->namespace('Dashboard')->prefix('student/dashboard')->group(function()
 	{
 
 		Route::get('/profile', 'DashboardController@profile')->name('student_dashboard_profile');

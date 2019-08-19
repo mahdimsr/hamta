@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="per" >
 <head>
-  <title>LogIn</title>
+  <title>ورود دانش آموزان</title>
   <link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
 
 </head><link rel="stylesheet" href="{{ asset('css/student/auth/style.css') }}">
@@ -42,9 +42,9 @@
         <fieldset>
 
           <div class="input-block">
-            <input type="text" id="mobile-email" class="basic-slide" name="mobile-email" placeholder="شماره همراه یا ایمیل"  value="{{ $studentInfo ? $studentInfo : old('mobile-email')}}" required>
-            <label for="mobile-email">نام کاربری</label>
-            <small>{{$errors->first('mobile-email')}}</small>
+            <input type="text" id="mobile_email" class="basic-slide" name="mobile_email" placeholder="شماره همراه یا ایمیل"  value="{{ $studentInfo ? $studentInfo : old('mobile_email')}}" required>
+            <label for="mobile_email">نام کاربری</label>
+            <small>{{$errors->first('mobile_email')}}</small>
           </div>
 
 
@@ -71,9 +71,7 @@
         </fieldset>
 
 
-        @if($errors->any())
           <small class="err" >{{$errors->first('message')}}</small>
-          @endif
 
 
         <button type="submit" class="loginbtn ">
@@ -112,8 +110,8 @@
             {{ csrf_field() }}
         <fieldset>
           <div class="input-block">
-            <input type="text" id="studentmobile"   name="studentmobile" class="basic-slide" placeholder="شماره تلفن " value="{{old('studentmobile')}}" required>
-            <label for="studentmobile" class="j">
+            <input type="text" id="student_mobile"   name="student_mobile" class="basic-slide" placeholder="شماره تلفن " value="{{old('student_mobile')}}" required>
+            <label for="student_mobile" class="j">
 
 
 تلفن همراه
@@ -122,17 +120,17 @@
 
 
 
-            <small>{{$errors->first('studentmobile')}}</small>
+            <small>{{$errors->first('student_mobile')}}</small>
           </div>
           <div class="input-block">
 
-            <input type="password" id="password" class="basic-slide" name="password_signup" placeholder="رمز عبور" required>
+            <input type="password" id="password" class="basic-slide" name="password_register" placeholder="رمز عبور" required>
 
             <label for="password" class="f">رمز عبور</label>
 
 
 
-            <small>{{ $errors->first('password_signup')}}</small>
+            <small>{{ $errors->first('password_register')}}</small>
           </div>
           <div class="input-block">
 
