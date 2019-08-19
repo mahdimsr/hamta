@@ -18,10 +18,10 @@ Route::get('/', 'Content\ContentController@index')->name('homepage');
 
 Route::namespace('Student')->group(function()
 {
-	Route::namespace('Auth')->group(function()
+	Route::namespace('Auth')->prefix('students')->group(function()
 	{
 
-		Route::get('/students', 'AuthController@show')->name('students');
+		Route::get('/', 'AuthController@show')->name('students');
 		Route::post('/login', 'AuthController@login')->name('student_login');
 		Route::post('/register', 'AuthController@register')->name('student_register');
 		Route::get('/logout', 'AuthController@logout')->name('student_logout');
