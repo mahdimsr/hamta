@@ -2,7 +2,7 @@
 @section('content')
 
 	<div class="row" dir="rtl">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card ">
 
                 <div class="content">
@@ -16,14 +16,7 @@
                         </a>
                     </div>
                     <p class="description text-center"> بخش اول<br>
-                        بازی PC Building Simulator محصولی از Claudiu Kiss و
-                        The Irregular Corporation است که در سبک شبیه‌سازی طراحی و ساخته شده
-                            و در ۲۷ مارس ۲۰۱۸ عرضه شده است.
-                    </p>
-                    <p class="description text-center"> بخش دوم<br>
-                        بازی PC Building Simulator محصولی از Claudiu Kiss و
-                        The Irregular Corporation است که در سبک شبیه‌سازی طراحی و ساخته شده
-                        و در ۲۷ مارس ۲۰۱۸ عرضه شده است.
+                    لازم به ذکر است شماره تلفن منزل بدون کد سه رقمی شهرستان وارد گردد.در این قسمت اطلاعات خود را تکمیل نمایید تا بتوانید از امکانات بینظیر سایت بهره مند شوید.
                     </p>
                 </div>
                 <hr>
@@ -33,7 +26,7 @@
                 </div>
             </div>
         </div>
-		<div class="col-md-8">
+		<div class="col-md-9">
 			<div class="card text-right">
 				<div class="header ">
 					<h4 class="title">{{$student->isComplete==0?'تکمیل اطلاعات' : 'ویرایش اطلاعات'}}</h4>
@@ -45,7 +38,7 @@
                                 <div class="col-md-4">
                                         <div class="form-group">
                                                 <label>تاریخ تولد </label>
-                                                <input dir="rtl" name="birthday" type="text" class="form-control initial-value-example" value="{{ old('birthday')? old('birthday') : $student->birthday  }}">
+                                                <input dir="rtl" name="birthday" type="date" class="form-control initial-value-example" value="{{ old('birthday')? old('birthday') : $student->birthday  }}">
                                                 <small>{{ $errors->first('birthday') }}</small>
                                                 <div class="invalid-feedback">
 
@@ -65,10 +58,10 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>نام</label>
-                                        <input dir="rtl" type="text" name="name" required class="form-control"  value="{{ old('name')? old('name') : $student->name }}" >
-                                        <small class="error"></small>
+                                        <input dir="rtl" type="text" name="name" class="form-control" placeholder="نام خود را وارد نمایید"  value="{{ old('name')? old('name') : $student->name }}" >
+                                        <small class="error"> {{ $errors->first('name') }}</small>
                                         <div class="invalid-feedback">
-                                            {{ $errors->first('name') }}
+
                                             </div>
                                     </div>
                                 </div>
@@ -90,7 +83,7 @@
 									<input dir="rtl" type="email" name="email" class="form-control email-radius" placeholder="پست الکترونیکی خود را وارد نمایید" value="{{ old('email')? old('email') : $student->email }}">
                                     <small>{{ $errors->first('email') }}</small>
                                     <div class="invalid-feedback">
-                                            اشتباه است.
+
                                         </div>
                                 </div>
 							</div>
@@ -106,7 +99,7 @@
                                         </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4" style="margin-top:2px;">
                                     <label for="city">شهر</label>
                                     <select dir="rtl" name="city" class="form-control city"  >
                                         <option selected disabled >شهر خود را انتخاب نمایید</option>
@@ -123,7 +116,7 @@
 
 						<div class="row">
                             <div class="col-md-1">
-                                    <div class="form-group" style="margin-top:20px;" >
+                                    <div class="form-group" style="margin-top:30px;" >
                                             <input dir="rtl" name="averageUp" maxlength="2" type="number" class="form-control" value="{{ old('averageUp')? old('averageUp') : substr($student->average, 0, 2) }}">
                                             <small>{{ $errors->first('averageUp') }}</small>
                                             <div class="invalid-feedback">
@@ -132,10 +125,10 @@
                                         </div>
                             </div>
                             <div class="col-md-1">
-                                <p class="text-center" style="margin-top:30px;"> / </p>
+                                <p class="text-center" style="margin-top:40px;"> / </p>
                             </div>
                             <div class="col-md-1">
-                                    <div class="form-group">
+                                    <div class="form-group" style="margin-top:-14px;" >
                                             <label> معدل دیپلم</label>
                                             <input dir="rtl" name="averageDown" maxlength="2" type="number" class="form-control" value="{{ old('averageDown')? old('averageDown') : substr($student->average, 3, 2) }}">
                                             <small>{{ $errors->first('averageDown') }}</small>
@@ -144,10 +137,10 @@
 												</div>
                                         </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label>مدرسه</label>
-                                    <input dir="rtl" name="school" type="text" class="form-control" placeholder="نام مدرسه خود را وارد نمایید" value="{{ old('school')? old('school') : $student->school }}" required>
+                                    <input dir="rtl" name="school" type="text" class="form-control" placeholder="نام مدرسه خود را وارد نمایید" value="{{ old('school')? old('school') : $student->school }}">
                                     <small>{{ $errors->first('school') }}</small>
                                     <div class="invalid-feedback">
 
@@ -155,7 +148,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-2 ">
+                            <div class="col-md-3 ">
                                     <label for="grade">مقطع</label>
                                     <select dir="rtl" name="grade" class="form-control dropdown-radius"  id="grade">
                                         <option selected disabled >مقطع تحصیلی خود را انتخاب نمایید</option>
@@ -186,7 +179,7 @@
                             <div class="col-md-6">
                                     <div class="form-group">
                                             <label>شماره تلفن همراه یکی از والدین</label>
-                                            <input dir="rtl" name="parentPhone" type="text" class="form-control" value="{{ old('parentPhone')? old('parentPhone') : $student->parentPhone}}">
+                                            <input dir="rtl" name="parentPhone" type="text" class="form-control" placeholder="شماره تلفن همراه یکی از والدین را وارد نمایید" value="{{ old('parentPhone')? old('parentPhone') : $student->parentPhone}}">
                                             <small>{{ $errors->first('parentPhone') }}</small>
                                             <div class="invalid-feedback">
 
@@ -196,7 +189,7 @@
                             <div class="col-md-6">
                                     <div class="form-group">
                                             <label>شماره تلفن منزل بدون پیش شماره</label>
-                                            <input dir="rtl" name="telePhone" type="text" class="form-control" value="{{ old('telePhone')? old('telePhone') : substr($student->telePhone,6) }}">
+                                            <input dir="rtl" name="telePhone" type="text" class="form-control" placeholder="شماره تلفن منزل را وارد نمایید" value="{{ old('telePhone')? old('telePhone') : substr($student->telePhone,6) }}">
                                             <small>{{ $errors->first('telePhone') }}</small>
                                             <div class="invalid-feedback">
 
