@@ -22,6 +22,7 @@
                                                 <div class="invalid-feedback">
 
                                                     </div>
+
                                                     <p style="padding:30px;">نتیجه درخواست : @unless(empty($scholarship)){{ $scholarship->adminMessage }}@endunless</p>
                                         </div>
                                 </div>
