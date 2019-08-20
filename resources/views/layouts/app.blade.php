@@ -54,7 +54,7 @@
             </ul>
 
             <ul class="nav-right text-center text-lg-right py-1 py-lg-0">
-            <li class="btn btn-outline-secondary"><a href="#" >دانش آموزان</a></li>
+            <li class="btn btn-outline-secondary"><a href="{{ route('student_auth') }}" >دانش آموزان</a></li>
             </ul>
             <ul class="nav-right text-center text-lg-right py-1 py-lg-0">
 
@@ -99,20 +99,20 @@
                   <li><a href="#">لینک</a></li>
                   <li><a href="#">لینک</a></li>
                 </ul>
-              </div>										
-            </div>							
+              </div>
+            </div>
           </div>
-        </div>							
+        </div>
         <div class="col-lg-3  col-md-6 col-sm-6">
           <div class="single-footer-widget">
             <h6>سربرگ</h6>
             <p>
-              قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان برده‌اند برای تجدید								
-            </p>								
-        
+              قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان برده‌اند برای تجدید
+            </p>
+
           </div>
         </div>
- 					
+
       </div>
     </div>
     <div class="footer-bottom">
