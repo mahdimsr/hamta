@@ -50,7 +50,7 @@ class DashboardController extends Controller
 				'averageUp'    => 'required|digits_between:1,2|min:5|max:20|numeric',
 				'averageDown'  => 'required|digits:2|min:00|max:99|numeric',
 				'telePhone'    => 'required|digits:8',
-				'parentPhone'  => 'required|digits:11',
+				'parentPhone'  => ['required','digits:11','regex:/^(\+98|0)?9\d{9}$/'],
 			]
 		);
 

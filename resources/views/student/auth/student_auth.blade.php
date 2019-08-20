@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="per" >
 <head>
-  <title>ورود دانش آموزان</title>
+  <title> دانش آموزان</title>
   <link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
 
 </head><link rel="stylesheet" href="{{ asset('css/student/auth/style.css') }}">
@@ -177,7 +177,7 @@
 
 
 
-            <input type="password" id="password-confirm" class="basic-slide" name="password_confirmation" placeholder="تکرار کلمه عبور" required>
+            <input type="password" id="password-confirm" class="basic-slide" name="password_register_confirmation" placeholder="تکرار کلمه عبور" required>
 
             <label for="password-confirm" class="c">تکرار رمز عبور</label>
 
@@ -188,7 +188,7 @@
 
           <li class="err">{{ $errors->first('password_register')}}</li>
 
-          <li class="err">{{ $errors->first('password_confirmation')}}</li>
+          <li class="err">{{ $errors->first('password_register_confirmation')}}</li>
 </ul>
 
         </fieldset>
