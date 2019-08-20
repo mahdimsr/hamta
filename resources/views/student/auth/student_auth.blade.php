@@ -66,12 +66,42 @@
           <a href="#">رمز خود را فراموش کردید؟
 
           </a>
+          <ul>
+          <li class="error" >{{$errors->first('message')}}</li>
+          </ul>
 
 
         </fieldset>
 
 
-          <small class="err" >{{$errors->first('message')}}</small>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         <button type="submit" class="loginbtn ">
@@ -106,6 +136,16 @@
 
 
       </button>
+
+
+
+
+
+
+
+
+
+
       <form class="form form-signup" action="{{route('student_register')}}" method='post'>
             {{ csrf_field() }}
         <fieldset>
@@ -120,8 +160,8 @@
 
 
 
-            <small>{{$errors->first('student_mobile')}}</small>
           </div>
+
           <div class="input-block">
 
             <input type="password" id="password" class="basic-slide" name="password_register" placeholder="رمز عبور" required>
@@ -130,8 +170,8 @@
 
 
 
-            <small>{{ $errors->first('password_register')}}</small>
           </div>
+
           <div class="input-block">
 
 
@@ -142,9 +182,14 @@
             <label for="password-confirm" class="c">تکرار رمز عبور</label>
 
 
-            <small>{{ $errors->first('password_confirmation')}}</small>
           </div>
+          <ul>
+          <li class="err">{{$errors->first('student_mobile')}}</li>
 
+          <li class="err">{{ $errors->first('password_register')}}</li>
+
+          <li class="err">{{ $errors->first('password_confirmation')}}</li>
+</ul>
 
         </fieldset>
         <button type="submit" class="loginbtn">

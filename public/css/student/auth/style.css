@@ -372,7 +372,13 @@ a{
 
 
 
+.form-signup input[type="text"],
+input[type="password"]
+{
+	color: #3CACAE;
+	text-indent: 40px;
 
+}
 
 
 
@@ -394,7 +400,7 @@ a{
   border-radius: 3px;
   outline: 0;
   transition: all .3s ease-in-out;
-  text-indent: 10px;
+  text-indent: 20px;
 }
 .basic-slide::-webkit-input-placeholder {
   color: #efefef;
@@ -407,7 +413,10 @@ a{
   position: absolute;
   top: 50px;
   left: 0;
-  padding: 6px 15px;
+  padding-top: 7px;
+  padding-bottom: 3px;
+  padding-left: 11px;
+  padding-right: 11px;  
   text-shadow: 0 1px 0 rgba(19, 74, 70, 0.4);
   background: #7AB893;
   transition: all .3s ease-in-out;
@@ -419,13 +428,20 @@ a{
 	position: absolute;
 	top: 104px;
 	left: 0;
-	padding: 7px 19px;
+	padding-top: 7px;
+	padding-bottom: 5px;
+	padding-left: 18px;
+	padding-right: 18px;  
+	
 	text-shadow: 0 1px 0 rgba(19, 74, 70, 0.4);
 	background: #2E8BC0;
 	transition: all .3s ease-in-out;
 	border-top-left-radius: 3px;
 	border-bottom-left-radius: 3px;
 }
+
+
+
 .basic-slide + label.c{
 	display: inline-block;
 	position: absolute;
@@ -447,8 +463,8 @@ a{
 	left: 0;
 
 	padding-top: 7px;
-	padding-bottom: 6px;
-	padding-left: 29px;
+	padding-bottom: 5px;
+	padding-left: 24px;
 	padding-right: 30px; 
 
 
@@ -467,8 +483,8 @@ a{
 	top: 50px;
 	left: 0;
 	padding-top: 7px;
-	padding-bottom: 6px;
-	padding-left: 29px;
+	padding-bottom: 5px;
+	padding-left: 20px;
 	padding-right: 15px;
 	
 	text-shadow: 0 1px 0 rgba(19, 74, 70, 0.4);
@@ -493,7 +509,33 @@ a{
 .basic-slide:active::-webkit-input-placeholder {
   color: #3CACAE;
 	text-align: center;
+	
 }
+
+.basic-slide:focus::-moz-placeholder,
+.basic-slide:active::-moz-placeholder {
+	color: #3CACAE;
+	text-align: center;
+	font-family: IRANSans-web, serif;;
+	
+}
+.basic-slide::-moz-placeholder,
+.basic-slide::-moz-placeholder {
+  color: rgba(0, 0, 0, 0);
+	text-align: center;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
 .basic-slide:focus + label,
 .basic-slide:active + label {
   transform: translateX(-40%);
@@ -556,7 +598,27 @@ a{
 
 /*   کلاس مروبوط به ارور*/
 
+ul{
+	margin-top: 6px;
+	max-width: 300px;
+	max-height: 250px;
 
-.err{
-	color: white;
 }
+li{
+	list-style: none;
+	color: white;
+	text-align: center;
+	font-size: 11px;
+}
+
+
+.error{
+	color: #DEE2EC;
+	margin-top: 12px;
+	max-width: 300px;
+	max-height: 200px;
+	font-size: 13px;
+
+
+}
+
