@@ -101,13 +101,14 @@ text-transform: uppercase;
 	display: block;
 	position: relative;
 	padding-left: 35px;
-	margin-bottom: 12px;
+	margin-bottom: 20px;
 	cursor: pointer;
 	font-size: 16px;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
-	user-select: none;
+  user-select: none;
+  
   }
   
   /* Hide the browser's default checkbox */
@@ -123,7 +124,7 @@ text-transform: uppercase;
   .checkmark {
 	position: absolute;
 	top: 5px;
-	left: 200px;
+	left: 330px;
 	height: 15px;
 	border-radius: 4px;
 	width: 15px;
@@ -140,7 +141,10 @@ text-transform: uppercase;
 	background-color: #2196F3;
   }
   .con label{
-	  color: black;
+    color: black;
+    margin-left: 140px;
+
+    
   }
   
   /* Create the checkmark/indicator (hidden when not checked) */
@@ -168,4 +172,23 @@ text-transform: uppercase;
 	transform: 1s rotate(45deg);
 
   }
+
+
+
+
+
+
+
+
+
+.err{
+  color: red !important;
+  text-align: right;
+  margin-left: 100px;
+}
+
+
+
+
+
 

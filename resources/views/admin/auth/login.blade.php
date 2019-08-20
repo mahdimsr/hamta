@@ -25,7 +25,7 @@
 			<input type="text" name="username" placeholder="نام کاربری"
 				   value="{{ $adminInfo ? $adminInfo : old('username')}}">
 			<span><i class="fas fa-users" aria-hidden="true"></i></span>
-			<small>{{  $errors->first('username')}}</small>
+			<small class="err">{{  $errors->first('username')}}</small>
 
 		</div>
 
@@ -33,7 +33,7 @@
 			<input type="text" name="password" placeholder="رمز عبور"
 				   value="{{ $adminPass ? $adminPass : old('password') }}">
 			<span><i class="fas fa-lock"></i></span>
-			<small>{{$errors->first('password')}}</small>
+			<small class="err">{{$errors->first('password')}}</small>
 		</div>
 
 
