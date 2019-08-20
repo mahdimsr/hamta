@@ -10,7 +10,8 @@
 
 	<!-- Bootstrap core CSS     -->
 	<link href="{{asset('css/student/dashboard/bootstrap.min.css')}}" rel="stylesheet" />
-
+	<!-- Shamsi Calender CSS -->
+	<link href="{{asset('css/student/dashboard/persian-datepicker.min.css')}}" rel="stylesheet" />
 	<!-- Animation library for notifications   -->
 	<link href="{{asset('css/student/dashboard/animate.min.css')}}" rel="stylesheet"/>
 
@@ -24,8 +25,8 @@
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
-    <link href="{{asset('css/student/dashboard/font.css')}}" type="text/css">
     <link href="{{asset('css/student/dashboard/stroke.css')}}" rel="stylesheet"/>
+	<link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
 
 	<style>
 		th{
@@ -237,7 +238,9 @@
 
 
 </body>
-
+<!-- Shamsi calender Js -->
+<script src="{{asset('js/student/dashboard/persian-date.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/student/dashboard/persian-datepicker.min.js')}}" type="text/javascript"></script>
 <!--   Core JS Files   -->
 <script src="{{asset('js/student/dashboard/jquery.3.2.1.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/student/dashboard/bootstrap.min.js')}}" type="text/javascript"></script>
@@ -257,6 +260,7 @@
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="{{asset('js/student/dashboard/demo.js')}}"></script>
 <script>
+	//Bootstrap Validation
         (function() {
       'use strict';
       window.addEventListener('load', function() {
@@ -274,10 +278,22 @@
         });
       }, false);
     })();
-            $("#city").select2( {
+        //Drop down optional
+            $(".city").select2( {
      placeholder: "انتخاب شهر",
      allowClear: true
      } );
+            //Shamsi calender
+
+    $(document).ready(function() {
+        $('.initial-value-example').persianDatepicker({
+            initialValue: false
+        });
+    });
+    $(".hide-search").select2({
+        minimumResultsForSearch: Infinity
+    });
+
         </script>
 </html>
 
