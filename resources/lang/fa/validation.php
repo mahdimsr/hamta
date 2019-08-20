@@ -13,36 +13,36 @@ return [
 	|
 	*/
 
-	'accepted'             => 'The :attribute must be accepted.',
-	'active_url'           => 'The :attribute is not a valid URL.',
-	'after'                => 'The :attribute must be a date after :date.',
-	'after_or_equal'       => 'The :attribute must be a date after or equal to :date.',
-	'alpha'                => 'The :attribute may only contain letters.',
-	'alpha_dash'           => 'The :attribute may only contain letters, numbers, dashes and underscores.',
-	'alpha_num'            => 'The :attribute may only contain letters and numbers.',
-	'array'                => 'The :attribute must be an array.',
-	'before'               => 'The :attribute must be a date before :date.',
-	'before_or_equal'      => 'The :attribute must be a date before or equal to :date.',
+	'accepted'             => ':attribute باید پذیرفته شده باشد',
+	'active_url'           => 'آدرس :attribute معتبر نیست',
+	'after'                => ':attribute باید تاریخی بعد از :date باشد.',
+	'after_or_equal'       => ':attribute باید روز :date یا بعد از آن باشد.',
+	'alpha'                => ':attribute باید شامل حروف الفبا باشد.',
+	'alpha_dash'           => ':attribute باید شامل حروف الفبا، اعداد، خط تیره ( - ) و زیر خط ( _ ) باشد.',
+	'alpha_num'            => ':attribute باید شامل حروف و اعداد باشد.',
+	'array'                => ':attribute باید آرایه باشد.',
+	'before'               => ':attribute باید تاریخی قبل از :date باشد',
+	'before_or_equal'      => ':attribute باید روز :date یا قبل از آن باشد.',
 	'between'              => [
-		'numeric' => 'The :attribute must be between :min and :max.',
-		'file'    => 'The :attribute must be between :min and :max kilobytes.',
-		'string'  => 'The :attribute must be between :min and :max characters.',
-		'array'   => 'The :attribute must have between :min and :max items.',
+		'numeric' => ':attribute باید بین :max و :min باشد.',
+		'file'    => ':attribute باید بین :max  و :min کیلوبایت باشد.',
+		'string'  => ':attribute باید بین :max  و :min حرف باشد.',
+		'array'   => ':attribute باید بین :max  و :min آیتم باشد.',
 	],
 	'boolean'              => 'The :attribute field must be true or false.',
 	'confirmed'            => 'The :attribute confirmation does not match.',
 	'date'                 => 'The :attribute is not a valid date.',
 	'date_equals'          => 'The :attribute must be a date equal to :date.',
 	'date_format'          => 'The :attribute does not match the format :format.',
-	'different'            => 'The :attribute and :other must be different.',
+	'different'            => ':attribute باید با :other متفاوت باشد.',
 	'digits'               => ' :attribute باید حتما :digits رقم باشد',
-	'digits_between'       => 'The :attribute must be between :min and :max digits.',
+	'digits_between'       => ':attribute باید بین :max و :min رقم باشد.',
 	'dimensions'           => 'The :attribute has invalid image dimensions.',
 	'distinct'             => 'The :attribute field has a duplicate value.',
-	'email'                => 'The :attribute must be a valid email address.',
+	'email'                => ':attribute باید یک فرمت ایمیل معتبر باشد.',
 	'ends_with'            => 'The :attribute must end with one of the following: :values',
-	'exists'               => 'The selected :attribute is invalid.',
-	'file'                 => 'The :attribute must be a file.',
+	'exists'               => ':attribute از قبل ثیت نشده است.',
+	'file'                 => ':attribute باید یک فایل باشد.',
 	'filled'               => 'The :attribute field must have a value.',
 	'gt'                   => [
 		'numeric' => 'The :attribute must be greater than :value.',
@@ -56,10 +56,10 @@ return [
 		'string'  => 'The :attribute must be greater than or equal :value characters.',
 		'array'   => 'The :attribute must have :value items or more.',
 	],
-	'image'                => 'The :attribute must be an image.',
-	'in'                   => 'The selected :attribute is invalid.',
-	'in_array'             => 'The :attribute field does not exist in :other.',
-	'integer'              => 'The :attribute must be an integer.',
+	'image'                => ':attribute باید یک عکس باشد.',
+	'in'                   => ':attribute نا معتبر است.',
+	'in_array'             => ':attribute در :other وجود ندارد.',
+	'integer'              => ':attribute باید عدد باشد.',
 	'ip'                   => 'The :attribute must be a valid IP address.',
 	'ipv4'                 => 'The :attribute must be a valid IPv4 address.',
 	'ipv6'                 => 'The :attribute must be a valid IPv6 address.',
@@ -77,25 +77,25 @@ return [
 		'array'   => 'The :attribute must not have more than :value items.',
 	],
 	'max'                  => [
-		'numeric' => 'The :attribute may not be greater than :max.',
-		'file'    => 'The :attribute may not be greater than :max kilobytes.',
-		'string'  => 'The :attribute may not be greater than :max characters.',
-		'array'   => 'The :attribute may not have more than :max items.',
+		'numeric' => ':attribute نمی تواند بزرگتر از :max باشد.',
+		'file'    => ':attribute نمی تواند بزرگتر از :max کیلوبایت باشد.',
+		'string'  => ':attribute نمی تواند بیشتر از :max حرف داشته باشد.',
+		'array'   => ':attribute نمی تواند بزرگتر از :max آیتم باشد.',
 	],
-	'mimes'                => 'The :attribute must be a file of type: :values.',
-	'mimetypes'            => 'The :attribute must be a file of type: :values.',
+	'mimes'                => ':attribute باید یک فایل با یکی از فرمت های :values باشد.',
+	'mimetypes'            => ':attribute باید یک فایل با یکی از فرمت های :values باشد.',
 	'min'                  => [
-		'numeric' => 'The :attribute must be at least :min.',
-		'file'    => 'The :attribute must be at least :min kilobytes.',
-		'string'  => 'The :attribute must be at least :min characters.',
-		'array'   => 'The :attribute must have at least :min items.',
+		'numeric' => ':attribute نمی تواند کمتر از :min باشد.',
+		'file'    => ':attribute باید حداقل از :min کیلوبایت باشد.',
+		'string'  => ':attribute باید حداقل از :min حرف داشته باشد.',
+		'array'   => ':attribute باید حداقل از :min آیتم باشد.',
 	],
 	'not_in'               => 'The selected :attribute is invalid.',
 	'not_regex'            => 'The :attribute format is invalid.',
-	'numeric'              => 'فیلد :attribute باید حتما عدد باشد.',
+	'numeric'              => ':attribute باید حتما عدد باشد.',
 	'present'              => 'The :attribute field must be present.',
-	'regex'                => 'The :attribute format is invalid.',
-	'required'             => 'فیلد :attribute نمی تواند خالی باشد.',
+	'regex'                => ':attribute فرمت معتبر ندارد.',
+	'required'             => ':attribute باید حتما وارد شود.',
 	'required_if'          => 'The :attribute field is required when :other is :value.',
 	'required_unless'      => 'The :attribute field is required unless :other is in :values.',
 	'required_with'        => 'The :attribute field is required when :values is present.',
@@ -104,17 +104,17 @@ return [
 	'required_without_all' => 'The :attribute field is required when none of :values are present.',
 	'same'                 => 'The :attribute and :other must match.',
 	'size'                 => [
-		'numeric' => 'The :attribute must be :size.',
-		'file'    => 'The :attribute must be :size kilobytes.',
-		'string'  => 'The :attribute must be :size characters.',
-		'array'   => 'The :attribute must contain :size items.',
+		'numeric' => ':attribute باید :size باشد.',
+		'file'    => ':attribute باید :size کیلوبایت باشد.',
+		'string'  => ':attribute باید :size حرف داشته باشد.',
+		'array'   => ':attribute باید :size آیتم داشته باشد.',
 	],
 	'starts_with'          => 'The :attribute must start with one of the following: :values',
 	'string'               => 'The :attribute must be a string.',
 	'timezone'             => 'The :attribute must be a valid zone.',
-	'unique'               => ' :attribute قبلا ثبت شده است',
-	'uploaded'             => 'The :attribute failed to upload.',
-	'url'                  => 'The :attribute format is invalid.',
+	'unique'               => ':attribute قبلا ثبت شده است',
+	'uploaded'             => 'بارگذاری :attribute با خطا مواجه شده است.',
+	'url'                  => ':attribute فرمت معتبری ندارد.',
 	'uuid'                 => 'The :attribute must be a valid UUID.',
 
 	/*
@@ -134,140 +134,140 @@ return [
 
 			'required' => 'نام کاربری خود را وارد نمایید.',
 
-        ],
+		],
 
 		'mobile_email' => [
 
-            'required' => 'شماره تلفن همراه یا پست الکترونیکی خود را وارد نمایید.',
+			'required' => 'شماره تلفن همراه یا پست الکترونیکی خود را وارد نمایید.',
 
-        ],
+		],
 
-        'student_mobile' => [
+		'student_mobile' => [
 
-            'required' => 'شماره تلفن همراه خود را وارد نمایید.',
-            'unique' => 'شماره تلفن همراه وارد شده قبلا در سیستم ثبت شده است.',
-            'digits' => 'شماره تلفن همراه باید ۱۱ رقم باشد.',
+			'required' => 'شماره تلفن همراه خود را وارد نمایید.',
+			'unique'   => 'شماره تلفن همراه وارد شده قبلا در سیستم ثبت شده است.',
+			'digits'   => 'شماره تلفن همراه باید ۱۱ رقم باشد.',
 
-        ],
+		],
 
 		'password' => [
 
 			'required' => 'رمز عبور خود را وارد نمایید.',
 
-        ],
+		],
 
-        'password_register' => [
+		'password_register' => [
 
-            'required' => 'رمز عبور خود را وارد نمایید.',
-            'regex'     =>'رمز عبور باید شامل حروف کوچک و بزرگ به همراه عدد باشد.',
-            'min'     =>'رمز عبور باید حداقل 6 کاراکتر باشد.',
-            'confirmed' =>'رمز عبور وارد شده و تکرار آن همخوانی ندارند.'
+			'required'  => 'رمز عبور خود را وارد نمایید.',
+			'regex'     => 'رمز عبور باید شامل حروف کوچک و بزرگ به همراه عدد باشد.',
+			'min'       => 'رمز عبور باید حداقل 6 کاراکتر باشد.',
+			'confirmed' => 'رمز عبور وارد شده و تکرار آن همخوانی ندارند.',
 
-        ],
+		],
 
-        'password_confirmation' => [
+		'password_confirmation' => [
 
-            'required' => 'تکرار رمز عبور را وارد نمایید.',
+			'required' => 'تکرار رمز عبور را وارد نمایید.',
 
-        ],
+		],
 
-        'name' => [
+		'name' => [
 
 			'required' => 'نام خود را وارد نمایید.',
 
-        ],
+		],
 
-        'familyName' => [
+		'familyName' => [
 
 			'required' => 'نام خانوادگی خود را وارد نمایید.',
 
-        ],
+		],
 
-        'birthday' => [
+		'birthday' => [
 
 			'required' => 'تاریخ تولد خود را وارد نمایید.',
 
-        ],
+		],
 
-        'email' => [
+		'email' => [
 
-            'required' => 'پست الکترونیکی خود را وارد نمایید.',
-            'email'    => 'پست الکترونیکی وارد شده صحیح نیست.'
+			'required' => 'پست الکترونیکی خود را وارد نمایید.',
+			'email'    => 'پست الکترونیکی وارد شده صحیح نیست.',
 
-        ],
+		],
 
-        'nationalCode' => [
+		'nationalCode' => [
 
-            'required' => 'کد ملی خود را وارد نمایید.',
-            'digits'   => 'کدملی باید 10 رقم باشد.'
+			'required' => 'کد ملی خود را وارد نمایید.',
+			'digits'   => 'کدملی باید 10 رقم باشد.',
 
-        ],
+		],
 
-        'city' => [
+		'city' => [
 
-			'required' => 'شهر خود را انتخاب نمایید.'
-        ],
+			'required' => 'شهر خود را انتخاب نمایید.',
+		],
 
-        'address' => [
+		'address' => [
 
 			'required' => 'آدرس خود را وارد نمایید.',
 
-        ],
+		],
 
-        'orientation' => [
+		'orientation' => [
 
 			'required' => 'گرایش تحصیلی خود را انتخاب نمایید.',
 
-        ],
+		],
 
-        'grade' => [
+		'grade' => [
 
 			'required' => 'مقطع تحصیلی خود را انتخاب نمایید.',
 
-        ],
+		],
 
-        'school' => [
+		'school' => [
 
 			'required' => 'نام مدرسه خود را وارد نمایید.',
 
-        ],
+		],
 
-        'telePhone' => [
+		'telePhone' => [
 
-            'required' => 'شماره تلفن منزل را وارد نمایید.',
-            'digits'   => 'شماره تلفن منزل باید 8 رقم باشد.',
+			'required' => 'شماره تلفن منزل را وارد نمایید.',
+			'digits'   => 'شماره تلفن منزل باید 8 رقم باشد.',
 
-        ],
+		],
 
-        'parentPhone' => [
+		'parentPhone' => [
 
-            'required' => 'شماره تلفن همراه والدین را وارد نمایید.',
-            'digits'   => 'شماره تلفن همراه باید 11 رقم باشد.'
+			'required' => 'شماره تلفن همراه والدین را وارد نمایید.',
+			'digits'   => 'شماره تلفن همراه باید 11 رقم باشد.',
 
-        ],
+		],
 
-        'averageUp' => [
+		'averageUp' => [
 
-            'required' => 'دو رقم سمت چپ معدل خود را وارد نمایید.',
-            'digits_between'   => 'باید 1 یا 2 رقم باشد.',
-            'min'      => 'حداقل می تواند 5 باشد.',
-            'max'      => 'حداکثر می تواند 20 باشد.',
-        ],
+			'required'       => 'دو رقم سمت چپ معدل خود را وارد نمایید.',
+			'digits_between' => 'باید 1 یا 2 رقم باشد.',
+			'min'            => 'حداقل می تواند 5 باشد.',
+			'max'            => 'حداکثر می تواند 20 باشد.',
+		],
 
-        'averageDown' => [
+		'averageDown' => [
 
-            'required' => 'دو رقم سمت راست معدل خود را وارد نمایید.',
-            'digits'   => 'باید 2 رقم باشد.',
-            'min'      => 'حداقل می تواند 00 باشد.',
-            'max'      => 'حداکثر می تواند 99 باشد.',
-        ],
+			'required' => 'دو رقم سمت راست معدل خود را وارد نمایید.',
+			'digits'   => 'باید 2 رقم باشد.',
+			'min'      => 'حداقل می تواند 00 باشد.',
+			'max'      => 'حداکثر می تواند 99 باشد.',
+		],
 
 
-        'stdMessage' => [
+		'stdMessage' => [
 
-            'required' => 'توضیحات درخواست خود را وارد نمایید.',
-            'between'   => 'متن باید بین :min تا :max کاراکتر باشد. ',
-        ],
+			'required' => 'توضیحات درخواست خود را وارد نمایید.',
+			'between'  => 'متن باید بین :min تا :max کاراکتر باشد. ',
+		],
 
 	],
 
@@ -284,20 +284,20 @@ return [
 
 	'attributes' => [
 
-        'name'=>'نام',
-        'familyName'=>'نام خانوادگی',
-        'birthday'=>'تاریخ توالد',
-        'email'=>'پست الکترونیکی',
-        'nationalCode'=>'کد ملی',
-        'city'=>'شهر',
-        'address'=>'آدرس',
-        'school'=>'مدرسه',
-        'telePhone'=>'شماره تلفن منزل',
-        'parentPhone'=>'شماره تلفن همراه والدین',
-        'password_confirmation' => 'تکرار کلمه عبور',
-        'password_signup'       => 'کلمه عبور',
-        'studentmobile'         => 'شماره تلفن همراه',
-        'mobile-email'          => 'شماره تلفن همراه یا پست الکترونیکی',
+		'name'                  => 'نام',
+		'familyName'            => 'نام خانوادگی',
+		'birthday'              => 'تاریخ توالد',
+		'email'                 => 'پست الکترونیکی',
+		'nationalCode'          => 'کد ملی',
+		'city'                  => 'شهر',
+		'address'               => 'آدرس',
+		'school'                => 'مدرسه',
+		'telePhone'             => 'شماره تلفن منزل',
+		'parentPhone'           => 'شماره تلفن همراه والدین',
+		'password_confirmation' => 'تکرار کلمه عبور',
+		'password_signup'       => 'کلمه عبور',
+		'studentmobile'         => 'شماره تلفن همراه',
+		'mobile-email'          => 'شماره تلفن همراه یا پست الکترونیکی',
 		'username'              => 'نام کاربری',
 		'password'              => 'کلمه عبور',
 		'titleGrade'            => 'عنوان مقطع',
