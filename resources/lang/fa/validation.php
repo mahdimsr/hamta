@@ -286,7 +286,7 @@ return [
 
         'name'=>'نام',
         'familyName'=>'نام خانوادگی',
-        'birthday'=>'تاریخ توالد',
+        'birthday'=>'تاریخ تولد',
         'email'=>'پست الکترونیکی',
         'nationalCode'=>'کد ملی',
         'city'=>'شهر',

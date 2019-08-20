@@ -21,7 +21,7 @@ Route::namespace('Student')->group(function()
 	Route::namespace('Auth')->prefix('students')->group(function()
 	{
 
-		Route::get('/', 'AuthController@show')->name('students');
+		Route::get('/auth', 'AuthController@show')->name('student_auth');
 		Route::post('/login', 'AuthController@login')->name('student_login');
 		Route::post('/register', 'AuthController@register')->name('student_register');
 		Route::get('/logout', 'AuthController@logout')->name('student_logout');
