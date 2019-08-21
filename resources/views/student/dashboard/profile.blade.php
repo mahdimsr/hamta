@@ -3,7 +3,7 @@
 
 
 	<div class="row" dir="rtl">
-            <div class="col-md-4">
+            <div class="col-md-3">
                     <div class="card ">
 
                         <div class="content">
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-		<div class="col-md-8">
+		<div class="col-md-9">
 			<div class="card text-right">
 				<div class="header ">
 					<h4 class="title">{{$student->isComplete==0?'تکمیل اطلاعات' : 'ویرایش اطلاعات'}}</h4>
@@ -59,7 +59,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>نام</label>
-                                        <input dir="rtl" type="text" name="name"  class="form-control"  value="{{ old('name')? old('name') : $student->name }}" >
+                                        <input dir="rtl" type="text" name="name"  class="form-control" placeholder="نام خود را وارد نمایید"  value="{{ old('name')? old('name') : $student->name }}" >
 
                                         <div class="invalid-feedback">
                                            <small>{{ $errors->first('name') }}</small>
@@ -117,7 +117,7 @@
 
 						<div class="row">
                             <div class="col-md-1">
-                                    <div class="form-group" style="margin-top:20px;" >
+                                    <div class="form-group" style="margin-top:32px;" >
                                             <input dir="rtl" name="averageUp" maxlength="2" type="number" class="form-control number-radius" value="{{ old('averageUp')? old('averageUp') : substr($student->average, 0, 2) }}">
 
                                             <div class="invalid-feedback">
@@ -180,7 +180,7 @@
                             <div class="col-md-6">
                                     <div class="form-group">
                                             <label>شماره تلفن همراه یکی از والدین</label>
-                                            <input dir="rtl" name="parentPhone" type="text" class="form-control" value="{{ old('parentPhone')? old('parentPhone') : $student->parentPhone}}">
+                                            <input dir="rtl" name="parentPhone" type="text" class="form-control" placeholder="شماره تلفن همراه یکی از والدین را وارد نمایید" value="{{ old('parentPhone')? old('parentPhone') : $student->parentPhone}}">
 
                                             <div class="invalid-feedback">
                                                 <small>{{ $errors->first('parentPhone') }}</small>
@@ -190,7 +190,7 @@
                             <div class="col-md-6">
                                     <div class="form-group">
                                             <label>شماره تلفن منزل بدون پیش شماره</label>
-                                            <input dir="rtl" name="telePhone" type="text" class="form-control" value="{{ old('telePhone')? old('telePhone') : substr($student->telePhone,6) }}">
+                                            <input dir="rtl" name="telePhone" type="text" class="form-control" placeholder="شماره تلفن منزل را وارد نمایید" value="{{ old('telePhone')? old('telePhone') : substr($student->telePhone,6) }}">
 
                                             <div class="invalid-feedback">
                                                 <small>{{ $errors->first('telePhone') }}</small>
