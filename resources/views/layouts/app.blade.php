@@ -35,11 +35,14 @@
 				<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 
 					<ul class="nav-right text-center text-lg-right py-1 py-lg-0">
+
+
 						<li class="btn btn-outline-secondary"><a href="{{ route('student_auth') }}">دانش آموزان</a></li>
 					</ul>
 					<ul class="nav-right text-center text-lg-right py-1 py-lg-0">
 
 						<li class="btn btn-outline-info"><a href="#"> اساتید</a></li>
+
 					</ul>
 
 					<ul class="nav navbar-nav menu_nav justify-content-end">
@@ -64,14 +67,13 @@
 				<div class="single-footer-widget">
 					<h6>سربرگ</h6>
 					<p>
-						قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان
-						برده‌اند برای تجدید
+					ویکی‌پدیا یک دانشنامه برخط چندزبانه مبتنی بر وب با محتوای آزاد و همکاری باز است که با همکاری افراد داوطلب نوشته می‌شود و هر کسی که به اینترنت و وب دسترسی داشته باشد می‌تواند مقالات						برده‌اند برای تجدید
 					</p>
 				</div>
 			</div>
-			<div class="col-lg-3 col-md-6 col-sm-6">
+		<div class="col-lg-3 col-md-6 col-sm-6">
 				<div class="single-footer-widget">
-					<h6>سربرگ</h6>
+					<h6 class="sec">سربرگ</h6>
 					<div class="row">
 						<div class="col">
 							<ul>
@@ -94,8 +96,9 @@
 			</div>
 			<div class="col-lg-3  col-md-6 col-sm-6">
 				<div class="single-footer-widget">
-					<h6>سربرگ</h6>
-					<p>
+					<h6 class="thi">سربرگ</h6>
+					<p class="thi">
+					
 						قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان
 						برده‌اند برای تجدید
 					</p>
@@ -108,7 +111,7 @@
 	<div class="footer-bottom">
 		<div class="container">
 			<div class="row align-items-center">
-				<div class="col-lg-4 col-sm-12 footer-social text-center text-lg-right">
+				<div class="col-lg-4 col-sm-12 footer-social text-lg-right">
 					<a href="#"><i class="fab fa-facebook-f"></i></a>
 					<a href="#"><i class="fab fa-twitter"></i></a>
 					<a href="#"><i class="fab fa-dribbble"></i></a>
