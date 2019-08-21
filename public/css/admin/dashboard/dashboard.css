@@ -1383,14 +1383,18 @@ fieldset[disabled] .btn-neutral.active
 	vertical-align: middle;
 }
 
+td
+{
+	color: #5A6268;
+}
+
 .table > thead > tr > th
 {
 	border-bottom-width: 1px;
-	font-size: 12px;
+	font-size: 16px;
 	text-transform: uppercase;
-	color: #9A9A9A;
-	font-weight: 400;
-	padding-bottom: 5px;
+	color: #000000;
+
 }
 
 .table .td-actions .btn
@@ -4494,6 +4498,12 @@ fieldset[disabled] .btn-neutral.active
 		font-size: 20px;
 		margin-right: 10px;
 	}
+}
+
+.btn-table-header
+{
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
 @media (min-width: 992px)

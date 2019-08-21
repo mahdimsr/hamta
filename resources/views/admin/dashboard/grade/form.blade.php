@@ -87,7 +87,7 @@
 							</div>
 						</div>
 
-						<button type="submit" class="btn btn-info btn-fill pull-left" tabindex="4">افزودن</button>
+						<button type="submit" class="btn btn-info btn-fill pull-left" tabindex="4">اعمال</button>
 						<div class="clearfix"></div>
 					</form>
 				</div>

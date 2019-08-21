@@ -6,13 +6,15 @@
 		<div class="col-md-12">
 			<div class="card">
 				<div class="header">
-					<h4 class="title text-right">عنوان جدول</h4>
-					<p class="category text-right">زیرنویس جدول</p>
-					<a href="{{route('admin_grades_addShow')}}" style="font-size: 12px;" class="btn btn-info">
+					<h4 class="title text-right">مقاطع تحصیلی</h4>
+					<p class="category text-right"></p>
+					<a href="{{route('admin_grades_addShow')}}" style="font-size: 12px;"
+					   class="btn btn-info pull-right btn-table-header">
 						افزودن مقطع جدید
 					</a>
 				</div>
 				<div dir="rtl" class="content table-responsive table-full-width">
+
 					<table class="table table-hover table-striped">
 						<thead class="text-right">
 						<th>کدمقطع</th>
@@ -26,11 +28,13 @@
 								<td>{{$grade->title}}</td>
 								<td>
 
-									<a href="{{route('admin_grades_remove',['url' => $grade->url])}}" id="remove-btn" type="button"
-											style="font-size: 12px;" class="btn btn-danger">
+									<a href="{{route('admin_grades_remove',['url' => $grade->url])}}" id="remove-btn"
+									   type="button"
+									   style="font-size: 12px;" class="btn btn-danger">
 										حذف
 									</a>
-									<a href="{{route('admin_grades_editShow',['url' => $grade->url])}}" style="font-size: 12px;" class="btn btn-info">
+									<a href="{{route('admin_grades_editShow',['url' => $grade->url])}}"
+									   style="font-size: 12px;" class="btn btn-info">
 										ویرایش
 									</a>
 

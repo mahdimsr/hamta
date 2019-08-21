@@ -6,9 +6,9 @@
 		<div class="col-md-12">
 			<div class="card">
 				<div class="header">
-					<h4 class="title text-right">عنوان جدول</h4>
-					<p class="category text-right">زیرنویس جدول</p>
-					<a href="{{route('admin_orientations_addShow')}}" style="font-size: 12px;" class="btn btn-info">
+					<h4 class="title text-right">گرایش ها</h4>
+					<p class="category text-right">رشته های تحصیلی در دبیرستان و فنی حرفه ای</p>
+					<a href="{{route('admin_orientations_addShow')}}" style="font-size: 12px;" class="btn btn-info pull-right btn-table-header">
 						افزودن گرایش جدید
 					</a>
 				</div>

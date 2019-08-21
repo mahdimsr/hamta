@@ -46,7 +46,7 @@
 		<div class="col-md-7">
 			<div class="card text-right">
 				<div class="header ">
-					<h4 class="title">ویرایش درس</h4>
+					<h4 class="title">درس</h4>
 				</div>
 
 				<div class="content">

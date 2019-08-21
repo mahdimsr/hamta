@@ -41,7 +41,7 @@
 		<div class="col-md-7">
 			<div class="card text-right">
 				<div class="header ">
-					<h4 class="title">افزودن مقطع</h4>
+					<h4 class="title">درس</h4>
 				</div>
 
 				<div class="content">
@@ -56,7 +56,7 @@
 								<div class="form-group">
 									<label>لینک درس</label>
 									<input name="urlLesson" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: tenth-grade"
+										   placeholder="مثلا: math" tabindex="3"
 										   value="{{old('urlLesson') ? old('urlLesson') : ''}} {{ $modify==1 && !old('urlLesson') ? $lesson->url : '' }}">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('urlLesson') }}</small>
@@ -67,7 +67,7 @@
 								<div class="form-group">
 									<label>عنوان درس</label>
 									<input name="titleLesson" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: مقطع دهم"
+										   placeholder="مثلا: ریاضی" tabindex="2"
 										   value="{{old('titleLesson') ? old('titleLesson') : ''}} {{ $modify==1 && !old('titleLesson') ? $lesson->title : '' }}">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('titleLesson') }}</small>
@@ -78,7 +78,7 @@
 								<div class="form-group">
 									<label>کد درس</label>
 									<input name="codeLesson" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: 10"
+										   placeholder="مثلا: 10" tabindex="1"
 										   value="{{old('codeLesson') ? old('codeLesson') : ''}} {{ $modify==1 && !old('codeLesson') ? $lesson->code : '' }}">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('codeLesson') }}</small>
@@ -88,7 +88,7 @@
 						</div>
 
 
-						<button type="submit" class="btn btn-info btn-fill pull-left">ویرایش</button>
+						<button type="submit" class="btn btn-info btn-fill pull-left" tabindex="4">اعمال</button>
 						<div class="clearfix"></div>
 					</form>
 				</div>
