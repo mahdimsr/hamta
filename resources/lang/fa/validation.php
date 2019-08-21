@@ -92,29 +92,29 @@ return [
 	],
 	'not_in'               => 'The selected :attribute is invalid.',
 	'not_regex'            => 'The :attribute format is invalid.',
-	'numeric'              => ':attribute باید حتما عدد باشد.',
+	'numeric'              => ':attribute باید حتما عدد باشد',
 	'present'              => 'The :attribute field must be present.',
-	'regex'                => ':attribute فرمت معتبر ندارد.',
-	'required'             => ':attribute باید حتما وارد شود.',
+	'regex'                => ':attribute فرمت معتبر ندارد',
+	'required'             => ':attribute باید حتما وارد شود',
 	'required_if'          => 'The :attribute field is required when :other is :value.',
 	'required_unless'      => 'The :attribute field is required unless :other is in :values.',
 	'required_with'        => 'The :attribute field is required when :values is present.',
 	'required_with_all'    => 'The :attribute field is required when :values are present.',
 	'required_without'     => 'The :attribute field is required when :values is not present.',
 	'required_without_all' => 'The :attribute field is required when none of :values are present.',
-	'same'                 => 'The :attribute and :other must match.',
+	'same'                 => ':attribute با :other باید مثل هم باشند.',
 	'size'                 => [
 		'numeric' => ':attribute باید :size باشد.',
-		'file'    => ':attribute باید :size کیلوبایت باشد.',
-		'string'  => ':attribute باید :size حرف داشته باشد.',
-		'array'   => ':attribute باید :size آیتم داشته باشد.',
+		'file'    => ':attribute باید :size کیلوبایت باشد',
+		'string'  => ':attribute باید :size حرف داشته باشد',
+		'array'   => ':attribute باید :size آیتم داشته باشد',
 	],
 	'starts_with'          => 'The :attribute must start with one of the following: :values',
-	'string'               => 'The :attribute must be a string.',
-	'timezone'             => 'The :attribute must be a valid zone.',
+	'string'               => 'The :attribute must be a string',
+	'timezone'             => 'The :attribute must be a valid zone',
 	'unique'               => ':attribute قبلا ثبت شده است',
 	'uploaded'             => 'بارگذاری :attribute با خطا مواجه شده است.',
-	'url'                  => ':attribute فرمت معتبری ندارد.',
+	'url'                  => ':attribute فرمت معتبری ندارد',
 	'uuid'                 => 'The :attribute must be a valid UUID.',
 
 	/*
@@ -146,8 +146,8 @@ return [
 
 			'required' => '.شماره تلفن همراه خود را وارد نمایید',
 			'unique'   => '.شماره تلفن همراه وارد شده قبلا در سیستم ثبت شده است',
-            'digits'   => '.شماره تلفن همراه باید ۱۱ رقم باشد',
-            'regex'  => '.شماره تلفن همراه وارد شده صحیح نیست'
+			'digits'   => '.شماره تلفن همراه باید ۱۱ رقم باشد',
+			'regex'    => '.شماره تلفن همراه وارد شده صحیح نیست',
 
 		],
 
@@ -243,8 +243,8 @@ return [
 		'parentPhone' => [
 
 			'required' => 'شماره تلفن همراه والدین را وارد نمایید.',
-            'digits'   => 'شماره تلفن همراه باید 11 رقم باشد.',
-            'regex'  => 'شماره تلفن همراه وارد شده صحیح نیست.'
+			'digits'   => 'شماره تلفن همراه باید 11 رقم باشد.',
+			'regex'    => 'شماره تلفن همراه وارد شده صحیح نیست.',
 
 		],
 
@@ -286,20 +286,20 @@ return [
 
 	'attributes' => [
 
-        'name'                  =>'نام',
-        'familyName'            =>'نام خانوادگی',
-        'birthday'              =>'تاریخ تولد',
-        'email'                 =>'پست الکترونیکی',
-        'nationalCode'          =>'کد ملی',
-        'city'                  =>'شهر',
-        'address'               =>'آدرس',
-        'school'                =>'مدرسه',
-        'telePhone'             =>'شماره تلفن منزل',
-        'parentPhone'           =>'شماره تلفن همراه والدین',
-        'password_confirmation' => 'تکرار کلمه عبور',
-        'password_signup'       => 'کلمه عبور',
-        'student_mobile'         => 'شماره تلفن همراه',
-        'mobile_email'          => 'شماره تلفن همراه یا پست الکترونیکی',
+		'name'                  => 'نام',
+		'familyName'            => 'نام خانوادگی',
+		'birthday'              => 'تاریخ تولد',
+		'email'                 => 'پست الکترونیکی',
+		'nationalCode'          => 'کد ملی',
+		'city'                  => 'شهر',
+		'address'               => 'آدرس',
+		'school'                => 'مدرسه',
+		'telePhone'             => 'شماره تلفن منزل',
+		'parentPhone'           => 'شماره تلفن همراه والدین',
+		'password_confirmation' => 'تکرار کلمه عبور',
+		'password_signup'       => 'کلمه عبور',
+		'student_mobile'        => 'شماره تلفن همراه',
+		'mobile_email'          => 'شماره تلفن همراه یا پست الکترونیکی',
 		'username'              => 'نام کاربری',
 		'password'              => 'کلمه عبور',
 		'titleGrade'            => 'عنوان مقطع',
@@ -308,6 +308,14 @@ return [
 		'titleOrientation'      => 'عنوان گرایش',
 		'codeOrientation'       => 'کد گرایش',
 		'urlOrientation'        => 'آدرس گرایش',
+		'type'                  => 'نوع',
+		'lesson'                => 'درس',
+		'ratio'                 => 'ضریب',
+		'urlLesson'             => 'لینک درس',
+		'codeLesson'            => 'کد درس',
+		'titleLesson'           => 'عنوان درس',
+		'fullName'              => 'نام کامل',
+		'repeatPassword'        => 'تکرار رمزعبور',
 
 	],
 

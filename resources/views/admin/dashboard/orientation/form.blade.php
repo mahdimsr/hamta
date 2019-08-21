@@ -3,7 +3,7 @@
 @section('content')
 
 	<div class="row" dir="rtl">
-		<div class="col-md-4">
+		<div class="col-md-5">
 			<div class="card ">
 
 				<div class="content">
@@ -39,7 +39,7 @@
 				<hr>
 			</div>
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-7">
 			<div class="card text-right">
 				<div class="header ">
 					<h4 class="title">گرایش</h4>
