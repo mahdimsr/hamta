@@ -173,6 +173,7 @@ a{
 	outline: none;
 	transform: translateX(0);
 	transition: all .3s ease-out;
+	margin-top: -100px !important;
 }
 
 .form-wrapper.is-active .switcher-login {
@@ -202,8 +203,8 @@ a{
 .form {
 	overflow: hidden;
 	min-width: 260px;
-	margin-top: 50px;
-	padding: 30px 90px;
+	margin-top: 30px;
+	padding: 20px 90px;
   border-radius: 5px;
 	transform-origin: top;
 }
@@ -569,6 +570,7 @@ input[type="password"]
   color: white;
   min-width: 154px;
   text-decoration: none;
+margin-top: -80px !important;
 
   padding: 20px;
   position: relative;
@@ -628,3 +630,99 @@ li{
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+header{
+
+    position: relative;
+    max-width: 1200px;
+    margin:3px auto;
+    padding: 10px;
+    background: rgba(0, 0,0, 0.7);
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.logo{
+	color: #7AB893;
+
+    height: 60px;
+    font-size: 36px;
+    line-height: 60px;
+    padding: 0 20px;
+    text-align: center;
+    box-sizing: border-box;
+    float: left;
+    font-weight: 700;
+    text-decoration: none;
+}
+nav{
+    float: right;
+}
+.clearfix{
+
+    clear: both;
+}
+
+nav ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+nav ul li{
+    list-style: none;
+}
+nav ul li a{
+    display: block;
+    margin: 10px 0;
+    padding: 10px 10px;
+    text-decoration: none;
+    color: #fff;
+}
+
+nav ul li a.active,
+nav ul li a:hover{
+    background: #7AB893;
+    color: #fff ;
+    transition: 0.5s;
+}
+
+
+@media (max-width: 1200px){
+
+    header{
+
+        margin: 20px;
+    }
+}
+
+
+
+footer{
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);	text-align: center;
+	padding: 15px;
+	opacity: 0.8;
+
+}

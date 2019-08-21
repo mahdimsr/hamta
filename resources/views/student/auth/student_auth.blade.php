@@ -9,6 +9,22 @@
 </head>
 <body>
 
+
+
+
+<header>
+<a href="#" class="logo">دانش آموزان</a>
+<div class="menu-toggle"></div>
+<nav>
+<ul>
+<li><a href="#" class="active">خانه</a></li>
+<li><a href="#">استاد</a></li>
+<li><a href="#">هر چی</a></li>
+</ul>
+</nav>
+<div class="clearfix"></div>
+ </header>
+
 <svg id="stroke" width="0" height="0">
 	<defs>
 		<path id="line" d="M2 2c49.7 2.6 100 3.1 150 1.7-46.5 2-93 4.4-139.2 7.3 45.2-1.5 90.6-1.8 135.8-.6" fill="none" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
@@ -205,7 +221,16 @@
     </div>
   </div>
 </section>
-  <script  src="{{ asset('js/student/auth/script.js')}}"></script>
+
+<footer >
+
+  <div class="footer-copyright">
+
+  کلیه حقوق این مادی و معنوی مربوط به کاروفن گسترآراد  می باشد
+  </div>
+
+</footer>
+  <script src="{{ asset('js/student/auth/script.js')}}"></script>
 
 </body>
 </html>
