@@ -37,16 +37,12 @@
 					</p>
 				</div>
 				<hr>
-				<div class="text-center">
-
-
-				</div>
 			</div>
 		</div>
 		<div class="col-md-9">
 			<div class="card text-right">
 				<div class="header ">
-					<h4 class="title">افزودن مقطع</h4>
+					<h4 class="title">مقطع</h4>
 				</div>
 
 				<div class="content">
