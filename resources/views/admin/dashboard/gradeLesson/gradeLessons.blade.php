@@ -7,8 +7,8 @@
 			<div class="card">
 				<div class="header">
 					<h4 class="title text-right">درس های هرپایه</h4>
-					<p class="category text-right">زیرنویس جدول</p>
-					<a href="{{route('admin_gradeLessons_addShow')}}" style="font-size: 12px;" class="btn btn-info">
+					<p class="category text-right">درس های مربوط به پایه تحصیلی در گرایش های مختلف</p>
+					<a href="{{route('admin_gradeLessons_addShow')}}" style="font-size: 12px;" class="btn btn-info pull-right btn-table-header">
 						افزودن درس جدید
 					</a>
 				</div>
@@ -51,31 +51,5 @@
 
 @section('script')
 
-	<script>
-
-		function onRemoveClick(exm)
-		{
-
-			$.ajax({
-
-				type: 'POST',
-
-				url: '{{action('Admin\\Dashboard\\LessonExamController@remove')}}',
-
-				data: {exm: exm},
-
-				dataType: 'JSON',
-
-				success: function()
-				{
-
-					console.log(exm);
-
-				}
-
-			});
-		}
-
-	</script>
 
 @endsection

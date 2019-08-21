@@ -55,7 +55,7 @@
 								<div class="form-group">
 									<label>نام کاربری ادمین</label>
 									<input name="username" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: ali-username"
+										   placeholder="مثلا: ali-username" tabindex="2"
 										   value="{{old('username') ? old('username') : ''}} {{ $modify==1 && !old('username') ? $admin->username: '' }}">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('username') }}</small>
@@ -66,7 +66,7 @@
 								<div class="form-group">
 									<label>نام کامل ادمین</label>
 									<input name="fullName" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: علی ربیعی"
+										   placeholder="مثلا: علی ربیعی" tabindex="1"
 										   value="{{old('fullName') ? old('fullName') : ''}} {{ $modify==1 && !old('fullName') ? $admin->fullName : '' }}">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('fullName') }}</small>
@@ -79,7 +79,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>تکرار رمز عبور</label>
-									<input name="repeatPassword" dir="rtl" type="text" class="form-control">
+									<input name="repeatPassword" dir="rtl" type="text" class="form-control" tabindex="4">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('repeatPassword') }}</small>
 									</div>
@@ -88,7 +88,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>رمز عبور</label>
-									<input name="password" dir="rtl" type="text" class="form-control">
+									<input name="password" dir="rtl" type="text" class="form-control" tabindex="3">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('password') }}</small>
 									</div>
@@ -97,7 +97,7 @@
 						</div>
 
 
-						<button type="submit" class="btn btn-info btn-fill pull-left">افزودن</button>
+						<button type="submit" class="btn btn-info btn-fill pull-left">اعمال</button>
 						<div class="clearfix"></div>
 					</form>
 				</div>
