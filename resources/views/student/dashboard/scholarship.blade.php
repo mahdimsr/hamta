@@ -1,6 +1,33 @@
 @extends('layouts.student_dashboard')
 @section('content')
 
+<div class="row" dir="rtl">
+    <div class="col-md-12">
+        <div class="card ">
+
+            <div class="content">
+                <div class="author" >
+                    <a href="#">
+                        <img class=" " src="{{asset('image/student/dashboard/help2.png')}}" alt="..." width="60px" height="60px"/>
+
+                        <h4 class="title">راهنما<br />
+                            <small> فرم درخواست بورسیه</small>
+                        </h4>
+                    </a>
+                </div>
+                <p class="description text-center">
+                    <br>
+                    دانش آموز گرامی شما در این بخش می توانید درخواست بورسیه را برای مشاوران ما ارسال کنید. درخواست شما پس از بررسی مشاوران سایت در اسرع وقت پاسخ داده خواهد شد.
+                </p>
+            </div>
+            <hr>
+            <div class="text-center">
+
+
+            </div>
+        </div>
+    </div>
+    </div>
     <div class="row" dir="rtl">
         <div class="col-md-12">
             <div class="card text-right">
@@ -22,7 +49,6 @@
                                         <div class="invalid-feedback">
 
                                         </div>
-                                        <p style="padding:30px;">نتیجه درخواست : @unless(empty($scholarship)){{ $scholarship->adminMessage }}@endunless</p>
                                     </div>
                                 </div>
 
@@ -32,7 +58,7 @@
 
                                 @if (!empty($scholarship))
                                     @if ($scholarship->status=='NOT-SEEN')
-                                        <button type="submit" class="btn btn-info btn-fill pull-right">ثبت درخواست</button>
+                                        <button type="submit" class="btn btn-info btn-fill pull-right">ویرایش درخواست</button>
                                     @endif
                                 @endif
 
@@ -46,6 +72,24 @@
 
 
     </div>
-
+    @unless(empty($scholarship->adminMessage))
+    <div class="col-md-12">
+        <div class="card text-right">
+            <div class="header ">
+                <h4 class="title">نتیجه درخواست</h4>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>.دانش آموز گرامی با سلام</label>
+                        </div>
+                        <p>{{ $scholarship->adminMessage }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endunless
 @endsection
 

@@ -98,7 +98,7 @@
 				<div class="single-footer-widget">
 					<h6 class="thi">سربرگ</h6>
 					<p class="thi">
-					
+
 						قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان
 						برده‌اند برای تجدید
 					</p>
@@ -109,15 +109,8 @@
 		</div>
 	</div>
 	<div class="footer-bottom">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-lg-4 col-sm-12 footer-social text-lg-right">
-					<a href="#"><i class="fab fa-facebook-f"></i></a>
-					<a href="#"><i class="fab fa-twitter"></i></a>
-					<a href="#"><i class="fab fa-dribbble"></i></a>
-					<a href="#"><i class="fab fa-behance"></i></a>
-				</div>
-			</div>
+		<div class="container text-center">
+            <p>.تمامی حقوق مادی و معنوی این وب سایت متعلق به شرکت کاروفن گسترآراد می باشد</p>
 		</div>
 	</div>
 </footer>
