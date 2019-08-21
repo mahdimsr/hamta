@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>صفحه اول</title>
+	<title>همتا | هدف موفقیت تو است.</title>
 	<link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
 
 	<link rel="icon" href="{{asset('image/homepage/Fevicon.png')}}" type="image/png">

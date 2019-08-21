@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="per" >
 <head>
-  <title> دانش آموزان</title>
+  <title> همتا | دانش آموزان</title>
   <link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
 
 </head><link rel="stylesheet" href="{{ asset('css/student/auth/style.css') }}">

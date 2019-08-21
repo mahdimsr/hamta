@@ -3,7 +3,7 @@
 <head>
 	<meta charset='utf-8'>
 	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
-	<title>ورود ادمین</title>
+	<title>همتا | ادمین</title>
 	<link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
 
 	<link rel='stylesheet' type='text/css' media='screen' href="{{asset('css/admin/auth/style.css')}}">
