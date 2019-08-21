@@ -36,8 +36,8 @@ class RegisterController extends Controller
 			[
 				'fullName'       => 'required|string|max:30',
 				'username'       => 'required|alpha_dash|unique:admin,username',
-				'password'       => 'required|alpha_dash|size:9|same:repeatPassword',
-				'repeatPassword' => 'required|alpha_dash|size:9|same:password',
+				'password'       => 'required|alpha_dash|size:9',
+				'repeatPassword' => 'same:password',
 			]);
 
 		$admin = new Admin();
