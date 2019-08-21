@@ -24,6 +24,9 @@
 	<!--  CSS for Demo Purpose, don't include it in your project     -->
 	<link href="{{asset('css/admin/dashboard/demo.css')}}" rel="stylesheet" />
 
+	<link href="{{asset('css/student/dashboard/stroke.css')}}" rel="stylesheet"/>
+	<link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
+
 </head>
 <body>
 

@@ -2284,7 +2284,7 @@ fieldset[disabled] .btn-neutral.active {
 }
 
 .card .author {
-    font-size: 12px;
+    margin-top: -40px;
     font-weight: 600;
     text-transform: uppercase;
 }
@@ -2341,11 +2341,7 @@ fieldset[disabled] .btn-neutral.active {
     margin-top: 110px;
 }
 
-.card-user .author {
-    text-align: center;
-    text-transform: none;
-    margin-top: -70px;
-}
+
 
 .card-user .avatar {
     width: 124px;
