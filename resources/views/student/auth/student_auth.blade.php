@@ -13,13 +13,12 @@
 
 
 <header>
-<a href="#" class="logo">دانش آموزان</a>
+<a href="{{ route('student_auth') }}" class="logo">دانش آموزان</a>
 <div class="menu-toggle"></div>
 <nav>
 <ul>
-<li><a href="#" class="active">خانه</a></li>
-<li><a href="#">استاد</a></li>
-<li><a href="#">هر چی</a></li>
+<li><a href="{{ route('homepage') }}" class="active">صفحه اصلی</a></li>
+<li><a href="#">اساتید</a></li>
 </ul>
 </nav>
 <div class="clearfix"></div>
