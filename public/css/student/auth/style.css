@@ -364,19 +364,25 @@ a{
 
 
 
+	.form-login input[type="text"]	{
+		text-indent: 25px;
+
+	}
 
 
 
 
+	.form-login input[type="password"]	{
+		text-indent: 25px;
 
-
+	}
 
 
 .form-signup input[type="text"],
 input[type="password"]
 {
 	color: #3CACAE;
-	text-indent: 40px;
+	text-indent: 45px;
 
 }
 

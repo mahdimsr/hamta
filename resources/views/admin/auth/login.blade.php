@@ -31,7 +31,7 @@
 		</div>
 
 		<div class="inputbox">
-			<input type="text" name="password" placeholder="رمز عبور"
+			<input type="password" name="password" placeholder="رمز عبور"
 				   value="{{ $adminPass ? $adminPass : old('password') }}">
 			<span><i class="fas fa-lock"></i></span>
 			<small class="err">{{$errors->first('password')}}</small>
