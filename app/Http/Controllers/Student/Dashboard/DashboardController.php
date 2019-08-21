@@ -30,10 +30,6 @@ class DashboardController extends Controller
 	{
 
 		$student     = Auth::guard('student')->user();
-		$city        = City::where('name', $request->input('city'))->first();
-		$grade       = Grade::where('title', $request->input('grade'))->first();
-		$state       = $city->state()->first();
-		$orientation = Orientation::where('title', $request->input('orientation'))->first();
 
 		$this->validate($request,
 			[
@@ -54,6 +50,10 @@ class DashboardController extends Controller
 			]
 		);
 
+		$city        = City::where('name', $request->input('city'))->first();
+		$grade       = Grade::where('title', $request->input('grade'))->first();
+		$state       = $city->state()->first();
+        $orientation = Orientation::where('title', $request->input('orientation'))->first();
 
 		if ($request->input('averageUp') == '20')
 		{
