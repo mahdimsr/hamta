@@ -82,7 +82,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>.دانش آموز گرامی با سلام</label>
+                            <label>{{ $scholarship->getPersianStatusAttribute() }}</label>
                         </div>
                         <p>{{ $scholarship->adminMessage }}</p>
                     </div>
