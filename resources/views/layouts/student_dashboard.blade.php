@@ -207,28 +207,28 @@
 					<ul>
 						<li>
 							<a href="#">
-								Home
+								خانه
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								Company
+								آزمون های آنلاین
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								Portfolio
+								بورسیه
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								Blog
+								ویدیو های آموزشی
 							</a>
 						</li>
 					</ul>
 				</nav>
 				<p class="copyright pull-right">
-					&copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+					.تمامی حقوق این سایت متعلق به شرکت کاروفن گستر آراد می باشد
 				</p>
 			</div>
 		</footer>

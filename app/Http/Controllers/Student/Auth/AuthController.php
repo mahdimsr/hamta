@@ -69,7 +69,7 @@ class AuthController extends Controller
 		else
 		{
 
-            return redirect()->back()->withErrors(['message'=>['اطلاعات وارد شده صحیح نیست.']]);
+            return redirect()->back()->withErrors(['message'=>['.اطلاعات وارد شده صحیح نیست']]);
 
         }
 
@@ -103,6 +103,4 @@ class AuthController extends Controller
         return redirect()->route('student_dashboard_profile');
 
     }
-
-
 }
