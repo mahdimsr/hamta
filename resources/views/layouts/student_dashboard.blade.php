@@ -67,67 +67,67 @@
 			<ul class="nav text-right ">
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_profile' ? 'active' : ''}}">
                     <a href="{{ route('student_dashboard_profile')}}">
-                            <i class="pe-7s-user"></i>
+                            <i class="fa fa-user"></i>
                         <p>{{$student->isComplete==0?'تکمیل اطلاعات' : 'ویرایش اطلاعات'}}</p>
                     </a>
             </li>
                 <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_exam' ? 'active' : ''}}">
                             <a href="#">
-                                <i class="pe-7s-news-paper"></i>
+                                <i class="fa fa-file"></i>
                                 <p>آزمون های آنلاین</p>
                             </a>
                 </li>
                 <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_scholarship' ? 'active' : ''}}">
                         <a href="{{ route('student_dashboard_scholarship')}}">
-                                <i class="pe-7s-note2"></i>
+                                <i class="fa fa-graduation-cap"></i>
                             <p>بورسیه</p>
                         </a>
                  </li>
                 <li>
                             <a href="#">
-                                <i class="pe-7s-user"></i>
+                                <i class="fa fa-file-video-o"></i>
                                 <p>ویدیو آموزشی</p>
                             </a>
                 </li>
                 <li>
                         <a href="#">
-                                <i class="pe-7s-graph "></i>
+                                <i class="fa fa-university"></i>
                             <p>کلاس های آنلاین</p>
                         </a>
                  </li>
                  <li>
                         <a href="#">
-                            <i class="pe-7s-user"></i>
+                            <i class="fa fa-users"></i>
                             <p>من و مشاورم</p>
                         </a>
                  </li>
                  <li>
                         <a href="#">
-                            <i class="pe-7s-user"></i>
+                            <i class="fa fa-book"></i>
                             <p>کتاب های کمک درسی</p>
                         </a>
                  </li>
                  <li>
                         <a href="#">
-                            <i class="pe-7s-user"></i>
+                            <i class="fa fa-clock-o"></i>
                             <p>فرصتی تا کنکور</p>
                         </a>
                  </li>
                  <li>
                         <a href="#">
-                            <i class="pe-7s-user"></i>
+                            <i class="fa fa-gamepad"></i>
                             <p>بازی و سرگرمی</p>
                         </a>
                  </li>
                  <li>
                         <a href="#">
-                            <i class="pe-7s-user"></i>
+                            <i class="fa fa-user"></i>
                             <p>معرفی دبیر</p>
                         </a>
                  </li>
                  <li>
                         <a href="#">
-                            <i class="pe-7s-user"></i>
+                            <i class="fa fa-comments-o"></i>
                             <p>بحث و گفتگو</p>
                         </a>
                  </li>
@@ -183,7 +183,8 @@
 					<ul  class="nav navbar-nav text-right">
 						<li>
 							<a href="{{ route('student_logout') }}">
-								<p >خارج شو</p>
+
+								<p > <i class="fa fa-sign-out"></i> خروج</p>
 							</a>
 
 						</li>

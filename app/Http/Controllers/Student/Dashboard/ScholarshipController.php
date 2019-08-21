@@ -44,6 +44,11 @@ class ScholarshipController extends Controller
         ]
         );
 
+        if($student->isComplete==0)
+        {
+            return redirect()->back()->withErrors(['notComplete' => ['شما هنوز اطلاعات خود را تکمیل نکرده اید.']]);
+        }
+
 		if ($validator->fails() && $scholarship->status!='NOT-SEEN')
 		{
 			return redirect()->back()->with(['errors' => $validator->errors()]);
