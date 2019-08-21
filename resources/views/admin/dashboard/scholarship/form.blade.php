@@ -43,7 +43,7 @@
 				@endif
 
 				<div class="content">
-					<form method="POST" action="{{route('admin_scholarships_edit',['url' => $scholarship->url])}}">
+					<form method="POST" action="{{route('admin_scholarships_answer',['url' => $scholarship->url])}}">
 
 						{{csrf_field()}}
 
@@ -52,7 +52,7 @@
 								<div class="form-group">
 									<label>پیغام ادمین</label>
 									<textarea dir="rtl" name="adminMessage" rows="5" class="form-control"
-											  placeholder="متن درخواست خود را وارد نمایید" required></textarea>
+											  placeholder="متن درخواست خود را وارد نمایید" required>{{$scholarship->adminMessage}}</textarea>
 								</div>
 							</div>
 						</div>

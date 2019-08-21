@@ -149,12 +149,5 @@ input[type="text"][required] + label[placeholder]:before {
     background-repeat: no-repeat;
     background-position: center;
 }
-html {
-    height: 100%;
-}
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+
 }
