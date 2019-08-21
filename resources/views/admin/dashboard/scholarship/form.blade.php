@@ -2,7 +2,7 @@
 
 @section('content')
 
-	<div class="row">
+	<div class="row" dir="rtl">
 		<div class="col-md-12">
 			<div class="card text-right">
 				<div class="header ">
@@ -52,7 +52,7 @@
 								<div class="form-group">
 									<label>پیغام ادمین</label>
 									<textarea dir="rtl" name="adminMessage" rows="5" class="form-control"
-											  placeholder="متن درخواست خود را وارد نمایید" required>{{$scholarship->adminMessage}}</textarea>
+											  placeholder="به درخواست پاسخ دهید" required>{{$scholarship->adminMessage}}</textarea>
 								</div>
 							</div>
 						</div>

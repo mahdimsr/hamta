@@ -12,8 +12,8 @@
 				<div dir="rtl" class="content table-responsive table-full-width">
 					<table class="table table-hover table-striped">
 						<thead class="text-right">
-						<th>کدمقطع</th>
-						<th>عنوان مقطع</th>
+						<th>نام و نام خانوادگی</th>
+						<th>وضعیت درخواست</th>
 						<th>فرآیند</th>
 						</thead>
 						<tbody class="text-center">

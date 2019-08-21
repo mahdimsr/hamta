@@ -7,7 +7,7 @@
 			<div class="card ">
 
 				<div class="content">
-					<div class="author">
+					<div class="author text-center">
 						<a href="#">
 							<img class=" " src="{{asset('image/student/dashboard/help2.png')}}" alt="..." width="60px"
 								 height="60px"/>
