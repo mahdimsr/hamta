@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Student\Dashboard;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\model\City as City;
 use App\model\Grade as Grade;
 use App\model\Orientation as Orientation;
+use Morilog\Jalali\CalendarUtils;
+use App\Lib\Lib;
 
 
 class DashboardController extends Controller
@@ -29,7 +32,7 @@ class DashboardController extends Controller
 	public function update(Request $request)
 	{
 
-		$student     = Auth::guard('student')->user();
+		$student = Auth::guard('student')->user();
 
 		$this->validate($request,
 			[
@@ -46,14 +49,14 @@ class DashboardController extends Controller
 				'averageUp'    => 'required|digits_between:1,2|min:5|max:20|numeric',
 				'averageDown'  => 'required|digits:2|min:00|max:99|numeric',
 				'telePhone'    => 'required|digits:8',
-				'parentPhone'  => ['required','digits:11','regex:/^(\+98|0)?9\d{9}$/'],
+				'parentPhone'  => ['required', 'digits:11', 'regex:/^(\+98|0)?9\d{9}$/'],
 			]
 		);
 
 		$city        = City::where('name', $request->input('city'))->first();
 		$grade       = Grade::where('title', $request->input('grade'))->first();
 		$state       = $city->state()->first();
-        $orientation = Orientation::where('title', $request->input('orientation'))->first();
+		$orientation = Orientation::where('title', $request->input('orientation'))->first();
 
 		if ($request->input('averageUp') == '20')
 		{
@@ -64,13 +67,20 @@ class DashboardController extends Controller
 			$average = $request->input('averageUp') . '/' . $request->input('averageDown');
 		}
 
-		$student->name          = $request->input('name');
-		$student->familyName    = $request->input('familyName');
-		$student->email         = $request->input('email');
-		$student->nationalCode  = $request->input('nationalCode');
-		$student->address       = $request->input('address');
-		$student->average       = $average;
-		$student->birthday      = $request->input('birthday');
+		$student->name         = $request->input('name');
+		$student->familyName   = $request->input('familyName');
+		$student->email        = $request->input('email');
+		$student->nationalCode = $request->input('nationalCode');
+		$student->address      = $request->input('address');
+		$student->average      = $average;
+
+		// convert and insert birthday
+		$Jalalian          = Lib::convertFaToEn($request->input('birthday'));
+		$dateTime          = CalendarUtils::createDatetimeFromFormat('Y/m/d', $Jalalian);
+		$carbon            = Carbon::createFromTimestamp($dateTime->getTimestamp());
+		$student->birthday = $carbon->toDateTimeString();
+		//end birthday section
+
 		$student->school        = $request->input('school');
 		$student->telePhone     = $state->areaCode . ' - ' . $request->input('telePhone');
 		$student->parentPhone   = $request->input('parentPhone');

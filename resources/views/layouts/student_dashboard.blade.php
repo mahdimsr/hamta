@@ -10,8 +10,6 @@
 
 	<!-- Bootstrap core CSS     -->
 	<link href="{{asset('css/student/dashboard/bootstrap.min.css')}}" rel="stylesheet" />
-	<!-- Shamsi Calender CSS -->
-	<link href="{{asset('css/student/dashboard/persian-datepicker.min.css')}}" rel="stylesheet" />
 	<!-- Animation library for notifications   -->
 	<link href="{{asset('css/student/dashboard/animate.min.css')}}" rel="stylesheet"/>
 
@@ -27,6 +25,9 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
     <link href="{{asset('css/student/dashboard/stroke.css')}}" rel="stylesheet"/>
 	<link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
+
+	{{-- datePicker --}}
+	<link href="{{asset('datePicker/persian-datepicker.min.css')}}" rel="stylesheet"/>
 
 	<style>
 		th{
@@ -238,12 +239,13 @@
 
 
 </body>
-<!-- Shamsi calender Js -->
-<script src="{{asset('js/student/dashboard/persian-date.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('js/student/dashboard/persian-datepicker.min.js')}}" type="text/javascript"></script>
 <!--   Core JS Files   -->
 <script src="{{asset('js/student/dashboard/jquery.3.2.1.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/student/dashboard/bootstrap.min.js')}}" type="text/javascript"></script>
+
+<!-- Date Picker -->
+<script src="{{asset('datePicker/persian-date.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('datePicker/persian-datepicker.min.js')}}" type="text/javascript"></script>
 
 <!--  Charts Plugin -->
 <script src="{{asset('js/student/dashboard/chartist.min.js')}}"></script>
@@ -283,17 +285,14 @@
      placeholder: "انتخاب شهر",
      allowClear: true
      } );
-            //Shamsi calender
 
-    $(document).ready(function() {
-        $('.initial-value-example').persianDatepicker({
-            initialValue: false
-        });
-    });
     $(".hide-search").select2({
         minimumResultsForSearch: Infinity
     });
 
         </script>
+
+@yield('script')
+
 </html>
 
