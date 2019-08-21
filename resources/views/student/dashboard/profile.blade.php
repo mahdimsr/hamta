@@ -46,9 +46,9 @@
                                         <div class="form-group">
                                                 <label>تاریخ تولد </label>
                                                 <input dir="rtl" name="birthday" type="text" class="form-control initial-value-example" value="{{ old('birthday')? old('birthday') : $student->birthday  }}">
-                                                <small>{{ $errors->first('birthday') }}</small>
-                                                <div class="invalid-feedback">
 
+                                                <div class="invalid-feedback">
+                                                    <small>{{ $errors->first('birthday') }}</small>
                                                     </div>
                                         </div>
                                 </div>
@@ -56,19 +56,19 @@
                                     <div class="form-group">
                                         <label>نام خانوادگی</label>
                                         <input dir="rtl" type="text" name="familyName" class="form-control" placeholder="نام خانوادگی خود را وارد نمایید" value="{{ old('familyName')? old('familyName') : $student->familyName }}">
-                                        <small>{{ $errors->first('familyName') }}</small>
-                                        <div class="invalid-feedback">
 
+                                        <div class="invalid-feedback">
+                                            <small>{{ $errors->first('familyName') }}</small>
                                             </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>نام</label>
-                                        <input dir="rtl" type="text" name="name" required class="form-control"  value="{{ old('name')? old('name') : $student->name }}" >
-                                        <small class="error"></small>
+                                        <input dir="rtl" type="text" name="name"  class="form-control"  value="{{ old('name')? old('name') : $student->name }}" >
+
                                         <div class="invalid-feedback">
-                                            {{ $errors->first('name') }}
+                                           <small>{{ $errors->first('name') }}</small>
                                             </div>
                                     </div>
                                 </div>
@@ -78,9 +78,9 @@
 								<div class="form-group">
 									<label>کد ملی</label>
 									<input dir="rtl" type="text" name="nationalCode" class="form-control" placeholder="کد ملی خود را وارد نمایید" value="{{ old('nationalCode') ? old('nationalCode') : $student->nationalCode}}">
-                                    <small>{{ $errors->first('nationalCode') }}</small>
-                                    <div class="invalid-feedback">
 
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('nationalCode') }}</small>
                                         </div>
                                 </div>
 							</div>
@@ -88,9 +88,9 @@
 								<div class="form-group">
 									<label for="exampleInputEmail1">پست الکترونیکی</label>
 									<input dir="rtl" type="email" name="email" class="form-control email-radius" placeholder="پست الکترونیکی خود را وارد نمایید" value="{{ old('email')? old('email') : $student->email }}">
-                                    <small>{{ $errors->first('email') }}</small>
+
                                     <div class="invalid-feedback">
-                                            اشتباه است.
+                                        <small>{{ $errors->first('email') }}</small>
                                         </div>
                                 </div>
 							</div>
@@ -100,9 +100,9 @@
 								<div class="form-group">
 									<label>آدرس</label>
 									<input dir="rtl" name="address" type="text" class="form-control" placeholder="آدرس خود را وارد نمایید" value="{{ old('address')? old('address') : $student->address }}">
-                                    <small>{{ $errors->first('address') }}</small>
-                                    <div class="invalid-feedback">
 
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('address') }}</small>
                                         </div>
                                 </div>
                             </div>
@@ -114,9 +114,9 @@
                                         <option value="{{ $city->name }}" {{ old('city')==$city->name? 'selected' : '' }} {{ $student->isComplete==1 && $student->city()->first()->name==$city->name && !old('city')? 'selected' : '' }}> {{ $city->name }} </option>
                                         @endforeach
                                     </select>
-                                    <small>{{ $errors->first('city') }}</small>
-                                    <div class="invalid-feedback">
 
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('city') }}</small>
                                         </div>
                                 </div>
 						</div>
@@ -124,10 +124,10 @@
 						<div class="row">
                             <div class="col-md-1">
                                     <div class="form-group" style="margin-top:20px;" >
-                                            <input dir="rtl" name="averageUp" maxlength="2" type="number" class="form-control" value="{{ old('averageUp')? old('averageUp') : substr($student->average, 0, 2) }}">
-                                            <small>{{ $errors->first('averageUp') }}</small>
-                                            <div class="invalid-feedback">
+                                            <input dir="rtl" name="averageUp" maxlength="2" type="number" class="form-control number-radius" value="{{ old('averageUp')? old('averageUp') : substr($student->average, 0, 2) }}">
 
+                                            <div class="invalid-feedback">
+                                                <small>{{ $errors->first('averageUp') }}</small>
 												</div>
                                         </div>
                             </div>
@@ -137,20 +137,20 @@
                             <div class="col-md-1">
                                     <div class="form-group">
                                             <label> معدل دیپلم</label>
-                                            <input dir="rtl" name="averageDown" maxlength="2" type="number" class="form-control" value="{{ old('averageDown')? old('averageDown') : substr($student->average, 3, 2) }}">
-                                            <small>{{ $errors->first('averageDown') }}</small>
-                                            <div class="invalid-feedback">
+                                            <input dir="rtl" name="averageDown" maxlength="2" type="number" class="form-control number-radius" value="{{ old('averageDown')? old('averageDown') : substr($student->average, 3, 2) }}">
 
+                                            <div class="invalid-feedback">
+                                                <small>{{ $errors->first('averageDown') }}</small>
 												</div>
                                         </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>مدرسه</label>
-                                    <input dir="rtl" name="school" type="text" class="form-control" placeholder="نام مدرسه خود را وارد نمایید" value="{{ old('school')? old('school') : $student->school }}" required>
-                                    <small>{{ $errors->first('school') }}</small>
-                                    <div class="invalid-feedback">
+                                    <input dir="rtl" name="school" type="text" class="form-control" placeholder="نام مدرسه خود را وارد نمایید" value="{{ old('school')? old('school') : $student->school }}" >
 
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('school') }}</small>
                                     </div>
                                 </div>
                             </div>
@@ -163,9 +163,9 @@
                                         <option value="{{ $grade->title }}" {{ old('grade')==$grade->title ? 'selected' : '' }} {{  $student->isComplete==1 && $student->grade()->first()->title==$grade->title && !old('grade')? 'selected' : '' }}>{{ $grade->title }}</option>
                                         @endforeach
                                     </select>
-                                    <small>{{ $errors->first('grade') }}</small>
-                                    <div class="invalid-feedback">
 
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('grade') }}</small>
                                         </div>
                                 </div>
                             <div class="col-md-3">
@@ -176,9 +176,9 @@
                                         <option value="{{ $orientation->title }}" {{ old('orientation')==$orientation->title? 'selected' : '' }} {{  $student->isComplete==1 && $student->orientation()->first()->title==$orientation->title && !old('orientation')? 'selected' : '' }} >{{ $orientation->title }}</option>
                                         @endforeach
                                     </select>
-                                    <small>{{ $errors->first('orientation') }}</small>
-                                    <div class="invalid-feedback">
 
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('orientation') }}</small>
                                         </div>
                                 </div>
 						</div>
@@ -187,9 +187,9 @@
                                     <div class="form-group">
                                             <label>شماره تلفن همراه یکی از والدین</label>
                                             <input dir="rtl" name="parentPhone" type="text" class="form-control" value="{{ old('parentPhone')? old('parentPhone') : $student->parentPhone}}">
-                                            <small>{{ $errors->first('parentPhone') }}</small>
-                                            <div class="invalid-feedback">
 
+                                            <div class="invalid-feedback">
+                                                <small>{{ $errors->first('parentPhone') }}</small>
 												</div>
                                         </div>
                             </div>
@@ -197,9 +197,9 @@
                                     <div class="form-group">
                                             <label>شماره تلفن منزل بدون پیش شماره</label>
                                             <input dir="rtl" name="telePhone" type="text" class="form-control" value="{{ old('telePhone')? old('telePhone') : substr($student->telePhone,6) }}">
-                                            <small>{{ $errors->first('telePhone') }}</small>
-                                            <div class="invalid-feedback">
 
+                                            <div class="invalid-feedback">
+                                                <small>{{ $errors->first('telePhone') }}</small>
 												</div>
                                         </div>
 							</div>

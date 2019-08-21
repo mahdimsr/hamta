@@ -65,17 +65,26 @@
         position: initial;
     }
 }
+
 .custom-select.is-valid, .form-control.is-valid, .was-validated .custom-select:valid, .was-validated .form-control:valid {
     border-color: #28a745;
 }
 
 .custom-select.is-invalid, .form-control.is-invalid, .was-validated .custom-select:invalid, .was-validated .form-control:invalid {
     border-color: #dc3545;
+    padding-right: calc(1.5em + .75rem);
+    background-image: url(..\..\..\image\student\dashboard\cancel.svg);
+    background-repeat-x: no-repeat;
+    background-repeat-y: no-repeat;
+    background-position-x: right calc(0.375em + 0.1875rem);
+    background-position-y: center;
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
 }
 .invalid-feedback {
-   display: none;
+
     width: 100%;
     margin-top: .25rem;
+    margin-right: 5px;
     font-size: 13px;
 	color: #dc3545;
 }
@@ -97,16 +106,24 @@
     border-radius: 1.5em;
     border: 1px solid #ccc;
 }
+.textarea-radius{
+    border-radius: 1.5em;
+    border:1px solid #ccc;
+}
+.number-radius{
+    border-radius: 1.5em;
+    border:1px solid #ccc;
+}
 .email-radius{
     border-radius: 1.5em;
     border:1px solid #ccc;
 }
-
+/* input style for dashboard    */
 input[type="text"] {
     box-sizing: border-box;
     width: 100%;
     height: calc(3em + 2px);
-    margin: 0 0 1em;
+
     padding: 1em;
     border: 1px solid #ccc;
     border-radius: 1.5em;
@@ -150,4 +167,3 @@ input[type="text"][required] + label[placeholder]:before {
     background-position: center;
 }
 
-}
