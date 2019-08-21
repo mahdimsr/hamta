@@ -261,7 +261,7 @@
 <script src="{{asset('js/student/dashboard/demo.js')}}"></script>
 <script>
 	//Bootstrap Validation
-        (function() {
+       /* (function() {
       'use strict';
       window.addEventListener('load', function() {
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -277,7 +277,7 @@
           }, false);
         });
       }, false);
-    })();
+    })(); */
         //Drop down optional
             $(".city").select2( {
      placeholder: "انتخاب شهر",
