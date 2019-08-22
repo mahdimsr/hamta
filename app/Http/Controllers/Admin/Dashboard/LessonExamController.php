@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Admin\Dashboard;
 
 use App\model\Grade;
+use App\model\GradeLesson;
 use App\model\Lesson;
 use App\model\LessonExam;
 use App\model\Orientation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 
 class LessonExamController extends Controller
@@ -26,11 +29,13 @@ class LessonExamController extends Controller
 
 	public function addShow()
 	{
+		$modify = 0;
+
 		$lessons      = Lesson::all();
 		$grades       = Grade::all();
 		$orientations = Orientation::all();
 
-		return view('admin.dashboard.lessonExam.form', compact('lessons', 'grades', 'orientations'));
+		return view('admin.dashboard.lessonExam.form', compact('lessons', 'grades', 'orientations', 'modify'));
 	}
 
 
@@ -46,6 +51,7 @@ class LessonExamController extends Controller
 			'gradeUrl'       => 'required|exists:grade,url',
 			'orientationUrl' => 'required|exists:orientation,url',
 			'title'          => 'required|string|between:5,20',
+			'price'          => 'integer',
 
 		]);
 
@@ -56,19 +62,48 @@ class LessonExamController extends Controller
 
 		//after validate
 
-		$answerFile = $request->file('answerSheet');
+		$gradeLesson = GradeLesson::query()->where('lessonId', $lesson->id)->where('gradeId', $grade->id)
+			->where('orientationId', $orientation->id);
 
 		$lessonExam = new LessonExam();
 
-		$lessonExam->exm         = 'TextExm';
+
+		if ($gradeLesson->exists())
+		{
+			$lessonExam->gradeLessonId = $gradeLesson->first()->id;
+		}
+		else
+		{
+			$gradeLesson = new GradeLesson();
+
+			$gradeLesson->lessonId      = $lesson->id;
+			$gradeLesson->gradeId       = $grade->id;
+			$gradeLesson->orientationId = $orientation->id;
+
+			$gradeLesson->save();
+
+			$lessonExam->gradeLessonId = $gradeLesson->id;
+
+		}
+
+
 		$lessonExam->title       = $request->input('title');
 		$lessonExam->description = $request->input('description');
 		$lessonExam->price       = $request->input('price');
-		$lessonExam->answerSheet = $answerFile->hashName();
+		$lessonExam->status      = 'IN-QUESTION';
 
 		$lessonExam->save();
 
-		Storage::disk('lessonExam')->put($lessonExam->exm, $answerFile);
+		if ($request->hasFile('answerSheet'))
+		{
+			$answerFile              = $request->file('answerSheet');
+			$lessonExam->answerSheet = $answerFile->hashName();
+			$lessonExam->update();
+
+			Storage::disk('lessonExam')->put($lessonExam->exm, $answerFile);
+
+		}
+
 
 		return redirect()->route('admin_exams');
 	}

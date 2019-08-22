@@ -26,6 +26,25 @@ class GradeLesson extends Model
 
 
 
+	protected static function boot()
+	{
+		parent::boot();
+
+		self::creating(function($model)
+		{
+			$lesson      = Lesson::query()->find($model->lessonId);
+			$grade       = Grade::query()->find($model->gradeId);
+			$orientation = Orientation::query()->find($model->orientationId);
+
+			$model->code = $lesson->code .$grade->code . $orientation->code;
+
+			// $model->save();
+
+		});
+	}
+
+
+
 	public function orientation()
 	{
 		return $this->belongsTo(Orientation::class, 'orientationId');

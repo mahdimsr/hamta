@@ -56,7 +56,7 @@
 					</a>
 				</li>
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_exams' ? 'active' : ''}}">
-					<a href="#">
+					<a href="{{route('admin_exams')}}">
 						<i class="fa fa-file"></i>
 						<p>آزمون ها</p>
 					</a>

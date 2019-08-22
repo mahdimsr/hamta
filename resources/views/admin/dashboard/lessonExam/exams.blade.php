@@ -6,25 +6,25 @@
 		<div class="col-md-12">
 			<div class="card">
 				<div class="header">
-					<h4 class="title text-right">عنوان جدول</h4>
-					<p class="category text-right">زیرنویس جدول</p>
-					<a href="{{route('admin_ltlExams_addShow')}}" style="font-size: 12px;" class="btn btn-info">
+					<h4 class="title text-right">آزمون های درس به درس</h4>
+					<p class="category text-right">تمامی آزمون های درس به درس</p>
+					<a href="{{route('admin_ltlExams_addShow')}}" style="font-size: 12px;" class="btn btn-info pull-right btn-table-header">
 						افزودن آزمون جدید
 					</a>
 				</div>
 				<div dir="rtl" class="content table-responsive table-full-width">
 					<table class="table table-hover table-striped">
 						<thead class="text-right">
-						<th>کدمقطع</th>
-						<th>عنوان مقطع</th>
-						<th>قیمت مقطع</th>
+						<th>کد</th>
+						<th>عنوان</th>
+						<th>قیمت</th>
 						<th>پاسخ برگ</th>
 						<th>فرآیند</th>
 						</thead>
 						<tbody class="text-center">
 						@foreach($lessonExam as $exam)
 							<tr>
-								<td>{{$exam->code}}</td>
+								<td>{{$exam->exm}}</td>
 								<td>{{$exam->title}}</td>
 								<td>{{$exam->price/10 . ' تومان '}}</td>
 								<td>{{$exam->answerSheet ? 'دارد' : 'ندارد'}}</td>
