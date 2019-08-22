@@ -144,10 +144,10 @@
 						</div>
 
 						<div class="row">
-							<div class="col-md-1">
-								<div class="form-group" style="margin-top:32px;">
+							<div class="col-md-1 ">
+								<div class="form-group " style="margin-top:32px;">
 									<input dir="rtl" name="averageUp" maxlength="2" type="number"
-										   class="form-control number-radius"
+										   class="form-control number-radius media-lefts"
                                            value="{{ old('averageUp')? old('averageUp') : substr($student->average, 0, 2) }}"
                                            tabindex="11"
                                            >
@@ -157,14 +157,14 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-1">
+							<div class="col-md-1 ">
 								<p class="text-center" style="margin-top:40px;"> / </p>
 							</div>
 							<div class="col-md-1">
-								<div class="form-group" style="margin-top:-14px;">
+								<div class="form-group  " style="margin-top:-14px;">
 									<label> معدل دیپلم</label>
 									<input dir="rtl" name="averageDown" maxlength="2" type="number"
-										   class="form-control number-radius"
+										   class="form-control number-radius media-rights"
                                            value="{{ old('averageDown')? old('averageDown') : substr($student->average, 3, 2) }}"
                                            tabindex="12"
                                            >
