@@ -68,7 +68,7 @@ class GradeLessonController extends Controller
 		$gradeLesson->orientationId = $orientation->id;
 		$gradeLesson->ratio         = $request->input('ratio');
 		$gradeLesson->type          = $request->input('type');
-		$gradeLesson->code          = $lesson->code . $grade->code . $orientation->code;
+		// $gradeLesson->code          = $lesson->code . $grade->code . $orientation->code;
 
 		$gradeLesson->save();
 
@@ -128,7 +128,7 @@ class GradeLessonController extends Controller
 			$gradeLesson->gradeId       = $grade->id;
 			$gradeLesson->orientationId = $orientation->id;
 			$gradeLesson->ratio         = $request->input('ratio');
-			$gradeLesson->code          = $code['code'];
+			// $gradeLesson->code          = $code['code'];
 
 			$gradeLesson->update();
 
