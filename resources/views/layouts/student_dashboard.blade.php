@@ -283,8 +283,7 @@
     })(); */
         //Drop down optional
             $(".city").select2( {
-     placeholder: "انتخاب شهر",
-     allowClear: true
+     allowClear: true,
      } );
     $(".hide-search").select2({
         minimumResultsForSearch: Infinity
