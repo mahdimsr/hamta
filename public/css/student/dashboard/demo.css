@@ -172,7 +172,7 @@ input[type="text"][required] + label[placeholder]:before {
 margin-top: -5px;
 }
     .media-rights{
-        margin-top: 15px;
+    margin-top: -17px;
     }
 
 }
