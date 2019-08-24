@@ -282,7 +282,7 @@
       }, false);
     })(); */
         //Drop down optional
-            $(".city").select2( {
+            $(".menu").select2( {
      allowClear: true,
      } );
     $(".hide-search").select2({

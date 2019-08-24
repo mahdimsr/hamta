@@ -250,7 +250,7 @@
 							</div>
 							<div class="col-md-3" style="margin-top:2px;">
 								<label for="city">شهر</label>
-								<select dir="rtl" name="city" id="city" class="form-control city" tabindex="7">
+								<select dir="rtl" name="city" id="city" class="form-control menu" tabindex="7">
 									<option id="0" value="" disabled selected>شهر خود را انتخاب نمایید</option>
 									@foreach ( $cities as $city )
 										<option id="{{ $city->provinceId }}" value="{{ $city->name }}" {{ old('city')==$city->name? 'selected' : '' }} {{ $student->isComplete==1 && $student->city()->first()->name==$city->name && !old('city')? 'selected' : '' }}> {{ $city->name }} </option>
@@ -263,7 +263,7 @@
                             </div>
                             <div class="col-md-3" style="margin-top:2px;">
 								<label for="province">استان</label>
-								<select dir="rtl" name="province" id="province" class="form-control city" tabindex="6">
+								<select dir="rtl" name="province" id="province" class="form-control menu" tabindex="6">
 									<option value="" selected disabled>استان خود را انتخاب نمایید</option>
 									@foreach ( $provinces as $province )
 										<option value="{{ $province->id }}" {{ old('province')==$province->name? 'selected' : '' }} {{ $student->isComplete==1 && $student->city()->first()->province()->name==$province->name && !old('province')? 'selected' : '' }}> {{ $province->name }} </option>
@@ -324,7 +324,7 @@
 
 							<div class="col-md-3 ">
 								<label for="grade">مقطع</label>
-								<select dir="rtl" name="grade" class="form-control dropdown-radius" id="grade" tabindex="10">
+								<select dir="rtl" name="grade" class="form-control dropdown-radius menu" id="grade" tabindex="10">
 									<option value="" selected disabled>مقطع تحصیلی خود را انتخاب نمایید</option>
 									@foreach ( $grades as $grade )
 										<option value="{{ $grade->title }}" {{ old('grade')==$grade->title ? 'selected' : '' }} {{  $student->isComplete==1 && $student->grade()->first()->title==$grade->title && !old('grade')? 'selected' : '' }}>{{ $grade->title }}</option>
@@ -337,7 +337,7 @@
 							</div>
 							<div class="col-md-3">
 								<label for="orientation">گرایش</label>
-								<select dir="rtl" name="orientation" class="form-control dropdown-radius"
+								<select dir="rtl" name="orientation" class="form-control dropdown-radius menu"
 										id="orientation" tabindex="9">
 									<option value="" selected disabled>گرایش خود را انتخاب نمایید</option>
 									@foreach ( $orientations as $orientation )
