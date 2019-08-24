@@ -14,55 +14,6 @@ class GradeTableSeeder extends Seeder
 	 */
 	public function run()
 	{
-		DB::table('grade')->insert([
-
-			'code'       => '01',
-			'title'      => 'اول',
-			'url'        => 'first-grade',
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
-
-        ]);
-
-		DB::table('grade')->insert([
-
-			'code'       => '02',
-			'title'      => 'دوم',
-			'url'        => 'second-grade',
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
-
-        ]);
-
-		DB::table('grade')->insert([
-
-			'code'       => '03',
-			'title'      => 'سوم',
-			'url'        => 'third-grade',
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
-
-        ]);
-
-		DB::table('grade')->insert([
-
-			'code'       => '04',
-			'title'      => 'چهارم',
-			'url'        => 'fourth-grade',
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
-
-        ]);
-
-		DB::table('grade')->insert([
-
-			'code'       => '05',
-			'title'      => 'پنجم',
-			'url'        => 'fifth-grade',
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
-
-        ]);
 
 		DB::table('grade')->insert([
 

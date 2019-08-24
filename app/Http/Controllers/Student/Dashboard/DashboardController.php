@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\model\City as City;
+use App\model\Province as Province;
 use App\model\Grade as Grade;
 use App\model\Orientation as Orientation;
+use Illuminate\Validation\Rule;
 use Morilog\Jalali\CalendarUtils;
 use App\Lib\Lib;
 
@@ -22,8 +24,9 @@ class DashboardController extends Controller
 		$student      = Auth::guard('student')->user();
 		$cities       = City::all();
 		$grades       = Grade::all();
-		$orientations = Orientation::all();
-		return view('student.dashboard.profile', compact('student', 'cities', 'grades', 'orientations'));
+        $orientations = Orientation::all();
+        $provinces    = Province::all();
+		return view('student.dashboard.profile', compact('student', 'cities','provinces', 'grades', 'orientations'));
 
 	}
 
@@ -39,9 +42,10 @@ class DashboardController extends Controller
 				'name'         => 'required',
 				'familyName'   => 'required',
 				'birthday'     => 'required',
-				'email'        => 'required|email',
+				'email'        => 'required|email|unique:student,email',
 				'nationalCode' => 'required|digits:10',
-				'city'         => 'required',
+                'city'         => 'required',
+                'province'     => 'required',
 				'address'      => 'required',
 				'orientation'  => 'required',
 				'grade'        => 'required',
@@ -55,7 +59,7 @@ class DashboardController extends Controller
 
 		$city        = City::where('name', $request->input('city'))->first();
 		$grade       = Grade::where('title', $request->input('grade'))->first();
-		$state       = $city->state()->first();
+		$province    = Province::where('id', $request->input('province'))->first();
 		$orientation = Orientation::where('title', $request->input('orientation'))->first();
 
 		if ($request->input('averageUp') == '20')
@@ -82,7 +86,7 @@ class DashboardController extends Controller
 		//end birthday section
 
 		$student->school        = $request->input('school');
-		$student->telePhone     = $state->areaCode . ' - ' . $request->input('telePhone');
+		$student->telePhone     = $province->areaCode . ' - ' . $request->input('telePhone');
 		$student->parentPhone   = $request->input('parentPhone');
 		$student->cityId        = $city->id;
 		$student->orientationId = $orientation->id;
@@ -93,7 +97,34 @@ class DashboardController extends Controller
 
 		return redirect()->route('student_dashboard_profile');
 
-	}
+    }
 
+	public function edit(Request $request)
+	{
+
+		$student = Auth::guard('student')->user();
+
+		$this->validate($request,
+			[
+				'email'               => ['required','email',Rule::unique('student', 'email')->ignore($student)],
+				'address'             => 'required',
+				'telePhone'           => 'required|digits:8',
+                'parentPhone'         => ['required', 'digits:11', 'regex:/^(\+98|0)?9\d{9}$/'],
+                'student_mobile_edit' => ['required','digits:11','regex:/^(\+98|0)?9\d{9}$/',Rule::unique('student', 'mobile')->ignore($student)],
+			]
+		);
+
+		$city        = City::where('id', $student->cityId)->first();
+        $province       = $city->province()->first();
+
+		$student->email        = $request->input('email');
+		$student->address      = $request->input('address');
+		$student->telePhone     = $province->areaCode . ' - ' . $request->input('telePhone');
+		$student->parentPhone   = $request->input('parentPhone');
+		$student->save();
+
+		return redirect()->route('student_dashboard_profile');
+
+	}
 
 }

@@ -8,9 +8,9 @@ class City extends Model
     //
     protected $table = 'city';
 
-    public function state()
+    public function province()
     {
-        return $this->hasOne('App\model\State','id','stateId');
+        return $this->hasOne('App\model\Province','id','provinceId');
     }
 
     public function students()

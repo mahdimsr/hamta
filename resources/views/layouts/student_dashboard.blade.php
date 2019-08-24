@@ -286,11 +286,9 @@
      placeholder: "انتخاب شهر",
      allowClear: true
      } );
-
     $(".hide-search").select2({
         minimumResultsForSearch: Infinity
     });
-
         </script>
 
 @yield('script')
