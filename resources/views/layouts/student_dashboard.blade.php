@@ -121,7 +121,7 @@
                  </li>
                  <li>
                         <a href="#">
-                            <i class="fa fa-user"></i>
+                            <i class="fa fa-newspaper-o "></i>
                             <p>معرفی دبیر</p>
                         </a>
                  </li>

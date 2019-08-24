@@ -166,3 +166,14 @@ input[type="text"][required] + label[placeholder]:before {
     background-repeat: no-repeat;
     background-position: center;
 }
+
+@media (min-width: 1400px){
+.media-lefts{
+margin-top: -5px;
+}
+    .media-rights{
+        margin-top: 15px;
+    }
+
+}
+

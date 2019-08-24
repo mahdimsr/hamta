@@ -1,18 +1,18 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
+	<meta charset="utf-8"/>
 
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
 	<title>همتا | پنل ادمین</title>
 
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-	<meta name="viewport" content="width=device-width" />
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+	<meta name="viewport" content="width=device-width"/>
 
 
 	<!-- Bootstrap core CSS     -->
-	<link href="{{asset('css/admin/dashboard/bootstrap.min.css')}}" rel="stylesheet" />
+	<link href="{{asset('css/admin/dashboard/bootstrap.min.css')}}" rel="stylesheet"/>
 
 	<!-- Animation library for notifications   -->
 	<link href="{{asset('css/admin/dashboard/animate.min.css')}}" rel="stylesheet"/>
@@ -20,9 +20,10 @@
 	<!--  Light Bootstrap Table core CSS    -->
 	<link href="{{asset('css/admin/dashboard/dashboard.css')}}" rel="stylesheet"/>
 
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
 
 	<!--  CSS for Demo Purpose, don't include it in your project     -->
-	<link href="{{asset('css/admin/dashboard/demo.css')}}" rel="stylesheet" />
+	<link href="{{asset('css/admin/dashboard/demo.css')}}" rel="stylesheet"/>
 
 	<link href="{{asset('css/student/dashboard/stroke.css')}}" rel="stylesheet"/>
 	<link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
@@ -50,55 +51,55 @@
 			<ul class="nav text-right ">
 				<li class="{{\Illuminate\Support\Facades\Route::currentRouteName() == 'admin_dashboard' ? 'active' : ''}}">
 					<a href="{{route('admin_dashboard')}}">
-						<i class="pe-7s-graph "></i>
+						<i class="fa fa-dashboard"></i>
 						<p>پنل کاربری</p>
 					</a>
 				</li>
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_exams' ? 'active' : ''}}">
-					<a href="{{route('admin_exams')}}">
-						<i class="pe-7s-user"></i>
+					<a href="#">
+						<i class="fa fa-file"></i>
 						<p>آزمون ها</p>
 					</a>
 				</li>
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_grades' ? 'active' : ''}}">
 					<a href="{{route('admin_grades')}}">
-						<i class="pe-7s-note2"></i>
+						<i class="fa fa-book"></i>
 						<p>مقاطع تحصیلی</p>
 					</a>
 				</li>
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_orientations' ? 'active' : ''}}">
 					<a href="{{route('admin_orientations')}}">
-						<i class="pe-7s-news-paper"></i>
+						<i class="fa fa-filter"></i>
 						<p>گرایش ها</p>
 					</a>
 				</li>
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_gradeLessons' ? 'active' : ''}}">
 					<a href="{{route('admin_gradeLessons')}}">
-						<i class="pe-7s-news-paper"></i>
+						<i class="fa fa-folder"></i>
 						<p>درس های هر پایه</p>
 					</a>
 				</li>
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_lessons' ? 'active' : ''}}">
 					<a href="{{route('admin_lessons')}}">
-						<i class="pe-7s-news-paper"></i>
+						<i class="fa fa-folder-open"></i>
 						<p>درس ها به صورت جداگانه</p>
 					</a>
 				</li>
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_admins' ? 'active' : ''}}">
 					<a href="{{route('admin_admins')}}">
-						<i class="pe-7s-news-paper"></i>
+						<i class="fa fa-cog"></i>
 						<p>ادمین ها</p>
 					</a>
 				</li>
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_scholarships' ? 'active' : ''}}">
 					<a href="{{route('admin_scholarships')}}">
-						<i class="pe-7s-news-paper"></i>
+						<i class="fa fa-graduation-cap"></i>
 						<p>بورسیه ها</p>
 					</a>
 				</li>
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_students' ? 'active' : ''}}">
 					<a href="{{route('admin_students')}}">
-						<i class="pe-7s-news-paper"></i>
+						<i class="fa fa-users"></i>
 						<p>دانش آموز ها</p>
 					</a>
 				</li>
@@ -111,8 +112,9 @@
 	<div class="main-panel">
 		<nav class="navbar navbar-default navbar-fixed">
 			<div class="container-fluid">
-				<div class="navbar-header " style="float: right;" >
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+				<div class="navbar-header " style="float: right;">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+							data-target="#navigation-example-2">
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
@@ -153,11 +155,11 @@
 						</li>
 					</ul>
 
-					<ul  class="nav navbar-nav text-right">
+					<ul class="nav navbar-nav text-right">
 						<li>
 							<a href="{{route('admin_logout')}}">
 
-								<p >خارج شو</p>
+								<p> <i class="fa fa-sign-out"></i>خروج</p>
 							</a>
 
 						</li>
@@ -179,7 +181,7 @@
 		<footer class="footer">
 			<div class="container-fluid">
 				<p class="copyright pull-right">
-                        .تمامی حقوق این سایت متعلق به شرکت کاروفن گستر آراد می باشد
+					.تمامی حقوق این سایت متعلق به شرکت کاروفن گستر آراد می باشد
 				</p>
 			</div>
 		</footer>
