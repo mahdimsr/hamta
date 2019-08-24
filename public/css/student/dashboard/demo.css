@@ -113,6 +113,7 @@
 .number-radius{
     border-radius: 1.5em;
     border:1px solid #ccc;
+    max-width:50px;
 }
 .email-radius{
     border-radius: 1.5em;
@@ -166,8 +167,51 @@ input[type="text"][required] + label[placeholder]:before {
     background-repeat: no-repeat;
     background-position: center;
 }
+@media (max-width: 992px) {
 
-@media (min-width: 1400px){
+    .averages{
+        margin-top: 20px;
+    }
+    .media-lefts {
+        float: left;
+        margin-right: 50px;
+        margin-top: -9px;
+    }
+
+    .media-rights {
+        float: right;
+        margin-right: 20px;
+    }
+
+    p.margins {
+        margin-top: -25px;
+        margin-right: 95px;
+    }
+    #p1{
+        visibility: hidden;
+    }
+}
+
+@media (min-width: 1001px) {
+   .averages{
+       display: flex;
+   }
+    .media-lefts{
+        margin-top: 23px;
+    }
+    .margins {
+        text-align: center;
+        margin-top: 34px;
+        margin-right: 5px;
+    }
+
+    #p2{
+        visibility: hidden;
+    }
+
+
+}
+/*@media (min-width: 1400px){
 .media-lefts{
 margin-top: -5px;
 }
@@ -175,5 +219,5 @@ margin-top: -5px;
     margin-top: -17px;
     }
 
-}
+}*/
 

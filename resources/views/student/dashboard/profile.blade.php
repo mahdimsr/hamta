@@ -277,8 +277,26 @@
 						</div>
 
 						<div class="row">
-							<div class="col-md-1 ">
-								<div class="form-group " style="margin-top:32px;">
+							<div class="col-md-3 averages" style="margin-bottom: 25px;">
+
+
+								<div class="form-group media-rights" >
+									<label>معدل</label>
+									<input dir="rtl" name="averageDown" maxlength="2" type="number"
+										   class="form-control number-radius "
+										   value="{{ old('averageDown')? old('averageDown') : substr($student->average, 3, 2) }}"
+										   tabindex="13"
+									>
+
+									<div class="invalid-feedback">
+										<small>{{ $errors->first('averageDown') }}</small>
+									</div>
+
+								</div>
+
+								<p id="p1" class=" margins"> / </p>
+
+									<div class="form-group media-left">
 									<input dir="rtl" name="averageUp" maxlength="2" type="number"
 										   class="form-control number-radius media-lefts"
                                            value="{{ old('averageUp')? old('averageUp') : substr($student->average, 0, 2) }}"
@@ -288,27 +306,20 @@
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('averageUp') }}</small>
 									</div>
-								</div>
-							</div>
-							<div class="col-md-1 ">
-								<p class="text-center" style="margin-top:40px;"> / </p>
-							</div>
-							<div class="col-md-1">
-								<div class="form-group media-rights" style="margin-top:5px;">
-									<label>معدل</label>
-									<input dir="rtl" name="averageDown" maxlength="2" type="number"
-										   class="form-control number-radius "
-                                           value="{{ old('averageDown')? old('averageDown') : substr($student->average, 3, 2) }}"
-                                           tabindex="13"
-                                           >
 
-									<div class="invalid-feedback">
-										<small>{{ $errors->first('averageDown') }}</small>
-									</div>
 								</div>
+								<p id="p2" class=" margins"> / </p>
+
+
+
+						<!--		<div class="form-group media-rights"> -->
+
+							<!--	</div> -->
+
+
 							</div>
 							<div class="col-md-3">
-								<div class="form-group">
+								<div class="form-group" >
 									<label>مدرسه</label>
 									<input dir="rtl" name="school" type="text" class="form-control"
 										   placeholder="نام مدرسه خود را وارد نمایید"
