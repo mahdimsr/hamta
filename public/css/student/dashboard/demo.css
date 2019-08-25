@@ -113,7 +113,7 @@
 .number-radius{
     border-radius: 1.5em;
     border:1px solid #ccc;
-    max-width:50px;
+
 }
 .email-radius{
     border-radius: 1.5em;
@@ -170,22 +170,24 @@ input[type="text"][required] + label[placeholder]:before {
 @media (max-width: 992px) {
 
     .averages{
-        margin-top: 20px;
+        margin-top: 30px;
     }
     .media-lefts {
         float: left;
-        margin-right: 50px;
+        margin-right: 80px;
         margin-top: -9px;
     }
 
     .media-rights {
         float: right;
-        margin-right: 20px;
-    }
 
+    }
+    .number-radius{
+        width: 70px;
+    }
     p.margins {
         margin-top: -25px;
-        margin-right: 95px;
+        margin-right:105px;
     }
     #p1{
         visibility: hidden;
@@ -193,6 +195,7 @@ input[type="text"][required] + label[placeholder]:before {
 }
 
 @media (min-width: 1001px) {
+
    .averages{
        display: flex;
    }
@@ -204,20 +207,24 @@ input[type="text"][required] + label[placeholder]:before {
         margin-top: 34px;
         margin-right: 5px;
     }
-
+    .number-radius{
+        width: 40px;
+    }
     #p2{
         visibility: hidden;
     }
 
 
-}
-/*@media (min-width: 1400px){
-.media-lefts{
-margin-top: -5px;
-}
-    .media-rights{
-    margin-top: -17px;
-    }
 
-}*/
+}
+
+@media (min-width: 1200px) {
+    .media-rights{
+        margin-right: 10px;
+
+    }
+    .number-radius{
+        width: 70px;
+    }
+}
 
