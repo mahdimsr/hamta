@@ -6,9 +6,9 @@
 
 </head><link rel="stylesheet" href="{{ asset('css/student/auth/style.css') }}">
 
-</head>
-<body>
 
+</head>
+<body  class="container">
 
 
 
@@ -30,6 +30,18 @@
 
 	</defs>
 </svg>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <section class="forms-section">
   <div class="forms">
@@ -56,17 +68,17 @@
           {{ csrf_field() }}
         <fieldset>
 
-          <div class="input-block">
-            <input type="text" id="mobile_email" class="basic-slide" name="mobile_email" placeholder="شماره همراه یا ایمیل"  value="{{ $studentInfo ? $studentInfo : old('mobile_email')}}" required>
+          <div class="input-block form-group">
+            <input type="text" id="mobile_email" class="basic-slide form-control" name="mobile_email" placeholder="شماره همراه یا ایمیل"  value="{{ $studentInfo ? $studentInfo : old('mobile_email')}}" required>
             <label for="mobile_email">نام کاربری</label>
             <small>{{$errors->first('mobile_email')}}</small>
           </div>
 
 
 
-          <div class="input-block">
+          <div class="input-block form-group">
 
-            <input type="password" id="password" name="password"  class="basic-slide" placeholder="رمز عبور" value="{{ $studentPass? $studentPass : old('password') }}" required>
+            <input type="password" id="password" name="password"  class="basic-slide form-control" placeholder="رمز عبور" value="{{ $studentPass? $studentPass : old('password') }}" required>
             <label for="password" class="a">رمز عبور</label>
 			<small>{{$errors->first('password')}}</small>
           </div>
@@ -165,7 +177,7 @@
             {{ csrf_field() }}
         <fieldset>
           <div class="input-block">
-            <input type="text" id="student_mobile"   name="student_mobile" class="basic-slide" placeholder="شماره تلفن " value="{{old('student_mobile')}}" required>
+            <input type="text" id="student_mobile"   name="student_mobile" class="basic-slide form-control" placeholder="شماره تلفن " value="{{old('student_mobile')}}" required>
             <label for="student_mobile" class="j">
 
 
@@ -179,7 +191,7 @@
 
           <div class="input-block">
 
-            <input type="password" id="password" class="basic-slide" name="password_register" placeholder="رمز عبور" required>
+            <input type="password" id="password" class="basic-slide form-control" name="password_register" placeholder="رمز عبور" required>
 
             <label for="password" class="f">رمز عبور</label>
 
@@ -219,16 +231,18 @@
       </form>
     </div>
   </div>
-</section>
+  <footer class="page-footer font-small blue">
 
-<footer >
-
-  <div class="footer-copyright">
-
-  .کلیه حقوق این مادی و معنوی مربوط به کاروفن گسترآراد  می باشد
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">.تمامی حقوق مادی و معنوی این وب سایت متعلق به شرکت کاروفن گسترآراد می باشد
   </div>
+  <!-- Copyright -->
 
 </footer>
+</section>
+
+
+
   <script src="{{ asset('js/student/auth/script.js')}}"></script>
 
 </body>

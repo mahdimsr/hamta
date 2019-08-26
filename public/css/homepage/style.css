@@ -2306,8 +2306,8 @@ margin-left: 250px;
 
 .single-footer-widget p.thi{
 	text-align: right;
-	margin-left: 250px;
-	margin-right: -260px;
+		margin-left: 50%;
+		margin-right: -50%;
 }
 
 
@@ -2322,10 +2322,9 @@ margin-left: 250px;
 
 .single-footer-widget ul {
 	margin-bottom:10px;
-	margin-left: 150px;
 	text-align: center;
+	margin-left: 150px;
 	margin-right: -150px;
-
 }
 .single-footer-widget ul li{
 	margin-bottom:10px;
@@ -2358,11 +2357,6 @@ margin-left: 250px;
 .footer-text a,.footer-text i{
 	color:#ea0763;
 }
-.footer-bottom a i{
-	margin-left: 300px;
-	margin-right: -300px;
-}
-
 
 
 
