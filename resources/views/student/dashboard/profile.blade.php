@@ -413,10 +413,12 @@
 				autoClose: true,
 				initialValue: true,
 				format: 'YYYY/MM/DD',
+				responsive: true,
 				toolbox: {
 					calendarSwitch: {
 						enabled: false
                     },
+                    submitButton:{enabled:true},
                     todayButton:{
                         enabled:false
                     }
