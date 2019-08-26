@@ -23,7 +23,7 @@ class CreateQuestionTable extends Migration
 			$table->string('optionThree');
 			$table->string('optionFour');
 			$table->string('answer');
-			$table->enum('hardness',['TOO_EASY','EASY','NORMAL','HARD','TOO_HARD']);
+			$table->enum('hardness',['1','2','3','4','5']);
 			$table->string('photo');
 			$table->enum('type',['LESSON_EXAM','GIFT_EXAM','GENERAL'])->default('GENERAL');
 			$table->timestamps();

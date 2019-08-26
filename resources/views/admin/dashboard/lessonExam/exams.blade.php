@@ -8,7 +8,8 @@
 				<div class="header">
 					<h4 class="title text-right">آزمون های درس به درس</h4>
 					<p class="category text-right">تمامی آزمون های درس به درس</p>
-					<a href="{{route('admin_ltlExams_addShow')}}" style="font-size: 12px;" class="btn btn-info pull-right btn-table-header">
+					<a href="{{route('admin_ltlExams_addShow')}}" style="font-size: 12px;"
+					   class="btn btn-info pull-right btn-table-header">
 						افزودن آزمون جدید
 					</a>
 				</div>
@@ -30,12 +31,22 @@
 								<td>{{$exam->answerSheet ? 'دارد' : 'ندارد'}}</td>
 								<td>
 
-									<a href="{{route('admin_grades_remove',['url' => $exam->code])}}" id="remove-btn" type="button"
-											style="font-size: 12px;" class="btn btn-danger">
+									<a href="{{route('admin_grades_remove',['url' => $exam->code])}}" id="remove-btn"
+									   type="button"
+									   style="font-size: 12px;" class="btn btn-danger">
 										حذف
 									</a>
-									<a href="{{route('admin_grades_editShow',['url' => $exam->code])}}" style="font-size: 12px;" class="btn btn-info">
+									<a href="{{route('admin_ltlExams_editShow',['exm' => $exam->exm])}}"
+									   style="font-size: 12px;" class="btn btn-info">
 										ویرایش
+									</a>
+									{{--<button onclick="onRemoveClick('test fun')"
+									   style="font-size: 12px;" class="btn btn-success">
+										test
+									</button>--}}
+									<a href="{{route('admin_grades_editShow',['url' => $exam->code])}}"
+									   style="font-size: 12px;" class="btn btn-success">
+										ویرایش یا درج سوال
 									</a>
 
 								</td>
@@ -59,22 +70,15 @@
 		{
 
 			$.ajax({
-
-				type: 'POST',
-
-				url: '{{action('Admin\\Dashboard\\LessonExamController@remove')}}',
-
-				data: {exm: exm},
-
-				dataType: 'JSON',
-
-				success: function()
+				type: 'GET',
+				url: "{{route('test')}}",
+				data: {
+					_token: "{{ csrf_token() }}"
+				},
+				success: function(msg)
 				{
-
-					console.log(exm);
-
+					console.log(msg);
 				}
-
 			});
 		}
 

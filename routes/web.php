@@ -69,8 +69,12 @@ Route::namespace('Admin')->group(function()
 			{
 				Route::get('/', 'LessonExamController@exams')->name('admin_ltl_exams');
 				Route::get('/add', 'LessonExamController@addShow')->name('admin_ltlExams_addShow');
+				Route::get('/edit/{exm}', 'LessonExamController@editShow')->name('admin_ltlExams_editShow');
 				Route::post('/add', 'LessonExamController@add')->name('admin_lExam_add');
 				Route::post('/remove', 'LessonExamController@remove')->name('admin_lExam_remove');
+
+				//questions
+				Route::get('/questions','LessonExamController@questionShow')->name('admin_ltl_exams_question');
 			});
 
 
@@ -152,4 +156,4 @@ Route::get('/test', function()
 
 	return $admin;
 
-});
+})->name('test');

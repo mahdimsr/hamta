@@ -76,13 +76,13 @@
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_gradeLessons' ? 'active' : ''}}">
 					<a href="{{route('admin_gradeLessons')}}">
 						<i class="fa fa-folder"></i>
-						<p>درس های هر پایه</p>
+						<p>دسته بندی درس ها</p>
 					</a>
 				</li>
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_lessons' ? 'active' : ''}}">
 					<a href="{{route('admin_lessons')}}">
 						<i class="fa fa-folder-open"></i>
-						<p>درس ها به صورت جداگانه</p>
+						<p>درس ها</p>
 					</a>
 				</li>
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_admins' ? 'active' : ''}}">
