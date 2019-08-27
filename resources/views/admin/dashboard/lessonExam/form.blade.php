@@ -61,43 +61,15 @@
 						{{csrf_field()}}
 
 						<div class="row">
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>گرایش آزمون</label>
-									<select dir="rtl" name="orientationUrl" class="form-control">
-										<option selected disabled>گرایش درس را انتخاب نمایید</option>
-										@foreach ( $orientations as $orientation )
-											<option value="{{ $orientation->url }}" {{ $modify == 0 ? old('orientationUrl') : $orientation->url == $lessonExam->orientation->url? 'selected' : '' }}>{{ $orientation->title }}</option>
-										@endforeach
-									</select>
-									<div class="invalid-feedback">
-										<small>{{ $errors->first('orientationUrl') }}</small>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>مقطع آزمون</label>
-									<select dir="rtl" name="gradeUrl" class="form-control">
-										<option selected disabled>گرایش درس را انتخاب نمایید</option>
-										@foreach ( $grades as $grade )
-											<option value="{{ $grade->url }}" {{ $modify == 0 ? old('gradeUrl') : $grade->url == $lessonExam->grade->url? 'selected' : '' }}>{{ $grade->title }}</option>
-										@endforeach
-									</select>
-									<div class="invalid-feedback">
-										<small>{{ $errors->first('gradeUrl') }}</small>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
+							<div class="col-md-12">
 								<div class="form-group">
 									<label>درس مربوط به آزمون</label>
-									<select dir="rtl" name="lessonUrl" class="form-control">
-										<option selected disabled>گرایش درس را انتخاب نمایید</option>
-										@foreach ( $lessons as $lesson )
-											<option value="{{ $lesson->url }}" {{ $modify == 0 ? old('lessonUrl') : $lesson->url == $lessonExam->lesson->url? 'selected' : ''  }}>{{ $lesson->title }}</option>
-										@endforeach
-									</select>
+									@foreach($gradeLessons as $gradeLesson)
+
+										<label class="checkbox-inline">
+											<input type="checkbox" name="gradeLessonsCode[]" value="{{$gradeLesson->code}}">{{$gradeLesson->title}}</label>
+
+									@endforeach
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('lessonUrl') }}</small>
 									</div>
@@ -111,7 +83,8 @@
 								<div class="form-group">
 									<label>قیمت ( به ریال)</label>
 									<input name="price" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: 50000" value="{{old('price') ? old('price') : '' }}">
+										   placeholder="مثلا: 50000"
+										   value="{{ $modify == 0 ? old('price') ? old('price') : '' : $lessonExam->price}}">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('price') }}</small>
 									</div>
@@ -122,7 +95,7 @@
 									<label>عنوان آرمون</label>
 									<input name="title" dir="rtl" type="text" class="form-control"
 										   placeholder="مثلا: درس فیزیکدوم دبیرستان، فصل اول"
-										   value="{{old('title') ? old('title') : '' }}">
+										   value="{{$modify == 0 ? old('title') ? old('title') : '' : $lessonExam->title }}">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('title') }}</small>
 									</div>
@@ -135,7 +108,7 @@
 								<div class="form-group">
 									<label>توضیحات</label>
 									<textarea name="description" dir="rtl" rows="5" class="form-control"
-											  placeholder="مثلا بگو که این آزمون مناسب چه کسایی هستش، برای مرور درس خوبه یا برای شب امتحان یا برای کنکور و ....">{{old('description') ? old('description') : ''}}</textarea>
+											  placeholder="مثلا بگو که این آزمون مناسب چه کسایی هستش، برای مرور درس خوبه یا برای شب امتحان یا برای کنکور و ....">{{$modify == 0 ? old('description') ? old('description') : '' : $lessonExam->description}}</textarea>
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('description') }}</small>
 									</div>
@@ -156,8 +129,11 @@
 							</div>
 						</div>
 
-
 						<button type="submit" class="btn btn-info btn-fill pull-right">مرحله بعد</button>
+
+						<a href="{{route('admin_ltl_exams_question')}}"
+						   class="btn btn-success btn-fill">درج سوالات</a>
+
 						<div class="clearfix"></div>
 					</form>
 				</div>

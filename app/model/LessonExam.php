@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Storage;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property int $id
- * @property int $gradeLessonId
  * @property string $exm
  * @property string $title
  * @property string $description
@@ -38,9 +37,22 @@ class LessonExam extends Model
 		self::creating(function($model)
 		{
 
-			$gradeLesson = GradeLesson::query()->find($model->gradeLessonId);
+			/*while (self::where('code', $code = substr(md5(uniqid(rand(), true)), 0, 4))->exists())
+			{
+				;
+			}*/
 
-			$model->exm = 'EXM-' . $gradeLesson->code;
+			/*$char = substr(md5(uniqid(rand(), true)), 0, 1);
+			$code = 'EXM-' . $char . '-' . $gradeLesson->code;
+
+			while (self::where('exm', $code)->exists())
+			{
+				$char = substr(md5(uniqid(rand(), true)), 0, 1);
+				$code = 'EXM-' . $char . '-' . $gradeLesson->code;
+			}
+
+			$model->exm = $code;*/
+
 
 		});
 	}
@@ -52,6 +64,13 @@ class LessonExam extends Model
 		$path = Storage::disk('lessonExam')->url($this->exm . '/' . $this->answerSheet);
 
 		return $path;
+	}
+
+
+
+	public function examGradeLesson()
+	{
+		return $this->hasMany('App\model\examGradeLesson','examId');
 	}
 
 }

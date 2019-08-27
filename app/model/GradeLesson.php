@@ -24,6 +24,8 @@ class GradeLesson extends Model
 
 	protected $table = 'grade_lesson';
 
+	protected $appends = ['title'];
+
 
 
 	protected static function boot()
@@ -36,11 +38,22 @@ class GradeLesson extends Model
 			$grade       = Grade::query()->find($model->gradeId);
 			$orientation = Orientation::query()->find($model->orientationId);
 
-			$model->code = $lesson->code .$grade->code . $orientation->code;
+			$model->code = $lesson->code . $grade->code . $orientation->code;
 
 			// $model->save();
 
 		});
+	}
+
+
+
+	public function getTitleAttribute()
+	{
+		$lessonTitle      = $this->lesson->title;
+		$gradeTitle       = $this->grade->title;
+		$orientationTitle = $this->orientation->title;
+
+		return $lessonTitle . ' ' . $gradeTitle.'-'.$orientationTitle;
 	}
 
 
@@ -65,4 +78,9 @@ class GradeLesson extends Model
 	}
 
 
+
+	public function lessonExam()
+	{
+		return $this->hasMany('app\model\ExamGradeLesson', 'gradeLessonId');
+	}
 }
