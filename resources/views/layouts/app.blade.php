@@ -63,7 +63,7 @@
 <footer class="footer-area">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-3  col-md-6 col-sm-6">
+			<div class="col-lg-5 col-md-6 col-sm-6">
 				<div class="single-footer-widget">
 					<h6>سربرگ</h6>
 					<p>
@@ -73,7 +73,7 @@
 			</div>
 		<div class="col-lg-3 col-md-6 col-sm-6">
 				<div class="single-footer-widget">
-					<h6 class="sec">سربرگ</h6>
+					<h6 >سربرگ</h6>
 					<div class="row">
 						<div class="col">
 							<ul>
@@ -96,8 +96,8 @@
 			</div>
 			<div class="col-lg-3  col-md-6 col-sm-6">
 				<div class="single-footer-widget">
-					<h6 class="thi">سربرگ</h6>
-					<p class="thi">
+					<h6 >سربرگ</h6>
+					<p>
 
 						قانون به حکومت اجازه می‌دهد تا طبقاتی از کارکنان وظیفه‌ای که خدمت دوره ضرورت را به پایان
 						برده‌اند برای تجدید
