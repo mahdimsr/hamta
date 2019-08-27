@@ -19,7 +19,7 @@ class GradeLessonTableSeeder extends Seeder
 			/*ریاضی دهم رایضی فیزیک ضریب 4 تخصصی*/
 
 			'lessonId'      => '5',
-			'gradeId'       => '10',
+			'gradeId'       => '7',
 			'orientationId' => '1',
 			'code'          => '111001',
 			'ratio'         => '4',
@@ -32,7 +32,7 @@ class GradeLessonTableSeeder extends Seeder
 		DB::table('grade_lesson')->insert([
 
 			'lessonId'      => '5',
-			'gradeId'       => '11',
+			'gradeId'       => '6',
 			'orientationId' => '1',
 			'code'          => '111101',
 			'ratio'         => '4',
@@ -45,7 +45,7 @@ class GradeLessonTableSeeder extends Seeder
 		DB::table('grade_lesson')->insert([
 
 			'lessonId'      => '1',
-			'gradeId'       => '11',
+			'gradeId'       => '5',
 			'orientationId' => '1',
 			'code'          => '011101',
 			'ratio'         => '2',
@@ -58,7 +58,7 @@ class GradeLessonTableSeeder extends Seeder
 		DB::table('grade_lesson')->insert([
 
 			'lessonId'      => '2',
-			'gradeId'       => '11',
+			'gradeId'       => '2',
 			'orientationId' => '1',
 			'code'          => '021101',
 			'ratio'         => '2',

@@ -16,21 +16,50 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class ExamGradeLesson extends Model
 {
-    use SoftDeletes;
+	use SoftDeletes;
 
-    protected $table = 'exam_grade_lesson';
+	protected $table = 'exam_grade_lesson';
+
+
+
+	protected static function boot()
+	{
+		parent::boot();
+
+		self::creating(function($model)
+		{
+
+			$lessonExam  = LessonExam::query()->find($model->examId);
+			$gradeLesson = GradeLesson::query()->find($model->gradeLessonId);
+
+			$char = substr(md5(uniqid(rand(), true)), 0, 1);
+			$code = 'EXM-' . $char . '-' . $gradeLesson->code;
+
+			while (LessonExam::query()->where('exm', $code)->exists())
+			{
+				$char = substr(md5(uniqid(rand(), true)), 0, 1);
+				$code = 'EXM-' . $char . '-' . $gradeLesson->code;
+			}
+
+			$lessonExam->exm = $code;
+
+			$lessonExam->update();
+
+
+		});
+	}
 
 
 
 	public function lessonExam()
 	{
-		return $this->belongsTo('app\model\LessonExam','examId');
-    }
+		return $this->belongsTo('app\model\LessonExam', 'examId');
+	}
 
 
 
 	public function gradeLesson()
 	{
-		return $this->belongsTo('app\model\GradeLesson','gradeLessonId');
-    }
+		return $this->belongsTo('app\model\GradeLesson', 'gradeLessonId');
+	}
 }

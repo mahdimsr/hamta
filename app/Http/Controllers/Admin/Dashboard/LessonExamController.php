@@ -65,12 +65,13 @@ class LessonExamController extends Controller
 		{
 			$gradeLesson = GradeLesson::query()->where('code', $gradeLessonCode)->first();
 
+
 			$examGradeLesson = new ExamGradeLesson();
 
 			$examGradeLesson->gradeLessonId = $gradeLesson->id;
 			$examGradeLesson->examId        = $lessonExam->id;
 
-			$gradeLesson->save();
+			$examGradeLesson->save();
 		}
 
 		if ($request->hasFile('answerSheet'))
