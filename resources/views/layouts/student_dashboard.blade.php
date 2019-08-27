@@ -22,7 +22,7 @@
     <link href="{{asset('css/student/dashboard/select2.min.css')}}" rel="stylesheet" />
 
     <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet"/>
     <link href="{{asset('css/student/dashboard/stroke.css')}}" rel="stylesheet"/>
 	<link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
 
@@ -145,20 +145,22 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a dir="rtl" class="navbar-brand" href="{{ route('student_dashboard_profile') }}">داشبورد</a>
+					<a dir="rtl" class="navbar-brand" href="{{ route('student_dashboard_profile') }}"></a>
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<i class="fa fa-dashboard"></i>
-								<p class="hidden-lg hidden-md">داشبورد</p>
+								<i class="fas fa-wallet"></i>
+								<p class="hidden-lg hidden-md"> مسائل مالی</p>
 							</a>
 						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
 								<i class="fa fa-globe"></i>
-								<b class="caret hidden-lg hidden-md"></b>
+
+								<b class="caret "></b>
 								<p class="hidden-lg hidden-md">
 									اعلان ها
 									<b class="caret"></b>
@@ -181,11 +183,28 @@
 					</ul>
 
 					<ul  class="nav navbar-nav text-right">
-						<li>
-							<a href="{{ route('student_logout') }}">
+						<li class="dropdown">
+							<a href="{{ route('student_logout') }}" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								<i class="fa fa-user"></i>
+								<b class="caret "></b>
+								<p class="hidden-lg hidden-md">
 
-								<p > <i class="fa fa-sign-out"></i> خروج</p>
+												حساب کاربری
+									<b class="caret hidden-sm hidden-xs"></b>
+									</p>
 							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="#"> حساب کاربری</a>
+								</li>
+								<li>
+									<a href="#"> تنظیمات</a>
+								</li>
+								<li>
+									<a href="#"> خروج</a>
+								</li>
+
+							</ul>
 
 						</li>
 
@@ -204,34 +223,50 @@
 
 
 		<footer class="footer">
-			<div class="container-fluid">
-				<nav class="pull-left">
-					<ul>
-						<li>
-							<a href="#">
-								خانه
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								آزمون های آنلاین
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								بورسیه
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								ویدیو های آموزشی
-							</a>
-						</li>
-					</ul>
-				</nav>
-				<p class="copyright pull-right">
-					.تمامی حقوق این سایت متعلق به شرکت کاروفن گستر آراد می باشد
-				</p>
+
+				<div dir="rtl" class="row" >
+
+					<div class="col-lg-5 col-md-6" style="float: right;">
+						<h3>صفحات سایت</h3>
+						<ul class="list-unstyled three-column">
+
+							<li>درباره</li>
+							<li>تماس با ما</li>
+							<li>صفحه اصلی</li>
+							<li>نمونه سوالات</li>
+							<li>آخرین اخبار</li>
+
+						</ul>
+
+					</div>
+
+
+
+					<div class="col-lg-3" style="float: right;">
+						<h3>آخرین تغییرات</h3>
+						<img class="img-thumbnail" src="" alt="" />
+						<img class="img-thumbnail" src="" alt="" />
+						<br>
+						<img class="img-thumbnail" src="" alt="" />
+						<img class="img-thumbnail" src="" alt="" />
+					</div>
+					<div class="col-lg-4 col-md-6" style="float: right;">
+						<h3>دسترسی سریع</h3>
+						>
+						<ul class=" socila-list">
+							<li><img href="#" src="http://placehold.it/48x48" alt="" /></li>
+							<li><img href="#" src="http://placehold.it/48x48" alt="" /></li>
+							<li><img href="#" src="http://placehold.it/48x48" alt="" /></li>
+							<li><img href="#" src="http://placehold.it/48x48" alt="" /></li>
+							<li><img href="#" src="http://placehold.it/48x48" alt="" /></li>
+							<li><img href="#" src="http://placehold.it/48x48" alt="" /></li>
+						</ul>
+					</div>
+
+				</div>
+
+			<div class="copyright text-center">
+				تمام حقوق این سامانه مطلق است به <span>فناور گستر آرا</span>
 			</div>
 		</footer>
 
