@@ -71,8 +71,8 @@
                         <p>{{$student->isComplete==0?'تکمیل اطلاعات' : 'ویرایش اطلاعات'}}</p>
                     </a>
             </li>
-                <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_exam' ? 'active' : ''}}">
-                            <a href="#">
+                <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_exams' ? 'active' : ''}}">
+                            <a href="{{route('student_dashboard_exams')}}">
                                 <i class="fa fa-file"></i>
                                 <p>آزمون های آنلاین</p>
                             </a>
@@ -151,8 +151,9 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<i class="fas fa-wallet"></i>
-								<p class="hidden-lg hidden-md"> مسائل مالی</p>
+								<i class="fa fa-bank"></i>
+								<p class="hidden-lg hidden-md">Dashboard</p>
+								<span class="notification hidden-sm hidden-xs">5</span>
 							</a>
 						</li>
 						<li class="dropdown">
