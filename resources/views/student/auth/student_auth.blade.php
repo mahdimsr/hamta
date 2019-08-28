@@ -8,21 +8,30 @@
 
 
 </head>
-<body  class="container">
+<body>
 
 
 
 <header>
-<a href="{{ route('student_auth') }}" class="logo">دانش آموزان</a>
-<div class="menu-toggle"></div>
-<nav>
-<ul>
-<li><a href="{{ route('homepage') }}" class="active">صفحه اصلی</a></li>
-<li><a href="#">اساتید</a></li>
-</ul>
-</nav>
-<div class="clearfix"></div>
- </header>
+        <div class="container">
+
+
+            <nav>
+
+
+                <h1 class="brand"><a href="#">دانش آموزان</a></h1>
+                <ul>
+                    <li><a href="{{ route('homepage') }}">خانه</a></li>
+                    <li><a href="{{ route('student_auth') }}">ورود</a></li>
+                    <li><a href="#">گزینه دوم</a></li>
+                </ul>
+            </nav>
+
+
+        </div>
+
+
+    </header> 
 
 <svg id="stroke" width="0" height="0">
 	<defs>
@@ -30,18 +39,6 @@
 
 	</defs>
 </svg>
-
-
-
-
-
-
-
-
-
-
-
-
 
 <section class="forms-section">
   <div class="forms">
