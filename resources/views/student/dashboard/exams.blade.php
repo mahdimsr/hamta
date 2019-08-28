@@ -56,7 +56,7 @@
 
 
         <div class="col-md-4">
-            <a href="{{route('admin_ltl_exams')}}">
+            <a href="{{route('student_dashboard_lessonExams')}}">
                 <div class="card">
                     <div class="header">
                         <h4 class="title">آزمون های درس به درس</h4>

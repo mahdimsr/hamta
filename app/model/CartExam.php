@@ -17,4 +17,11 @@ class CartExam extends Model
     use SoftDeletes;
 
     protected $table = 'cart_exam';
+
+
+
+	public function cart()
+	{
+		return $this->belongsTo('app\model\Cart','cartId');
+    }
 }

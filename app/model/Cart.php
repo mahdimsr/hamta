@@ -14,7 +14,36 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Cart extends Model
 {
-    use SoftDeletes;
+	use SoftDeletes;
 
-    protected $table = 'cart';
+	protected $table = 'cart';
+
+
+
+	protected static function boot()
+	{
+		parent::boot();
+
+		self::creating(function($model)
+		{
+			$char = substr(md5(uniqid(rand(), true)), 0, 4);
+			$track = 'TRK-' . $char;
+
+			while (self::where('trk', $track)->exists())
+			{
+				$char = substr(md5(uniqid(rand(), true)), 0, 4);
+				$track = 'TRK-' . $char;
+			}
+
+			$model->trk = $track;
+
+		});
+	}
+
+
+
+	public function cartExams()
+	{
+		return $this->hasMany('app\model\CartExam', 'cartId');
+	}
 }

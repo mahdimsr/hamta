@@ -38,7 +38,14 @@ Route::namespace('Student')->group(function()
 
 		Route::prefix('exams')->group(function()
 		{
-			Route::get('/','ExamController@exams')->name('student_dashboard_exams');
+			Route::get('/', 'ExamController@exams')->name('student_dashboard_exams');
+			Route::post('/addToCart', 'ExamController@addToCart')->name('student_addToCart');
+
+			Route::prefix('lessonToLesson')->group(function()
+			{
+				Route::get('/', 'LessonExamController@exams')->name('student_dashboard_lessonExams');
+
+			});
 
 		});
 
