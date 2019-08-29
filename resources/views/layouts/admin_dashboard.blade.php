@@ -61,6 +61,12 @@
 						<p>آزمون ها</p>
 					</a>
 				</li>
+				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_questions' ? 'active' : ''}}">
+					<a href="{{route('admin_questions')}}">
+						<i class="fa fa-file"></i>
+						<p>سوالات</p>
+					</a>
+				</li>
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_grades' ? 'active' : ''}}">
 					<a href="{{route('admin_grades')}}">
 						<i class="fa fa-book"></i>

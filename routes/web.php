@@ -156,6 +156,13 @@ Route::namespace('Admin')->group(function()
 		});
 
 
+		Route::prefix('questions')->group(function()
+		{
+			Route::get('/','QuestionController@questions')->name('admin_questions');
+
+		});
+
+
 	});
 
 });
