@@ -45,8 +45,6 @@
 
 	<script type="text/javascript">
 
-		$("#cartItems").text('5');
-
 
 		function addToCart(exm)
 		{
@@ -63,10 +61,15 @@
 				{
 					if (itemCount)
 					{
-						console.log(itemCount);
+						console.log('we have ' + itemCount);
 
+						var cart = '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' +
+							'<i class="fa fa-bank"></i>' +
+							'<p class="hidden-lg hidden-md">Dashboard</p>' +
+							'<p class="notification hidden-sm hidden-xs">'+itemCount+'</p>' +
+							'</a>';
 
-						$("#cartItems").text('hello my friend');
+						$("#cart").append(cart);
 
 					}
 					else

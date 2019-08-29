@@ -153,15 +153,8 @@
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li>
-							<a id="cart" href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<i class="fa fa-bank"></i>
-								<p class="hidden-lg hidden-md">Dashboard</p>
-
-								<p id="cartItems" class="notification hidden-sm hidden-xs"></p>
-
-							</a>
-						</li>
+							<li id="cart">
+							</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 

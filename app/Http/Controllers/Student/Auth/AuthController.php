@@ -44,7 +44,9 @@ class AuthController extends Controller
 				Cookie::queue('studentPass', '');
 			}
 
-            return redirect()->route('student_dashboard_profile');
+			// return redirect()->intended('student_dashboard_profile');
+
+			return redirect()->route('student_dashboard_profile');
 
         }
 
