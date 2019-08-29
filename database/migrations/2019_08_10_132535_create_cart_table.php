@@ -19,7 +19,7 @@ class CreateCartTable extends Migration
 			$table->bigIncrements('id');
 			$table->bigInteger('studentId');
 			$table->string('trk');
-			$table->integer('price')->nullable();
+			$table->integer('price')->default(0);
 			$table->enum('status',['NOT-PAID','PAID','WAITING-FOR-PAYMENT'])->default('NOT-PAID');
 			$table->boolean('hasOff')->nullable();
 			$table->bigInteger('offId')->nullable();

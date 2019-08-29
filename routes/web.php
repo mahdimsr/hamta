@@ -49,6 +49,12 @@ Route::namespace('Student')->group(function()
 
 		});
 
+
+		Route::prefix('cart')->group(function()
+		{
+			Route::get('/','CartController@cart')->name('student_cart');
+		});
+
 	});
 });
 
@@ -158,7 +164,7 @@ Route::namespace('Admin')->group(function()
 
 		Route::prefix('questions')->group(function()
 		{
-			Route::get('/','QuestionController@questions')->name('admin_questions');
+			Route::get('/', 'QuestionController@questions')->name('admin_questions');
 
 		});
 

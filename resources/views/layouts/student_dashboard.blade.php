@@ -154,6 +154,11 @@
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
 							<li id="cart">
+								<a href="{{route('student_cart')}}">
+									<i class="fa fa-bank"></i>
+									<p class="hidden-lg hidden-md">سبد خرید</p>
+									<span class="notification hidden-sm hidden-xs">5</span>
+								</a>
 							</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
