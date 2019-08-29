@@ -31,10 +31,23 @@ Route::namespace('Student')->group(function()
 	{
 
 		Route::get('/profile', 'DashboardController@profile')->name('student_dashboard_profile');
-        Route::post('/profile', 'DashboardController@update')->name('student_dashboard_profile_update');
-        Route::post('/profileEdit', 'DashboardController@edit')->name('student_dashboard_profile_edit');
+		Route::post('/profile', 'DashboardController@update')->name('student_dashboard_profile_update');
+		Route::post('/profileEdit', 'DashboardController@edit')->name('student_dashboard_profile_edit');
 		Route::get('/scholarship', 'ScholarshipController@scholarship')->name('student_dashboard_scholarship');
 		Route::post('/scholarship', 'ScholarshipController@submit')->name('student_dashboard_scholarship_submit');
+
+		Route::prefix('exams')->group(function()
+		{
+			Route::get('/', 'ExamController@exams')->name('student_dashboard_exams');
+			Route::post('/addToCart', 'ExamController@addToCart')->name('student_addToCart');
+
+			Route::prefix('lessonToLesson')->group(function()
+			{
+				Route::get('/', 'LessonExamController@exams')->name('student_dashboard_lessonExams');
+
+			});
+
+		});
 
 	});
 });
@@ -75,7 +88,7 @@ Route::namespace('Admin')->group(function()
 				Route::post('/remove', 'LessonExamController@remove')->name('admin_lExam_remove');
 
 				//questions
-				Route::get('/questions','LessonExamController@questionShow')->name('admin_ltl_exams_question');
+				Route::get('/questions', 'LessonExamController@questionShow')->name('admin_ltl_exams_question');
 			});
 
 
