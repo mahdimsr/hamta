@@ -10,7 +10,8 @@
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
 	<meta name="viewport" content="width=device-width"/>
 
-
+	<!--  CSS for Demo Purpose, don't include it in your project     -->
+	<link href="{{asset('css/admin/dashboard/demo.css')}}" rel="stylesheet"/>
 	<!-- Bootstrap core CSS     -->
 	<link href="{{asset('css/admin/dashboard/bootstrap.min.css')}}" rel="stylesheet"/>
 
@@ -22,8 +23,7 @@
 
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
 
-	<!--  CSS for Demo Purpose, don't include it in your project     -->
-	<link href="{{asset('css/admin/dashboard/demo.css')}}" rel="stylesheet"/>
+
 
 	<link href="{{asset('css/student/dashboard/stroke.css')}}" rel="stylesheet"/>
 	<link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
