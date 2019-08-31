@@ -263,7 +263,7 @@ footer .three-column li{
 
 footer .socila-list {
     overflow: hidden;
-    margin: 20px 0 10px;
+    margin: 5px 0 10px;
     float: right;
     list-style: none;
     padding-right: 0px;
@@ -292,9 +292,8 @@ footer .img-thumbnail {
 
 footer .copyright {
     padding: 15px 0;
-    background: #333;
     margin-top: 20px;
-    font-size: 15px;
+    font-size: 1px;
     direction: rtl;
 }
 

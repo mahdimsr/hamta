@@ -68,12 +68,6 @@
 				</a>
 			</div>
 			<ul class="nav text-right ">
-				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_profile' ? 'active' : ''}}">
-					<a href="{{ route('student_dashboard_profile')}}">
-						<i class="fa fa-user"></i>
-						<p>{{$student->isComplete==0?'تکمیل اطلاعات' : 'ویرایش اطلاعات'}}</p>
-					</a>
-				</li>
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_exams' ? 'active' : ''}}">
 					<a href="{{route('student_dashboard_exams')}}">
 						<i class="fa fa-file"></i>
@@ -189,7 +183,7 @@
 
 					<ul class="nav navbar-nav text-right">
 						<li class="dropdown">
-							<a href="{{ route('student_logout') }}" class="dropdown-toggle" data-toggle="dropdown"
+							<a class="dropdown-toggle" data-toggle="dropdown"
 							   aria-expanded="false">
 								<i class="fa fa-user"></i>
 								<b class="caret "></b>
@@ -201,13 +195,13 @@
 							</a>
 							<ul class="dropdown-menu">
 								<li>
-									<a href="#"> حساب کاربری</a>
+									<a href="{{ route('student_dashboard_profile')}}">ویرایش پروفایل</a>
 								</li>
 								<li>
 									<a href="#"> تنظیمات</a>
 								</li>
 								<li>
-									<a href="#"> خروج</a>
+									<a href="{{ route('student_logout') }}"> خروج</a>
 								</li>
 
 							</ul>
@@ -229,35 +223,8 @@
 
 
 		<footer class="footer">
-
 			<div dir="rtl" class="row">
-
-				<div class="col-lg-5 col-md-6" style="float: right;">
-					<h3>صفحات سایت</h3>
-					<ul class="list-unstyled three-column">
-
-						<li>درباره</li>
-						<li>تماس با ما</li>
-						<li>صفحه اصلی</li>
-						<li>نمونه سوالات</li>
-						<li>آخرین اخبار</li>
-
-					</ul>
-
-				</div>
-
-
-				<div class="col-lg-3" style="float: right;">
-					<h3>آخرین تغییرات</h3>
-					<img class="img-thumbnail" src="" alt=""/>
-					<img class="img-thumbnail" src="" alt=""/>
-					<br>
-					<img class="img-thumbnail" src="" alt=""/>
-					<img class="img-thumbnail" src="" alt=""/>
-				</div>
-				<div class="col-lg-4 col-md-6" style="float: right;">
-					<h3>دسترسی سریع</h3>
-					>
+				<div class="col-md-4">
 					<ul class=" socila-list">
 						<li><img href="#" src="http://placehold.it/48x48" alt=""/></li>
 						<li><img href="#" src="http://placehold.it/48x48" alt=""/></li>
@@ -266,13 +233,13 @@
 						<li><img href="#" src="http://placehold.it/48x48" alt=""/></li>
 						<li><img href="#" src="http://placehold.it/48x48" alt=""/></li>
 					</ul>
-				</div>
-
-			</div>
-
-			<div class="copyright text-center">
-				تمام حقوق این سامانه مطلق است به <span>فناور گستر آرا</span>
-			</div>
+                </div>
+                <div class="col-md-8">
+                        <p class="copyright pull-right">
+                        تمامی حقوق این سایت متعلق به شرکت کاروفن گستر آراد می باشد.
+                        </p>
+                </div>
+            </div>
 		</footer>
 
 	</div>

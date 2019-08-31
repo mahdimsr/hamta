@@ -14,24 +14,16 @@
 
 <header>
         <div class="container">
-
-
             <nav>
-
-
-                <h1 class="brand"><a href="#">دانش آموزان</a></h1>
+                <h1 class="brand"><a href="{{ route('student_auth') }}">همتا | دانش آموزان</a></h1>
                 <ul>
                     <li><a href="{{ route('homepage') }}">خانه</a></li>
                     <li><a href="{{ route('student_auth') }}">ورود</a></li>
-                    <li><a href="#">گزینه دوم</a></li>
+                    <li><a href="#">اساتید</a></li>
                 </ul>
             </nav>
-
-
         </div>
-
-
-    </header> 
+</header>
 
 <svg id="stroke" width="0" height="0">
 	<defs>
