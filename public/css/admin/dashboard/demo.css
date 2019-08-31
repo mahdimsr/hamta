@@ -167,3 +167,198 @@ input[type="text"][required] + label[placeholder]:before {
     background-position: center;
 }
 
+/*Admin Dashboard questions*/
+.question-img{
+    border-radius: 10%;
+    border: solid #b8c2cc;
+    margin-bottom: 10px;
+
+}
+a:hover img{
+    transform: scale(1.5);
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: .5s ease-in-out;
+
+}
+
+.answers{
+    list-style: decimal;
+}
+.card-footer{
+    padding: .75rem 1.25rem;
+    background-image: linear-gradient(to right, rgba(96, 251, 155, 0.42), rgba(49, 201, 243, 0.6));
+
+    border-top: 1px solid rgba(0,0,0,.125);
+}
+
+
+
+
+.label__checkbox {
+    display: none;
+}
+.label__check {
+    display: inline-block;
+    border-radius: 50%;
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    background: white;
+    vertical-align: middle;
+    margin-right: 20px;
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border 0.3s ease;
+}
+.label__check i.icon {
+    opacity: 0.2;
+    font-size: calc(0.5rem + 0.6vw);
+    color: transparent;
+    transition: opacity 0.3s 0.1s ease;
+    -webkit-text-stroke: 3px rgba(0, 0, 0, 0.5);
+}
+.label__check:hover {
+    border: 5px solid rgba(0, 0, 0, 0.2);
+}
+.label__checkbox:checked + .label__text .label__check {
+    -webkit-animation: check 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22) forwards;
+    animation: check 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22) forwards;
+}
+.label__checkbox:checked + .label__text .label__check .icon {
+    opacity: 1;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    color: white;
+    -webkit-text-stroke: 0;
+    -webkit-animation: icon 0.3s cubic-bezier(1, 0.008, 0.565, 1.65) 0.1s 1 forwards;
+    animation: icon 0.3s cubic-bezier(1, 0.008, 0.565, 1.65) 0.1s 1 forwards;
+}
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+@-webkit-keyframes icon {
+    from {
+        opacity: 0;
+        -webkit-transform: scale(0.3);
+        transform: scale(0.3);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+@keyframes icon {
+    from {
+        opacity: 0;
+        -webkit-transform: scale(0.3);
+        transform: scale(0.3);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+@-webkit-keyframes check {
+    0% {
+        width: 1.5em;
+        height: 1.5em;
+        border-width: 5px;
+    }
+    10% {
+        width: 1.5em;
+        height: 1.5em;
+        opacity: 0.1;
+        background: rgba(0, 0, 0, 0.2);
+        border-width: 15px;
+    }
+    12% {
+        width: 1.5em;
+        height: 1.5em;
+        opacity: 0.4;
+        background: rgba(0, 0, 0, 0.1);
+        border-width: 0;
+    }
+    50% {
+        width: 2em;
+        height: 2em;
+        background: #00d478;
+        border: 0;
+        opacity: 0.6;
+    }
+    100% {
+        width: 2em;
+        height: 2em;
+        background: #00d478;
+        border: 0;
+        opacity: 1;
+    }
+}
+@keyframes check {
+    0% {
+        width: 1.5em;
+        height: 1.5em;
+        border-width: 5px;
+    }
+    10% {
+        width: 1.5em;
+        height: 1.5em;
+        opacity: 0.1;
+        background: rgba(0, 0, 0, 0.2);
+        border-width: 15px;
+    }
+    12% {
+        width: 1.5em;
+        height: 1.5em;
+        opacity: 0.4;
+        background: rgba(0, 0, 0, 0.1);
+        border-width: 0;
+    }
+    50% {
+        width: 2em;
+        height: 2em;
+        background: #00d478;
+        border: 0;
+        opacity: 0.6;
+    }
+    100% {
+        width: 2em;
+        height: 2em;
+        background: #00d478;
+        border: 0;
+        opacity: 1;
+    }
+}
+
+
+.search-sec{
+    padding: 2rem;
+}
+.search-slt{
+    display: block;
+    width: 100%;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #55595c;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    height: calc(3rem + 2px) !important;
+    border-radius:0;
+}
+.wrn-btn{
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: capitalize;
+    height: calc(3rem + 2px) !important;
+    border-radius:0;
+}
