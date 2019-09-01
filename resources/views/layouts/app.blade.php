@@ -46,10 +46,10 @@
 					</ul>
 
 					<ul class="nav navbar-nav menu_nav justify-content-end">
-						<li class="nav-item"><a class="nav-link" href="#exams">آزمون های همتا</a></li>
-						<li class="nav-item"><a class="nav-link" href="#comments">همتا از دید بقیه</a></li>
-						<li class="nav-item"><a class="nav-link" href="#team">تیم همتا</a></li>
-						<li class="nav-item"><a class="nav-link" href="{{route('homepage')}}#hamta">چرا همتا؟</a>
+						<li class="nav-item active"><a class="nav-link scroll" href="#exams">آزمون های همتا</a></li>
+						<li class="nav-item"><a class="nav-link scroll" href="#comments">همتا از دید بقیه</a></li>
+						<li class="nav-item"><a class="nav-link scroll" href="#team">تیم همتا</a></li>
+						<li class="nav-item"><a class="nav-link scroll" href="{{route('homepage')}}#hamta">چرا همتا؟</a>
 					</ul>
 
 				</div>
@@ -121,6 +121,7 @@
 <script src="{{asset('vendors/bootstrap/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('js/homepage/jquery.ajaxchimp.min.js')}}"></script>
 <script src="{{asset('js/homepage/main.js')}}"></script>
+<script src="{{asset('js/homepage/scroll.js')}}"></script>
 
 
 </body>

@@ -71,7 +71,7 @@ h4,.h4{
 }
 }
 .section-margin{
-	margin:70px 0
+	margin:70px 0;
 }
 @media (min-width: 992px){
 	.section-margin{
@@ -194,7 +194,8 @@ h4,.h4{
 .header_area .navbar .nav .nav-item .nav-link{
 	color:#242424;
 	text-transform:capitalize;
-	font-weight:400;
+	font-size: 18px;
+	font-weight: 400;
 	padding:33px 0;
 	display:inline-block
 }
@@ -979,11 +980,7 @@ h4,.h4{
 	font-size:14px;
 	text-align: center;
 }
-.schedule-content .schedule-title{
-	display:inline-block;
-	margin-bottom:8px;
-	
-}
+
 .schedule-card{
 	background:#f7f7f7;
 	margin-bottom:30px
@@ -2362,23 +2359,25 @@ margin-left: 250px;
 
 
 
+.carousel-item{
+	z-index: -1;
+    max-height: 80vh;
 
+    }
+    .carousel-item::after{
+        content: "";
+	top: 0;
+	left: 0;
+    opacity: 0.8;
+	right: 0;
+	bottom: 0;
+	z-index: 4;
+	position: absolute;
+	background: #2b5876;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #4e4376, #2b5876);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #4e4376, #2b5876); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-
-
-.carousel-item img{
-z-index: -1;
-}
-.plz{
-	z-index: 1;
-    opacity: 0.85;
-	width: 100%;
-	height: 100%;
-	background: #000529; /* Old browsers */
-	background: -moz-linear-gradient(left, #000529 1%, #002055 24%, #005db5 67%, #0074d9 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(left, #000529 1%,#002055 24%,#005db5 67%,#0074d9 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to right, #000529 1%,#002055 24%,#005db5 67%,#0074d9 100%);
-}
+	}
 
 
 
@@ -2387,9 +2386,10 @@ z-index: -1;
 
 .btn-outline-info{
 	margin-right: 60px;
-	background-image: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
- border: 1px solid silver;
- background-blend-mode: screen;
+	background: #BBD2C5;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #536976, #BBD2C5);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #536976, #BBD2C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background-blend-mode: screen;
 
 }
 
@@ -2402,6 +2402,62 @@ z-index: -1;
 	background-image: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
 	background-blend-mode: screen;
 	border: 1px solid silver;
+}
 
 
+.days{
+
+	font-family: IRANSans-web, serif;
+
+}
+.hours{
+	font-family: IRANSans-web, serif;
+}
+.minutes{
+	font-family: IRANSans-web, serif;
+}
+.schedule-date{
+	font-family: IRANSans-web, serif;
+
+}
+.priceTable-price{
+	font-family: IRANSans-web, serif;
+}
+.schedule-title h3{
+	color: red;
+	text-align: center !important;
+}
+
+
+.avtives h1,
+.avtives h3,
+.avtives p,
+.avtives li,
+.avtives a
+{
+	color: #fff !important;
+}
+.avtives .card-priceTable{
+	background: #3b1d82 !important;
+	z-index: 1;
+}
+
+.avtives h1:hover,
+.avtives h3:hover,
+.avtives p:hover,
+.avtives li:hover
+{
+
+	color:#27213C !important;
+}
+.avtives a{
+	background: #B8B3BE !important;
+	border:none;
+}
+.avtives a:hover{
+	background: #5DFDCB !important;
+}
+.avtives .card-priceTable:hover{
+	background: #32746D !important;
+	z-index: 1;
 }

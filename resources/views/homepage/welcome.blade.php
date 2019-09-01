@@ -87,7 +87,8 @@
 
 
 	<!--================ Join section Start =================-->
-	<section class="section-margin" id="hamta">
+	<div id="hamta">
+	<section class="section-margin">
 		<div class="container">
 			<div class="section-intro text-center pb-98px">
 				{{--<p class="section-intro__title">سر برگ</p>--}}
@@ -128,6 +129,7 @@
 			</div>
 		</div>
 	</section>
+	</div>
 	<!--================ Join section End =================-->
 
 
@@ -363,8 +365,8 @@
 			</div>
 
 			<div class="row">
-				<div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-					<div class="text-center card-priceTable">
+				<div class="col-lg-4 col-md-6 mb-4 mb-lg-0 avtives">
+					<div class="text-center card-priceTable ">
 						<div class="priceTable-header">
 							<h3>آزمون جایزه دار</h3>
 							<p>جایزه داره</p>
