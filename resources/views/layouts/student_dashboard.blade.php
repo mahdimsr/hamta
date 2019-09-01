@@ -287,7 +287,7 @@
 	 }, false);
 	 });
 	 }, false);
-	 })(); */
+     })(); */
 	//Drop down optional
 	$(".menu").select2({
 		allowClear: true,

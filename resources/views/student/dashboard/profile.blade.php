@@ -107,13 +107,12 @@
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="exampleInputEmail1">پست الکترونیکی</label>
-									<input dir="rtl" type="email" name="email" class="form-control email-radius"
+									<label for="email">پست الکترونیکی</label>
+									<input dir="rtl" id="email" type="text" name="email" class="form-control email-radius"
 										   placeholder="پست الکترونیکی خود را وارد نمایید"
                                            value="{{ old('email')? old('email') : $student->email }}"
                                            tabindex="4"
                                            >
-
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('email') }}</small>
 									</div>
@@ -132,7 +131,7 @@
 							</div>
 							<div class="col-md-3 " style="margin-top:2px;">
 								<label for="city">شهر</label>
-								<select dir="rtl" name="city" id="city" class="form-control menu menus " tabindex="7">
+								<select dir="rtl" name="city" id="city" class="form-control menu" tabindex="7">
 									<option id="0" value="" disabled selected>شهر خود را انتخاب نمایید</option>
 									@foreach ( $cities as $city )
 										<option id="{{ $city->provinceId }}" value="{{ $city->name }}" {{ old('city')==$city->name? 'selected' : '' }} {{ $student->isComplete==1 && $student->city->name==$city->name && !old('city')? 'selected' : '' }}> {{ $city->name }} </option>
@@ -143,17 +142,16 @@
 									<small>{{ $errors->first('city') }}</small>
 								</div>
                             </div>
-                            <div class="col-md-3  " style="margin-top:2px;">
+                            <div class="col-md-3" style="margin-top:2px;">
 								<label for="province">استان</label>
-								<select dir="rtl" name="province" id="province" class="form-control menu  " tabindex="6">
-									<option value="" selected disabled>استان خود را انتخاب نمایید</option>
+								<select dir="rtl" name="province" id="province" class="form-control menu" tabindex="6">
+									<option id="0" value="" selected disabled>استان خود را انتخاب نمایید</option>
 									@foreach ( $provinces as $province )
-										<option value="{{ $province->id }}" {{ old('province')==$province->name? 'selected' : '' }} {{ $student->isComplete==1 && $student->city->province->name==$province->name && !old('province')? 'selected' : '' }}> {{ $province->name }} </option>
+										<option id="{{ $province->id }}" value="{{ $province->name}}" {{ old('province') == $province->name ? 'selected' : '' }} {{ $student->isComplete==1 && $student->city->province->name==$province->name && !old('province')? 'selected' : '' }}> {{ $province->name }} </option>
 									@endforeach
 								</select>
-
 								<div class="invalid-feedback">
-									<small>{{ $errors->first('province') }}</small>
+									<small>{{ $errors->first('province')}}</small>
 								</div>
 							</div>
 						</div>
@@ -217,7 +215,7 @@
 
 							<div class="col-md-3 ">
 								<label for="grade">مقطع</label>
-								<select dir="rtl" name="grade" class="form-control dropdown-radius menu menus hide-search" id="grade" tabindex="10"  {{ $student->isComplete== 1? 'disabled' : '' }} >
+								<select dir="rtl" name="grade" class="form-control dropdown-radius menu hide-search" id="grade" tabindex="10"  {{ $student->isComplete== 1? 'disabled' : '' }} >
 									<option value="" selected disabled>مقطع تحصیلی خود را انتخاب نمایید</option>
 									@foreach ( $grades as $grade )
 										<option value="{{ $grade->title }}" {{ old('grade')==$grade->title ? 'selected' : '' }} {{  $student->isComplete==1 && $student->grade()->first()->title==$grade->title && !old('grade')? 'selected' : '' }}>{{ $grade->title }}</option>
@@ -347,15 +345,30 @@
                     }
 				}
             });
-        $("#province").change(function() {
-            if ($(this).data('options') === undefined) {
+        $("#province").change(function()
+        {
+
+            if ($(this).data('options') === undefined)
+            {
                 $(this).data('options', $('#city option').clone());
-              }
-            var id = $(this).val();
+            }
+            var id = $("#province option:selected").attr('id');
             var options = $(this).data('options').filter('[id=' + id + '],[id=0]');
             $('#city').html(options);
             $('#city').prop('selectedIndex',0).trigger('change');
-          });
+
+        });
+
+        if($("#province").val()!='')
+        {
+
+            $("#province").data('options', $('#city option').clone());
+            var id = $("#province option:selected").attr('id');
+            var options = $("#province").data('options').filter('[id=' + id + '],[id=0]');
+            $('#city').html(options);
+
+        }
+
         });
 	</script>
 @endsection
