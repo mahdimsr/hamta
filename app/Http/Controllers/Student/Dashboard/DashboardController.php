@@ -46,7 +46,7 @@ class DashboardController extends Controller
 				'nationalCode' => 'required|digits:10',
                 'city'         => 'required',
                 'province'     => 'required',
-				'address'      => 'required',
+				'address'      => 'required|string|max:200',
 				'orientation'  => 'required',
 				'grade'        => 'required',
 				'school'       => 'required',
@@ -107,20 +107,22 @@ class DashboardController extends Controller
 		$this->validate($request,
 			[
 				'email'               => ['required','email',Rule::unique('student', 'email')->ignore($student)],
-				'address'             => 'required',
+				'address'             => 'required|string|max:200',
 				'telePhone'           => 'required|digits:8',
                 'parentPhone'         => ['required', 'digits:11', 'regex:/^(\+98|0)?9\d{9}$/'],
                 'student_mobile_edit' => ['required','digits:11','regex:/^(\+98|0)?9\d{9}$/',Rule::unique('student', 'mobile')->ignore($student)],
 			]
 		);
 
-		$city        = City::where('id', $student->cityId)->first();
-        $province       = $city->province()->first();
+		$city        = City::where('name', $request->input('city'))->first();
+		$province    = Province::where('id', $request->input('province'))->first();
 
 		$student->email        = $request->input('email');
-		$student->address      = $request->input('address');
-		$student->telePhone     = $province->areaCode . ' - ' . $request->input('telePhone');
-		$student->parentPhone   = $request->input('parentPhone');
+        $student->address      = $request->input('address');
+        $student->cityId       = $city->id;
+		$student->telePhone    = $province->areaCode . ' - ' . $request->input('telePhone');
+        $student->parentPhone  = $request->input('parentPhone');
+        $student->mobile       = $request->input('student_mobile_edit');
 		$student->save();
 
 		return redirect()->route('student_dashboard_profile');
