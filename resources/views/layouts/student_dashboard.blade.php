@@ -21,8 +21,8 @@
 	<link href="{{asset('css/student/dashboard/demo.css')}}" rel="stylesheet"/>
 	<link href="{{asset('css/student/dashboard/select2.min.css')}}" rel="stylesheet"/>
 
-	<!--     Fonts and icons     -->
-	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet"/>
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 	<link href="{{asset('css/student/dashboard/stroke.css')}}" rel="stylesheet"/>
 	<link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
 
@@ -82,7 +82,7 @@
 				</li>
 				<li>
 					<a href="#">
-						<i class="fa fa-file-video-o"></i>
+						<i class="fa fa-file-video"></i>
 						<p>ویدیو آموزشی</p>
 					</a>
 				</li>
@@ -106,7 +106,7 @@
 				</li>
 				<li>
 					<a href="#">
-						<i class="fa fa-clock-o"></i>
+						<i class="fa fa-clock"></i>
 						<p>فرصتی تا کنکور</p>
 					</a>
 				</li>
@@ -118,13 +118,13 @@
 				</li>
 				<li>
 					<a href="#">
-						<i class="fa fa-newspaper-o "></i>
+						<i class="fa fa-newspaper"></i>
 						<p>معرفی دبیر</p>
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<i class="fa fa-comments-o"></i>
+						<i class="fa fa-comments"></i>
 						<p>بحث و گفتگو</p>
 					</a>
 				</li>
@@ -149,7 +149,7 @@
 					<ul class="nav navbar-nav navbar-right">
 							<li id="cart">
 								<a href="{{route('student_cart')}}">
-									<i class="fa fa-bank"></i>
+									<i class="fa fa-wallet"></i>
 									<p class="hidden-lg hidden-md">سبد خرید</p>
 									<span class="notification hidden-sm hidden-xs">5</span>
 								</a>
