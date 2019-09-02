@@ -100,7 +100,7 @@
 			<div class="d-lg-flex justify-content-between">
 				<div class="card-feature mb-5 mb-lg-0">
 					<div class="feature-icon">
-						<i class="fas fa-eye"></i>
+					<img src="{{asset('image/homepage/fogg-premium-upgrade-1.png')}}">
 					</div>
 					<h3>آزمون جایزه دار</h3>
 					<p>آزمون بده پول بگیر</p>
@@ -108,7 +108,7 @@
 
 				<div class="card-feature mb-5 mb-lg-0">
 					<div class="feature-icon">
-						<i class="fas fa-eye"></i>
+						<img src="{{asset('image/homepage/fogg-premium-upgrade-1.png')}}">
 					</div>
 					<h3>آزمون درس به درس</h3>
 					<p>پول بده آزمون بگیریم</p>
@@ -116,7 +116,7 @@
 
 				<div class="card-feature mb-5 mb-lg-0">
 					<div class="feature-icon">
-						<i class="fas fa-eye"></i>
+					<img src="{{asset('image/homepage/fogg-premium-upgrade-1.png')}}">
 					</div>
 					<h3>اپلیکیشن</h3>
 					<p>دراز بکش و آزمون بده و پول بگیر</p>

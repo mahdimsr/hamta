@@ -123,6 +123,11 @@
 <script src="{{asset('js/homepage/main.js')}}"></script>
 <script src="{{asset('js/homepage/scroll.js')}}"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js"></script>
+<script src="{{asset('js/homepage/animation.js')}}"></script>
+
+
 
 </body>
 </html>

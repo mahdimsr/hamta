@@ -767,21 +767,13 @@ h4,.h4{
 		max-width:295px
 }
 }
-.card-feature .feature-icon{
-	width:99px;
-	height:97px;
+.card-feature img{
+	width:200px;
+	height:200px;
 	line-height:97px;
-	margin-right:auto;
-	margin-left:auto;
-	display:block;
-	background:url("../../image/homepage/home/feature-icon-bg.png") left center no-repeat;
-	background-size:cover;
-	-webkit-transition:all 0.3s ease 0s;
-	-moz-transition:all 0.3s ease 0s;
-	-o-transition:all 0.3s ease 0s;
-	transition:all 0.3s ease 0s;
-	margin-bottom:18px
+
 }
+
 @media (min-width: 991px){
 	.card-feature .feature-icon{
 		margin-bottom:25px
@@ -806,13 +798,8 @@ h4,.h4{
 .card-feature p{
 	font-weight:300
 }
-.card-feature:hover .feature-icon{
-	background:url("../../image/homepage/home/feature-icon-active-bg.png") left center no-repeat;
-	background-size:cover
-}
-.card-feature:hover .feature-icon i,.card-feature:hover .feature-icon span{
-	color:#fff
-}
+
+
 .speaker-bg{
 	background:url("../../image/homepage/home/speaker-bg.png") left center no-repeat;
 	background-size:cover
