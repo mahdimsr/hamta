@@ -92,7 +92,7 @@
 
                   <!-- Body -->
                   <div class="md-form">
-                    <i class="fas fa-user prefix white-text"></i>
+                    <i class="fas fa-user prefix"></i>
                     <input type="text" id="orangeForm-name" class="form-control "  name="mobile_email">
                     <label for="orangeForm-name">نام کاربری</label>
                     <small class="text-danger font-weight-bold">{{$errors->first('mobile_email')}}</small>
