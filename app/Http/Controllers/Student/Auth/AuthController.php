@@ -11,13 +11,19 @@ use App\model\Student as Student;
 
 class AuthController extends Controller
 {
-	public function show()
+	public function showlogin()
 	{
         $studentInfo=cookie::get('studentInfo');
         $studentPass=cookie::get('studentPass');
-		return view('student.auth.student_auth',compact('studentInfo','studentPass'));
+		return view('student.auth.login',compact('studentInfo','studentPass'));
     }
 
+	public function showregister()
+	{
+
+        return view('student.auth.register');
+
+    }
 
 	public function login(Request $request)
 	{
@@ -80,7 +86,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::guard('student')->logout();
-        return redirect()->route('student_auth');
+        return redirect()->route('student_login_show');
     }
 
 
