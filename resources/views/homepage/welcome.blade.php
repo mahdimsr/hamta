@@ -124,7 +124,7 @@
 			</div>
 			<div class="row mt-5">
 				<div class="col-12 text-center">
-					<a class="button mr-3 mb-2" href="{{route('student_auth')}}">همتایی شو</a>
+					<a class="button mr-3 mb-2" href="{{route('student_login_show')}}">همتایی شو</a>
 				</div>
 			</div>
 		</div>
