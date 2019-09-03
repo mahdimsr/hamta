@@ -63,7 +63,7 @@
               <a class="nav-link" href="#">خانه</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">ثبت نام</a>
+              <a class="nav-link" href="{{Route('student_register_show')}}">ثبت نام</a>
             </li>
           </ul>
      
@@ -107,7 +107,7 @@
 
                     <div class="form-check">
   <input type="checkbox" class="form-check-input" id="materialChecked2" checked name="remember" {{ $studentInfo ? 'checked' : ''  }}>
-  <label class="form-check-label" for="materialChecked2">مرا به خاطر بسپار</label>
+  <label class="form-check-label" for="materialChecked2">؟مرا به خاطر بسپار</label>
   </div>
 
 
@@ -126,7 +126,7 @@
                   <hr class="young-passion-gradient color-block mb-3 mx-auto rounded-circle z-depth-1">
                 </div>
                 <div class="loginbg py-1 mr-auto">
-                <a href="#" class="login">ایا همتایی نشدی؟</a>
+                <a href="{{Route('student_register_show')}}" class="login">ایا همتایی نشدی؟</a>
                 </div>
                 </div>
               </div>

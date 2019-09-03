@@ -56,13 +56,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="#">دانش آموز<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item ">
               <a class="nav-link" href="#">خانه</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="#">ثبت نام</a>
             </li>
           </ul>
@@ -72,7 +72,7 @@
     </nav>
 
 <section class="view intro-2">
-            <form class="form form-login" action="{{route('student_login')}}" method='post'>
+<form class="form form-signup" action="{{route('student_register')}}" method='post'>
                     {{ csrf_field() }}
 
       <div class="mask rgba-stylish-strong  h-100 d-flex justify-content-center align-items-center">
@@ -93,22 +93,27 @@
                   <!-- Body -->
                   <div class="md-form">
                     <i class="fas fa-user prefix"></i>
-                    <input type="text" id="orangeForm-name" class="form-control "  name="mobile_email">
-                    <label for="orangeForm-name">نام کاربری</label>
-                    <small class="text-danger font-weight-bold">{{$errors->first('mobile_email')}}</small>
+                    <input type="text" id="orangeForm-name" class="form-control "  name="student_mobile" value="{{old('student_mobile')}}">
+                    <label for="orangeForm-name">شماره تلفن همراه</label>
+                    <small class="text-danger font-weight-bold">{{$errors->first('student_mobile')}}</small>
+
+                  </div>
+
+                  <div class="md-form">
+                    <i class="fas fa-user prefix"></i>
+                    <input type="text" id="orangeForm-name" class="form-control "  name="password_register" value="{{old('student_mobile')}}">
+                    <label for="orangeForm-name">رمز عبور</label>
+                    <small class="text-danger font-weight-bold">{{ $errors->first('password_register')}}</small>
 
                   </div>
 
                   <div class="md-form">
                     <i class="fas fa-lock prefix white-text"></i>
-                    <input type="text" id="orangeForm-email" class="form-control" name="password">
-                    <label for="orangeForm-email">رمز عبور</label>
-                    <small class="text-danger font-weight-bold">{{$errors->first('password')}}</small>
+                    <input type="text" id="orangeForm-email" class="form-control" name="password_register_confirmation">
+                    <label for="orangeForm-email">تکرار رمز عبور</label>
+                    <small class="text-danger font-weight-bold">{{ $errors->first('password_register_confirmation')}}</small>
 
-                    <div class="form-check">
-  <input type="checkbox" class="form-check-input" id="materialChecked2" checked name="remember" {{ $studentInfo ? 'checked' : ''  }}>
-  <label class="form-check-label" for="materialChecked2">مرا به خاطر بسپار</label>
-  </div>
+
 
 
       <a href="#" class="font-weight-bold cyan-lighter-hover">رمز خود را فراموش کرده اید</a>
@@ -125,9 +130,7 @@
                   </div>
                   <hr class="young-passion-gradient color-block mb-3 mx-auto rounded-circle z-depth-1">
                 </div>
-                <div class="loginbg py-1 mr-auto">
-                <a href="#" class="login">ایا همتایی نشدی؟</a>
-                </div>
+           
                 </div>
               </div>
               <!-- Form with header -->
