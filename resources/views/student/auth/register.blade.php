@@ -18,7 +18,7 @@
     header,
     .view {
       height: 100%;
-    
+
 
     }
     @media (min-width: 560px) and (max-width: 740px) {
@@ -37,8 +37,8 @@
         height: 650px;
       }
     }
- 
-  
+
+
   </style>
 </head>
 <body>
@@ -57,16 +57,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">دانش آموز<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{{ route('student_login_show') }}">ورود<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link" href="#">خانه</a>
+              <a class="nav-link" href="{{ route('homepage') }}">خانه</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#">ثبت نام</a>
+              <a class="nav-link" href="{{ route('student_register_show') }}">ثبت نام</a>
             </li>
           </ul>
-     
+
         </div>
       </div>
     </nav>
@@ -86,8 +86,8 @@
 
                   <!-- Header -->
                   <div class="form-header purple-gradient">
-                      
-                    <h3 class="font-weight-500 my-2 py-1"> ورود<i class="fas fa-user ml-3 "></i></h3>
+
+                    <h3 class="font-weight-500 my-2 py-1">ثبت نام<i class="fas fa-user ml-3 "></i></h3>
                   </div>
 
                   <!-- Body -->
@@ -101,7 +101,7 @@
 
                   <div class="md-form">
                     <i class="fas fa-user prefix"></i>
-                    <input type="text" id="orangeForm-name" class="form-control "  name="password_register" value="{{old('student_mobile')}}">
+                    <input type="password" id="orangeForm-name" class="form-control "  name="password_register" value="{{old('password_register')}}">
                     <label for="orangeForm-name">رمز عبور</label>
                     <small class="text-danger font-weight-bold">{{ $errors->first('password_register')}}</small>
 
@@ -109,28 +109,27 @@
 
                   <div class="md-form">
                     <i class="fas fa-lock prefix white-text"></i>
-                    <input type="text" id="orangeForm-email" class="form-control" name="password_register_confirmation">
+                    <input type="password" id="orangeForm-email" class="form-control" name="password_register_confirmation">
                     <label for="orangeForm-email">تکرار رمز عبور</label>
                     <small class="text-danger font-weight-bold">{{ $errors->first('password_register_confirmation')}}</small>
 
 
 
 
-      <a href="#" class="font-weight-bold cyan-lighter-hover">رمز خود را فراموش کرده اید</a>
-               
+
                   </div>
 
 
 
-            
+
 
                   <div class="text-center">
-                    <button class="btn purple-gradient btn-lg">ورود</button>
-                
+                    <button class="btn purple-gradient btn-lg">ثبت نام</button>
+
                   </div>
                   <hr class="young-passion-gradient color-block mb-3 mx-auto rounded-circle z-depth-1">
                 </div>
-           
+
                 </div>
               </div>
               <!-- Form with header -->
