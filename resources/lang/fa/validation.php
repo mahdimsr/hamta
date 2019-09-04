@@ -166,7 +166,7 @@ return [
 
 		],
 
-		'password_confirmation' => [
+		'password_register_confirmation' => [
 
 			'required' => '.تکرار رمز عبور را وارد نمایید',
 
