@@ -93,21 +93,21 @@
 			<div class="section-intro text-center pb-98px">
 				{{--<p class="section-intro__title">سر برگ</p>--}}
 				<h2 class="primary-text">چرا همتا؟</h2>
-				<img src="{{asset('image/homepage/home/section-style.png')}}" alt="">
+				<img src="{{asset('image/homepage/home/section-style.png')}}" alt=""  >
 			</div>
 
 
 			<div class="d-lg-flex justify-content-between">
 				<div class="card-feature mb-5 mb-lg-0">
-					<div class="feature-icon">
-					<img src="{{asset('image/homepage/fogg-premium-upgrade-1.png')}}">
+					<div class="feature-icon" data-aos="fade-right"  data-aos-duration="2000">
+					<img src="{{asset('image/homepage/fogg-premium-upgrade-1.png')}}"  >
 					</div>
 					<h3>آزمون جایزه دار</h3>
 					<p>آزمون بده پول بگیر</p>
 				</div>
 
 				<div class="card-feature mb-5 mb-lg-0">
-					<div class="feature-icon">
+					<div class="feature-icon" data-aos="fade-down"  data-aos-duration="2000">
 						<img src="{{asset('image/homepage/fogg-premium-upgrade-1.png')}}">
 					</div>
 					<h3>آزمون درس به درس</h3>
@@ -115,7 +115,7 @@
 				</div>
 
 				<div class="card-feature mb-5 mb-lg-0">
-					<div class="feature-icon">
+					<div class="feature-icon"  data-aos="fade-left"  data-aos-duration="2000">
 					<img src="{{asset('image/homepage/fogg-premium-upgrade-1.png')}}">
 					</div>
 					<h3>اپلیکیشن</h3>
