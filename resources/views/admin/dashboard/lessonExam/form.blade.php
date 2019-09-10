@@ -66,13 +66,16 @@
 									<label>درس مربوط به آزمون</label>
 									@foreach($gradeLessons as $gradeLesson)
 
+
 										<label class="checkbox-inline">
 											<input type="checkbox" name="gradeLessonsCode[]" value="{{$gradeLesson->code}}">{{$gradeLesson->title}}</label>
 
+
 									@endforeach
 									<div class="invalid-feedback">
-										<small>{{ $errors->first('lessonUrl') }}</small>
+										<small>{{ $errors->first('gradeLessonsCode') }}</small>
 									</div>
+
 								</div>
 							</div>
 						</div>

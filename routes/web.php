@@ -52,7 +52,7 @@ Route::namespace('Student')->group(function()
 
 		Route::prefix('cart')->group(function()
 		{
-			Route::get('/','CartController@cart')->name('student_cart');
+			Route::get('/', 'CartController@cart')->name('student_cart');
 		});
 
 	});
@@ -94,9 +94,17 @@ Route::namespace('Admin')->group(function()
 				Route::post('/remove', 'LessonExamController@remove')->name('admin_lExam_remove');
 
 				//questions
-				Route::get('/questions', 'LessonExamController@questionShow')->name('admin_ltl_exams_question');
+				Route::get('/questions/{exm}', 'LessonExamController@questionShow')->name('admin_ltl_exams_question');
+				Route::post('/addManyQuestion', 'LessonExamController@addManyQuestion')
+					->name('admin_ltl_add_many_question');
 			});
 
+
+		});
+
+		Route::prefix('questions')->group(function()
+		{
+			Route::post('/add','QuestionController@addQuestion')->name('addQuestion');
 
 		});
 
@@ -164,7 +172,7 @@ Route::namespace('Admin')->group(function()
 
 		Route::prefix('questions')->group(function()
 		{
-			Route::get('/', 'QuestionController@questions')->name('admin_questions');
+			Route::get('/{exm}', 'QuestionController@questions')->name('admin_questions');
 
 		});
 

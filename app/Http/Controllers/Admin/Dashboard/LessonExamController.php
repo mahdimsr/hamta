@@ -46,8 +46,9 @@ class LessonExamController extends Controller
 
 		$this->validate($request, [
 
-			'title' => 'required|string|between:5,20',
-			'price' => 'integer',
+			'gradeLessonsCode' => 'required',
+			'title'            => 'required|string|between:5,20',
+			'price'            => 'integer',
 
 		]);
 
@@ -113,6 +114,13 @@ class LessonExamController extends Controller
 		$gradeLessons = GradeLesson::all();
 
 		return view('admin.dashboard.lessonExam.question_form', compact('gradeLessons'));
+	}
+
+
+
+	public function addManyQuestion(Request $request)
+	{
+		return $request;
 	}
 
 
