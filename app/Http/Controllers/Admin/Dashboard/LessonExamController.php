@@ -148,7 +148,7 @@ class LessonExamController extends Controller
 		}
 
 
-		return redirect()->route('admin_exams');
+		return redirect()->back();
 	}
 
 
