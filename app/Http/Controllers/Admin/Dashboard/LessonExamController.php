@@ -8,6 +8,7 @@ use App\model\GradeLesson;
 use App\model\Lesson;
 use App\model\LessonExam;
 use App\model\Orientation;
+use App\model\QuestionExam;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -21,6 +22,8 @@ class LessonExamController extends Controller
 
 	public function exams()
 	{
+		//admin_exams => route
+
 		$lessonExam = LessonExam::all();
 
 		return view('admin.dashboard.lessonExam.exams', compact('lessonExam'));
@@ -46,8 +49,9 @@ class LessonExamController extends Controller
 
 		$this->validate($request, [
 
-			'title' => 'required|string|between:5,20',
-			'price' => 'integer',
+			'gradeLessonsCode' => 'required',
+			'title'            => 'required|string|between:5,20',
+			'price'            => 'integer',
 
 		]);
 
@@ -105,14 +109,46 @@ class LessonExamController extends Controller
 
 
 
-	//edit
-
-
-	public function questionShow()
+	public function addManyQuestion(Request $request)
 	{
-		$gradeLessons = GradeLesson::all();
+		$questionIds = $request->input('questionId');
 
-		return view('admin.dashboard.lessonExam.question_form', compact('gradeLessons'));
+
+		$exam = LessonExam::query()->where('exm', $request->input('exm'))->first();
+
+		if (count($questionIds) > 0)
+		{
+			QuestionExam::query()
+				->where('examId', $exam->id)
+				->whereNotIn('questionId', $questionIds)
+				->delete();
+		}
+
+		foreach ($questionIds as $questionId)
+		{
+			$questionExam = new QuestionExam();
+
+			if (!QuestionExam::query()->where('questionId', $questionId)->where('examId', $exam->id)->exists())
+			{
+				$questionExam->questionId = $questionId;
+				$questionExam->examId     = $exam->id;
+
+				$questionExam->save();
+			}
+			else if (QuestionExam::query()->where('questionId', $questionId)->where('examId', $exam->id)->exists())
+			{
+				$questionExam = QuestionExam::query()
+					->where('questionId', $questionId)
+					->where('examId', $exam->id)
+					->first();
+
+				$questionExam->update();
+			}
+
+		}
+
+
+		return redirect()->route('admin_exams');
 	}
 
 

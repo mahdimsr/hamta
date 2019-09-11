@@ -14,7 +14,21 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class QuestionExam extends Model
 {
-    use SoftDeletes;
+	use SoftDeletes;
 
-    protected $table = 'question_exam';
+	protected $table = 'question_exam';
+
+
+
+	public function lessonExam()
+	{
+		return $this->belongsTo(LessonExam::class, 'examId');
+	}
+
+
+
+	public function question()
+	{
+		return $this->belongsTo(Question::class, 'questionId');
+	}
 }
