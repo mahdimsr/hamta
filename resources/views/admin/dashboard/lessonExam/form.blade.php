@@ -66,13 +66,16 @@
 									<label>درس مربوط به آزمون</label>
 									@foreach($gradeLessons as $gradeLesson)
 
+
 										<label class="checkbox-inline">
 											<input type="checkbox" name="gradeLessonsCode[]" value="{{$gradeLesson->code}}">{{$gradeLesson->title}}</label>
 
+
 									@endforeach
 									<div class="invalid-feedback">
-										<small>{{ $errors->first('lessonUrl') }}</small>
+										<small>{{ $errors->first('gradeLessonsCode') }}</small>
 									</div>
+
 								</div>
 							</div>
 						</div>
@@ -129,10 +132,7 @@
 							</div>
 						</div>
 
-						<button type="submit" class="btn btn-info btn-fill pull-right">مرحله بعد</button>
-
-						<a href="{{route('admin_ltl_exams_question')}}"
-						   class="btn btn-success btn-fill">درج سوالات</a>
+						<button type="submit" class="btn btn-info btn-fill pull-right">ثبت</button>
 
 						<div class="clearfix"></div>
 					</form>

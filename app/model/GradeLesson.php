@@ -83,4 +83,11 @@ class GradeLesson extends Model
 	{
 		return $this->hasMany('app\model\ExamGradeLesson', 'gradeLessonId');
 	}
+
+
+
+	public function questions()
+	{
+		return $this->hasMany(Question::class,'gradeLessonId');
+	}
 }
