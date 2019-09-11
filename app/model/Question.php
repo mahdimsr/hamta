@@ -14,7 +14,38 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Question extends Model
 {
-    use SoftDeletes;
+	use SoftDeletes;
 
-    protected $table = 'question';
+	protected $table = 'question';
+
+	protected $appends = ['hardnessLabel'];
+
+
+
+	public function gradeLesson()
+	{
+		return $this->belongsTo(GradeLesson::class, 'gradeLessonId');
+	}
+
+
+
+	public function questionExams()
+	{
+		return $this->hasMany(QuestionExam::class,'questionId');
+	}
+
+
+
+	public function getHardnessLabelAttribute()
+	{
+		$hardnessArray = [
+			'1' => 'خیلی ساده',
+			'2' => 'ساده',
+			'3' => 'معمولی',
+			'4' => 'سخت',
+			'5' => 'خیلی سخت',
+		];
+
+		return $hardnessArray[$this->hardness];
+	}
 }

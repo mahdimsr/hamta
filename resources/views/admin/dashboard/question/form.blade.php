@@ -3,9 +3,9 @@
 @section('content')
 
 	<div class="row" dir="rtl">
-		<div class="col-md-5">
-			<div class="card ">
 
+		<div class="col-md-4">
+			<div class="card ">
 				<div class="content">
 					<div class="author">
 						<a href="#">
@@ -19,75 +19,159 @@
 						</a>
 					</div>
 					<p class="description text-right">
-						<b>کد مقطع</b> باید یک عدد دورقمی باشد مانند 02 یا 96. از کد مقطع در موارد مختلف تلاش میکنیم که
-						با خواندن کد مقطع را بفهمیم پس بهتره کد و مقطه باهم مرتبط باشند.
+						<b>مشخصات آزمون</b> باید یک عدد دورقمی باشد مانند 02 یا 96. از کد درس در موارد مختلف تلاش میکنیم
+						که
+						با خواندن کد، درس را بفهمیم پس بهتره کدی که وارد میکنید در درس ها تکراری نباشد.
 					</p>
 					<p class="description text-right">
-						<b>لینک مقطع</b> باید یک کلمه انگلیسی باشد. از لینک مقطع در بخش آدرس دهی در مرورگر استفاده
-						میکنیم. پس پیشنهاد میشود که کد و لینک مقطع یک مفهوم را برسانند. برای مثال اگر کد مقطع 04 است
-						بهتر است لینک مقطع را fourth-grade بگذارید.
+						تعداد سوالات آزمون <b>20</b>
+						<br/>
+						تعداد سوالات درج شده <b>15</b>
 					</p>
 					<p class="description text-right">
-						<b>عنوان مقطع</b> کلماتی مانند سوم، چهارم و ... است. شما نباید برای مثال پایه تحصیلی سوم
-						دبیرستان یا این چنینی تعاریفی را در این قسمت انجام بدهید و فقط بخش سوم را میتوانید در این قسمت
-						تعریف کنید.
+						<b>لینک درس</b> باید یک کلمه انگلیسی باشد. از لینک درس در بخش آدرس دهی در مرورگر استفاده
+						میکنیم. پس پیشنهاد میشود که عنوان درس و لینک درس یک مفهوم را برسانند. برای مثال اگر عنوان درس
+						ریاضی است بهتر است که لینک درس math باشد.
 					</p>
 					<p class="description text-right justify-content-center">
-						<b>مثال</b> <br/> عنوان: سوم <br/> کد:03 <br/> لینک: third-grade
+						<b>مثال</b> <br/> عنوان: ریاضی <br/> کد:03 <br/> لینک: math
 					</p>
 				</div>
 				<hr>
 			</div>
 		</div>
-		<div class="col-md-7">
+		<div class="col-md-8">
 			<div class="card text-right">
 				<div class="header ">
-					<h4 class="title">مقطع</h4>
+					<h4 class="title">افزودن آزمون درس به درس</h4>
 				</div>
 
 				<div class="content">
-					<form method="post"
-						  action="{{  $modify == 0 ? route('admin_grades_add') : route('admin_grades_edit', ['url' => $grade->url]) }}">
+					<form method="post" action="{{route('addQuestion')}}" enctype="multipart/form-data">
 
 						{{csrf_field()}}
 
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
-									<label>لینک مقطع</label>
-									<input name="urlGrade" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: tenth-grade" tabindex="3"
-										   value="{{old('urlGrade') ? old('urlGrade') : ''}} {{ $modify==1 && !old('urlGrade') ? $grade->url : '' }}">
+									<label>درجه سختی سوال</label>
+									<select dir="rtl" name="hardness" class="form-control">
+										<option selected disabled>درجه سختی سوال را انتخاب نمایید</option>
+										<option value="1" {{old('hardness') == '1' ? 'selected' : ''}}>خیلی ساده
+										</option>
+										<option value="2" {{old('hardness') == '2' ? 'selected' : ''}}>ساده</option>
+										<option value="3" {{old('hardness') == '3' ? 'selected' : ''}}>معمولی</option>
+										<option value="4" {{old('hardness') == '4' ? 'selected' : ''}}>سخت</option>
+										<option value="5" {{old('hardness') == '5' ? 'selected' : ''}}>حیل سحت</option>
+									</select>
 									<div class="invalid-feedback">
-										<small>{{ $errors->first('urlGrade') }}</small>
+										<small>{{ $errors->first('hardness') }}</small>
 									</div>
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
-									<label>کد مقطع</label>
-									<input name="codeGrade" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: 10" tabindex="2"
-										   value="{{old('codeGrade') ? old('codeGrade') : ''}} {{ $modify==1 && !old('codeGrade') ? $grade->code : '' }}">
+									<label>دسته بندی درس ها</label>
+									<select dir="rtl" name="gradeLesson" class="form-control">
+										<option selected disabled>گرایش و درس سوال را انتخاب نمایید</option>
+										@foreach ( $gradeLessons as $gradeLesson )
+											<option value="{{ $gradeLesson->code }}" {{old('gradeLesson') == $gradeLesson->code ? 'selected' : ''}}>{{ $gradeLesson->lesson->title . ' ' . $gradeLesson->grade->title .'-'.$gradeLesson->orientation->title }}</option>
+										@endforeach
+									</select>
 									<div class="invalid-feedback">
-										<small>{{ $errors->first('codeGrade') }}</small>
+										<small>{{ $errors->first('gradeLesson') }}</small>
 									</div>
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
-									<label>عنوان مقطع</label>
-									<input name="titleGrade" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: مقطع دهم" tabindex="1"
-										   value="{{old('titleGrade') ? old('titleGrade') : '' }} {{ $modify==1 && !old('titleGrade') ? $grade->title : '' }}">
+									<label>دسته بندی سوال</label>
+									<select dir="rtl" name="type" class="form-control">
+										<option selected disabled>دسته بندی سوال را انتخاب نمایید</option>
+										<option value="LESSON_EXAM" {{old('type') == 'LESSON_EXAM' ? 'selected' : ''}}>
+											آزمون درس به درس
+										</option>
+										<option value="GIFT_EXAM" {{old('type') == 'GIFT_EXAM' ? 'selected' : ''}}>آزمون
+											جایزه دار
+										</option>
+										<option value="GENERAL" {{old('type') == 'GENERAL' ? 'selected' : ''}}>عمومی
+										</option>
+									</select>
 									<div class="invalid-feedback">
-										<small>{{ $errors->first('titleGrade') }}</small>
+										<small>{{ $errors->first('type') }}</small>
 									</div>
 								</div>
 							</div>
 						</div>
 
-						<button type="submit" class="btn btn-info btn-fill pull-left" tabindex="4">اعمال</button>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label>صورت سوال</label>
+									<textarea dir="rtl" name="text" rows="3" class="form-control"
+											  placeholder="صورت سوال را بنویسید">{{old('text')}}</textarea>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-3">
+								<div class="form-group">
+									<label>گزینه چهارم</label>
+									<input name="optionFour" dir="rtl" type="text" class="form-control"
+										   value="{{old('optionFour')}}">
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label>گزینه سوم</label>
+									<input name="optionThree" dir="rtl" type="text" class="form-control"
+										   value="{{old('optionThree')}}">
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label>گزینه دوم</label>
+									<input name="optionTwo" dir="rtl" type="text" class="form-control"
+										   value="{{old('optionTwo')}}">
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label>گزینه اول</label>
+									<input name="optionOne" dir="rtl" type="text" class="form-control"
+										   value="{{old('optionOne')}}">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<div class="form-group">
+									<button type="submit" class="btn btn-fill btn-info">ذخیره سوال</button>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label>عکس برای سوال</label>
+									<input name="photo" type="file" class="form-control">
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label>گزینه صحیح</label>
+									<select dir="rtl" name="answer" class="form-control">
+										<option disabled selected>گزینه صحیح رو انتخاب کنید</option>
+										<option value="1">گزینه اول</option>
+										<option value="2">گزینه دوم</option>
+										<option value="3">گزینه سوم</option>
+										<option value="4">گزینه چهارم</option>
+									</select>
+								</div>
+								<div class="is-invalid">
+									<small>{{$errors->first('answer')}}</small>
+								</div>
+							</div>
+						</div>
 						<div class="clearfix"></div>
 					</form>
 				</div>

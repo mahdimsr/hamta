@@ -61,7 +61,7 @@
 						<p>آزمون ها</p>
 					</a>
 				</li>
-				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_questions' ? 'active' : ''}}">
+				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_questions' ? !request()->has('exm') ? 'active' : '' : ''}}">
 					<a href="{{route('admin_questions')}}">
 						<i class="fa fa-file"></i>
 						<p>سوالات</p>
