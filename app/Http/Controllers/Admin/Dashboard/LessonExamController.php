@@ -35,9 +35,11 @@ class LessonExamController extends Controller
 	{
 		$modify = 0;
 
-		$gradeLessons = GradeLesson::all();
+		$orientations = Orientation::all();
+		$lessons      = Lesson::all();
+		$grades       = Grade::all();
 
-		return view('admin.dashboard.lessonExam.form', compact('gradeLessons', 'modify'));
+		return view('admin.dashboard.lessonExam.form', compact('orientations', 'lessons', 'grades', 'modify'));
 	}
 
 
@@ -46,15 +48,44 @@ class LessonExamController extends Controller
 	{
 		//validate here
 
-
 		$this->validate($request, [
 
-			'gradeLessonsCode' => 'required',
-			'title'            => 'required|string|between:5,20',
-			'price'            => 'integer',
+			'orientation' => 'required|exists:orientation,url',
+			'lesson'      => 'required|exists:lesson,url',
+			'grades'      => 'required',
+			'title'       => 'required|string|between:5,20',
+			'price'       => 'integer',
 
 		]);
 
+
+
+		$orientation = Orientation::query()->where('url', $request->input('orientation'))->first();
+		$lesson      = Lesson::query()->where('url', $request->input('lesson'))->first();
+
+		$gradeLessons = [];
+
+		foreach ($request->input('grades') as $gradeUrl)
+		{
+			$grade = Grade::query()->where('url', $gradeUrl)->first();
+
+			$gradeLesson = GradeLesson::query()
+				->where('lessonId', $lesson->id)
+				->where('gradeId', $grade->id)
+				->where('orientationId', $orientation->id);
+
+			if ($gradeLesson->exists())
+			{
+				$gradeLessons[] = $gradeLesson->first();
+			}
+			else
+			{
+				return redirect()
+					->back()
+					->withInput()
+					->withErrors('وابستگی یافت نشد.');
+			}
+		}
 
 		$lessonExam = new LessonExam();
 
@@ -65,11 +96,12 @@ class LessonExamController extends Controller
 
 		$lessonExam->save();
 
-		foreach ($request->input('gradeLessonsCode') as $gradeLessonCode)
+
+
+
+
+		foreach ($gradeLessons as $gradeLesson)
 		{
-			$gradeLesson = GradeLesson::query()->where('code', $gradeLessonCode)->first();
-
-
 			$examGradeLesson = new ExamGradeLesson();
 
 			$examGradeLesson->gradeLessonId = $gradeLesson->id;
