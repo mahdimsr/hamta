@@ -39,7 +39,7 @@
 					<ul class="nav-right text-center text-lg-right py-1 py-lg-0">
 
 
-						<li class="btn btn-outline-secondary"><a href="{{ route('student_login_show') }}">دانش آموزان</a></li>
+						<li class="btn btn-outline-primary"><a href="{{ route('student_login_show') }}">دانش آموزان</a></li>
 					</ul>
 					<ul class="nav-right text-center text-lg-right py-1 py-lg-0">
 

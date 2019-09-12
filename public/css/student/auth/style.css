@@ -17,9 +17,11 @@ body{
 }
 
 
-
+.md-form.text-danger {
+    text-align: right !important;
+}
 .card-body{
-    background-color: #808080;
+    background-color: white;
 }
 .form-check-label{
     margin-top: 30px;
@@ -49,29 +51,16 @@ hr{
 .fas{
     color: #007bff !important
 }
-.login{
 
-}
 .loginbg{
     background: #a8c0ff;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #7960e6, #a8c0ff);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #7960e6, #a8c0ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
-
 
     width: 100%;
     
 
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -191,6 +180,8 @@ transform: scaleX(1);
 
 
 
-
+.navbar.navbar-dark .navbar-nav .nav-item .nav-link{
+    text-align: right !important;
+}
 
 
