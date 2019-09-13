@@ -61,20 +61,39 @@
 						{{csrf_field()}}
 
 						<div class="row">
-							<div class="col-md-12">
+							<div class="col-md-4">
+								<div class="form-group">
+									<label>مقاطع مربوط به آزمون</label>
+									<select dir="rtl" name="grades[]" class="form-control">
+										<option selected disabled>مقطع آرمون را انتخاب نمایید</option>
+										@foreach ( $grades as $grade )
+											<option value="{{ $grade->url }}">{{ $grade->title }}</option>
+										@endforeach
+									</select>
+
+								</div>
+							</div>
+							<div class="col-md-4">
 								<div class="form-group">
 									<label>درس مربوط به آزمون</label>
-									@foreach($gradeLessons as $gradeLesson)
+									<select dir="rtl" name="lesson" class="form-control">
+										<option selected disabled>درس آرمون را انتخاب نمایید</option>
+										@foreach ( $lessons as $lesson )
+											<option value="{{ $lesson->url }}" {{$modify == 0 ? old('lesson') == $lesson->url ? 'selected' : '' : '' }}>{{ $lesson->title }}</option>
+										@endforeach
+									</select>
 
-
-										<label class="checkbox-inline">
-											<input type="checkbox" name="gradeLessonsCode[]" value="{{$gradeLesson->code}}">{{$gradeLesson->title}}</label>
-
-
-									@endforeach
-									<div class="invalid-feedback">
-										<small>{{ $errors->first('gradeLessonsCode') }}</small>
-									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label>گرایش مربوط به آزمون</label>
+									<select dir="rtl" name="orientation" class="form-control">
+										<option selected disabled>گرایش آرمون را انتخاب نمایید</option>
+										@foreach ( $orientations as $orientation )
+											<option value="{{ $orientation->url }}" {{$modify == 0 ? old('orientation') == $orientation->url ? 'selected' : '' : '' }}>{{ $orientation->title }}</option>
+										@endforeach
+									</select>
 
 								</div>
 							</div>
