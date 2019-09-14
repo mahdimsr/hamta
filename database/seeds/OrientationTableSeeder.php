@@ -14,11 +14,12 @@ class OrientationTableSeeder extends Seeder
 	 */
 	public function run()
 	{
+
 		DB::table('orientation')->insert([
 
 			'code'       => '01',
-			'title'      => 'ریاضی و فیزیک',
-			'url'        => 'mathematics',
+			'title'      => 'ریاضی فیزیک',
+			'url'        => 'MathematicalPhysics',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
@@ -27,8 +28,8 @@ class OrientationTableSeeder extends Seeder
 		DB::table('orientation')->insert([
 
 			'code'       => '02',
-			'title'      => 'تجربی',
-			'url'        => 'experimental',
+			'title'      => 'علوم تجربی',
+			'url'        => 'Science',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
@@ -37,11 +38,32 @@ class OrientationTableSeeder extends Seeder
 		DB::table('orientation')->insert([
 
 			'code'       => '03',
-			'title'      => 'انسانی',
-			'url'        => 'human-discipline',
+			'title'      => 'ادبیات و علوم انسانی',
+			'url'        => 'LiteratureandHumanities',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
-		]);
+        ]);
+
+		DB::table('orientation')->insert([
+
+			'code'       => '04',
+			'title'      => 'علوم و معارف اسلامی',
+			'url'        => 'IslamicScienceandEducation',
+			'created_at' => Carbon::now(),
+			'updated_at' => Carbon::now(),
+
+        ]);
+
+        DB::table('orientation')->insert([
+
+			'code'       => '05',
+			'title'      => 'هنر',
+			'url'        => 'Art',
+			'created_at' => Carbon::now(),
+			'updated_at' => Carbon::now(),
+
+        ]);
+
 	}
 }
