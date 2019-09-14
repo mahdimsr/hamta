@@ -60,6 +60,6 @@ class ExamGradeLesson extends Model
 
 	public function gradeLesson()
 	{
-		return $this->belongsTo('app\model\GradeLesson', 'gradeLessonId');
+		return $this->belongsTo(GradeLesson::class, 'gradeLessonId');
 	}
 }

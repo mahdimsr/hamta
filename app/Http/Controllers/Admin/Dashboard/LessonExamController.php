@@ -141,6 +141,7 @@ class LessonExamController extends Controller
 
 
 
+
 	public function addManyQuestion(Request $request)
 	{
 		$questionIds = $request->input('questionId');

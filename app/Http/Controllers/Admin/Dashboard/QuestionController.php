@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Dashboard;
 use App\model\GradeLesson;
 use App\model\LessonExam;
 use App\model\Question;
+use App\model\QuestionExam;
 use App\model\QuestionLesson;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -32,15 +33,27 @@ class QuestionController extends Controller
 
 
 
-	public function addShow()
+	public function addShow($exm = null)
 	{
 		//show_addQuestion => route
+		$modify = 0;
+
+		if ($exm != null)
+		{
+			$exam = LessonExam::query()->where('exm', $exm);
+
+			if ($exam->exists())
+			{
+				$exam = $exam->first();
+
+				return view('admin.dashboard.question.formByExam', compact('exam', 'modify'));
+			}
+		}
 
 		$gradeLessons = GradeLesson::all();
 
-		$modify = 0;
-
 		return view('admin.dashboard.question.form', compact('gradeLessons', 'modify'));
+
 	}
 
 
@@ -78,6 +91,19 @@ class QuestionController extends Controller
 
 		$question->save();
 
-		return redirect()->route('show_addQuestion');
+		if ($request->has('exm'))
+		{
+			$exam = LessonExam::query()->where('exm', $request->input('exm'))->first();
+
+			$questionExam = new QuestionExam();
+
+			$questionExam->questionId = $question->id;
+			$questionExam->examId     = $exam->id;
+
+			$questionExam->save();
+		}
+
+
+		return redirect()->back();
 	}
 }
