@@ -68,7 +68,7 @@ class LessonExam extends Model
 
 
 
-	public function examGradeLesson()
+	public function examGradeLessons()
 	{
 		return $this->hasMany(ExamGradeLesson::class, 'examId');
 	}

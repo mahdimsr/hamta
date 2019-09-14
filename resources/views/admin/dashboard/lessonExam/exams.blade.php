@@ -44,7 +44,7 @@
 									   style="font-size: 12px;" class="btn btn-success">
 										test
 									</button>--}}
-									<a href="{{route('admin_questions',['exm' => $exam->exm])}}"
+									<a href="{{route('show_addQuestion',['exm' => $exam->exm])}}"
 									   style="font-size: 12px;" class="btn btn-success">
 										ویرایش یا درج سوال
 									</a>

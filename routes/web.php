@@ -104,7 +104,7 @@ Route::namespace('Admin')->group(function()
 
 		Route::prefix('questions')->group(function()
 		{
-			Route::get('/addShow','QuestionController@addShow')->name('show_addQuestion');
+			Route::get('/addShow/{exm?}','QuestionController@addShow')->name('show_addQuestion');
 			Route::post('/add','QuestionController@add')->name('addQuestion');
 			Route::get('/list', 'QuestionController@questions')->name('admin_questions');
 
