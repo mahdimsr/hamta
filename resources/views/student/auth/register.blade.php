@@ -9,6 +9,8 @@
   <!-- Material Design Bootstrap -->
   <link href="{{asset('css/student/auth/mdb.min.css')}}" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('css/student/auth/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/student/imagehover.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/student/imagehover.min.css') }}">
 
 </head>
 
