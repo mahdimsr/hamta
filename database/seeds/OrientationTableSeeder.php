@@ -45,25 +45,5 @@ class OrientationTableSeeder extends Seeder
 
         ]);
 
-		DB::table('orientation')->insert([
-
-			'code'       => '04',
-			'title'      => 'علوم و معارف اسلامی',
-			'url'        => 'IslamicScienceandEducation',
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
-
-        ]);
-
-        DB::table('orientation')->insert([
-
-			'code'       => '05',
-			'title'      => 'هنر',
-			'url'        => 'Art',
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
-
-        ]);
-
 	}
 }
