@@ -7,7 +7,6 @@
 			<div class="card">
 				<div class="header">
 					<h4 class="title text-right">درس ها</h4>
-					<p class="category text-right">هر درسی که میتواند وجود داشته باشد</p>
 					<a href="{{route('admin_lessons_addShow')}}" style="font-size: 12px;" class="btn btn-info pull-right btn-table-header">
 						افزودن درس جدید
 					</a>

@@ -19,7 +19,8 @@ class CreateGradeLessonTable extends Migration
 			$table->bigIncrements('id');
 			$table->integer('lessonId');
 			$table->integer('gradeId');
-			$table->integer('orientationId');
+            $table->integer('orientationId');
+            $table->string('name');
 			$table->string('code');
 			$table->integer('ratio')->default(1);
 			$table->enum('type', ['EXPERT', 'GENERAL']);

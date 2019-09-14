@@ -27,7 +27,7 @@ class LessonTableSeeder extends Seeder
 		DB::table('lesson')->insert([
 
 			'code'       => '02',
-			'title'      => 'عربی',
+			'title'      => 'زبان عربی',
 			'url'        => 'Arabic',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
