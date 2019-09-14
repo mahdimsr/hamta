@@ -54,7 +54,7 @@
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
-									<label>لینک مقطع</label>
+									<label>پارامتر مقطع</label>
 									<input name="urlGrade" dir="rtl" type="text" class="form-control"
 										   placeholder="مثلا: tenth-grade" tabindex="3"
 										   value="{{old('urlGrade') ? old('urlGrade') : ''}} {{ $modify==1 && !old('urlGrade') ? $grade->url : '' }}">

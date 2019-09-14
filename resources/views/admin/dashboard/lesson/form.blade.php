@@ -54,7 +54,7 @@
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
-									<label>لینک درس</label>
+									<label>پارامتر درس</label>
 									<input name="urlLesson" dir="rtl" type="text" class="form-control"
 										   placeholder="مثلا: math" tabindex="3"
 										   value="{{old('urlLesson') ? old('urlLesson') : ''}} {{ $modify==1 && !old('urlLesson') ? $lesson->url : '' }}">

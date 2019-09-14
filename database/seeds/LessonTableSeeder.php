@@ -56,7 +56,7 @@ class LessonTableSeeder extends Seeder
 
 		DB::table('lesson')->insert([
 
-			'code'       => '11',
+			'code'       => '05',
 			'title'      => 'ریاضیات',
 			'url'        => 'Mathematic',
 			'created_at' => Carbon::now(),
@@ -66,7 +66,7 @@ class LessonTableSeeder extends Seeder
 
 		DB::table('lesson')->insert([
 
-			'code'       => '12',
+			'code'       => '06',
 			'title'      => 'فیزیک',
 			'url'        => 'Physics',
 			'created_at' => Carbon::now(),
@@ -76,7 +76,7 @@ class LessonTableSeeder extends Seeder
 
 		DB::table('lesson')->insert([
 
-			'code'       => '13',
+			'code'       => '07',
 			'title'      => 'شیمی',
 			'url'        => 'Chemistry',
 			'created_at' => Carbon::now(),
@@ -86,7 +86,7 @@ class LessonTableSeeder extends Seeder
 
 		DB::table('lesson')->insert([
 
-			'code'       => '14',
+			'code'       => '08',
 			'title'      => 'زمین ­شناسی',
 			'url'        => 'Geology',
 			'created_at' => Carbon::now(),
@@ -96,7 +96,7 @@ class LessonTableSeeder extends Seeder
 
 		DB::table('lesson')->insert([
 
-			'code'       => '15',
+			'code'       => '09',
 			'title'      => 'زیست شناسی',
 			'url'        => 'Biology',
 			'created_at' => Carbon::now(),
@@ -106,7 +106,7 @@ class LessonTableSeeder extends Seeder
 
 		DB::table('lesson')->insert([
 
-			'code'       => '16',
+			'code'       => '10',
 			'title'      => 'اقتصاد',
 			'url'        => 'Economy',
 			'created_at' => Carbon::now(),
@@ -116,7 +116,7 @@ class LessonTableSeeder extends Seeder
 
         DB::table('lesson')->insert([
 
-			'code'       => '17',
+			'code'       => '11',
 			'title'      => 'تاریخ',
 			'url'        => 'History',
 			'created_at' => Carbon::now(),
@@ -126,7 +126,7 @@ class LessonTableSeeder extends Seeder
 
         DB::table('lesson')->insert([
 
-			'code'       => '18',
+			'code'       => '12',
 			'title'      => 'جغرافیا',
 			'url'        => 'Geography',
 			'created_at' => Carbon::now(),
@@ -136,7 +136,7 @@ class LessonTableSeeder extends Seeder
 
         DB::table('lesson')->insert([
 
-			'code'       => '19',
+			'code'       => '13',
 			'title'      => 'علوم اجتماعی',
 			'url'        => 'SocialScience',
 			'created_at' => Carbon::now(),
@@ -146,7 +146,7 @@ class LessonTableSeeder extends Seeder
 
         DB::table('lesson')->insert([
 
-			'code'       => '20',
+			'code'       => '14',
 			'title'      => 'فلسفه',
 			'url'        => 'Philosophy',
 			'created_at' => Carbon::now(),
@@ -156,7 +156,7 @@ class LessonTableSeeder extends Seeder
 
         DB::table('lesson')->insert([
 
-			'code'       => '21',
+			'code'       => '15',
 			'title'      => 'منطق',
 			'url'        => 'Logic',
 			'created_at' => Carbon::now(),
@@ -166,7 +166,7 @@ class LessonTableSeeder extends Seeder
 
         DB::table('lesson')->insert([
 
-			'code'       => '22',
+			'code'       => '16',
 			'title'      => 'روان­شناسی',
 			'url'        => 'Psychology',
 			'created_at' => Carbon::now(),
