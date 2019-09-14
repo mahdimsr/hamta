@@ -13,13 +13,12 @@ class LessonTableSeeder extends Seeder
      */
     public function run()
     {
-    	//general
 
 		DB::table('lesson')->insert([
 
 			'code'       => '01',
-			'title'      => 'ادبیات',
-			'url'      => 'literature',
+			'title'      => 'زبان و ادبیات فارسی',
+			'url'        => 'PersianLanguageandLiterature',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
@@ -29,7 +28,7 @@ class LessonTableSeeder extends Seeder
 
 			'code'       => '02',
 			'title'      => 'عربی',
-			'url'      => 'arabic',
+			'url'        => 'Arabic',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
@@ -38,8 +37,8 @@ class LessonTableSeeder extends Seeder
 		DB::table('lesson')->insert([
 
 			'code'       => '03',
-			'title'      => 'دین و زندگی',
-			'url'      => 'religion-and-life',
+			'title'      => 'فرهنگ و معارف اسلامی',
+			'url'        => 'IslamicCultureandEducation',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
@@ -49,19 +48,17 @@ class LessonTableSeeder extends Seeder
 
 			'code'       => '04',
 			'title'      => 'زبان انگلیسی',
-			'url'      => 'english',
+			'url'        => 'EnglishLanguage',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
 		]);
 
-		//math
-
 		DB::table('lesson')->insert([
 
 			'code'       => '11',
-			'title'      => 'ریاضی',
-			'url'      => 'math',
+			'title'      => 'ریاضیات',
+			'url'        => 'Mathematic',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
@@ -70,8 +67,8 @@ class LessonTableSeeder extends Seeder
 		DB::table('lesson')->insert([
 
 			'code'       => '12',
-			'title'      => 'هندسه',
-			'url'      => 'geometry',
+			'title'      => 'فیزیک',
+			'url'        => 'Physics',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
@@ -80,8 +77,8 @@ class LessonTableSeeder extends Seeder
 		DB::table('lesson')->insert([
 
 			'code'       => '13',
-			'title'      => 'آمار',
-			'url'      => 'statistics',
+			'title'      => 'شیمی',
+			'url'        => 'Chemistry',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
@@ -90,35 +87,92 @@ class LessonTableSeeder extends Seeder
 		DB::table('lesson')->insert([
 
 			'code'       => '14',
-			'title'      => 'ریاضیات گسسته',
-			'url'      => 'discrete-mathematics',
+			'title'      => 'زمین ­شناسی',
+			'url'        => 'Geology',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
 		]);
 
-		//physics
+		DB::table('lesson')->insert([
+
+			'code'       => '15',
+			'title'      => 'زیست شناسی',
+			'url'        => 'Biology',
+			'created_at' => Carbon::now(),
+			'updated_at' => Carbon::now(),
+
+        ]);
 
 		DB::table('lesson')->insert([
+
+			'code'       => '16',
+			'title'      => 'اقتصاد',
+			'url'        => 'Economy',
+			'created_at' => Carbon::now(),
+			'updated_at' => Carbon::now(),
+
+        ]);
+
+        DB::table('lesson')->insert([
+
+			'code'       => '17',
+			'title'      => 'تاریخ',
+			'url'        => 'History',
+			'created_at' => Carbon::now(),
+			'updated_at' => Carbon::now(),
+
+        ]);
+
+        DB::table('lesson')->insert([
+
+			'code'       => '18',
+			'title'      => 'جغرافیا',
+			'url'        => 'Geography',
+			'created_at' => Carbon::now(),
+			'updated_at' => Carbon::now(),
+
+        ]);
+
+        DB::table('lesson')->insert([
+
+			'code'       => '19',
+			'title'      => 'علوم اجتماعی',
+			'url'        => 'SocialScience',
+			'created_at' => Carbon::now(),
+			'updated_at' => Carbon::now(),
+
+        ]);
+
+        DB::table('lesson')->insert([
+
+			'code'       => '20',
+			'title'      => 'فلسفه',
+			'url'        => 'Philosophy',
+			'created_at' => Carbon::now(),
+			'updated_at' => Carbon::now(),
+
+        ]);
+
+        DB::table('lesson')->insert([
+
+			'code'       => '21',
+			'title'      => 'منطق',
+			'url'        => 'Logic',
+			'created_at' => Carbon::now(),
+			'updated_at' => Carbon::now(),
+
+        ]);
+
+        DB::table('lesson')->insert([
 
 			'code'       => '22',
-			'title'      => 'فیزیک',
-			'url'      => 'physics',
+			'title'      => 'روان­شناسی',
+			'url'        => 'Psychology',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
-		]);
+        ]);
 
-		//chemistry
-
-		DB::table('lesson')->insert([
-
-			'code'       => '33',
-			'title'      => 'شیمی',
-			'url'      => 'chemistry',
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
-
-		]);
     }
 }
