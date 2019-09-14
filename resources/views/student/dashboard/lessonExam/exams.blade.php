@@ -2,43 +2,89 @@
 @section('content')
 
 	<div class="row" dir="rtl">
-
-		@foreach($lessonExams as $exam)
-
-			<div class="col-md-3" style="float: right">
-				<div class="card">
-
-					<div class="header">
-						<h4 class="title">{{$exam->title}}</h4>
-						<p class="category">{{$exam->description}}</p>
-					</div>
-					<div class="content">
-						<div id="chartPreferences" class="ct-chart ct-perfect-fourth"
-							 style="background-color: plum"></div>
-
-						<div class="footer">
-							<div class="legend">
-								<i class="fa fa-circle text-info"></i> Open
-								<i class="fa fa-circle text-info"></i> Open
-								<i class="fa fa-circle text-danger"></i> Bounce
-								<i class="fa fa-circle text-warning"></i> Unsubscribe
-							</div>
-							<hr>
-							<div class="stats">
-								<button id="addToCart" onclick="addToCart('{{$exam->exm}}');"
-										class="btn btn-fill btn-info">افزودن به سبد خرید
-								</button>
-							</div>
-						</div>
-					</div>
+		<div class="col-md-6 col-sm-6" >
+		<div class="card text-center"  >
+			<div class="card-header"><h5 class="card-title">آزمون دوم</h5></div>
+			<div class="hover14">
+				<figure>
+					<img class="" src="{{asset('image/student/dashboard/exam.jpg')}}" class="card-img-top" alt="" width="100%" height="200rem">
+				</figure>
+			</div>
+			<div class="card-body">
+				<h5 class="card-title">توضیحات</h5>
+				<p class="card-text margin-card">این آزمون متشکل از سوالات چهار گزینه ای می باشد که از بانک سوالات مجموعه استخراج شده است.
+					موفق باشید</p>
+				<button class="ctrl-standard typ-subhed fx-bubbleDown">نمایش سوالات</button>
+			</div>
+			<div class="card-footer text-muteds text-center">
+				<p>مقطع:پایه ششم  -  مرکزآموزشی:نمونه مطهری  -  تاریخ:سال96  -  سطح سختی:راحت</p>
+			</div>
+		</div>
+		</div>
+		<div class="col-md-6 col-sm-6">
+			<div class="card text-center" >
+				<div class="card-header"><h5 class="card-title">آزمون اول</h5></div>
+				<div class="hover14">
+				<figure>
+				<img class="" src="{{asset('image/student/dashboard/exam.jpg')}}" class="card-img-top" alt="" width="100%" height="200rem">
+				</figure>
+				</div>
+				<div class="card-body">
+					<h5 class="card-title">توضیحات</h5>
+					<p class="card-text margin-card">این آزمون متشکل از سوالات چهار گزینه ای می باشد که از بانک سوالات مجموعه استخراج شده است.
+					موفق باشید</p>
+					<button class="ctrl-standard typ-subhed fx-bubbleDown">نمایش سوالات</button>
+				</div>
+				<div class="card-footer text-muteds text-center">
+					<p>مقطع:پایه ششم  -  مرکزآموزشی:نمونه مطهری  -  تاریخ:سال96  -  سطح سختی:راحت</p>
 				</div>
 			</div>
+		</div>
+	</div>
+	<div class="row" dir="rtl">
+		<div class="col-md-6 col-sm-6">
+			<div class="card text-center" >
+				<div class="card-header"><h5 class="card-title">آزمون چهارم</h5></div>
+				<div class="hover14">
+					<figure>
+						<img class="" src="{{asset('image/student/dashboard/exam.jpg')}}" class="card-img-top" alt="" width="100%" height="200rem">
+					</figure>
+				</div>
+				<div class="card-body">
+					<h5 class="card-title">توضیحات</h5>
+					<p class="card-text margin-card">این آزمون متشکل از سوالات چهار گزینه ای می باشد که از بانک سوالات مجموعه استخراج شده است.
+						موفق باشید</p>
+					<button class="ctrl-standard typ-subhed fx-bubbleDown">نمایش سوالات</button>
+				</div>
+				<div class="card-footer text-muteds text-center">
+					<p>مقطع:پایه ششم  -  مرکزآموزشی:نمونه مطهری  -  تاریخ:سال96  -  سطح سختی:راحت</p>
+				</div>
+			</div>
+		</div>
 
+		<div class="col-md-6 col-sm-6">
+			<div class="card text-center" >
+				<div class="card-header"><h5 class="card-title">آزمون سوم</h5></div>
+				<div class="hover14">
+					<figure>
+						<img class="" src="{{asset('image/student/dashboard/exam.jpg')}}" class="card-img-top" alt="" width="100%" height="200rem">
+					</figure>
+				</div>
+				<div class="card-body">
+					<h5 class="card-title">توضیحات</h5>
+					<p class="card-text margin-card">این آزمون متشکل از سوالات چهار گزینه ای می باشد که از بانک سوالات مجموعه استخراج شده است.
+						موفق باشید</p>
+					<button class="ctrl-standard typ-subhed fx-bubbleDown">نمایش سوالات</button>
+				</div>
 
-		@endforeach
+					<div class="card-footer text-muteds text-center">
+						<p>مقطع:پایه ششم  -  مرکزآموزشی:نمونه مطهری  -  تاریخ:سال96  -  سطح سختی:راحت</p>
+					</div>
+
+			</div>
+		</div>
 
 	</div>
-
 @endsection
 
 @section('script')
