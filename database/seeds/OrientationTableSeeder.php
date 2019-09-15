@@ -18,32 +18,34 @@ class OrientationTableSeeder extends Seeder
 		DB::table('orientation')->insert([
 
 			'code'       => '01',
+			'title'      => 'ادبیات و علوم انسانی',
+			'url'        => 'Literature-and-Humanities',
+			'created_at' => Carbon::now(),
+			'updated_at' => Carbon::now(),
+
+        ]);
+
+
+		DB::table('orientation')->insert([
+
+			'code'       => '02',
 			'title'      => 'ریاضی فیزیک',
-			'url'        => 'MathematicalPhysics',
+			'url'        => 'Mathematical-Physics',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
 		]);
 
+
 		DB::table('orientation')->insert([
 
-			'code'       => '02',
+			'code'       => '03',
 			'title'      => 'علوم تجربی',
 			'url'        => 'Science',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
 		]);
-
-		DB::table('orientation')->insert([
-
-			'code'       => '03',
-			'title'      => 'ادبیات و علوم انسانی',
-			'url'        => 'LiteratureandHumanities',
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
-
-        ]);
 
 	}
 }

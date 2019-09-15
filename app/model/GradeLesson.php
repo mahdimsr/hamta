@@ -34,11 +34,18 @@ class GradeLesson extends Model
 
 		self::creating(function($model)
 		{
-			$lesson      = Lesson::query()->find($model->lessonId);
-			$grade       = Grade::query()->find($model->gradeId);
-			$orientation = Orientation::query()->find($model->orientationId);
+			$lesson = Lesson::query()->find($model->lessonId);
+			$grade  = Grade::query()->find($model->gradeId);
 
-			$model->code = $lesson->code . $grade->code . $orientation->code;
+			if ($model->orientationId == 1 || $model->orientationId == 2 || $model->orientationId == 3)
+			{
+				$orientation = Orientation::query()->find($model->orientationId);
+				$model->code = $orientation->code . '-' . $grade->code . '-' . $lesson->code;
+			}
+			else
+			{
+				$model->code = $model->orientationId . '-' . $grade->code . '-' . $lesson->code;
+			}
 
 			// $model->save();
 
@@ -49,11 +56,19 @@ class GradeLesson extends Model
 
 	public function getTitleAttribute()
 	{
-		$lessonTitle      = $this->lesson->title;
-		$gradeTitle       = $this->grade->title;
-		$orientationTitle = $this->orientation->title;
+		$lessonTitle = $this->lesson->title;
+		$gradeTitle  = $this->grade->title;
 
-		return $lessonTitle . ' ' . $gradeTitle.'-'.$orientationTitle;
+		if ($this->orientationId == 1 || $this->orientationId == 2 || $this->orientationId == 3 && $this->type == 'EXPERT')
+		{
+			$orientationTitle = $this->orientation->title;
+			return $lessonTitle . ' ' . $gradeTitle . '-' . $orientationTitle;
+		}
+		else
+		{
+			return $lessonTitle . ' ' . $gradeTitle . '-' . $this->lesson->parent->description;
+
+		}
 	}
 
 
@@ -88,6 +103,6 @@ class GradeLesson extends Model
 
 	public function questions()
 	{
-		return $this->hasMany(Question::class,'gradeLessonId');
+		return $this->hasMany(Question::class, 'gradeLessonId');
 	}
 }

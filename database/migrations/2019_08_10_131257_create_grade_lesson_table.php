@@ -17,11 +17,10 @@ class CreateGradeLessonTable extends Migration
 		Schema::create('grade_lesson', function(Blueprint $table)
 		{
 			$table->bigIncrements('id');
-			$table->integer('lessonId');
+			$table->integer('orientationId');
 			$table->integer('gradeId');
-            $table->integer('orientationId');
-            $table->string('name');
-			$table->string('code');
+			$table->integer('lessonId');
+			$table->string('code')->unique();
 			$table->integer('ratio')->default(1);
 			$table->enum('type', ['EXPERT', 'GENERAL']);
 			$table->timestamps();
