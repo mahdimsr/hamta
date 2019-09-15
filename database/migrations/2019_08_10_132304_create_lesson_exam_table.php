@@ -17,13 +17,13 @@ class CreateLessonExamTable extends Migration
 		Schema::create('lesson_exam', function(Blueprint $table)
 		{
 			$table->bigIncrements('id');
+			$table->enum('itemType', ['LESSON', 'TOPIC']);
 			$table->string('exm')->nullable();
 			$table->string('title');
 			$table->string('description')->nullable();
 			$table->integer('price')->default(0);
 			$table->string('answerSheet')->nullable();
-			$table->bigInteger('questionCount')->default(0);
-			$table->enum('status',['COMPLETE','IN-QUESTION','IN-COMPLETE']);
+			$table->enum('status', ['COMPLETE', 'IN-QUESTION', 'IN-COMPLETE']);
 			$table->boolean('isPublic')->default(false);
 			$table->timestamps();
 			$table->softDeletes();

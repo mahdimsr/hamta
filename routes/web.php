@@ -184,9 +184,9 @@ Route::get('/test', function()
 {
 
 	$lesson = \App\model\Lesson::query()->find(17);
-	$gradeLesson = \App\model\GradeLesson::query()->find(45);
+	$gradeLesson = \App\model\GradeLesson::query()->find(1);
 
 
-	return $gradeLesson;
+	return $gradeLesson->topics;
 
 })->name('test');
