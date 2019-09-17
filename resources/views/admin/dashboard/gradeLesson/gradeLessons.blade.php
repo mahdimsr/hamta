@@ -7,7 +7,6 @@
 			<div class="card">
 				<div class="header">
 					<h4 class="title text-right">درس های هرپایه</h4>
-					<p class="category text-right">درس های مربوط به پایه تحصیلی در گرایش های مختلف</p>
 					<a href="{{route('admin_gradeLessons_addShow')}}" style="font-size: 12px;" class="btn btn-info pull-right btn-table-header">
 						افزودن درس جدید
 					</a>
@@ -15,15 +14,17 @@
 				<div dir="rtl" class="content table-responsive table-full-width">
 					<table class="table table-hover table-striped">
 						<thead class="text-right">
-						<th>عنوان درس</th>
+                        <th>نام درس</th>
+						<th>نام کتاب</th>
 						<th>مقطع و گرایش</th>
-						<th>کد درس</th>
+						<th>کد کتاب</th>
 						<th>فرآیند</th>
 						</thead>
 						<tbody class="text-center">
 						@foreach($gradeLessons as $gradeLesson)
 							<tr>
-								<td>{{$gradeLesson->lesson->title}}</td>
+                                <td>{{$gradeLesson->lesson->title}}</td>
+								<td>{{$gradeLesson->name}}</td>
 								<td>{{$gradeLesson->grade->title .' - '. $gradeLesson->orientation->title}}</td>
 								<td>{{$gradeLesson->code}}</td>
 								<td>

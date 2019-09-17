@@ -442,11 +442,12 @@ h4,.h4{
 		padding:0px
 }
 	.header_area .navbar .nav .nav-item .nav-link{
-		padding:12px 0;
+		padding:12px 7px;
 		margin-right:0px;
 		display:block;
 		border-bottom:1px solid #ededed33;
-		border-radius:0px
+		border-radius:0px;
+		text-align: right;
 }
 	.header_area .navbar .search{
 		margin-left:0px
@@ -2346,6 +2347,31 @@ margin-left: 250px;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+.btn.btn-outline-info{
+	padding-left: 33px;
+	padding-right: 33px;
+
+}
+
+
+
+
+
+
+
+
+
 .carousel-item{
 	z-index: -1;
     max-height: 80vh;
@@ -2370,26 +2396,6 @@ background: linear-gradient(to right, #4e4376, #2b5876); /* W3C, IE 10+/ Edge, F
 
 
 
-
-.btn-outline-info{
-	margin-right: 60px;
-	background: #BBD2C5;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #536976, #BBD2C5);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #536976, #BBD2C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	background-blend-mode: screen;
-
-}
-
-
-
-
-
-.btn-outline-secondary{
-	margin-right: 10px;
-	background-image: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
-	background-blend-mode: screen;
-	border: 1px solid silver;
-}
 
 
 .days{

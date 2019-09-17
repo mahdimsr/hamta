@@ -24,9 +24,7 @@
 						با خواندن کد، درس را بفهمیم پس بهتره کدی که وارد میکنید در درس ها تکراری نباشد.
 					</p>
 					<p class="description text-right">
-						تعداد سوالات آزمون <b>20</b>
-						<br/>
-						تعداد سوالات درج شده <b>15</b>
+						تعداد سوالات آزمون <b>{{ count($exam->questionExams) }}</b>
 					</p>
 					<p class="description text-right">
 						<b>لینک درس</b> باید یک کلمه انگلیسی باشد. از لینک درس در بخش آدرس دهی در مرورگر استفاده
@@ -51,6 +49,8 @@
 
 						{{csrf_field()}}
 
+						<input name="exm" value="{{$exam->exm}}" hidden>
+
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
@@ -74,8 +74,8 @@
 									<label>دسته بندی درس ها</label>
 									<select dir="rtl" name="gradeLesson" class="form-control">
 										<option selected disabled>گرایش و درس سوال را انتخاب نمایید</option>
-										@foreach ( $gradeLessons as $gradeLesson )
-											<option value="{{ $gradeLesson->code }}" {{old('gradeLesson') == $gradeLesson->code ? 'selected' : ''}}>{{ $gradeLesson->lesson->title . ' ' . $gradeLesson->grade->title .'-'.$gradeLesson->orientation->title }}</option>
+										@foreach ( $exam->examGradeLessons as $examGradeLesson )
+											<option value="{{ $examGradeLesson->gradeLesson->code }}">{{ $examGradeLesson->gradeLesson->title }}</option>
 										@endforeach
 									</select>
 									<div class="invalid-feedback">
@@ -147,7 +147,7 @@
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
-									<button type="submit" class="btn btn-fill btn-info">ذخیره سوال</button>
+									<button type="submit" class="btn btn-fill btn-info">ذخیره و درج سوال بعدی</button>
 								</div>
 							</div>
 							<div class="col-md-4">

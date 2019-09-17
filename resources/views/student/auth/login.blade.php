@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="per" >
 <head>
-  <title> همتا | دانش آموزان</title>
+  <title> همپا | ورود دانش آموزان</title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
   <link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
@@ -49,24 +49,23 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
       <div class="container">
-        <a class="navbar-brand" href="#"><strong>همتا</strong></a>
+        <a class="navbar-brand d-inline-block align-top" href="{{ route('student_login_show') }}"><strong>همپا | دانش آموزان</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7"
           aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('student_login_show') }}">ورود<span class="sr-only">(current)</span></a>
-                </li>
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item ">
-                  <a class="nav-link" href="{{ route('homepage') }}">خانه</a>
+                    <a class="nav-link" href="{{ route('homepage') }}">خانه</a>
                 </li>
                 <li class="nav-item active">
+                  <a class="nav-link" href="{{ route('student_login_show') }}">ورود<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="{{ route('student_register_show') }}">ثبت نام</a>
                 </li>
-              </ul>
-
+            </ul>
         </div>
       </div>
     </nav>
@@ -87,14 +86,14 @@
                   <!-- Header -->
                   <div class="form-header purple-gradient">
 
-                    <h3 class="font-weight-500 my-2 py-1"> ورود<i class="fas fa-user ml-3 "></i></h3>
+                    <h3 class="font-weight-500 my-2 py-1"> ورود به سامانه</h3>
                   </div>
 
                   <!-- Body -->
                   <div class="md-form">
                     <i class="fas fa-user prefix white-text"></i>
                     <input type="text" id="orangeForm-name" class="form-control "  name="mobile_email" value="{{ $studentInfo ? $studentInfo : old('mobile_email') }}">
-                    <label for="orangeForm-name">نام کاربری</label>
+                    <label for="orangeForm-name">تلفن همراه یا پست الکترونیکی</label>
                     <small class="text-danger font-weight-bold">{{$errors->first('mobile_email')}}</small>
 
                   </div>
@@ -105,13 +104,12 @@
                     <label for="orangeForm-email">رمز عبور</label>
                     <small class="text-danger font-weight-bold">{{$errors->first('password')}}</small>
 
-                    <div class="form-check">
-  <input type="checkbox" class="form-check-input" id="materialChecked2" name="remember" {{ $studentInfo ? 'checked' : ''  }}>
-  <label class="form-check-label" for="materialChecked2">مرا به خاطر بسپار</label>
-  </div>
+                <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="materialChecked2" name="remember" {{ $studentInfo ? 'checked' : ''  }}>
+                <label class="form-check-label" for="materialChecked2">مرا به خاطر بسپار</label>
+                </div>
 
 
-      <a href="#" class="font-weight-bold cyan-lighter-hover">رمز خود را فراموش کرده اید</a>
 
                   </div>
 
@@ -124,9 +122,11 @@
 
                   </div>
                   <hr class="young-passion-gradient color-block mb-3 mx-auto rounded-circle z-depth-1">
+                      <p class="text-center">
+                  <a href="#" class="font-weight-bold cyan-lighter-hover">رمز عبور خود را فراموش کرده ام</a></p>
                 </div>
                 <div class="loginbg py-1 mr-auto">
-                <a href="{{Route('student_register_show')}}" class="login">ایا همتایی نشدی؟</a>
+                <a href="{{Route('student_register_show')}}" class="login">آیا همپایی نشدی؟</a>
                 </div>
                 </div>
               </div>
@@ -161,9 +161,13 @@
 
   <!-- Custom scripts -->
   <script>
-
+        toastr.options = {
+            "positionClass": "md-toast-bottom-center",
+          }
     new WOW().init();
-
+    @if ($errors->has('message'))
+    @{{ toastr.error('اطلاعات وارد شده صحیح نیست.'); }}
+    @endif
   </script>
 
 

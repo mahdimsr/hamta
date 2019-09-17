@@ -17,46 +17,6 @@ class GradeTableSeeder extends Seeder
 
 		DB::table('grade')->insert([
 
-			'code'       => '06',
-			'title'      => 'ششم',
-			'url'        => 'sixth-grade',
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
-
-        ]);
-
-		DB::table('grade')->insert([
-
-			'code'       => '07',
-			'title'      => 'هفتم',
-			'url'        => 'seventh-grade',
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
-
-        ]);
-
-		DB::table('grade')->insert([
-
-			'code'       => '08',
-			'title'      => 'هشتم',
-			'url'        => 'eighth-grade',
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
-
-        ]);
-
-		DB::table('grade')->insert([
-
-			'code'       => '09',
-			'title'      => 'نهم',
-			'url'        => 'ninth-grade',
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
-
-		]);
-
-		DB::table('grade')->insert([
-
 			'code'       => '10',
 			'title'      => 'دهم',
 			'url'        => 'tenth-grade',
@@ -83,6 +43,7 @@ class GradeTableSeeder extends Seeder
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 
-		]);
+        ]);
+
 	}
 }

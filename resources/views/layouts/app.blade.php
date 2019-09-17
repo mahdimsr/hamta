@@ -14,6 +14,8 @@
 		  integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
 	<link rel="stylesheet" href="{{asset('css/homepage/style.css')}}">
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -37,7 +39,7 @@
 					<ul class="nav-right text-center text-lg-right py-1 py-lg-0">
 
 
-						<li class="btn btn-outline-secondary"><a href="{{ route('student_login_show') }}">دانش آموزان</a></li>
+						<li class="btn btn-outline-primary"><a href="{{ route('student_login_show') }}">دانش آموزان</a></li>
 					</ul>
 					<ul class="nav-right text-center text-lg-right py-1 py-lg-0">
 
@@ -47,7 +49,7 @@
 
 					<ul class="nav navbar-nav menu_nav justify-content-end">
 						<li class="nav-item active"><a class="nav-link scroll" href="#exams">آزمون های همتا</a></li>
-						<li class="nav-item"><a class="nav-link scroll" href="#comments">همتا از دید بقیه</a></li>
+						<li class="nav-item"><a class="nav-link scroll" href="#comments" >همتا از دید بقیه</a></li>
 						<li class="nav-item"><a class="nav-link scroll" href="#team">تیم همتا</a></li>
 						<li class="nav-item"><a class="nav-link scroll" href="{{route('homepage')}}#hamta">چرا همتا؟</a>
 					</ul>
@@ -123,10 +125,14 @@
 <script src="{{asset('js/homepage/main.js')}}"></script>
 <script src="{{asset('js/homepage/scroll.js')}}"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js"></script>
+
 <script src="{{asset('js/homepage/animation.js')}}"></script>
 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+  AOS.init();
+</script>
 
 
 </body>

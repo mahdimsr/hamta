@@ -16,12 +16,11 @@ class GradeLessonTableSeeder extends Seeder
 	{
 		DB::table('grade_lesson')->insert([
 
-			/*ریاضی دهم رایضی فیزیک ضریب 4 تخصصی*/
-
-			'lessonId'      => '5',
-			'gradeId'       => '7',
-			'orientationId' => '1',
-			'code'          => '111001',
+			'lessonId'      => '05',
+			'gradeId'       => '01',
+            'orientationId' => '01',
+            'name'         => 'ریاضی (1)',
+			'code'          => '110211',
 			'ratio'         => '4',
 			'type'          => 'EXPERT',
 			'created_at'    => Carbon::now(),
@@ -29,43 +28,5 @@ class GradeLessonTableSeeder extends Seeder
 
 		]);
 
-		DB::table('grade_lesson')->insert([
-
-			'lessonId'      => '5',
-			'gradeId'       => '6',
-			'orientationId' => '1',
-			'code'          => '111101',
-			'ratio'         => '4',
-			'type'          => 'EXPERT',
-			'created_at'    => Carbon::now(),
-			'updated_at'    => Carbon::now(),
-
-		]);
-
-		DB::table('grade_lesson')->insert([
-
-			'lessonId'      => '1',
-			'gradeId'       => '5',
-			'orientationId' => '1',
-			'code'          => '011101',
-			'ratio'         => '2',
-			'type'          => 'GENERAL',
-			'created_at'    => Carbon::now(),
-			'updated_at'    => Carbon::now(),
-
-		]);
-
-		DB::table('grade_lesson')->insert([
-
-			'lessonId'      => '2',
-			'gradeId'       => '2',
-			'orientationId' => '1',
-			'code'          => '021101',
-			'ratio'         => '2',
-			'type'          => 'GENERAL',
-			'created_at'    => Carbon::now(),
-			'updated_at'    => Carbon::now(),
-
-		]);
 	}
 }

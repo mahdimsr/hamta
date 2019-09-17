@@ -329,6 +329,7 @@
 	<script>
 		$(document).ready(function()
 		{
+            var cities=$('#city option').clone();
 			$("#birthday").pDatepicker({
 
 				autoClose: true,
@@ -345,15 +346,11 @@
                     }
 				}
             });
+
         $("#province").change(function()
         {
-
-            if ($(this).data('options') === undefined)
-            {
-                $(this).data('options', $('#city option').clone());
-            }
             var id = $("#province option:selected").attr('id');
-            var options = $(this).data('options').filter('[id=' + id + '],[id=0]');
+            var options = cities.filter('[id=' + id + '],[id=0]');
             $('#city').html(options);
             $('#city').prop('selectedIndex',0).trigger('change');
 
@@ -362,9 +359,8 @@
         if($("#province").val()!='')
         {
 
-            $("#province").data('options', $('#city option').clone());
             var id = $("#province option:selected").attr('id');
-            var options = $("#province").data('options').filter('[id=' + id + '],[id=0]');
+            var options = cities.filter('[id=' + id + '],[id=0]');
             $('#city').html(options);
 
         }

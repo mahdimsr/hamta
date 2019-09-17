@@ -8,6 +8,7 @@ use App\model\GradeLesson;
 use App\model\Lesson;
 use App\model\LessonExam;
 use App\model\Orientation;
+use App\model\QuestionExam;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -21,6 +22,8 @@ class LessonExamController extends Controller
 
 	public function exams()
 	{
+		//admin_exams => route
+
 		$lessonExam = LessonExam::all();
 
 		return view('admin.dashboard.lessonExam.exams', compact('lessonExam'));
@@ -32,9 +35,11 @@ class LessonExamController extends Controller
 	{
 		$modify = 0;
 
-		$gradeLessons = GradeLesson::all();
+		$orientations = Orientation::all();
+		$lessons      = Lesson::all();
+		$grades       = Grade::all();
 
-		return view('admin.dashboard.lessonExam.form', compact('gradeLessons', 'modify'));
+		return view('admin.dashboard.lessonExam.form', compact('orientations', 'lessons', 'grades', 'modify'));
 	}
 
 
@@ -43,14 +48,44 @@ class LessonExamController extends Controller
 	{
 		//validate here
 
-
 		$this->validate($request, [
 
-			'title' => 'required|string|between:5,20',
-			'price' => 'integer',
+			'orientation' => 'required|exists:orientation,url',
+			'lesson'      => 'required|exists:lesson,url',
+			'grades'      => 'required',
+			'title'       => 'required|string|between:5,20',
+			'price'       => 'integer',
 
 		]);
 
+
+
+		$orientation = Orientation::query()->where('url', $request->input('orientation'))->first();
+		$lesson      = Lesson::query()->where('url', $request->input('lesson'))->first();
+
+		$gradeLessons = [];
+
+		foreach ($request->input('grades') as $gradeUrl)
+		{
+			$grade = Grade::query()->where('url', $gradeUrl)->first();
+
+			$gradeLesson = GradeLesson::query()
+				->where('lessonId', $lesson->id)
+				->where('gradeId', $grade->id)
+				->where('orientationId', $orientation->id);
+
+			if ($gradeLesson->exists())
+			{
+				$gradeLessons[] = $gradeLesson->first();
+			}
+			else
+			{
+				return redirect()
+					->back()
+					->withInput()
+					->withErrors('وابستگی یافت نشد.');
+			}
+		}
 
 		$lessonExam = new LessonExam();
 
@@ -61,11 +96,12 @@ class LessonExamController extends Controller
 
 		$lessonExam->save();
 
-		foreach ($request->input('gradeLessonsCode') as $gradeLessonCode)
+
+
+
+
+		foreach ($gradeLessons as $gradeLesson)
 		{
-			$gradeLesson = GradeLesson::query()->where('code', $gradeLessonCode)->first();
-
-
 			$examGradeLesson = new ExamGradeLesson();
 
 			$examGradeLesson->gradeLessonId = $gradeLesson->id;
@@ -105,14 +141,47 @@ class LessonExamController extends Controller
 
 
 
-	//edit
 
-
-	public function questionShow()
+	public function addManyQuestion(Request $request)
 	{
-		$gradeLessons = GradeLesson::all();
+		$questionIds = $request->input('questionId');
 
-		return view('admin.dashboard.lessonExam.question_form', compact('gradeLessons'));
+
+		$exam = LessonExam::query()->where('exm', $request->input('exm'))->first();
+
+		if (count($questionIds) > 0)
+		{
+			QuestionExam::query()
+				->where('examId', $exam->id)
+				->whereNotIn('questionId', $questionIds)
+				->delete();
+		}
+
+		foreach ($questionIds as $questionId)
+		{
+			$questionExam = new QuestionExam();
+
+			if (!QuestionExam::query()->where('questionId', $questionId)->where('examId', $exam->id)->exists())
+			{
+				$questionExam->questionId = $questionId;
+				$questionExam->examId     = $exam->id;
+
+				$questionExam->save();
+			}
+			else if (QuestionExam::query()->where('questionId', $questionId)->where('examId', $exam->id)->exists())
+			{
+				$questionExam = QuestionExam::query()
+					->where('questionId', $questionId)
+					->where('examId', $exam->id)
+					->first();
+
+				$questionExam->update();
+			}
+
+		}
+
+
+		return redirect()->back();
 	}
 
 
