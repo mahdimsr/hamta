@@ -14,18 +14,16 @@
 				<div dir="rtl" class="content table-responsive table-full-width">
 					<table class="table table-hover table-striped">
 						<thead class="text-right">
-                        <th>نام درس</th>
-						<th>نام کتاب</th>
-						<th>مقطع و گرایش</th>
-						<th>کد کتاب</th>
+						<th>ردیف</th>
+                        <th>عنوان</th>
+						<th>کد</th>
 						<th>فرآیند</th>
 						</thead>
 						<tbody class="text-center">
 						@foreach($gradeLessons as $gradeLesson)
 							<tr>
-                                <td>{{$gradeLesson->lesson->title}}</td>
-								<td>{{$gradeLesson->name}}</td>
-								<td>{{$gradeLesson->grade->title .' - '. $gradeLesson->orientation->title}}</td>
+								<td>{{$gradeLesson->id}}</td>
+								<td>{{$gradeLesson->title}}</td>
 								<td>{{$gradeLesson->code}}</td>
 								<td>
 

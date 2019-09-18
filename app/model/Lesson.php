@@ -10,8 +10,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property int $id
+ * @property int $parentId
  * @property string $code
  * @property string $title
+ * @property string $description
  * @property string $url
  * @property \Carbon\Carbon $deleted_at
  */
@@ -26,6 +28,18 @@ class Lesson extends Model
 	protected static function boot()
 	{
 		parent::boot();
+
+
+		self::creating(function($model)
+		{
+			if ($model->parentId != 0)
+			{
+				$url = $model->url . '-' . $model->parent->code;
+
+				$model->url = $url;
+			}
+		});
+
 
 		self::deleting(function($model)
 		{
@@ -47,8 +61,21 @@ class Lesson extends Model
 			}
 
 
-
 		});
+	}
+
+
+
+	public function parent()
+	{
+		return $this->belongsTo(Lesson::class, 'parentId');
+	}
+
+
+
+	public function lessons()
+	{
+		return $this->hasMany(Lesson::class, 'parentId');
 	}
 
 
