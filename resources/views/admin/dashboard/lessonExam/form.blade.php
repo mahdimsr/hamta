@@ -40,121 +40,74 @@
 			</div>
 		</div>
 		<div class="col-md-7">
-			<div class="card text-right">
+			<div class="card ">
 				<div class="header ">
 					<h4 class="title">افزودن آزمون درس به درس</h4>
 				</div>
 
-				@if ($errors->any())
-					<div class="alert alert-danger">
-						<ul>
-							@foreach ($errors->all() as $error)
-								<li>{{ $error }}</li>
-							@endforeach
-						</ul>
-					</div>
-				@endif
-
 				<div class="content">
-					<form method="post" action="{{route('admin_lExam_add')}}" enctype="multipart/form-data">
 
-						{{csrf_field()}}
 
-						<div class="row">
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>مقاطع مربوط به آزمون</label>
-									<select dir="rtl" name="grades[]" class="form-control">
-										<option selected disabled>مقطع آرمون را انتخاب نمایید</option>
-										@foreach ( $grades as $grade )
-											<option value="{{ $grade->url }}">{{ $grade->title }}</option>
-										@endforeach
-									</select>
 
-								</div>
+					<div class="stepwizard">
+						<div class="stepwizard-row setup-panel">
+							<div class="stepwizard-step">
+								<a href="#step-1" type="button" class="btn btn1 btn-circle   "  >1</a>
+								<p>بخش 1</p>
 							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>درس مربوط به آزمون</label>
-									<select dir="rtl" name="lesson" class="form-control">
-										<option selected disabled>درس آرمون را انتخاب نمایید</option>
-										@foreach ( $lessons as $lesson )
-											<option value="{{ $lesson->url }}" {{$modify == 0 ? old('lesson') == $lesson->url ? 'selected' : '' : '' }}>{{ $lesson->title }}</option>
-										@endforeach
-									</select>
-
-								</div>
+							<div class="stepwizard-step">
+								<a href="#step-2" type="button" class="btn btn1 btn-circle" >2</a>
+								<p>بخش 2</p>
 							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>گرایش مربوط به آزمون</label>
-									<select dir="rtl" name="orientation" class="form-control">
-										<option selected disabled>گرایش آرمون را انتخاب نمایید</option>
-										@foreach ( $orientations as $orientation )
-											<option value="{{ $orientation->url }}" {{$modify == 0 ? old('orientation') == $orientation->url ? 'selected' : '' : '' }}>{{ $orientation->title }}</option>
-										@endforeach
-									</select>
-
+							<div class="stepwizard-step">
+								<a href="#step-3" type="button" class="btn btn1 btn-circle">3</a>
+								<p>بخش 3</p>
+							</div>
+						</div>
+					</div>
+					<form role="form">
+						<div class="row setup-content" id="step-1">
+							<div class="col-xs-12">
+								<div class="col-md-12">
+									<h3 class="">بخش اول </h3>
+									<div class="form-group">
+										<label class="control-label">نام</label>
+										<input  maxlength="100" type="text" required="required" class="form-control" placeholder="نام خود را وارد کنید"  />
+									</div>
+									<div class="form-group">
+										<label class="control-label">Last Name</label>
+										<input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Last Name" />
+									</div>
+									<button class="ctrl-standard typ-subhed fx-bubbleDown nextBtn  pull-right" type="button" >بعدی</button>
 								</div>
 							</div>
 						</div>
-
-
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>قیمت ( به ریال)</label>
-									<input name="price" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: 50000"
-										   value="{{ $modify == 0 ? old('price') ? old('price') : '' : $lessonExam->price}}">
-									<div class="invalid-feedback">
-										<small>{{ $errors->first('price') }}</small>
+						<div class="row setup-content" id="step-2">
+							<div class="col-xs-12">
+								<div class="col-md-12">
+									<h3> Step 2</h3>
+									<div class="form-group">
+										<label class="control-label">Company Name</label>
+										<input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
 									</div>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>عنوان آرمون</label>
-									<input name="title" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: درس فیزیکدوم دبیرستان، فصل اول"
-										   value="{{$modify == 0 ? old('title') ? old('title') : '' : $lessonExam->title }}">
-									<div class="invalid-feedback">
-										<small>{{ $errors->first('title') }}</small>
+									<div class="form-group">
+										<label class="control-label">Company Address</label>
+										<input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address"  />
 									</div>
+									<button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
 								</div>
 							</div>
 						</div>
-
-						<div class="row">
-							<div class="col-md-12">
-								<div class="form-group">
-									<label>توضیحات</label>
-									<textarea name="description" dir="rtl" rows="5" class="form-control"
-											  placeholder="مثلا بگو که این آزمون مناسب چه کسایی هستش، برای مرور درس خوبه یا برای شب امتحان یا برای کنکور و ....">{{$modify == 0 ? old('description') ? old('description') : '' : $lessonExam->description}}</textarea>
-									<div class="invalid-feedback">
-										<small>{{ $errors->first('description') }}</small>
-									</div>
+						<div class="row setup-content" id="step-3">
+							<div class="col-xs-12">
+								<div class="col-md-12">
+									<h3> Step 3</h3>
+									<button class="btn btn-success btn-lg pull-right" type="submit">Finish!</button>
 								</div>
 							</div>
 						</div>
-
-						<div class="row">
-							<div class="col-md-12">
-								<div class="form-group">
-									<label>پاسخنامه</label>
-									<input name="answerSheet" dir="rtl" type="file" class="form-control"
-									>
-									<div class="invalid-feedback">
-										<small>{{ $errors->first('answerSheet') }}</small>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<button type="submit" class="btn btn-info btn-fill pull-right">ثبت</button>
-
-						<div class="clearfix"></div>
 					</form>
+
 				</div>
 			</div>
 		</div>
