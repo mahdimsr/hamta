@@ -18,7 +18,7 @@ class CreateTopicLessonExamTable extends Migration
 		{
 			$table->bigIncrements('id');
 			$table->integer('lessonExamId');
-			$table->integer('topicId');
+			$table->integer('topicGradeLessonId');
 			$table->timestamps();
 			$table->softDeletes();
 		});
