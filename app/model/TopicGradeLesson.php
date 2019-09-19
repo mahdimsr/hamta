@@ -29,9 +29,16 @@ class TopicGradeLesson extends Model
 
 
 
+	public function gradeLesson()
+	{
+		return $this->belongsTo(GradeLesson::class, 'gradeLessonId');
+	}
+
+
+
 	public function questions()
 	{
-		return $this->hasMany(Question::class,'topicGradeLessonId');
+		return $this->hasMany(Question::class, 'topicGradeLessonId');
 	}
 
 }
