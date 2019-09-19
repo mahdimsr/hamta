@@ -10,6 +10,8 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
 		  integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+
 </head>
 <body>
 <form method="post" action="{{ route('admin_login_submit')}}">
@@ -51,6 +53,9 @@
 		<input type="submit" value="ورود">
 	</div>
 </form>
-
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script  src="{{asset('js/admin/dashboard/jquery.steps.js')}}"></script>
+<script  src="{{asset('js/admin/dashboard/jquery.3.2.1.min.js')}}"></script>
 </body>
 </html>

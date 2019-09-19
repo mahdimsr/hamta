@@ -13,20 +13,18 @@
 				</div>
 				<div dir="rtl" class="content table-responsive table-full-width">
 					<table class="table table-hover table-striped">
-						<thead class="text-right">
-                        <th>نام درس</th>
-						<th>نام کتاب</th>
-						<th>مقطع و گرایش</th>
-						<th>کد کتاب</th>
+						<thead class="text-center">
+						<th>ردیف</th>
+						<th>کد درس</th>
+                        <th>عنوان</th>
 						<th>فرآیند</th>
 						</thead>
 						<tbody class="text-center">
 						@foreach($gradeLessons as $gradeLesson)
 							<tr>
-                                <td>{{$gradeLesson->lesson->title}}</td>
-								<td>{{$gradeLesson->name}}</td>
-								<td>{{$gradeLesson->grade->title .' - '. $gradeLesson->orientation->title}}</td>
+								<td>{{$gradeLesson->id}}</td>
 								<td>{{$gradeLesson->code}}</td>
+								<td>{{$gradeLesson->title}}</td>
 								<td>
 
 									<a href="{{route('admin_gradeLessons_remove',['code' => $gradeLesson->code])}}" id="remove-btn" type="button"

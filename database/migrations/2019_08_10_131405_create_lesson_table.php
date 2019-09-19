@@ -17,9 +17,11 @@ class CreateLessonTable extends Migration
 		Schema::create('lesson', function(Blueprint $table)
 		{
 			$table->bigIncrements('id');
-			$table->string('code');
+			$table->integer('parentId');
+			$table->string('code')->default(0);
 			$table->string('title');
-			$table->string('url');
+			$table->string('description')->nullable();
+			$table->string('url')->unique()->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});

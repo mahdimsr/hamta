@@ -17,7 +17,7 @@ class CreateQuestionTable extends Migration
 		Schema::create('question', function(Blueprint $table)
 		{
 			$table->bigIncrements('id');
-			$table->integer('gradeLessonId');
+			$table->integer('topicGradeLessonId');
 			$table->string('text');
 			$table->string('optionOne');
 			$table->string('optionTwo');

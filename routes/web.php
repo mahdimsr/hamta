@@ -183,10 +183,10 @@ Route::namespace('Admin')->group(function()
 Route::get('/test', function()
 {
 
-	$admin = \Illuminate\Support\Facades\Auth::guard('admin')->user();
-	$admin = \App\model\Admin::query()->with('children')->find(\Illuminate\Support\Facades\Auth::guard('admin')->id());
+	$lesson = \App\model\Lesson::query()->find(17);
+	$gradeLesson = \App\model\GradeLesson::query()->find(1);
 
 
-	return $admin;
+	return $gradeLesson->topics;
 
 })->name('test');

@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 
-class CreateGradeLessonTable extends Migration
+class CreateTopicLessonExamTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -14,15 +14,11 @@ class CreateGradeLessonTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('grade_lesson', function(Blueprint $table)
+		Schema::create('topic_lesson_exam', function(Blueprint $table)
 		{
 			$table->bigIncrements('id');
-			$table->integer('gradeId');
-			$table->integer('orientationId');
-			$table->integer('lessonId');
-			$table->string('code')->unique();
-			$table->integer('ratio')->default(1);
-			$table->enum('type', ['EXPERT', 'GENERAL']);
+			$table->integer('lessonExamId');
+			$table->integer('topicGradeLessonId');
 			$table->timestamps();
 			$table->softDeletes();
 		});
@@ -37,6 +33,6 @@ class CreateGradeLessonTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('grade_lesson');
+		Schema::dropIfExists('topic_lesson_exam');
 	}
 }
