@@ -30,8 +30,8 @@ class Topic extends Model
 
 
 
-	public function topicLessonExams()
+	public function topicGradeLessons()
 	{
-		return $this->hasMany(TopicLessonExam::class, 'topicId');
+		return $this->hasMany(TopicGradeLesson::class, 'topicId');
 	}
 }

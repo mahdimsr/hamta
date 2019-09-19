@@ -9,6 +9,8 @@ use App\model\Lesson;
 use App\model\LessonExam;
 use App\model\Orientation;
 use App\model\QuestionExam;
+use App\model\Topic;
+use App\model\TopicGradeLesson;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -35,11 +37,12 @@ class LessonExamController extends Controller
 	{
 		$modify = 0;
 
-		$orientations = Orientation::all();
-		$lessons      = Lesson::all();
-		$grades       = Grade::all();
+		$orientations      = Orientation::all();
+		$lessons           = Lesson::query()->whereNotIn('parentId', [0])->get();
+		$grades            = Grade::all();
+		$topicGradeLessons = TopicGradeLesson::all();
 
-		return view('admin.dashboard.lessonExam.form', compact('orientations', 'lessons', 'grades', 'modify'));
+		return view('admin.dashboard.lessonExam.form', compact('orientations', 'lessons', 'grades', 'topicGradeLessons', 'modify'));
 	}
 
 
@@ -48,75 +51,38 @@ class LessonExamController extends Controller
 	{
 		//validate here
 
-		$this->validate($request, [
+		$stepOne = Validator::make($request->only(['title', 'description', 'price']), [
 
-			'orientation' => 'required|exists:orientation,url',
-			'lesson'      => 'required|exists:lesson,url',
-			'grades'      => 'required',
 			'title'       => 'required|string|between:5,20',
-			'price'       => 'integer',
+			'description' => 'nullable|string|between:5,20',
+			'price'       => 'nullable|integer',
 
 		]);
 
-
-
-		$orientation = Orientation::query()->where('url', $request->input('orientation'))->first();
-		$lesson      = Lesson::query()->where('url', $request->input('lesson'))->first();
-
-		$gradeLessons = [];
-
-		foreach ($request->input('grades') as $gradeUrl)
+		if ($stepOne->fails())
 		{
-			$grade = Grade::query()->where('url', $gradeUrl)->first();
-
-			$gradeLesson = GradeLesson::query()
-				->where('lessonId', $lesson->id)
-				->where('gradeId', $grade->id)
-				->where('orientationId', $orientation->id);
-
-			if ($gradeLesson->exists())
-			{
-				$gradeLessons[] = $gradeLesson->first();
-			}
-			else
-			{
-				return redirect()
-					->back()
-					->withInput()
-					->withErrors('وابستگی یافت نشد.');
-			}
+			return redirect()->back()->withErrors($stepOne->errors())->withInput($request->all());
 		}
 
-		$lessonExam = new LessonExam();
+		$stepTwo = Validator::make($request->only(['orientation', 'lessons', 'itemType']), [
 
-		$lessonExam->title       = $request->input('title');
-		$lessonExam->description = $request->input('description');
-		$lessonExam->price       = $request->input('price');
-		$lessonExam->status      = 'IN-QUESTION';
+			'orientation' => 'required|exists:orientation,id',
+			'lessons'     => 'required|exists:lesson,id',
+			'itemType'    => 'required|in:LESSON,TOPIC',
 
-		$lessonExam->save();
+		]);
 
-
-
-
-
-		foreach ($gradeLessons as $gradeLesson)
+		if ($stepTwo->fails())
 		{
-			$examGradeLesson = new ExamGradeLesson();
-
-			$examGradeLesson->gradeLessonId = $gradeLesson->id;
-			$examGradeLesson->examId        = $lessonExam->id;
-
-			$examGradeLesson->save();
+			return redirect()->back()->withErrors($stepTwo->errors())->withInput($request->all());
 		}
 
-		if ($request->hasFile('answerSheet'))
+		if ($request->input('itemType') == 'LESSON')
 		{
-			$answerFile              = $request->file('answerSheet');
-			$lessonExam->answerSheet = $answerFile->hashName();
-			$lessonExam->update();
-
-			Storage::disk('lessonExam')->put($lessonExam->exm, $answerFile);
+			
+		}
+		else
+		{
 
 		}
 
@@ -138,7 +104,6 @@ class LessonExamController extends Controller
 
 		return view('admin.dashboard.lessonExam.form', compact('modify', 'lessonExam', 'lessons', 'grades', 'orientations'));
 	}
-
 
 
 
