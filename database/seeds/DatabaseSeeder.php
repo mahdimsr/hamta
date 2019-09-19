@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             LessonTableSeeder::class,
 			GradeLessonTableSeeder::class,
 			TopicTableSeeder::class,
+			TopicGradeLessonSeeder::class,
 
 		]);
 	}

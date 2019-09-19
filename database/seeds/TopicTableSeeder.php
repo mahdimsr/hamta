@@ -17,7 +17,6 @@ class TopicTableSeeder extends Seeder
 
 		//id 1
 		$topic                = new Topic();
-		$topic->gradeLessonId = 1;
 		$topic->headLine      = 'ستایش';
 		$topic->title         = 'به نام کردگار';
 		$topic->save();
@@ -25,7 +24,6 @@ class TopicTableSeeder extends Seeder
 
 		//id 2
 		$topic                = new Topic();
-		$topic->gradeLessonId = 1;
 		$topic->headLine      = 'فصل یکم: ادبیات تعلیمی';
 		$topic->title         = 'درس یکم: چشمه';
 		$topic->save();
@@ -33,7 +31,6 @@ class TopicTableSeeder extends Seeder
 
 		//id 3
 		$topic                = new Topic();
-		$topic->gradeLessonId = 1;
 		$topic->headLine      = 'فصل یکم: ادبیات تعلیمی';
 		$topic->title         = 'درس دوم : از آموختن، ننگ مدار';
 		$topic->save();
@@ -41,7 +38,6 @@ class TopicTableSeeder extends Seeder
 
 		//id 4
 		$topic                = new Topic();
-		$topic->gradeLessonId = 1;
 		$topic->headLine      = 'فصل دوم: ادبیات سفر و زندگی';
 		$topic->title         = 'درس سوم: سفر به بصره';
 		$topic->save();
@@ -49,7 +45,6 @@ class TopicTableSeeder extends Seeder
 
 		//id 5
 		$topic                = new Topic();
-		$topic->gradeLessonId = 1;
 		$topic->headLine      = 'فصل دوم: ادبیات سفر و زندگی';
 		$topic->title         = 'درس چهارم: درس آزاد (ادبیات بومی 1)';
 		$topic->save();
@@ -57,7 +52,6 @@ class TopicTableSeeder extends Seeder
 
 		//id 6
 		$topic                = new Topic();
-		$topic->gradeLessonId = 1;
 		$topic->headLine      = 'فصل دوم: ادبیات سفر و زندگی';
 		$topic->title         = 'درس پنجم: کلاس نقّاشی';
 		$topic->save();
@@ -65,7 +59,6 @@ class TopicTableSeeder extends Seeder
 
 		//id 7
 		$topic                = new Topic();
-		$topic->gradeLessonId = 1;
 		$topic->headLine      = 'فصل سوم: ادبیات غنایی';
 		$topic->title         = 'درس ششم: مهر و وفا';
 		$topic->save();
@@ -73,7 +66,6 @@ class TopicTableSeeder extends Seeder
 
 		//id 8
 		$topic                = new Topic();
-		$topic->gradeLessonId = 1;
 		$topic->headLine      = 'فصل سوم: ادبیات غنایی';
 		$topic->title         = 'درس هفتم: جمال و کمال';
 		$topic->save();
@@ -81,7 +73,6 @@ class TopicTableSeeder extends Seeder
 
 		//id 9
 		$topic                = new Topic();
-		$topic->gradeLessonId = 1;
 		$topic->headLine      = 'فصل چهارم: ادبیات پایداری';
 		$topic->title         = 'درس هشتم: پاسداری از حقیقت';
 		$topic->save();
@@ -89,7 +80,6 @@ class TopicTableSeeder extends Seeder
 
 		//id 10
 		$topic                = new Topic();
-		$topic->gradeLessonId = 1;
 		$topic->headLine      = 'فصل چهارم: ادبیات پایداری';
 		$topic->title         = 'درس نهم: بیداد ظالمان';
 		$topic->save();
@@ -97,7 +87,6 @@ class TopicTableSeeder extends Seeder
 
 		//id 11
 		$topic                = new Topic();
-		$topic->gradeLessonId = 1;
 		$topic->headLine      = 'فصل پنجم: ادبیات انقلاب اسلامی';
 		$topic->title         = 'درس دهم: دریادلان صف شکن';
 		$topic->save();
@@ -105,7 +94,6 @@ class TopicTableSeeder extends Seeder
 
 		//id 12
 		$topic                = new Topic();
-		$topic->gradeLessonId = 1;
 		$topic->headLine      = 'فصل پنجم: ادبیات انقلاب اسلامی';
 		$topic->title         = 'درس یازدهم: خاک آزادگان';
 		$topic->save();
@@ -113,7 +101,6 @@ class TopicTableSeeder extends Seeder
 
 		//id 13
 		$topic                = new Topic();
-		$topic->gradeLessonId = 1;
 		$topic->headLine      = 'فصل ششم: ادبیات حماسی';
 		$topic->title         = 'درس دوازدهم: رستم و اشکبوس';
 		$topic->save();
@@ -121,7 +108,6 @@ class TopicTableSeeder extends Seeder
 
 		//id 14
 		$topic                = new Topic();
-		$topic->gradeLessonId = 1;
 		$topic->headLine      = 'فصل ششم: ادبیات حماسی';
 		$topic->title         = 'درس سیزدهم: گُردآفرید';
 		$topic->save();
@@ -129,7 +115,6 @@ class TopicTableSeeder extends Seeder
 
 		//id 15
 		$topic                = new Topic();
-		$topic->gradeLessonId = 1;
 		$topic->headLine      = 'فصل هفتم: ادبیات داستانی';
 		$topic->title         = 'درس چهاردهم: طوطی و بقّال';
 		$topic->save();
@@ -137,7 +122,6 @@ class TopicTableSeeder extends Seeder
 
 		//id 16
 		$topic                = new Topic();
-		$topic->gradeLessonId = 1;
 		$topic->headLine      = 'فصل هفتم: ادبیات داستانی';
 		$topic->title         = 'درس پانزدهم: درس آزاد (ادبیات بومی ٢)';
 		$topic->save();
@@ -145,7 +129,6 @@ class TopicTableSeeder extends Seeder
 
 		//id 17
 		$topic                = new Topic();
-		$topic->gradeLessonId = 1;
 		$topic->headLine      = 'فصل هفتم: ادبیات داستانی';
 		$topic->title         = 'درس شانزدهم: خسرو';
 		$topic->save();
@@ -153,7 +136,6 @@ class TopicTableSeeder extends Seeder
 
 		//id 18
 		$topic                = new Topic();
-		$topic->gradeLessonId = 1;
 		$topic->headLine      = 'فصل هشتم: ادبیات جهان';
 		$topic->title         = 'درس هفدهم: سپیده دم';
 		$topic->save();
@@ -161,7 +143,6 @@ class TopicTableSeeder extends Seeder
 
 		//id 19
 		$topic                = new Topic();
-		$topic->gradeLessonId = 1;
 		$topic->headLine      = 'فصل هشتم: ادبیات جهان';
 		$topic->title         = 'درس هجدهم: عظمتِ نگاه';
 		$topic->save();
@@ -169,7 +150,6 @@ class TopicTableSeeder extends Seeder
 
 		//id 20
 		$topic                = new Topic();
-		$topic->gradeLessonId = 1;
 		$topic->headLine      = 'نیایش';
 		$topic->title         = 'الهی';
 		$topic->save();
