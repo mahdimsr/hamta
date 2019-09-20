@@ -17,26 +17,25 @@ class Student extends Authenticatable
 	use SoftDeletes;
 
 	protected $table = 'student';
-    protected $fillable = ['mobile-email', 'password'];
 
     public function city()
     {
-        return $this->hasOne('App\model\City','id','cityId');
+        return $this->hasOne(City::class,'id','cityId');
     }
 
     public function orientation()
     {
-        return $this->hasOne('App\model\Orientation','id','orientationId');
+        return $this->hasOne(Orientation::class,'id','orientationId');
     }
 
     public function grade()
     {
-        return $this->hasOne('App\model\Grade','id','gradeId');
+        return $this->hasOne(Grade::class,'id','gradeId');
     }
 
     public function scholarship()
     {
-        return $this->hasOne('App\model\Scholarship','studentId','id');
+        return $this->hasOne(Scholarship::class,'studentId','id');
     }
 }
 

@@ -55,14 +55,14 @@ class Scholarship extends Model
 
 	public function student()
 	{
-		return $this->hasOne('App\model\Student', 'id', 'studentId');
+		return $this->hasOne(Student::class, 'id', 'studentId');
 	}
 
 
 
 	public function admin()
 	{
-		return $this->hasOne('App\model\Admin', 'id', 'adminId');
+		return $this->hasOne(Admin::class, 'id', 'adminId');
 	}
 
 
