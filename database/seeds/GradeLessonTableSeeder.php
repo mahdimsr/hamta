@@ -96,18 +96,6 @@ class GradeLessonTableSeeder extends Seeder
 
         $gradeLesson                        = new GradeLesson();
 		$gradeLesson->orientationCategoryId = 5;
-		$gradeLesson->gradeId               = 2;
-		$gradeLesson->lessonId              = 14;
-        $gradeLesson->save();
-
-        $gradeLesson                        = new GradeLesson();
-		$gradeLesson->orientationCategoryId = 5;
-		$gradeLesson->gradeId               = 3;
-		$gradeLesson->lessonId              = 15;
-        $gradeLesson->save();
-
-        $gradeLesson                        = new GradeLesson();
-		$gradeLesson->orientationCategoryId = 5;
 		$gradeLesson->gradeId               = 1;
 		$gradeLesson->lessonId              = 16;
 		$gradeLesson->save();
