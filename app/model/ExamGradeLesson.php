@@ -53,7 +53,7 @@ class ExamGradeLesson extends Model
 
 	public function lessonExam()
 	{
-		return $this->belongsTo('app\model\LessonExam', 'examId');
+		return $this->belongsTo(LessonExam::class, 'examId');
 	}
 
 
