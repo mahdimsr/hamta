@@ -65,9 +65,10 @@
 								<div class="form-group">
 									<label>نام خانوادگی</label>
 									<input dir="rtl" type="text" name="familyName" class="form-control"
-										   placeholder="نام خانوادگی خود را وارد نمایید"
+                                           placeholder="نام خانوادگی خود را وارد نمایید"
+                                           value="{{ old('familyName')? old('familyName') : $student->familyName }}"
                                            tabindex="2"
-                                            >
+                                           {{ $student->isComplete== 1? 'disabled' : '' }}>
 
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('familyName') }}</small>

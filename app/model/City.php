@@ -10,12 +10,12 @@ class City extends Model
 
     public function province()
     {
-        return $this->hasOne('App\model\Province','id','provinceId');
+        return $this->hasOne(Province::class,'id','provinceId');
     }
 
     public function students()
     {
-        return $this->hasMany('App\model\Student','cityId','id');
+        return $this->hasMany(City::class,'cityId');
     }
 
 }

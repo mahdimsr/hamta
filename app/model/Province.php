@@ -10,7 +10,7 @@ class Province extends Model
 
     public function cities()
     {
-        return $this->hasMany('App\model\City','provinceId','id');
+        return $this->hasMany(City::class,'provinceId');
     }
 
 }

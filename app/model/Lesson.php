@@ -65,21 +65,6 @@ class Lesson extends Model
 	}
 
 
-
-	public function parent()
-	{
-		return $this->belongsTo(Lesson::class, 'parentId');
-	}
-
-
-
-	public function lessons()
-	{
-		return $this->hasMany(Lesson::class, 'parentId');
-	}
-
-
-
 	public function gradeLessons()
 	{
 		return $this->hasMany(GradeLesson::class, 'lessonId');

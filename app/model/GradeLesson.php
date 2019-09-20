@@ -27,7 +27,7 @@ class GradeLesson extends Model
 	protected $appends = ['title'];
 
 
-
+    /*
 	protected static function boot()
 	{
 		parent::boot();
@@ -51,7 +51,7 @@ class GradeLesson extends Model
 
 		});
 	}
-
+*/
 
 
 	public function getTitleAttribute()
@@ -70,14 +70,6 @@ class GradeLesson extends Model
 
 		}
 	}
-
-
-
-	public function orientation()
-	{
-		return $this->belongsTo(Orientation::class, 'orientationId');
-	}
-
 
 
 	public function grade()
