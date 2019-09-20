@@ -9,8 +9,7 @@
   <!-- Material Design Bootstrap -->
   <link href="{{asset('css/student/auth/mdb.min.css')}}" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('css/student/auth/style.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/student/imagehover.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/student/imagehover.min.css') }}">
+
 
 </head>
 
@@ -71,7 +70,7 @@
               </div>
             </div>
           </nav>
-
+  </header>
 <section class="view intro-2">
 <form class="form form-signup" action="{{route('student_register')}}" method='post'>
                     {{ csrf_field() }}

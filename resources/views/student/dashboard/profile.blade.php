@@ -214,7 +214,7 @@
 
 							<div class="col-md-3 ">
 								<label for="grade">مقطع</label>
-								<select dir="rtl" name="grade" class="form-control dropdown-radius menu hide-search" id="grade" tabindex="10"  {{ $student->isComplete== 1? 'disabled' : '' }} >
+								<select dir="rtl" name="grade" class="form-control dropdown-radius menu hide-search "  id="grade" tabindex="10"  {{ $student->isComplete== 1? 'disabled' : '' }} >
 									<option value="" selected disabled>مقطع تحصیلی خود را انتخاب نمایید</option>
 									@foreach ( $grades as $grade )
 										<option value="{{ $grade->title }}" {{ old('grade')==$grade->title ? 'selected' : '' }} {{  $student->isComplete==1 && $student->grade()->first()->title==$grade->title && !old('grade')? 'selected' : '' }}>{{ $grade->title }}</option>

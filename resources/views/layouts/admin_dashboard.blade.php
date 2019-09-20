@@ -17,6 +17,8 @@
 
 	<!-- Animation library for notifications   -->
 	<link href="{{asset('css/admin/dashboard/animate.min.css')}}" rel="stylesheet"/>
+	<link href="{{asset('css/admin/dashboard/select2.min.css')}}" rel="stylesheet"/>
+	<link href="{{asset('css/admin/dashboard/multi-select.css')}}" rel="stylesheet"/>
 
 	<!--  Light Bootstrap Table core CSS    -->
 	<link href="{{asset('css/admin/dashboard/dashboard.css')}}" rel="stylesheet"/>
@@ -198,10 +200,12 @@
 
 </body>
 
+
 <!--   Core JS Files   -->
 <script src="{{asset('js/admin/dashboard/jquery.3.2.1.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/admin/dashboard/bootstrap.min.js')}}" type="text/javascript"></script>
-
+<script src="{{asset('js/admin/dashboard/select2.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/admin/dashboard/jquery.multi-select.js')}}" type="text/javascript"></script>
 <!--  Charts Plugin -->
 <script src="{{asset('js/admin/dashboard/chartist.min.js')}}"></script>
 
@@ -211,8 +215,24 @@
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="{{asset('js/admin/dashboard/dashboard.js')}}"></script>
 
+
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="{{asset('js/admin/dashboard/demo.js')}}"></script>
+<script>
+    $(".menu").select2({
+        allowClear: true,
+    });
+    $(".hide-search").select2({
+        minimumResultsForSearch: Infinity
+    });
+    $(".js-example-tags").select2({
+
+        tags: true,
+        tokenSeparators: [',', ' ']
+    })
+    $('.js-example-basic-multiple').select2();
+    $('#my-select').multiSelect()
+</script>
 
 @yield('script')
 

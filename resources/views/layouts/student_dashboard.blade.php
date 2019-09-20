@@ -295,6 +295,10 @@
 	$(".hide-search").select2({
 		minimumResultsForSearch: Infinity
 	});
+    $(".tags").select2({
+        tags: true,
+        tokenSeparators: [',', ' ']
+    })
 </script>
 
 @yield('script')
