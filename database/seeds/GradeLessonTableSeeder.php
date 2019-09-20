@@ -320,7 +320,7 @@ class GradeLessonTableSeeder extends Seeder
 
         $gradeLesson                        = new GradeLesson();
 		$gradeLesson->orientationCategoryId = 15;
-		$gradeLesson->gradeId               = 5;
+		$gradeLesson->gradeId               = 2;
 		$gradeLesson->lessonId              = 31;
 		$gradeLesson->save();
 
