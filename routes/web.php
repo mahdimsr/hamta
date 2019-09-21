@@ -45,7 +45,7 @@ Route::namespace('Student')->group(function()
 			Route::prefix('lessonToLesson')->group(function()
 			{
 				Route::get('/', 'LessonExamController@exams')->name('student_dashboard_lessonExams');
-
+                Route::get('/questions', 'LessonExamController@questions')->name('student_dashboard_lessonExams_questions');
 			});
 
 		});

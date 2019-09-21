@@ -14,7 +14,7 @@
 				<h5 class="card-title">توضیحات</h5>
 				<p class="card-text margin-card">این آزمون متشکل از سوالات چهار گزینه ای می باشد که از بانک سوالات مجموعه استخراج شده است.
 					موفق باشید</p>
-				<button class="ctrl-standard typ-subhed fx-bubbleDown">نمایش سوالات</button>
+				<a href="{{ route('student_dashboard_lessonExams_questions') }}" class="ctrl-standard typ-subhed fx-bubbleDown">نمایش سوالات</a>
 			</div>
 			<div class="card-footer text-muteds text-center">
 				<p>مقطع:پایه ششم  -  مرکزآموزشی:نمونه مطهری  -  تاریخ:سال96  -  سطح سختی:راحت</p>
