@@ -124,9 +124,6 @@
                       <p class="text-center">
                   <a href="#" class="font-weight-bold cyan-lighter-hover">رمز عبور خود را فراموش کرده ام</a></p>
                 </div>
-                <div class="loginbg py-1 mr-auto">
-                <a href="{{Route('student_register_show')}}" class="login">آیا همپایی نشدی؟</a>
-                </div>
                 </div>
               </div>
               <!-- Form with header -->
