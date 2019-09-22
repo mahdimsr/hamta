@@ -70,7 +70,7 @@
               </div>
             </div>
           </nav>
- 
+
 <section class="view intro-2">
 <form class="form form-signup" action="{{route('student_register')}}" method='post'>
                     {{ csrf_field() }}
@@ -87,7 +87,7 @@
                   <!-- Header -->
                   <div class="form-header purple-gradient">
 
-                    <h3 class="font-weight-500 my-2 py-1">ثبت نام<i class="fas fa-user ml-3 "></i></h3>
+                    <h3 class="font-weight-500 my-2 py-1">ثبت نام</h3>
                   </div>
 
                   <!-- Body -->
