@@ -61,16 +61,16 @@
 						{{csrf_field()}}
 
 						<div class="row">
-							<div class="col-md-6">
+                            <div class="col-md-6">
 								<div class="form-group">
-									<label>مقاطع مربوط به آزمون</label>
-									<select id="grade-select" dir="rtl" name="grades[]" class="form-control">
-										<option selected disabled>مقطع آزمون را انتخاب نمایید</option>
-										@foreach ( $grades as $grade )
-											<option id="{{$grade->id}}">{{ $grade->title }}</option>
+									<label>گروه درسی مربوط به آزمون</label>
+									<select id="category-select" dir="rtl" name="category" class="form-control">
+										<option id="0" selected disabled>گروه درسی آزمون را انتخاب نمایید</option>
+										@foreach ( $orientationCategories as $orientationCategory )
+											<option id="{{ $orientationCategory->orientationId }}" value="{{ $orientationCategory->id }}">{{ $orientationCategory->category->title }} - {{ $orientationCategory->getPersianTypeAttribute() }}</option>
 										@endforeach
 									</select>
-
+									<div style="display:none;"><select class="mdb-select"></select></div>
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -89,30 +89,30 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
+									<label>مقاطع مربوط به آزمون</label>
+									<select id="grade-select" dir="rtl" name="grades[]" class="form-control">
+										<option selected disabled>مقطع آزمون را انتخاب نمایید</option>
+										@foreach ( $grades as $grade )
+											<option id="{{$grade->id}}">{{ $grade->title }}</option>
+										@endforeach
+									</select>
+
+								</div>
+                            </div>
+                            <div class="col-md-6">
+								<div class="form-group">
 									<label>درس های مربوط به آزمون</label>
 									<select id="gradeLesson-select" dir="rtl" name="gradeLessons[]"
 											class="form-control">
 										<option id="0" selected disabled>درس های آزمون را انتخاب نمایید</option>
 										@foreach ( $gradeLessons as $gradeLesson )
-											<option id="{{$gradeLesson->orientationCategory->orientationId.$gradeLesson->gradeId.$gradeLesson->orientationCategory->categoryId}}"
+											<option id="{{$gradeLesson->orientationCategoryId}}"
 													value="{{ $gradeLesson->id }}">{{ $gradeLesson->lesson->title }}</option>
 										@endforeach
 									</select>
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('gradeLessons') }}</small>
 									</div>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>گروه درسی مربوط به آزمون</label>
-									<select id="category-select" dir="rtl" name="category" class="form-control">
-										<option id="0" selected disabled>گروه درسی آزمون را انتخاب نمایید</option>
-										@foreach ( $categories as $category )
-											<option id="{{ $category->id }}">{{ $category->title }}</option>
-										@endforeach
-									</select>
-									<div style="display:none;"><select class="mdb-select"></select></div>
 								</div>
 							</div>
 						</div>
@@ -130,7 +130,7 @@
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>عنوان آرمون</label>
+									<label>عنوان آزمون</label>
 									<input name="title" dir="rtl" type="text" class="form-control"
 										   placeholder="مثلا: درس فیزیک دوم دبیرستان، فصل اول"
 										   value="{{$modify == 0 ? old('title') ? old('title') : '' : $lessonExam->title }}">
@@ -183,38 +183,49 @@
 @section('script')
 	<script>
 
-		var grades       = $('#grade-select').find('option').clone();
+        var options,id;
 		var orientations = $('#ori-select').find('option').clone();
 		var categories   = $('#category-select').find('option').clone();
-		var gradeLessons = $('#gradeLesson-select').find('option').clone();
+        var gradeLessons = $('#gradeLesson-select').find('option').clone();
 
+        $('#category-select').children('option:not(:first)').remove();
+        $('#gradeLesson-select').children('option:not(:first)').remove();
 
-		$("#ori-select").change(function()
-		{
-			$('#category-select').trigger('change');
-		});
+        $("#ori-select").change(function()
+        {
+            id = $("#ori-select option:selected").attr('id');
+            options = categories.filter('[id=' + id + '],[id=0]');
+            $('#category-select').html(options);
+            $('#category-select').prop('selectedIndex',0).trigger('change');
 
-		$("#grade-select").change(function()
-		{
-			$('#category-select').trigger('change');
-		});
+        });
 
+        if($("#ori-select").val()!='')
+        {
 
-		$('#category-select').change(function()
-		{
-			var oriId   = $('#ori-select').find('option:selected').attr('id');
-			var gradeId = $('#grade-select').find('option:selected').attr('id');
-			var catId   = $(this).find('option:selected').attr('id');
+            id = $("#ori-select option:selected").attr('id');
+            options = categories.filter('[id=' + id + '],[id=0]');
+            $('#category-select').html(options);
 
-			var code = oriId + '' + gradeId + '' + catId;
+        }
 
-			options = gradeLessons.filter('[id=' + code + '],[id=0]');
-			$('#gradeLesson-select').html(options);
-			$('#gradeLesson-select').prop('selectedIndex',0).change();
+        $("#category-select").change(function()
+        {
+            id = $("#category-select option:selected").val();
+            options = gradeLessons.filter('[id=' + id + '],[id=0]');
+            $('#gradeLesson-select').html(options);
+            $('#gradeLesson-select').prop('selectedIndex',0).trigger('change');
 
+        });
 
-			console.log(code);
-		});
+        if($("#category-select").val()!='')
+        {
+
+            id = $("#category-select option:selected").val();
+            options = gradeLessons.filter('[id=' + id + '],[id=0]');
+            $('#gradeLesson-select').html(options);
+
+        }
 
 	</script>
 @endsection

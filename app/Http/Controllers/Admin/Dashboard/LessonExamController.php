@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Dashboard;
 
-use App\model\Category;
+use App\model\OrientationCategory;
 use App\model\ExamGradeLesson;
 use App\model\Grade;
 use App\model\GradeLesson;
@@ -40,10 +40,10 @@ class LessonExamController extends Controller
 
 		$orientations = Orientation::all();
 		$grades       = Grade::all();
-		$categories   = Category::all();
+		$orientationCategories  = OrientationCategory::all();
 		$gradeLessons = GradeLesson::all();
 
-		return view('admin.dashboard.lessonExam.form', compact('orientations', 'grades', 'categories', 'gradeLessons', 'modify'));
+		return view('admin.dashboard.lessonExam.form', compact('orientations', 'grades', 'orientationCategories', 'gradeLessons', 'modify'));
 	}
 
 
@@ -103,11 +103,11 @@ class LessonExamController extends Controller
 		$lessonExam = LessonExam::query()->where('exm', $exm)->first();
 
 		$grades       = Grade::all();
-		$categories   = Category::all();
-		$orientations = Orientation::all();
+		$orientationCategories   = Category::all();
+		$orientations = OrientationCategory::all();
 		$gradeLessons = GradeLesson::all();
 
-		return view('admin.dashboard.lessonExam.form', compact('modify', 'lessonExam', 'gradeLessons', 'categories', 'grades', 'orientations'));
+		return view('admin.dashboard.lessonExam.form', compact('modify', 'lessonExam', 'gradeLessons', 'orientationCategories', 'grades', 'orientations'));
 	}
 
 

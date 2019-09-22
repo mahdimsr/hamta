@@ -26,5 +26,22 @@ class OrientationCategory extends Model
     public function category()
 	{
 		return $this->belongsTo(Category::class, 'categoryId');
+    }
+
+	public function getPersianTypeAttribute()
+	{
+		return $this->persianEnum($this->type);
+    }
+
+    public function persianEnum($enumKey)
+	{
+
+		$enumArray = [
+
+			'GENERAL'    => 'عمومی',
+			'EXPERT'     => 'تخصصی',
+		];
+
+		return $enumArray[$enumKey];
 	}
 }
