@@ -50,7 +50,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
             <div class="container">
-              <a class="navbar-brand ml-auto" href="{{ route('student_login_show') }}"><strong>همپا | دانش آموزان</strong></a>
+              <a class="navbar-brand ml-auto" href="{{ route('student_register_show') }}"><strong>همپا | دانش آموزان</strong></a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7"
                 aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
