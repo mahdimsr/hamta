@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Dashboard;
 
+use App\model\Category;
 use App\model\ExamGradeLesson;
 use App\model\Grade;
 use App\model\GradeLesson;
@@ -37,12 +38,12 @@ class LessonExamController extends Controller
 	{
 		$modify = 0;
 
-		$orientations      = Orientation::all();
-		$lessons           = Lesson::query()->whereNotIn('parentId', [0])->get();
-		$grades            = Grade::all();
-		$topicGradeLessons = TopicGradeLesson::all();
+		$orientations = Orientation::all();
+		$grades       = Grade::all();
+		$categories   = Category::all();
+		$gradeLessons = GradeLesson::all();
 
-		return view('admin.dashboard.lessonExam.form', compact('orientations', 'lessons', 'grades', 'topicGradeLessons', 'modify'));
+		return view('admin.dashboard.lessonExam.form', compact('orientations', 'grades', 'categories', 'gradeLessons', 'modify'));
 	}
 
 
@@ -51,40 +52,7 @@ class LessonExamController extends Controller
 	{
 		//validate here
 
-		$stepOne = Validator::make($request->only(['title', 'description', 'price']), [
-
-			'title'       => 'required|string|between:5,20',
-			'description' => 'nullable|string|between:5,20',
-			'price'       => 'nullable|integer',
-
-		]);
-
-		if ($stepOne->fails())
-		{
-			return redirect()->back()->withErrors($stepOne->errors())->withInput($request->all());
-		}
-
-		$stepTwo = Validator::make($request->only(['orientation', 'lessons', 'itemType']), [
-
-			'orientation' => 'required|exists:orientation,id',
-			'lessons'     => 'required|exists:lesson,id',
-			'itemType'    => 'required|in:LESSON,TOPIC',
-
-		]);
-
-		if ($stepTwo->fails())
-		{
-			return redirect()->back()->withErrors($stepTwo->errors())->withInput($request->all());
-		}
-
-		if ($request->input('itemType') == 'LESSON')
-		{
-			
-		}
-		else
-		{
-
-		}
+		return $request;
 
 
 		return redirect()->route('admin_exams');

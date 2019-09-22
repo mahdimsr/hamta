@@ -39,221 +39,140 @@
 				<hr>
 			</div>
 		</div>
-
 		<div class="col-md-7">
-			<div class="card ">
+			<div class="card text-right">
 				<div class="header ">
 					<h4 class="title">افزودن آزمون درس به درس</h4>
 				</div>
 
-				<div class="content">
-					<div class="stepwizard">
-						<div class="stepwizard-row setup-panel">
-							<div class="stepwizard-step">
-								<a href="#step-1" type="button" class="btn btn1 btn-circle   ">1</a>
-								<p>بخش 1</p>
-							</div>
-							<div class="stepwizard-step">
-								<a href="#step-2" type="button" class="btn btn1 btn-circle">2</a>
-								<p>بخش 2</p>
-							</div>
-							<div class="stepwizard-step">
-								<a href="#step-3" type="button" class="btn btn1 btn-circle">3</a>
-								<p>بخش 3</p>
-							</div>
-						</div>
+				@if ($errors->any())
+					<div class="alert alert-danger">
+						<ul>
+							@foreach ($errors->all() as $error)
+								<li>{{ $error }}</li>
+							@endforeach
+						</ul>
 					</div>
-					<form method="post" action="{{route('admin_lExam_add')}}" role="form">
+				@endif
+
+				<div class="content">
+					<form method="post" action="{{route('admin_lExam_add')}}" enctype="multipart/form-data">
 
 						{{csrf_field()}}
 
-						<div class="row setup-content" id="step-1">
-							<div class="col-xs-12">
-								<h3 class="">بخش اول </h3>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label class="control-label">قیمت</label>
-										<input name="price" class="form-control" type="text"
-											   maxlength="10" tabindex="2"
-											   value="{{old('price')}}"
-											   placeholder="مثلا: 5000 تومان"/>
-									</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>مقاطع مربوط به آزمون</label>
+									<select id="grade-select" dir="rtl" name="grades[]" class="form-control">
+										<option selected disabled>مقطع آرمون را انتخاب نمایید</option>
+										@foreach ( $grades as $grade )
+											<option value="{{ $grade->url }}">{{ $grade->title }}</option>
+										@endforeach
+									</select>
+
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>گرایش مربوط به آزمون</label>
+									<select id="ori-select" dir="rtl" name="orientation" class="form-control">
+										<option selected disabled>گرایش آرمون را انتخاب نمایید</option>
+										@foreach ( $orientations as $orientation )
+											<option value="{{ $orientation->url }}" {{$modify == 0 ? old('orientation') == $orientation->url ? 'selected' : '' : '' }}>{{ $orientation->title }}</option>
+										@endforeach
+									</select>
+
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>درس های مربوط به آزمون</label>
+									<select id="gradeLesson-select" dir="rtl" name="gradeLessons[]" class="form-control">
+										<option id="0" selected disabled>درس های آرمون را انتخاب نمایید</option>
+										@foreach ( $gradeLessons as $gradeLesson )
+											<option id="{{$gradeLesson->orientationCategory->orientationId.$gradeLesson->gradeId.$gradeLesson->orientationCategory->categoryId}}"
+													value="{{ $gradeLesson->id }}">{{ $gradeLesson->lesson->title }}</option>
+										@endforeach
+									</select>
+
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>گروه درسی مربوط به آزمون</label>
+									<select id="category_select" dir="rtl" name="category" class="form-control">
+										<option id="0" selected disabled>گروه درسی آرمون را انتخاب نمایید</option>
+										@foreach ( $categories as $category )
+											<option value="{{ $category->id }}">{{ $category->title }}</option>
+										@endforeach
+									</select>
+
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>قیمت ( به ریال)</label>
+									<input name="price" dir="rtl" type="text" class="form-control"
+										   placeholder="مثلا: 50000"
+										   value="{{ $modify == 0 ? old('price') ? old('price') : '' : $lessonExam->price}}">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('price') }}</small>
 									</div>
 								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label class="control-label">نام</label>
-										<select multiple="multiple" id="my-select" name="my-select[]">
-											<option value='elem_1'>elem 1</option>
-											<option value='elem_2'>elem 2</option>
-											<option value='elem_3'>elem 3</option>
-											<option value='elem_4'>elem 4</option>
-											...
-											<option value='elem_100'>elem 100</option>
-										</select>
-									</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>عنوان آرمون</label>
+									<input name="title" dir="rtl" type="text" class="form-control"
+										   placeholder="مثلا: درس فیزیکدوم دبیرستان، فصل اول"
+										   value="{{$modify == 0 ? old('title') ? old('title') : '' : $lessonExam->title }}">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('title') }}</small>
 									</div>
 								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-										<label class="control-label">توضیحات</label>
-										<textarea name="description" class="form-control" type="text"
-												  tabindex="3">{{old('description')}}</textarea>
-									</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label>توضیحات</label>
+									<textarea name="description" dir="rtl" rows="5" class="form-control"
+											  placeholder="مثلا بگو که این آزمون مناسب چه کسایی هستش، برای مرور درس خوبه یا برای شب امتحان یا برای کنکور و ....">{{$modify == 0 ? old('description') ? old('description') : '' : $lessonExam->description}}</textarea>
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('description') }}</small>
 									</div>
 								</div>
-								<button class="ctrl-standard typ-subhed fx-bubbleDown nextBtn  pull-right"
-										type="button">بعدی
-								</button>
 							</div>
 						</div>
 
-						<div class="row setup-content" id="step-2">
-							<div class="col-xs-12">
-								<h3> Step 2</h3>
-								<div class="col-md-6">
-									<label class="control-label">درس ها</label>
-									<select name="lessons[]" class="form-control" id="lesson-select">
-										<option id="0" disabled selected>درس های آزمون را انتخاب کنید</option>
-										@foreach($lessons as $lesson)
-											<option id="{{$lesson->id}}"
-													value="{{$lesson->id}}"
-													{{old('lessons') == $lesson->id ? 'selected' : ''}}>{{$lesson->title}}</option>
-										@endforeach
-									</select>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label>پاسخنامه</label>
+									<input name="answerSheet" dir="rtl" type="file" class="form-control"
+									>
 									<div class="invalid-feedback">
-										<small>{{ $errors->first('lessons') }}</small>
+										<small>{{ $errors->first('answerSheet') }}</small>
 									</div>
 								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label class="control-label">گرایش</label>
-										<select name="orientation" class="form-control" id="ori-select">
-											<option id="0" disabled selected>درس های آزمون را انتخاب کنید</option>
-											<option id="0" value="0">عمومی</option>
-											@foreach($orientations as $orientation)
-												<option id="{{$orientation->id}}"
-														value="{{$orientation->id}}"
-														{{old('orientation') == $orientation->id ? 'selected' : ''}}>
-													{{$orientation->title}}
-												</option>
-											@endforeach
-										</select>
-										<div class="invalid-feedback">
-											<small>{{ $errors->first('orientation') }}</small>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label class="control-label">نحوه ایجاد آزمون</label>
-										<input name="itemType" type="radio" class="form-control" value="LESSON"
-												{{old('itemType') == 'LESSON' ? 'checked' : ''}}>
-										<input name="itemType" type="radio" class="form-control" value="TOPIC"
-												{{old('itemType') == 'TOPIC' ? 'checked' : ''}}>
-									</div>
-									<div class="invalid-feedback">
-										<small>{{ $errors->first('itemType') }}</small>
-									</div>
-								</div>
-								<button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
 							</div>
 						</div>
 
-						<div class="row setup-content" id="step-3">
-							<div class="col-xs-12">
-								<div id="grade-div" class="row">
-									<div class="col-md-6">
-										<label class="control-label">مقاطع</label>
-										<select name="grades[]" class="form-control">
-											<option id="0" disabled selected>مقاطع را انتخاب کنید</option>
-											@foreach($grades as $grade)
-												<option id="{{$grade->id}}" value="{{$grade->id}}">
-													{{$grade->title}}
-												</option>
-											@endforeach
-										</select>
-									</div>
-								</div>
-								<div id="topic-div" class="row">
-									<div class="col-md-6">
-										<label class="control-label">سرفصل ها</label>
-										<select name="topics[]" class="form-control" id="topic-select">
-											<option id="0" disabled selected>سرفصل ها را انتخاب کنید</option>
-											@foreach($topicGradeLessons as $topicGradeLesson)
-												<option id="{{$topicGradeLesson->gradeLesson->gradeId . $topicGradeLesson->gradeLesson->orientationId . $topicGradeLesson->gradeLesson->lessonId}}">
-													{{$topicGradeLesson->topic->title}}
-												</option>
-											@endforeach
-										</select>
-									</div>
-									<div class="col-md-6">
-										<label class="control-label">مقاطع</label>
-										<select name="grades[]" class="form-control" id="grade-select">
-											<option id="0" disabled selected>مقاطع را انتخاب کنید</option>
-											@foreach($grades as $grade)
-												<option id="{{$grade->id}}" value="{{$grade->id}}">
-													{{$grade->title}}
-												</option>
-											@endforeach
-										</select>
-									</div>
-								</div>
-								<button class="btn btn-primary nextBtn btn-lg pull-right" type="submit">ثبت</button>
-							</div>
-						</div>
+						<button type="submit" class="btn btn-info btn-fill pull-right">ثبت</button>
+
+						<div class="clearfix"></div>
 					</form>
 				</div>
 			</div>
 		</div>
+
+
 	</div>
-
-
-
-@endsection
-
-@section('script')
-
-	<script>
-
-		var topic = $('#topic-select option').clone();
-
-		$('input[type=radio][name=itemType]').change(function()
-		{
-			if (this.value == 'LESSON')
-			{
-				$('#grade-div').css('display', 'block');
-				$('#topic-div').css('display', 'none');
-			}
-			else if (this.value == 'TOPIC')
-			{
-				$('#grade-div').css('display', 'none');
-				$('#topic-div').css('display', 'block');
-			}
-		});
-
-
-		$('#grade-select').change(function()
-		{
-			var grade  = $(this).val();
-			var ori    = $('#ori-select').val();
-			var lesson = $('#lesson-select').val();
-
-			options = topic.filter('[id=' + grade + '' + ori + '' + lesson + '],[id=0]');
-
-			console.log(grade + '' + ori + '' + lesson);
-
-			$('#topic-select').html(options);
-			$('#topic-select').prop('selectedIndex', 0).change();
-
-		});
-
-	</script>
 
 @endsection

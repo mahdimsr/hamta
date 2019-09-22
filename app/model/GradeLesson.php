@@ -27,7 +27,8 @@ class GradeLesson extends Model
 	protected $appends = ['title'];
 
 
-    /*
+
+	/*
 	protected static function boot()
 	{
 		parent::boot();
@@ -72,6 +73,7 @@ class GradeLesson extends Model
 	}
 
 
+
 	public function grade()
 	{
 		return $this->belongsTo(Grade::class, 'gradeId');
@@ -103,5 +105,12 @@ class GradeLesson extends Model
 	public function topics()
 	{
 		return $this->hasMany(Topic::class, 'gradeLessonId');
+	}
+
+
+
+	public function orientationCategory()
+	{
+		return $this->belongsTo(OrientationCategory::class, 'orientationCategoryId');
 	}
 }
