@@ -101,7 +101,26 @@
 .custom-select.is-invalid~.invalid-feedback, .custom-select.is-invalid~.invalid-tooltip, .form-control.is-invalid~.invalid-feedback, .form-control.is-invalid~.invalid-tooltip, .was-validated .custom-select:invalid~.invalid-feedback, .was-validated .custom-select:invalid~.invalid-tooltip, .was-validated .form-control:invalid~.invalid-feedback, .was-validated .form-control:invalid~.invalid-tooltip {
     display: block;
 }
-
+li.list-li:nth-child(1){
+    background-color: rgba(144, 229, 240, 0.63);
+    border-radius: 10px;
+    padding-right: 10px;
+}
+li.list-li:nth-child(2){
+    background-color: rgb(180, 249, 218, 0.63);
+    border-radius: 10px;
+    padding-right: 10px;
+}
+li.list-li:nth-child(3){
+    background-color: rgba(144, 229, 240, 0.63);
+    border-radius: 10px;
+    padding-right: 10px;
+}
+li.list-li:nth-child(4){
+    background-color: rgb(180, 249, 218, 0.63);
+    border-radius: 10px;
+    padding-right: 10px;
+}
 .dropdown-radius {
     border-radius: 1.5em;
     border: 1px solid #ccc;
@@ -169,18 +188,19 @@ input[type="text"][required] + label[placeholder]:before {
 
 /*Admin Dashboard questions*/
 .question-img{
-    border-radius: 10%;
+    border-radius: 10px;
     border: solid #b8c2cc;
     margin-bottom: 10px;
-
+    transition: .5s ease-in-out;
 }
-a:hover img{
+.imgs:hover {
     transform: scale(1.5);
 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    transition: .5s ease-in-out;
+
 
 }
+
 
 .answers{
     list-style: decimal;
@@ -191,8 +211,19 @@ a:hover img{
 
     border-top: 1px solid rgba(0,0,0,.125);
 }
-
-
+.card{
+    box-shadow: rgba(81,125,133,0.25);
+}
+.bg-correct{
+    background-color: #0ec545;
+    transition: .7s ease-in-out;
+}
+.card-header{
+    padding: .75rem 1.25rem;
+    background-image: linear-gradient(to right, rgba(96, 251, 155, 0.42), rgba(49, 201, 243, 0.6));
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
 
 
 .label__checkbox {
