@@ -15,7 +15,7 @@ class GradeLessonController extends Controller
 {
 	public function gradeLessons()
 	{
-		$gradeLessons = GradeLesson::query()->with('orientation')->with('grade')->with('lesson')->get();
+		$gradeLessons = GradeLesson::all();
 
 		return view('admin.dashboard.gradeLesson.gradeLessons', compact('gradeLessons'));
 	}

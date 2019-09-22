@@ -20,7 +20,7 @@ class Category extends Model
 
     protected $table = 'category';
 
-    public function orientation_categorys()
+    public function orientationCategories()
 	{
 		return $this->hasMany(OrientationCategory::class, 'categoryId');
 	}

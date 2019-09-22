@@ -65,7 +65,7 @@
 								<div class="form-group">
 									<label>مقاطع مربوط به آزمون</label>
 									<select id="grade-select" dir="rtl" name="grades[]" class="form-control">
-										<option selected disabled>مقطع آرمون را انتخاب نمایید</option>
+										<option selected disabled>مقطع آزمون را انتخاب نمایید</option>
 										@foreach ( $grades as $grade )
 											<option id="{{$grade->id}}">{{ $grade->title }}</option>
 										@endforeach
@@ -77,7 +77,7 @@
 								<div class="form-group">
 									<label>گرایش مربوط به آزمون</label>
 									<select id="ori-select" dir="rtl" name="orientation" class="form-control">
-										<option selected disabled>گرایش آرمون را انتخاب نمایید</option>
+										<option selected disabled>گرایش آزمون را انتخاب نمایید</option>
 										@foreach ( $orientations as $orientation )
 											<option id="{{ $orientation->id }}" {{$modify == 0 ? old('orientation') == $orientation->url ? 'selected' : '' : '' }}>{{ $orientation->title }}</option>
 										@endforeach
@@ -92,7 +92,7 @@
 									<label>درس های مربوط به آزمون</label>
 									<select id="gradeLesson-select" dir="rtl" name="gradeLessons[]"
 											class="form-control">
-										<option id="0" selected disabled>درس های آرمون را انتخاب نمایید</option>
+										<option id="0" selected disabled>درس های آزمون را انتخاب نمایید</option>
 										@foreach ( $gradeLessons as $gradeLesson )
 											<option id="{{$gradeLesson->orientationCategory->orientationId.$gradeLesson->gradeId.$gradeLesson->orientationCategory->categoryId}}"
 													value="{{ $gradeLesson->id }}">{{ $gradeLesson->lesson->title }}</option>
@@ -107,7 +107,7 @@
 								<div class="form-group">
 									<label>گروه درسی مربوط به آزمون</label>
 									<select id="category-select" dir="rtl" name="category" class="form-control">
-										<option id="0" selected disabled>گروه درسی آرمون را انتخاب نمایید</option>
+										<option id="0" selected disabled>گروه درسی آزمون را انتخاب نمایید</option>
 										@foreach ( $categories as $category )
 											<option id="{{ $category->id }}">{{ $category->title }}</option>
 										@endforeach
@@ -132,7 +132,7 @@
 								<div class="form-group">
 									<label>عنوان آرمون</label>
 									<input name="title" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: درس فیزیکدوم دبیرستان، فصل اول"
+										   placeholder="مثلا: درس فیزیک دوم دبیرستان، فصل اول"
 										   value="{{$modify == 0 ? old('title') ? old('title') : '' : $lessonExam->title }}">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('title') }}</small>
