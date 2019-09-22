@@ -70,7 +70,7 @@
               </div>
             </div>
           </nav>
-  </header>
+ 
 <section class="view intro-2">
 <form class="form form-signup" action="{{route('student_register')}}" method='post'>
                     {{ csrf_field() }}

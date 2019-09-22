@@ -71,7 +71,7 @@
     </nav>
 
 <section class="view intro-2">
-            <form class="form form-login" action="{{route('student_login')}}" method='post'>
+     <form class="form form-login" action="{{route('student_login')}}" method='post'>
                     {{ csrf_field() }}
 
       <div class="mask rgba-stylish-strong  h-100 d-flex justify-content-center align-items-center">
