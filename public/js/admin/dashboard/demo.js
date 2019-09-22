@@ -298,3 +298,20 @@ $(document).ready(function () {
 
 
 });
+function sina() {
+    // Get the checkbox
+    var checkBox = document.getElementById("question-check");
+    // Get the output text
+    var text1 = document.getElementById("correct-item1");
+    var text2 = document.getElementById("correct-item2");
+
+    // If the checkbox is checked, display the output text
+    if (checkBox.checked == true){
+        text1.classList.add("bg-correct");
+        text2.classList.add("bg-correct");
+
+    } else {
+        text1.classList.remove("bg-correct");
+        text2.classList.remove("bg-correct");
+    }
+}
