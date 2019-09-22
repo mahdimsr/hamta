@@ -15,16 +15,16 @@ class DatabaseSeeder extends Seeder
 
             StudentTableSeeder::class,
             AdminTableSeeder::class,
-            CityTableSeeder::class,
-            ProvinceTableSeeder::class,
+            // CityTableSeeder::class,
+            // ProvinceTableSeeder::class,
 			OrientationTableSeeder::class,
+			CategoryTableSeeder::class,
+			OrientationCategoryTableSeeder::class,
 			GradeTableSeeder::class,
             LessonTableSeeder::class,
 			GradeLessonTableSeeder::class,
 			TopicTableSeeder::class,
 			TopicGradeLessonSeeder::class,
-            CategoryTableSeeder::class,
-            OrientationCategoryTableSeeder::class,
 		]);
 	}
 }

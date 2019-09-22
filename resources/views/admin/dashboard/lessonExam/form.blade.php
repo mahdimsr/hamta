@@ -67,7 +67,7 @@
 									<select id="grade-select" dir="rtl" name="grades[]" class="form-control">
 										<option selected disabled>مقطع آرمون را انتخاب نمایید</option>
 										@foreach ( $grades as $grade )
-											<option value="{{ $grade->url }}">{{ $grade->title }}</option>
+											<option id="{{$grade->id}}">{{ $grade->title }}</option>
 										@endforeach
 									</select>
 
@@ -79,7 +79,7 @@
 									<select id="ori-select" dir="rtl" name="orientation" class="form-control">
 										<option selected disabled>گرایش آرمون را انتخاب نمایید</option>
 										@foreach ( $orientations as $orientation )
-											<option value="{{ $orientation->url }}" {{$modify == 0 ? old('orientation') == $orientation->url ? 'selected' : '' : '' }}>{{ $orientation->title }}</option>
+											<option id="{{ $orientation->id }}" {{$modify == 0 ? old('orientation') == $orientation->url ? 'selected' : '' : '' }}>{{ $orientation->title }}</option>
 										@endforeach
 									</select>
 
@@ -90,26 +90,29 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>درس های مربوط به آزمون</label>
-									<select id="gradeLesson-select" dir="rtl" name="gradeLessons[]" class="form-control">
+									<select id="gradeLesson-select" dir="rtl" name="gradeLessons[]"
+											class="form-control">
 										<option id="0" selected disabled>درس های آرمون را انتخاب نمایید</option>
 										@foreach ( $gradeLessons as $gradeLesson )
 											<option id="{{$gradeLesson->orientationCategory->orientationId.$gradeLesson->gradeId.$gradeLesson->orientationCategory->categoryId}}"
 													value="{{ $gradeLesson->id }}">{{ $gradeLesson->lesson->title }}</option>
 										@endforeach
 									</select>
-
+									<div class="invalid-feedback">
+										<small>{{ $errors->first('gradeLessons') }}</small>
+									</div>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>گروه درسی مربوط به آزمون</label>
-									<select id="category_select" dir="rtl" name="category" class="form-control">
+									<select id="category-select" dir="rtl" name="category" class="form-control">
 										<option id="0" selected disabled>گروه درسی آرمون را انتخاب نمایید</option>
 										@foreach ( $categories as $category )
-											<option value="{{ $category->id }}">{{ $category->title }}</option>
+											<option id="{{ $category->id }}">{{ $category->title }}</option>
 										@endforeach
 									</select>
-
+									<div style="display:none;"><select class="mdb-select"></select></div>
 								</div>
 							</div>
 						</div>
@@ -175,4 +178,43 @@
 
 	</div>
 
+@endsection
+
+@section('script')
+	<script>
+
+		var grades       = $('#grade-select').find('option').clone();
+		var orientations = $('#ori-select').find('option').clone();
+		var categories   = $('#category-select').find('option').clone();
+		var gradeLessons = $('#gradeLesson-select').find('option').clone();
+
+
+		$("#ori-select").change(function()
+		{
+			$('#category-select').trigger('change');
+		});
+
+		$("#grade-select").change(function()
+		{
+			$('#category-select').trigger('change');
+		});
+
+
+		$('#category-select').change(function()
+		{
+			var oriId   = $('#ori-select').find('option:selected').attr('id');
+			var gradeId = $('#grade-select').find('option:selected').attr('id');
+			var catId   = $(this).find('option:selected').attr('id');
+
+			var code = oriId + '' + gradeId + '' + catId;
+
+			options = gradeLessons.filter('[id=' + code + '],[id=0]');
+			$('#gradeLesson-select').html(options);
+			$('#gradeLesson-select').prop('selectedIndex',0).change();
+
+
+			console.log(code);
+		});
+
+	</script>
 @endsection

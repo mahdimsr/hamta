@@ -21,7 +21,7 @@ class CreateLessonExamTable extends Migration
 			$table->string('exm')->nullable();
 			$table->string('title');
 			$table->string('description')->nullable();
-			$table->integer('price')->default(0);
+			$table->integer('price')->nullable()->default(0);
 			$table->string('answerSheet')->nullable();
 			$table->enum('status', ['COMPLETE', 'IN-QUESTION', 'IN-COMPLETE']);
 			$table->boolean('isPublic')->default(false);

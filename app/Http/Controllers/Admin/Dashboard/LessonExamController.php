@@ -52,7 +52,43 @@ class LessonExamController extends Controller
 	{
 		//validate here
 
-		return $request;
+		$this->validate($request, [
+
+			'gradeLessons' => 'required|exists:grade_lesson,id',
+			'title'        => 'required|string|between:5,20',
+			'price'        => 'nullable|integer|min:0',
+			'description'  => 'nullable|string|max:500',
+			'answerSheet'  => 'nullable|file|mimes:pdf|max:1000',
+
+		]);
+
+		$lessonExam = new LessonExam();
+
+		$lessonExam->title       = $request->input('title');
+		$lessonExam->price       = $request->input('price');
+		$lessonExam->description = $request->input('description');
+
+		$lessonExam->save();
+
+		if ($request->has('answerSheet'))
+		{
+			$answerSheet = $request->file('answerSheet');
+
+			Storage::disk('lessonExam')->put($lessonExam->id, $answerSheet);
+
+			$lessonExam->answerSheet = $answerSheet->hashName();
+			$lessonExam->update();
+		}
+
+		foreach ($request->input('gradeLessons') as $item)
+		{
+			$examGradeLesson = new ExamGradeLesson();
+
+			$examGradeLesson->examId        = $lessonExam->id;
+			$examGradeLesson->gradeLessonId = $item;
+
+			$examGradeLesson->save();
+		}
 
 
 		return redirect()->route('admin_exams');
@@ -66,11 +102,12 @@ class LessonExamController extends Controller
 
 		$lessonExam = LessonExam::query()->where('exm', $exm)->first();
 
-		$lessons      = Lesson::all();
 		$grades       = Grade::all();
+		$categories   = Category::all();
 		$orientations = Orientation::all();
+		$gradeLessons = GradeLesson::all();
 
-		return view('admin.dashboard.lessonExam.form', compact('modify', 'lessonExam', 'lessons', 'grades', 'orientations'));
+		return view('admin.dashboard.lessonExam.form', compact('modify', 'lessonExam', 'gradeLessons', 'categories', 'grades', 'orientations'));
 	}
 
 
