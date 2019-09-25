@@ -80,7 +80,7 @@
 									<label>نام</label>
 									<input dir="rtl" type="text" name="name" class="form-control"
 										   placeholder="نام خود را وارد نمایید"
-                                           value="{{ old('name')? old('name') : $student->name }}"
+                                           value="{{ old('name') ? old('name') : $student->name }}"
                                            tabindex="1"
                                            {{ $student->isComplete== 1? 'disabled' : '' }} >
 
@@ -329,7 +329,9 @@
 	<script>
 		$(document).ready(function()
 		{
+            var id,options;
             var cities=$('#city option').clone();
+
 			$("#birthday").pDatepicker({
 
 				autoClose: true,
@@ -349,8 +351,8 @@
 
         $("#province").change(function()
         {
-            var id = $("#province option:selected").attr('id');
-            var options = cities.filter('[id=' + id + '],[id=0]');
+            id = $("#province option:selected").attr('id');
+            options = cities.filter('[id=' + id + '],[id=0]');
             $('#city').html(options);
             $('#city').prop('selectedIndex',0).trigger('change');
 
@@ -359,8 +361,8 @@
         if($("#province").val()!='')
         {
 
-            var id = $("#province option:selected").attr('id');
-            var options = cities.filter('[id=' + id + '],[id=0]');
+            id = $("#province option:selected").attr('id');
+            options = cities.filter('[id=' + id + '],[id=0]');
             $('#city').html(options);
 
         }

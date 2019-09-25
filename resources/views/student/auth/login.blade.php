@@ -158,11 +158,11 @@
   <!-- Custom scripts -->
   <script>
         toastr.options = {
-            "positionClass": "md-toast-bottom-center",
+            "positionClass": "md-toast-bottom-right",
           }
     new WOW().init();
     @if ($errors->has('message'))
-    @{{ toastr.error('اطلاعات وارد شده صحیح نیست.'); }}
+    @{{ toastr.error('.اطلاعات وارد شده صحیح نیست'); }}
     @endif
   </script>
 
