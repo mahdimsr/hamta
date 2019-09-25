@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
 			GradeLessonTableSeeder::class,
 			TopicTableSeeder::class,
 			TopicGradeLessonSeeder::class,
+			QuestionTypeTableSeeder::class,
 		]);
 	}
 }
