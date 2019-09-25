@@ -7,6 +7,7 @@ use App\model\LessonExam;
 use App\model\Question;
 use App\model\QuestionExam;
 use App\model\QuestionLesson;
+use App\model\QuestionType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
@@ -44,9 +45,10 @@ class QuestionController extends Controller
 
 			if ($exam->exists())
 			{
-				$exam = $exam->first();
+				$exam          = $exam->first();
+				$questionTypes = QuestionType::all();
 
-				return view('admin.dashboard.question.formByExam', compact('exam', 'modify'));
+				return view('admin.dashboard.question.formByExam', compact('exam','questionTypes', 'modify'));
 			}
 		}
 
