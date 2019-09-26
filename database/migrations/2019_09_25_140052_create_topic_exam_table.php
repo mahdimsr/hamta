@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 
-class CreateQuestionTypeTable extends Migration
+class CreateTopicExamTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -14,11 +14,11 @@ class CreateQuestionTypeTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('question_type', function(Blueprint $table)
+		Schema::create('topic_exam', function(Blueprint $table)
 		{
 			$table->bigIncrements('id');
-			$table->integer('categoryId');
-			$table->string('title');
+			$table->integer('lessonExamId');
+			$table->integer('topicGradeLessonId');
 			$table->timestamps();
 			$table->softDeletes();
 		});
@@ -33,6 +33,6 @@ class CreateQuestionTypeTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('question_type');
+		Schema::dropIfExists('topic_exam');
 	}
 }

@@ -38,12 +38,13 @@ class LessonExamController extends Controller
 	{
 		$modify = 0;
 
-		$orientations = Orientation::all();
-		$grades       = Grade::all();
-		$orientationCategories  = OrientationCategory::all();
-		$gradeLessons = GradeLesson::all();
+		$orientations          = Orientation::all();
+		$grades                = Grade::all();
+		$lessons               = Lesson::all();
+		$orientationCategories = OrientationCategory::all();
+		$gradeLessons          = GradeLesson::all();
 
-		return view('admin.dashboard.lessonExam.form', compact('orientations', 'grades', 'orientationCategories', 'gradeLessons', 'modify'));
+		return view('admin.dashboard.lessonExam.form', compact('orientations','lessons', 'grades', 'orientationCategories', 'gradeLessons', 'modify'));
 	}
 
 
@@ -52,42 +53,17 @@ class LessonExamController extends Controller
 	{
 		//validate here
 
-		$this->validate($request, [
+		$stepOne = Validator::make($request->only(['title', 'price', 'description']), [
 
-			'gradeLessons' => 'required|exists:grade_lesson,id',
-			'title'        => 'required|string|between:5,20',
-			'price'        => 'nullable|integer|min:0',
-			'description'  => 'nullable|string|max:500',
-			'answerSheet'  => 'nullable|file|mimes:pdf|max:1000',
+			'title'       => 'required|string|max:20',
+			'price'       => 'required|integer|min:0',
+			'description' => 'nullable|string|max:300',
 
 		]);
 
-		$lessonExam = new LessonExam();
-
-		$lessonExam->title       = $request->input('title');
-		$lessonExam->price       = $request->input('price');
-		$lessonExam->description = $request->input('description');
-
-		$lessonExam->save();
-
-		if ($request->has('answerSheet'))
+		if ($stepOne->fails())
 		{
-			$answerSheet = $request->file('answerSheet');
-
-			Storage::disk('lessonExam')->put($lessonExam->id, $answerSheet);
-
-			$lessonExam->answerSheet = $answerSheet->hashName();
-			$lessonExam->update();
-		}
-
-		foreach ($request->input('gradeLessons') as $item)
-		{
-			$examGradeLesson = new ExamGradeLesson();
-
-			$examGradeLesson->examId        = $lessonExam->id;
-			$examGradeLesson->gradeLessonId = $item;
-
-			$examGradeLesson->save();
+			return redirect()->back()->withInput($request->all())->withErrors($stepOne->errors());
 		}
 
 
@@ -102,12 +78,13 @@ class LessonExamController extends Controller
 
 		$lessonExam = LessonExam::query()->where('exm', $exm)->first();
 
-		$grades       = Grade::all();
-		$orientationCategories   = Category::all();
-		$orientations = OrientationCategory::all();
-		$gradeLessons = GradeLesson::all();
+		$grades                = Grade::all();
+		$orientationCategories = OrientationCategory::all();
+		$orientations          = Orientation::all();
+		$gradeLessons          = GradeLesson::all();
+		$topicGradeLessons     = TopicGradeLesson::all();
 
-		return view('admin.dashboard.lessonExam.form', compact('modify', 'lessonExam', 'gradeLessons', 'orientationCategories', 'grades', 'orientations'));
+		return view('admin.dashboard.lessonExam.form', compact('modify', 'lessonExam', 'gradeLessons', 'orientationCategories', 'grades', 'orientations', 'topicGradeLessons'));
 	}
 
 
