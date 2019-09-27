@@ -7,6 +7,7 @@ use App\model\LessonExam;
 use App\model\Question;
 use App\model\QuestionExam;
 use App\model\QuestionLesson;
+use App\model\QuestionType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
@@ -44,9 +45,10 @@ class QuestionController extends Controller
 
 			if ($exam->exists())
 			{
-				$exam = $exam->first();
+				$exam          = $exam->first();
+				$questionTypes = QuestionType::all();
 
-				return view('admin.dashboard.question.formByExam', compact('exam', 'modify'));
+				return view('admin.dashboard.question.formByExam', compact('exam','questionTypes', 'modify'));
 			}
 		}
 
@@ -62,7 +64,6 @@ class QuestionController extends Controller
 	{
 		$this->validate($request, [
 
-			'type'             => ['required', Rule::in(['LESSON_EXAM', 'GIFT_EXAM', 'GENERAL'])],
 			'topicGradeLesson' => 'required|exists:topic_grade_lesson,id',
 			'hardness'         => 'required|integer|between:0,6|digits:1',
 			'text'             => 'required',
@@ -85,7 +86,6 @@ class QuestionController extends Controller
 		$question->optionFour         = $request->input('optionFour');
 		$question->answer             = $request->input('answer');
 		$question->hardness           = $request->input('hardness');
-		$question->type               = $request->input('type');
 
 		$question->save();
 

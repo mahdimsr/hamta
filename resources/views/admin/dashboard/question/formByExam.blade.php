@@ -69,25 +69,6 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>دسته بندی سوال</label>
-									<select dir="rtl" name="type" class="form-control">
-										<option selected disabled>دسته بندی سوال را انتخاب نمایید</option>
-										<option value="LESSON_EXAM" {{old('type') == 'LESSON_EXAM' ? 'selected' : ''}}>
-											آزمون درس به درس
-										</option>
-										<option value="GIFT_EXAM" {{old('type') == 'GIFT_EXAM' ? 'selected' : ''}}>آزمون
-											جایزه دار
-										</option>
-										<option value="GENERAL" {{old('type') == 'GENERAL' ? 'selected' : ''}}>عمومی
-										</option>
-									</select>
-									<div class="invalid-feedback">
-										<small>{{ $errors->first('type') }}</small>
-									</div>
-								</div>
-							</div>
 						</div>
 
 						<div class="row">

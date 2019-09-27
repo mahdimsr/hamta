@@ -76,6 +76,12 @@ class LessonExam extends Model
 
 
 
+	public function topicExams()
+	{
+		return $this->hasMany(TopicExam::class,'lessonExamId');
+	}
+
+
 	public function questionExams()
 	{
 		return $this->hasMany(QuestionExam::class, 'examId');

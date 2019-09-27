@@ -18,6 +18,7 @@ class CreateQuestionTable extends Migration
 		{
 			$table->bigIncrements('id');
 			$table->integer('topicGradeLessonId');
+			$table->integer('questionTypeId');
 			$table->string('text');
 			$table->string('optionOne');
 			$table->string('optionTwo');
@@ -26,7 +27,6 @@ class CreateQuestionTable extends Migration
 			$table->string('answer');
 			$table->enum('hardness', ['1', '2', '3', '4', '5']);
 			$table->string('photo')->nullable();
-			$table->enum('type', ['LESSON_EXAM', 'GIFT_EXAM', 'GENERAL'])->default('GENERAL');
 			$table->timestamps();
 			$table->softDeletes();
 		});

@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property int $id
  * @property \Carbon\Carbon $deleted_at
+ * @property int $id
  */
 class Question extends Model
 {
@@ -31,7 +31,14 @@ class Question extends Model
 
 	public function questionExams()
 	{
-		return $this->hasMany(QuestionExam::class,'questionId');
+		return $this->hasMany(QuestionExam::class, 'questionId');
+	}
+
+
+
+	public function questionType()
+	{
+		return $this->belongsTo(QuestionType::class, 'questionTypeId');
 	}
 
 

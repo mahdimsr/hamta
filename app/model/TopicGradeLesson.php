@@ -41,4 +41,10 @@ class TopicGradeLesson extends Model
 		return $this->hasMany(Question::class, 'topicGradeLessonId');
 	}
 
+
+
+	public function topicExams()
+	{
+		return $this->hasMany(TopicExam::class, 'topicGradeLessonId');
+	}
 }
