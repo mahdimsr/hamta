@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers\Admin\Dashboard;
 
+    use App\Lib\Lib;
     use App\model\Category;
     use App\model\OrientationCategory;
     use App\model\ExamGradeLesson;
@@ -14,11 +15,13 @@
     use App\model\Topic;
     use App\model\TopicExam;
     use App\model\TopicGradeLesson;
+    use Carbon\Carbon;
     use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
     use Illuminate\Support\Facades\Storage;
     use Illuminate\Support\Facades\Validator;
     use Illuminate\Validation\Rule;
+    use Morilog\Jalali\CalendarUtils;
 
 
     class LessonExamController extends Controller
@@ -59,6 +62,8 @@
                 'title'       => 'required|string|max:20',
                 'price'       => 'required|integer|min:0',
                 'description' => 'nullable|string|max:300',
+                'answerSheet' => 'nullable|file|mimes:pdf|max:3000',
+                'duration'    => 'nullable|integer|min:0'
 
             ]);
 
@@ -99,8 +104,28 @@
             $lessonExam->price       = $request->input('price');
             $lessonExam->description = $request->input('description');
             $lessonExam->itemType    = $request->input('itemType');
+            // convert and insert activeDate
+            $jalalian               = Lib::convertFaToEn($request->input('activeDate'));
+            $dateTime               = CalendarUtils::createDatetimeFromFormat('Y/m/d', $jalalian);
+            $carbon                 = Carbon::createFromTimestamp($dateTime->getTimestamp());
+            $lessonExam->activeDate = $carbon->toDateTimeString();
+            //end activeDate section
+            $lessonExam->duration = $request->input('duration');
 
             $lessonExam->save();
+
+            //save answerSheet
+            if ($request->hasFile('answerSheet'))
+            {
+                $answerSheet = $request->file('answerSheet');
+
+                Storage::disk('lessonExam')->put($lessonExam->id, $answerSheet);
+
+                $lessonExam->answerSheet = $answerSheet->hashName();
+
+                $lessonExam->update();
+            }
+            //end answerSheet section
 
             if ($request->input('itemType') == 'LESSON')
             {
