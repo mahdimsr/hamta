@@ -63,43 +63,83 @@
                             </div>
                         </div>
                     </div>
-                    <form method="post" action="{{route('admin_lExam_add')}}" role="form">
+                    <form method="post" action="{{route('admin_lExam_add')}}" role="form" enctype="multipart/form-data">
 
                         {{csrf_field()}}
 
                         <div class="row setup-content" id="step-1">
                             <div class="col-xs-12">
                                 <h3 class="">بخش اول </h3>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">قیمت</label>
-                                        <input name="price" class="form-control" type="text"
-                                               maxlength="10" tabindex="2"
-                                               value="{{old('price')}}"
-                                               placeholder="مثلا: 5000 تومان"/>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">قیمت</label>
+                                            <input name="price" class="form-control" type="text"
+                                                   maxlength="10" tabindex="2"
+                                                   value="{{old('price')}}"
+                                                   placeholder="مثلا: 5000 تومان"/>
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            <small>{{ $errors->first('price') }}</small>
+                                        </div>
                                     </div>
-                                    <div class="invalid-feedback">
-                                        <small>{{ $errors->first('price') }}</small>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">نام</label>
+                                            <input name="title" class="form-control" type="text"
+                                                   maxlength="20" tabindex="1" value="{{old('title')}}">
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            <small>{{ $errors->first('title') }}</small>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">نام</label>
-                                        <input name="title" class="form-control" type="text"
-                                               maxlength="20" tabindex="1" value="{{old('title')}}">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label">پاسخ نامه سوالات (به صورت pdf)</label>
+                                            <input name="answerSheet" class="form-control" type="file" accept="application/pdf"
+                                                   maxlength="10" tabindex="5"
+                                                   value="{{old('answerSheet')}}"/>
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            <small>{{ $errors->first('duration') }}</small>
+                                        </div>
                                     </div>
-                                    <div class="invalid-feedback">
-                                        <small>{{ $errors->first('title') }}</small>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label">زمان آزمون (به دقیقه)</label>
+                                            <input name="duration" class="form-control" type="text"
+                                                   maxlength="10" tabindex="4"
+                                                   value="{{old('duration')}}"
+                                                   placeholder="مثلا: 60 دقیقه"/>
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            <small>{{ $errors->first('duration') }}</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>تاریخ فعال شدن آزمون </label>
+                                            <input dir="rtl" id="activeDate" name="activeDate" type="text"
+                                                   class="form-control"
+                                                   tabindex="3">
+                                            <div class="invalid-feedback">
+                                                <small>{{ $errors->first('activeDate') }}</small>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="control-label">توضیحات</label>
-                                        <textarea name="description" class="form-control" type="text"
-                                                  tabindex="3">{{old('description')}}</textarea>
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        <small>{{ $errors->first('description') }}</small>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">توضیحات</label>
+                                            <textarea name="description" class="form-control" type="text"
+                                                      tabindex="5">{{old('description')}}</textarea>
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            <small>{{ $errors->first('description') }}</small>
+                                        </div>
                                     </div>
                                 </div>
                                 <button class="ctrl-standard typ-subhed fx-bubbleDown nextBtn  pull-right"
@@ -257,6 +297,23 @@
 @section('script')
 
     <script>
+
+        $('#activeDate').pDatepicker({
+
+            autoClose: true,
+            initialValue: true,
+            format: 'YYYY/MM/DD',
+            responsive: true,
+            toolbox: {
+                calendarSwitch: {
+                    enabled: false
+                },
+                submitButton:{enabled:true},
+                todayButton:{
+                    enabled:false
+                }
+            }
+        });
 
         var categories   = $('#cat-select option').clone();
         var orientations = $('#ori-select option').clone();

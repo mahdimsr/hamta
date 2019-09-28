@@ -28,6 +28,10 @@
 
 
 	<link href="{{asset('css/student/dashboard/stroke.css')}}" rel="stylesheet"/>
+
+    {{-- datePicker --}}
+    <link href="{{asset('datePicker/persian-datepicker.min.css')}}" rel="stylesheet"/>
+
 	<link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
 
 </head>
@@ -218,6 +222,10 @@
 
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="{{asset('js/admin/dashboard/demo.js')}}"></script>
+<!-- Date Picker -->
+<script src="{{asset('datePicker/persian-date.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('datePicker/persian-datepicker.min.js')}}" type="text/javascript"></script>
+
 <script>
     $(".menu").select2({
         allowClear: true,
