@@ -51,7 +51,41 @@
 
 						<input name="exm" value="{{$exam->exm}}" hidden>
 
-						<div class="row">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>سرفصل سوال</label>
+                                    <select dir="rtl" name="topicGradeLesson" class="form-control">
+                                        <option selected disabled>سرفصل سوال را انتخاب نمایید</option>
+                                        @foreach ( $exam->examGradeLessons as $examGradeLesson )
+                                            @foreach($examGradeLesson->gradeLesson->topicGradeLessons as $topicGradeLesson)
+                                                <option value="{{ $topicGradeLesson->id }}">{{ $topicGradeLesson->topic->title }}</option>
+                                            @endforeach
+                                        @endforeach
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('topic') }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>دسته بندی درس ها</label>
+                                    <select dir="rtl" name="typeId" class="form-control">
+                                        <option selected disabled>گرایش و درس سوال را انتخاب نمایید</option>
+                                        @foreach ( $exam->examGradeLessons as $examGradeLesson )
+                                            <option value="{{ $examGradeLesson->gradeLesson->code }}">{{ $examGradeLesson->gradeLesson->title }}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('typeId') }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>درجه سختی سوال</label>
@@ -69,40 +103,22 @@
 									</div>
 								</div>
 							</div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>نوع سوال</label>
+                                    <select dir="rtl" name="topicGradeLesson" class="form-control">
+                                        <option selected disabled>نوع سوال را انتخاب نمایید</option>
+                                        @foreach ( $questionTypes as $questionType )
+                                            <option id="{{$questionType->categoryId}}" value="{{ $questionType->id }}">{{ $questionType->title }}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('topic') }}</small>
+                                    </div>
+                                </div>
+                            </div>
 						</div>
 
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>سرفصل سوال</label>
-									<select dir="rtl" name="topicGradeLesson" class="form-control">
-										<option selected disabled>سرفصل سوال را انتخاب نمایید</option>
-										@foreach ( $exam->examGradeLessons as $examGradeLesson )
-											@foreach($examGradeLesson->gradeLesson->topicGradeLessons as $topicGradeLesson)
-												<option value="{{ $topicGradeLesson->id }}">{{ $topicGradeLesson->topic->title }}</option>
-											@endforeach
-										@endforeach
-									</select>
-									<div class="invalid-feedback">
-										<small>{{ $errors->first('topic') }}</small>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>دسته بندی درس ها</label>
-									<select dir="rtl" name="gradeLesson" class="form-control">
-										<option selected disabled>گرایش و درس سوال را انتخاب نمایید</option>
-										@foreach ( $exam->examGradeLessons as $examGradeLesson )
-											<option value="{{ $examGradeLesson->gradeLesson->code }}">{{ $examGradeLesson->gradeLesson->title }}</option>
-										@endforeach
-									</select>
-									<div class="invalid-feedback">
-										<small>{{ $errors->first('gradeLesson') }}</small>
-									</div>
-								</div>
-							</div>
-						</div>
 
 						<div class="row">
 							<div class="col-md-12">
