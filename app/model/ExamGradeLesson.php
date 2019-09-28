@@ -33,12 +33,12 @@ class ExamGradeLesson extends Model
 			$gradeLesson = GradeLesson::query()->find($model->gradeLessonId);
 
 			$char = substr(md5(uniqid(rand(), true)), 0, 1);
-			$code = 'EXM-' . $char . '-' . $gradeLesson->code;
+			$code = 'EXM-lesson-' . $char . '-' . $gradeLesson->code;
 
 			while (LessonExam::query()->where('exm', $code)->exists())
 			{
 				$char = substr(md5(uniqid(rand(), true)), 0, 1);
-				$code = 'EXM-' . $char . '-' . $gradeLesson->code;
+				$code = 'EXM-lesson-' . $char . '-' . $gradeLesson->code;
 			}
 
 			$lessonExam->exm = $code;
