@@ -11,7 +11,6 @@
      * @property \Carbon\Carbon $created_at
      * @property \Carbon\Carbon $updated_at
      * @property int            $id
-     * @property string         $itemType
      * @property string         $exm
      * @property string         $title
      * @property string         $description
@@ -61,12 +60,6 @@
             return $this->hasMany(ExamGradeLesson::class, 'examId');
         }
 
-
-        public function topicExams()
-        {
-
-            return $this->hasMany(TopicExam::class, 'lessonExamId');
-        }
 
 
         public function questionExams()

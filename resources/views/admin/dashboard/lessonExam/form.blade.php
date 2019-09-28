@@ -151,78 +151,43 @@
                         <div class="row setup-content" id="step-2">
                             <div class="col-xs-12">
                                 <h3> Step 2</h3>
-                                <div class="col-md-4">
-                                    <label class="control-label">پایه</label>
-                                    <select name="grade" class="form-control" id="grade-select">
-                                        <option id="0" disabled selected>پایه آزمون را انتخاب کنید</option>
-                                        @foreach($grades as $grade)
-                                            <option id="{{$grade->id}}"
-                                                    value="{{$grade->id}}"
-                                                {{old('grade') == $grade->id ? 'selected' : ''}}>
-                                                {{$grade->title}}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        <small>{{ $errors->first('grade') }}</small>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <label class="control-label">گرایش</label>
-                                    <select name="orientation" class="form-control" id="ori-select">
-                                        <option id="0" disabled selected>گرایش آزمون را انتخاب کنید</option>
-                                        @foreach($orientations as $orientation)
-                                            <option id="{{$orientation->id}}"
-                                                    value="{{$orientation->id}}"
-                                                {{old('orientation') == $orientation->id ? 'selected' : ''}}>
-                                                {{$orientation->title}}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        <small>{{ $errors->first('orientation') }}</small>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">گروه درسی</label>
-                                        <select name="category" class="form-control" id="cat-select">
-                                            <option id="0" disabled selected>گروه درسی آزمون را انتخاب کنید</option>
-                                            @foreach($categories as $category)
-                                                <option id="{{$category->id}}"
-                                                        value="{{$category->id}}"
-                                                    {{old('category') == $category->id ? 'selected' : ''}}>
-                                                    {{$category->title }}
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="control-label">پایه</label>
+                                        <select name="grade" class="form-control" id="grade-select">
+                                            <option id="0" disabled selected>پایه آزمون را انتخاب کنید</option>
+                                            @foreach($grades as $grade)
+                                                <option id="{{$grade->id}}"
+                                                        value="{{$grade->id}}"
+                                                    {{old('grade') == $grade->id ? 'selected' : ''}}>
+                                                    {{$grade->title}}
                                                 </option>
                                             @endforeach
                                         </select>
                                         <div class="invalid-feedback">
-                                            <small>{{ $errors->first('category') }}</small>
+                                            <small>{{ $errors->first('grade') }}</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="control-label">گرایش</label>
+                                        <select name="orientation" class="form-control" id="ori-select">
+                                            <option id="0" disabled selected>گرایش آزمون را انتخاب کنید</option>
+                                            @foreach($orientations as $orientation)
+                                                <option id="{{$orientation->id}}"
+                                                        value="{{$orientation->id}}"
+                                                    {{old('orientation') == $orientation->id ? 'selected' : ''}}>
+                                                    {{$orientation->title}}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            <small>{{ $errors->first('orientation') }}</small>
                                         </div>
                                     </div>
                                 </div>
-                                <button class="btn btn-primary nextBtn btn-lg pull-left" type="button">بعدی</button>
-                            </div>
-                        </div>
 
-                        <div class="row setup-content" id="step-3">
-                            <div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">نحوه ایجاد آزمون</label>
-                                        <input name="itemType" type="radio" class="form-control" value="LESSON"
-                                            {{old('itemType') == 'LESSON' ? 'checked' : ''}}>
-                                        <input name="itemType" type="radio" class="form-control" value="TOPIC"
-                                            {{old('itemType') == 'TOPIC' ? 'checked' : ''}}>
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        <small>{{ $errors->first('itemType') }}</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12">
-
-                                <div id="grade-div" class="row">
+                                <div class="row">
                                     <div class="col-md-6">
                                         <label class="control-label">درس های آزمون</label>
                                         <select name="gradeLessons[]" class="form-control" id="gradeLesson-select">
@@ -240,44 +205,34 @@
                                             <small>{{ $errors->first('gradeLessons') }}</small>
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">گروه درسی</label>
+                                            <select name="category" class="form-control" id="cat-select">
+                                                <option id="0" disabled selected>گروه درسی آزمون را انتخاب کنید</option>
+                                                @foreach($categories as $category)
+                                                    <option id="{{$category->id}}"
+                                                            value="{{$category->id}}"
+                                                        {{old('category') == $category->id ? 'selected' : ''}}>
+                                                        {{$category->title }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                <small>{{ $errors->first('category') }}</small>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div id="topic-div" class="row">
-                                    <div class="col-md-6">
-                                        <label class="control-label">سرفصل ها</label>
-                                        <select name="topics[]" class="form-control" id="topic-select">
-                                            <option id="0" disabled selected>سرفصل های درسی آزمون را انتخاب کنید
-                                            </option>
-                                            @foreach($topicGradeLessons as $topicGradeLesson)
-                                                <option
-                                                    id="{{$topicGradeLesson->gradeLessonId}}"
-                                                    value="{{$topicGradeLesson->id}}"
-                                                    {{old('topics') == $topicGradeLesson->id ? 'selected' : ''}}>
-                                                    {{$topicGradeLesson->topic->title }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            <small>{{ $errors->first('topics') }}</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="control-label">درس</label>
-                                        <select name="gradeLesson" class="form-control" id="lesson-select">
-                                            <option id="0" disabled selected>گروه درسی آزمون را انتخاب کنید</option>
-                                            @foreach($gradeLessons as $gradeLesson)
-                                                <option
-                                                    id="{{$gradeLesson->orientationCategory->categoryId.$gradeLesson->orientationCategory->orientationId.$gradeLesson->gradeId}}"
-                                                    value="{{$gradeLesson->id}}"
-                                                    {{old('gradeLessons') == $gradeLesson->id ? 'selected' : ''}}>
-                                                    {{$gradeLesson->lesson->title }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            <small>{{ $errors->first('gradeLesson') }}</small>
-                                        </div>
-                                    </div>
+                                <button class="btn btn-primary nextBtn btn-lg pull-left" type="button">بعدی</button>
+                            </div>
+                        </div>
+
+                        <div class="row setup-content" id="step-3">
+                            <div class="col-xs-12">
+
+                                <div id="grade-div" class="row">
                                 </div>
 
                                 <button class="btn btn-primary nextBtn btn-lg pull-right" type="submit">ثبت</button>
@@ -319,22 +274,7 @@
         var orientations = $('#ori-select option').clone();
         var grades       = $('#grade-select option').clone();
         var gradeLessons = $('#gradeLesson-select option').clone();
-        var lessons      = $('#lesson-select option').clone();
 
-        var topics = $('#topic-select option').clone();
-
-        $('input[type=radio][name=itemType]').change(function ()
-        {
-            if (this.value == 'LESSON')
-            {
-                $('#grade-div').css('display', 'block');
-                $('#topic-div').css('display', 'none');
-            } else if (this.value == 'TOPIC')
-            {
-                $('#grade-div').css('display', 'none');
-                $('#topic-div').css('display', 'block');
-            }
-        });
 
 
         function lessonFilter()
@@ -346,31 +286,15 @@
             id = catId + '' + oriId + gradeId;
 
             options      = gradeLessons.filter('[id=' + id + '],[id=0]');
-            lessonOption = lessons.filter('[id=' + id + '],[id=0]');
 
             console.log(id);
 
             $('#gradeLesson-select').html(options);
             $('#gradeLesson-select').prop('selectedIndex', 0).change();
 
-            $('#lesson-select').html(lessonOption);
-            $('#lesson-select').prop('selectedIndex', 0).change();
-
             console.log(id);
         }
 
-
-        function topicFilter()
-        {
-            var gradeLessonId = $('#lesson-select').val();
-
-            options = topics.filter('[id=' + gradeLessonId + '],[id=0]');
-
-            $('#topic-select').html(options);
-            $('#topic-select').prop('selectedIndex', 0).change();
-
-
-        }
 
 
         $('#cat-select').change(function ()
@@ -390,11 +314,6 @@
             lessonFilter()
         });
 
-
-        $('#lesson-select').change(function ()
-        {
-            topicFilter()
-        });
 
 
     </script>
