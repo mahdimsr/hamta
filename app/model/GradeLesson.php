@@ -41,8 +41,6 @@ class GradeLesson extends Model
 			$code        = $orientationCategory->orientation->code . $grade->code . $lesson->code;
 			$model->code = $code;
 
-			// $model->save();
-
 		});
 	}
 

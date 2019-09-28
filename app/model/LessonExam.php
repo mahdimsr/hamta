@@ -38,21 +38,6 @@ class LessonExam extends Model
 		self::creating(function($model)
 		{
 
-			/*while (self::where('code', $code = substr(md5(uniqid(rand(), true)), 0, 4))->exists())
-			{
-				;
-			}*/
-
-			/*$char = substr(md5(uniqid(rand(), true)), 0, 1);
-			$code = 'EXM-' . $char . '-' . $gradeLesson->code;
-
-			while (self::where('exm', $code)->exists())
-			{
-				$char = substr(md5(uniqid(rand(), true)), 0, 1);
-				$code = 'EXM-' . $char . '-' . $gradeLesson->code;
-			}
-
-			$model->exm = $code;*/
 
 
 		});
