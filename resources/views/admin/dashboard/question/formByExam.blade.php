@@ -55,13 +55,12 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>سرفصل سوال</label>
-                                    <select dir="rtl" name="topicGradeLesson" class="form-control">
-                                        <option selected disabled>سرفصل سوال را انتخاب نمایید</option>
-                                        @foreach ( $exam->examGradeLessons as $examGradeLesson )
-                                            @foreach($examGradeLesson->gradeLesson->topicGradeLessons as $topicGradeLesson)
+                                    <select dir="rtl" name="topicGradeLesson" id="topic-select" class="form-control">
+                                        <option value="" id="0" selected disabled>سرفصل سوال را انتخاب نمایید</option>
+                                        @foreach ( $topics as $topic )
                                                 <option
-                                                    value="{{ $topicGradeLesson->id }}">{{ $topicGradeLesson->topic->title }}</option>
-                                            @endforeach
+                                                    id="{{ $topic->gradeLessonId }}"
+                                                    value="{{ $topic->id }}">{{ $topic->topic->title }}</option>
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback">
@@ -72,11 +71,11 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>دسته بندی درس ها</label>
-                                    <select dir="rtl" name="gradeLesson" class="form-control">
-                                        <option selected disabled>گرایش و درس سوال را انتخاب نمایید</option>
-                                        @foreach ( $exam->examGradeLessons as $examGradeLesson )
+                                    <select dir="rtl" name="gradeLesson" id="gradeLesson-select" class="form-control">
+                                        <option value="" id="0" selected disabled>گرایش و درس سوال را انتخاب نمایید</option>
+                                        @foreach ( $lessons as $lesson )
                                             <option
-                                                value="{{ $examGradeLesson->gradeLesson->code }}">{{ $examGradeLesson->gradeLesson->title }}</option>
+                                                value="{{ $lesson->id }}">{{ $lesson->title}}</option>
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback">
@@ -108,7 +107,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>نوع سوال</label>
-                                    <select dir="rtl" name="topicGradeLesson" class="form-control">
+                                    <select dir="rtl" name="typeId" class="form-control">
                                         <option selected disabled>نوع سوال را انتخاب نمایید</option>
                                         @foreach ( $questionTypes as $questionType )
                                             <option id="{{$questionType->categoryId}}"
@@ -201,8 +200,26 @@
 @endsection
 
 @section('script')
+    <script>
+    var id,options;
+    var topics   = $('#topic-select option').clone();
 
-    var gradeLessons   = $('#cat-select option').clone();
+    $("#gradeLesson-select").change(function()
+    {
+        id = $("#gradeLesson-select").val();
+        options = topics.filter('[id=' + id + '],[id=0]');
+        $('#topic-select').html(options);
+        $('#topic-select').prop('selectedIndex',0).trigger('change');
 
+    });
 
+    if($("#gradeLesson-select").val()!='')
+    {
+
+        id = $("#gradeLesson-select").val();
+        options = topics.filter('[id=' + id + '],[id=0]');
+        $('#topic-select').html(options);
+
+    }
+    </script>
 @endsection

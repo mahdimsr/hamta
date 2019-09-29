@@ -53,6 +53,11 @@
             return $path;
         }
 
+        public function orientationCategory()
+        {
+
+            return $this->belongsTo(OrientationCategory::class, 'orientationCategoryId');
+        }
 
         public function examGradeLessons()
         {

@@ -47,174 +47,22 @@
                 </div>
 
                 <div class="content">
-                    <div class="stepwizard">
-                        <div class="stepwizard-row setup-panel">
-                            <div class="stepwizard-step">
-                                <a href="#step-1" type="button" class="btn btn1 btn-circle   ">1</a>
-                                <p>بخش 1</p>
-                            </div>
-                            <div class="stepwizard-step">
-                                <a href="#step-2" type="button" class="btn btn1 btn-circle">2</a>
-                                <p>بخش 2</p>
-                            </div>
-                            <div class="stepwizard-step">
-                                <a href="#step-3" type="button" class="btn btn1 btn-circle">3</a>
-                                <p>بخش 3</p>
-                            </div>
-                        </div>
-                    </div>
-                    <form method="post" action="{{route('admin_lExam_add')}}" role="form" enctype="multipart/form-data">
+                    <form method="post" action="{{ $modify==0 ? route('admin_lExam_add') : ''}}" role="form" enctype="multipart/form-data">
 
                         {{csrf_field()}}
 
-                        <div class="row setup-content" id="step-1">
-                            <div class="col-xs-12">
-                                <h3 class="">بخش اول </h3>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label">قیمت</label>
-                                            <input name="price" class="form-control" type="text"
-                                                   maxlength="10" tabindex="2"
-                                                   value="{{old('price')}}"
-                                                   placeholder="مثلا: 5000 تومان"/>
-                                        </div>
-                                        <div class="invalid-feedback">
-                                            <small>{{ $errors->first('price') }}</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label">نام</label>
-                                            <input name="title" class="form-control" type="text"
-                                                   maxlength="20" tabindex="1" value="{{old('title')}}">
-                                        </div>
-                                        <div class="invalid-feedback">
-                                            <small>{{ $errors->first('title') }}</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="control-label">پاسخ نامه سوالات (به صورت pdf)</label>
-                                            <input name="answerSheet" class="form-control" type="file" accept="application/pdf"
-                                                   maxlength="10" tabindex="5"
-                                                   value="{{old('answerSheet')}}"/>
-                                        </div>
-                                        <div class="invalid-feedback">
-                                            <small>{{ $errors->first('duration') }}</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="control-label">زمان آزمون (به دقیقه)</label>
-                                            <input name="duration" class="form-control" type="text"
-                                                   maxlength="10" tabindex="4"
-                                                   value="{{old('duration')}}"
-                                                   placeholder="مثلا: 60 دقیقه"/>
-                                        </div>
-                                        <div class="invalid-feedback">
-                                            <small>{{ $errors->first('duration') }}</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>تاریخ فعال شدن آزمون </label>
-                                            <input dir="rtl" id="activeDate" name="activeDate" type="text"
-                                                   class="form-control"
-                                                   tabindex="3">
-                                            <div class="invalid-feedback">
-                                                <small>{{ $errors->first('activeDate') }}</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="control-label">توضیحات</label>
-                                            <textarea name="description" class="form-control" type="text"
-                                                      tabindex="5">{{old('description')}}</textarea>
-                                        </div>
-                                        <div class="invalid-feedback">
-                                            <small>{{ $errors->first('description') }}</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="ctrl-standard typ-subhed fx-bubbleDown nextBtn  pull-right"
-                                        type="button">بعدی
-                                </button>
-                            </div>
-                        </div>
+                        <div class="row">
 
-                        <div class="row setup-content" id="step-2">
-                            <div class="col-xs-12">
-                                <h3> Step 2</h3>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label class="control-label">پایه</label>
-                                        <select name="grade" class="form-control" id="grade-select">
-                                            <option id="0" disabled selected>پایه آزمون را انتخاب کنید</option>
-                                            @foreach($grades as $grade)
-                                                <option id="{{$grade->id}}"
-                                                        value="{{$grade->id}}"
-                                                    {{old('grade') == $grade->id ? 'selected' : ''}}>
-                                                    {{$grade->title}}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            <small>{{ $errors->first('grade') }}</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="control-label">گرایش</label>
-                                        <select name="orientation" class="form-control" id="ori-select">
-                                            <option id="0" disabled selected>گرایش آزمون را انتخاب کنید</option>
-                                            @foreach($orientations as $orientation)
-                                                <option id="{{$orientation->id}}"
-                                                        value="{{$orientation->id}}"
-                                                    {{old('orientation') == $orientation->id ? 'selected' : ''}}>
-                                                    {{$orientation->title}}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            <small>{{ $errors->first('orientation') }}</small>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label class="control-label">درس های آزمون</label>
-                                        <select name="gradeLessons[]" class="form-control" id="gradeLesson-select">
-                                            <option id="0" disabled selected>گروه درسی آزمون را انتخاب کنید</option>
-                                            @foreach($gradeLessons as $gradeLesson)
-                                                <option
-                                                    id="{{$gradeLesson->orientationCategory->categoryId.$gradeLesson->orientationCategory->orientationId.$gradeLesson->gradeId}}"
-                                                    value="{{$gradeLesson->id}}"
-                                                    {{old('gradeLessons') == $gradeLesson->id ? 'selected' : ''}}>
-                                                    {{$gradeLesson->lesson->title }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            <small>{{ $errors->first('gradeLessons') }}</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
+                                <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="control-label">گروه درسی</label>
                                             <select name="category" class="form-control" id="cat-select">
-                                                <option id="0" disabled selected>گروه درسی آزمون را انتخاب کنید</option>
+                                                <option id="0" value="" disabled selected>گروه درسی آزمون را انتخاب کنید</option>
                                                 @foreach($categories as $category)
-                                                    <option id="{{$category->id}}"
+                                                    <option id="{{$category->orientationId}}"
                                                             value="{{$category->id}}"
-                                                        {{old('category') == $category->id ? 'selected' : ''}}>
-                                                        {{$category->title }}
+                                                        {{old('category') == $category->id ? 'selected' : ''}}{{ $modify==1 && !old('category') && $lessonExam->orientationCategoryId == $category->id ? 'selected' : '' }}>
+                                                        {{$category->category->title }} - {{ $category->getPersianTypeAttribute() }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -223,21 +71,122 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <button class="btn btn-primary nextBtn btn-lg pull-left" type="button">بعدی</button>
+                            <div class="col-md-6">
+                                <label class="control-label">گرایش</label>
+                                <select name="orientation" class="form-control" id="ori-select">
+                                    <option id="0" value="" disabled selected>گرایش آزمون را انتخاب کنید</option>
+                                    @foreach($orientations as $orientation)
+                                        <option
+                                                value="{{$orientation->id}}"
+                                            {{old('orientation') == $orientation->id ? 'selected' : ''}}{{ $modify==1 && !old('orientation') && $lessonExam->orientationCategory->orientation->id == $orientation->id ? 'selected' : '' }}>
+                                            {{$orientation->title}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <div class="invalid-feedback">
+                                    <small>{{ $errors->first('orientation') }}</small>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="row setup-content" id="step-3">
-                            <div class="col-xs-12">
+                        <div class="row">
+                                    <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">نام</label>
+                                                <input name="title" class="form-control" type="text"
+                                                       maxlength="20" tabindex="1" value="{{old('title')}}{{ $modify==1 && !old('title') && $lessonExam->title ? $lessonExam->title : '' }}">
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                <small>{{ $errors->first('title') }}</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                                <label class="control-label">پایه</label>
+                                                <select name="grade" class="form-control" id="grade-select">
+                                                    <option id="0" disabled selected>پایه آزمون را انتخاب کنید</option>
+                                                    @foreach($grades as $grade)
+                                                        <option id="{{$grade->id}}"
+                                                                value="{{$grade->id}}"
+                                                            {{old('grade') == $grade->id ? 'selected' : ''}}{{ $modify==1 && !old('grade') && $lessonExam->gradeId == $grade->id ? 'selected' : '' }}>
+                                                            {{$grade->title}}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                <div class="invalid-feedback">
+                                                    <small>{{ $errors->first('grade') }}</small>
+                                                </div>
+                                            </div>
 
-                                <div id="grade-div" class="row">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">قیمت</label>
+                                    <input name="price" class="form-control" type="text"
+                                           maxlength="10" tabindex="2"
+                                           value="{{old('price')}}{{ $modify==1 && !old('price') && $lessonExam->price ? $lessonExam->price : '' }}"
+                                           placeholder="مثلا: 5000 تومان"/>
                                 </div>
+                                <div class="invalid-feedback">
+                                    <small>{{ $errors->first('price') }}</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>تاریخ فعال شدن آزمون </label>
+                                        <input dir="rtl" id="activeDate" name="activeDate" type="text"
+                                               class="form-control"
+                                               tabindex="3" value="{{ old('activeDate') }}{{ $modify==1 && !old('activeDate') && $lessonExam->activeDate ? $lessonExam->activeDate : '' }}">
+                                        <div class="invalid-feedback">
+                                            <small>{{ $errors->first('activeDate') }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">پاسخ نامه سوالات (به صورت pdf)</label>
+                                    <input name="answerSheet" class="form-control" type="file" accept="application/pdf"
+                                           maxlength="10" tabindex="5"
+                                           value="{{old('answerSheet')}}"/>
+                                </div>
+                                <div class="invalid-feedback">
+                                    <small>{{ $errors->first('duration') }}</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">زمان آزمون (به دقیقه)</label>
+                                    <input name="duration" class="form-control" type="text"
+                                           maxlength="10" tabindex="4"
+                                           value="{{old('duration')}} {{ $modify==1 && !old('duration') && $lessonExam->duration ? $lessonExam->duration : '' }}"
+                                           placeholder="مثلا: 60 دقیقه"/>
+                                </div>
+                                <div class="invalid-feedback">
+                                    <small>{{ $errors->first('duration') }}</small>
+                                </div>
+                            </div>
 
-                                <button class="btn btn-primary nextBtn btn-lg pull-right" type="submit">ثبت</button>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label">توضیحات</label>
+                                    <textarea name="description" class="form-control" type="text"
+                                              tabindex="5">{{old('description')}}{{ $modify==1 && !old('description') && $lessonExam->description ? $lessonExam->description : '' }}</textarea>
+                                </div>
+                                <div class="invalid-feedback">
+                                    <small>{{ $errors->first('description') }}</small>
+                                </div>
                             </div>
                         </div>
+
+						<button type="submit" class="btn btn-info btn-fill pull-left" tabindex="4">اعمال</button>
+						<div class="clearfix"></div>
+
 
                     </form>
                 </div>
@@ -270,50 +219,26 @@
             }
         });
 
+        var id,options;
         var categories   = $('#cat-select option').clone();
-        var orientations = $('#ori-select option').clone();
-        var grades       = $('#grade-select option').clone();
-        var gradeLessons = $('#gradeLesson-select option').clone();
 
-
-
-        function lessonFilter()
+        $("#ori-select").change(function()
         {
-            var catId   = $('#cat-select').val();
-            var oriId   = $('#ori-select').val();
-            var gradeId = $('#grade-select').val();
+            id = $("#ori-select").val();
+            options = categories.filter('[id=' + id + '],[id=0]');
+            $('#cat-select').html(options);
+            $('#cat-select').prop('selectedIndex',0).trigger('change');
 
-            id = catId + '' + oriId + gradeId;
+        });
 
-            options      = gradeLessons.filter('[id=' + id + '],[id=0]');
+        if($("#ori-select").val()!='')
+        {
 
-            console.log(id);
+            id = $("#ori-select").val();
+            options = categories.filter('[id=' + id + '],[id=0]');
+            $('#cat-select').html(options);
 
-            $('#gradeLesson-select').html(options);
-            $('#gradeLesson-select').prop('selectedIndex', 0).change();
-
-            console.log(id);
         }
-
-
-
-        $('#cat-select').change(function ()
-        {
-            lessonFilter()
-        });
-
-
-        $('#ori-select').change(function ()
-        {
-            lessonFilter()
-        });
-
-
-        $('#grade-select').change(function ()
-        {
-            lessonFilter()
-        });
-
 
 
     </script>

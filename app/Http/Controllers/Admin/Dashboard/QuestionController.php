@@ -3,10 +3,11 @@
     namespace App\Http\Controllers\Admin\Dashboard;
 
     use App\model\GradeLesson;
+    use App\model\TopicGradeLesson;
     use App\model\LessonExam;
     use App\model\Question;
     use App\model\QuestionExam;
-    use App\model\QuestionLesson;
+    use App\model\ExamGradeLesson;
     use App\model\QuestionType;
     use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
@@ -35,7 +36,7 @@
         }
 
 
-        public function addShow($exm = null)
+        public function addShow($exm)
         {
 
             //show_addQuestion => route
@@ -43,15 +44,28 @@
 
             if ($exm != null)
             {
-                $exam = LessonExam::query()->where('exm', $exm);
+                $exam   = LessonExam::query()->where('exm', $exm)->first();
+                $questionTypes = QuestionType::all();
+                $topics=TopicGradeLesson::all();
 
-                if ($exam->exists())
+                if ($exam->gradeId==3)
                 {
-                    $exam          = $exam->first();
-                    $questionTypes = QuestionType::all();
+                    $lessons= GradeLesson::query()->where('orientationCategoryId', $exam->orientationCategoryId)->get();
 
-                    return view('admin.dashboard.question.formByExam', compact('exam', 'questionTypes', 'modify'));
                 }
+
+                else if ($exam->gradeId==2)
+                {
+                    $lessons= GradeLesson::query()->where('orientationCategoryId', $exam->orientationCategoryId)->whereIn('gradeId',[1,2])->get();
+                }
+
+                else
+                {
+                    $lessons= GradeLesson::query()->where('orientationCategoryId', $exam->orientationCategoryId)->whereIn('gradeId',[1])->get();
+                }
+
+
+                return view('admin.dashboard.question.formByExam', compact('exam', 'lessons', 'modify','questionTypes','topics'));
             }
 
             $gradeLessons = GradeLesson::all();
@@ -67,6 +81,7 @@
             $this->validate($request, [
 
                 'topicGradeLesson' => 'required|exists:topic_grade_lesson,id',
+                'gradeLesson'      => 'required',
                 'hardness'         => 'required|integer|between:0,6|digits:1',
                 'text'             => 'required',
                 'optionFour'       => 'required',
@@ -102,6 +117,17 @@
                 $questionExam->examId     = $exam->id;
 
                 $questionExam->save();
+
+                $checkIfExit = ExamGradeLesson::query()->where('examId', $exam->id)->where('gradeLessonId',$request->input('gradeLesson'))->first();
+                if(!$checkIfExit)
+                {
+                $ExamGradeLesson = new ExamGradeLesson();
+
+                $ExamGradeLesson->gradeLessonId = $request->input('gradeLesson');
+                $ExamGradeLesson->examId        = $exam->id;
+
+                $ExamGradeLesson->save();
+                }
             }
 
 
