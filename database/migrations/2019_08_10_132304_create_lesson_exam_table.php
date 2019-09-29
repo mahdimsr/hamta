@@ -20,7 +20,6 @@
             {
 
                 $table->bigIncrements('id');
-                $table->enum('itemType', ['LESSON', 'TOPIC']);
                 $table->string('exm')->nullable();
                 $table->string('title');
                 $table->string('description')->nullable();

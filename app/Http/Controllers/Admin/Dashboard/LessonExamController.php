@@ -72,29 +72,18 @@
                 return redirect()->back()->withInput($request->all())->withErrors($stepOne->errors());
             }
 
-            if ($request->input('itemType') == 'LESSON')
-            {
-                $stepThree = Validator::make($request->only(['gradeLessons']), [
 
-                    'gradeLessons' => 'required',
+            $stepTwo = Validator::make($request->only(['gradeLessons']), [
 
-                ]);
-            }
-            else
-            {
-                $stepThree = Validator::make($request->only(['gradeLesson', 'topics']), [
+                'gradeLessons' => 'required',
 
-                    'gradeLesson' => 'required|exists:grade_lesson:id',
-                    'topics'      => 'required|exists:topic_grade_lesson:id',
-
-                ]);
-            }
+            ]);
 
 
-            if ($stepThree->fails())
+            if ($stepTwo->fails())
             {
 
-                return redirect()->back()->withInput($request->all())->withErrors($stepThree->errors());
+                return redirect()->back()->withInput($request->all())->withErrors($stepTwo->errors());
             }
 
 
@@ -103,7 +92,6 @@
             $lessonExam->title       = $request->input('title');
             $lessonExam->price       = $request->input('price');
             $lessonExam->description = $request->input('description');
-            $lessonExam->itemType    = $request->input('itemType');
             // convert and insert activeDate
             $jalalian               = Lib::convertFaToEn($request->input('activeDate'));
             $dateTime               = CalendarUtils::createDatetimeFromFormat('Y/m/d', $jalalian);
@@ -127,29 +115,14 @@
             }
             //end answerSheet section
 
-            if ($request->input('itemType') == 'LESSON')
+            foreach ($request->input('gradeLessons') as $gradeLessonId)
             {
-                foreach ($request->input('gradeLessons') as $gradeLessonId)
-                {
-                    $examGradeLesson = new ExamGradeLesson();
+                $examGradeLesson = new ExamGradeLesson();
 
-                    $examGradeLesson->examId        = $lessonExam->id;
-                    $examGradeLesson->gradeLessonId = $gradeLessonId;
+                $examGradeLesson->examId        = $lessonExam->id;
+                $examGradeLesson->gradeLessonId = $gradeLessonId;
 
-                    $examGradeLesson->save();
-                }
-            }
-            else
-            {
-                foreach ($request->input('topics') as $topicGradeLessonId)
-                {
-                    $topicExam = new TopicExam();
-
-                    $topicExam->lessonExamId       = $lessonExam->id;
-                    $topicExam->topicGradeLessonId = $topicGradeLessonId;
-
-                    $topicExam->save();
-                }
+                $examGradeLesson->save();
             }
 
 
