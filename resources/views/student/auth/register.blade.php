@@ -45,7 +45,7 @@
 <body>
 
   <!-- Main Navigation -->
-  <header>
+
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
@@ -100,7 +100,7 @@
                   </div>
 
                   <div class="md-form">
-                    <i class="fas fa-user prefix"></i>
+                    <i class="fas fa-lock prefix white-text"></i>
                     <input type="password" id="orangeForm-name" class="form-control "  name="password_register" value="{{old('password_register')}}">
                     <label for="orangeForm-name">رمز عبور</label>
                     <small class="text-danger font-weight-bold">{{ $errors->first('password_register')}}</small>
