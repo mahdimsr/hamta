@@ -11,7 +11,7 @@ class CityTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+
         DB::table('city')->insert([
 			'provinceId'     => '1',
 			'name'   => 'تبریز',

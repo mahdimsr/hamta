@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use \Carbon\Carbon;
+use App\model\Grade;
 
 
 class GradeTableSeeder extends Seeder
@@ -15,35 +14,26 @@ class GradeTableSeeder extends Seeder
 	public function run()
 	{
 
-		DB::table('grade')->insert([
+        //id 1
+		$Grade          = new Grade();
+		$Grade->code    = 10;
+		$Grade->title   = 'دهم';
+		$Grade->url     = 'tenth-grade';
+        $Grade->save();
 
-			'code'       => '10',
-			'title'      => 'دهم',
-			'url'        => 'tenth-grade',
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
+        //id 2
+		$Grade          = new Grade();
+		$Grade->code    = 11;
+		$Grade->title   = 'یازدهم';
+		$Grade->url     = 'eleventh-grade';
+        $Grade->save();
 
-		]);
-
-		DB::table('grade')->insert([
-
-			'code'       => '11',
-			'title'      => 'یازدهم',
-			'url'        => 'eleventh-grade',
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
-
-		]);
-
-		DB::table('grade')->insert([
-
-			'code'       => '12',
-			'title'      => 'دوازدهم',
-			'url'        => 'twelfth-grade',
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
-
-        ]);
+        //id 3
+		$Grade          = new Grade();
+		$Grade->code    = 12;
+		$Grade->title   = 'دوازدهم';
+		$Grade->url     = 'twelfth-grade';
+        $Grade->save();
 
 	}
 }

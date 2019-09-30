@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use \Carbon\Carbon;
+use App\model\Orientation;
 
 
 class OrientationTableSeeder extends Seeder
@@ -15,35 +14,27 @@ class OrientationTableSeeder extends Seeder
 	public function run()
 	{
 
-        DB::table('orientation')->insert([
+        //id 1
+        $Orientation             = new Orientation();
+		$Orientation->code       = '01';
+		$Orientation->title      = 'ریاضی فیزیک';
+        $Orientation->url        = 'Mathematical-Physics';
+        $Orientation->save();
 
-			'code'       => '01',
-			'title'      => 'ریاضی فیزیک',
-			'url'        => 'Mathematical-Physics',
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
+        //id 2
+        $Orientation             = new Orientation();
+        $Orientation->code       = '02';
+        $Orientation->title      = 'علوم تجربی';
+        $Orientation->url        = 'Science';
+        $Orientation->save();
 
-        ]);
+        //id 3
+        $Orientation             = new Orientation();
+		$Orientation->code       = '03';
+		$Orientation->title      = 'ادبیات و علوم انسانی';
+        $Orientation->url        = 'Literature-and-Humanities';
+        $Orientation->save();
 
-        DB::table('orientation')->insert([
-
-			'code'       => '02',
-			'title'      => 'علوم تجربی',
-			'url'        => 'Science',
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
-
-        ]);
-
-		DB::table('orientation')->insert([
-
-			'code'       => '03',
-			'title'      => 'ادبیات و علوم انسانی',
-			'url'        => 'Literature-and-Humanities',
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
-
-        ]);
 
 	}
 }
