@@ -46,73 +46,52 @@
 				</div>
 
 				<div class="content">
+					<form id="regForm" action="">
+
+						<h3 class="text-center">فرم ثبت مشخصات</h3>
+
+
+						<div class="tab">
+							<h5>مشخصات1:</h5>
+							<input type="text" placeholder="نام" oninput="this.className = ''">
+							<input type="text" placeholder="نام خانوادگی" oninput="this.className = ''">
+						</div>
+
+						<div class="tab">
+							<h5>مشخصات2:</h5>
+							<input type="text" placeholder="نام" oninput="this.className = ''">
+							<input type="text" placeholder="نام خانوادگی" oninput="this.className = ''">
+						</div>
+
+						<div class="tab">
+							<h5>مشخصات3:</h5>
+							<input type="text" placeholder="نام" oninput="this.className = ''">
+							<input type="text" placeholder="نام خانوادگی" oninput="this.className = ''">
+						</div>
+
+						<div class="tab">
+							<h5>مشخصات4:</h5>
+							<input type="text" placeholder="نام" oninput="this.className = ''">
+							<input type="text" placeholder="نام خانوادگی" oninput="this.className = ''">
+						</div>
+
+
+							<div class="text-center">
+
+
+								<button type="button" class="bubbly-button" id="nextBtn" onclick="nextPrev(1)">بعدی</button>
+								<button type="button" class="bubbly-button2" id="prevBtn" onclick="nextPrev(-1)">قبلی</button>
+							</div>
 
 
 
-					<div class="stepwizard">
-						<div class="stepwizard-row setup-panel">
-							<div class="stepwizard-step">
-								<a href="#step-1" type="button" class="btn btn1 btn-circle   "  >1</a>
-								<p>بخش 1</p>
-							</div>
-							<div class="stepwizard-step">
-								<a href="#step-2" type="button" class="btn btn1 btn-circle" >2</a>
-								<p>بخش 2</p>
-							</div>
-							<div class="stepwizard-step">
-								<a href="#step-3" type="button" class="btn btn1 btn-circle">3</a>
-								<p>بخش 3</p>
-							</div>
+						<div dir="ltr" style="text-align:center;margin-top:40px;">
+							<span class="step"></span>
+							<span class="step"></span>
+							<span class="step"></span>
+							<span class="step"></span>
 						</div>
-					</div>
-					<form role="form">
-						<div class="row setup-content" id="step-1">
-							<div class="col-xs-12">
-								<div class="col-md-12">
-									<h3 class="">بخش اول </h3>
-									<div class="form-group">
-										<label class="control-label">نام</label>
-										<select multiple="multiple" id="my-select" name="my-select[]">
-											<option value='elem_1'>elem 1</option>
-											<option value='elem_2'>elem 2</option>
-											<option value='elem_3'>elem 3</option>
-											<option value='elem_4'>elem 4</option>
-											...
-											<option value='elem_100'>elem 100</option>
-										</select>
-									</div>
-									<div class="form-group">
-										<label class="control-label">Last Name</label>
-										<input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Last Name" />
-									</div>
-									<button class="ctrl-standard typ-subhed fx-bubbleDown nextBtn  pull-right" type="button" >بعدی</button>
-								</div>
-							</div>
-						</div>
-						<div class="row setup-content" id="step-2">
-							<div class="col-xs-12">
-								<div class="col-md-12">
-									<h3> Step 2</h3>
-									<div class="form-group">
-										<label class="control-label">Company Name</label>
-										<input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
-									</div>
-									<div class="form-group">
-										<label class="control-label">Company Address</label>
-										<input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address"  />
-									</div>
-									<button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
-								</div>
-							</div>
-						</div>
-						<div class="row setup-content" id="step-3">
-							<div class="col-xs-12">
-								<div class="col-md-12">
-									<h3> Step 3</h3>
-									<button class="btn btn-success btn-lg pull-right" type="submit">Finish!</button>
-								</div>
-							</div>
-						</div>
+
 					</form>
 
 				</div>
