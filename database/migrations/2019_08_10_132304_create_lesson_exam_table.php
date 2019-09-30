@@ -20,8 +20,9 @@
             {
 
                 $table->bigIncrements('id');
-                $table->enum('itemType', ['LESSON', 'TOPIC']);
                 $table->string('exm')->nullable();
+                $table->integer('orientationCategoryId')->nullable();
+                $table->integer('gradeId')->nullable();
                 $table->string('title');
                 $table->string('description')->nullable();
                 $table->integer('price')->nullable()->default(0);

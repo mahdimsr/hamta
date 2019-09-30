@@ -3,7 +3,6 @@
     namespace App\Http\Controllers\Admin\Dashboard;
 
     use App\Lib\Lib;
-    use App\model\Category;
     use App\model\OrientationCategory;
     use App\model\ExamGradeLesson;
     use App\model\Grade;
@@ -44,73 +43,45 @@
 
             $modify = 0;
 
-            $categories        = Category::all();
+            $categories        = OrientationCategory::all();
             $orientations      = Orientation::all();
             $grades            = Grade::all();
-            $gradeLessons      = GradeLesson::all();
-            $topicGradeLessons = TopicGradeLesson::all();
 
-            return view('admin.dashboard.lessonExam.form', compact('modify', 'categories', 'orientations', 'grades', 'gradeLessons', 'topicGradeLessons'));
+            return view('admin.dashboard.lessonExam.form', compact('modify', 'categories', 'orientations', 'grades'));
         }
 
 
         public function add(Request $request)
         {
 
-            $stepOne = Validator::make($request->only(['title', 'price', 'description']), [
-
+            $this->validate($request,
+			[
+                'orientation' => 'required',
+                'category'    => 'required',
+                'grade'       => 'required',
                 'title'       => 'required|string|max:20',
+                'activeDate'  => 'required',
                 'price'       => 'required|integer|min:0',
                 'description' => 'nullable|string|max:300',
                 'answerSheet' => 'nullable|file|mimes:pdf|max:3000',
-                'duration'    => 'nullable|integer|min:0'
-
-            ]);
-
-            if ($stepOne->fails())
-            {
-                return redirect()->back()->withInput($request->all())->withErrors($stepOne->errors());
-            }
-
-            if ($request->input('itemType') == 'LESSON')
-            {
-                $stepThree = Validator::make($request->only(['gradeLessons']), [
-
-                    'gradeLessons' => 'required',
-
-                ]);
-            }
-            else
-            {
-                $stepThree = Validator::make($request->only(['gradeLesson', 'topics']), [
-
-                    'gradeLesson' => 'required|exists:grade_lesson:id',
-                    'topics'      => 'required|exists:topic_grade_lesson:id',
-
-                ]);
-            }
-
-
-            if ($stepThree->fails())
-            {
-
-                return redirect()->back()->withInput($request->all())->withErrors($stepThree->errors());
-            }
+                'duration'    => 'required|integer|min:0'
+			]
+		);
 
 
             $lessonExam = new LessonExam();
-
-            $lessonExam->title       = $request->input('title');
-            $lessonExam->price       = $request->input('price');
-            $lessonExam->description = $request->input('description');
-            $lessonExam->itemType    = $request->input('itemType');
+            $lessonExam->orientationCategoryId     = $request->input('category');
+            $lessonExam->gradeId                   = $request->input('grade');
+            $lessonExam->title                     = $request->input('title');
+            $lessonExam->price                     = $request->input('price');
+            $lessonExam->description               = $request->input('description');
             // convert and insert activeDate
-            $jalalian               = Lib::convertFaToEn($request->input('activeDate'));
-            $dateTime               = CalendarUtils::createDatetimeFromFormat('Y/m/d', $jalalian);
-            $carbon                 = Carbon::createFromTimestamp($dateTime->getTimestamp());
-            $lessonExam->activeDate = $carbon->toDateTimeString();
+            $jalalian                              = Lib::convertFaToEn($request->input('activeDate'));
+            $dateTime                              = CalendarUtils::createDatetimeFromFormat('Y/m/d', $jalalian);
+            $carbon                                = Carbon::createFromTimestamp($dateTime->getTimestamp());
+            $lessonExam->activeDate                = $carbon->toDateTimeString();
             //end activeDate section
-            $lessonExam->duration = $request->input('duration');
+            $lessonExam->duration                  = $request->input('duration');
 
             $lessonExam->save();
 
@@ -127,32 +98,6 @@
             }
             //end answerSheet section
 
-            if ($request->input('itemType') == 'LESSON')
-            {
-                foreach ($request->input('gradeLessons') as $gradeLessonId)
-                {
-                    $examGradeLesson = new ExamGradeLesson();
-
-                    $examGradeLesson->examId        = $lessonExam->id;
-                    $examGradeLesson->gradeLessonId = $gradeLessonId;
-
-                    $examGradeLesson->save();
-                }
-            }
-            else
-            {
-                foreach ($request->input('topics') as $topicGradeLessonId)
-                {
-                    $topicExam = new TopicExam();
-
-                    $topicExam->lessonExamId       = $lessonExam->id;
-                    $topicExam->topicGradeLessonId = $topicGradeLessonId;
-
-                    $topicExam->save();
-                }
-            }
-
-
             return redirect()->route('admin_exams');
         }
 
@@ -165,12 +110,10 @@
             $lessonExam = LessonExam::query()->where('exm', $exm)->first();
 
             $grades                = Grade::all();
-            $orientationCategories = OrientationCategory::all();
+            $categories            = OrientationCategory::all();
             $orientations          = Orientation::all();
-            $gradeLessons          = GradeLesson::all();
-            $topicGradeLessons     = TopicGradeLesson::all();
 
-            return view('admin.dashboard.lessonExam.form', compact('modify', 'lessonExam', 'gradeLessons', 'orientationCategories', 'grades', 'orientations', 'topicGradeLessons'));
+            return view('admin.dashboard.lessonExam.form', compact('modify', 'lessonExam','categories', 'grades', 'orientations'));
         }
 
 
