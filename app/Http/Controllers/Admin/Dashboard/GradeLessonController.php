@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\model\OrientationCategory;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Validation\Rule;
 
 class GradeLessonController extends Controller
 {
@@ -124,10 +124,10 @@ class GradeLessonController extends Controller
 		$lesson      = Lesson::query()->where('id', $request->input('lesson'))->first();
 
 
-		$code = ['code' => $orientation->code . $grade->code . $lesson->code];
+        $code = ['code' => $orientation->code . $grade->code . $lesson->code];
 
 		$v = Validator::make($code, [
-			'code' => 'unique:grade_lesson,code',
+			'code' => [Rule::unique('grade_lesson', 'code')->ignore($gradeLesson)],
 		]);
 
 		if ($v->fails())
