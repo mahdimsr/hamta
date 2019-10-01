@@ -28,11 +28,11 @@
 								<td>{{$admin->persianlevel}}</td>
 								<td>
 
-									<a href="{{route('admin_admins_remove',['id' => $admin->id])}}" id="remove-btn" type="button"
+									<a href="{{route('admin_admins_remove',['username' => $admin->username])}}" id="remove-btn" type="button"
 											style="font-size: 12px;" class="btn btn-danger">
 										حذف
 									</a>
-									<a href="{{route('admin_admins_editShow',['id' => $admin->id])}}" style="font-size: 12px;" class="btn btn-info">
+									<a href="{{route('admin_admins_editShow',['username' => $admin->username])}}" style="font-size: 12px;" class="btn btn-info">
 										ویرایش
 									</a>
 

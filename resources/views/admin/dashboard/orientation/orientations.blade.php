@@ -25,11 +25,11 @@
 								<td>{{$orientation->title}}</td>
 								<td>
 
-									<a href="{{route('admin_orientations_remove',['id' => $orientation->id])}}" id="remove-btn" type="button"
+									<a href="{{route('admin_orientations_remove',['url' => $orientation->url])}}" id="remove-btn" type="button"
 											style="font-size: 12px;" class="btn btn-danger">
 										حذف
 									</a>
-									<a href="{{route('admin_orientations_editShow',['id' => $orientation->id])}}" style="font-size: 12px;" class="btn btn-info">
+									<a href="{{route('admin_orientations_editShow',['url' => $orientation->url])}}" style="font-size: 12px;" class="btn btn-info">
 										ویرایش
 									</a>
 

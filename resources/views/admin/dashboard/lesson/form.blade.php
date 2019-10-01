@@ -46,7 +46,7 @@
 
 				<div class="content">
 					<form method="post"
-						  action="{{$modify == 0? route('admin_lessons_add') : route('admin_lessons_edit',['id' => $lesson->id])}}">
+						  action="{{$modify == 0? route('admin_lessons_add') : route('admin_lessons_edit',['url' => $lesson->url])}}">
 
 						{{csrf_field()}}
 

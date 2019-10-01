@@ -66,20 +66,20 @@ class RegisterController extends Controller
 
 
 
-	public function editShow($id)
+	public function editShow($username)
 	{
 		$modify = 1;
 
-		$admin = Admin::query()->where('id', $id)->first();
+		$admin = Admin::query()->where('username', $username)->first();
 
 		return view('admin.dashboard.admin.form', compact('admin', 'modify'));
 	}
 
 
 
-	public function edit(Request $request, $id)
+	public function edit(Request $request, $username)
 	{
-		$admin = Admin::query()->where('id', $id)->first();
+		$admin = Admin::query()->where('username', $username)->first();
 
 
 		$this->validate($request,
@@ -104,10 +104,10 @@ class RegisterController extends Controller
 		return redirect()->route('admin_admins');
 	}
 
-	public function remove($id)
+	public function remove($username)
 	{
 
-		$admin = Admin::query()->where('id', $id)->first();
+		$admin = Admin::query()->where('username', $username)->first();
 
 		$admin->delete();
 

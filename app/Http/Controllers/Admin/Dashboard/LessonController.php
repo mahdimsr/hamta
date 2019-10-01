@@ -20,10 +20,10 @@
         }
 
 
-        public function remove($id)
+        public function remove($url)
         {
 
-            $lesson = Lesson::query()->where('id', $id)->first();
+            $lesson = Lesson::query()->where('url', $url)->first();
 
             $lesson->delete();
 
@@ -63,21 +63,21 @@
         }
 
 
-        public function editShow($id)
+        public function editShow($url)
         {
 
             $modify = 1;
 
-            $lesson = Lesson::query()->where('id', $id)->first();
+            $lesson = Lesson::query()->where('url', $url)->first();
 
             return view('admin.dashboard.lesson.form', compact('lesson', 'modify'));
         }
 
 
-        public function edit(Request $request, $id)
+        public function edit(Request $request, $url)
         {
 
-            $lesson = Lesson::query()->where('id', $id)->first();
+            $lesson = Lesson::query()->where('url', $url)->first();
 
             $this->validate($request, [
 

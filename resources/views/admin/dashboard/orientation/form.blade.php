@@ -46,7 +46,7 @@
 				</div>
 				<div class="content">
 					<form method="post"
-						  action="{{  $modify == 0 ? route('admin_orientations_add') : route('admin_orientations_edit', ['id' => $orientation->id]) }}">
+						  action="{{  $modify == 0 ? route('admin_orientations_add') : route('admin_orientations_edit', ['url' => $orientation->url]) }}">
 
 						{{csrf_field()}}
 

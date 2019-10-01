@@ -43,7 +43,7 @@
 				@endif
 
 				<div class="content">
-					<form method="POST" action="{{route('admin_scholarships_answer',['id' => $scholarship->id])}}">
+					<form method="POST" action="{{route('admin_scholarships_answer',['url' => $scholarship->url])}}">
 
 						{{csrf_field()}}
 

@@ -46,7 +46,7 @@
 
 				<div class="content">
 					<form method="post"
-						  action="{{  $modify == 0 ? route('admin_admins_add') : route('admin_admins_edit', ['id' => $admin->id]) }}">
+						  action="{{  $modify == 0 ? route('admin_admins_add') : route('admin_admins_edit', ['username' => $admin->username]) }}">
 
 						{{csrf_field()}}
 						<div class="row">

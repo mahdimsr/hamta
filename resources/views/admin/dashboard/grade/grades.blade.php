@@ -28,12 +28,12 @@
 								<td>{{$grade->title}}</td>
 								<td>
 
-									<a href="{{route('admin_grades_remove',['id' => $grade->id])}}" id="remove-btn"
+									<a href="{{route('admin_grades_remove',['url' => $grade->url])}}" id="remove-btn"
 									   type="button"
 									   style="font-size: 12px;" class="btn btn-danger">
 										حذف
 									</a>
-									<a href="{{route('admin_grades_editShow',['id' => $grade->id])}}"
+									<a href="{{route('admin_grades_editShow',['url' => $grade->url])}}"
 									   style="font-size: 12px;" class="btn btn-info">
 										ویرایش
 									</a>

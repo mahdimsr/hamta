@@ -47,7 +47,7 @@
 
 				<div class="content">
 					<form method="post"
-						  action="{{  $modify == 0 ? route('admin_grades_add') : route('admin_grades_edit', ['id' => $grade->id]) }}">
+						  action="{{  $modify == 0 ? route('admin_grades_add') : route('admin_grades_edit', ['url' => $grade->url]) }}">
 
 						{{csrf_field()}}
 
