@@ -142,7 +142,7 @@ input[type="text"] {
     box-sizing: border-box;
     width: 100%;
     height: calc(3em + 2px);
-
+    margin-bottom: 15px;
     padding: 1em;
     border: 1px solid #ccc;
     border-radius: 1.5em;
@@ -150,29 +150,31 @@ input[type="text"] {
     resize: none;
     outline: none;
 }
-input[type="text"][required]:focus {
+input[type="text"]:focus {
+    transition: .7s;
+    box-shadow: 2px 3px 15px 0px rgba(52, 223, 224, 0.46), -1px 1px 7px 0px rgba(84, 152, 196, 0.06);
     border-color: #00bafa;
 }
-input[type="text"][required]:focus + label[placeholder]:before {
+input[type="text"]:focus + label[placeholder]:before {
     color: #00bafa;
 }
-input[type="text"][required]:focus + label[placeholder]:before,
-input[type="text"][required]:valid + label[placeholder]:before {
+input[type="text"]:focus + label[placeholder]:before,
+input[type="text"]:valid + label[placeholder]:before {
     transition-duration: 0.2s;
     -webkit-transform: translate(0, -1.5em) scale(0.9, 0.9);
     transform: translate(0, -1.5em) scale(0.9, 0.9);
 }
-input[type="text"][required]:invalid + label[placeholder][alt]:before {
+input[type="text"]:invalid + label[placeholder][alt]:before {
     content: attr(alt);
 }
-input[type="text"][required] + label[placeholder] {
+input[type="text"] + label[placeholder] {
     display: block;
     pointer-events: none;
     line-height: 1.25em;
     margin-top: calc(-3em - 2px);
     margin-bottom: calc((3em - 1em) + 2px);
 }
-input[type="text"][required] + label[placeholder]:before {
+input[type="text"] + label[placeholder]:before {
     content: attr(placeholder);
     display: inline-block;
     margin: 0 calc(1em + 2px);
@@ -462,72 +464,66 @@ input[type="text"][required] + label[placeholder]:before {
 }
 
 /*step by step  */
-
-
-.stepwizard-step p {
-    margin-top: 10px;
+.tab {
+    display: none;
 }
 
-.stepwizard-row {
-    display: table-row;
-}
-
-.stepwizard {
-    display: table;
-    width: 100%;
-    position: relative;
-}
-
-.stepwizard-step button[disabled] {
-    opacity: 1 !important;
-    filter: alpha(opacity=100) !important;
-}
-
-.stepwizard-row:before {
-    top: 14px;
-    bottom: 0;
-    position: absolute;
-    content: " ";
-    width: 100%;
-    height: 1px;
-    background-color: #ccc;
-    z-order: 0;
+/* Make circles that indicate the steps of the form: */
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
 
 }
 
-.stepwizard-step {
-    display: table-cell;
-    text-align: center;
-    position: relative;
-}
-
-.btn-circle {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    padding: 6px 0;
-    font-size: 12px;
-    line-height: 1.428571429;
-    border-radius: 15px;
-
+/* Mark the active step: */
+.step.active {
+    opacity: .7;
+    transition: .7s;
+    background-color: #ff00ad;
 
 }
-.btn1{
-    background-color: rgba(255, 255, 255, 0.36);
-    color: #535353;
-    border: rgb(0, 0, 0);
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+    background-color: #4CAF50;
+}
+.sina{
+    display: none;
+}
+.sina1{
+
+    display: block;
+
 }
 
 
+/*btn multistep style */
+.btn-sina-next{
+    font-size: 20px;
+    background-color: #ffffff;
+    border-color: rgba(228, 203, 119, 0.43);
+    border-radius: 10px;
+    transition: .6s;
+}
+.btn-sina-next:hover{
+    background-color: rgba(70, 255, 248, 0.67);
+    box-shadow: 2px 3px 15px 0px rgba(52, 223, 224, 0.46), -1px 1px 7px 0px rgba(84, 152, 196, 0.06);}
 
 
 
-
+/* button style  */
 .ctrl-standard.fx-bubbleDown {
     color: #81a5ff;
     border-color: #007ef0;
-    font-size: 15px;
+    font-size: 18px;
 }
+
 .ctrl-standard.fx-bubbleDown::after {
     bottom: auto;
     border-radius: 0 0 $right-val2 $left-val2/0 0 $right-val1 $left-val1;
@@ -578,7 +574,7 @@ input[type="text"][required] + label[placeholder]:before {
 }
 [class*="ctrl-"] {
     padding: 5ox 10px;
-    border-radius: 2px;
+    border-radius: 10px;
     border: 1px solid #231f20;
 }
 [class*="ctrl-"][class*="fx-"]:hover,
@@ -639,4 +635,121 @@ input[type="text"][required] + label[placeholder]:before {
 :checked + .fx-sliderIn::after,
 .fx-sliderIn.active::after {
     width: 300%;
+}
+/* button style */
+
+.bubbly-button {
+
+    display: inline-block;
+    font-size: 1em;
+    padding: .7em 1.5em;
+
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #11d6dc;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+    box-shadow: 0 2px 25px rgba(33, 255, 242, 0.5);
+}
+.bubbly-button:focus {
+    outline: 0;
+}
+.bubbly-button:before, .bubbly-button:after {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 140%;
+    height: 100%;
+    left: -20%;
+    z-index: -1000;
+    transition: all ease-in-out 0.5s;
+    background-repeat: no-repeat;
+}
+.bubbly-button:before {
+    display: none;
+    top: -75%;
+    background-image: radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, transparent 20%, #ff0081 20%, transparent 30%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, transparent 10%, #ff0081 15%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%);
+    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+}
+.bubbly-button:after {
+    display: none;
+    bottom: -75%;
+    background-image: radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, transparent 10%, #ff0081 15%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%);
+    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+}
+.bubbly-button:active {
+    transform: scale(0.9);
+    background-color: #11d6dc;
+    box-shadow: 0 2px 25px rgba(33, 255, 242, 0.5);
+}
+.bubbly-button.animate:before {
+    display: block;
+    animation: topBubbles ease-in-out 0.75s forwards;
+}
+.bubbly-button.animate:after {
+    display: block;
+    animation: bottomBubbles ease-in-out 0.75s forwards;
+}
+
+/* part2 button style */
+
+.bubbly-button2 {
+
+    display: inline-block;
+    font-size: 1em;
+    padding: .7em 1.5em;
+
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #dc77b1;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+    box-shadow: 0 2px 25px rgba(255, 145, 248, 0.5);
+}
+.bubbly-button2:focus {
+    outline: 0;
+}
+.bubbly-button2:before, .bubbly-button:after {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 140%;
+    height: 100%;
+    left: -20%;
+    z-index: -1000;
+    transition: all ease-in-out 0.9s;
+    background-repeat: no-repeat;
+}
+.bubbly-button:before {
+    display: none;
+    top: -75%;
+    background-image: radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, transparent 20%, #ff0081 20%, transparent 30%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, transparent 10%, #ff0081 15%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%);
+    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+}
+.bubbly-button:after {
+    display: none;
+    bottom: -75%;
+    background-image: radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, transparent 10%, #ff0081 15%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%);
+    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+}
+.bubbly-button2:active {
+    transform: scale(0.9);
+    background-color: #dc77b1;
+    box-shadow: 0 2px 25px rgba(255, 148, 231, 0.5);
+}
+.bubbly-button2.animate:before {
+    display: block;
+    animation: topBubbles ease-in-out 0.95s forwards;
+}
+.bubbly-button2.animate:after {
+    display: block;
+    animation: bottomBubbles ease-in-out 0.95s forwards;
 }
