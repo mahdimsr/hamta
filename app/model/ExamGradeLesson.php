@@ -22,35 +22,6 @@ class ExamGradeLesson extends Model
 
 
 
-	protected static function boot()
-	{
-		parent::boot();
-
-		self::creating(function($model)
-		{
-
-			$lessonExam  = LessonExam::query()->find($model->examId);
-			$gradeLesson = GradeLesson::query()->find($model->gradeLessonId);
-
-			$char = substr(md5(uniqid(rand(), true)), 0, 1);
-			$code = 'EXM-lesson-' . $char . '-' . $gradeLesson->code;
-
-			while (LessonExam::query()->where('exm', $code)->exists())
-			{
-				$char = substr(md5(uniqid(rand(), true)), 0, 1);
-				$code = 'EXM-lesson-' . $char . '-' . $gradeLesson->code;
-			}
-
-			$lessonExam->exm = $code;
-
-			$lessonExam->update();
-
-
-		});
-	}
-
-
-
 	public function lessonExam()
 	{
 		return $this->belongsTo(LessonExam::class, 'examId');
