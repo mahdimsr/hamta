@@ -47,30 +47,34 @@
                 </div>
 
                 <div class="content">
-                    <form method="post" action="{{ $modify==0 ? route('admin_lExam_add') : ''}}" role="form" enctype="multipart/form-data">
+                    <form method="post"
+                          action="{{ $modify==0 ? route('admin_lExam_add') : route('admin_ltlExams_edit',[ 'exm' => $lessonExam->exm])}}" role="form"
+                          enctype="multipart/form-data">
 
                         {{csrf_field()}}
 
                         <div class="row">
 
-                                <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label">گروه درسی</label>
-                                            <select name="category" class="form-control" id="cat-select">
-                                                <option id="0" value="" disabled selected>گروه درسی آزمون را انتخاب کنید</option>
-                                                @foreach($categories as $category)
-                                                    <option id="{{$category->orientationId}}"
-                                                            value="{{$category->id}}"
-                                                        {{old('category') == $category->id ? 'selected' : ''}}{{ $modify==1 && !old('category') && $lessonExam->orientationCategoryId == $category->id ? 'selected' : '' }}>
-                                                        {{$category->category->title }} - {{ $category->getPersianTypeAttribute() }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                <small>{{ $errors->first('category') }}</small>
-                                            </div>
-                                        </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">گروه درسی</label>
+                                    <select name="category" class="form-control" id="cat-select">
+                                        <option id="0" value="" disabled selected>گروه درسی آزمون را انتخاب کنید
+                                        </option>
+                                        @foreach($categories as $category)
+                                            <option id="{{$category->orientationId}}"
+                                                    value="{{$category->id}}"
+                                                {{old('category') == $category->id ? 'selected' : ''}}{{ $modify==1 && !old('category') && $lessonExam->orientationCategoryId == $category->id ? 'selected' : '' }}>
+                                                {{$category->category->title }}
+                                                - {{ $category->getPersianTypeAttribute() }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('category') }}</small>
                                     </div>
+                                </div>
+                            </div>
 
                             <div class="col-md-6">
                                 <label class="control-label">گرایش</label>
@@ -78,7 +82,7 @@
                                     <option id="0" value="" disabled selected>گرایش آزمون را انتخاب کنید</option>
                                     @foreach($orientations as $orientation)
                                         <option
-                                                value="{{$orientation->id}}"
+                                            value="{{$orientation->id}}"
                                             {{old('orientation') == $orientation->id ? 'selected' : ''}}{{ $modify==1 && !old('orientation') && $lessonExam->orientationCategory->orientation->id == $orientation->id ? 'selected' : '' }}>
                                             {{$orientation->title}}
                                         </option>
@@ -91,32 +95,33 @@
                         </div>
 
                         <div class="row">
-                                    <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label">نام</label>
-                                                <input name="title" class="form-control" type="text"
-                                                       maxlength="20" tabindex="1" value="{{old('title')}}{{ $modify==1 && !old('title') && $lessonExam->title ? $lessonExam->title : '' }}">
-                                            </div>
-                                            <div class="invalid-feedback">
-                                                <small>{{ $errors->first('title') }}</small>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                                <label class="control-label">پایه</label>
-                                                <select name="grade" class="form-control" id="grade-select">
-                                                    <option id="0" disabled selected>پایه آزمون را انتخاب کنید</option>
-                                                    @foreach($grades as $grade)
-                                                        <option id="{{$grade->id}}"
-                                                                value="{{$grade->id}}"
-                                                            {{old('grade') == $grade->id ? 'selected' : ''}}{{ $modify==1 && !old('grade') && $lessonExam->gradeId == $grade->id ? 'selected' : '' }}>
-                                                            {{$grade->title}}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                <div class="invalid-feedback">
-                                                    <small>{{ $errors->first('grade') }}</small>
-                                                </div>
-                                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">نام</label>
+                                    <input name="title" class="form-control" type="text"
+                                           maxlength="20" tabindex="1"
+                                           value="{{old('title')}}{{ $modify==1 && !old('title') && $lessonExam->title ? $lessonExam->title : '' }}">
+                                </div>
+                                <div class="invalid-feedback">
+                                    <small>{{ $errors->first('title') }}</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="control-label">پایه</label>
+                                <select name="grade" class="form-control" id="grade-select">
+                                    <option id="0" disabled selected>پایه آزمون را انتخاب کنید</option>
+                                    @foreach($grades as $grade)
+                                        <option id="{{$grade->id}}"
+                                                value="{{$grade->id}}"
+                                            {{old('grade') == $grade->id ? 'selected' : ''}}{{ $modify==1 && !old('grade') && $lessonExam->gradeId == $grade->id ? 'selected' : '' }}>
+                                            {{$grade->title}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <div class="invalid-feedback">
+                                    <small>{{ $errors->first('grade') }}</small>
+                                </div>
+                            </div>
 
                         </div>
 
@@ -134,16 +139,17 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>تاریخ فعال شدن آزمون </label>
-                                        <input dir="rtl" id="activeDate" name="activeDate" type="text"
-                                               class="form-control"
-                                               tabindex="3" value="{{ old('activeDate') }}{{ $modify==1 && !old('activeDate') && $lessonExam->activeDate ? $lessonExam->activeDate : '' }}">
-                                        <div class="invalid-feedback">
-                                            <small>{{ $errors->first('activeDate') }}</small>
-                                        </div>
+                                <div class="form-group">
+                                    <label>تاریخ فعال شدن آزمون </label>
+                                    <input dir="rtl" id="activeDate" name="activeDate" type="text"
+                                           class="form-control"
+                                           tabindex="3"
+                                           value="{{ old('activeDate') }}{{ $modify==1 && !old('activeDate') && $lessonExam->activeDate ? $lessonExam->activeDate : '' }}">
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('activeDate') }}</small>
                                     </div>
                                 </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
@@ -184,8 +190,8 @@
                             </div>
                         </div>
 
-						<button type="submit" class="btn btn-info btn-fill pull-left" tabindex="4">اعمال</button>
-						<div class="clearfix"></div>
+                        <button type="submit" class="btn btn-info btn-fill pull-left" tabindex="4">اعمال</button>
+                        <div class="clearfix"></div>
 
 
                     </form>
@@ -204,37 +210,37 @@
 
         $('#activeDate').pDatepicker({
 
-            autoClose: true,
-            initialValue: true,
-            format: 'YYYY/MM/DD',
-            responsive: true,
-            toolbox: {
-                calendarSwitch: {
-                    enabled: false
+            autoClose    : true,
+            initialValue : true,
+            format       : 'YYYY/MM/DD',
+            responsive   : true,
+            toolbox      : {
+                calendarSwitch : {
+                    enabled : false
                 },
-                submitButton:{enabled:true},
-                todayButton:{
-                    enabled:false
+                submitButton   : {enabled : true},
+                todayButton    : {
+                    enabled : false
                 }
             }
         });
 
-        var id,options;
-        var categories   = $('#cat-select option').clone();
+        var id, options;
+        var categories = $('#cat-select option').clone();
 
-        $("#ori-select").change(function()
+        $("#ori-select").change(function ()
         {
-            id = $("#ori-select").val();
+            id      = $("#ori-select").val();
             options = categories.filter('[id=' + id + '],[id=0]');
             $('#cat-select').html(options);
-            $('#cat-select').prop('selectedIndex',0).trigger('change');
+            $('#cat-select').prop('selectedIndex', 0).trigger('change');
 
         });
 
-        if($("#ori-select").val()!='')
+        if ($("#ori-select").val() != '')
         {
 
-            id = $("#ori-select").val();
+            id      = $("#ori-select").val();
             options = categories.filter('[id=' + id + '],[id=0]');
             $('#cat-select').html(options);
 
