@@ -48,7 +48,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
                 <div class="container">
-                  <a class="navbar-brand ml-auto" href="{{ route('student_login_show') }}"><strong>همپا | دانش آموزان</strong></a>
+                  <a class="navbar-brand" href="{{ route('student_login_show') }}"><strong>همپا | دانش آموزان</strong></a>
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7"
                     aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -80,7 +80,7 @@
 
               <!-- Form with header -->
               <div class="card wow fadeIn" data-wow-delay="0.3s">
-                <div class="card-body">
+                <div class="card-body mx-3">
 
                   <!-- Header -->
                   <div class="form-header purple-gradient">
@@ -122,18 +122,67 @@
                   </div>
                   <hr class="young-passion-gradient color-block mb-3 mx-auto rounded-circle z-depth-1">
                       <p class="text-center">
-                  <a href="#" class="font-weight-bold cyan-lighter-hover">رمز عبور خود را فراموش کرده ام</a></p>
-                </div>
-                </div>
-              </div>
-              <!-- Form with header -->
+                  <a href="#" class="font-weight-bold cyan-lighter-hover" data-toggle="modal" data-target="#darkModalForm">رمز عبور خود را فراموش کرده ام</a></p>
+                  <!-- Modal -->
 
-            </div>
-          </div>
-        </div>
-      </div>
-        </form>
-    </section>
+
+
+                    <div class="modal fade" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog form-dark" role="document">
+                      <!--Content-->
+                      <div class="modal-content card card-image">
+                        <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+                          <!--Header-->
+                          <div class="modal-header text-center pb-4">
+                            <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>رمز خود را فراموش</strong> <a
+                                class="blue-text font-weight-bold"><strong> کردید؟</strong></a></h3>
+                            <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <!--Body-->
+                          <div class="modal-body">
+                            <!--Body-->
+                            <div class="md-form mb-5">
+                              <input type="email" id="Form-email5" class="form-control validate white-text">
+                              <label  for="Form-email5">ایمیل یا شماره تلفن خود را وارد کنید</label>
+                            </div>
+
+                            <div class="md-form pb-3">
+                                <button class="btn purple-gradient">دکمه</button>
+
+                   
+                            </div>
+
+                      
+
+                            </div>
+                
+
+                            </div>
+                            <!--Grid row-->
+
+                          </div>
+                        </div>
+                      </div>
+                      <!--/.Content-->
+                    </div>
+                    </div>
+                    <!-- Modal -->
+
+
+                                    </div>
+                                    </div>
+                                  </div>
+                                  <!-- Form with header -->
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                            </form>
+                        </section>
 
 <!-- Footer -->
 <footer class="page-footer font-small blue">

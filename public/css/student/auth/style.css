@@ -13,6 +13,7 @@ body{
 	background-repeat: no-repeat;
     background-size: cover;
     font-family: IRANSans-web, serif !important;
+    
 
 }
 
@@ -22,23 +23,17 @@ body{
 }
 .card-body{
     background-color: white;
+    padding-right: 2rem;
+    padding-right: 2rem;
+    
 }
 .form-check-label{
     margin-top: 30px;
     margin-left: 200px;
     margin-bottom: 20px;
 }
-a{
-    margin-left: 200px;
-}
 
-small .red-text{
-    position: absolute;
-    margin-left: 70px;
-    margin-bottom: 40px;
-    text-align:right !important;
-    font-size: 12px;
-}
+
 hr{
     padding: 2px
 }
@@ -49,7 +44,8 @@ hr{
     color: #007bff !important
 }
 .fas{
-    color: #007bff !important
+    color: #007bff !important;
+    margin-left: 10px
 }
 
 .loginbg{
@@ -185,3 +181,13 @@ transform: scaleX(1);
 }
 
 
+.md-form{
+    text-align: right;
+}
+
+.form-check{
+    padding-left: 0
+}
+.card.card-cascade .view.view-cascade, .card.card-image{
+    background-color: #7960e6
+}
