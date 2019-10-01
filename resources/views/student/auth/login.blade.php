@@ -146,7 +146,7 @@
                             <!--Body-->
                             <div class="md-form mb-5">
                               <input type="email" id="Form-email5" class="form-control validate white-text">
-                              <label data-error="wrong" data-success="right" for="Form-email5">ایمیل یا شماره تلفن خود را وارد کنید</label>
+                              <label  for="Form-email5">ایمیل یا شماره تلفن خود را وارد کنید</label>
                             </div>
 
                             <div class="md-form pb-3">
