@@ -188,3 +188,6 @@ transform: scaleX(1);
 .form-check{
     padding-left: 0
 }
+.card.card-cascade .view.view-cascade, .card.card-image{
+    background-color: #7960e6
+}
