@@ -98,7 +98,7 @@
             }
             //end answerSheet section
 
-            return redirect()->route('admin_exams');
+            return redirect()->route('admin_ltl_exams');
         }
 
 
