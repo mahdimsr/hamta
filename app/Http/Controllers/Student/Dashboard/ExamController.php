@@ -20,27 +20,4 @@ class ExamController extends Controller
 		return view('student.dashboard.exams', compact('student'));
 	}
 
-
-
-	public function addToCart(Request $r)
-	{
-
-		$cart = new Cart();
-
-		$cart->studentId = Auth::guard('student')->id();
-
-		$cart->save();
-
-		$lessonExam = LessonExam::query()->where('exm', $r->input('exm'))->first();
-
-
-		$cartExam = new CartExam();
-
-		$cartExam->examId = $lessonExam->id;
-		$cartExam->cartId = $cart->id;
-
-		$cartExam->save();
-
-		return count($cart->cartExams);
-	}
 }

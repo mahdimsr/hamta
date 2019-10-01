@@ -15,7 +15,7 @@ use Morilog\Jalali\CalendarUtils;
 use App\Lib\Lib;
 
 
-class DashboardController extends Controller
+class ProfileController extends Controller
 {
 
 	public function profile()
@@ -35,15 +35,17 @@ class DashboardController extends Controller
 	public function update(Request $request)
 	{
 
-		$student = Auth::guard('student')->user();
+        $student = Auth::guard('student')->user();
 
+        if($student->isComplete==0)
+        {
 		$this->validate($request,
 			[
 				'name'         => 'required',
 				'familyName'   => 'required',
 				'birthday'     => 'required',
 				'email'        => 'required|email|unique:student,email',
-				'nationalCode' => 'required|digits:10',
+				'nationalCode' => 'required|digits:10|unique:student,nationalCode',
                 'city'         => 'required',
                 'province'     => 'required',
 				'address'      => 'required|string|max:200',
@@ -94,8 +96,9 @@ class DashboardController extends Controller
 		$student->isComplete    = 1;
 
 		$student->save();
+        }
 
-		return redirect()->route('student_dashboard_profile');
+        return redirect()->route('student_dashboard_profile');
 
     }
 
