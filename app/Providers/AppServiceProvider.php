@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,5 +25,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        view()->composer('*', function($view){
+            $view->with('adminUser', Auth::guard('admin')->user());
+          });
+
+          view()->composer('*', function($view){
+            $view->with('studentUser', Auth::guard('student')->user());
+          });
     }
 }

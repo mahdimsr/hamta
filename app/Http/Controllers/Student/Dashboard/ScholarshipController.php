@@ -10,7 +10,7 @@ use App\model\Scholarship as Scholarship;
 
 class ScholarshipController extends Controller
 {
-    //
+
 
     public function scholarship()
     {
@@ -38,9 +38,6 @@ class ScholarshipController extends Controller
         $validator = Validator::make($studentId,
         [
 			'stdMessage' => 'unique:scholarship,studentId',
-        ],
-        [
-			'stdMessage.unique' => 'شما قبلا درخواست بورسیه داده اید.',
         ]
         );
 

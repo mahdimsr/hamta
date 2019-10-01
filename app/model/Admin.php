@@ -25,7 +25,7 @@ class Admin extends Authenticatable
 
 	protected $table = 'admin';
 
-
+	protected $appends = ['persianlevel'];
 
 	public function parent()
 	{
@@ -37,5 +37,23 @@ class Admin extends Authenticatable
 	public function children()
 	{
 		return $this->hasMany(Admin::class, 'parentId', 'id');
+	}
+
+	public function getPersianLevelAttribute()
+	{
+		return $this->persianEnum($this->level);
+	}
+
+	public function persianEnum($enumKey)
+	{
+		$enumArray = [
+
+			'A'         => 'سوپر ادمین',
+			'B' 		=> 'ادمین',
+			'C'         => 'کارشناس',
+			'D'         => 'کاربر معمولی',
+		];
+
+		return $enumArray[$enumKey];
 	}
 }

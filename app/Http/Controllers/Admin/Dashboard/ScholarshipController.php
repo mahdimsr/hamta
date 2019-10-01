@@ -19,18 +19,18 @@ class ScholarshipController extends Controller
 
 
 
-	public function show($url)
+	public function show($id)
 	{
-		$scholarship = Scholarship::query()->where('url', $url)->first();
+		$scholarship = Scholarship::query()->where('id', $id)->first();
 
 		return view('admin.dashboard.scholarship.form', compact('scholarship'));
 	}
 
 
 
-	public function answer(Request $request, $url)
+	public function answer(Request $request, $id)
 	{
-		$scholarship = Scholarship::query()->where('url', $url)->first();
+		$scholarship = Scholarship::query()->where('id', $id)->first();
 
 		$this->validate($request, [
 

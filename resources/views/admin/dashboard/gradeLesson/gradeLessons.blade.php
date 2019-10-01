@@ -6,7 +6,7 @@
 		<div class="col-md-12">
 			<div class="card">
 				<div class="header">
-					<h4 class="title text-right">درس های هرپایه</h4>
+					<h4 class="title text-right">دروس مختص هر پایه</h4>
 					<a href="{{route('admin_gradeLessons_addShow')}}" style="font-size: 12px;" class="btn btn-info pull-right btn-table-header">
 						افزودن درس جدید
 					</a>
@@ -16,7 +16,7 @@
 						<thead class="text-center">
 						<th>ردیف</th>
 						<th>کد درس</th>
-                        <th>عنوان</th>
+                        <th>توضیحات</th>
 						<th>فرآیند</th>
 						</thead>
 						<tbody class="text-center">

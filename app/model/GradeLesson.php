@@ -53,8 +53,9 @@
             $lessonTitle      = $this->lesson->title;
             $gradeTitle       = $this->grade->title;
             $orientationTitle = $this->orientationCategory->orientation->title;
+            $categoryTitle    = $this->orientationCategory->category->title;
 
-            return $orientationTitle . ' - ' . $lessonTitle . ' ' . $gradeTitle;
+            return $orientationTitle .' - '. $categoryTitle .' - ' . $lessonTitle . ' - ' . $gradeTitle;
         }
 
 

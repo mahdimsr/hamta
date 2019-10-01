@@ -27,7 +27,7 @@ class AdminTableSeeder extends Seeder
 
 		DB::table('admin')->insert([
 
-			'fullName'   => 'ممد میتی منصوری',
+			'fullName'   => 'محمد مهدی منصوری',
 			'username'   => 'mahdi-username',
 			'password'   => Hash::make('123456789'),
 			'created_at' => Carbon::now(),

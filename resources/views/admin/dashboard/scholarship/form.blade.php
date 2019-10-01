@@ -43,7 +43,7 @@
 				@endif
 
 				<div class="content">
-					<form method="POST" action="{{route('admin_scholarships_answer',['url' => $scholarship->url])}}">
+					<form method="POST" action="{{route('admin_scholarships_answer',['id' => $scholarship->id])}}">
 
 						{{csrf_field()}}
 
@@ -52,7 +52,7 @@
 								<div class="form-group">
 									<label>پیغام ادمین</label>
 									<textarea dir="rtl" name="adminMessage" rows="5" class="form-control"
-											  placeholder="به درخواست پاسخ دهید" required>{{$scholarship->adminMessage}}</textarea>
+											  placeholder="به درخواست پاسخ دهید">{{$scholarship->adminMessage}}</textarea>
 								</div>
 							</div>
 						</div>
@@ -60,7 +60,7 @@
 							<div class="col-md-12">
 								<div class="form-group">
 									<label>پیغام ادمین</label>
-									<select dir="rtl" name="status" class="form-control" required>
+									<select dir="rtl" name="status" class="form-control">
 										<option value="IN-PROGRESS" {{ old('status')==$scholarship->status? 'selected' : '' }}>درحال پردازش</option>
 										<option value="ACCEPT" {{ old('status')==$scholarship->status? 'selected' : '' }}>پذیرش بورسیه</option>
 										<option value="DECLINE" {{ old('status')==$scholarship->status? 'selected' : '' }}>رد کردن درخواست</option>

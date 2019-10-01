@@ -21,7 +21,7 @@
 				@endif
 
 				<div class="content">
-					<form method="post" action="{{ route('admin_students_edit', ['nationalCode' => $student->nationalCode]) }}">
+					<form method="post" action="{{ route('admin_students_edit', ['id' => $student->id]) }}">
 
 						{{csrf_field()}}
 
@@ -30,7 +30,7 @@
 								<div class="form-group">
 									<label>تاریخ تولد </label>
 									<input dir="rtl" name="birthday" type="date" class="form-control"
-										   value="{{ old('birthday')? old('birthday') : $student->birthday  }}"
+										   value="{{ old('birthday')? old('birthday') : $modify $student->birthday  }}"
 										   required>
 									<small>{{ $errors->first('birthday') }}</small>
 									<div class="invalid-feedback">
@@ -60,7 +60,7 @@
 
 									</div>
 								</div>
-							</div>
+						s	</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6">

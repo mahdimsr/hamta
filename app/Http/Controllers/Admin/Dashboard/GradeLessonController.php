@@ -8,6 +8,7 @@ use App\model\Lesson;
 use App\model\Orientation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\model\OrientationCategory;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -35,12 +36,13 @@ class GradeLessonController extends Controller
 
 	public function addShow()
 	{
-		$modify       = 0;
-		$orientations = Orientation::all();
-		$grades       = Grade::all();
-		$lessons      = Lesson::all();
+		$modify                 = 0;
+		$orientations           = Orientation::all();
+		$grades                 = Grade::all();
+		$lessons                = Lesson::all();
+        $orientationCategories  = OrientationCategory::all();
 
-		return view('admin.dashboard.gradeLesson.form', compact('orientations', 'grades', 'lessons', 'modify'));
+		return view('admin.dashboard.gradeLesson.form', compact('orientations', 'grades', 'lessons','orientationCategories', 'modify'));
 	}
 
 
@@ -49,30 +51,41 @@ class GradeLessonController extends Controller
 	{
 		$this->validate($request, [
 
-			'orientation' => 'required|exists:orientation,url',
-			'grade'       => 'required|exists:grade,url',
-			'lesson'      => 'required|exists:lesson,url',
-			'type'        => 'required|exists:grade_lesson,type',
-			'ratio'       => 'required|numeric|digits:1', // it is gradeLesson ratio
+            'orientation'         => 'required',
+            'orientationCategory' => 'required',
+			'grade'               => 'required',
+			'lesson'              => 'required',
 
+        ]);
+
+		$orientation = Orientation::query()->where('id', $request->input('orientation'))->first();
+		$grade       = Grade::query()->where('id', $request->input('grade'))->first();
+		$lesson      = Lesson::query()->where('id', $request->input('lesson'))->first();
+
+
+		$code = ['code' => $orientation->code . $grade->code . $lesson->code];
+
+		$v = Validator::make($code, [
+			'code' => 'unique:grade_lesson,code',
 		]);
 
-		$orientation = Orientation::query()->where('url', $request->input('orientation'))->first();
-		$grade       = Grade::query()->where('url', $request->input('grade'))->first();
-		$lesson      = Lesson::query()->where('url', $request->input('lesson'))->first();
+		if ($v->fails())
+		{
+			return redirect()->back()->withErrors(['message' => [' این درس با این وابستگی ها قبلا ثبت شده است.']]);
+		}
+		else
+		{
 
 		$gradeLesson = new GradeLesson();
 
-		$gradeLesson->lessonId      = $lesson->id;
-		$gradeLesson->gradeId       = $grade->id;
-		$gradeLesson->orientationId = $orientation->id;
-		$gradeLesson->ratio         = $request->input('ratio');
-		$gradeLesson->type          = $request->input('type');
-		// $gradeLesson->code          = $lesson->code . $grade->code . $orientation->code;
+		$gradeLesson->lessonId              = $request->input('lesson');
+		$gradeLesson->gradeId               = $request->input('grade');
+		$gradeLesson->orientationCategoryId = $request->input('orientationCategory');
 
 		$gradeLesson->save();
 
-		return redirect()->route('admin_gradeLessons');
+        return redirect()->route('admin_gradeLessons');
+        }
 	}
 
 
@@ -82,11 +95,12 @@ class GradeLessonController extends Controller
 		$modify = 1;
 
 		$gradeLesson  = GradeLesson::query()->where('code', $code)->first();
-		$orientations = Orientation::all();
-		$grades       = Grade::all();
-		$lessons      = Lesson::all();
+		$orientations           = Orientation::all();
+		$grades                 = Grade::all();
+		$lessons                = Lesson::all();
+        $orientationCategories  = OrientationCategory::all();
 
-		return view('admin.dashboard.gradeLesson.form', compact('orientations', 'grades', 'lessons', 'gradeLesson', 'modify'));
+		return view('admin.dashboard.gradeLesson.form', compact('orientations','orientationCategories', 'grades', 'lessons', 'gradeLesson', 'modify'));
 
 	}
 
@@ -98,37 +112,33 @@ class GradeLessonController extends Controller
 
 		$this->validate($request, [
 
-			'orientation' => 'required|exists:orientation,url',
-			'grade'       => 'required|exists:grade,url',
-			'lesson'      => 'required|exists:lesson,url',
-			'type'        => 'required|exists:grade_lesson,type',
-			'ratio'       => 'required|numeric|digits:1',
+            'orientation'         => 'required',
+            'orientationCategory' => 'required',
+			'grade'               => 'required',
+            'lesson'              => 'required',
+
 		]);
 
-		$orientation = Orientation::query()->where('url', $request->input('orientation'))->first();
-		$grade       = Grade::query()->where('url', $request->input('grade'))->first();
-		$lesson      = Lesson::query()->where('url', $request->input('lesson'))->first();
+		$orientation = Orientation::query()->where('id', $request->input('orientation'))->first();
+		$grade       = Grade::query()->where('id', $request->input('grade'))->first();
+		$lesson      = Lesson::query()->where('id', $request->input('lesson'))->first();
 
 
-		$code = ['code' => $lesson->code . $grade->code . $orientation->code];
+		$code = ['code' => $orientation->code . $grade->code . $lesson->code];
 
 		$v = Validator::make($code, [
 			'code' => 'unique:grade_lesson,code',
-		], [
-			'code.unique' => ' این درس با این وابستگی ها قبلا ثبت شده است.',
 		]);
 
-		if ($v->fails() && $gradeLesson->ratio == $request->input('ratio'))
+		if ($v->fails())
 		{
-			return redirect()->back()->with(['errors' => $v->errors()]);
+			return redirect()->back()->withErrors(['message' => [' این درس با این وابستگی ها قبلا ثبت شده است.']]);
 		}
 		else
 		{
-			$gradeLesson->lessonId      = $lesson->id;
-			$gradeLesson->gradeId       = $grade->id;
-			$gradeLesson->orientationId = $orientation->id;
-			$gradeLesson->ratio         = $request->input('ratio');
-			// $gradeLesson->code          = $code['code'];
+			$gradeLesson->lessonId              = $request->input('lesson');
+			$gradeLesson->gradeId               = $request->input('grade');
+            $gradeLesson->orientationCategoryId = $request->input('orientationCategory');
 
 			$gradeLesson->update();
 

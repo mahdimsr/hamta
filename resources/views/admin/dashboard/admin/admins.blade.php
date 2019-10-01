@@ -15,8 +15,9 @@
 				<div dir="rtl" class="content table-responsive table-full-width">
 					<table class="table table-hover table-striped">
 						<thead class="text-right">
-						<th>نام کامل ادمین</th>
-						<th>نام کاربری ادمین</th>
+						<th>نام و نام خانوادگی</th>
+						<th>نام کاربری</th>
+						<th>سطح دسترسی</th>
 						<th>فرآیند</th>
 						</thead>
 						<tbody class="text-center">
@@ -24,13 +25,14 @@
 							<tr>
 								<td>{{$admin->fullName}}</td>
 								<td>{{$admin->username}}</td>
+								<td>{{$admin->persianlevel}}</td>
 								<td>
 
-									<a href="{{route('admin_grades_remove',['url' => $admin->username])}}" id="remove-btn" type="button"
+									<a href="{{route('admin_admins_remove',['id' => $admin->id])}}" id="remove-btn" type="button"
 											style="font-size: 12px;" class="btn btn-danger">
 										حذف
 									</a>
-									<a href="{{route('admin_admins_editShow',['username' => $admin->username])}}" style="font-size: 12px;" class="btn btn-info">
+									<a href="{{route('admin_admins_editShow',['id' => $admin->id])}}" style="font-size: 12px;" class="btn btn-info">
 										ویرایش
 									</a>
 
@@ -50,29 +52,6 @@
 @section('script')
 
 	<script>
-
-		function onRemoveClick(exm)
-		{
-
-			$.ajax({
-
-				type: 'POST',
-
-				url: '{{action('Admin\\Dashboard\\LessonExamController@remove')}}',
-
-				data: {exm: exm},
-
-				dataType: 'JSON',
-
-				success: function()
-				{
-
-					console.log(exm);
-
-				}
-
-			});
-		}
 
 	</script>
 

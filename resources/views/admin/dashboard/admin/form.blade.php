@@ -4,7 +4,7 @@
 
 	<div class="row" dir="rtl">
 
-		<div class="col-md-5">
+		<div class="col-md-4">
 			<div class="card ">
 
 				<div class="content">
@@ -38,35 +38,49 @@
 				<hr>
 			</div>
 		</div>
-		<div class="col-md-7">
+		<div class="col-md-8">
 			<div class="card text-right">
 				<div class="header ">
-					<h4 class="title">ادمین</h4>
+					<h4 class="title">{{$modify==0? 'افزودن ادمین جدید' : 'ویرایش مشخصات ادمین'}}</h4>
 				</div>
 
 				<div class="content">
 					<form method="post"
-						  action="{{  $modify == 0 ? route('admin_admins_add') : route('admin_admins_edit', ['username' => $admin->username]) }}">
+						  action="{{  $modify == 0 ? route('admin_admins_add') : route('admin_admins_edit', ['id' => $admin->id]) }}">
 
 						{{csrf_field()}}
-
 						<div class="row">
-							<div class="col-md-6">
+								<div class="col-md-4">
+										<div class="form-group">
+											<label>سطح دسترسی</label>
+											<select dir="rtl" name="level" class="form-control" tabindex="3">
+												<option value="" selected disabled>سطح دسترسی را انتخاب نمایید</option>
+												<option value="A" {{old('level')=='A' ? 'selected' : '' }} {{$modify==1 && !old('level') && $admin->level=="A" ?'selected' : ''}}>سوپر ادمین</option>
+												<option value="B" {{old('level')=='B' ? 'selected' : '' }} {{$modify==1 && !old('level') && $admin->level=="B" ? 'selected' : ''}}>ادمین</option>
+												<option value="C" {{old('level')=='C' ? 'selected' : '' }} {{$modify==1 && !old('level') && $admin->level=="C" ? 'selected' : ''}}>کارشناس</option>
+												<option value="D" {{old('level')=='D' ? 'selected' : '' }} {{$modify==1 && !old('level') && $admin->level=="D" ? 'selected' : ''}}>کاربر معمولی</option>
+											</select>
+											<div class="invalid-feedback">
+												<small>{{ $errors->first('level') }}</small>
+											</div>
+										</div>
+									</div>
+							<div class="col-md-4">
 								<div class="form-group">
-									<label>نام کاربری ادمین</label>
+									<label>نام کاربری</label>
 									<input name="username" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: ali-username" tabindex="2"
+										   placeholder="نام کاربری ادمین را وارد کنید" tabindex="2"
 										   value="{{old('username') ? old('username') : ''}} {{ $modify==1 && !old('username') ? $admin->username: '' }}">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('username') }}</small>
 									</div>
 								</div>
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-4">
 								<div class="form-group">
-									<label>نام کامل ادمین</label>
+									<label>نام و نام خانوادگی</label>
 									<input name="fullName" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: علی ربیعی" tabindex="1"
+										   placeholder="نام و نام خانوادگی ادمین را وارد نمایید" tabindex="1"
 										   value="{{old('fullName') ? old('fullName') : ''}} {{ $modify==1 && !old('fullName') ? $admin->fullName : '' }}">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('fullName') }}</small>
@@ -74,14 +88,13 @@
 								</div>
 							</div>
 						</div>
-
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>تکرار رمز عبور</label>
-									<input name="repeatPassword" dir="rtl" type="text" class="form-control" tabindex="4">
+									<input name="password_confirmation" dir="rtl" type="text" class="form-control" tabindex="4">
 									<div class="invalid-feedback">
-										<small>{{ $errors->first('repeatPassword') }}</small>
+										<small>{{ $errors->first('password_confirmation') }}</small>
 									</div>
 								</div>
 							</div>

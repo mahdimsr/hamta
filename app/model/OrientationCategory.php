@@ -16,7 +16,8 @@ class OrientationCategory extends Model
 {
 	use SoftDeletes;
 
-    protected $table = 'orientation_category';
+	protected $table = 'orientation_category';
+	protected $appends = ['persiantype'];
 
     public function orientation()
 	{

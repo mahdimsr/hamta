@@ -21,7 +21,7 @@ class CreateAdminTable extends Migration
 			$table->string('fullName');
 			$table->string('username');
 			$table->string('password');
-            $table->enum('level', ['A', 'B', 'C', 'D'])->default('B');
+            $table->enum('level', ['A', 'B', 'C', 'D'])->default('A');
             $table->rememberToken();
 			$table->timestamps();
 			$table->softDeletes();

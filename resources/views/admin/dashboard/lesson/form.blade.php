@@ -41,12 +41,12 @@
 		<div class="col-md-7">
 			<div class="card text-right">
 				<div class="header ">
-					<h4 class="title">درس</h4>
+					<h4 class="title">{{ $modify==0 ? 'افزودن درس' : 'ویرایش درس'}}</h4>
 				</div>
 
 				<div class="content">
 					<form method="post"
-						  action="{{$modify == 0? route('admin_lessons_add') : route('admin_lessons_edit',['url' => $lesson->url])}}">
+						  action="{{$modify == 0? route('admin_lessons_add') : route('admin_lessons_edit',['id' => $lesson->id])}}">
 
 						{{csrf_field()}}
 

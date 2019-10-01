@@ -22,7 +22,7 @@
 								<td>{{$scholarShip->student->name .' ' .$scholarShip->student->familyName}}</td>
 								<td>{{$scholarShip->persianStatus}}</td>
 								<td>
-									<a href="{{route('admin_scholarships_show',['url' => $scholarShip->url])}}"
+									<a href="{{route('admin_scholarships_show',['id' => $scholarShip->id])}}"
 									   style="font-size: 12px;" class="btn btn-info">
 										مشاهده
 									</a>

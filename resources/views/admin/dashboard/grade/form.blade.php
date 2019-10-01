@@ -42,12 +42,12 @@
 		<div class="col-md-7">
 			<div class="card text-right">
 				<div class="header ">
-					<h4 class="title">مقطع</h4>
+					<h4 class="title">{{ $modify==0 ? 'افزودن مقطع' : 'ویرایش مقطع'}}</h4>
 				</div>
 
 				<div class="content">
 					<form method="post"
-						  action="{{  $modify == 0 ? route('admin_grades_add') : route('admin_grades_edit', ['url' => $grade->url]) }}">
+						  action="{{  $modify == 0 ? route('admin_grades_add') : route('admin_grades_edit', ['id' => $grade->id]) }}">
 
 						{{csrf_field()}}
 

@@ -50,9 +50,9 @@ class GradeController extends Controller
 
 
 
-	public function remove($url)
+	public function remove($id)
 	{
-		$grade = Grade::query()->where('url', $url)->first();
+		$grade = Grade::query()->where('id', $id)->first();
 
 		$grade->delete();
 
@@ -61,19 +61,19 @@ class GradeController extends Controller
 
 
 
-	public function editShow($url)
+	public function editShow($id)
 	{
         $modify=1;
-		$grade = Grade::query()->where('url', $url)->first();
+		$grade = Grade::query()->where('id', $id)->first();
 
 		return view('admin.dashboard.grade.form', compact('grade','modify'));
 	}
 
 
 
-	public function edit(Request $request,$url)
+	public function edit(Request $request,$id)
 	{
-		$grade = Grade::query()->where('url', $url)->first();
+		$grade = Grade::query()->where('id', $id)->first();
 
 		$this->validate($request, [
 

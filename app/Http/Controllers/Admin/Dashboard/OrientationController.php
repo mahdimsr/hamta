@@ -19,9 +19,9 @@ class OrientationController extends Controller
 
 
 
-	public function remove($url)
+	public function remove($id)
 	{
-		$orientation = Orientation::query()->where('url', $url)->first();
+		$orientation = Orientation::query()->where('id', $id)->first();
 
 		$orientation->delete();
 
@@ -64,11 +64,11 @@ class OrientationController extends Controller
 
 
 
-	public function editShow($url)
+	public function editShow($id)
 	{
 		$modify = 1;
 
-		$orientation = Orientation::query()->where('url', $url)->first();
+		$orientation = Orientation::query()->where('id', $id)->first();
 
 
 		return view('admin.dashboard.orientation.form', compact('orientation', 'modify'));
@@ -76,9 +76,9 @@ class OrientationController extends Controller
 
 
 
-	public function edit(Request $request, $url)
+	public function edit(Request $request, $id)
 	{
-		$orientation = Orientation::query()->where('url', $url)->first();
+		$orientation = Orientation::query()->where('id', $id)->first();
 
 		$this->validate($request, [
 

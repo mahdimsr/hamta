@@ -42,11 +42,11 @@
 		<div class="col-md-7">
 			<div class="card text-right">
 				<div class="header ">
-					<h4 class="title">گرایش</h4>
+					<h4 class="title">{{ $modify==0 ? 'افزودن گرایش' : 'ویرایش گرایش'}}</h4>
 				</div>
 				<div class="content">
 					<form method="post"
-						  action="{{  $modify == 0 ? route('admin_orientations_add') : route('admin_orientations_edit', ['url' => $orientation->url]) }}">
+						  action="{{  $modify == 0 ? route('admin_orientations_add') : route('admin_orientations_edit', ['id' => $orientation->id]) }}">
 
 						{{csrf_field()}}
 

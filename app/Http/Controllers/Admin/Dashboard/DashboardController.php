@@ -11,9 +11,7 @@ class DashboardController extends Controller
 {
 	public function dashboard()
 	{
-		$admin = Auth::user();
-
-		return view('layouts.admin_dashboard',compact('admin'));
+		return view('layouts.admin_dashboard');
 	}
 
 

@@ -77,8 +77,9 @@ Route::namespace('Admin')->group(function()
 			Route::get('/', 'RegisterController@admins')->name('admin_admins');
 			Route::get('/add', 'RegisterController@addShow')->name('admin_admins_addShow');
 			Route::post('/add', 'RegisterController@add')->name('admin_admins_add');
-			Route::get('/edit/{username}', 'RegisterController@editShow')->name('admin_admins_editShow');
-			Route::post('/edit/{username}', 'RegisterController@edit')->name('admin_admins_edit');
+			Route::get('/edit/{id}', 'RegisterController@editShow')->name('admin_admins_editShow');
+			Route::post('/edit/{id}', 'RegisterController@edit')->name('admin_admins_edit');
+			Route::get('/remove/{id}', 'RegisterController@remove')->name('admin_admins_remove');
 		});
 
 		Route::prefix('exams')->group(function()
@@ -113,11 +114,11 @@ Route::namespace('Admin')->group(function()
 		Route::prefix('grades')->group(function()
 		{
 			Route::get('/', 'GradeController@grades')->name('admin_grades');
-			Route::get('/remove/{url}', 'GradeController@remove')->name('admin_grades_remove');
+			Route::get('/remove/{id}', 'GradeController@remove')->name('admin_grades_remove');
 			Route::get('/add', 'GradeController@addShow')->name('admin_grades_addShow');
 			Route::post('/add', 'GradeController@add')->name('admin_grades_add');
-			Route::get('/edit/{url}', 'GradeController@editShow')->name('admin_grades_editShow');
-			Route::post('/edit/{url}', 'GradeController@edit')->name('admin_grades_edit');
+			Route::get('/edit/{id}', 'GradeController@editShow')->name('admin_grades_editShow');
+			Route::post('/edit/{id}', 'GradeController@edit')->name('admin_grades_edit');
 
 		});
 
@@ -125,11 +126,11 @@ Route::namespace('Admin')->group(function()
 		Route::prefix('orientations')->group(function()
 		{
 			Route::get('/', 'OrientationController@orientations')->name('admin_orientations');
-			Route::get('/remove/{url}', 'OrientationController@remove')->name('admin_orientations_remove');
+			Route::get('/remove/{id}', 'OrientationController@remove')->name('admin_orientations_remove');
 			Route::get('/add', 'OrientationController@addShow')->name('admin_orientations_addShow');
 			Route::post('/add', 'OrientationController@add')->name('admin_orientations_add');
-			Route::get('/edit/{url}', 'OrientationController@editShow')->name('admin_orientations_editShow');
-			Route::post('/edit/{url}', 'OrientationController@edit')->name('admin_orientations_edit');
+			Route::get('/edit/{id}', 'OrientationController@editShow')->name('admin_orientations_editShow');
+			Route::post('/edit/{id}', 'OrientationController@edit')->name('admin_orientations_edit');
 		});
 
 		Route::prefix('gradeLessons')->group(function()
@@ -146,26 +147,28 @@ Route::namespace('Admin')->group(function()
 		Route::prefix('lessons')->group(function()
 		{
 			Route::get('/', 'LessonController@lessons')->name('admin_lessons');
-			Route::get('/remove/{url}', 'LessonController@remove')->name('admin_lessons_remove');
+			Route::get('/remove/{id}', 'LessonController@remove')->name('admin_lessons_remove');
 			Route::get('/add', 'LessonController@addShow')->name('admin_lessons_addShow');
 			Route::post('/add', 'LessonController@add')->name('admin_lessons_add');
-			Route::get('/edit/{url}', 'LessonController@editShow')->name('admin_lessons_editShow');
-			Route::post('/edit/{url}', 'LessonController@edit')->name('admin_lessons_edit');
+			Route::get('/edit/{id}', 'LessonController@editShow')->name('admin_lessons_editShow');
+			Route::post('/edit/{id}', 'LessonController@edit')->name('admin_lessons_edit');
 		});
 
 		Route::prefix('scholarships')->group(function()
 		{
 			Route::get('/', 'ScholarshipController@scholarships')->name('admin_scholarships');
-			Route::get('/show/{url}', 'ScholarshipController@show')->name('admin_scholarships_show');
-			Route::post('/answer/{url}', 'ScholarshipController@answer')->name('admin_scholarships_answer');
+			Route::get('/show/{id}', 'ScholarshipController@show')->name('admin_scholarships_show');
+			Route::post('/answer/{id}', 'ScholarshipController@answer')->name('admin_scholarships_answer');
 		});
 
 
 		Route::prefix('students')->group(function()
 		{
 			Route::get('/', 'StudentController@students')->name('admin_students');
-			Route::get('/edit/{nationalCode}', 'StudentController@editShow')->name('admin_students_editShow');
-			Route::post('/edit/{nationalCode}', 'StudentController@edit')->name('admin_students_edit');
+			Route::get('/add', 'StudentController@addShow')->name('admin_students_addShow');
+			Route::post('/add', 'StudentController@add')->name('admin_students_add');
+			Route::get('/edit/{id}', 'StudentController@editShow')->name('admin_students_editShow');
+			Route::post('/edit/{id}', 'StudentController@edit')->name('admin_students_edit');
 
 
 		});

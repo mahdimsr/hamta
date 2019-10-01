@@ -62,7 +62,7 @@
                                                     <option id="{{$category->orientationId}}"
                                                             value="{{$category->id}}"
                                                         {{old('category') == $category->id ? 'selected' : ''}}{{ $modify==1 && !old('category') && $lessonExam->orientationCategoryId == $category->id ? 'selected' : '' }}>
-                                                        {{$category->category->title }} - {{ $category->getPersianTypeAttribute() }}
+                                                        {{$category->category->title }} - {{ $category->persiantype }}
                                                     </option>
                                                 @endforeach
                                             </select>

@@ -88,21 +88,23 @@
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_gradeLessons' ? 'active' : ''}}">
 					<a href="{{route('admin_gradeLessons')}}">
 						<i class="fa fa-folder"></i>
-						<p>دسته بندی درس ها</p>
+						<p>دروس مختص هر پایه</p>
 					</a>
 				</li>
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_lessons' ? 'active' : ''}}">
 					<a href="{{route('admin_lessons')}}">
 						<i class="fa fa-folder-open"></i>
-						<p>درس ها</p>
+						<p>دروس</p>
 					</a>
 				</li>
+				@if($adminUser->level=="A")
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_admins' ? 'active' : ''}}">
 					<a href="{{route('admin_admins')}}">
 						<i class="fa fa-cog"></i>
 						<p>ادمین ها</p>
 					</a>
 				</li>
+				@endif
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_scholarships' ? 'active' : ''}}">
 					<a href="{{route('admin_scholarships')}}">
 						<i class="fa fa-graduation-cap"></i>
