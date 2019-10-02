@@ -184,9 +184,9 @@
         public function removeQuestion($id)
         {
 
-            $exam = LessonExam::query()->where('id',$id)->first();
+            $questionExam = QuestionExam::query()->where('id',$id)->first();
 
-            $exam->delete();
+            $questionExam->delete();
 
             return redirect()->back();
         }
@@ -273,6 +273,7 @@
                 'optionTwo'        => 'required',
                 'optionOne'        => 'required',
                 'answer'           => ['required', Rule::in(['1', '2', '3', '4'])],
+                'photo'            => 'image',
 
             ]);
 
@@ -317,6 +318,43 @@
                 }
 
 
+
+            return redirect()->back();
+
+        }
+
+        public function editQuestion(Request $request,$exm,$id)
+        {
+
+            $this->validate($request, [
+
+                'questionType'     => 'nullable',
+                'description'      => 'required',
+                'hardness'         => 'required|integer|between:0,6|digits:1',
+                'text'             => 'required',
+                'optionFour'       => 'required',
+                'optionThree'      => 'required',
+                'optionTwo'        => 'required',
+                'optionOne'        => 'required',
+                'answer'           => ['required', Rule::in(['1', '2', '3', '4'])],
+                'photo'            => 'image',
+
+            ]);
+
+
+            $question = Question::query()->where('id', $id)->first();
+
+            $question->questionType       = $request->input('questionType');
+            $question->description        = $request->input('description');
+            $question->text               = $request->input('text');
+            $question->optionOne          = $request->input('optionOne');
+            $question->optionTwo          = $request->input('optionTwo');
+            $question->optionThree        = $request->input('optionThree');
+            $question->optionFour         = $request->input('optionFour');
+            $question->answer             = $request->input('answer');
+            $question->hardness           = $request->input('hardness');
+
+            $question->update();
 
             return redirect()->back();
 
