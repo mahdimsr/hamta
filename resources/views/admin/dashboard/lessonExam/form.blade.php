@@ -1,7 +1,7 @@
 @extends('layouts.admin_dashboard')
 
 @section('content')
-
+<link rel="stylesheet" href="{{ asset('css/admin/multi/style.css') }}">
     <div class="row" dir="rtl">
 
         <div class="col-md-5">
@@ -199,10 +199,39 @@
                             </div>
                         </div>
 
+
+
+
+
+
+
+                     
+
+
+                        
+	            <div class="row">
+
+
+	            	<div class="col-lg-6">
+		            	<h3>مولتی سلکت</h3>
+		            	<input type="text" id="justAnInputBox1" placeholder="انتخاب"/>
+		                </div>
+
+                    </div>
+	
+
+	</div>
+
+
+
+
+
+
+
                         <button type="submit" class="btn btn-info btn-fill pull-left" tabindex="4">اعمال</button>
                         <div class="clearfix"></div>
 
-
+                    
                     </form>
             </div>
             </div>
@@ -215,6 +244,9 @@
 @endsection
 
 @section('script')
+
+<script  src="{{asset('js/admin/multi/comboTreePlugin.js')}}"></script>
+
 
     <script>
 
@@ -256,6 +288,69 @@
 
         }
 
+
+
+
+
+        var SampleJSONData = [
+    {
+        id: 0,
+        title: 'اول  '
+    }
+    ,
+    {
+        id: 1,
+        title: 'دوم',
+        subs: [
+            {
+                id: 10,
+                title: 'دوم 1'
+            }, {
+                id: 11,
+                title: 'دوم 2'
+            }, {
+                id: 12,
+                title: 'دوم 3'
+            }
+        ]
+    }, {
+        id: 2,
+        title: 'سوم'
+    }, {
+        id: 3,
+        title: 'چهارم'
+    }, {
+        id: 4,
+        title: 'چهارم '
+    }, {
+        id: 5,
+        title: 'پنجم',
+        subs: [
+            {
+                id: 50,
+                title: 'پنج یک'
+            }
+            
+        ]
+    }, {
+        id: 6,
+        title: 'هفت'
+    }
+];
+var comboTree1, comboTree2;
+
+jQuery(document).ready(function($) {
+
+	
+		comboTree3 = $('#justAnInputBox1').comboTree({
+			source : SampleJSONData,
+			isMultiple: true,
+			cascadeSelect: true
+		});
+
+
+	
+});
 
     </script>
 @endsection
