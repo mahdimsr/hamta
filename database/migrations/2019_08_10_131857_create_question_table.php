@@ -18,7 +18,7 @@ class CreateQuestionTable extends Migration
 		{
 			$table->bigIncrements('id');
 			$table->integer('gradeLessonId');
-			$table->integer('questionTypeId');
+			$table->string('questionType')->nullable();
 			$table->string('text');
 			$table->string('optionOne');
 			$table->string('optionTwo');

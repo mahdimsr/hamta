@@ -81,12 +81,11 @@
                                     <label>درجه سختی سوال</label>
                                     <select dir="rtl" name="hardness" class="form-control">
                                         <option selected disabled>درجه سختی سوال را انتخاب نمایید</option>
-                                        <option value="1" {{old('hardness') == '1' ? 'selected' : ''}}>خیلی ساده
-                                        </option>
-                                        <option value="2" {{old('hardness') == '2' ? 'selected' : ''}}>ساده</option>
-                                        <option value="3" {{old('hardness') == '3' ? 'selected' : ''}}>معمولی</option>
-                                        <option value="4" {{old('hardness') == '4' ? 'selected' : ''}}>سخت</option>
-                                        <option value="5" {{old('hardness') == '5' ? 'selected' : ''}}>حیل سحت</option>
+                                        <option value="1" {{old('hardness') == '1' ? 'selected' : ''}}{{ $modify==1 && !old('hardness') && $question->hardness== '1' ? 'selected' : '' }}>خیلی ساده</option>
+                                        <option value="2" {{old('hardness') == '2' ? 'selected' : ''}} {{ $modify==1 && !old('hardness') && $question->hardness== '2' ? 'selected' : '' }}>ساده</option>
+                                        <option value="3" {{old('hardness') == '3' ? 'selected' : ''}} {{ $modify==1 && !old('hardness') && $question->hardness== '3' ? 'selected' : '' }}>معمولی</option>
+                                        <option value="4" {{old('hardness') == '4' ? 'selected' : ''}} {{ $modify==1 && !old('hardness') && $question->hardness== '4' ? 'selected' : '' }}>سخت</option>
+                                        <option value="5" {{old('hardness') == '5' ? 'selected' : ''}} {{ $modify==1 && !old('hardness') && $question->hardness== '5' ? 'selected' : '' }}>خیلی سخت</option>
                                     </select>
                                     <div class="invalid-feedback">
                                         <small>{{ $errors->first('hardness') }}</small>
@@ -94,19 +93,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>نوع سوال</label>
-                                    <select dir="rtl" name="typeId" class="form-control">
-                                        <option selected disabled>نوع سوال را انتخاب نمایید</option>
-                                        @foreach ( $questionTypes as $questionType )
-                                            <option id="{{$questionType->categoryId}}"
-                                                    value="{{ $questionType->id }}">{{ $questionType->title }}</option>
-                                        @endforeach
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        <small>{{ $errors->first('topic') }}</small>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
 

@@ -7,15 +7,10 @@
     use App\model\ExamGradeLesson;
     use App\model\Grade;
     use App\model\GradeLesson;
-    use App\model\Lesson;
     use App\model\LessonExam;
     use App\model\Orientation;
     use App\model\Question;
     use App\model\QuestionExam;
-    use App\model\QuestionType;
-    use App\model\Topic;
-    use App\model\TopicExam;
-    use App\model\TopicGradeLesson;
     use Carbon\Carbon;
     use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
@@ -200,7 +195,6 @@
         {
             $modify        = 0;
             $exam          = LessonExam::query()->where('exm', $exm)->first();
-            $questionTypes = QuestionType::all();
 
             if ($exam->gradeId == 3)
             {
@@ -225,7 +219,7 @@
 
 
 
-            return view('admin.dashboard.lessonExam.question_form', compact('exam', 'gradeLessons', 'questionTypes','modify'));
+            return view('admin.dashboard.lessonExam.question_form', compact('exam', 'gradeLessons','modify'));
 
         }
 
@@ -236,7 +230,6 @@
             $modify        = 1;
             $question      = Question::query()->where('id', $id)->first();
             $exam          = LessonExam::query()->where('exm', $exm)->first();
-            $questionTypes = QuestionType::all();
 
             if ($exam->gradeId == 3)
             {
@@ -261,7 +254,7 @@
 
 
 
-            return view('admin.dashboard.lessonExam.question_form', compact('exam', 'gradeLessons', 'questionTypes', 'topics','question','modify'));
+            return view('admin.dashboard.lessonExam.question_form', compact('exam', 'gradeLessons','question','modify'));
 
         }
 
@@ -271,6 +264,7 @@
             $this->validate($request, [
 
                 'gradeLesson'      => 'required',
+                'questionType'     => 'nullable',
                 'description'      => 'required',
                 'hardness'         => 'required|integer|between:0,6|digits:1',
                 'text'             => 'required',
@@ -286,7 +280,8 @@
             $question = new Question();
 
             $question->gradeLessonId      = $request->input('gradeLesson');
-            $question->questionTypeId     = $request->input('typeId');
+            $question->questionType       = $request->input('questionType');
+            $question->description        = $request->input('description');
             $question->text               = $request->input('text');
             $question->optionOne          = $request->input('optionOne');
             $question->optionTwo          = $request->input('optionTwo');
