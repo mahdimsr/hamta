@@ -20,18 +20,18 @@
 						<th>فرآیند</th>
 						</thead>
 						<tbody class="text-center">
-						@foreach($questions as $question)
+						@foreach($questionExams as $questionExam)
 							<tr>
-								<td>{{$question->question->text}}</td>
-								<td>{{$question->question->topicGradeLesson->gradeLesson->lesson_grade}}</td>
+								<td>{{$questionExam->question->text}}</td>
+								<td>{{$questionExam->question->gradeLesson->lesson_grade}}</td>
 								<td>
 
-									<a href="{{ route('admin_lExam_removeQuestion',['id' => $question->id]) }}" id="remove-btn"
+									<a href="{{ route('admin_lExam_removeQuestion',['id' => $questionExam->id]) }}" id="remove-btn"
 									   type="button"
 									   style="font-size: 12px;" class="btn btn-danger">
 										حذف
 									</a>
-									<a href=""
+									<a href="{{ route('admin_ltlExams_editQuestionShow',['id' => $questionExam->questionId , 'exm' => $exam->exm]) }}"
 									   style="font-size: 12px;" class="btn btn-info">
 										ویرایش
 									</a>

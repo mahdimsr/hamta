@@ -31,12 +31,6 @@ class Question extends Model
 
 	}
 
-	public function topicGradeLesson()
-	{
-		return $this->belongsTo(TopicGradeLesson::class, 'topicGradeLessonId');
-	}
-
-
 
 	public function questionExams()
 	{
@@ -48,8 +42,12 @@ class Question extends Model
 	public function questionType()
 	{
 		return $this->belongsTo(QuestionType::class, 'questionTypeId');
-	}
+    }
 
+	public function gradeLesson()
+	{
+		return $this->belongsTo(GradeLesson::class, 'gradeLessonId');
+	}
 
 
 	public function getHardnessLabelAttribute()

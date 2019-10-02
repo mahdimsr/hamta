@@ -86,7 +86,7 @@
         public function lessonExam()
         {
 
-            return $this->hasMany('app\model\ExamGradeLesson', 'gradeLessonId');
+            return $this->hasMany(ExamGradeLesson::class, 'gradeLessonId');
         }
 
 
@@ -96,24 +96,10 @@
             return $this->hasMany(Question::class, 'gradeLessonId');
         }
 
-
-        public function topics()
-        {
-
-            return $this->hasMany(Topic::class, 'gradeLessonId');
-        }
-
-
         public function orientationCategory()
         {
 
             return $this->belongsTo(OrientationCategory::class, 'orientationCategoryId');
         }
 
-
-        public function topicGradeLessons()
-        {
-
-            return $this->hasMany(TopicGradeLesson::class, 'gradeLessonId');
-        }
     }

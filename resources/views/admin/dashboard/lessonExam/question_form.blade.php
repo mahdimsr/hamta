@@ -45,35 +45,26 @@
                 </div>
 
                 <div class="content">
-                    <form method="post" action="{{ route('admin_lExam_addQuestion',['exm' => $exam->exm])}}" enctype="multipart/form-data">
+                    <form method="post" action="{{ $modify==0 ?  route('admin_lExam_addQuestion',['exm' => $exam->exm]) : route('admin_ltlExams_editQuestion',['id' => $question->questionId , 'exm' => $exam->exm])}}" enctype="multipart/form-data">
 
                         {{csrf_field()}}
 
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>سرفصل سوال</label>
-                                    <select dir="rtl" name="topicGradeLesson" id="topic-select" class="form-control">
-                                        <option value="" id="0" selected disabled>سرفصل سوال را انتخاب نمایید</option>
-                                        @foreach ( $topics as $topic )
-                                                <option
-                                                    id="{{ $topic->gradeLessonId }}"
-                                                    value="{{ $topic->id }}">{{ $topic->topic->title }}</option>
-                                        @endforeach
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        <small>{{ $errors->first('topic') }}</small>
-                                    </div>
+                                            <label>مباحث سوال</label>
+                                            <input name="description" dir="rtl" type="text" class="form-control"
+                                                   value="{{old('description')}} {{ $modify==1 && !old('description') && $question->description ? $question->description : '' }}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>دسته بندی درس ها</label>
-                                    <select dir="rtl" name="gradeLesson" id="gradeLesson-select" class="form-control">
-                                        <option value="" id="0" selected disabled>گرایش و درس سوال را انتخاب نمایید</option>
-                                        @foreach ( $lessons as $lesson )
+                                    <label>درس سوال</label>
+                                    <select dir="rtl" name="gradeLesson" class="form-control">
+                                        <option value="" id="0" selected disabled>درس سوال را انتخاب نمایید</option>
+                                        @foreach ( $gradeLessons as $gradeLesson )
                                             <option
-                                                value="{{ $lesson->id }}">{{ $lesson->lesson_grade}}</option>
+                                                value="{{ $gradeLesson->id }}" {{ old('gradeLesson')== $gradeLesson->id ? 'selected' : '' }} {{ $modify==1 && !old('gradeLesson') && $question->gradeLessonId==$gradeLesson->id ? 'selected' : '' }}>{{ $gradeLesson->lesson_grade}}</option>
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback">
@@ -199,25 +190,6 @@
 
 @section('script')
     <script>
-    var id,options;
-    var topics   = $('#topic-select option').clone();
 
-    $("#gradeLesson-select").change(function()
-    {
-        id = $("#gradeLesson-select").val();
-        options = topics.filter('[id=' + id + '],[id=0]');
-        $('#topic-select').html(options);
-        $('#topic-select').prop('selectedIndex',0).trigger('change');
-
-    });
-
-    if($("#gradeLesson-select").val()!='')
-    {
-
-        id = $("#gradeLesson-select").val();
-        options = topics.filter('[id=' + id + '],[id=0]');
-        $('#topic-select').html(options);
-
-    }
     </script>
 @endsection
