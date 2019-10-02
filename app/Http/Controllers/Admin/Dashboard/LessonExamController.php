@@ -112,10 +112,7 @@
         public function edit(Request $request, $exm)
         {
 
-            $this->validate($request, ['orientation' => 'required',
-                                       'category'    => 'required',
-                                       'grade'       => 'required',
-                                       'title'       => 'required|string|max:20',
+            $this->validate($request, ['title'       => 'required|string|max:20',
                                        'activeDate'  => 'required',
                                        'price'       => 'required|integer|min:0',
                                        'description' => 'nullable|string|max:300',
@@ -125,8 +122,6 @@
 
             $lessonExam = LessonExam::query()->where('exm', $exm)->first();
 
-            $lessonExam->orientationCategoryId = $request->input('category');
-            $lessonExam->gradeId               = $request->input('grade');
             $lessonExam->title                 = $request->input('title');
             $lessonExam->price                 = $request->input('price');
             $lessonExam->description           = $request->input('description');
@@ -184,7 +179,7 @@
         public function removeQuestion($id)
         {
 
-            $questionExam = QuestionExam::query()->where('id',$id)->first();
+            $questionExam  = QuestionExam::query()->where('id',$id)->first();
 
             $questionExam->delete();
 

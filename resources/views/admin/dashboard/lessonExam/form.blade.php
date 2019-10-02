@@ -58,7 +58,7 @@
                             <div class="col-md-6 col-float-right" style="float: right;">
                                 <div class="form-group">
                                     <label class="control-label">گرایش</label>
-                                    <select name="orientation" class="form-control menu dropdown-radius hide-search" id="ori-select">
+                                    <select name="orientation" class="form-control menu dropdown-radius hide-search" id="ori-select" {{ $modify==1? 'disabled' : '' }}>
                                         <option id="0" value="" disabled selected>گرایش آزمون را انتخاب کنید</option>
                                         @foreach($orientations as $orientation)
                                             <option
@@ -77,7 +77,7 @@
                                 <div class="col-md-6 col-float-left" style="float: right;">
                                         <div class="form-group">
                                             <label class="control-label">گروه درسی</label>
-                                            <select name="category" class="form-control  dropdown-radius menu" id="cat-select">
+                                            <select name="category" class="form-control  dropdown-radius menu hide-search" id="cat-select" {{ $modify==1? 'disabled' : '' }}>
                                                 <option id="0" value="" disabled selected>گروه درسی آزمون را انتخاب کنید</option>
                                                 @foreach($categories as $category)
                                                     <option id="{{$category->orientationId}}"
@@ -112,7 +112,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="control-label">پایه</label>
-                                <select name="grade" class="form-control dropdown-radius menu hide-search" id="grade-select">
+                                <select name="grade" class="form-control dropdown-radius menu hide-search" id="grade-select" {{ $modify==1? 'disabled' : '' }}>
                                     <option id="0" disabled selected>پایه آزمون را انتخاب کنید</option>
                                     @foreach($grades as $grade)
                                         <option id="{{$grade->id}}"
