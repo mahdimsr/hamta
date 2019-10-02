@@ -17,15 +17,16 @@ class CreateQuestionTable extends Migration
 		Schema::create('question', function(Blueprint $table)
 		{
 			$table->bigIncrements('id');
-			$table->integer('topicGradeLessonId');
-			$table->integer('questionTypeId');
+			$table->integer('gradeLessonId');
+			$table->string('questionType')->nullable();
 			$table->string('text');
 			$table->string('optionOne');
 			$table->string('optionTwo');
 			$table->string('optionThree');
 			$table->string('optionFour');
 			$table->string('answer');
-			$table->enum('hardness', ['1', '2', '3', '4', '5']);
+            $table->enum('hardness', ['1', '2', '3', '4', '5']);
+            $table->string('description');
 			$table->string('photo')->nullable();
 			$table->timestamps();
 			$table->softDeletes();

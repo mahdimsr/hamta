@@ -41,9 +41,9 @@
 										ویرایش
 									</a>
 
-									<a href="{{route('admin_lExam_addQuizShow',['exm' => $exam->exm])}}"
+									<a href="{{route('admin_lExam_questionsShow',['exm' => $exam->exm])}}"
 									   style="font-size: 12px;" class="btn btn-success">
-										ویرایش یا درج سوال
+										سوالات
 									</a>
 
 								</td>

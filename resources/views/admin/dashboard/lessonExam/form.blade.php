@@ -41,7 +41,7 @@
         </div>
 
         <div class="col-md-7">
-            <div class="card ">
+            <div dir="rtl" class="card ">
                 <div class="header ">
                     <h4 class="title">افزودن آزمون درس به درس</h4>
                 </div>
@@ -54,10 +54,30 @@
                         {{csrf_field()}}
 
                         <div class="row">
-                                <div class="col-md-6">
+
+                            <div class="col-md-6 col-float-right" style="float: right;">
+                                <div class="form-group">
+                                    <label class="control-label">گرایش</label>
+                                    <select name="orientation" class="form-control menu dropdown-radius hide-search" id="ori-select" {{ $modify==1? 'disabled' : '' }}>
+                                        <option id="0" value="" disabled selected>گرایش آزمون را انتخاب کنید</option>
+                                        @foreach($orientations as $orientation)
+                                            <option
+                                                    value="{{$orientation->id}}"
+                                                    {{old('orientation') == $orientation->id ? 'selected' : ''}}{{ $modify==1 && !old('orientation') && $lessonExam->orientationCategory->orientation->id == $orientation->id ? 'selected' : '' }}>
+                                                {{$orientation->title}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('orientation') }}</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                                <div class="col-md-6 col-float-left" style="float: right;">
                                         <div class="form-group">
                                             <label class="control-label">گروه درسی</label>
-                                            <select name="category" class="form-control" id="cat-select">
+                                            <select name="category" class="form-control  dropdown-radius menu hide-search" id="cat-select" {{ $modify==1? 'disabled' : '' }}>
                                                 <option id="0" value="" disabled selected>گروه درسی آزمون را انتخاب کنید</option>
                                                 @foreach($categories as $category)
                                                     <option id="{{$category->orientationId}}"
@@ -73,22 +93,9 @@
                                         </div>
                                     </div>
 
-                            <div class="col-md-6">
-                                <label class="control-label">گرایش</label>
-                                <select name="orientation" class="form-control" id="ori-select">
-                                    <option id="0" value="" disabled selected>گرایش آزمون را انتخاب کنید</option>
-                                    @foreach($orientations as $orientation)
-                                        <option
-                                            value="{{$orientation->id}}"
-                                            {{old('orientation') == $orientation->id ? 'selected' : ''}}{{ $modify==1 && !old('orientation') && $lessonExam->orientationCategory->orientation->id == $orientation->id ? 'selected' : '' }}>
-                                            {{$orientation->title}}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                <div class="invalid-feedback">
-                                    <small>{{ $errors->first('orientation') }}</small>
-                                </div>
-                            </div>
+
+
+
                         </div>
 
                         <div class="row">
@@ -105,7 +112,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="control-label">پایه</label>
-                                <select name="grade" class="form-control" id="grade-select">
+                                <select name="grade" class="form-control dropdown-radius menu hide-search" id="grade-select" {{ $modify==1? 'disabled' : '' }}>
                                     <option id="0" disabled selected>پایه آزمون را انتخاب کنید</option>
                                     @foreach($grades as $grade)
                                         <option id="{{$grade->id}}"
@@ -152,9 +159,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">پاسخ نامه سوالات (به صورت pdf)</label>
-                                    <input name="answerSheet" class="form-control" type="file" accept="application/pdf"
-                                           maxlength="10" tabindex="5"
-                                           value="{{old('answerSheet')}}"/>
+                                    <div class="input-file-container">
+                                        <input class="input-file" id="my-file" type="file">
+                                        <label tabindex="0" for="my-file" class="input-file-trigger text-center">فایل را انتخاب کنید</label>
+                                    </div>
+                                    <p class="file-return"></p>
+                                    {{--<input name="answerSheet" class="form-control custom-file-input file-radius" type="file" accept="application/pdf"--}}
+                                           {{--maxlength="10" tabindex="5"--}}
+                                           {{--value="{{old('answerSheet')}}"/>--}}
                                 </div>
                                 <div class="invalid-feedback">
                                     <small>{{ $errors->first('duration') }}</small>
@@ -178,7 +190,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="control-label">توضیحات</label>
-                                    <textarea name="description" class="form-control" type="text"
+                                    <textarea name="description" class=" textarea-radius" type="text"
                                               tabindex="5">{{old('description')}}{{ $modify==1 && !old('description') && $lessonExam->description ? $lessonExam->description : '' }}</textarea>
                                 </div>
                                 <div class="invalid-feedback">
@@ -192,10 +204,11 @@
 
 
                     </form>
-                </div>
             </div>
-        </div>
-    </div>
+            </div>
+                </div>
+
+
 
 
 

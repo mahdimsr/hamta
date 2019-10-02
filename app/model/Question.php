@@ -20,13 +20,16 @@ class Question extends Model
 
 	protected $appends = ['hardnessLabel'];
 
-
-
-	public function gradeLesson()
+	protected static function boot()
 	{
-		return $this->belongsTo(GradeLesson::class, 'gradeLessonId');
-	}
+		parent::boot();
 
+		self::deleting(function($model)
+		{
+			$model->questionExams()->delete();
+		});
+
+	}
 
 
 	public function questionExams()
@@ -39,8 +42,12 @@ class Question extends Model
 	public function questionType()
 	{
 		return $this->belongsTo(QuestionType::class, 'questionTypeId');
-	}
+    }
 
+	public function gradeLesson()
+	{
+		return $this->belongsTo(GradeLesson::class, 'gradeLessonId');
+	}
 
 
 	public function getHardnessLabelAttribute()

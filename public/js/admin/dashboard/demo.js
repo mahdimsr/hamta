@@ -317,55 +317,22 @@ function sina() {
 }
 
 
+// input file
+document.querySelector("html").classList.add('js');
 
-/* multistep form reg  */
-var currentTab = 0; // Current tab is set to be the first tab (0)
-showTab(currentTab); // Display the current tab
+var fileInput  = document.querySelector( ".input-file" ),
+    button     = document.querySelector( ".input-file-trigger" ),
+    the_return = document.querySelector(".file-return");
 
-function showTab(n) {
-    // This function will display the specified tab of the form ...
-    var x = document.getElementsByClassName("tab");
-    x[n].style.display = "block";
-    // ... and fix the Previous/Next buttons:
-    if (n == 0) {
-        document.getElementById("prevBtn").style.display = "none";
-    } else {
-        document.getElementById("prevBtn").style.display = "inline";
+button.addEventListener( "keydown", function( event ) {
+    if ( event.keyCode == 13 || event.keyCode == 32 ) {
+        fileInput.focus();
     }
-    if (n == (x.length - 1)) {
-        document.getElementById("nextBtn").innerHTML = "ثبت";
-    } else {
-        document.getElementById("nextBtn").innerHTML = "بعدی";
-    }
-
-    fixStepIndicator(n)
-}
-
-function nextPrev(n) {
-
-    var x = document.getElementsByClassName("tab");
-
-    x[currentTab].style.display = "none";
-
-    currentTab = currentTab + n;
-
-    if (currentTab >= x.length) {
-        //...the form gets submitted:
-        document.getElementById("regForm").submit();
-        return false;
-    }
-
-    showTab(currentTab);
-}
-
-
-
-function fixStepIndicator(n) {
-
-    var i, x = document.getElementsByClassName("step");
-    for (i = 0; i < x.length; i++) {
-        x[i].className = x[i].className.replace(" active", "");
-    }
-    //... and adds the "active" class to the current step:
-    x[n].className += " active";
-}
+});
+button.addEventListener( "click", function( event ) {
+    fileInput.focus();
+    return false;
+});
+fileInput.addEventListener( "change", function( event ) {
+    the_return.innerHTML = this.value;
+});
