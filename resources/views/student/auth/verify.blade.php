@@ -59,7 +59,7 @@
              <!-- Insert OTP -->
              
                <input maxlength="5" id="otpinput" type="number" required="" min="0" inputmode="numeric" pattern="[0-9]*"
-                      placeholder="XXXX" autocomplete="off" name="#" minlength="0"
+                      placeholder="XXXXX" autocomplete="off" name="#" minlength="0"
                       title='لطفا عدد وارد کنید' autofocus/>
              
  
