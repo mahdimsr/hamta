@@ -58,8 +58,8 @@
  
              <!-- Insert OTP -->
              
-               <input maxlength="4" id="otpinput" type="number" required="" min="0" inputmode="numeric" pattern="[0-9]*"
-                      placeholder="XXXX" autocomplete="off" name="#" minlength="4"
+               <input maxlength="5" id="otpinput" type="number" required="" min="0" inputmode="numeric" pattern="[0-9]*"
+                      placeholder="XXXX" autocomplete="off" name="#" minlength="0"
                       title='لطفا عدد وارد کنید' autofocus/>
              
  
@@ -157,6 +157,33 @@ $("#otpinput").val('');
 
 
 
+
+
+
+  $(function(){
+        var maxLength=5;
+        var show = false;
+    
+        $('#otpinput').keyup(function(){
+            var textArea=$(this);
+            var len=textArea.val().length;
+            if(len>=0 && show==false){
+                show=true;
+                $('#charNum').css('visibility','visible');
+                $('#char_left').css('visibility','visible');
+            }
+            if(len<=maxLength){
+                $('#charNum').text(maxLength-len);
+               
+            }
+            else{
+                textArea.val(textArea.val().substring(0,maxLength));
+                alert('کد وارد شده باید پنج رقم باشد');
+            }
+        });
+   
+
+        });
 
 </script>
  </html>

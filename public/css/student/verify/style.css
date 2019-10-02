@@ -1849,8 +1849,8 @@ input:focus ~ .highlight{
 	margin-top:10px;
 	border:none;
 	padding:0;
-	width:6ch;
-	background:repeating-linear-gradient(90deg,#027fa3 0,#027fa3 1ch,transparent 0,transparent 1.5ch) 0 100%/ 5.5ch 2px no-repeat;
+	width:8ch;
+	background:repeating-linear-gradient(90deg,#027fa3 0,#027fa3 1ch,transparent 0,transparent 1.5ch) 0 100%/ 7.5ch 2px no-repeat;
 	font:30px PIF,SDF;
 	color:#027fa3;
 	letter-spacing:.5ch
