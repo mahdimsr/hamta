@@ -89,8 +89,8 @@
                     Route::get('/edit/{exm}', 'LessonExamController@editShow')->name('admin_ltlExams_editShow');
                     Route::post('/edit/{exm}', 'LessonExamController@edit')->name('admin_ltlExams_edit');
                     Route::post('/add', 'LessonExamController@add')->name('admin_lExam_add');
-                    Route::post('/remove', 'LessonExamController@remove')->name('admin_lExam_remove');
-                    
+                    Route::get('/remove/{id}', 'LessonExamController@remove')->name('admin_lExam_remove');
+
                     //questions
                     Route::post('/addManyQuestion', 'LessonExamController@addManyQuestion')
                          ->name('admin_ltl_add_many_question');

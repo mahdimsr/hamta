@@ -128,7 +128,7 @@
                                        'duration'    => 'required|integer|min:0']);
 
 
-            $lessonExam                        = LessonExam::query()->where('exm', $exm)->first();
+            $lessonExam = LessonExam::query()->where('exm', $exm)->first();
 
             $lessonExam->orientationCategoryId = $request->input('category');
             $lessonExam->gradeId               = $request->input('grade');
@@ -150,6 +150,8 @@
                 $answerSheet = $request->file('answerSheet');
 
                 Storage::disk('lessonExam')->put($lessonExam->id, $answerSheet);
+
+                Storage::disk('lessonExam')->delete($lessonExam->id . '/' . $lessonExam->answerSheet);
 
                 $lessonExam->answerSheet = $answerSheet->hashName();
 
@@ -193,12 +195,10 @@
                 {
                     if (QuestionExam::query()->where('questionId', $questionId)->where('examId', $exam->id)->exists())
                     {
-                        $questionExam
-                            = QuestionExam::query()
-                                          ->where('questionId', $questionId)
-                                          ->where('examId', $exam->id)
-                                          ->first()
-                        ;
+                        $questionExam = QuestionExam::query()
+                                                    ->where('questionId', $questionId)
+                                                    ->where('examId', $exam->id)
+                                                    ->first();
 
                         $questionExam->update();
                     }
@@ -211,11 +211,14 @@
         }
 
 
-        public function remove($exm)
+        public function remove($id)
         {
 
-            $exam = LessonExam::query()->where('exm', $exm)->first();
+            $exam = LessonExam::query()->find($id);
 
-            return response()->json(['success' => 'Data is successfully added']);
+            $exam->delete();
+
+            return redirect()->back();
         }
+
     }

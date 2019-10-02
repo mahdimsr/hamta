@@ -31,7 +31,7 @@
 								<td>{{$exam->answerSheet ? 'دارد' : 'ندارد'}}</td>
 								<td>
 
-									<a href="{{route('admin_grades_remove',['url' => $exam->code])}}" id="remove-btn"
+									<a href="{{route('admin_lExam_remove',['id' => $exam->id])}}" id="remove-btn"
 									   type="button"
 									   style="font-size: 12px;" class="btn btn-danger">
 										حذف

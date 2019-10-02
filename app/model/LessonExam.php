@@ -74,6 +74,13 @@
                 $model->exm = $exm;
 
             });
+
+            self::deleting(function($model)
+            {
+
+                Storage::disk('lessonExam')->delete($model->id . '/' . $model->answerSheet);
+
+            });
         }
 
 
@@ -85,11 +92,13 @@
             return $path;
         }
 
+
         public function orientationCategory()
         {
 
             return $this->belongsTo(OrientationCategory::class, 'orientationCategoryId');
         }
+
 
         public function examGradeLessons()
         {
