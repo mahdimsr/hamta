@@ -1,7 +1,8 @@
 @extends('layouts.admin_dashboard')
 
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/admin/multi/style.css') }}">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
     <div class="row" dir="rtl">
 
         <div class="col-md-5">
@@ -212,12 +213,11 @@
 	            <div class="row">
 
 
-	            	<div class="col-lg-6">
-		            	<h3>مولتی سلکت</h3>
-		            	<input type="text" id="justAnInputBox1" placeholder="انتخاب"/>
-		                </div>
-
-                    </div>
+                    <select class="selectpicker" multiple data-live-search="true">
+                        <option>Mustard</option>
+                        <option>Ketchup</option>
+                        <option>Relish</option>
+                      </select>
 	
 
 	</div>
@@ -245,7 +245,9 @@
 
 @section('script')
 
-<script  src="{{asset('js/admin/multi/comboTreePlugin.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 
 
     <script>
@@ -290,67 +292,7 @@
 
 
 
-
-
-        var SampleJSONData = [
-    {
-        id: 0,
-        title: 'اول  '
-    }
-    ,
-    {
-        id: 1,
-        title: 'دوم',
-        subs: [
-            {
-                id: 10,
-                title: 'دوم 1'
-            }, {
-                id: 11,
-                title: 'دوم 2'
-            }, {
-                id: 12,
-                title: 'دوم 3'
-            }
-        ]
-    }, {
-        id: 2,
-        title: 'سوم'
-    }, {
-        id: 3,
-        title: 'چهارم'
-    }, {
-        id: 4,
-        title: 'چهارم '
-    }, {
-        id: 5,
-        title: 'پنجم',
-        subs: [
-            {
-                id: 50,
-                title: 'پنج یک'
-            }
-            
-        ]
-    }, {
-        id: 6,
-        title: 'هفت'
-    }
-];
-var comboTree1, comboTree2;
-
-jQuery(document).ready(function($) {
-
-	
-		comboTree3 = $('#justAnInputBox1').comboTree({
-			source : SampleJSONData,
-			isMultiple: true,
-			cascadeSelect: true
-		});
-
-
-	
-});
+        $('select').selectpicker();
 
     </script>
 @endsection
