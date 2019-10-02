@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="content">
-                    <form method="post" action="{{route('admin_lExam_addQuiz',['exm' => $exam->exm])}}" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('admin_lExam_addQuestion',['exm' => $exam->exm])}}" enctype="multipart/form-data">
 
                         {{csrf_field()}}
 

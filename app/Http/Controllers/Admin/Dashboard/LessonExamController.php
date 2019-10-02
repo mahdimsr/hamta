@@ -32,8 +32,6 @@
         public function exams()
         {
 
-            //admin_exams => route
-
             $lessonExam = LessonExam::all();
 
             return view('admin.dashboard.lessonExam.exams', compact('lessonExam'));
@@ -179,6 +177,24 @@
             return redirect()->back();
         }
 
+
+        public function questionsShow($exm)
+        {
+            $exam      = LessonExam::query()->where('exm',$exm)->first();
+            $questions = QuestionExam::query()->where('examId',$exam->id)->get();
+
+            return view('admin.dashboard.lessonExam.questions', compact('questions','exam'));
+        }
+
+        public function removeQuestion($id)
+        {
+
+            $exam = LessonExam::query()->where('id',$id)->first();
+
+            $exam->delete();
+
+            return redirect()->back();
+        }
 
         public function addQuestionShow($exm)
         {

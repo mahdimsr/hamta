@@ -19,7 +19,6 @@ class QuestionExam extends Model
 	protected $table = 'question_exam';
 
 
-
 	public function lessonExam()
 	{
 		return $this->belongsTo(LessonExam::class, 'examId');
