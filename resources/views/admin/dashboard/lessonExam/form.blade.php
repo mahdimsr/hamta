@@ -72,8 +72,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
                             <div class="col-md-6">
                                 <label class="control-label">گرایش</label>
