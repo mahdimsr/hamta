@@ -11,6 +11,12 @@ use App\model\Student as Student;
 
 class AuthController extends Controller
 {
+
+    public function verify()
+	{
+		return view('student.auth.verify');
+    }
+
 	public function showlogin()
 	{
         $studentInfo=cookie::get('studentInfo');

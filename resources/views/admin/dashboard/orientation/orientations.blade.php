@@ -50,29 +50,6 @@
 
 	<script>
 
-		function onRemoveClick(exm)
-		{
-
-			$.ajax({
-
-				type: 'POST',
-
-				url: '{{action('Admin\\Dashboard\\LessonExamController@remove')}}',
-
-				data: {exm: exm},
-
-				dataType: 'JSON',
-
-				success: function()
-				{
-
-					console.log(exm);
-
-				}
-
-			});
-		}
-
 	</script>
 
 @endsection

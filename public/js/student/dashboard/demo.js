@@ -261,3 +261,10 @@ demo = {
 
 
 }
+//js for disabled link
+
+link.addEventListener('click', function (event) {
+    if (this.parentElement.classList.contains('isDisabled')) {
+        event.preventDefault();
+    }
+});

@@ -125,9 +125,37 @@ li.list-li:nth-child(4){
     border-radius: 1.5em;
     border: 1px solid #ccc;
 }
+.file-radius {
+    border-radius: 1.5em;
+    border: 1px solid #ccc;
+}
+.dropdown-radius:focus{
+    transition: .7s;
+    box-shadow: 2px 3px 15px 0px rgba(52, 223, 224, 0.46), -1px 1px 7px 0px rgba(84, 152, 196, 0.06);
+    border-color: #00bafa;
+}
+/*@media (min-width: 900px) {*/
+    /*.col-float-left{*/
+        /*float: left;*/
+    /*}*/
+    /*.col-float-right{*/
+        /*float: right;*/
+    /*}*/
+
+/*}*/
 .textarea-radius{
     border-radius: 1.5em;
     border:1px solid #ccc;
+    display: block;
+    width: 100%;
+
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
 }
 .number-radius{
     border-radius: 1.5em;
@@ -150,6 +178,33 @@ input[type="text"] {
     resize: none;
     outline: none;
 }
+/*file input style*/
+
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+.custom-file-input::before {
+    content: 'Select some files';
+    display: inline-block;
+    background: linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+}
+.custom-file-input:hover::before {
+    border-color: black;
+}
+.custom-file-input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
 input[type="text"]:focus {
     transition: .7s;
     box-shadow: 2px 3px 15px 0px rgba(52, 223, 224, 0.46), -1px 1px 7px 0px rgba(84, 152, 196, 0.06);
@@ -752,4 +807,53 @@ input[type="text"][required] + label[placeholder]:before {
 .bubbly-button2.animate:after {
     display: block;
     animation: bottomBubbles ease-in-out 0.95s forwards;
+}
+/*file input style*/
+.input-file-container {
+    position: relative;
+    width: auto;
+}
+.js .input-file-trigger {
+    display: block;
+    padding: 10px;
+    height: 45px;
+    background: #199dd2;
+    border-radius: 1.5em ;
+    color: #fff;
+    font-size: 1em;
+    transition: all .4s;
+    cursor: pointer;
+}
+.js .input-file {
+    height: 30px;
+    position: absolute;
+    top: 0; left: 0;
+    width: 255px;
+    opacity: 0;
+    padding: 14px 0;
+    cursor: pointer;
+}
+.js .input-file:hover + .input-file-trigger,
+.js .input-file:focus + .input-file-trigger,
+.js .input-file-trigger:hover,
+.js .input-file-trigger:focus {
+    background: #34495E;
+    color: #39D2B4;
+}
+
+.file-return {
+    margin: 0;
+}
+.file-return:not(:empty) {
+    margin: 1em 0;
+}
+.js .file-return {
+    font-style: italic;
+    font-size: .9em;
+    font-weight: bold;
+}
+.js .file-return:not(:empty):before {
+    content: "Selected file: ";
+    font-style: normal;
+    font-weight: normal;
 }

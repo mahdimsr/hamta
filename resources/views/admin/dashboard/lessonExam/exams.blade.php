@@ -31,7 +31,7 @@
 								<td>{{$exam->answerSheet ? 'دارد' : 'ندارد'}}</td>
 								<td>
 
-									<a href="{{route('admin_lExam_remove',['id' => $exam->id])}}" id="remove-btn"
+									<a href="{{route('admin_lExam_remove',['exm' => $exam->exm])}}" id="remove-btn"
 									   type="button"
 									   style="font-size: 12px;" class="btn btn-danger">
 										حذف
@@ -40,13 +40,10 @@
 									   style="font-size: 12px;" class="btn btn-info">
 										ویرایش
 									</a>
-									{{--<button onclick="onRemoveClick('test fun')"
+
+									<a href="{{route('admin_lExam_questionsShow',['exm' => $exam->exm])}}"
 									   style="font-size: 12px;" class="btn btn-success">
-										test
-									</button>--}}
-									<a href="{{route('admin_lExam_addQuizShow',['exm' => $exam->exm])}}"
-									   style="font-size: 12px;" class="btn btn-success">
-										ویرایش یا درج سوال
+										سوالات
 									</a>
 
 								</td>
@@ -65,22 +62,6 @@
 @section('script')
 
 	<script>
-
-		function onRemoveClick(exm)
-		{
-
-			$.ajax({
-				type: 'GET',
-				url: "{{route('test')}}",
-				data: {
-					_token: "{{ csrf_token() }}"
-				},
-				success: function(msg)
-				{
-					console.log(msg);
-				}
-			});
-		}
 
 	</script>
 
