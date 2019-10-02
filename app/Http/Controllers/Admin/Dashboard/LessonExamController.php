@@ -10,7 +10,9 @@
     use App\model\Lesson;
     use App\model\LessonExam;
     use App\model\Orientation;
+    use App\model\Question;
     use App\model\QuestionExam;
+    use App\model\QuestionType;
     use App\model\Topic;
     use App\model\TopicExam;
     use App\model\TopicGradeLesson;
@@ -167,50 +169,6 @@
         }
 
 
-        public function addManyQuestion(Request $request)
-        {
-
-            $questionIds = $request->input('questionId');
-
-
-            $exam = LessonExam::query()->where('exm', $request->input('exm'))->first();
-
-            if (count($questionIds) > 0)
-            {
-                QuestionExam::query()->where('examId', $exam->id)->whereNotIn('questionId', $questionIds)->delete();
-            }
-
-            foreach ($questionIds as $questionId)
-            {
-                $questionExam = new QuestionExam();
-
-                if (!QuestionExam::query()->where('questionId', $questionId)->where('examId', $exam->id)->exists())
-                {
-                    $questionExam->questionId = $questionId;
-                    $questionExam->examId     = $exam->id;
-
-                    $questionExam->save();
-                }
-                else
-                {
-                    if (QuestionExam::query()->where('questionId', $questionId)->where('examId', $exam->id)->exists())
-                    {
-                        $questionExam = QuestionExam::query()
-                                                    ->where('questionId', $questionId)
-                                                    ->where('examId', $exam->id)
-                                                    ->first();
-
-                        $questionExam->update();
-                    }
-                }
-
-            }
-
-
-            return redirect()->back();
-        }
-
-
         public function remove($id)
         {
 
@@ -219,6 +177,49 @@
             $exam->delete();
 
             return redirect()->back();
+        }
+
+
+        public function addQuestionShow($exm)
+        {
+
+            $exam          = LessonExam::query()->where('exm', $exm)->first();
+            $questionTypes = QuestionType::all();
+            $topics        = TopicGradeLesson::all();
+
+            if ($exam->gradeId == 3)
+            {
+                $lessons = GradeLesson::query()->where('orientationCategoryId', $exam->orientationCategoryId)->get();
+            }
+            else
+            {
+                if ($exam->gradeId == 2)
+                {
+                    $lessons = GradeLesson::query()
+                                          ->where('orientationCategoryId', $exam->orientationCategoryId)
+                                          ->whereIn('gradeId', [1, 2])
+                                          ->get();
+                }
+                else
+                {
+                    $lessons = GradeLesson::query()
+                                          ->where('orientationCategoryId', $exam->orientationCategoryId)
+                                          ->whereIn('gradeId', [1])
+                                          ->get();
+                }
+            }
+
+
+            return view('admin.dashboard.lessonExam.question_form', compact('exam', 'lessons', 'questionTypes', 'topics'));
+
+        }
+
+
+        public function addQuestion(Request $request)
+        {
+
+           return $request;
+
         }
 
     }

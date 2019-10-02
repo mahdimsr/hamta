@@ -44,28 +44,39 @@
 
             if ($exm != null)
             {
-                $exam   = LessonExam::query()->where('exm', $exm)->first();
+                $exam          = LessonExam::query()->where('exm', $exm)->first();
                 $questionTypes = QuestionType::all();
-                $topics=TopicGradeLesson::all();
+                $topics        = TopicGradeLesson::all();
 
-                if ($exam->gradeId==3)
+                if ($exam->gradeId == 3)
                 {
-                    $lessons= GradeLesson::query()->where('orientationCategoryId', $exam->orientationCategoryId)->get();
+                    $lessons = GradeLesson::query()
+                                          ->where('orientationCategoryId', $exam->orientationCategoryId)
+                                          ->get();
 
-                }
-
-                else if ($exam->gradeId==2)
-                {
-                    $lessons= GradeLesson::query()->where('orientationCategoryId', $exam->orientationCategoryId)->whereIn('gradeId',[1,2])->get();
                 }
 
                 else
                 {
-                    $lessons= GradeLesson::query()->where('orientationCategoryId', $exam->orientationCategoryId)->whereIn('gradeId',[1])->get();
+                    if ($exam->gradeId == 2)
+                    {
+                        $lessons = GradeLesson::query()
+                                              ->where('orientationCategoryId', $exam->orientationCategoryId)
+                                              ->whereIn('gradeId', [1, 2])
+                                              ->get();
+                    }
+
+                    else
+                    {
+                        $lessons = GradeLesson::query()
+                                              ->where('orientationCategoryId', $exam->orientationCategoryId)
+                                              ->whereIn('gradeId', [1])
+                                              ->get();
+                    }
                 }
 
 
-                return view('admin.dashboard.question.formByExam', compact('exam', 'lessons', 'modify','questionTypes','topics'));
+                return view('admin.dashboard.question.formByExam', compact('exam', 'lessons', 'modify', 'questionTypes', 'topics'));
             }
 
             $gradeLessons = GradeLesson::all();
@@ -118,19 +129,24 @@
 
                 $questionExam->save();
 
-                $checkIfExit = ExamGradeLesson::query()->where('examId', $exam->id)->where('gradeLessonId',$request->input('gradeLesson'))->first();
-                if(!$checkIfExit)
+                $checkIfExit = ExamGradeLesson::query()
+                                              ->where('examId', $exam->id)
+                                              ->where('gradeLessonId', $request->input('gradeLesson'))
+                                              ->first();
+
+                if (!$checkIfExit)
                 {
-                $ExamGradeLesson = new ExamGradeLesson();
+                    $ExamGradeLesson = new ExamGradeLesson();
 
-                $ExamGradeLesson->gradeLessonId = $request->input('gradeLesson');
-                $ExamGradeLesson->examId        = $exam->id;
+                    $ExamGradeLesson->gradeLessonId = $request->input('gradeLesson');
+                    $ExamGradeLesson->examId        = $exam->id;
 
-                $ExamGradeLesson->save();
+                    $ExamGradeLesson->save();
                 }
             }
 
 
             return redirect()->back();
         }
+
     }

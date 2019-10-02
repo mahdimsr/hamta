@@ -92,6 +92,9 @@
                     Route::get('/remove/{id}', 'LessonExamController@remove')->name('admin_lExam_remove');
 
                     //questions
+                    Route::get('/addQuestion/{exm}','LessonExamController@addQuestionShow')->name('admin_lExam_addQuizShow');
+                    Route::post('/addQuestion','LessonExamController@addQuestion')->name('admin_lExam_addQuiz');
+
                     Route::post('/addManyQuestion', 'LessonExamController@addManyQuestion')
                          ->name('admin_ltl_add_many_question');
                 });
