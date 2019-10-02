@@ -73,7 +73,7 @@
                                         <option value="" id="0" selected disabled>گرایش و درس سوال را انتخاب نمایید</option>
                                         @foreach ( $lessons as $lesson )
                                             <option
-                                                value="{{ $lesson->id }}">{{ $lesson->title}}</option>
+                                                value="{{ $lesson->id }}">{{ $lesson->lesson_grade}}</option>
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback">

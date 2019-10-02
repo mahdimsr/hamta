@@ -23,6 +23,7 @@
             Route::get('/login', 'AuthController@showlogin')->name('student_login_show');
             Route::post('/login', 'AuthController@login')->name('student_login');
             Route::get('/register', 'AuthController@showregister')->name('student_register_show');
+            Route::get('/verify', 'AuthController@verify')->name('student_verify_show');
             Route::post('/register', 'AuthController@register')->name('student_register');
             Route::get('/logout', 'AuthController@logout')->name('student_logout');
         });
@@ -89,11 +90,11 @@
                     Route::get('/edit/{exm}', 'LessonExamController@editShow')->name('admin_ltlExams_editShow');
                     Route::post('/edit/{exm}', 'LessonExamController@edit')->name('admin_ltlExams_edit');
                     Route::post('/add', 'LessonExamController@add')->name('admin_lExam_add');
-                    Route::get('/remove/{id}', 'LessonExamController@remove')->name('admin_lExam_remove');
+                    Route::get('/remove/{exm}', 'LessonExamController@remove')->name('admin_lExam_remove');
 
                     //questions
                     Route::get('/addQuestion/{exm}','LessonExamController@addQuestionShow')->name('admin_lExam_addQuizShow');
-                    Route::post('/addQuestion','LessonExamController@addQuestion')->name('admin_lExam_addQuiz');
+                    Route::post('/addQuestion/{exm}','LessonExamController@addQuestion')->name('admin_lExam_addQuiz');
 
                     Route::post('/addManyQuestion', 'LessonExamController@addManyQuestion')
                          ->name('admin_ltl_add_many_question');
