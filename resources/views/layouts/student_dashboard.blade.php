@@ -81,49 +81,57 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
+						<span class="tooltiptext">!!!در حال راه اندازی</span>
 						<i class="fa fa-file-video"></i>
 						<p>ویدیو آموزشی</p>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
+						<span class="tooltiptext">!!!در حال راه اندازی</span>
 						<i class="fa fa-university"></i>
 						<p>کلاس های آنلاین</p>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
+						<span class="tooltiptext">!!!در حال راه اندازی</span>
 						<i class="fa fa-users"></i>
 						<p>من و مشاورم</p>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
+						<span class="tooltiptext">!!!در حال راه اندازی</span>
 						<i class="fa fa-book"></i>
 						<p>کتاب های کمک درسی</p>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
+						<span class="tooltiptext">!!!در حال راه اندازی</span>
 						<i class="fa fa-clock"></i>
 						<p>فرصتی تا کنکور</p>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
+						<span class="tooltiptext">!!!در حال راه اندازی</span>
 						<i class="fa fa-gamepad"></i>
 						<p>بازی و سرگرمی</p>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
+						<span class="tooltiptext">!!!در حال راه اندازی</span>
 						<i class="fa fa-newspaper"></i>
 						<p>معرفی دبیر</p>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
+						<span class="tooltiptext">!!!در حال راه اندازی</span>
 						<i class="fa fa-comments"></i>
 						<p>بحث و گفتگو</p>
 					</a>
