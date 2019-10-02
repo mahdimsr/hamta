@@ -25,7 +25,7 @@
 
         protected $table = 'grade_lesson';
 
-        protected $appends = ['title'];
+        protected $appends = ['title', 'lesson_grade'];
 
 
         protected static function boot()
@@ -56,6 +56,16 @@
             $categoryTitle    = $this->orientationCategory->category->title;
 
             return $orientationTitle .' - '. $categoryTitle .' - ' . $lessonTitle . ' - ' . $gradeTitle;
+        }
+
+
+        public function getLessonGradeAttribute()
+        {
+
+            $lessonTitle = $this->lesson->title;
+            $gradeTitle  = $this->grade->title;
+
+            return $lessonTitle . ' - ' . $gradeTitle;
         }
 
 

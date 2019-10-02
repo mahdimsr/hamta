@@ -43,9 +43,9 @@
 
             $modify = 0;
 
-            $categories        = OrientationCategory::all();
-            $orientations      = Orientation::all();
-            $grades            = Grade::all();
+            $categories   = OrientationCategory::all();
+            $orientations = Orientation::all();
+            $grades       = Grade::all();
 
             return view('admin.dashboard.lessonExam.form', compact('modify', 'categories', 'orientations', 'grades'));
         }
@@ -54,34 +54,30 @@
         public function add(Request $request)
         {
 
-            $this->validate($request,
-			[
-                'orientation' => 'required',
-                'category'    => 'required',
-                'grade'       => 'required',
-                'title'       => 'required|string|max:20',
-                'activeDate'  => 'required',
-                'price'       => 'required|integer|min:0',
-                'description' => 'nullable|string|max:300',
-                'answerSheet' => 'nullable|file|mimes:pdf|max:3000',
-                'duration'    => 'required|integer|min:0'
-			]
-		);
+            $this->validate($request, ['orientation' => 'required',
+                                       'category'    => 'required',
+                                       'grade'       => 'required',
+                                       'title'       => 'required|string|max:20',
+                                       'activeDate'  => 'required',
+                                       'price'       => 'required|integer|min:0',
+                                       'description' => 'nullable|string|max:300',
+                                       'answerSheet' => 'nullable|file|mimes:pdf|max:3000',
+                                       'duration'    => 'required|integer|min:0']);
 
 
-            $lessonExam = new LessonExam();
-            $lessonExam->orientationCategoryId     = $request->input('category');
-            $lessonExam->gradeId                   = $request->input('grade');
-            $lessonExam->title                     = $request->input('title');
-            $lessonExam->price                     = $request->input('price');
-            $lessonExam->description               = $request->input('description');
+            $lessonExam                        = new LessonExam();
+            $lessonExam->orientationCategoryId = $request->input('category');
+            $lessonExam->gradeId               = $request->input('grade');
+            $lessonExam->title                 = $request->input('title');
+            $lessonExam->price                 = $request->input('price');
+            $lessonExam->description           = $request->input('description');
             // convert and insert activeDate
-            $jalalian                              = Lib::convertFaToEn($request->input('activeDate'));
-            $dateTime                              = CalendarUtils::createDatetimeFromFormat('Y/m/d', $jalalian);
-            $carbon                                = Carbon::createFromTimestamp($dateTime->getTimestamp());
-            $lessonExam->activeDate                = $carbon->toDateTimeString();
+            $jalalian               = Lib::convertFaToEn($request->input('activeDate'));
+            $dateTime               = CalendarUtils::createDatetimeFromFormat('Y/m/d', $jalalian);
+            $carbon                 = Carbon::createFromTimestamp($dateTime->getTimestamp());
+            $lessonExam->activeDate = $carbon->toDateTimeString();
             //end activeDate section
-            $lessonExam->duration                  = $request->input('duration');
+            $lessonExam->duration = $request->input('duration');
 
             $lessonExam->save();
 
@@ -96,6 +92,7 @@
 
                 $lessonExam->update();
             }
+
             //end answerSheet section
 
             return redirect()->route('admin_ltl_exams');
@@ -109,11 +106,62 @@
 
             $lessonExam = LessonExam::query()->where('exm', $exm)->first();
 
-            $grades                = Grade::all();
-            $categories            = OrientationCategory::all();
-            $orientations          = Orientation::all();
+            $grades       = Grade::all();
+            $categories   = OrientationCategory::all();
+            $orientations = Orientation::all();
 
-            return view('admin.dashboard.lessonExam.form', compact('modify', 'lessonExam','categories', 'grades', 'orientations'));
+            return view('admin.dashboard.lessonExam.form', compact('modify', 'lessonExam', 'categories', 'grades', 'orientations'));
+        }
+
+
+        public function edit(Request $request, $exm)
+        {
+
+            $this->validate($request, ['orientation' => 'required',
+                                       'category'    => 'required',
+                                       'grade'       => 'required',
+                                       'title'       => 'required|string|max:20',
+                                       'activeDate'  => 'required',
+                                       'price'       => 'required|integer|min:0',
+                                       'description' => 'nullable|string|max:300',
+                                       'answerSheet' => 'nullable|file|mimes:pdf|max:3000',
+                                       'duration'    => 'required|integer|min:0']);
+
+
+            $lessonExam                        = LessonExam::query()->where('exm', $exm)->first();
+
+            $lessonExam->orientationCategoryId = $request->input('category');
+            $lessonExam->gradeId               = $request->input('grade');
+            $lessonExam->title                 = $request->input('title');
+            $lessonExam->price                 = $request->input('price');
+            $lessonExam->description           = $request->input('description');
+            // convert and insert activeDate
+            $jalalian               = Lib::convertFaToEn($request->input('activeDate'));
+            $dateTime               = CalendarUtils::createDatetimeFromFormat('Y/m/d', $jalalian);
+            $carbon                 = Carbon::createFromTimestamp($dateTime->getTimestamp());
+            $lessonExam->activeDate = $carbon->toDateTimeString();
+            //end activeDate section
+            $lessonExam->duration = $request->input('duration');
+
+
+            //save answerSheet
+            if ($request->hasFile('answerSheet'))
+            {
+                $answerSheet = $request->file('answerSheet');
+
+                Storage::disk('lessonExam')->put($lessonExam->id, $answerSheet);
+
+                $lessonExam->answerSheet = $answerSheet->hashName();
+
+            }
+
+            //end answerSheet section
+
+            $lessonExam->update();
+
+
+            return redirect()->route('admin_exams');
+
         }
 
 
