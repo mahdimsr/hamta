@@ -51,7 +51,7 @@
 
 
             $this->validate($request, ['title'        => 'required|string|max:20',
-                                       'activeDate'   => 'nullable',
+                                       'activeDate'   => 'required',
                                        'gradeLessons' => 'required',
                                        'price'        => 'required|integer|min:0',
                                        'description'  => 'nullable|string|max:300',
@@ -65,13 +65,12 @@
             $lessonExam->description = $request->input('description');
             $lessonExam->duration    = $request->input('duration');
             // convert and insert activeDate
-            if ($request->input('activeDate') != null)
-            {
-                $jalalian               = Lib::convertFaToEn($request->input('activeDate'));
-                $dateTime               = CalendarUtils::createDatetimeFromFormat('Y/m/d', $jalalian);
-                $carbon                 = Carbon::createFromTimestamp($dateTime->getTimestamp());
-                $lessonExam->activeDate = $carbon->toDateTimeString();
-            }
+
+            $jalalian               = Lib::convertFaToEn($request->input('activeDate'));
+            $dateTime               = CalendarUtils::createDatetimeFromFormat('Y/m/d', $jalalian);
+            $carbon                 = Carbon::createFromTimestamp($dateTime->getTimestamp());
+            $lessonExam->activeDate = $carbon->toDateTimeString();
+
             //end activeDate section
 
             $lessonExam->save();
@@ -206,34 +205,8 @@
             $modify = 0;
             $exam   = LessonExam::query()->where('exm', $exm)->first();
 
-            if ($exam->gradeId == 3)
-            {
-                $gradeLessons = GradeLesson::query()
-                                           ->where('orientationCategoryId', $exam->orientationCategoryId)
-                                           ->get();
-            }
 
-            else
-            {
-                if ($exam->gradeId == 2)
-                {
-                    $gradeLessons = GradeLesson::query()
-                                               ->where('orientationCategoryId', $exam->orientationCategoryId)
-                                               ->whereIn('gradeId', [1, 2])
-                                               ->get();
-                }
-
-                else
-                {
-                    $gradeLessons = GradeLesson::query()
-                                               ->where('orientationCategoryId', $exam->orientationCategoryId)
-                                               ->whereIn('gradeId', [1])
-                                               ->get();
-                }
-            }
-
-
-            return view('admin.dashboard.lessonExam.question_form', compact('exam', 'gradeLessons', 'modify'));
+            return view('admin.dashboard.lessonExam.question_form', compact('exam', 'modify'));
 
         }
 
@@ -245,34 +218,8 @@
             $question = Question::query()->where('id', $id)->first();
             $exam     = LessonExam::query()->where('exm', $exm)->first();
 
-            if ($exam->gradeId == 3)
-            {
-                $gradeLessons = GradeLesson::query()
-                                           ->where('orientationCategoryId', $exam->orientationCategoryId)
-                                           ->get();
-            }
 
-            else
-            {
-                if ($exam->gradeId == 2)
-                {
-                    $gradeLessons = GradeLesson::query()
-                                               ->where('orientationCategoryId', $exam->orientationCategoryId)
-                                               ->whereIn('gradeId', [1, 2])
-                                               ->get();
-                }
-
-                else
-                {
-                    $gradeLessons = GradeLesson::query()
-                                               ->where('orientationCategoryId', $exam->orientationCategoryId)
-                                               ->whereIn('gradeId', [1])
-                                               ->get();
-                }
-            }
-
-
-            return view('admin.dashboard.lessonExam.question_form', compact('exam', 'gradeLessons', 'question', 'modify'));
+            return view('admin.dashboard.lessonExam.question_form', compact('exam', 'question', 'modify'));
 
         }
 
@@ -320,21 +267,6 @@
             $questionExam->examId     = $exam->id;
 
             $questionExam->save();
-
-            $checkIfExit = ExamGradeLesson::query()
-                                          ->where('examId', $exam->id)
-                                          ->where('gradeLessonId', $request->input('gradeLesson'))
-                                          ->first();
-
-            if (!$checkIfExit)
-            {
-                $ExamGradeLesson = new ExamGradeLesson();
-
-                $ExamGradeLesson->gradeLessonId = $request->input('gradeLesson');
-                $ExamGradeLesson->examId        = $exam->id;
-
-                $ExamGradeLesson->save();
-            }
 
 
             return redirect()->back();

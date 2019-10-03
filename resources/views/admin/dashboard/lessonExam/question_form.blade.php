@@ -45,27 +45,31 @@
                 </div>
 
                 <div class="content">
-                    <form method="post" action="{{ $modify==0 ?  route('admin_lExam_addQuestion',['exm' => $exam->exm]) : route('admin_ltlExams_editQuestion',['exm' => $exam->exm ,'id' => $question->id])}}" enctype="multipart/form-data">
+                    <form method="post"
+                          action="{{ $modify==0 ?  route('admin_lExam_addQuestion',['exm' => $exam->exm]) : route('admin_ltlExams_editQuestion',['exm' => $exam->exm ,'id' => $question->id])}}"
+                          enctype="multipart/form-data">
 
                         {{csrf_field()}}
 
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                            <label>مباحث سوال</label>
-                                            <input name="description" dir="rtl" type="text" class="form-control" placeholder="مباحث سوال را وارد نمایید"
-                                                   value="{{old('description')}} {{ $modify==1 && !old('description') && $question->description ? $question->description : '' }}">
-                                                   <div class="invalid-feedback">
-                                                        <small>{{ $errors->first('description') }}</small>
-                                                    </div>
+                                    <label>مباحث سوال</label>
+                                    <input name="description" dir="rtl" type="text" class="form-control"
+                                           placeholder="مباحث سوال را وارد نمایید"
+                                           value="{{old('description')}} {{ $modify==1 && !old('description') && $question->description ? $question->description : '' }}">
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('description') }}</small>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>درس سوال</label>
-                                    <select dir="rtl" name="gradeLesson" class="form-control" {{ $modify==1? 'disabled' : '' }}>
+                                    <select dir="rtl" name="gradeLesson"
+                                            class="form-control" {{ $modify==1? 'disabled' : '' }}>
                                         <option value="" id="0" selected disabled>درس سوال را انتخاب نمایید</option>
-                                        @foreach ( $gradeLessons as $gradeLesson )
+                                        @foreach ( $exam->gradeLessons as $gradeLesson )
                                             <option
                                                 value="{{ $gradeLesson->id }}" {{ old('gradeLesson')== $gradeLesson->id ? 'selected' : '' }} {{ $modify==1 && !old('gradeLesson') && $question->gradeLessonId==$gradeLesson->id ? 'selected' : '' }}>{{ $gradeLesson->lesson_grade}}</option>
                                         @endforeach
@@ -84,11 +88,26 @@
                                     <label>درجه سختی سوال</label>
                                     <select dir="rtl" name="hardness" class="form-control">
                                         <option value="" selected disabled>درجه سختی سوال را انتخاب نمایید</option>
-                                        <option value="1" {{old('hardness') == '1' ? 'selected' : ''}}{{ $modify==1 && !old('hardness') && $question->hardness== '1' ? 'selected' : '' }}>خیلی ساده</option>
-                                        <option value="2" {{old('hardness') == '2' ? 'selected' : ''}} {{ $modify==1 && !old('hardness') && $question->hardness== '2' ? 'selected' : '' }}>ساده</option>
-                                        <option value="3" {{old('hardness') == '3' ? 'selected' : ''}} {{ $modify==1 && !old('hardness') && $question->hardness== '3' ? 'selected' : '' }}>معمولی</option>
-                                        <option value="4" {{old('hardness') == '4' ? 'selected' : ''}} {{ $modify==1 && !old('hardness') && $question->hardness== '4' ? 'selected' : '' }}>سخت</option>
-                                        <option value="5" {{old('hardness') == '5' ? 'selected' : ''}} {{ $modify==1 && !old('hardness') && $question->hardness== '5' ? 'selected' : '' }}>خیلی سخت</option>
+                                        <option
+                                            value="1" {{old('hardness') == '1' ? 'selected' : ''}}{{ $modify==1 && !old('hardness') && $question->hardness== '1' ? 'selected' : '' }}>
+                                            خیلی ساده
+                                        </option>
+                                        <option
+                                            value="2" {{old('hardness') == '2' ? 'selected' : ''}} {{ $modify==1 && !old('hardness') && $question->hardness== '2' ? 'selected' : '' }}>
+                                            ساده
+                                        </option>
+                                        <option
+                                            value="3" {{old('hardness') == '3' ? 'selected' : ''}} {{ $modify==1 && !old('hardness') && $question->hardness== '3' ? 'selected' : '' }}>
+                                            معمولی
+                                        </option>
+                                        <option
+                                            value="4" {{old('hardness') == '4' ? 'selected' : ''}} {{ $modify==1 && !old('hardness') && $question->hardness== '4' ? 'selected' : '' }}>
+                                            سخت
+                                        </option>
+                                        <option
+                                            value="5" {{old('hardness') == '5' ? 'selected' : ''}} {{ $modify==1 && !old('hardness') && $question->hardness== '5' ? 'selected' : '' }}>
+                                            خیلی سخت
+                                        </option>
                                     </select>
                                     <div class="invalid-feedback">
                                         <small>{{ $errors->first('hardness') }}</small>
@@ -96,11 +115,12 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                    <div class="form-group">
-                                            <label>نوع سوال</label>
-                                            <input name="questionType" dir="rtl" type="text" class="form-control" placeholder="نوع سوال را وارد نمایید"
-                                                   value="{{old('questionType')}} {{ $modify==1 && !old('questionType') && $question->questionType ? $question->questionType : '' }}">
-                                    </div>
+                                <div class="form-group">
+                                    <label>نوع سوال</label>
+                                    <input name="questionType" dir="rtl" type="text" class="form-control"
+                                           placeholder="نوع سوال را وارد نمایید"
+                                           value="{{old('questionType')}} {{ $modify==1 && !old('questionType') && $question->questionType ? $question->questionType : '' }}">
+                                </div>
                             </div>
                         </div>
 
@@ -111,54 +131,54 @@
                                     <label>صورت سوال</label>
                                     <textarea dir="rtl" name="text" rows="4" class="form-control"
                                               placeholder="صورت سوال را وارد نمایید">{{old('text')}}{{ $modify==1 && !old('text') && $question->text ? $question->text : '' }}</textarea>
-                                              <div class="invalid-feedback">
-                                                    <small>{{ $errors->first('text') }}</small>
-                                                </div>
-                                            </div>
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('text') }}</small>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
-                                    <div class="col-md-6">
-                                            <div class="form-group">
-                                                    <label>گزینه دوم</label>
-                                                    <textarea dir="rtl" name="optionTwo" rows="3" class="form-control"
-                                                              placeholder="گزینه دوم سوال را وارد نمایید">{{old('optionTwo')}}{{ $modify==1 && !old('optionTwo') && $question->optionTwo ? $question->optionTwo : '' }}</textarea>
-                                                              <div class="invalid-feedback">
-                                                                    <small>{{ $errors->first('optionTwo') }}</small>
-                                                                </div>
-                                                            </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                            <div class="form-group">
-                                                    <label>گزینه اول</label>
-                                                    <textarea dir="rtl" name="optionOne" rows="3" class="form-control"
-                                                              placeholder="گزینه اول سوال را وارد نمایید">{{old('optionOne')}}{{ $modify==1 && !old('optionOne') && $question->optionOne ? $question->optionOne : '' }}</textarea>
-                                                              <div class="invalid-feedback">
-                                                                    <small>{{ $errors->first('optionOne') }}</small>
-                                                                </div>
-                                                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>گزینه دوم</label>
+                                    <textarea dir="rtl" name="optionTwo" rows="3" class="form-control"
+                                              placeholder="گزینه دوم سوال را وارد نمایید">{{old('optionTwo')}}{{ $modify==1 && !old('optionTwo') && $question->optionTwo ? $question->optionTwo : '' }}</textarea>
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('optionTwo') }}</small>
                                     </div>
                                 </div>
-                                <div class="row">
-                            <div class="col-md-6">
-                                    <div class="form-group">
-                                            <label>گزینه چهارم</label>
-                                            <textarea dir="rtl" name="optionFour" rows="3" class="form-control"
-                                                      placeholder="گزینه چهارم سوال را وارد نمایید">{{old('optionFour')}}{{ $modify==1 && !old('optionFour') && $question->optionFour ? $question->optionFour : '' }}</textarea>
-                                                      <div class="invalid-feedback">
-                                                            <small>{{ $errors->first('optionFour') }}</small>
-                                                        </div>
-                                                    </div>
                             </div>
                             <div class="col-md-6">
-                                    <div class="form-group">
-                                            <label>گزینه سوم</label>
-                                            <textarea dir="rtl" name="optionThree" rows="3" class="form-control"
-                                                      placeholder="گزینه سوم سوال را وارد نمایید">{{old('optionThree')}}{{ $modify==1 && !old('optionThree') && $question->optionThree ? $question->optionThree : '' }}</textarea>
-                                                      <div class="invalid-feedback">
-                                                            <small>{{ $errors->first('optionThree') }}</small>
-                                                        </div>
-                                                    </div>
+                                <div class="form-group">
+                                    <label>گزینه اول</label>
+                                    <textarea dir="rtl" name="optionOne" rows="3" class="form-control"
+                                              placeholder="گزینه اول سوال را وارد نمایید">{{old('optionOne')}}{{ $modify==1 && !old('optionOne') && $question->optionOne ? $question->optionOne : '' }}</textarea>
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('optionOne') }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>گزینه چهارم</label>
+                                    <textarea dir="rtl" name="optionFour" rows="3" class="form-control"
+                                              placeholder="گزینه چهارم سوال را وارد نمایید">{{old('optionFour')}}{{ $modify==1 && !old('optionFour') && $question->optionFour ? $question->optionFour : '' }}</textarea>
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('optionFour') }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>گزینه سوم</label>
+                                    <textarea dir="rtl" name="optionThree" rows="3" class="form-control"
+                                              placeholder="گزینه سوم سوال را وارد نمایید">{{old('optionThree')}}{{ $modify==1 && !old('optionThree') && $question->optionThree ? $question->optionThree : '' }}</textarea>
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('optionThree') }}</small>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -168,8 +188,8 @@
                                     <label>عکس برای سوال</label>
                                     <input name="photo" type="file" class="form-control">
                                     <div class="invalid-feedback">
-                                            <small>{{ $errors->first('photo') }}</small>
-                                        </div>
+                                        <small>{{ $errors->first('photo') }}</small>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -177,18 +197,31 @@
                                     <label>گزینه صحیح</label>
                                     <select dir="rtl" name="answer" class="form-control">
                                         <option value="" disabled selected>گزینه صحیح را انتخاب نمایید</option>
-                                        <option value="1" {{old('answer') == '1' ? 'selected' : ''}}{{ $modify==1 && !old('answer') && $question->answer== '1' ? 'selected' : '' }}>گزینه اول</option>
-                                        <option value="2" {{old('answer') == '2' ? 'selected' : ''}}{{ $modify==1 && !old('answer') && $question->answer== '2' ? 'selected' : '' }}>گزینه دوم</option>
-                                        <option value="3" {{old('answer') == '3' ? 'selected' : ''}}{{ $modify==1 && !old('answer') && $question->answer== '3' ? 'selected' : '' }}>گزینه سوم</option>
-                                        <option value="4" {{old('answer') == '4' ? 'selected' : ''}}{{ $modify==1 && !old('answer') && $question->answer== '4' ? 'selected' : '' }}>گزینه چهارم</option>
+                                        <option
+                                            value="1" {{old('answer') == '1' ? 'selected' : ''}}{{ $modify==1 && !old('answer') && $question->answer== '1' ? 'selected' : '' }}>
+                                            گزینه اول
+                                        </option>
+                                        <option
+                                            value="2" {{old('answer') == '2' ? 'selected' : ''}}{{ $modify==1 && !old('answer') && $question->answer== '2' ? 'selected' : '' }}>
+                                            گزینه دوم
+                                        </option>
+                                        <option
+                                            value="3" {{old('answer') == '3' ? 'selected' : ''}}{{ $modify==1 && !old('answer') && $question->answer== '3' ? 'selected' : '' }}>
+                                            گزینه سوم
+                                        </option>
+                                        <option
+                                            value="4" {{old('answer') == '4' ? 'selected' : ''}}{{ $modify==1 && !old('answer') && $question->answer== '4' ? 'selected' : '' }}>
+                                            گزینه چهارم
+                                        </option>
                                     </select>
                                 </div>
                                 <div class="invalid-feedback">
-                                        <small>{{ $errors->first('answer') }}</small>
-                                    </div>
+                                    <small>{{ $errors->first('answer') }}</small>
+                                </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-fill btn-info pull-left">{{ $modify== 0 ? 'ذخیره و درج سوال بعدی' : 'ویرایش سوال' }}</button>
+                        <button type="submit"
+                                class="btn btn-fill btn-info pull-left">{{ $modify== 0 ? 'ذخیره و درج سوال بعدی' : 'ویرایش سوال' }}</button>
                         <div class="clearfix"></div>
                     </form>
                 </div>
