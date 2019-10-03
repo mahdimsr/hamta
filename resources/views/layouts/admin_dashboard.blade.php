@@ -5,7 +5,7 @@
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-	<title>همپا | پنل ادمین</title>
+	<title>همپا | ادمین</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
 	<meta name="viewport" content="width=device-width"/>
@@ -13,7 +13,8 @@
 	<!--  CSS for Demo Purpose, don't include it in your project     -->
 	<link href="{{asset('css/admin/dashboard/demo.css')}}" rel="stylesheet"/>
 	<!-- Bootstrap core CSS     -->
-	<link href="{{asset('css/admin/dashboard/bootstrap.min.css')}}" rel="stylesheet"/>
+    <link href="{{asset('css/admin/dashboard/bootstrap.min.css')}}" rel="stylesheet"/>
+    <link rel="icon" href="{{asset('favicon.png')}}" type="image/png">
 
 	<!-- Animation library for notifications   -->
 	<link href="{{asset('css/admin/dashboard/animate.min.css')}}" rel="stylesheet"/>
@@ -51,9 +52,11 @@
 
 		<div class="sidebar-wrapper">
 			<div class="logo">
-				<a href="#" class="simple-text">
-					سامانه همپا
-				</a>
+                    <a class="simple-text">
+                        <img class="mx-auto" src={{asset('image/admin/dashboard/logo.png')}}
+                        height="75" width="75">
+                    </a>
+                    <a class="simple-text">کاربر : {{ $adminUser->fullName }}</a>
 			</div>
 
 			<ul class="nav text-right ">
@@ -142,16 +145,10 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a dir="rtl" class="navbar-brand" href="#">داشبورد</a>
+					<a dir="rtl" class="navbar-brand">همپا | ادمین</a>
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li>
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<i class="fa fa-dashboard"></i>
-								<p class="hidden-lg hidden-md">داشبورد</p>
-							</a>
-						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<i class="fa fa-globe"></i>
@@ -159,31 +156,21 @@
 								<p class="hidden-lg hidden-md">
 									اعلان ها
 									<b class="caret"></b>
-								</p>
+                                </p>
+                                <span class="notification hidden-sm hidden-xs">1</span>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="#">اعلان 1</a></li>
-								<li><a href="#">اعلان 2</a></li>
-								<li><a href="#">اعلان 3</a></li>
-								<li><a href="#">اعلان 4</a></li>
-								<li><a href="#"> اعلان</a></li>
+								<li><a> اعلان</a></li>
 							</ul>
-						</li>
-						<li>
-							<a href="">
-								<i class="fa fa-search"></i>
-								<p class="hidden-lg hidden-md">جست وجو</p>
-							</a>
 						</li>
 					</ul>
 
 					<ul class="nav navbar-nav text-right">
 						<li>
 							<a href="{{route('admin_logout')}}">
-
-								<p> <i class="fa fa-sign-out"></i>خروج</p>
+                                    <i class="fa fa-sign-out-alt"></i>
+                                    <p class="hidden-lg hidden-md">خروج</p>
 							</a>
-
 						</li>
 
 						<li class="separator hidden-lg"></li>

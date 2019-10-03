@@ -6,6 +6,7 @@
 
   <link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
   <link href="{{asset('css/student/auth/bootstrap.min.css')}}" rel="stylesheet">
+  <link rel="icon" href="{{asset('favicon.png')}}" type="image/png">
   <!-- Material Design Bootstrap -->
   <link href="{{asset('css/student/auth/mdb.min.css')}}" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('css/student/auth/style.css') }}">
@@ -44,7 +45,7 @@
 <body>
 
   <!-- Main Navigation -->
-  
+
 
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
                 <div class="container">
@@ -152,13 +153,13 @@
                             <div class="md-form pb-3">
                                 <button class="btn purple-gradient">دکمه</button>
 
-                   
-                            </div>
-
-                      
 
                             </div>
-                
+
+
+
+                            </div>
+
 
                             </div>
                             <!--Grid row-->

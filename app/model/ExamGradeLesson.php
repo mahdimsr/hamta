@@ -30,16 +30,17 @@
             self::creating(function($model)
             {
 
-                $gradeLesson = GradeLesson::query()->find($model->gradeLessonId);
                 $lessonExam  = LessonExam::query()->find($model->examId);
 
-                $str = substr(md5(uniqid(rand(), true)), 0, 1);;
-                $code = 'exm-' . $str . '-' . $gradeLesson->code;
+                $str1 = substr(md5(uniqid(mt_rand(), true)), 0, 2);
+                $str2 = substr(md5(uniqid(mt_rand(), true)), 0, 2);
+                $code = 'EXM-' . $str1 . $lessonExam->id . $str2;
 
                 while (LessonExam::query()->where('exm', $code)->exists())
                 {
-                    $str = substr(md5(uniqid(rand(), true)), 0, 1);;
-                    $code = 'exm-' . $str . '-' . $gradeLesson->code;
+                    $str1 = substr(md5(uniqid(mt_rand(), true)), 0, 2);
+                    $str2 = substr(md5(uniqid(mt_rand(), true)), 0, 2);
+                    $code = 'EXM-' . $str1 . $lessonExam->id . $str2;
                 }
 
                 $lessonExam->exm = $code;

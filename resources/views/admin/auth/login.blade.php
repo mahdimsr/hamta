@@ -3,9 +3,9 @@
 <head>
 	<meta charset='utf-8'>
 	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
-	<title>همتا | ادمین</title>
+	<title>همپا | ادمین</title>
 	<link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
-
+    <link rel="icon" href="{{asset('favicon.png')}}" type="image/png">
 	<link rel='stylesheet' type='text/css' media='screen' href="{{asset('css/admin/auth/style.css')}}">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
 		  integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">

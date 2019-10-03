@@ -14,7 +14,8 @@
 	<link href="{{asset('css/student/dashboard/animate.min.css')}}" rel="stylesheet"/>
 
 	<!--  Light Bootstrap Table core CSS    -->
-	<link href="{{asset('css/student/dashboard/dashboard.css')}}" rel="stylesheet"/>
+    <link href="{{asset('css/student/dashboard/dashboard.css')}}" rel="stylesheet"/>
+    <link rel="icon" href="{{asset('favicon.png')}}" type="image/png">
 
 
 	<!--  CSS for Demo Purpose, dont include it in your project     -->

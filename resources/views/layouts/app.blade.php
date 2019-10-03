@@ -4,10 +4,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>همتا | هدف موفقیت تو است.</title>
+	<title>همپا | هدف ما پیشرفت است.</title>
 	<link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
 
-	<link rel="icon" href="{{asset('image/homepage/Fevicon.png')}}" type="image/png">
+    <link rel="icon" href="{{asset('favicon.png')}}" type="image/png">
 	<link rel="stylesheet" href="{{ asset('vendors/bootstrap/bootstrap.min.css')}}">
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
