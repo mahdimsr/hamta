@@ -50,13 +50,13 @@
         {
 
 
-            $this->validate($request, ['title'           => 'required|string|max:20',
-                                       'activeDate'      => 'nullable',
-                                       'gradeLessons'    => 'required',
-                                       'price'           => 'required|integer|min:0',
-                                       'description'     => 'nullable|string|max:300',
-                                       'answerSheet'     => 'nullable|file|mimes:pdf|max:3000',
-                                       'duration'        => 'nullable|integer|min:0']);
+            $this->validate($request, ['title'        => 'required|string|max:20',
+                                       'activeDate'   => 'nullable',
+                                       'gradeLessons' => 'required',
+                                       'price'        => 'required|integer|min:0',
+                                       'description'  => 'nullable|string|max:300',
+                                       'answerSheet'  => 'nullable|file|mimes:pdf|max:3000',
+                                       'duration'     => 'nullable|integer|min:0']);
 
 
             $lessonExam              = new LessonExam();
@@ -109,13 +109,14 @@
 
             $modify = 1;
 
-            $lessonExam = LessonExam::query()->where('exm', $exm)->first();
+            $lessonExam       = LessonExam::query()->where('exm', $exm)->first();
+            $examGradeLessons = $lessonExam->gradeLessons;
 
-            $grades       = Grade::all();
-            $categories   = OrientationCategory::all();
+
+            $gradeLessons = GradeLesson::all();
             $orientations = Orientation::all();
 
-            return view('admin.dashboard.lessonExam.form', compact('modify', 'lessonExam', 'categories', 'grades', 'orientations'));
+            return view('admin.dashboard.lessonExam.form', compact('modify', 'lessonExam', 'examGradeLessons', 'gradeLessons', 'orientations'));
         }
 
 
@@ -127,7 +128,7 @@
                                        'price'       => 'required|integer|min:0',
                                        'description' => 'nullable|string|max:300',
                                        'answerSheet' => 'nullable|file|mimes:pdf|max:3000',
-                                       'duration'    => 'required|integer|min:0']);
+                                       'duration'    => 'nullable|integer|min:0']);
 
 
             $lessonExam = LessonExam::query()->where('exm', $exm)->first();

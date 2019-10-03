@@ -58,7 +58,7 @@ return [
 		'lessonExam' => [
 			'driver'     => 'local',
 			'root'       => storage_path('app/public/lessonExam'),
-			'url'        => env('APP_URL') . '/storage',
+			'url'        => env('APP_URL') . '/hamta/storage/app/public/lessonExam',
 			'visibility' => 'public',
 		],
 
