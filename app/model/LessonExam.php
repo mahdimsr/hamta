@@ -37,43 +37,6 @@
 
             parent::boot();
 
-            self::creating(function($model)
-            {
-
-                $grade  = Grade::query()->find($model->gradeId);
-                $oriCat = OrientationCategory::query()->find($model->orientationCategoryId);
-
-                $str = substr(md5(uniqid(rand(), true)), 0, 1);;
-                $exm = 'exm-' . $str . '-' . $grade->code . $oriCat->orientation->code;
-
-                while (LessonExam::query()->where('exm', $exm)->exists())
-                {
-                    $str = substr(md5(uniqid(rand(), true)), 0, 1);
-                    $exm = 'exm-' . $str . '-' . $grade->code . $oriCat->orientation->code;
-                }
-
-                $model->exm = $exm;
-
-            });
-
-            self::updating(function($model)
-            {
-
-                $grade  = Grade::query()->find($model->gradeId);
-                $oriCat = OrientationCategory::query()->find($model->orientationCategoryId);
-
-                $str = substr(md5(uniqid(rand(), true)), 0, 1);;
-                $exm = 'exm-' . $str . '-' . $grade->code . $oriCat->orientation->code;
-
-                while (LessonExam::query()->where('exm', $exm)->exists())
-                {
-                    $str = substr(md5(uniqid(rand(), true)), 0, 1);
-                    $exm = 'exm-' . $str . '-' . $grade->code . $oriCat->orientation->code;
-                }
-
-                $model->exm = $exm;
-
-            });
 
             self::deleting(function($model)
             {

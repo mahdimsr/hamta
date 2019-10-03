@@ -38,7 +38,7 @@ class OrientationTableSeeder extends Seeder
         //id 4
         $Orientation             = new Orientation();
 		$Orientation->code       = '04';
-		$Orientation->title      = 'ادبیات و علوم انسانی';
+		$Orientation->title      = 'عمومی';
         $Orientation->url        = 'General';
         $Orientation->save();
 

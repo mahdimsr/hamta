@@ -2,7 +2,8 @@
 
 @section('content')
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css"/>
     <div class="row" dir="rtl">
 
         <div class="col-md-5">
@@ -49,86 +50,11 @@
 
                 <div class="content">
                     <form method="post"
-                          action="{{ $modify==0 ? route('admin_lExam_add') : route('admin_ltlExams_edit',[ 'exm' => $lessonExam->exm])}}" role="form"
+                          action="{{ $modify==0 ? route('admin_lExam_add') : route('admin_ltlExams_edit',[ 'exm' => $lessonExam->exm])}}"
+                          role="form"
                           enctype="multipart/form-data">
 
                         {{csrf_field()}}
-
-                        <div class="row">
-
-                            <div class="col-md-6 col-float-right" style="float: right;">
-                                <div class="form-group">
-                                    <label class="control-label">گرایش</label>
-                                    <select name="orientation" class="form-control menu dropdown-radius hide-search" id="ori-select" {{ $modify==1? 'disabled' : '' }}>
-                                        <option id="0" value="" disabled selected>گرایش آزمون را انتخاب کنید</option>
-                                        @foreach($orientations as $orientation)
-                                            <option
-                                                    value="{{$orientation->id}}"
-                                                    {{old('orientation') == $orientation->id ? 'selected' : ''}}{{ $modify==1 && !old('orientation') && $lessonExam->orientationCategory->orientation->id == $orientation->id ? 'selected' : '' }}>
-                                                {{$orientation->title}}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        <small>{{ $errors->first('orientation') }}</small>
-                                    </div>
-                                </div>
-                            </div>
-
-                                <div class="col-md-6 col-float-left" style="float: right;">
-                                        <div class="form-group">
-                                            <label class="control-label">گروه درسی</label>
-                                            <select name="category" class="form-control  dropdown-radius menu hide-search" id="cat-select" {{ $modify==1? 'disabled' : '' }}>
-                                                <option id="0" value="" disabled selected>گروه درسی آزمون را انتخاب کنید</option>
-                                                @foreach($categories as $category)
-                                                    <option id="{{$category->orientationId}}"
-                                                            value="{{$category->id}}"
-                                                        {{old('category') == $category->id ? 'selected' : ''}}{{ $modify==1 && !old('category') && $lessonExam->orientationCategoryId == $category->id ? 'selected' : '' }}>
-                                                        {{$category->category->title }} - {{ $category->persiantype }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                <small>{{ $errors->first('category') }}</small>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label">نام</label>
-                                    <input name="title" class="form-control" type="text"
-                                           maxlength="20" tabindex="1"
-                                           value="{{old('title')}}{{ $modify==1 && !old('title') && $lessonExam->title ? $lessonExam->title : '' }}">
-                                </div>
-                                <div class="invalid-feedback">
-                                    <small>{{ $errors->first('title') }}</small>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="control-label">پایه</label>
-                                <select name="grade" class="form-control dropdown-radius menu hide-search" id="grade-select" {{ $modify==1? 'disabled' : '' }}>
-                                    <option id="0" disabled selected>پایه آزمون را انتخاب کنید</option>
-                                    @foreach($grades as $grade)
-                                        <option id="{{$grade->id}}"
-                                                value="{{$grade->id}}"
-                                            {{old('grade') == $grade->id ? 'selected' : ''}}{{ $modify==1 && !old('grade') && $lessonExam->gradeId == $grade->id ? 'selected' : '' }}>
-                                            {{$grade->title}}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                <div class="invalid-feedback">
-                                    <small>{{ $errors->first('grade') }}</small>
-                                </div>
-                            </div>
-
-                        </div>
 
                         <div class="row">
                             <div class="col-md-6">
@@ -145,34 +71,18 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>تاریخ فعال شدن آزمون </label>
-                                    <input dir="rtl" id="activeDate" name="activeDate" type="text"
-                                           class="form-control"
-                                           tabindex="3"
-                                           value="{{ old('activeDate') }}{{ $modify==1 && !old('activeDate') && $lessonExam->activeDate ? $lessonExam->activeDate : '' }}">
-                                    <div class="invalid-feedback">
-                                        <small>{{ $errors->first('activeDate') }}</small>
-                                    </div>
+                                    <label class="control-label">نام</label>
+                                    <input name="title" class="form-control" type="text"
+                                           maxlength="20" tabindex="1"
+                                           value="{{old('title')}}{{ $modify==1 && !old('title') && $lessonExam->title ? $lessonExam->title : '' }}">
+                                </div>
+                                <div class="invalid-feedback">
+                                    <small>{{ $errors->first('title') }}</small>
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label">پاسخ نامه سوالات (به صورت pdf)</label>
-                                    <div class="input-file-container">
-                                        <input class="input-file" id="my-file" type="file">
-                                        <label tabindex="0" for="my-file" class="input-file-trigger text-center">فایل را انتخاب کنید</label>
-                                    </div>
-                                    <p class="file-return"></p>
-                                    {{--<input name="answerSheet" class="form-control custom-file-input file-radius" type="file" accept="application/pdf"--}}
-                                           {{--maxlength="10" tabindex="5"--}}
-                                           {{--value="{{old('answerSheet')}}"/>--}}
-                                </div>
-                                <div class="invalid-feedback">
-                                    <small>{{ $errors->first('duration') }}</small>
-                                </div>
-                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">زمان آزمون (به دقیقه)</label>
@@ -185,8 +95,78 @@
                                     <small>{{ $errors->first('duration') }}</small>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>تاریخ فعال شدن آزمون </label>
+                                    <input dir="rtl" id="activeDate" name="activeDate" type="text"
+                                           class="form-control"
+                                           tabindex="3"
+                                           value="{{ old('activeDate') }}{{ $modify==1 && !old('activeDate') && $lessonExam->activeDate ? $lessonExam->activeDate : '' }}">
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('activeDate') }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="lesson-select" class="control-label">درس ها</label>
+                                <select id="lesson-select" name="gradeLessons[id]" multiple
+                                        data-placeholder="درس های گروه درسی">
+                                    @foreach($gradeLessons as $gradeLesson)
+                                        <option id="{{$gradeLesson->orientationId}}"
+                                                value="{{$gradeLesson->id}}">{{$gradeLesson->lesson_grade}}</option>
+                                    @endforeach
+                                </select>
+                                <div class="invalid-feedback">
+                                    <small>{{ $errors->first('gradeLessons') }}</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">گرایش</label>
+                                    <select name="orientation" class="form-control menu dropdown-radius hide-search"
+                                            id="ori-select" {{ $modify==1? 'disabled' : '' }}>
+                                        <option id="0" value="" disabled selected>گرایش آزمون را انتخاب کنید</option>
+                                        @foreach($orientations as $orientation)
+                                            <option
+                                                value="{{$orientation->id}}"
+                                                {{old('orientation') == $orientation->id ? 'selected' : ''}}{{ $modify==1 && !old('orientation') && $lessonExam->orientationCategory->orientation->id == $orientation->id ? 'selected' : '' }}>
+                                                {{$orientation->title}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('orientation') }}</small>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">پاسخ نامه سوالات (به صورت pdf)</label>
+                                    <div class="input-file-container">
+                                        <input class="input-file" id="my-file" type="file">
+                                        <label tabindex="0" for="my-file" class="input-file-trigger text-center">فایل را
+                                            انتخاب کنید</label>
+                                    </div>
+                                    <p class="file-return"></p>
+                                    {{--<input name="answerSheet" class="form-control custom-file-input file-radius" type="file" accept="application/pdf"--}}
+                                    {{--maxlength="10" tabindex="5"--}}
+                                    {{--value="{{old('answerSheet')}}"/>--}}
+                                </div>
+                                <div class="invalid-feedback">
+                                    <small>{{ $errors->first('duration') }}</small>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -201,98 +181,46 @@
                         </div>
 
 
-
-
-
-
-
-                     
-
-
-                        
-	            <div class="row">
-
-
-                    <select class="selectpicker" multiple data-live-search="true">
-                        <option>Mustard</option>
-                        <option>Ketchup</option>
-                        <option>Relish</option>
-                      </select>
-	
-
-	</div>
-
-
-
-
-
-
-
                         <button type="submit" class="btn btn-info btn-fill pull-left" tabindex="4">اعمال</button>
                         <div class="clearfix"></div>
 
-                    
+
                     </form>
-            </div>
-            </div>
                 </div>
+            </div>
+        </div>
 
 
+        @endsection
+
+        @section('script')
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+            <script
+                src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+            <script src="{{asset('multiSelect/script.js')}}"></script>
+
+            <script>
+
+                $('#activeDate').pDatepicker({
+
+                    autoClose    : true,
+                    initialValue : true,
+                    format       : 'YYYY/MM/DD',
+                    responsive   : true,
+                    toolbox      : {
+                        calendarSwitch : {
+                            enabled : false
+                        },
+                        submitButton   : {enabled : true},
+                        todayButton    : {
+                            enabled : false
+                        }
+                    }
+                });
 
 
-
-@endsection
-
-@section('script')
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-
-
-    <script>
-
-        $('#activeDate').pDatepicker({
-
-            autoClose    : true,
-            initialValue : true,
-            format       : 'YYYY/MM/DD',
-            responsive   : true,
-            toolbox      : {
-                calendarSwitch : {
-                    enabled : false
-                },
-                submitButton   : {enabled : true},
-                todayButton    : {
-                    enabled : false
-                }
-            }
-        });
-
-        var id, options;
-        var categories = $('#cat-select option').clone();
-
-        $("#ori-select").change(function ()
-        {
-            id      = $("#ori-select").val();
-            options = categories.filter('[id=' + id + '],[id=0]');
-            $('#cat-select').html(options);
-            $('#cat-select').prop('selectedIndex', 0).trigger('change');
-
-        });
-
-        if ($("#ori-select").val() != '')
-        {
-
-            id      = $("#ori-select").val();
-            options = categories.filter('[id=' + id + '],[id=0]');
-            $('#cat-select').html(options);
-
-        }
-
-
-
-        $('select').selectpicker();
-
-    </script>
+            </script>
 @endsection

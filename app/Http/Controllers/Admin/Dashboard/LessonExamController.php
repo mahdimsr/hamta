@@ -38,41 +38,42 @@
 
             $modify = 0;
 
-            $categories   = OrientationCategory::all();
             $orientations = Orientation::all();
             $grades       = Grade::all();
+            $gradeLessons = GradeLesson::all();
 
-            return view('admin.dashboard.lessonExam.form', compact('modify', 'categories', 'orientations', 'grades'));
+            return view('admin.dashboard.lessonExam.form', compact('modify', 'orientations', 'gradeLessons'));
         }
 
 
         public function add(Request $request)
         {
 
-            $this->validate($request, ['orientation' => 'required',
-                                       'category'    => 'required',
-                                       'grade'       => 'required',
-                                       'title'       => 'required|string|max:20',
-                                       'activeDate'  => 'required',
-                                       'price'       => 'required|integer|min:0',
-                                       'description' => 'nullable|string|max:300',
-                                       'answerSheet' => 'nullable|file|mimes:pdf|max:3000',
-                                       'duration'    => 'required|integer|min:0']);
+
+            $this->validate($request, ['title'           => 'required|string|max:20',
+                                       'activeDate'      => 'nullable',
+                                       'gradeLessons'    => 'required',
+                                       'gradeLessons.id' => 'required|exists:grade_lesson,id',
+                                       'price'           => 'required|integer|min:0',
+                                       'description'     => 'nullable|string|max:300',
+                                       'answerSheet'     => 'nullable|file|mimes:pdf|max:3000',
+                                       'duration'        => 'nullable|integer|min:0']);
 
 
-            $lessonExam                        = new LessonExam();
-            $lessonExam->orientationCategoryId = $request->input('category');
-            $lessonExam->gradeId               = $request->input('grade');
-            $lessonExam->title                 = $request->input('title');
-            $lessonExam->price                 = $request->input('price');
-            $lessonExam->description           = $request->input('description');
+            $lessonExam              = new LessonExam();
+            $lessonExam->title       = $request->input('title');
+            $lessonExam->price       = $request->input('price');
+            $lessonExam->description = $request->input('description');
+            $lessonExam->duration    = $request->input('duration');
             // convert and insert activeDate
-            $jalalian               = Lib::convertFaToEn($request->input('activeDate'));
-            $dateTime               = CalendarUtils::createDatetimeFromFormat('Y/m/d', $jalalian);
-            $carbon                 = Carbon::createFromTimestamp($dateTime->getTimestamp());
-            $lessonExam->activeDate = $carbon->toDateTimeString();
+            if ($request->input('activeDate') != null)
+            {
+                $jalalian               = Lib::convertFaToEn($request->input('activeDate'));
+                $dateTime               = CalendarUtils::createDatetimeFromFormat('Y/m/d', $jalalian);
+                $carbon                 = Carbon::createFromTimestamp($dateTime->getTimestamp());
+                $lessonExam->activeDate = $carbon->toDateTimeString();
+            }
             //end activeDate section
-            $lessonExam->duration = $request->input('duration');
 
             $lessonExam->save();
 
@@ -86,6 +87,16 @@
                 $lessonExam->answerSheet = $answerSheet->hashName();
 
                 $lessonExam->update();
+            }
+
+            // insert relation
+            foreach ($request->input('gradeLessons') as $gradeLessonId)
+            {
+
+                $examGradeLesson                = new ExamGradeLesson();
+                $examGradeLesson->examId        = $lessonExam->id;
+                $examGradeLesson->gradeLessonId = $gradeLessonId;
+                $examGradeLesson->save();
             }
 
             //end answerSheet section
@@ -122,9 +133,9 @@
 
             $lessonExam = LessonExam::query()->where('exm', $exm)->first();
 
-            $lessonExam->title                 = $request->input('title');
-            $lessonExam->price                 = $request->input('price');
-            $lessonExam->description           = $request->input('description');
+            $lessonExam->title       = $request->input('title');
+            $lessonExam->price       = $request->input('price');
+            $lessonExam->description = $request->input('description');
             // convert and insert activeDate
             $jalalian               = Lib::convertFaToEn($request->input('activeDate'));
             $dateTime               = CalendarUtils::createDatetimeFromFormat('Y/m/d', $jalalian);
@@ -160,7 +171,7 @@
         public function remove($exm)
         {
 
-            $exam = LessonExam::query()->where('exm',$exm)->first();
+            $exam = LessonExam::query()->where('exm', $exm)->first();
 
             $exam->delete();
 
@@ -170,184 +181,197 @@
 
         public function questionsShow($exm)
         {
-            $exam          = LessonExam::query()->where('exm',$exm)->first();
-            $questionExams = QuestionExam::query()->where('examId',$exam->id)->get();
 
-            return view('admin.dashboard.lessonExam.questions', compact('questionExams','exam'));
+            $exam          = LessonExam::query()->where('exm', $exm)->first();
+            $questionExams = QuestionExam::query()->where('examId', $exam->id)->get();
+
+            return view('admin.dashboard.lessonExam.questions', compact('questionExams', 'exam'));
         }
+
 
         public function removeQuestion($id)
         {
 
-            $questionExam  = QuestionExam::query()->where('id',$id)->first();
+            $questionExam = QuestionExam::query()->where('id', $id)->first();
 
             $questionExam->delete();
 
             return redirect()->back();
         }
 
+
         public function addQuestionShow($exm)
         {
-            $modify        = 0;
-            $exam          = LessonExam::query()->where('exm', $exm)->first();
+
+            $modify = 0;
+            $exam   = LessonExam::query()->where('exm', $exm)->first();
 
             if ($exam->gradeId == 3)
             {
-                $gradeLessons = GradeLesson::query()->where('orientationCategoryId', $exam->orientationCategoryId)->get();
-            }
-
-            else if ($exam->gradeId == 2)
-            {
-                    $gradeLessons = GradeLesson::query()
-                                          ->where('orientationCategoryId', $exam->orientationCategoryId)
-                                          ->whereIn('gradeId', [1, 2])
-                                          ->get();
+                $gradeLessons = GradeLesson::query()
+                                           ->where('orientationCategoryId', $exam->orientationCategoryId)
+                                           ->get();
             }
 
             else
             {
-                $gradeLessons = GradeLesson::query()
-                                          ->where('orientationCategoryId', $exam->orientationCategoryId)
-                                          ->whereIn('gradeId', [1])
-                                          ->get();
+                if ($exam->gradeId == 2)
+                {
+                    $gradeLessons = GradeLesson::query()
+                                               ->where('orientationCategoryId', $exam->orientationCategoryId)
+                                               ->whereIn('gradeId', [1, 2])
+                                               ->get();
+                }
+
+                else
+                {
+                    $gradeLessons = GradeLesson::query()
+                                               ->where('orientationCategoryId', $exam->orientationCategoryId)
+                                               ->whereIn('gradeId', [1])
+                                               ->get();
+                }
             }
 
 
-
-            return view('admin.dashboard.lessonExam.question_form', compact('exam', 'gradeLessons','modify'));
+            return view('admin.dashboard.lessonExam.question_form', compact('exam', 'gradeLessons', 'modify'));
 
         }
 
 
-        public function editQuestionShow($exm,$id)
+        public function editQuestionShow($exm, $id)
         {
 
-            $modify        = 1;
-            $question      = Question::query()->where('id', $id)->first();
-            $exam          = LessonExam::query()->where('exm', $exm)->first();
+            $modify   = 1;
+            $question = Question::query()->where('id', $id)->first();
+            $exam     = LessonExam::query()->where('exm', $exm)->first();
 
             if ($exam->gradeId == 3)
             {
-                $gradeLessons = GradeLesson::query()->where('orientationCategoryId', $exam->orientationCategoryId)->get();
-            }
-
-            else if ($exam->gradeId == 2)
-            {
-                    $gradeLessons = GradeLesson::query()
-                                          ->where('orientationCategoryId', $exam->orientationCategoryId)
-                                          ->whereIn('gradeId', [1, 2])
-                                          ->get();
+                $gradeLessons = GradeLesson::query()
+                                           ->where('orientationCategoryId', $exam->orientationCategoryId)
+                                           ->get();
             }
 
             else
             {
-                $gradeLessons = GradeLesson::query()
-                                          ->where('orientationCategoryId', $exam->orientationCategoryId)
-                                          ->whereIn('gradeId', [1])
-                                          ->get();
+                if ($exam->gradeId == 2)
+                {
+                    $gradeLessons = GradeLesson::query()
+                                               ->where('orientationCategoryId', $exam->orientationCategoryId)
+                                               ->whereIn('gradeId', [1, 2])
+                                               ->get();
+                }
+
+                else
+                {
+                    $gradeLessons = GradeLesson::query()
+                                               ->where('orientationCategoryId', $exam->orientationCategoryId)
+                                               ->whereIn('gradeId', [1])
+                                               ->get();
+                }
             }
 
 
-
-            return view('admin.dashboard.lessonExam.question_form', compact('exam', 'gradeLessons','question','modify'));
+            return view('admin.dashboard.lessonExam.question_form', compact('exam', 'gradeLessons', 'question', 'modify'));
 
         }
 
-        public function addQuestion(Request $request,$exm)
+
+        public function addQuestion(Request $request, $exm)
         {
 
             $this->validate($request, [
 
-                'gradeLesson'      => 'required',
-                'questionType'     => 'nullable',
-                'description'      => 'required',
-                'hardness'         => 'required|integer|between:0,6|digits:1',
-                'text'             => 'required',
-                'optionFour'       => 'required',
-                'optionThree'      => 'required',
-                'optionTwo'        => 'required',
-                'optionOne'        => 'required',
-                'answer'           => ['required', Rule::in(['1', '2', '3', '4'])],
-                'photo'            => 'image',
+                'gradeLesson'  => 'required',
+                'questionType' => 'nullable',
+                'description'  => 'required',
+                'hardness'     => 'required|integer|between:0,6|digits:1',
+                'text'         => 'required',
+                'optionFour'   => 'required',
+                'optionThree'  => 'required',
+                'optionTwo'    => 'required',
+                'optionOne'    => 'required',
+                'answer'       => ['required', Rule::in(['1', '2', '3', '4'])],
+                'photo'        => 'image',
 
             ]);
 
 
             $question = new Question();
 
-            $question->gradeLessonId      = $request->input('gradeLesson');
-            $question->questionType       = $request->input('questionType');
-            $question->description        = $request->input('description');
-            $question->text               = $request->input('text');
-            $question->optionOne          = $request->input('optionOne');
-            $question->optionTwo          = $request->input('optionTwo');
-            $question->optionThree        = $request->input('optionThree');
-            $question->optionFour         = $request->input('optionFour');
-            $question->answer             = $request->input('answer');
-            $question->hardness           = $request->input('hardness');
+            $question->gradeLessonId = $request->input('gradeLesson');
+            $question->questionType  = $request->input('questionType');
+            $question->description   = $request->input('description');
+            $question->text          = $request->input('text');
+            $question->optionOne     = $request->input('optionOne');
+            $question->optionTwo     = $request->input('optionTwo');
+            $question->optionThree   = $request->input('optionThree');
+            $question->optionFour    = $request->input('optionFour');
+            $question->answer        = $request->input('answer');
+            $question->hardness      = $request->input('hardness');
 
             $question->save();
 
-                $exam = LessonExam::query()->where('exm', $exm)->first();
+            $exam = LessonExam::query()->where('exm', $exm)->first();
 
-                $questionExam = new QuestionExam();
+            $questionExam = new QuestionExam();
 
-                $questionExam->questionId = $question->id;
-                $questionExam->examId     = $exam->id;
+            $questionExam->questionId = $question->id;
+            $questionExam->examId     = $exam->id;
 
-                $questionExam->save();
+            $questionExam->save();
 
-                $checkIfExit = ExamGradeLesson::query()
-                                              ->where('examId', $exam->id)
-                                              ->where('gradeLessonId', $request->input('gradeLesson'))
-                                              ->first();
+            $checkIfExit = ExamGradeLesson::query()
+                                          ->where('examId', $exam->id)
+                                          ->where('gradeLessonId', $request->input('gradeLesson'))
+                                          ->first();
 
-                if (!$checkIfExit)
-                {
-                    $ExamGradeLesson = new ExamGradeLesson();
+            if (!$checkIfExit)
+            {
+                $ExamGradeLesson = new ExamGradeLesson();
 
-                    $ExamGradeLesson->gradeLessonId = $request->input('gradeLesson');
-                    $ExamGradeLesson->examId        = $exam->id;
+                $ExamGradeLesson->gradeLessonId = $request->input('gradeLesson');
+                $ExamGradeLesson->examId        = $exam->id;
 
-                    $ExamGradeLesson->save();
-                }
-
+                $ExamGradeLesson->save();
+            }
 
 
             return redirect()->back();
 
         }
 
-        public function editQuestion(Request $request,$exm,$id)
+
+        public function editQuestion(Request $request, $exm, $id)
         {
 
             $this->validate($request, [
 
-                'questionType'     => 'nullable',
-                'description'      => 'required',
-                'hardness'         => 'required|integer|between:0,6|digits:1',
-                'text'             => 'required',
-                'optionFour'       => 'required',
-                'optionThree'      => 'required',
-                'optionTwo'        => 'required',
-                'optionOne'        => 'required',
-                'answer'           => ['required', Rule::in(['1', '2', '3', '4'])],
-                'photo'            => 'image',
+                'questionType' => 'nullable',
+                'description'  => 'required',
+                'hardness'     => 'required|integer|between:0,6|digits:1',
+                'text'         => 'required',
+                'optionFour'   => 'required',
+                'optionThree'  => 'required',
+                'optionTwo'    => 'required',
+                'optionOne'    => 'required',
+                'answer'       => ['required', Rule::in(['1', '2', '3', '4'])],
+                'photo'        => 'image',
 
             ]);
 
 
             $question = Question::query()->where('id', $id)->first();
 
-            $question->questionType       = $request->input('questionType');
-            $question->description        = $request->input('description');
-            $question->text               = $request->input('text');
-            $question->optionOne          = $request->input('optionOne');
-            $question->optionTwo          = $request->input('optionTwo');
-            $question->optionThree        = $request->input('optionThree');
-            $question->optionFour         = $request->input('optionFour');
-            $question->answer             = $request->input('answer');
-            $question->hardness           = $request->input('hardness');
+            $question->questionType = $request->input('questionType');
+            $question->description  = $request->input('description');
+            $question->text         = $request->input('text');
+            $question->optionOne    = $request->input('optionOne');
+            $question->optionTwo    = $request->input('optionTwo');
+            $question->optionThree  = $request->input('optionThree');
+            $question->optionFour   = $request->input('optionFour');
+            $question->answer       = $request->input('answer');
+            $question->hardness     = $request->input('hardness');
 
             $question->update();
 
