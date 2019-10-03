@@ -46,9 +46,16 @@
         public function add(Request $request)
         {
 
-            $this->validate($request, ['orientation'         => 'required',
-                                       'grade'               => 'required',
-                                       'lesson'              => 'required',]);
+            $this->validate($request,
+            [
+
+                    'orientation'         => 'required',
+                    'grade'               => 'required',
+                    'lesson'              => 'required',
+                    'ratio'               => 'required|numeric|digits:1',
+
+            ]);
+
             $orientation = Orientation::query()->where('id', $request->input('orientation'))->first();
             $grade       = Grade::query()->where('id', $request->input('grade'))->first();
             $lesson      = Lesson::query()->where('id', $request->input('lesson'))->first();
@@ -85,9 +92,16 @@
         {
 
             $gradeLesson = GradeLesson::query()->where('code', $code)->first();
-            $this->validate($request, ['orientation'         => 'required',
-                                       'grade'               => 'required',
-                                       'lesson'              => 'required',]);
+
+            $this->validate($request,
+            [
+                'orientation'         => 'required',
+                'grade'               => 'required',
+                'lesson'              => 'required',
+                'ratio'               => 'required|numeric|digits:1',
+
+            ]);
+
             $orientation = Orientation::query()->where('id', $request->input('orientation'))->first();
             $grade       = Grade::query()->where('id', $request->input('grade'))->first();
             $lesson      = Lesson::query()->where('id', $request->input('lesson'))->first();

@@ -60,7 +60,7 @@
                                         <div class="form-group">
                                             <label>عنوان درس</label>
                                             <select dir="rtl" name="lesson" class="form-control">
-                                                <option value="" id="0" selected disabled>درس را انتخاب کنید</option>
+                                                <option value="" id="0" selected disabled>عنوان درس را انتخاب نمایید</option>
                                                 @foreach ( $lessons as $lesson )
                                                     <option value="{{ $lesson->id }}" {{ old('lesson')==$lesson->id ? 'selected' : '' }}  {{ $modify == 1 && !old('lesson') && $gradeLesson->lessonId == $lesson->id ? 'selected' : '' }}>{{ $lesson->title.' - '.$lesson->code }}</option>
                                                 @endforeach
