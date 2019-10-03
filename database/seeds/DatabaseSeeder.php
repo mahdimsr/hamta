@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
 //            ProvinceTableSeeder::class,
 			OrientationTableSeeder::class,
 			CategoryTableSeeder::class,
-			OrientationCategoryTableSeeder::class,
 			GradeTableSeeder::class,
             LessonTableSeeder::class,
 			GradeLessonTableSeeder::class,

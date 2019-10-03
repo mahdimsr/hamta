@@ -35,6 +35,13 @@ class OrientationTableSeeder extends Seeder
         $Orientation->url        = 'Literature-and-Humanities';
         $Orientation->save();
 
+        //id 4
+        $Orientation             = new Orientation();
+		$Orientation->code       = '04';
+		$Orientation->title      = 'عمومی';
+        $Orientation->url        = 'General';
+        $Orientation->save();
+
 
 	}
 }

@@ -1,39 +1,44 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
+    use Illuminate\Support\Facades\Schema;
+    use Illuminate\Database\Schema\Blueprint;
+    use Illuminate\Database\Migrations\Migration;
 
 
-class CreateLessonTable extends Migration
-{
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function up()
-	{
-		Schema::create('lesson', function(Blueprint $table)
-		{
-			$table->bigIncrements('id');
-			$table->string('code')->default(0);
-			$table->string('title');
-			$table->string('url')->nullable();
-			$table->timestamps();
-			$table->softDeletes();
-		});
-	}
+    class CreateLessonTable extends Migration
+    {
+
+        /**
+         * Run the migrations.
+         *
+         * @return void
+         */
+        public function up()
+        {
+
+            Schema::create('lesson', function(Blueprint $table)
+            {
+
+                $table->bigIncrements('id');
+                $table->integer('parentId')->default(0);
+                $table->string('code')->default(0);
+                $table->string('title');
+                $table->string('url')->nullable();
+                $table->timestamps();
+                $table->softDeletes();
+            });
+        }
 
 
+        /**
+         * Reverse the migrations.
+         *
+         * @return void
+         */
+        public function down()
+        {
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		Schema::dropIfExists('lesson');
-	}
-}
+            Schema::dropIfExists('lesson');
+        }
+
+    }

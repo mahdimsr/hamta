@@ -36,11 +36,11 @@
             self::creating(function($model)
             {
 
-                $lesson              = Lesson::query()->find($model->lessonId);
-                $grade               = Grade::query()->find($model->gradeId);
-                $orientationCategory = OrientationCategory::query()->find($model->orientationCategoryId);
+                $lesson      = Lesson::query()->find($model->lessonId);
+                $grade       = Grade::query()->find($model->gradeId);
+                $orientation = Orientation::query()->find($model->orientationId);
 
-                $code        = $orientationCategory->orientation->code . $grade->code . $lesson->code;
+                $code        = $orientation->code . $grade->code . $lesson->code;
                 $model->code = $code;
 
             });
@@ -52,10 +52,9 @@
 
             $lessonTitle      = $this->lesson->title;
             $gradeTitle       = $this->grade->title;
-            $orientationTitle = $this->orientationCategory->orientation->title;
-            $categoryTitle    = $this->orientationCategory->category->title;
+            $orientationTitle = $this->orientation->title;
 
-            return $orientationTitle .' - '. $categoryTitle .' - ' . $lessonTitle . ' - ' . $gradeTitle;
+            return $lessonTitle . ' - ' . $gradeTitle . ' (' . $orientationTitle . ')';
         }
 
 
@@ -68,6 +67,12 @@
             return $lessonTitle . ' - ' . $gradeTitle;
         }
 
+
+        public function orientation()
+        {
+
+            return $this->belongsTo(Orientation::class,'orientationId');
+        }
 
         public function grade()
         {
@@ -83,7 +88,7 @@
         }
 
 
-        public function lessonExam()
+        public function examGradeLesson()
         {
 
             return $this->hasMany(ExamGradeLesson::class, 'gradeLessonId');
@@ -96,10 +101,5 @@
             return $this->hasMany(Question::class, 'gradeLessonId');
         }
 
-        public function orientationCategory()
-        {
-
-            return $this->belongsTo(OrientationCategory::class, 'orientationCategoryId');
-        }
 
     }

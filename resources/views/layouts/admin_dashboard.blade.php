@@ -34,6 +34,8 @@
 
 	<link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
 
+    <link rel="stylesheet" href="{{asset('multiSelect/style.css')}}">
+
 </head>
 <body>
 
