@@ -1,10 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use \Illuminate\Support\Facades\Hash;
-use \Carbon\Carbon;
-
+use App\model\Admin;
 
 class AdminTableSeeder extends Seeder
 {
@@ -15,24 +13,20 @@ class AdminTableSeeder extends Seeder
 	 */
 	public function run()
 	{
-		DB::table('admin')->insert([
 
-			'fullName'   => 'علیرضا ربیعی',
-			'username'   => 'ali-username',
-			'password'   => Hash::make('123456789'),
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
 
-		]);
+        $Admin              = new Admin();
+		$Admin->fullName    = 'علیرضا ربیعی';
+		$Admin->username    = 'ali-username';
+		$Admin->password         = Hash::make('123456789');
+        $Admin->save();
 
-		DB::table('admin')->insert([
+        $Admin              = new Admin();
+		$Admin->fullName    = 'محمد مهدی منصوری';
+		$Admin->username    = 'mahdi-username';
+		$Admin->password    = Hash::make('123456789');
+        $Admin->save();
 
-			'fullName'   => 'محمد مهدی منصوری',
-			'username'   => 'mahdi-username',
-			'password'   => Hash::make('123456789'),
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
 
-		]);
 	}
 }

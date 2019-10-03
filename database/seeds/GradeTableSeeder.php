@@ -18,21 +18,21 @@ class GradeTableSeeder extends Seeder
 		$Grade          = new Grade();
 		$Grade->code    = 10;
 		$Grade->title   = 'دهم';
-		$Grade->url     = 'tenth-grade';
+		$Grade->url     = 'Tenth';
         $Grade->save();
 
         //id 2
 		$Grade          = new Grade();
 		$Grade->code    = 11;
 		$Grade->title   = 'یازدهم';
-		$Grade->url     = 'eleventh-grade';
+		$Grade->url     = 'Eleventh';
         $Grade->save();
 
         //id 3
 		$Grade          = new Grade();
 		$Grade->code    = 12;
 		$Grade->title   = 'دوازدهم';
-		$Grade->url     = 'twelfth-grade';
+		$Grade->url     = 'Twelfth';
         $Grade->save();
 
 	}

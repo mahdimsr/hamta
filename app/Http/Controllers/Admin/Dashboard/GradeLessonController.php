@@ -27,6 +27,7 @@
         {
 
             $gradeLesson = GradeLesson::query()->where('code', $code);
+
             $gradeLesson->delete();
 
             return redirect()->route('admin_gradeLessons');
@@ -59,21 +60,27 @@
             $orientation = Orientation::query()->where('id', $request->input('orientation'))->first();
             $grade       = Grade::query()->where('id', $request->input('grade'))->first();
             $lesson      = Lesson::query()->where('id', $request->input('lesson'))->first();
+
             $code        = ['code' => $orientation->code . $grade->code . $lesson->code];
-            $v           = Validator::make($code, ['code' => 'unique:grade_lesson,code',]);
-            if ($v->fails())
+            $validator           = Validator::make($code, ['code' => 'unique:grade_lesson,code',]);
+
+            if ($validator->fails())
             {
                 return redirect()->back()->withErrors(['message' => [' این درس با این وابستگی ها قبلا ثبت شده است.']]);
             }
+
             else
             {
                 $gradeLesson                        = new GradeLesson();
+                $gradeLesson->orientationId         = $request->input('orientation');
                 $gradeLesson->lessonId              = $request->input('lesson');
                 $gradeLesson->gradeId               = $request->input('grade');
+                $gradeLesson->ratio                 = $request->input('ratio');
                 $gradeLesson->save();
 
                 return redirect()->route('admin_gradeLessons');
             }
+
         }
 
         public function editShow($code)
@@ -105,18 +112,21 @@
             $orientation = Orientation::query()->where('id', $request->input('orientation'))->first();
             $grade       = Grade::query()->where('id', $request->input('grade'))->first();
             $lesson      = Lesson::query()->where('id', $request->input('lesson'))->first();
+
             $code        = ['code' => $orientation->code . $grade->code . $lesson->code];
-            $v           = Validator::make($code, ['code' => [Rule::unique('grade_lesson', 'code')
-                                                                  ->ignore($gradeLesson)],]);
-            if ($v->fails())
+            $validator           = Validator::make($code, ['code' => [Rule::unique('grade_lesson', 'code')->ignore($gradeLesson)]]);
+
+            if ($validator->fails())
             {
                 return redirect()->back()->withErrors(['message' => [' این درس با این وابستگی ها قبلا ثبت شده است.']]);
             }
+
             else
             {
+                $gradeLesson->orientationId         = $request->input('orientation');
                 $gradeLesson->lessonId              = $request->input('lesson');
                 $gradeLesson->gradeId               = $request->input('grade');
-                $gradeLesson->orientationCategoryId = $request->input('orientationCategory');
+                $gradeLesson->ratio                 = $request->input('ratio');
                 $gradeLesson->update();
 
                 return redirect()->route('admin_gradeLessons');
