@@ -116,6 +116,8 @@
                                     <label for="lesson-select" class="control-label">درس ها</label>
                                     <select id="lesson-select" name="gradeLessons[]" multiple
                                             data-placeholder="درس های گروه درسی">
+                                            <option id="0" value="" disabled selected>درس های آزمون را انتخاب کنید
+                                                </option>
                                         @foreach($gradeLessons as $gradeLesson)
                                             <option id="{{$gradeLesson->orientationId}}"
                                                     value="{{$gradeLesson->id}}"
@@ -124,7 +126,7 @@
                                                         {{$gradeLesson->id == $item->id ? 'selected' : ''}}
                                                         @endforeach
                                                     @endif--}}
-                                            >{{$gradeLesson->title}}</option>
+                                            >{{$gradeLesson->lesson_grade}}</option>
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback">
@@ -213,6 +215,10 @@
             <script src="{{asset('multiSelect/script.js')}}"></script>
 
             <script>
+
+                    var id,options;
+                    var lessons=$('#lesson-select option').clone();
+
                 $('#activeDate').pDatepicker({
 
                     autoClose : true,
@@ -229,6 +235,25 @@
                         }
                     }
                 });
+
+                $("#ori-select").change(function()
+                {
+                    id = $("#ori-select").val();
+                    options = lessons.filter('[id=' + id + '],[id=0]');
+                    $('#lesson-select').html(options);
+                    $('#lesson-select').prop('selectedIndex',0).trigger('change');
+
+                });
+
+                if($("#ori-select").val()!='')
+                {
+
+                    id = $("#ori-select").val();
+                    options = lessons.filter('[id=' + id + '],[id=0]');
+                    $('#lesson-select').html(options);
+
+                }
+
             </script>
 
 @endsection
