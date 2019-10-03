@@ -109,60 +109,74 @@
                             </div>
                         </div>
 
+                        @if($modify == 0)
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="lesson-select" class="control-label">درس ها</label>
-                                <select id="lesson-select" name="gradeLessons[]" multiple
-                                        data-placeholder="درس های گروه درسی">
-                                    @foreach($gradeLessons as $gradeLesson)
-                                        <option id="{{$gradeLesson->orientationId}}"
-                                                value="{{$gradeLesson->id}}">{{$gradeLesson->lesson_grade}}</option>
-                                    @endforeach
-                                </select>
-                                <div class="invalid-feedback">
-                                    <small>{{ $errors->first('gradeLessons') }}</small>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label">گرایش</label>
-                                    <select name="orientation" class="form-control menu dropdown-radius hide-search"
-                                            id="ori-select" {{ $modify==1? 'disabled' : '' }}>
-                                        <option id="0" value="" disabled selected>گرایش آزمون را انتخاب کنید</option>
-                                        @foreach($orientations as $orientation)
-                                            <option
-                                                value="{{$orientation->id}}"
-                                                {{old('orientation') == $orientation->id ? 'selected' : ''}}{{ $modify==1 && !old('orientation') && $lessonExam->orientationCategory->orientation->id == $orientation->id ? 'selected' : '' }}>
-                                                {{$orientation->title}}
-                                            </option>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="lesson-select" class="control-label">درس ها</label>
+                                    <select id="lesson-select" name="gradeLessons[]" multiple
+                                            data-placeholder="درس های گروه درسی">
+                                        @foreach($gradeLessons as $gradeLesson)
+                                            <option id="{{$gradeLesson->orientationId}}"
+                                                    value="{{$gradeLesson->id}}"
+                                                {{--@if($modify == 1)
+                                                    @foreach($examGradeLessons as $item)
+                                                        {{$gradeLesson->id == $item->id ? 'selected' : ''}}
+                                                        @endforeach
+                                                    @endif--}}
+                                            >{{$gradeLesson->lesson_grade}}</option>
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback">
-                                        <small>{{ $errors->first('orientation') }}</small>
+                                        <small>{{ $errors->first('gradeLessons') }}</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">گرایش</label>
+                                        <select name="orientation" class="form-control menu dropdown-radius hide-search"
+                                                id="ori-select" {{ $modify==1? 'disabled' : '' }}>
+                                            <option id="0" value="" disabled selected>گرایش آزمون را انتخاب کنید
+                                            </option>
+                                            @foreach($orientations as $orientation)
+                                                <option
+                                                    value="{{$orientation->id}}"
+                                                    {{old('orientation') == $orientation->id ? 'selected' : ''}}{{ $modify==1 && !old('orientation') && $lessonExam->orientation()[0]->id == $orientation->id ? 'selected' : '' }}>
+                                                    {{$orientation->title}}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            <small>{{ $errors->first('orientation') }}</small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                        </div>
-
+                        @endif
 
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">پاسخ نامه سوالات (به صورت pdf)</label>
                                     <div class="input-file-container">
-                                        <input class="input-file" id="my-file" type="file">
-                                        <label tabindex="0" for="my-file" class="input-file-trigger text-center">فایل را
-                                            انتخاب کنید</label>
+                                        <input class="input-file" name="answerSheet" id="my-file" type="file"
+                                               accept=" .pdf">
+                                        <label tabindex="0" for="my-file" class="input-file-trigger text-center">
+                                            {{ $modify == 1 ? $lessonExam->answerSheet != null ? 'پاسخنامه دارد، ولی میتوانید مجددا آپلود کنید' : 'پاسخنامه ندارد' : 'آپلود پاسخنامه'}}
+                                        </label>
                                     </div>
                                     <p class="file-return"></p>
+                                    @if($modify == 1 && $lessonExam->answerSheet != null)
+                                        <a class="file-return" href="{{$lessonExam->answerSheetPath}}">دانلود
+                                            پاسخنامه</a>
+                                    @endif
                                     {{--<input name="answerSheet" class="form-control custom-file-input file-radius" type="file" accept="application/pdf"--}}
                                     {{--maxlength="10" tabindex="5"--}}
                                     {{--value="{{old('answerSheet')}}"/>--}}
                                 </div>
                                 <div class="invalid-feedback">
-                                    <small>{{ $errors->first('duration') }}</small>
+                                    <small>{{ $errors->first('answerSheet') }}</small>
                                 </div>
                             </div>
                         </div>
@@ -195,19 +209,17 @@
 
         @section('script')
 
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 
             <script src="{{asset('multiSelect/script.js')}}"></script>
 
             <script>
                 $('#activeDate').pDatepicker({
-                    autoClose    : true,
+
+                    autoClose : true,
                     initialValue : true,
-                    format       : 'YYYY/MM/DD',
-                    responsive   : true,
-                    toolbox      : {
+                    format : 'YYYY/MM/DD',
+                    responsive : true,
+                    toolbox : {
                         calendarSwitch : {
                             enabled : false
                         },
