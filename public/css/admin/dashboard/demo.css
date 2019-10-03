@@ -518,57 +518,9 @@ input[type="text"][required] + label[placeholder]:before {
     border-radius:0;
 }
 
-/*step by step  */
-.tab {
-    display: none;
-}
-
-/* Make circles that indicate the steps of the form: */
-.step {
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbbbbb;
-    border: none;
-    border-radius: 50%;
-    display: inline-block;
-    opacity: 0.5;
-
-}
-
-/* Mark the active step: */
-.step.active {
-    opacity: .7;
-    transition: .7s;
-    background-color: #ff00ad;
-
-}
-
-/* Mark the steps that are finished and valid: */
-.step.finish {
-    background-color: #4CAF50;
-}
-.sina{
-    display: none;
-}
-.sina1{
-
-    display: block;
-
-}
 
 
-/*btn multistep style */
-.btn-sina-next{
-    font-size: 20px;
-    background-color: #ffffff;
-    border-color: rgba(228, 203, 119, 0.43);
-    border-radius: 10px;
-    transition: .6s;
-}
-.btn-sina-next:hover{
-    background-color: rgba(70, 255, 248, 0.67);
-    box-shadow: 2px 3px 15px 0px rgba(52, 223, 224, 0.46), -1px 1px 7px 0px rgba(84, 152, 196, 0.06);}
+
 
 
 
