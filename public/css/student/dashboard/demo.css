@@ -468,6 +468,7 @@ img.users{
     width: 120px;
     background-color: black;
     color: #fff;
+    font-size: 10px;
     bottom: 34px;
     right: 30px;
     text-align: center;
@@ -483,6 +484,20 @@ img.users{
     visibility: visible;
 }
 
+
+
+.card
+{
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(63, 63, 68, 0.1);
+    background-color: #FFFFFF;
+    margin-bottom: 30px;
+    transition: 0.7s ease-in-out;
+}
+.cards:hover{
+    box-shadow: 3px 9px 8px 3px rgba(0, 0, 0, 0.09), 0 0 0 1px rgba(63, 63, 68, 0.1);
+
+}
 /*hover shine*/
 
 
@@ -529,3 +544,15 @@ figure:hover+span {
         left: 125%;
     }
 }
+
+div.disabled{
+    background-color: rgba(163, 153, 153, 0.14);
+}
+img#disableds{
+
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+/*exam hoverimages style*/
+
+
