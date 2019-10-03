@@ -18,112 +18,96 @@
             // id 1
             $lesson        = new Lesson();
             $lesson->title = 'زبان و ادبیات فارسی';
-            $lesson->code  = 0;
             $lesson->url   = 'Farsi';
             $lesson->save();
 
             // id 2
             $lesson        = new Lesson();
             $lesson->title = 'عربی';
-            $lesson->code  = 0;
             $lesson->url   = 'Arabic';
             $lesson->save();
 
             // id 3
             $lesson        = new Lesson();
             $lesson->title = 'فرهنگ و معارف اسلامی';
-            $lesson->code  = 0;
             $lesson->url   = 'Islamic';
             $lesson->save();
 
             // id 4
             $lesson        = new Lesson();
             $lesson->title = 'زبان انگلیسی';
-            $lesson->code  = 0;
             $lesson->url   = 'English';
             $lesson->save();
 
             // id 5
             $lesson        = new Lesson();
             $lesson->title = 'ریاضیات';
-            $lesson->code  = 0;
             $lesson->url   = 'Math';
             $lesson->save();
 
             // id 6
             $lesson        = new Lesson();
             $lesson->title = 'فیزیک';
-            $lesson->code  = 0;
             $lesson->url   = 'Physics';
             $lesson->save();
 
             // id 7
             $lesson        = new Lesson();
             $lesson->title = 'شیمی';
-            $lesson->code  = 0;
             $lesson->url   = 'Chemistry';
             $lesson->save();
 
             // id 8
             $lesson        = new Lesson();
             $lesson->title = 'زیست شناسی';
-            $lesson->code  = 0;
             $lesson->url   = 'Biology';
             $lesson->save();
 
             // id 9
             $lesson        = new Lesson();
             $lesson->title = 'زمین شناسی';
-            $lesson->code  = 0;
             $lesson->url   = 'Geology';
             $lesson->save();
 
             // id 10
             $lesson        = new Lesson();
             $lesson->title = 'اقتصاد';
-            $lesson->code  = 0;
             $lesson->url   = 'Economy';
             $lesson->save();
 
             // id 11
             $lesson        = new Lesson();
             $lesson->title = 'تاریخ';
-            $lesson->code  = 0;
             $lesson->url   = 'History';
             $lesson->save();
 
             // id 12
             $lesson        = new Lesson();
             $lesson->title = 'جغرافیا';
-            $lesson->code  = 0;
             $lesson->url   = 'Geography';
             $lesson->save();
 
             // id 13
             $lesson        = new Lesson();
             $lesson->title = 'علوم اجتماعی';
-            $lesson->code  = 0;
             $lesson->url   = 'social-Sciences';
             $lesson->save();
 
             // id 14
             $lesson        = new Lesson();
             $lesson->title = 'فلسفه';
-            $lesson->code  = 0;
             $lesson->url   = 'Philosophy';
             $lesson->save();
 
             // id 15
             $lesson        = new Lesson();
             $lesson->title = 'منطق';
-            $lesson->code  = 0;
             $lesson->url   = 'Logic';
             $lesson->save();
 
             // id 16
             $lesson        = new Lesson();
             $lesson->title = 'روانشناسی';
-            $lesson->code  = 0;
             $lesson->url   = 'Psychology';
             $lesson->save();
 

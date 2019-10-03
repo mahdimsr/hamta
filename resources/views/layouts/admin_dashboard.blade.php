@@ -5,7 +5,7 @@
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-	<title>همتا | پنل ادمین</title>
+	<title>همپا | پنل ادمین</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
 	<meta name="viewport" content="width=device-width"/>
@@ -23,7 +23,7 @@
 	<!--  Light Bootstrap Table core CSS    -->
 	<link href="{{asset('css/admin/dashboard/dashboard.css')}}" rel="stylesheet"/>
 
-	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
 
 
@@ -52,32 +52,32 @@
 		<div class="sidebar-wrapper">
 			<div class="logo">
 				<a href="#" class="simple-text">
-					سامانه همتا
+					سامانه همپا
 				</a>
 			</div>
 
 			<ul class="nav text-right ">
 				<li class="{{\Illuminate\Support\Facades\Route::currentRouteName() == 'admin_dashboard' ? 'active' : ''}}">
 					<a href="{{route('admin_dashboard')}}">
-						<i class="fa fa-dashboard"></i>
+						<i class="fas fa-tachometer-alt"></i>
 						<p>پنل کاربری</p>
 					</a>
 				</li>
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_exams' ? 'active' : ''}}">
 					<a href="{{route('admin_exams')}}">
-						<i class="fa fa-file"></i>
+						<i class="fa fa-check"></i>
 						<p>آزمون ها</p>
 					</a>
 				</li>
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_questions' ? !request()->has('exm') ? 'active' : '' : ''}}">
 					<a href="{{route('admin_questions')}}">
-						<i class="fa fa-file"></i>
+						<i class="fa fa-question"></i>
 						<p>سوالات</p>
 					</a>
 				</li>
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_grades' ? 'active' : ''}}">
 					<a href="{{route('admin_grades')}}">
-						<i class="fa fa-book"></i>
+						<i class="fas fa-level-up-alt"></i>
 						<p>مقاطع تحصیلی</p>
 					</a>
 				</li>
@@ -86,17 +86,23 @@
 						<i class="fa fa-filter"></i>
 						<p>گرایش ها</p>
 					</a>
+                </li>
+                <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_lessons' ? 'active' : ''}}">
+					<a href="{{route('admin_lessons')}}">
+						<i class="fa fa-book"></i>
+						<p>دروس</p>
+					</a>
+                </li>
+                <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_categories' ? 'active' : ''}}">
+					<a href="{{route('admin_categories')}}">
+						<i class="fa fa-list-alt"></i>
+						<p>دسته بندی دروس</p>
+					</a>
 				</li>
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_gradeLessons' ? 'active' : ''}}">
 					<a href="{{route('admin_gradeLessons')}}">
-						<i class="fa fa-folder"></i>
+						<i class="fa fa-book-open"></i>
 						<p>دروس مختص هر پایه</p>
-					</a>
-				</li>
-				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_lessons' ? 'active' : ''}}">
-					<a href="{{route('admin_lessons')}}">
-						<i class="fa fa-folder-open"></i>
-						<p>دروس</p>
 					</a>
 				</li>
 				@if($adminUser->level=="A")

@@ -14,7 +14,7 @@
         public function lessons()
         {
 
-            $lessons = Lesson::all();
+            $lessons = Lesson::whereNotIn('parentId',[0])->get();
 
             return view('admin.dashboard.lesson.lessons', compact('lessons'));
         }
@@ -35,8 +35,9 @@
         {
 
             $modify = 0;
+            $categories = Lesson::whereIn('parentId',[0])->get();
 
-            return view('admin.dashboard.lesson.form', compact('modify'));
+            return view('admin.dashboard.lesson.form', compact('modify','categories'));
         }
 
 
@@ -46,16 +47,18 @@
             $this->validate($request, [
 
                 'titleLesson' => 'required|alpha|max:10',
-                'codeLesson'  => 'required|numeric|digits:2|unique:lesson,code',
+                'category'    => 'required',
+                'codeLesson'  => 'required|numeric|digits:3|unique:lesson,code',
                 'urlLesson'   => 'required|string|unique:lesson,url',
 
             ]);
 
             $lesson = new Lesson();
 
-            $lesson->title = $request->input('titleLesson');
-            $lesson->code  = $request->input('codeLesson');
-            $lesson->url   = $request->input('urlLesson');
+            $lesson->title    = $request->input('titleLesson');
+            $lesson->parentId = $request->input('category');
+            $lesson->code     = $request->input('codeLesson');
+            $lesson->url      = $request->input('urlLesson');
 
             $lesson->save();
 
@@ -67,10 +70,11 @@
         {
 
             $modify = 1;
+            $categories = Lesson::whereIn('parentId',[0])->get();
 
             $lesson = Lesson::query()->where('url', $url)->first();
 
-            return view('admin.dashboard.lesson.form', compact('lesson', 'modify'));
+            return view('admin.dashboard.lesson.form', compact('lesson', 'modify','categories'));
         }
 
 
@@ -82,15 +86,17 @@
             $this->validate($request, [
 
                 'titleLesson' => 'required|string|max:20',
-                'codeLesson'  => ['required', 'numeric', 'digits:2', Rule::unique('lesson', 'code')->ignore($lesson)],
+                'category'    => 'required',
+                'codeLesson'  => ['required', 'numeric', 'digits:3', Rule::unique('lesson', 'code')->ignore($lesson)],
                 'urlLesson'   => ['required', 'string', Rule::unique('lesson', 'url')->ignore($lesson)],
 
             ]);
 
 
-            $lesson->title = $request->input('titleLesson');
-            $lesson->code  = $request->input('codeLesson');
-            $lesson->url   = $request->input('urlLesson');
+            $lesson->title    = $request->input('titleLesson');
+            $lesson->parentId = $request->input('category');
+            $lesson->code     = $request->input('codeLesson');
+            $lesson->url      = $request->input('urlLesson');
 
             $lesson->update();
 

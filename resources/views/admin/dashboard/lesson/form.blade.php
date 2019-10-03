@@ -50,35 +50,55 @@
 
 						{{csrf_field()}}
 
-
-						<div class="row">
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>پارامتر درس</label>
-									<input name="urlLesson" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: math" tabindex="3"
-										   value="{{old('urlLesson') ? old('urlLesson') : ''}} {{ $modify==1 && !old('urlLesson') ? $lesson->url : '' }}">
-									<div class="invalid-feedback">
-										<small>{{ $errors->first('urlLesson') }}</small>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">دسته بندی</label>
+                                    <select name="category" class="form-control menu dropdown-radius hide-search"
+                                        >
+                                        <option id="0" value="" disabled selected>دسته بندی درس را انتخاب نمایید</option>
+                                        @foreach($categories as $category)
+                                            <option
+                                                value="{{$category->id}}"
+                                                {{old('category') == $category->id ? 'selected' : ''}}{{ $modify==1 && !old('category') && $lesson->parentId == $category->id ? 'selected' : '' }}>
+                                                {{$category->title}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('category') }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
 								<div class="form-group">
 									<label>عنوان درس</label>
 									<input name="titleLesson" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: ریاضی" tabindex="2"
+										   placeholder="عنوان درس را وارد نمایید" tabindex="2"
 										   value="{{old('titleLesson') ? old('titleLesson') : ''}} {{ $modify==1 && !old('titleLesson') ? $lesson->title : '' }}">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('titleLesson') }}</small>
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4">
+                        </div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>پارامتر درس</label>
+									<input name="urlLesson" dir="rtl" type="text" class="form-control"
+										   placeholder="پارامتر درس را وارد نمایید" tabindex="3"
+										   value="{{old('urlLesson') ? old('urlLesson') : ''}} {{ $modify==1 && !old('urlLesson') ? $lesson->url : '' }}">
+									<div class="invalid-feedback">
+										<small>{{ $errors->first('urlLesson') }}</small>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
 								<div class="form-group">
 									<label>کد درس</label>
 									<input name="codeLesson" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: 10" tabindex="1"
+										   placeholder="کد درس وارد نمایید" tabindex="1"
 										   value="{{old('codeLesson') ? old('codeLesson') : ''}} {{ $modify==1 && !old('codeLesson') ? $lesson->code : '' }}">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('codeLesson') }}</small>

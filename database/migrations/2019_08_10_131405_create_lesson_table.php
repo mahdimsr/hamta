@@ -21,7 +21,7 @@
 
                 $table->bigIncrements('id');
                 $table->integer('parentId')->default(0);
-                $table->string('code')->default(0);
+                $table->string('code')->nullable();
                 $table->string('title');
                 $table->string('url')->nullable();
                 $table->timestamps();

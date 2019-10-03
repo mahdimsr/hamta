@@ -56,27 +56,27 @@
 						{{csrf_field()}}
 
 						<div class="row">
-                            <div class="col-md-6">
-								<div class="form-group">
-									<label>دسته بندی درس</label>
-									<select dir="rtl" name="orientationCategory" id="orientationCategory" class="form-control">
-										<option id="0" value="" selected disabled>دسته بندی درس را انتخاب کنید</option>
-										@foreach ( $orientationCategories as $orientationCategory )
-											<option id="{{ $orientationCategory->orientationId }}" value="{{ $orientationCategory->id }}" {{ old('orientationCategory')==$orientationCategory->id ? 'selected' : '' }}  {{ $modify == 1 && !old('orientationCategory') && $gradeLesson->orientationCategoryId == $orientationCategory->id? 'selected' : '' }}>{{ $orientationCategory->category->title}} - {{ $orientationCategory->getPersianTypeAttribute()  }}</option>
-										@endforeach
-									</select>
-									<div class="invalid-feedback">
-										<small>{{ $errors->first('orientationCategory') }}</small>
-									</div>
-								</div>
-                            </div>
+                                <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>عنوان درس</label>
+                                            <select dir="rtl" name="lesson" class="form-control">
+                                                <option value="" id="0" selected disabled>درس را انتخاب کنید</option>
+                                                @foreach ( $lessons as $lesson )
+                                                    <option value="{{ $lesson->id }}" {{ old('lesson')==$lesson->id ? 'selected' : '' }}  {{ $modify == 1 && !old('lesson') && $gradeLesson->lessonId == $lesson->id ? 'selected' : '' }}>{{ $lesson->title.' - '.$lesson->code }}</option>
+                                                @endforeach
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                <small>{{ $errors->first('lesson') }}</small>
+                                            </div>
+                                        </div>
+                                    </div>
                             <div class="col-md-6">
 								<div class="form-group">
 									<label>گرایش درس</label>
 									<select dir="rtl" name="orientation" id="orientation" class="form-control">
 										<option selected disabled>گرایش درس را انتخاب نمایید</option>
 										@foreach ( $orientations as $orientation )
-											<option value="{{ $orientation->id }}" {{ old('orientation')==$orientation->id ? 'selected' : '' }} {{ $modify == 1 && !old('orientation') && $orientation->id == $gradeLesson->orientationCategory->orientation->id? 'selected' : '' }}>{{ $orientation->title }}</option>
+											<option value="{{ $orientation->id }}" {{ old('orientation')==$orientation->id ? 'selected' : '' }} {{ $modify == 1 && !old('orientation') && $gradeLesson->orientationId == $orientation->id? 'selected' : '' }}>{{ $orientation->title }}</option>
 										@endforeach
 									</select>
 									<div class="invalid-feedback">
@@ -86,13 +86,24 @@
 							</div>
 						</div>
 						<div class="row">
+                                <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>ضریب درس</label>
+                                            <input name="ratio" dir="rtl" type="text" class="form-control"
+                                                   placeholder="ضریب درس را وارد نمایید" tabindex="2"
+                                                   value="{{old('ratio') ? old('ratio') : ''}} {{ $modify==1 && !old('ratio') ? $gradeLesson->ratio : '' }}">
+                                            <div class="invalid-feedback">
+                                                <small>{{ $errors->first('ratio') }}</small>
+                                            </div>
+                                        </div>
+                                    </div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>مقطع درس</label>
 									<select dir="rtl" name="grade" class="form-control">
 										<option selected disabled>مقطع درس را انتخاب نمایید</option>
 										@foreach ( $grades as $grade )
-											<option value="{{ $grade->id }}" {{ old('grade')==$grade->id ? 'selected' : '' }}  {{$modify == 1 && !old('grade') && $grade->id == $gradeLesson->gradeId? 'selected' : '' }}>{{ $grade->title }}</option>
+											<option value="{{ $grade->id }}" {{ old('grade')==$grade->id ? 'selected' : '' }}  {{$modify == 1 && !old('grade') && $gradeLesson->gradeId == $grade->id ? 'selected' : '' }}>{{ $grade->title }}</option>
 										@endforeach
 									</select>
 									<div class="invalid-feedback">
@@ -100,20 +111,6 @@
 									</div>
 								</div>
                             </div>
-                            <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>عنوان درس</label>
-                                        <select dir="rtl" name="lesson" class="form-control">
-                                            <option value="" id="0" selected disabled>درس را انتخاب کنید</option>
-                                            @foreach ( $lessons as $lesson )
-                                                <option value="{{ $lesson->id }}" {{ old('lesson')==$lesson->id ? 'selected' : '' }}  {{ $modify == 1 && !old('lesson') && $gradeLesson->lessonId == $lesson->id ? 'selected' : '' }}>{{ $lesson->title.' - '.$lesson->code }}</option>
-                                            @endforeach
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            <small>{{ $errors->first('lesson') }}</small>
-                                        </div>
-                                    </div>
-                                </div>
 						</div>
 
 						<button type="submit" class="btn btn-info btn-fill pull-left">اعمال</button>
@@ -127,29 +124,6 @@
 @endsection
 @section('script')
     <script>
-    $(document).ready(function()
-    {
-        var id,options;
-        var orientationCategory=$('#orientationCategory option').clone();
 
-    $("#orientation").change(function()
-    {
-        id = $("#orientation").val();
-        options = orientationCategory.filter('[id=' + id + '],[id=0]');
-        $('#orientationCategory').html(options);
-        $('#orientationCategory').prop('selectedIndex',0).trigger('change');
-
-    });
-
-    if($("#orientation").val()!='')
-    {
-
-        id = $("#orientation").val();
-        options = orientationCategory.filter('[id=' + id + '],[id=0]');
-        $('#orientationCategory').html(options);
-
-    }
-
-    });
     </script>
 @endsection

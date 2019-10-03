@@ -23,6 +23,7 @@
                 $table->integer('gradeId');
                 $table->integer('orientationId');
                 $table->integer('lessonId');
+                $table->integer('ratio');
                 $table->string('code')->nullable();
                 $table->timestamps();
                 $table->softDeletes();

@@ -157,6 +157,19 @@
                 Route::get('/edit/{url}', 'LessonController@editShow')->name('admin_lessons_editShow');
                 Route::post('/edit/{url}', 'LessonController@edit')->name('admin_lessons_edit');
             });
+
+            Route::prefix('categories')->group(function()
+            {
+
+                Route::get('/', 'CategoryController@categories')->name('admin_categories');
+                Route::get('/remove/{url}', 'CategoryController@remove')->name('admin_categories_remove');
+                Route::get('/add', 'CategoryController@addShow')->name('admin_categories_addShow');
+                Route::post('/add', 'CategoryController@add')->name('admin_categories_add');
+                Route::get('/edit/{url}', 'CategoryController@editShow')->name('admin_categories_editShow');
+                Route::post('/edit/{url}', 'CategoryController@edit')->name('admin_categories_edit');
+
+            });
+
             Route::prefix('scholarships')->group(function()
             {
 

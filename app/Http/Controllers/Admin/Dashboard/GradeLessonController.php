@@ -8,7 +8,6 @@
     use App\model\Orientation;
     use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
-    use App\model\OrientationCategory;
     use Illuminate\Support\Facades\Validator;
     use Illuminate\Validation\Rule;
 
@@ -39,17 +38,15 @@
             $modify                = 0;
             $orientations          = Orientation::all();
             $grades                = Grade::all();
-            $lessons               = Lesson::all();
-            $orientationCategories = OrientationCategory::all();
+            $lessons               = Lesson::whereNotIn('parentId',[0])->get();
 
-            return view('admin.dashboard.gradeLesson.form', compact('orientations', 'grades', 'lessons', 'orientationCategories', 'modify'));
+            return view('admin.dashboard.gradeLesson.form', compact('orientations', 'grades', 'lessons', 'modify'));
         }
 
         public function add(Request $request)
         {
 
             $this->validate($request, ['orientation'         => 'required',
-                                       'orientationCategory' => 'required',
                                        'grade'               => 'required',
                                        'lesson'              => 'required',]);
             $orientation = Orientation::query()->where('id', $request->input('orientation'))->first();
@@ -66,7 +63,6 @@
                 $gradeLesson                        = new GradeLesson();
                 $gradeLesson->lessonId              = $request->input('lesson');
                 $gradeLesson->gradeId               = $request->input('grade');
-                $gradeLesson->orientationCategoryId = $request->input('orientationCategory');
                 $gradeLesson->save();
 
                 return redirect()->route('admin_gradeLessons');
@@ -80,10 +76,9 @@
             $gradeLesson           = GradeLesson::query()->where('code', $code)->first();
             $orientations          = Orientation::all();
             $grades                = Grade::all();
-            $lessons               = Lesson::all();
-            $orientationCategories = OrientationCategory::all();
+            $lessons               = Lesson::whereNotIn('parentId',[0])->get();
 
-            return view('admin.dashboard.gradeLesson.form', compact('orientations', 'orientationCategories', 'grades', 'lessons', 'gradeLesson', 'modify'));
+            return view('admin.dashboard.gradeLesson.form', compact('orientations', 'grades', 'lessons', 'gradeLesson', 'modify'));
         }
 
         public function edit(Request $request, $code)
@@ -91,7 +86,6 @@
 
             $gradeLesson = GradeLesson::query()->where('code', $code)->first();
             $this->validate($request, ['orientation'         => 'required',
-                                       'orientationCategory' => 'required',
                                        'grade'               => 'required',
                                        'lesson'              => 'required',]);
             $orientation = Orientation::query()->where('id', $request->input('orientation'))->first();
