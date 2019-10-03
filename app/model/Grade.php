@@ -51,4 +51,11 @@ class Grade extends Model
 	{
 		return $this->hasMany(GradeLesson::class, 'gradeId');
 	}
+
+
+    public function gradeable()
+    {
+
+        return $this->morphTo();
+	}
 }

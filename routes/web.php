@@ -94,12 +94,17 @@
 
                     Route::prefix('/questions')->group(function()
                     {
-                    Route::get('/{exm}','LessonExamController@questionsShow')->name('admin_lExam_questionsShow');
-                    Route::get('/add/{exm}','LessonExamController@addQuestionShow')->name('admin_lExam_addQuestionShow');
-                    Route::post('/add/{exm}','LessonExamController@addQuestion')->name('admin_lExam_addQuestion');
-                    Route::get('/edit/{exm}/{id}', 'LessonExamController@editQuestionShow')->name('admin_ltlExams_editQuestionShow');
-                    Route::post('/edit/{exm}/{id}', 'LessonExamController@editQuestion')->name('admin_ltlExams_editQuestion');
-                    Route::get('/remove/{id}', 'LessonExamController@removeQuestion')->name('admin_lExam_removeQuestion');
+
+                        Route::get('/{exm}', 'LessonExamController@questionsShow')->name('admin_lExam_questionsShow');
+                        Route::get('/add/{exm}', 'LessonExamController@addQuestionShow')
+                             ->name('admin_lExam_addQuestionShow');
+                        Route::post('/add/{exm}', 'LessonExamController@addQuestion')->name('admin_lExam_addQuestion');
+                        Route::get('/edit/{exm}/{id}', 'LessonExamController@editQuestionShow')
+                             ->name('admin_ltlExams_editQuestionShow');
+                        Route::post('/edit/{exm}/{id}', 'LessonExamController@editQuestion')
+                             ->name('admin_ltlExams_editQuestion');
+                        Route::get('/remove/{id}', 'LessonExamController@removeQuestion')
+                             ->name('admin_lExam_removeQuestion');
                     });
                 });
             });
@@ -174,8 +179,13 @@
     Route::get('/test', function()
     {
 
-        $lesson      = \App\model\Lesson::query()->find(17);
-        $gradeLesson = \App\model\GradeLesson::query()->find(1);
+        $lessonExam = \App\model\LessonExam::query()->with('gradeLessons')->find(4);
 
-        return $gradeLesson->topics;
+        $gradeLessons = \App\model\GradeLesson::all();
+
+
+        return $lessonExam->lessons();
+
+
+
     })->name('test');

@@ -113,7 +113,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="lesson-select" class="control-label">درس ها</label>
-                                <select id="lesson-select" name="gradeLessons[id]" multiple
+                                <select id="lesson-select" name="gradeLessons[]" multiple
                                         data-placeholder="درس های گروه درسی">
                                     @foreach($gradeLessons as $gradeLesson)
                                         <option id="{{$gradeLesson->orientationId}}"

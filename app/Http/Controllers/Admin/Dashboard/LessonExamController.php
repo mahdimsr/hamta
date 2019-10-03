@@ -53,7 +53,6 @@
             $this->validate($request, ['title'           => 'required|string|max:20',
                                        'activeDate'      => 'nullable',
                                        'gradeLessons'    => 'required',
-                                       'gradeLessons.id' => 'required|exists:grade_lesson,id',
                                        'price'           => 'required|integer|min:0',
                                        'description'     => 'nullable|string|max:300',
                                        'answerSheet'     => 'nullable|file|mimes:pdf|max:3000',

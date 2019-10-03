@@ -2,6 +2,7 @@
 
     namespace App\model;
 
+    use App\Lib\Lib;
     use Illuminate\Database\Eloquent\Model;
     use Illuminate\Database\Eloquent\SoftDeletes;
     use Illuminate\Support\Facades\Storage;
@@ -56,17 +57,93 @@
         }
 
 
-        public function orientationCategory()
-        {
-
-            return $this->belongsTo(OrientationCategory::class, 'orientationCategoryId');
-        }
-
-
         public function examGradeLessons()
         {
 
             return $this->hasMany(ExamGradeLesson::class, 'examId');
+        }
+
+
+        public function gradeLessons()
+        {
+
+            return $this->hasManyThrough(GradeLesson::class, ExamGradeLesson::class, 'examId', 'id', 'id', 'gradeLessonId');
+        }
+
+
+        public function grades()
+        {
+
+            $gradeArray = array();
+
+            foreach ($this->gradeLessons as $gradeLesson)
+            {
+                array_push($gradeArray, $gradeLesson->grade);
+            }
+
+            $unique_gradeId = Lib::unique_ObjectArray($gradeArray, 'id');
+
+            $grades = array();
+
+            foreach ($unique_gradeId as $id)
+            {
+                $grade = Grade::query()->find($id);
+
+                array_push($grades, $grade);
+            }
+
+            return $grades;
+        }
+
+
+        public function orientation()
+        {
+
+            $orientationArray = array();
+
+            foreach ($this->gradeLessons as $gradeLesson)
+            {
+                array_push($orientationArray, $gradeLesson->orientation);
+            }
+
+            $unique_oriId = Lib::unique_ObjectArray($orientationArray, 'id');
+
+            $orientation = array();
+
+            foreach ($unique_oriId as $id)
+            {
+                $ori = Orientation::query()->find($id);
+
+                array_push($orientation, $ori);
+            }
+
+            return $orientation;
+
+        }
+
+
+        public function lessons()
+        {
+
+            $lessonArray = array();
+
+            foreach ($this->gradeLessons as $gradeLesson)
+            {
+                array_push($lessonArray, $gradeLesson->lesson);
+            }
+
+            $unique_lessonId = Lib::unique_ObjectArray($lessonArray, 'id');
+
+            $lessons = array();
+
+            foreach ($unique_lessonId as $id)
+            {
+                $lesson = Lesson::query()->find($id);
+
+                array_push($lessons, $lesson);
+            }
+
+            return $lessons;
         }
 
 

@@ -88,7 +88,7 @@
         }
 
 
-        public function lessonExam()
+        public function examGradeLesson()
         {
 
             return $this->hasMany(ExamGradeLesson::class, 'gradeLessonId');
@@ -100,5 +100,6 @@
 
             return $this->hasMany(Question::class, 'gradeLessonId');
         }
+
 
     }
