@@ -124,7 +124,7 @@
                                                         {{$gradeLesson->id == $item->id ? 'selected' : ''}}
                                                         @endforeach
                                                     @endif--}}
-                                            >{{$gradeLesson->lesson_grade}}</option>
+                                            >{{$gradeLesson->title}}</option>
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback">

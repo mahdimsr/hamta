@@ -46,6 +46,11 @@
 										سوالات
 									</a>
 
+									<a href="{{route('admin_lExam_addQuestionShow',['exm' => $exam->exm])}}"
+									   style="font-size: 12px;" class="btn btn-success">
+										افزودن سوال
+									</a>
+
 								</td>
 							</tr>
 						@endforeach
