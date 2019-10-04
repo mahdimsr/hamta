@@ -124,22 +124,20 @@ $(document).ready(function ()
     var parentSelect = $('.parent-select');
     $('.selectMultiple ul#list').empty();
 
-
     parentSelect.change(function ()
     {
         id = $(this).val();
-
+        $('select[multiple]').val('').trigger("change");
         $('.selectMultiple ul#list').empty();
         $('.selectMultiple div#active a').remove();
 
-        console.log('hi');
 
 
         filter(id);
 
     });
 
-    var filterList = $('<ul id="list" />');
+
 
     function filter(parentId)
     {
@@ -152,15 +150,11 @@ $(document).ready(function ()
 
             if ($(this).attr('id') == parentId)
             {
-                filterList.append($('<li id= "' + id + '" />').html(text));
+                $('.selectMultiple ul#list').append($('<li id= "' + id + '" />').html(text));
             }
 
         });
 
-
-        $('.selectMultiple').append(filterList);
-
-        console.log($('#list').html());
 
 
     }
