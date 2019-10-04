@@ -234,7 +234,7 @@
 
         tags: true,
         tokenSeparators: [',', ' ']
-    })
+    });
     $('.js-example-basic-multiple').select2();
     $('#my-select').multiSelect()
 </script>
