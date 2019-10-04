@@ -226,13 +226,6 @@
     $(".hide-search").select2({
         minimumResultsForSearch: Infinity
     });
-    $(".js-example-tags").select2({
-
-        tags: true,
-        tokenSeparators: [',', ' ']
-    });
-    $('.js-example-basic-multiple').select2();
-    $('#my-select').multiSelect()
 </script>
 
 @yield('script')

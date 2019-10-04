@@ -5,7 +5,7 @@ $(document).ready(function ()
     var options = select.find('option');
 
     var div         = $('<div />').addClass('selectMultiple');
-    var active      = $('<div />');
+    var active      = $('<div id="active" />');
     var list        = $('<ul id="list" />');
     var placeholder = select.data('placeholder');
 
@@ -122,7 +122,7 @@ $(document).ready(function ()
 
 
     var parentSelect = $('.parent-select');
-    var parentOption = parentSelect.find('option');
+    $('.selectMultiple ul#list').empty();
 
 
     parentSelect.change(function ()
@@ -130,7 +130,7 @@ $(document).ready(function ()
         id = $(this).val();
 
         $('.selectMultiple ul#list').empty();
-
+        $('.selectMultiple div#active a').remove();
 
         console.log('hi');
 
