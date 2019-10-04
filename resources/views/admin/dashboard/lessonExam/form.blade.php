@@ -1,8 +1,4 @@
 @extends('layouts.admin_dashboard')
-@section('link')
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css"/>
-@endsection
 @section('content')
 
 
@@ -117,9 +113,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstr
                                 <div class="col-md-6">
                                     <label for="lesson-select" class="control-label">درس ها</label>
                                     <select id="lesson-select" name="gradeLessons[]" multiple
-                                            data-placeholder="درس های گروه درسی">
-                                            <option id="0" value="" disabled selected>درس های آزمون را انتخاب کنید
-                                                </option>
+                                            data-placeholder="درس های آزمون را انتخاب کنید">
                                         @foreach($gradeLessons as $gradeLesson)
                                             <option id="{{$gradeLesson->orientationId}}"
                                                     value="{{$gradeLesson->id}}"
