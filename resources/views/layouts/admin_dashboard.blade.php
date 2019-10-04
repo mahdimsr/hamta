@@ -33,8 +33,6 @@
     <link href="{{asset('datePicker/persian-datepicker.min.css')}}" rel="stylesheet"/>
 
 	<link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
-
-    <link rel="stylesheet" href="{{asset('multiSelect/style.css')}}">
     @yield('link')
 </head>
 <body>

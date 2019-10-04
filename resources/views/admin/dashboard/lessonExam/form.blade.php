@@ -1,4 +1,8 @@
 @extends('layouts.admin_dashboard')
+@section('link')
+
+<link rel="stylesheet" href="{{asset('multiSelect/style.css')}}">
+@endsection
 @section('content')
 
 
