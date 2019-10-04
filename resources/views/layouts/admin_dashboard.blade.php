@@ -19,7 +19,6 @@
 	<!-- Animation library for notifications   -->
 	<link href="{{asset('css/admin/dashboard/animate.min.css')}}" rel="stylesheet"/>
 	<link href="{{asset('css/admin/dashboard/select2.min.css')}}" rel="stylesheet"/>
-	<link href="{{asset('css/admin/dashboard/multi-select.css')}}" rel="stylesheet"/>
 
 	<!--  Light Bootstrap Table core CSS    -->
 	<link href="{{asset('css/admin/dashboard/dashboard.css')}}" rel="stylesheet"/>
@@ -206,7 +205,6 @@
 <script src="{{asset('js/admin/dashboard/jquery.3.2.1.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/admin/dashboard/bootstrap.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/admin/dashboard/select2.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('js/admin/dashboard/jquery.multi-select.js')}}" type="text/javascript"></script>
 <!--  Charts Plugin -->
 <script src="{{asset('js/admin/dashboard/chartist.min.js')}}"></script>
 
@@ -230,13 +228,6 @@
     $(".hide-search").select2({
         minimumResultsForSearch: Infinity
     });
-    $(".js-example-tags").select2({
-
-        tags: true,
-        tokenSeparators: [',', ' ']
-    })
-    $('.js-example-basic-multiple').select2();
-    $('#my-select').multiSelect()
 </script>
 
 @yield('script')
