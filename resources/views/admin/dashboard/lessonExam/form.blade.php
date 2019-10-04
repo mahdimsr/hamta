@@ -1,9 +1,11 @@
 @extends('layouts.admin_dashboard')
-
+@section('link')
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css"/>
+@endsection
 @section('content')
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css"/>
+
     <div class="row" dir="rtl">
 
         <div class="col-md-5">
@@ -205,7 +207,7 @@
                 </div>
             </div>
         </div>
-
+    </div>
 
         @endsection
 
