@@ -217,7 +217,7 @@
             <script>
 
                     var id,options;
-                    var lessons=$('#lesson-select option').clone();
+                    // var lessons=$('#lesson-select option').clone();
 
                 $('#activeDate').pDatepicker({
 
@@ -236,7 +236,7 @@
                     }
                 });
 
-                $("#ori-select").change(function()
+                /*$("#ori-select").change(function()
                 {
                     id = $("#ori-select").val();
                     options = lessons.filter('[id=' + id + '],[id=0]');
@@ -252,7 +252,7 @@
                     options = lessons.filter('[id=' + id + '],[id=0]');
                     $('#lesson-select').html(options);
 
-                }
+                }*/
 
             </script>
 

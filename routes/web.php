@@ -82,6 +82,8 @@
             {
 
                 Route::get('/', 'DashboardController@exams')->name('admin_exams');
+
+
                 Route::prefix('/lessonToLesson')->group(function()
                 {
 
@@ -104,6 +106,8 @@
                     });
                 });
             });
+
+
             Route::prefix('questions')->group(function()
             {
 
@@ -111,6 +115,7 @@
                 Route::post('/add', 'QuestionController@add')->name('addQuestion');
                 Route::get('/list', 'QuestionController@questions')->name('admin_questions');
             });
+
 
             Route::prefix('grades')->group(function()
             {
@@ -133,6 +138,8 @@
                 Route::get('/edit/{url}', 'OrientationController@editShow')->name('admin_orientations_editShow');
                 Route::post('/edit/{url}', 'OrientationController@edit')->name('admin_orientations_edit');
             });
+
+
             Route::prefix('gradeLessons')->group(function()
             {
 
@@ -143,6 +150,8 @@
                 Route::get('/edit/{code}', 'GradeLessonController@editShow')->name('admin_gradeLessons_editShow');
                 Route::post('/edit/{code}', 'GradeLessonController@edit')->name('admin_gradeLessons_edit');
             });
+
+
             Route::prefix('lessons')->group(function()
             {
 
@@ -173,6 +182,8 @@
                 Route::get('/show/{url}', 'ScholarshipController@show')->name('admin_scholarships_show');
                 Route::post('/answer/{url}', 'ScholarshipController@answer')->name('admin_scholarships_answer');
             });
+
+
             Route::prefix('students')->group(function()
             {
 
