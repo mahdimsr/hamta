@@ -1,7 +1,7 @@
 @extends('layouts.admin_dashboard')
 @section('link')
 
-<link rel="stylesheet" href="{{asset('multiSelect/style.css')}}">
+    <link rel="stylesheet" href="{{asset('multiSelect/style.css')}}">
 @endsection
 @section('content')
 
@@ -136,7 +136,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">گرایش</label>
-                                        <select name="orientation" class="form-control menu dropdown-radius hide-search"
+                                        <select name="orientation" class="form-control menu dropdown-radius hide-search parent-select"
                                                 id="ori-select" {{ $modify==1? 'disabled' : '' }}>
                                             <option id="0" value="" disabled selected>گرایش آزمون را انتخاب نمایید
                                             </option>
@@ -207,53 +207,55 @@
         </div>
     </div>
 
-        @endsection
+@endsection
 
-        @section('script')
+@section('script')
 
 
-            <script src="{{asset('multiSelect/script.js')}}"></script>
+    <script src="{{asset('multiSelect/script.js')}}"></script>
 
-            <script>
+    <script>
 
-                    var id,options;
-                    // var lessons=$('#lesson-select option').clone();
+        var id, options;
+        var lessons= $('#lesson-select option').clone();
 
-                $('#activeDate').pDatepicker({
+        $('#activeDate').pDatepicker({
 
-                    autoClose : true,
-                    initialValue : true,
-                    format : 'YYYY/MM/DD',
-                    responsive : true,
-                    toolbox : {
-                        calendarSwitch : {
-                            enabled : false
-                        },
-                        submitButton   : {enabled : true},
-                        todayButton    : {
-                            enabled : false
-                        }
-                    }
-                });
+            autoClose    : true,
+            initialValue : true,
+            format       : 'YYYY/MM/DD',
+            responsive   : true,
+            toolbox      : {
+                calendarSwitch : {
+                    enabled : false
+                },
+                submitButton   : {enabled : true},
+                todayButton    : {
+                    enabled : false
+                }
+            }
+        });
 
-                /*$("#ori-select").change(function()
-                {
-                    id = $("#ori-select").val();
-                    options = lessons.filter('[id=' + id + '],[id=0]');
-                    $('#lesson-select').html(options);
-                    $('#lesson-select').prop('selectedIndex',0).trigger('change');
+        /*$("#ori-select").change(function ()
+        {
+            id      = $("#ori-select").val();
+            options = lessons.filter('[id=' + id + '],[id=0]');
 
-                });
+            $('#lesson-select').html(options);
 
-                if($("#ori-select").val()!='')
-                {
+            $('#lesson-select').prop('selectedIndex', 0).trigger('change');
 
-                    id = $("#ori-select").val();
-                    options = lessons.filter('[id=' + id + '],[id=0]');
-                    $('#lesson-select').html(options);
+        });*/
 
-                }*/
+        /*  if($("#ori-select").val()!='')
+          {
 
-            </script>
+              id = $("#ori-select").val();
+              options = lessons.filter('[id=' + id + '],[id=0]');
+              $('#lesson-select').html(options);
+
+          }*/
+
+    </script>
 
 @endsection

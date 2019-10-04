@@ -6,7 +6,7 @@ $(document).ready(function ()
 
     var div         = $('<div />').addClass('selectMultiple');
     var active      = $('<div />');
-    var list        = $('<ul />');
+    var list        = $('<ul id="list" />');
     var placeholder = select.data('placeholder');
 
     var span = $('<span />').text(placeholder).appendTo(active);
@@ -14,18 +14,21 @@ $(document).ready(function ()
     options.each(function ()
     {
         var text = $(this).text();
+        var id   = $(this).attr('id');
+
         if ($(this).is(':selected'))
         {
             active.append($('<a />').html('<em>' + text + '</em><i></i>'));
             span.addClass('hide');
         } else
         {
-            list.append($('<li />').html(text));
+            list.append($('<li id= "' + id + '" />').html(text));
         }
     });
 
     active.append($('<div />').addClass('arrow'));
     div.append(active).append(list);
+
 
     select.wrap(div);
 
@@ -116,5 +119,50 @@ $(document).ready(function ()
     {
         $(this).parent().parent().toggleClass('open');
     });
+
+
+    var parentSelect = $('.parent-select');
+    var parentOption = parentSelect.find('option');
+
+
+    parentSelect.change(function ()
+    {
+        id = $(this).val();
+
+        $('.selectMultiple ul#list').empty();
+
+
+        console.log('hi');
+
+
+        filter(id);
+
+    });
+
+    var filterList = $('<ul id="list" />');
+
+    function filter(parentId)
+    {
+
+        options.each(function ()
+        {
+            var text = $(this).text();
+            var id   = $(this).attr('id');
+
+
+            if ($(this).attr('id') == parentId)
+            {
+                filterList.append($('<li id= "' + id + '" />').html(text));
+            }
+
+        });
+
+
+        $('.selectMultiple').append(filterList);
+
+        console.log($('#list').html());
+
+
+    }
 
 });
