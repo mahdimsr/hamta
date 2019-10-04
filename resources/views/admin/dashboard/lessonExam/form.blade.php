@@ -111,9 +111,9 @@
 
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="lesson-select" class="control-label">درس ها</label>
+                                    <label for="lesson-select" class="control-label">درس های آزمون</label>
                                     <select id="lesson-select" name="gradeLessons[]" multiple
-                                            data-placeholder="درس های آزمون را انتخاب کنید">
+                                            data-placeholder="درس های آزمون را انتخاب نمایید">
                                         @foreach($gradeLessons as $gradeLesson)
                                             <option id="{{$gradeLesson->orientationId}}"
                                                     value="{{$gradeLesson->id}}"
@@ -134,7 +134,7 @@
                                         <label class="control-label">گرایش</label>
                                         <select name="orientation" class="form-control menu dropdown-radius hide-search"
                                                 id="ori-select" {{ $modify==1? 'disabled' : '' }}>
-                                            <option id="0" value="" disabled selected>گرایش آزمون را انتخاب کنید
+                                            <option id="0" value="" disabled selected>گرایش آزمون را انتخاب نمایید
                                             </option>
                                             @foreach($orientations as $orientation)
                                                 <option
