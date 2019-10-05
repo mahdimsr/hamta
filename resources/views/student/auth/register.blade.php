@@ -91,24 +91,21 @@
                   </div>
 
                   <!-- Body -->
-                  <div class="md-form">
-                    <i class="fas fa-user prefix"></i>
+                  <div class="md-form md-outline">
                     <input type="text" id="orangeForm-name" class="form-control "  name="student_mobile" value="{{old('student_mobile')}}">
                     <label for="orangeForm-name">شماره تلفن همراه</label>
                     <small class="text-danger font-weight-bold">{{$errors->first('student_mobile')}}</small>
 
                   </div>
 
-                  <div class="md-form">
-                    <i class="fas fa-lock prefix white-text"></i>
+                  <div class="md-form md-outline">
                     <input type="password" id="orangeForm-name" class="form-control "  name="password_register" value="{{old('password_register')}}">
                     <label for="orangeForm-name">رمز عبور</label>
                     <small class="text-danger font-weight-bold">{{ $errors->first('password_register')}}</small>
 
                   </div>
 
-                  <div class="md-form">
-                    <i class="fas fa-lock prefix white-text"></i>
+                  <div class="md-form md-outline">
                     <input type="password" id="orangeForm-email" class="form-control" name="password_register_confirmation">
                     <label for="orangeForm-email">تکرار رمز عبور</label>
                     <small class="text-danger font-weight-bold">{{ $errors->first('password_register_confirmation')}}</small>
