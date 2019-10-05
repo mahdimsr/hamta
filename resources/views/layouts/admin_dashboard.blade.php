@@ -220,12 +220,14 @@
 <script src="{{asset('datePicker/persian-datepicker.min.js')}}" type="text/javascript"></script>
 
 <script>
-    $(".menu").select2({
+    $(".menu12").select2({
         allowClear: true,
+        tags: true
     });
     $(".hide-search").select2({
         minimumResultsForSearch: Infinity
     });
+
 </script>
 
 @yield('script')
