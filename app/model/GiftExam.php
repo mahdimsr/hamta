@@ -6,6 +6,7 @@
     use Carbon\Carbon;
     use Illuminate\Database\Eloquent\Model;
     use Illuminate\Database\Eloquent\SoftDeletes;
+    use Illuminate\Support\Facades\Storage;
 
 
     /**
@@ -27,6 +28,17 @@
 
         use SoftDeletes;
 
+
+        protected $appends = ['answerSheetPath'];
+
+
+        public function getAnswerSheetPathAttribute()
+        {
+
+            $path = Storage::disk('giftExam')->url($this->id . '/' . $this->answerSheet);
+
+            return $path;
+        }
 
 
         public function gradeLessons()
@@ -116,6 +128,16 @@
             }
 
             return $lessons;
+        }
+
+        public function remove($exm)
+        {
+
+            $exam = GiftExam::query()->where('exm', $exm)->first();
+
+            $exam->delete();
+
+            return redirect()->back();
         }
 
     }

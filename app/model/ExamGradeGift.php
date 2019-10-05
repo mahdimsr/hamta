@@ -11,6 +11,36 @@
         protected $table = 'exam_grade_gift';
 
 
+        protected static function boot()
+        {
+
+            parent::boot();
+
+            self::creating(function($model)
+            {
+
+                $giftExam  = GiftExam::query()->find($model->examId);
+
+                $str1 = substr(md5(uniqid(mt_rand(), true)), 0, 2);
+                $str2 = substr(md5(uniqid(mt_rand(), true)), 0, 2);
+                $code = 'EXM-' . $str1 . $giftExam->id . $str2;
+
+                while (GiftExam::query()->where('exm', $code)->exists())
+                {
+                    $str1 = substr(md5(uniqid(mt_rand(), true)), 0, 2);
+                    $str2 = substr(md5(uniqid(mt_rand(), true)), 0, 2);
+                    $code = 'EXM-' . $str1 . $giftExam->id . $str2;
+                }
+
+                $giftExam->exm = $code;
+
+                $giftExam->update();
+
+
+            });
+        }
+
+
         public function giftExam()
         {
 

@@ -62,6 +62,13 @@ return [
 			'visibility' => 'public',
 		],
 
+		'giftExam' => [
+			'driver'     => 'local',
+			'root'       => storage_path('app/public/giftExam'),
+			'url'        => env('APP_URL') . '/hamta/storage/app/public/giftExam',
+			'visibility' => 'public',
+		],
+
 		's3' => [
 			'driver' => 's3',
 			'key'    => env('AWS_ACCESS_KEY_ID'),
