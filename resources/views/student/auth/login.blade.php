@@ -44,9 +44,6 @@
 </head>
 <body>
 
-  <!-- Main Navigation -->
-
-
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
                 <div class="container">
                   <a class="navbar-brand" href="{{ route('student_login_show') }}"><strong>همپا | دانش آموزان</strong></a>
@@ -71,11 +68,13 @@
               </nav>
 
 <section class="view intro-2">
+
      <form class="form form-login" action="{{route('student_login')}}" method='post'>
                     {{ csrf_field() }}
 
       <div class="mask rgba-stylish-strong  h-100 d-flex justify-content-center align-items-center">
         <div class="container">
+
           <div class="row">
             <div class="col-xl-5 col-lg-6 col-md-10 col-sm-12 mx-auto mt-5">
 
@@ -90,16 +89,14 @@
                   </div>
 
                   <!-- Body -->
-                  <div class="md-form">
-                    <i class="fas fa-user prefix white-text"></i>
+                  <div class="md-form md-outline">
                     <input type="text" id="orangeForm-name" class="form-control "  name="mobile_email" value="{{ $studentInfo ? $studentInfo : old('mobile_email') }}">
                     <label for="orangeForm-name">تلفن همراه یا پست الکترونیکی</label>
                     <small class="text-danger font-weight-bold">{{$errors->first('mobile_email')}}</small>
 
                   </div>
 
-                  <div class="md-form">
-                    <i class="fas fa-lock prefix white-text"></i>
+                  <div class="md-form md-outline">
                     <input type="password" id="orangeForm-email" class="form-control" name="password" value="{{ $studentPass ? $studentPass : old('password') }}">
                     <label for="orangeForm-email">رمز عبور</label>
                     <small class="text-danger font-weight-bold">{{$errors->first('password')}}</small>
@@ -212,7 +209,7 @@
           }
     new WOW().init();
     @if ($errors->has('message'))
-    @{{ toastr.error('.اطلاعات وارد شده صحیح نیست'); }}
+    @{{ toastr.error('اطلاعات وارد شده صحیح نیست'); }}
     @endif
   </script>
 

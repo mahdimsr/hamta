@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="fa">
 <head>
 	<meta charset="utf-8"/>
 
@@ -15,23 +15,14 @@
 	<!-- Bootstrap core CSS     -->
     <link href="{{asset('css/admin/dashboard/bootstrap.min.css')}}" rel="stylesheet"/>
     <link rel="icon" href="{{asset('favicon.png')}}" type="image/png">
-
 	<!-- Animation library for notifications   -->
 	<link href="{{asset('css/admin/dashboard/animate.min.css')}}" rel="stylesheet"/>
 	<link href="{{asset('css/admin/dashboard/select2.min.css')}}" rel="stylesheet"/>
-
 	<!--  Light Bootstrap Table core CSS    -->
 	<link href="{{asset('css/admin/dashboard/dashboard.css')}}" rel="stylesheet"/>
-
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-
-
-
-	<link href="{{asset('css/student/dashboard/stroke.css')}}" rel="stylesheet"/>
-
     {{-- datePicker --}}
     <link href="{{asset('datePicker/persian-datepicker.min.css')}}" rel="stylesheet"/>
-
 	<link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
     @yield('link')
 </head>
@@ -50,7 +41,7 @@
 		<div class="sidebar-wrapper">
 			<div class="logo">
                     <a class="simple-text">
-                        <img class="mx-auto" src={{asset('image/admin/dashboard/logo.png')}}
+                        <img class="mx-auto" src={{asset('image/logo/logo.png')}}
                         height="75" width="75">
                     </a>
                     <a class="simple-text">کاربر : {{ $adminUser->fullName }}</a>
@@ -220,19 +211,14 @@
 <script src="{{asset('datePicker/persian-datepicker.min.js')}}" type="text/javascript"></script>
 
 <script>
-    $(".menu").select2({
+    $(".menu12").select2({
         allowClear: true,
+        tags: true
     });
     $(".hide-search").select2({
         minimumResultsForSearch: Infinity
     });
-    $(".js-example-tags").select2({
 
-        tags: true,
-        tokenSeparators: [',', ' ']
-    });
-    $('.js-example-basic-multiple').select2();
-    $('#my-select').multiSelect()
 </script>
 
 @yield('script')

@@ -61,7 +61,7 @@
 
 
         <div class="col-md-4">
-            {{--<a href="{{route('student_dashboard_lessonExams')}}">--}}
+
                 <div class="card cards">
                     <div class="header">
                         <h4 class="title">آزمون های درس به درس</h4>
@@ -70,7 +70,9 @@
                     <div class="content">
                         <hr>
                         <div id="" class="">
+                            <a href="{{route('student_dashboard_lessonExams')}}">
                         <img class="image" src="{{asset('image/student/dashboard/exam.jpg')}} ">
+                            </a>
                         </div>
 
                         <div class="footer">
@@ -84,7 +86,7 @@
                         </div>
                     </div>
                 </div>
-            {{--</a>--}}
+
         </div>
 
     </div>

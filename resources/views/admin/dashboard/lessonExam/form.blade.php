@@ -1,7 +1,7 @@
 @extends('layouts.admin_dashboard')
 @section('link')
 
-    <link rel="stylesheet" href="{{asset('multiSelect/style.css')}}">
+
 @endsection
 @section('content')
 
@@ -116,17 +116,11 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="lesson-select" class="control-label">درس های آزمون</label>
-                                    <select id="lesson-select" name="gradeLessons[]" multiple
-                                            data-placeholder="درس های آزمون را انتخاب نمایید">
+                                    <select class="form-control menu12 dropdown-radius" id="lesson-select" name="gradeLessons[]" multiple>
                                         @foreach($gradeLessons as $gradeLesson)
-                                            <option id="{{$gradeLesson->orientationId}}"
+                                            <option data-content="{{$gradeLesson->orientationId}}"
                                                     value="{{$gradeLesson->id}}"
-                                                {{--@if($modify == 1)
-                                                    @foreach($examGradeLessons as $item)
-                                                        {{$gradeLesson->id == $item->id ? 'selected' : ''}}
-                                                        @endforeach
-                                                    @endif--}}
-                                            >{{$gradeLesson->lesson_grade}}</option>
+                                            >{{$gradeLesson->title}}</option>
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback">
@@ -212,8 +206,6 @@
 @section('script')
 
 
-    <script src="{{asset('multiSelect/script.js')}}"></script>
-
     <script>
 
         var id, options;
@@ -236,26 +228,27 @@
             }
         });
 
-        /*$("#ori-select").change(function ()
+        $("#ori-select").change(function ()
         {
             id      = $("#ori-select").val();
-            options = lessons.filter('[id=' + id + '],[id=0]');
+            options = lessons.filter('[data-content=' + id + ']');
+
+            console.log(lessons[0]);
 
             $('#lesson-select').html(options);
 
-            $('#lesson-select').prop('selectedIndex', 0).trigger('change');
+            $('#lesson-select').trigger('change');
 
-        });*/
+        });
 
-        /*  if($("#ori-select").val()!='')
+          if($("#ori-select").val()!='')
           {
 
               id = $("#ori-select").val();
               options = lessons.filter('[id=' + id + '],[id=0]');
               $('#lesson-select').html(options);
 
-          }*/
-
+          }
     </script>
 
 @endsection

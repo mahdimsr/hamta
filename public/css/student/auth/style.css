@@ -7,13 +7,13 @@ body{
 
 	/* Full height */
 	height: 100%;
-  
+
 	/* Center and scale the image nicely */
 	background-position: center;
 	background-repeat: no-repeat;
     background-size: cover;
     font-family: IRANSans-web, serif !important;
-    
+
 
 }
 
@@ -25,7 +25,7 @@ body{
     background-color: white;
     padding-right: 2rem;
     padding-right: 2rem;
-    
+
 }
 .form-check-label{
     margin-top: 30px;
@@ -54,7 +54,7 @@ hr{
     background: linear-gradient(to right, #7960e6, #a8c0ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     width: 100%;
-    
+
 
 }
 
