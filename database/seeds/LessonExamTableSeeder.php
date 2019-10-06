@@ -28,16 +28,19 @@
             $examGradeLesson                = new ExamGradeLesson();
             $examGradeLesson->examId        = $lessonExam->id;
             $examGradeLesson->gradeLessonId = 13;
+            $examGradeLesson->type          = 'LESSON_EXAM';
             $examGradeLesson->save();
 
             $examGradeLesson                = new ExamGradeLesson();
             $examGradeLesson->examId        = $lessonExam->id;
             $examGradeLesson->gradeLessonId = 14;
+            $examGradeLesson->type          = 'LESSON_EXAM';
             $examGradeLesson->save();
 
             $examGradeLesson                = new ExamGradeLesson();
             $examGradeLesson->examId        = $lessonExam->id;
             $examGradeLesson->gradeLessonId = 16;
+            $examGradeLesson->type          = 'LESSON_EXAM';
             $examGradeLesson->save();
 
         }
