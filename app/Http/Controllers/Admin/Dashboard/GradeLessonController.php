@@ -54,6 +54,7 @@
                     'grade'               => 'required',
                     'lesson'              => 'required',
                     'ratio'               => 'required|numeric|digits:1',
+                    'type'                => 'required'
 
             ]);
 
@@ -76,6 +77,7 @@
                 $gradeLesson->lessonId              = $request->input('lesson');
                 $gradeLesson->gradeId               = $request->input('grade');
                 $gradeLesson->ratio                 = $request->input('ratio');
+                $gradeLesson->type                  = $request->input('type');
                 $gradeLesson->save();
 
                 return redirect()->route('admin_gradeLessons');
@@ -106,6 +108,7 @@
                 'grade'               => 'required',
                 'lesson'              => 'required',
                 'ratio'               => 'required|numeric|digits:1',
+                'type'                => 'required'
 
             ]);
 
@@ -127,6 +130,7 @@
                 $gradeLesson->lessonId              = $request->input('lesson');
                 $gradeLesson->gradeId               = $request->input('grade');
                 $gradeLesson->ratio                 = $request->input('ratio');
+                $gradeLesson->type                  = $request->input('type');
                 $gradeLesson->update();
 
                 return redirect()->route('admin_gradeLessons');

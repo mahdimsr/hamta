@@ -41,7 +41,8 @@
 
             self::deleting(function($model)
             {
-
+                $model->examGradeLessons()->delete();
+                $model->questionExams()->delete();
                 Storage::disk('giftExam')->delete($model->id . '/' . $model->answerSheet);
 
             });
@@ -72,11 +73,11 @@
         {
 
             return $this->hasManyThrough(GradeLesson::class, ExamGradeLesson::class, 'examId', 'id', 'id', 'gradeLessonId')
-                        ->where('type','=','GIFT_EXAM');
+                        ->where('type','GIFT_EXAM');
         }
 
 
-        public function examGradeLesson()
+        public function examGradeLessons()
         {
 
             return $this->hasMany(ExamGradeLesson::class, 'examId');
@@ -158,22 +159,10 @@
             return $lessons;
         }
 
-
-        public function remove($exm)
-        {
-
-            $exam = GiftExam::query()->where('exm', $exm)->first();
-
-            $exam->delete();
-
-            return redirect()->back();
-        }
-
-
         public function questionExams()
         {
 
-            return $this->hasMany(QuestionExam::class, 'examId')->where('type', '=', 'GIFT_EXAM');
+            return $this->hasMany(QuestionExam::class, 'examId')->where('type','GIFT_EXAM');
         }
 
 
@@ -181,7 +170,7 @@
         {
 
             return $this->hasManyThrough(Question::class, QuestionExam::class, 'examId', 'id', 'id', 'questionId')
-                        ->where('type', '=', 'GIFT_EXAM');
+                        ->where('type','GIFT_EXAM');
         }
 
     }

@@ -52,7 +52,7 @@
 
                 <div class="content">
                     <form method="post"
-                          action="{{ $modify==0 ? route('admin_lExam_add') : route('admin_ltlExams_edit',[ 'exm' => $lessonExam->exm])}}"
+                          action="{{ $modify==0 ? route('admin_ltlExams_add') : route('admin_ltlExams_edit',[ 'exm' => $lessonExam->exm])}}"
                           role="form"
                           enctype="multipart/form-data">
 
@@ -118,8 +118,8 @@
                                 <div class="col-md-6" style="float: right;">
                                     <div class="form-group">
                                         <label class="control-label">گرایش</label>
-                                        <select name="orientation" class="form-control menu dropdown-radius hide-search parent-select"
-                                                id="ori-select" {{ $modify==1? 'disabled' : '' }}>
+                                        <select name="orientation" class="form-control menu dropdown-radius hide-search"
+                                                id="ori-select">
                                             <option id="0" value="" disabled selected>گرایش آزمون را انتخاب نمایید
                                             </option>
                                             @foreach($orientations as $orientation)
@@ -136,20 +136,24 @@
                                     </div>
                                 </div>
 
-
-
-
                                 <div class="col-md-6" style="float: left;">
-                                    <label for="lesson-select" class="control-label">درس های آزمون</label>
-                                    <select class="form-control menu12 dropdown-radius" id="lesson-select" name="gradeLessons[]" multiple>
-                                        @foreach($gradeLessons as $gradeLesson)
-                                            <option data-content="{{$gradeLesson->orientationId}}"
-                                                    value="{{$gradeLesson->id}}"
-                                            >{{$gradeLesson->title}}</option>
-                                        @endforeach
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        <small>{{ $errors->first('gradeLessons') }}</small>
+                                    <div class="form-group">
+                                        <label class="control-label">دسته بندی دروس</label>
+                                        <select name="category" id="category-select" class="form-control"
+                                                >
+                                            <option id="0" value="" disabled selected>دسته بندی دروس آزمون را انتخاب نمایید
+                                            </option>
+                                            @foreach($categories as $category)
+                                                <option
+                                                        value="{{$category->id}}"
+                                                        {{old('category') == $category->id ? 'selected' : ''}}>
+                                                    {{$category->title}}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            <small>{{ $errors->first('category') }}</small>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -158,7 +162,7 @@
                         @endif
 
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="{{ $modify==0 ? 'col-md-6' : 'col-md-12' }}">
                                 <div class="form-group">
                                     <label class="control-label">پاسخ نامه سوالات (به صورت pdf)</label>
                                     <div class="input-file-container">
@@ -173,14 +177,26 @@
                                         <a class="file-return" href="{{$lessonExam->answerSheetPath}}">دانلود
                                             پاسخنامه</a>
                                     @endif
-                                    {{--<input name="answerSheet" class="form-control custom-file-input file-radius" type="file" accept="application/pdf"--}}
-                                    {{--maxlength="10" tabindex="5"--}}
-                                    {{--value="{{old('answerSheet')}}"/>--}}
                                 </div>
                                 <div class="invalid-feedback">
                                     <small>{{ $errors->first('answerSheet') }}</small>
                                 </div>
                             </div>
+                            @if($modify==0)
+                            <div class="col-md-6" style="float: right;">
+                                <label for="lesson-select" class="control-label">درس های آزمون</label>
+                                <select class="form-control menu12 dropdown-radius" id="lesson-select" name="gradeLessons[]" multiple>
+                                    @foreach($gradeLessons as $gradeLesson)
+                                        <option data-content="{{$gradeLesson->orientationId.$gradeLesson->lesson->parentId}}"
+                                                value="{{$gradeLesson->id}}"
+                                        >{{$gradeLesson->lesson_grade}} - {{ $gradeLesson->sort_title }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="invalid-feedback">
+                                    <small>{{ $errors->first('gradeLessons') }}</small>
+                                </div>
+                            </div>
+                            @endif
                         </div>
 
                         <div class="row">
@@ -215,7 +231,8 @@
     <script>
 
         var id, options;
-        var lessons= $('#lesson-select option').clone();
+        var lessons    = $('#lesson-select option').clone();
+        var categories = $('#category-select option').clone();
 
         $('#activeDate').pDatepicker({
 
@@ -234,25 +251,44 @@
             }
         });
 
-        $("#ori-select").change(function ()
+        $("#ori-select").change(function()
         {
-            id      = $("#ori-select").val();
-            options = lessons.filter('[data-content=' + id + ']');
+            if(!$(this).val())
+            options = categories.filter('[id=0]');
+            else
+            options = categories;
+            $('#category-select').html(options);
+            $('#category-select').prop('selectedIndex',0).change();
 
-            console.log(lessons[0]);
+        });
 
+        if($("#ori-select").val()!='')
+        {
+            if(!$("#ori-select").val())
+            options = categories.filter('[id=0]');
+            else
+            options = categories;
+            $('#category-select').html(options);
+
+        }
+
+        $("#category-select").change(function ()
+        {
+            var id     = $(this).val();
+            var oriId  = $("#ori-select").val();
+            options    = lessons.filter('[data-content=' + oriId + id + ']');
             $('#lesson-select').html(options);
-
             $('#lesson-select').trigger('change');
 
         });
 
-          if($("#ori-select").val()!='')
+          if($("#category-select").val()!='')
           {
 
-              id = $("#ori-select").val();
-              options = lessons.filter('[id=' + id + '],[id=0]');
-              $('#lesson-select').html(options);
+            var id     = $("#category-select").val();
+            var oriId  = $("#ori-select").val();
+            options    = lessons.filter('[data-content=' + oriId + id + ']');
+            $('#lesson-select').html(options);
 
           }
     </script>

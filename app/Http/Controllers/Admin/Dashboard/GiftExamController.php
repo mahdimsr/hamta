@@ -3,12 +3,10 @@
     namespace App\Http\Controllers\Admin\Dashboard;
 
     use App\Lib\Lib;
-    use App\model\ExamGradeGift;
     use App\model\ExamGradeLesson;
     use App\model\GiftExam;
     use App\model\Grade;
     use App\model\GradeLesson;
-    use App\model\LessonExam;
     use App\model\Orientation;
     use App\model\Question;
     use App\model\QuestionExam;
@@ -54,8 +52,8 @@
                                        'activeTime'   => 'required',
                                        'gradeLessons' => 'required',
                                        'description'  => 'nullable|string|max:300',
-                                       'answerSheet'  => 'nullable|file|mimes:pdf|max:3000',
-                                       'duration'     => 'nullable|integer|min:0']);
+                                       'answerSheet'  => 'required|file|mimes:pdf|max:5000',
+                                       'duration'     => 'nullable|integer|min:0',]);
 
 
             $giftExam              = new GiftExam();
@@ -78,8 +76,6 @@
 
             //end activeDate section
 
-            $giftExam->save();
-
             //save answerSheet
             if ($request->hasFile('answerSheet'))
             {
@@ -89,12 +85,11 @@
 
                 $giftExam->answerSheet = $answerSheet->hashName();
 
-                $giftExam->update();
             }
 
             //end answerSheet section
 
-
+            $giftExam->save();
             // insert relation
             foreach ($request->input('gradeLessons') as $gradeLessonId)
             {
@@ -107,7 +102,7 @@
             }
 
 
-            return redirect()->route('admin_gift_exams');
+            return redirect()->route('admin_giftExams');
         }
 
 
@@ -115,16 +110,10 @@
         {
 
             $modify = 1;
-
             $giftExam = GiftExam::query()->where('exm', $exm)->first();
 
-
-            $gradeLessons = GradeLesson::all();
-            $orientations = Orientation::all();
-
-            return view('admin.dashboard.giftExam.form', compact('modify', 'giftExam', 'gradeLessons', 'orientations'));
+            return view('admin.dashboard.giftExam.form', compact('modify', 'giftExam'));
         }
-
 
         public function edit(Request $request, $exm)
         {
@@ -132,8 +121,8 @@
             $this->validate($request, ['title'       => 'required|string|max:20',
                                        'activeTime'  => 'required',
                                        'description' => 'nullable|string|max:300',
-                                       'answerSheet' => 'nullable|file|mimes:pdf|max:3000',
-                                       'duration'    => 'nullable|integer|min:0']);
+                                       'answerSheet' => 'nullable|file|mimes:pdf|max:5000',
+                                       'duration'    => 'nullable|integer|min:0',]);
 
 
             $giftExam              = GiftExam::query()->where('exm', $exm)->first();
@@ -156,7 +145,6 @@
 
             //end activeDate section
 
-            $giftExam->update();
 
             //save answerSheet
             if ($request->hasFile('answerSheet'))
@@ -169,12 +157,13 @@
 
                 $giftExam->answerSheet = $answerSheet->hashName();
 
-                $giftExam->update();
+
             }
 
+            $giftExam->update();
             //end answerSheet section
 
-            return redirect()->route('admin_gift_exams');
+            return redirect()->route('admin_giftExams');
 
         }
 
@@ -190,29 +179,38 @@
         }
 
 
-        public function questionAddShow($exm)
+        public function addQuestionShow($exm)
         {
 
             $modify = 0;
-
             $exam = GiftExam::query()->where('exm', $exm)->first();
-
 
             return view('admin.dashboard.giftExam.question_form', compact('modify', 'exam'));
         }
 
+        public function editQuestionShow($exm, $id)
+        {
+
+            $modify   = 1;
+            $question = Question::query()->where('id', $id)->first();
+            $exam     = giftExam::query()->where('exm', $exm)->first();
+
+
+            return view('admin.dashboard.giftExam.question_form', compact('exam', 'question', 'modify'));
+
+        }
 
         public function questionsShow($exm)
         {
 
-            $exam = GiftExam::query()->where('exm', '=', $exm)->first();
-
+            $exam = GiftExam::query()->where('exm',$exm)->first();
+            $questionExams = QuestionExam::query()->where('examId', $exam->id)->where('type','GIFT_EXAM')->get();
 
             return view('admin.dashboard.giftExam.questions', compact('exam'));
         }
 
 
-        public function questionAdd(Request $request)
+        public function addQuestion(Request $request,$exm)
         {
 
             $this->validate($request, [
@@ -245,7 +243,7 @@
             $question->answer        = $request->input('answer');
             $question->hardness      = $request->input('hardness');
 
-            $question->save();
+
 
             //set image if exists
             if ($request->hasFile('image'))
@@ -256,11 +254,11 @@
 
                 $question->image = $image->hashName();
 
-                $question->update();
             }
 
+            $question->save();
 
-            $giftExam = GiftExam::query()->where('exm', '=', $request->input('exm'))->first();
+            $giftExam = GiftExam::query()->where('exm',$exm)->first();
 
             $questionExam             = new QuestionExam();
             $questionExam->examId     = $giftExam->id;
@@ -274,13 +272,50 @@
         }
 
 
-        public function questionRemove($id)
+        public function removeQuestion($exm,$id)
         {
-            $questionExam = QuestionExam::query()->find($id);
+            $questionExam = QuestionExam::query()->find($id)->where('type','GIFT_EXAM');
 
             $questionExam->delete();
 
             return redirect()->back()->with([ 'success' => 'سوال فقط برای این آزمون حذف شد و در بانک سوالات وجود دارد.']);
+        }
+
+        public function editQuestion(Request $request, $exm, $id)
+        {
+
+            $this->validate($request, [
+
+                'questionType' => 'nullable',
+                'description'  => 'required',
+                'hardness'     => 'required|integer|between:0,6|digits:1',
+                'text'         => 'required',
+                'optionFour'   => 'required',
+                'optionThree'  => 'required',
+                'optionTwo'    => 'required',
+                'optionOne'    => 'required',
+                'answer'       => ['required', Rule::in(['1', '2', '3', '4'])],
+                'photo'        => 'image',
+
+            ]);
+
+
+            $question = Question::query()->where('id', $id)->first();
+
+            $question->questionType = $request->input('questionType');
+            $question->description  = $request->input('description');
+            $question->text         = $request->input('text');
+            $question->optionOne    = $request->input('optionOne');
+            $question->optionTwo    = $request->input('optionTwo');
+            $question->optionThree  = $request->input('optionThree');
+            $question->optionFour   = $request->input('optionFour');
+            $question->answer       = $request->input('answer');
+            $question->hardness     = $request->input('hardness');
+
+            $question->update();
+
+            return redirect()->back();
+
         }
 
     }

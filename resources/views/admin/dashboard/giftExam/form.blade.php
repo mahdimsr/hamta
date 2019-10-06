@@ -121,7 +121,7 @@
                                         @foreach($gradeLessons as $gradeLesson)
                                             <option data-content="{{$gradeLesson->orientationId}}"
                                                     value="{{$gradeLesson->id}}"
-                                            >{{$gradeLesson->title}}</option>
+                                            >{{$gradeLesson->lesson_grade}} - {{ $gradeLesson->sort_title }}</option>
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback">
@@ -154,7 +154,7 @@
                         @endif
 
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="control-label">پاسخ نامه سوالات (به صورت pdf)</label>
                                     <div class="input-file-container">
@@ -169,9 +169,6 @@
                                         <a class="file-return" href="{{$giftExam->answerSheetPath}}">دانلود
                                             پاسخنامه</a>
                                     @endif
-                                    {{--<input name="answerSheet" class="form-control custom-file-input file-radius" type="file" accept="application/pdf"--}}
-                                    {{--maxlength="10" tabindex="5"--}}
-                                    {{--value="{{old('answerSheet')}}"/>--}}
                                 </div>
                                 <div class="invalid-feedback">
                                     <small>{{ $errors->first('answerSheet') }}</small>
@@ -274,7 +271,7 @@
             id      = $("#ori-select").val();
             options = lessons.filter('[id=' + id + '],[id=0]');
             $('#lesson-select').html(options);
-
+            $('#lesson-select').trigger('change');
         }
     </script>
 

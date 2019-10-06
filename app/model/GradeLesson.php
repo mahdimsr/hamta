@@ -15,7 +15,7 @@
      * @property int            $orientationId
      * @property string         $code
      * @property int            $ratio
-     * @property string         $type
+     * @property string         $sort
      * @property \Carbon\Carbon $deleted_at
      */
     class GradeLesson extends Model
@@ -25,13 +25,19 @@
 
         protected $table = 'grade_lesson';
 
-        protected $appends = ['title', 'lesson_grade'];
+        protected $appends = ['title', 'lesson_grade','sort_title'];
 
 
         protected static function boot()
         {
 
             parent::boot();
+
+            self::deleting(function($model)
+            {
+                $model->examGradeLessons()->delete();
+                $model->questions()->delete();
+            });
 
             self::creating(function($model)
             {
@@ -67,6 +73,21 @@
             return $lessonTitle . ' - ' . $gradeTitle;
         }
 
+        public function getSortTitleAttribute()
+        {
+            return $this->SortPersianEnum($this->sort);
+        }
+
+        public function SortPersianEnum($enumKey)
+        {
+            $sortArray =
+            [
+                'GENERAL' => 'عمومی',
+                'EXPERT'  => 'تخصصی'
+            ];
+
+            return $sortArray[$enumKey];
+        }
 
         public function orientation()
         {
@@ -88,7 +109,7 @@
         }
 
 
-        public function examGradeLesson()
+        public function examGradeLessons()
         {
 
             return $this->hasMany(ExamGradeLesson::class, 'gradeLessonId');

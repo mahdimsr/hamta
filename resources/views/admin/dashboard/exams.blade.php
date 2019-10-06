@@ -31,7 +31,7 @@
 
 
         <div class="col-md-4">
-            <a href="{{route('admin_gift_exams')}}">
+            <a href="{{route('admin_giftExams')}}">
                 <div class="card">
                     <div class="header">
                         <h4 class="title">آزمون های جایزه دار</h4>
@@ -58,7 +58,7 @@
 
 
 		<div class="col-md-4">
-			<a href="{{route('admin_ltl_exams')}}">
+			<a href="{{route('admin_ltlExams')}}">
 				<div class="card">
 					<div class="header">
 						<h4 class="title">آزمون های درس به درس</h4>

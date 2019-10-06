@@ -46,7 +46,7 @@
 
                 <div class="content">
                     <form method="post"
-                          action="{{ $modify==0 ?  route('admin_lExam_addQuestion',['exm' => $exam->exm]) : route('admin_ltlExams_editQuestion',['exm' => $exam->exm ,'id' => $question->id])}}"
+                          action="{{ $modify==0 ?  route('admin_ltlExams_addQuestion',['exm' => $exam->exm]) : route('admin_ltlExams_editQuestion',['exm' => $exam->exm ,'id' => $question->id])}}"
                           enctype="multipart/form-data">
 
                         {{csrf_field()}}

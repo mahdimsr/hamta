@@ -53,7 +53,7 @@ class LoginController extends Controller
 		else
 		{
 
-            return redirect()->back()->withErrors(['message'=>['اطلاعات وارد شده صحیح نیست.']]);
+            return redirect()->back()->withErrors(['message'=>['.اطلاعات وارد شده صحیح نیست']]);
 
 		}
 

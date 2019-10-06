@@ -19,7 +19,7 @@
 
                 <div class="header">
                     <h4 class="title text-right">سوالات آزمون</h4>
-                    <a href="{{route('admin_lExam_addQuestionShow',['exm' => $exam->exm])}}" style="font-size: 12px;"
+                    <a href="{{route('admin_giftExams_addQuestionShow',['exm' => $exam->exm])}}" style="font-size: 12px;"
                        class="btn btn-info pull-right btn-table-header">
                         افزودن سوال جدید
                     </a>
@@ -38,17 +38,12 @@
                                 <td>{{$questionExam->question->gradeLesson->lesson_grade}}</td>
                                 <td>
 
-                                    <a href="{{ route('remove_question',['id' => $questionExam->questionId]) }}"
-                                       id="remove-btn"
-                                       type="button" style="font-size: 12px;" class="btn btn-danger">
-                                        حذف کلی سوال
-                                    </a>
-                                    <a href="{{ route('admin_giftExam_removeQuestion',['id' => $questionExam->id]) }}"
+                                    <a href="{{ route('admin_giftExams_removeQuestion',['id' => $questionExam->id,'exm'=>$exam->exm]) }}"
                                        id="remove-btn"
                                        type="button" style="font-size: 12px;" class="btn btn-danger">
                                         حذف سوال از آزمون
                                     </a>
-                                    <a href="{{ route('show_editQuestion',['id' => $questionExam->questionId]) }}"
+                                    <a href="{{ route('admin_giftExams_editQuestionShow',['id' => $questionExam->questionId,'exm'=>$exam->exm]) }}"
                                        style="font-size: 12px;" class="btn btn-info">
                                         ویرایش
                                     </a>

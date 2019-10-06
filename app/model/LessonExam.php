@@ -41,7 +41,8 @@
 
             self::deleting(function($model)
             {
-
+                $model->examGradeLessons()->delete();
+                $model->questionExams()->delete();
                 Storage::disk('lessonExam')->delete($model->id . '/' . $model->answerSheet);
 
             });
@@ -68,7 +69,7 @@
         {
 
             return $this->hasManyThrough(GradeLesson::class, ExamGradeLesson::class, 'examId', 'id', 'id', 'gradeLessonId')
-                        ->where('type', '=', 'LESSON_EXAM');
+                        ->where('type','LESSON_EXAM');
         }
 
 
@@ -151,7 +152,7 @@
         public function questionExams()
         {
 
-            return $this->hasMany(QuestionExam::class, 'examId')->where('type', '=', 'LESSON_EXAM');
+            return $this->hasMany(QuestionExam::class, 'examId')->where('type','LESSON_EXAM');
         }
 
     }

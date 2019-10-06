@@ -60,10 +60,10 @@
 						<p>آزمون ها</p>
 					</a>
 				</li>
-				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_questions' ? !request()->has('exm') ? 'active' : '' : ''}}">
-					<a href="{{route('admin_questions')}}">
+				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_codes_show' ? !request()->has('exm') ? 'active' : '' : ''}}">
+					<a href="{{route('admin_codes_show')}}">
 						<i class="fa fa-question"></i>
-						<p>سوالات</p>
+						<p>کد ها</p>
 					</a>
 				</li>
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_grades' ? 'active' : ''}}">

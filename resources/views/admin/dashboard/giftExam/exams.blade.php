@@ -20,7 +20,7 @@
 						<th>عنوان</th>
 						<th>زمان شروع آزمون</th>
 						<th>پاسخ برگ</th>
-						<th>تعداد سوال</th>
+						<th>تعداد سوالات</th>
 						<th>فرآیند</th>
 						</thead>
 						<tbody class="text-center">
@@ -43,14 +43,9 @@
 										ویرایش
 									</a>
 
-									<a href="{{route('admin_giftExam_questionShow',['exm' => $exam->exm])}}"
+									<a href="{{route('admin_giftExams_questionsShow',['exm' => $exam->exm])}}"
 									   style="font-size: 12px;" class="btn btn-success">
 										سوالات
-									</a>
-
-									<a href="{{route('admin_giftExam_addShowQuestion',['exm' => $exam->exm])}}"
-									   style="font-size: 12px;" class="btn btn-success">
-										افزودن سوال
 									</a>
 
 								</td>

@@ -24,6 +24,7 @@
                 $table->integer('orientationId');
                 $table->integer('lessonId');
                 $table->integer('ratio');
+                $table->enum('sort',['GENERAL','EXPERT']);
                 $table->string('code')->nullable();
                 $table->timestamps();
                 $table->softDeletes();

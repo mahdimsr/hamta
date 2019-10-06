@@ -7,7 +7,7 @@
 			<div class="card">
 				<div class="header">
 					<h4 class="title text-right">سوالات آزمون</h4>
-					<a href="{{route('admin_lExam_addQuestionShow',['exm' => $exam->exm])}}" style="font-size: 12px;"
+					<a href="{{route('admin_ltlExams_addQuestionShow',['exm' => $exam->exm])}}" style="font-size: 12px;"
 					   class="btn btn-info pull-right btn-table-header">
 						افزودن سوال جدید
 					</a>
@@ -26,7 +26,7 @@
 								<td>{{$questionExam->question->gradeLesson->lesson_grade}}</td>
 								<td>
 
-									<a href="{{ route('admin_lExam_removeQuestion',['id' => $questionExam->id]) }}" id="remove-btn"
+									<a href="{{ route('admin_ltlExams_removeQuestion',['id' => $questionExam->id,'exm'=>$exam->exm]) }}" id="remove-btn"
 									   type="button"
 									   style="font-size: 12px;" class="btn btn-danger">
 										حذف

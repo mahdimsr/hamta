@@ -3,9 +3,7 @@
     namespace App\Http\Controllers\Admin\Dashboard;
 
     use App\Lib\Lib;
-    use App\model\OrientationCategory;
     use App\model\ExamGradeLesson;
-    use App\model\Grade;
     use App\model\GradeLesson;
     use App\model\LessonExam;
     use App\model\Orientation;
@@ -14,6 +12,7 @@
     use Carbon\Carbon;
     use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
+    use App\model\Lesson;
     use Illuminate\Support\Facades\Storage;
     use Illuminate\Support\Facades\Validator;
     use Illuminate\Validation\Rule;
@@ -37,12 +36,11 @@
         {
 
             $modify = 0;
-
             $orientations = Orientation::all();
-            $grades       = Grade::all();
             $gradeLessons = GradeLesson::all();
+            $categories   = Lesson::query()->where('parentId',0)->get();
 
-            return view('admin.dashboard.lessonExam.form', compact('modify', 'orientations', 'gradeLessons'));
+            return view('admin.dashboard.lessonExam.form', compact('modify', 'orientations', 'gradeLessons','categories'));
         }
 
 
@@ -52,11 +50,14 @@
 
             $this->validate($request, ['title'        => 'required|string|max:20',
                                        'activeDate'   => 'required',
+                                       'orientation'  => 'required',
                                        'gradeLessons' => 'required',
+                                       'category'     => 'required',
                                        'price'        => 'required|integer|min:0',
                                        'description'  => 'nullable|string|max:300',
-                                       'answerSheet'  => 'nullable|file|mimes:pdf|max:3000',
-                                       'duration'     => 'nullable|integer|min:0']);
+                                       'duration'     => 'required|integer|min:0',
+                                       'answerSheet'  => 'required|file|mimes:pdf|max:5000'
+            ]);
 
 
             $lessonExam              = new LessonExam();
@@ -73,8 +74,6 @@
 
             //end activeDate section
 
-            $lessonExam->save();
-
             //save answerSheet
             if ($request->hasFile('answerSheet'))
             {
@@ -84,8 +83,10 @@
 
                 $lessonExam->answerSheet = $answerSheet->hashName();
 
-                $lessonExam->update();
+
             }
+
+            $lessonExam->save();
 
             // insert relation
             foreach ($request->input('gradeLessons') as $gradeLessonId)
@@ -100,7 +101,7 @@
 
             //end answerSheet section
 
-            return redirect()->route('admin_ltl_exams');
+            return redirect()->route('admin_ltlExams');
         }
 
 
@@ -108,15 +109,9 @@
         {
 
             $modify = 1;
-
             $lessonExam       = LessonExam::query()->where('exm', $exm)->first();
-            $examGradeLessons = $lessonExam->gradeLessons;
 
-
-            $gradeLessons = GradeLesson::all();
-            $orientations = Orientation::all();
-
-            return view('admin.dashboard.lessonExam.form', compact('modify', 'lessonExam', 'examGradeLessons', 'gradeLessons', 'orientations'));
+            return view('admin.dashboard.lessonExam.form', compact('modify', 'lessonExam'));
         }
 
 
@@ -127,8 +122,8 @@
                                        'activeDate'  => 'required',
                                        'price'       => 'required|integer|min:0',
                                        'description' => 'nullable|string|max:300',
-                                       'answerSheet' => 'nullable|file|mimes:pdf|max:3000',
-                                       'duration'    => 'nullable|integer|min:0']);
+                                       'answerSheet' => 'nullable|file|mimes:pdf|max:5000',
+                                       'duration'    => 'required|integer|min:0']);
 
 
             $lessonExam = LessonExam::query()->where('exm', $exm)->first();
@@ -163,7 +158,7 @@
             $lessonExam->update();
 
 
-            return redirect()->route('admin_ltl_exams');
+            return redirect()->route('admin_ltlExams');
 
         }
 
@@ -183,16 +178,16 @@
         {
 
             $exam          = LessonExam::query()->where('exm', $exm)->first();
-            $questionExams = QuestionExam::query()->where('examId', $exam->id)->get();
+            $questionExams = QuestionExam::query()->where('examId', $exam->id)->where('type','LESSON_EXAM')->get();
 
             return view('admin.dashboard.lessonExam.questions', compact('questionExams', 'exam'));
         }
 
 
-        public function removeQuestion($id)
+        public function removeQuestion($exm,$id)
         {
 
-            $questionExam = QuestionExam::query()->where('id', $id)->first();
+            $questionExam = QuestionExam::query()->where('id', $id)->where('type','LESSON_EXAM')->first();
 
             $questionExam->delete();
 

@@ -49,9 +49,9 @@ class Orientation extends Model
 
 
 
-    public function orientations_category()
+    public function gradeLessons()
 	{
-		return $this->hasMany(OrientationCategory::class, 'orientationId');
+		return $this->hasMany(GradeLesson::class, 'gradeLessonId');
     }
 
 }

@@ -19,7 +19,8 @@
 						<th>کد</th>
 						<th>عنوان</th>
 						<th>قیمت</th>
-						<th>پاسخ برگ</th>
+                        <th>پاسخ برگ</th>
+                        <th>تعداد سوالات</th>
 						<th>فرآیند</th>
 						</thead>
 						<tbody class="text-center">
@@ -28,10 +29,11 @@
 								<td>{{$exam->exm}}</td>
 								<td>{{$exam->title}}</td>
 								<td>{{$exam->price/10 . ' تومان '}}</td>
-								<td>{{$exam->answerSheet ? 'دارد' : 'ندارد'}}</td>
+                                <td>{{$exam->answerSheet ? 'دارد' : 'ندارد'}}</td>
+                                <td>{{count($exam->questionExams)}}</td>
 								<td>
 
-									<a href="{{route('admin_lExam_remove',['exm' => $exam->exm])}}" id="remove-btn"
+									<a href="{{route('admin_ltlExams_remove',['exm' => $exam->exm])}}" id="remove-btn"
 									   type="button"
 									   style="font-size: 12px;" class="btn btn-danger">
 										حذف
@@ -41,14 +43,9 @@
 										ویرایش
 									</a>
 
-									<a href="{{route('admin_lExam_questionsShow',['exm' => $exam->exm])}}"
+									<a href="{{route('admin_ltlExams_questionsShow',['exm' => $exam->exm])}}"
 									   style="font-size: 12px;" class="btn btn-success">
 										سوالات
-									</a>
-
-									<a href="{{route('admin_lExam_addQuestionShow',['exm' => $exam->exm])}}"
-									   style="font-size: 12px;" class="btn btn-success">
-										افزودن سوال
 									</a>
 
 								</td>
