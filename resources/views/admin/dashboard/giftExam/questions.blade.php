@@ -40,17 +40,15 @@
 
                                     <a href="{{ route('remove_question',['id' => $questionExam->questionId]) }}"
                                        id="remove-btn"
-                                       type="button"
-                                       style="font-size: 12px;" class="btn btn-danger">
+                                       type="button" style="font-size: 12px;" class="btn btn-danger">
                                         حذف کلی سوال
                                     </a>
                                     <a href="{{ route('admin_giftExam_removeQuestion',['id' => $questionExam->id]) }}"
                                        id="remove-btn"
-                                       type="button"
-                                       style="font-size: 12px;" class="btn btn-danger">
+                                       type="button" style="font-size: 12px;" class="btn btn-danger">
                                         حذف سوال از آزمون
                                     </a>
-                                    <a href="{{ route('admin_ltlExams_editQuestionShow',['id' => $questionExam->questionId , 'exm' => $exam->exm]) }}"
+                                    <a href="{{ route('show_editQuestion',['id' => $questionExam->questionId]) }}"
                                        style="font-size: 12px;" class="btn btn-info">
                                         ویرایش
                                     </a>
