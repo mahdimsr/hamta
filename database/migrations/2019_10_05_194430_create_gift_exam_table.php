@@ -5,7 +5,7 @@
     use Illuminate\Database\Migrations\Migration;
 
 
-    class CreateQuestionExamTable extends Migration
+    class CreateGiftExamTable extends Migration
     {
 
         /**
@@ -16,13 +16,17 @@
         public function up()
         {
 
-            Schema::create('question_exam', function(Blueprint $table)
+            Schema::create('gift_exam', function(Blueprint $table)
             {
 
                 $table->bigIncrements('id');
-                $table->integer('questionId');
-                $table->integer('examId');
-                $table->enum('type', ['LESSON_EXAM', 'GIFT_EXAM']);
+                $table->string('exm')->nullable();
+                $table->string('title');
+                $table->string('description')->nullable();
+                $table->string('answerSheet')->nullable();
+                $table->integer('duration');
+                $table->timestamp('activeTime');
+                $table->date('resultDate');
                 $table->timestamps();
                 $table->softDeletes();
             });
@@ -37,7 +41,7 @@
         public function down()
         {
 
-            Schema::dropIfExists('question_exam');
+            Schema::dropIfExists('gift_exam');
         }
 
     }
