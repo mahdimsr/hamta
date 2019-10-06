@@ -41,12 +41,12 @@
 										ویرایش
 									</a>
 
-									<a href="{{route('admin_lExam_questionsShow',['exm' => $exam->exm])}}"
+									<a href="{{route('admin_giftExam_questionShow',['exm' => $exam->exm])}}"
 									   style="font-size: 12px;" class="btn btn-success">
 										سوالات
 									</a>
 
-									<a href="{{route('admin_lExam_addQuestionShow',['exm' => $exam->exm])}}"
+									<a href="{{route('admin_giftExam_addShowQuestion',['exm' => $exam->exm])}}"
 									   style="font-size: 12px;" class="btn btn-success">
 										افزودن سوال
 									</a>

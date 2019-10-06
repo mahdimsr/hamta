@@ -46,7 +46,7 @@
 
                 <div class="content">
                     <form method="post"
-                          action="{{ $modify==0 ?  route('admin_lExam_addQuestion',['exm' => $exam->exm]) : route('admin_ltlExams_editQuestion',['exm' => $exam->exm ,'id' => $question->id])}}"
+                          action="{{ $modify==0 ?  route('admin_giftExam_addQuestion',['exm' => $exam->exm]) : route('admin_ltlExams_editQuestion',['exm' => $exam->exm ,'id' => $question->id])}}"
                           enctype="multipart/form-data">
 
                         {{csrf_field()}}
@@ -80,7 +80,6 @@
                                 </div>
                             </div>
                         </div>
-
 
                         <div class="row">
                             <div class="col-md-6">
@@ -124,7 +123,6 @@
                             </div>
                         </div>
 
-
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -137,6 +135,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -159,6 +158,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -220,6 +220,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <button type="submit"
                                 class="btn btn-fill btn-info pull-left">{{ $modify== 0 ? 'ذخیره و درج سوال بعدی' : 'ویرایش سوال' }}</button>
                         <div class="clearfix"></div>

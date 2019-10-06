@@ -168,4 +168,18 @@
             return redirect()->back();
         }
 
+
+        public function questionExams()
+        {
+
+            return $this->hasMany(QuestionExam::class,'examId')->where('type','=','GIFT_EXAM');
+        }
+
+
+        public function questions()
+        {
+
+            return $this->hasManyThrough(Question::class,QuestionExam::class,'examId', 'id', 'id', 'questionId')->where('type','=','GIFT_EXAM');
+        }
+
     }

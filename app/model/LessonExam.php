@@ -150,7 +150,7 @@
         public function questionExams()
         {
 
-            return $this->hasMany(QuestionExam::class, 'examId');
+            return $this->hasMany(QuestionExam::class, 'examId')->where('type','=','LESSON_EXAM');
         }
 
     }

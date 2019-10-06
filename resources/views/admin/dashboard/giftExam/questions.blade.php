@@ -20,7 +20,7 @@
 						<th>فرآیند</th>
 						</thead>
 						<tbody class="text-center">
-						@foreach($questionExams as $questionExam)
+						@foreach($exam->questionExams as $questionExam)
 							<tr>
 								<td>{{$questionExam->question->text}}</td>
 								<td>{{$questionExam->question->gradeLesson->lesson_grade}}</td>

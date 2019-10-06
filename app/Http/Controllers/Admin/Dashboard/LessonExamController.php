@@ -265,6 +265,7 @@
 
             $questionExam->questionId = $question->id;
             $questionExam->examId     = $exam->id;
+            $questionExam->type       = 'LESSON_EXAM';
 
             $questionExam->save();
 

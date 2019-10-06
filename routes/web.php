@@ -113,14 +113,25 @@
                 Route::prefix('gift')->group(function()
                 {
 
-                    Route::get('/','GiftExamController@exams')->name('admin_gift_exams');
-                    Route::get('/addShow','GiftExamController@addShow')->name('admin_giftExams_addShow');
-                    Route::post('/add','GiftExamController@add')->name('admin_giftExams_add');
-                    Route::get('/editShow/{exm}','GiftExamController@editShow')->name('admin_giftExams_editShow');
-                    Route::post('/edit/{exm}','GiftExamController@edit')->name('admin_giftExams_edit');
-                    Route::get('/remove/{exm}','GiftExamController@remove')->name('admin_giftExams_remove');
+                    Route::get('/', 'GiftExamController@exams')->name('admin_gift_exams');
+                    Route::get('/addShow', 'GiftExamController@addShow')->name('admin_giftExams_addShow');
+                    Route::post('/add', 'GiftExamController@add')->name('admin_giftExams_add');
+                    Route::get('/editShow/{exm}', 'GiftExamController@editShow')->name('admin_giftExams_editShow');
+                    Route::post('/edit/{exm}', 'GiftExamController@edit')->name('admin_giftExams_edit');
+                    Route::get('/remove/{exm}', 'GiftExamController@remove')->name('admin_giftExams_remove');
 
 
+                    Route::prefix('/questions')->group(function()
+                    {
+
+                        Route::get('show/{exm}','GiftExamController@questionsShow')->name('admin_giftExam_questionShow');
+
+                        Route::get('/addShow/{exm}', 'GiftExamController@questionAddShow')
+                             ->name('admin_giftExam_addShowQuestion');
+
+                        Route::post('/add', 'GiftExamController@questionAdd')->name('admin_giftExam_addQuestion');
+
+                    });
 
                 });
             });
