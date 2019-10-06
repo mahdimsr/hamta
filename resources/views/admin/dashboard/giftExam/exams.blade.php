@@ -18,7 +18,7 @@
 						<thead class="text-right">
 						<th>کد</th>
 						<th>عنوان</th>
-						<th>قیمت</th>
+						<th>زمان شروع آزمون</th>
 						<th>پاسخ برگ</th>
 						<th>فرآیند</th>
 						</thead>
@@ -27,7 +27,7 @@
 							<tr>
 								<td>{{$exam->exm}}</td>
 								<td>{{$exam->title}}</td>
-								<td>{{$exam->price/10 . ' تومان '}}</td>
+								<td>{{$exam->persianActiveTime}}</td>
 								<td>{{$exam->answerSheet ? 'دارد' : 'ندارد'}}</td>
 								<td>
 

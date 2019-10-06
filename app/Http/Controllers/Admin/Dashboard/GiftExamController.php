@@ -59,12 +59,19 @@
             $giftExam->title       = $request->input('title');
             $giftExam->description = $request->input('description');
             $giftExam->duration    = $request->input('duration');
-            // convert and insert activeDate
+            // convert and insert activeDate-resultDate
 
-            $jalalian             = Lib::convertFaToEn($request->input('activeTime'));
-            $dateTime             = CalendarUtils::createDatetimeFromFormat('Y/m/d', $jalalian);
+
+            $persianDateTime      = Lib::convertFaToEn($request->input('activeTime'));
+            $dateTime             = CalendarUtils::createCarbonFromFormat('Y/m/d H:i:s', $persianDateTime);
             $carbon               = Carbon::createFromTimestamp($dateTime->getTimestamp());
             $giftExam->activeTime = $carbon->toDateTimeString();
+
+
+            $persianDate          = Lib::convertFaToEn($request->input('resultDate'));
+            $date                 = CalendarUtils::createDatetimeFromFormat('Y/m/d', $persianDate);
+            $carbon               = Carbon::createFromTimestamp($date->getTimestamp());
+            $giftExam->resultDate = $carbon->toDateTimeString();
 
             //end activeDate section
 
@@ -97,6 +104,74 @@
 
 
             return redirect()->route('admin_gift_exams');
+        }
+
+
+        public function editShow($exm)
+        {
+
+            $modify = 1;
+
+            $giftExam = GiftExam::query()->where('exm', $exm)->first();
+
+
+            $gradeLessons = GradeLesson::all();
+            $orientations = Orientation::all();
+
+            return view('admin.dashboard.giftExam.form', compact('modify', 'giftExam', 'gradeLessons', 'orientations'));
+        }
+
+
+        public function edit(Request $request, $exm)
+        {
+
+            $this->validate($request, ['title'       => 'required|string|max:20',
+                                       'activeTime'  => 'required',
+                                       'description' => 'nullable|string|max:300',
+                                       'answerSheet' => 'nullable|file|mimes:pdf|max:3000',
+                                       'duration'    => 'nullable|integer|min:0']);
+
+
+            $giftExam              = GiftExam::query()->where('exm', $exm)->first();
+            $giftExam->title       = $request->input('title');
+            $giftExam->description = $request->input('description');
+            $giftExam->duration    = $request->input('duration');
+            // convert and insert activeDate-resultDate
+
+
+            $persianDateTime      = Lib::convertFaToEn($request->input('activeTime'));
+            $dateTime             = CalendarUtils::createCarbonFromFormat('Y/m/d H:i:s', $persianDateTime);
+            $carbon               = Carbon::createFromTimestamp($dateTime->getTimestamp());
+            $giftExam->activeTime = $carbon->toDateTimeString();
+
+
+            $persianDate          = Lib::convertFaToEn($request->input('resultDate'));
+            $date                 = CalendarUtils::createDatetimeFromFormat('Y/m/d', $persianDate);
+            $carbon               = Carbon::createFromTimestamp($date->getTimestamp());
+            $giftExam->resultDate = $carbon->toDateTimeString();
+
+            //end activeDate section
+
+            $giftExam->update();
+
+            //save answerSheet
+            if ($request->hasFile('answerSheet'))
+            {
+                $answerSheet = $request->file('answerSheet');
+
+                Storage::disk('giftExam')->put($giftExam->id, $answerSheet);
+
+                Storage::disk('giftExam')->delete($giftExam->id . '/' . $giftExam->answerSheet);
+
+                $giftExam->answerSheet = $answerSheet->hashName();
+
+                $giftExam->update();
+            }
+
+            //end answerSheet section
+
+            return redirect()->route('admin_gift_exams');
+
         }
 
 

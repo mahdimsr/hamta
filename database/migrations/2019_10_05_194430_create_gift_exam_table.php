@@ -26,6 +26,7 @@
                 $table->string('answerSheet')->nullable();
                 $table->integer('duration');
                 $table->timestamp('activeTime');
+                $table->date('resultDate');
                 $table->timestamps();
                 $table->softDeletes();
             });

@@ -52,25 +52,11 @@
 
                 <div class="content">
                     <form method="post"
-                          action="{{ $modify==0 ? route('admin_giftExams_add') : route('admin_ltlExams_edit',[ 'exm' => $giftExam->exm])}}"
+                          action="{{ $modify==0 ? route('admin_giftExams_add') : route('admin_giftExams_edit',[ 'exm' => $giftExam->exm])}}"
                           role="form"
                           enctype="multipart/form-data">
 
                         {{csrf_field()}}
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label">نام</label>
-                                    <input name="title" class="form-control" type="text"
-                                           maxlength="20" tabindex="1"
-                                           value="{{old('title')}}{{ $modify==1 && !old('title') && $giftExam->title ? $giftExam->title : '' }}">
-                                </div>
-                                <div class="invalid-feedback">
-                                    <small>{{ $errors->first('title') }}</small>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="row">
                             <div class="col-md-6">
@@ -87,7 +73,33 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>تاریخ فعال شدن آزمون </label>
+                                    <label class="control-label">نام</label>
+                                    <input name="title" class="form-control" type="text"
+                                           maxlength="20" tabindex="1"
+                                           value="{{old('title')}}{{ $modify==1 && !old('title') && $giftExam->title ? $giftExam->title : '' }}">
+                                </div>
+                                <div class="invalid-feedback">
+                                    <small>{{ $errors->first('title') }}</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>تاریخ اعلام نتایج آزمون</label>
+                                    <input dir="rtl" id="resultDate" name="resultDate" type="text"
+                                           class="form-control"
+                                           tabindex="3"
+                                           value="{{ old('resultDate') }}{{ $modify==1 && !old('resultDate') && $giftExam->resultDate ? $giftExam->resultDate : '' }}">
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('resultDate') }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>زمان و تاریخ فعال شدن آزمون</label>
                                     <input dir="rtl" id="activeTime" name="activeTime" type="text"
                                            class="form-control"
                                            tabindex="3"
@@ -104,7 +116,8 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="lesson-select" class="control-label">درس های آزمون</label>
-                                    <select class="form-control menu12 dropdown-radius" id="lesson-select" name="gradeLessons[]" multiple>
+                                    <select class="form-control menu12 dropdown-radius" id="lesson-select"
+                                            name="gradeLessons[]" multiple>
                                         @foreach($gradeLessons as $gradeLesson)
                                             <option data-content="{{$gradeLesson->orientationId}}"
                                                     value="{{$gradeLesson->id}}"
@@ -118,7 +131,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">گرایش</label>
-                                        <select name="orientation" class="form-control menu dropdown-radius hide-search parent-select"
+                                        <select name="orientation"
+                                                class="form-control menu dropdown-radius hide-search parent-select"
                                                 id="ori-select" {{ $modify==1? 'disabled' : '' }}>
                                             <option id="0" value="" disabled selected>گرایش آزمون را انتخاب نمایید
                                             </option>
@@ -197,9 +211,11 @@
     <script>
 
         var id, options;
-        var lessons= $('#lesson-select option').clone();
+        var lessons = $('#lesson-select option').clone();
 
-        $('#activeTime').pDatepicker({
+
+
+        $('#resultDate').pDatepicker({
 
             autoClose    : true,
             initialValue : true,
@@ -212,6 +228,29 @@
                 submitButton   : {enabled : true},
                 todayButton    : {
                     enabled : false
+                }
+            }
+        });
+
+        $('#activeTime').pDatepicker({
+
+            autoClose    : true,
+            initialValue : true,
+            format       : 'YYYY/MM/DD HH:mm:ss',
+            responsive   : true,
+            toolbox      : {
+                calendarSwitch : {
+                    enabled : false
+                },
+                submitButton   : {enabled : true},
+                todayButton    : {
+                    enabled : false
+                }
+            },
+            timePicker   : {
+                enabled : true,
+                meridian: {
+                    enabled: false
                 }
             }
         });
@@ -229,14 +268,14 @@
 
         });
 
-          if($("#ori-select").val()!='')
-          {
+        if ($("#ori-select").val() != '')
+        {
 
-              id = $("#ori-select").val();
-              options = lessons.filter('[id=' + id + '],[id=0]');
-              $('#lesson-select').html(options);
+            id      = $("#ori-select").val();
+            options = lessons.filter('[id=' + id + '],[id=0]');
+            $('#lesson-select').html(options);
 
-          }
+        }
     </script>
 
 @endsection
