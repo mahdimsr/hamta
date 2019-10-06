@@ -134,7 +134,7 @@
 								<select dir="rtl" name="city" id="city" class="form-control menu" tabindex="7">
 									<option id="0" value="" disabled selected>شهر خود را انتخاب نمایید</option>
 									@foreach ( $cities as $city )
-										<option id="{{ $city->provinceId }}" value="{{ $city->name }}" {{ old('city')==$city->name? 'selected' : '' }} {{ $student->isComplete==1 && $student->city->name==$city->name && !old('city')? 'selected' : '' }}> {{ $city->name }} </option>
+										<option id="{{ $city->provinceId }}" value="{{ $city->id }}" {{ old('city')==$city->id? 'selected' : '' }} {{ $student->isComplete==1 && $student->cityId==$city->id && !old('city')? 'selected' : '' }}> {{ $city->name }} </option>
 									@endforeach
 								</select>
 
@@ -147,7 +147,7 @@
 								<select dir="rtl" name="province" id="province" class="form-control menu" tabindex="6">
 									<option id="0" value="" selected disabled>استان خود را انتخاب نمایید</option>
 									@foreach ( $provinces as $province )
-										<option id="{{ $province->id }}" value="{{ $province->name}}" {{ old('province') == $province->name ? 'selected' : '' }} {{ $student->isComplete==1 && $student->city->province->name==$province->name && !old('province')? 'selected' : '' }}> {{ $province->name }} </option>
+										<option  value="{{ $province->id}}" {{ old('province') == $province->id ? 'selected' : '' }} {{ $student->isComplete==1 && $student->city->province->id==$province->id && !old('province')? 'selected' : '' }}> {{ $province->name }} </option>
 									@endforeach
 								</select>
 								<div class="invalid-feedback">
@@ -218,7 +218,7 @@
 								<select dir="rtl" name="grade" class="form-control dropdown-radius menu hide-search "  id="grade" tabindex="10"  {{ $student->isComplete== 1? 'disabled' : '' }} >
 									<option value="" selected disabled>مقطع تحصیلی خود را انتخاب نمایید</option>
 									@foreach ( $grades as $grade )
-										<option value="{{ $grade->title }}" {{ old('grade')==$grade->title ? 'selected' : '' }} {{  $student->isComplete==1 && $student->grade()->first()->title==$grade->title && !old('grade')? 'selected' : '' }}>{{ $grade->title }}</option>
+										<option value="{{ $grade->id }}" {{ old('grade')==$grade->id ? 'selected' : '' }} {{  $student->isComplete==1 && $student->gradeId==$grade->id && !old('grade')? 'selected' : '' }}>{{ $grade->title }}</option>
 									@endforeach
 								</select>
 
@@ -232,7 +232,7 @@
 										id="orientation" tabindex="9"  {{ $student->isComplete== 1? 'disabled' : '' }} >
 									<option value="" selected disabled>گرایش خود را انتخاب نمایید</option>
 									@foreach ( $orientations as $orientation )
-										<option value="{{ $orientation->title }}" {{ old('orientation')==$orientation->title? 'selected' : '' }} {{  $student->isComplete==1 && $student->orientation()->first()->title==$orientation->title && !old('orientation')? 'selected' : '' }} >{{ $orientation->title }}</option>
+										<option value="{{ $orientation->id }}" {{ old('orientation')==$orientation->id? 'selected' : '' }} {{  $student->isComplete==1 && $student->orientationId==$orientation->id && !old('orientation')? 'selected' : '' }} >{{ $orientation->title }}</option>
 									@endforeach
 								</select>
 
@@ -262,7 +262,7 @@
 									<label>شماره تلفن منزل بدون پیش شماره</label>
 									<input dir="rtl" name="telePhone" type="text" class="form-control"
 										   placeholder="شماره تلفن منزل را وارد نمایید"
-                                           value="{{ old('telePhone')? old('telePhone') : substr($student->telePhone,6) }}"
+                                           value="{{ old('telePhone')? old('telePhone') : $student->telePhone }}"
                                            tabindex="14"
                                            >
 
@@ -290,7 +290,7 @@
                                             <label>شماره تلفن منزل بدون پیش شماره</label>
                                             <input dir="rtl" name="telePhone" type="text" class="form-control"
                                                    placeholder="شماره تلفن منزل را وارد نمایید"
-                                                   value="{{ old('telePhone')? old('telePhone') : substr($student->telePhone,6) }}"
+                                                   value="{{ old('telePhone')? old('telePhone') : $student->telePhone }}"
                                                    tabindex="15"
                                                    >
 
@@ -351,7 +351,7 @@
 
         $("#province").change(function()
         {
-            id = $("#province option:selected").attr('id');
+            id = $("#province").val();
             options = cities.filter('[id=' + id + '],[id=0]');
             $('#city').html(options);
             $('#city').prop('selectedIndex',0).trigger('change');
@@ -361,7 +361,7 @@
         if($("#province").val()!='')
         {
 
-            id = $("#province option:selected").attr('id');
+            id = $("#province").val();
             options = cities.filter('[id=' + id + '],[id=0]');
             $('#city').html(options);
 

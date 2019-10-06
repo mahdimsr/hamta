@@ -46,11 +46,11 @@ class ProfileController extends Controller
 				'birthday'     => 'required',
 				'email'        => 'required|email|unique:student,email',
 				'nationalCode' => 'required|digits:10|unique:student,nationalCode',
-                'city'         => 'required',
+                'city'         => 'required|exists:city,id',
                 'province'     => 'required',
 				'address'      => 'required|string|max:200',
-				'orientation'  => 'required',
-				'grade'        => 'required',
+				'orientation'  => 'required|exists:orientation,id',
+				'grade'        => 'required|exists:grade,id',
 				'school'       => 'required',
 				'averageUp'    => 'required|digits_between:1,2|min:5|max:20|numeric',
 				'averageDown'  => 'required|digits:2|min:00|max:99|numeric',
@@ -58,11 +58,6 @@ class ProfileController extends Controller
 				'parentPhone'  => ['required', 'digits:11', 'regex:/^(\+98|0)?9\d{9}$/'],
 			]
 		);
-
-		$city        = City::where('name', $request->input('city'))->first();
-		$grade       = Grade::where('title', $request->input('grade'))->first();
-		$province    = Province::where('name', $request->input('province'))->first();
-		$orientation = Orientation::where('title', $request->input('orientation'))->first();
 
 		if ($request->input('averageUp') == '20')
 		{
@@ -88,14 +83,14 @@ class ProfileController extends Controller
 		//end birthday section
 
 		$student->school        = $request->input('school');
-		$student->telePhone     = $province->areaCode . ' - ' . $request->input('telePhone');
+		$student->telePhone     = $request->input('telePhone');
 		$student->parentPhone   = $request->input('parentPhone');
-		$student->cityId        = $city->id;
-		$student->orientationId = $orientation->id;
-		$student->gradeId       = $grade->id;
+		$student->cityId        = $request->input('city');
+		$student->orientationId = $request->input('orientation');
+		$student->gradeId       = $request->input('grade');
 		$student->isComplete    = 1;
 
-		$student->save();
+		$student->update();
         }
 
         return redirect()->route('student_dashboard_profile');
@@ -112,23 +107,20 @@ class ProfileController extends Controller
 				'email'               => ['required','email',Rule::unique('student', 'email')->ignore($student)],
 				'address'             => 'required|string|max:200',
                 'telePhone'           => 'required|digits:8',
-                'city'                => 'required',
+                'city'                => 'required|exists:city,id',
                 'province'            => 'required',
                 'parentPhone'         => ['required', 'digits:11', 'regex:/^(\+98|0)?9\d{9}$/'],
                 'student_mobile_edit' => ['required','digits:11','regex:/^(\+98|0)?9\d{9}$/',Rule::unique('student', 'mobile')->ignore($student)],
 			]
 		);
 
-		$city        = City::where('name', $request->input('city'))->first();
-		$province    = Province::where('name', $request->input('province'))->first();
-
 		$student->email        = $request->input('email');
         $student->address      = $request->input('address');
-        $student->cityId       = $city->id;
-		$student->telePhone    = $province->areaCode . ' - ' . $request->input('telePhone');
+        $student->cityId       = $request->input('city');
+		$student->telePhone    = $request->input('telePhone');
         $student->parentPhone  = $request->input('parentPhone');
         $student->mobile       = $request->input('student_mobile_edit');
-		$student->save();
+		$student->update();
 
 		return redirect()->route('student_dashboard_profile');
 

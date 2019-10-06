@@ -217,8 +217,6 @@
             {
 
                 Route::get('/', 'StudentController@students')->name('admin_students');
-                Route::get('/add', 'StudentController@addShow')->name('admin_students_addShow');
-                Route::post('/add', 'StudentController@add')->name('admin_students_add');
                 Route::get('/edit/{id}', 'StudentController@editShow')->name('admin_students_editShow');
                 Route::post('/edit/{id}', 'StudentController@edit')->name('admin_students_edit');
             });

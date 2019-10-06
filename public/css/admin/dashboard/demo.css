@@ -809,3 +809,61 @@ input[type="text"][required] + label[placeholder]:before {
     font-style: normal;
     font-weight: normal;
 }
+@media (max-width: 992px) {
+
+    .averages{
+        margin-top: 30px;
+    }
+    .media-lefts {
+        float: left;
+        margin-right: 80px;
+        margin-top: -9px;
+    }
+
+    .media-rights {
+        float: right;
+
+    }
+    .number-radius{
+        width: 70px;
+    }
+    p.margins {
+        margin-top: -25px;
+        margin-right:105px;
+    }
+    #p1{
+        visibility: hidden;
+    }
+}
+
+@media (min-width: 1001px) {
+
+   .averages{
+       display: flex;
+   }
+    .media-lefts{
+        margin-top: 23px;
+    }
+    .margins {
+        text-align: center;
+        margin-top: 34px;
+        margin-right: 5px;
+    }
+    .number-radius{
+        width: 40px;
+    }
+    #p2{
+        visibility: hidden;
+    }
+
+}
+
+@media (min-width: 1200px) {
+    .media-rights{
+        margin-right: 10px;
+
+    }
+    .number-radius{
+        width: 70px;
+    }
+}
