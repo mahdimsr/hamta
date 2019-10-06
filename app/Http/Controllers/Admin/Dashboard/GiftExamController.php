@@ -99,9 +99,10 @@
             foreach ($request->input('gradeLessons') as $gradeLessonId)
             {
 
-                $examGradeGift                = new ExamGradeGift();
+                $examGradeGift                = new ExamGradeLesson();
                 $examGradeGift->examId        = $giftExam->id;
                 $examGradeGift->gradeLessonId = $gradeLessonId;
+                $examGradeGift->type          = 'GIFT_EXAM';
                 $examGradeGift->save();
             }
 
@@ -203,11 +204,13 @@
 
         public function questionsShow($exm)
         {
-            $exam = GiftExam::query()->where('exm','=',$exm)->first();
+
+            $exam = GiftExam::query()->where('exm', '=', $exm)->first();
 
 
-            return view('admin.dashboard.giftExam.questions', compact( 'exam'));
+            return view('admin.dashboard.giftExam.questions', compact('exam'));
         }
+
 
         public function questionAdd(Request $request)
         {
@@ -268,6 +271,16 @@
 
 
             return redirect()->back();
+        }
+
+
+        public function questionRemove($id)
+        {
+            $questionExam = QuestionExam::query()->find($id);
+
+            $questionExam->delete();
+
+            return redirect()->back()->with([ 'success' => 'سوال فقط برای این آزمون حذف شد و در بانک سوالات وجود دارد.']);
         }
 
     }

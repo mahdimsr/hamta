@@ -94,6 +94,7 @@
                 $examGradeLesson                = new ExamGradeLesson();
                 $examGradeLesson->examId        = $lessonExam->id;
                 $examGradeLesson->gradeLessonId = $gradeLessonId;
+                $examGradeLesson->type          = 'LESSON_EXAM';
                 $examGradeLesson->save();
             }
 

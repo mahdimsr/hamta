@@ -67,7 +67,8 @@
         public function gradeLessons()
         {
 
-            return $this->hasManyThrough(GradeLesson::class, ExamGradeLesson::class, 'examId', 'id', 'id', 'gradeLessonId');
+            return $this->hasManyThrough(GradeLesson::class, ExamGradeLesson::class, 'examId', 'id', 'id', 'gradeLessonId')
+                        ->where('type', '=', 'LESSON_EXAM');
         }
 
 
@@ -150,7 +151,7 @@
         public function questionExams()
         {
 
-            return $this->hasMany(QuestionExam::class, 'examId')->where('type','=','LESSON_EXAM');
+            return $this->hasMany(QuestionExam::class, 'examId')->where('type', '=', 'LESSON_EXAM');
         }
 
     }

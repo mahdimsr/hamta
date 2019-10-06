@@ -71,14 +71,15 @@
         public function gradeLessons()
         {
 
-            return $this->hasManyThrough(GradeLesson::class, ExamGradeGift::class, 'examId', 'id', 'id', 'gradeLessonId');
+            return $this->hasManyThrough(GradeLesson::class, ExamGradeLesson::class, 'examId', 'id', 'id', 'gradeLessonId')
+                        ->where('type','=','GIFT_EXAM');
         }
 
 
-        public function examGradeGifts()
+        public function examGradeLesson()
         {
 
-            return $this->hasMany(ExamGradeGift::class, 'examId');
+            return $this->hasMany(ExamGradeLesson::class, 'examId');
         }
 
 
@@ -172,14 +173,15 @@
         public function questionExams()
         {
 
-            return $this->hasMany(QuestionExam::class,'examId')->where('type','=','GIFT_EXAM');
+            return $this->hasMany(QuestionExam::class, 'examId')->where('type', '=', 'GIFT_EXAM');
         }
 
 
         public function questions()
         {
 
-            return $this->hasManyThrough(Question::class,QuestionExam::class,'examId', 'id', 'id', 'questionId')->where('type','=','GIFT_EXAM');
+            return $this->hasManyThrough(Question::class, QuestionExam::class, 'examId', 'id', 'id', 'questionId')
+                        ->where('type', '=', 'GIFT_EXAM');
         }
 
     }

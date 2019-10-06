@@ -126,10 +126,13 @@
 
                         Route::get('/{exm}','GiftExamController@questionsShow')->name('admin_giftExam_questionShow');
 
+
                         Route::get('/add/{exm}', 'GiftExamController@questionAddShow')
                              ->name('admin_giftExam_addShowQuestion');
 
                         Route::post('/add', 'GiftExamController@questionAdd')->name('admin_giftExam_addQuestion');
+
+                        Route::get('/remove/{id}','GiftExamController@questionRemove')->name('admin_giftExam_removeQuestion');
 
                     });
 
@@ -143,6 +146,8 @@
                 Route::get('/addShow/{exm?}', 'QuestionController@addShow')->name('show_addQuestion');
                 Route::post('/add', 'QuestionController@add')->name('addQuestion');
                 Route::get('/list', 'QuestionController@questions')->name('admin_questions');
+                Route::get('/editShow/{id}', 'QuestionController@editShow')->name('show_editQuestion');
+                Route::get('/remove/{id}', 'QuestionController@remove')->name('remove_question');
             });
 
 

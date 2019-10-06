@@ -149,4 +149,24 @@
             return redirect()->back();
         }
 
+
+        public function editShow($id)
+        {
+
+            $question = Question::query()->find($id);
+
+
+            return $question;
+        }
+
+
+        public function remove($id)
+        {
+            $question = Question::query()->find($id);
+
+            $question->delete();
+
+            return redirect()->back()->with([ 'success' => 'سوال با نوفقیت حذف شد.']);
+        }
+
     }

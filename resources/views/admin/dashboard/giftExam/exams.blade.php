@@ -20,6 +20,7 @@
 						<th>عنوان</th>
 						<th>زمان شروع آزمون</th>
 						<th>پاسخ برگ</th>
+						<th>تعداد سوال</th>
 						<th>فرآیند</th>
 						</thead>
 						<tbody class="text-center">
@@ -29,6 +30,7 @@
 								<td>{{$exam->title}}</td>
 								<td>{{$exam->persianActiveTime}}</td>
 								<td>{{$exam->answerSheet ? 'دارد' : 'ندارد'}}</td>
+                                <td>{{count($exam->questionExams)}}</td>
 								<td>
 
 									<a href="{{route('admin_giftExams_remove',['exm' => $exam->exm])}}" id="remove-btn"
