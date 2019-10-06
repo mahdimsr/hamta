@@ -256,11 +256,7 @@
         {
             id      = $("#ori-select").val();
             options = lessons.filter('[data-content=' + id + ']');
-
-            console.log(lessons[0]);
-
             $('#lesson-select').html(options);
-
             $('#lesson-select').trigger('change');
 
         });
@@ -269,9 +265,9 @@
         {
 
             id      = $("#ori-select").val();
-            options = lessons.filter('[id=' + id + '],[id=0]');
+            options = lessons.filter('[data-content=' + id + ']');
             $('#lesson-select').html(options);
-            $('#lesson-select').trigger('change');
+
         }
     </script>
 
