@@ -44,10 +44,11 @@
 			</label>
 		</div>
 
+		<input type="submit" value="ورود">
+		
 		@if($errors->any())
 			<div class="has-error err">{{$errors->first('message')}}</div>
 		@endif
-		<input type="submit" value="ورود">
 	</div>
 </form>
 <script  src="{{asset('js/admin/dashboard/jquery.3.2.1.min.js')}}"></script>

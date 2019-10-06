@@ -186,11 +186,15 @@ font-family:IRANSans-web;
 .err{
   color: red !important;
   text-align: right;
-  margin-left: 100px;
+  margin-left: 12rem;
 }
 
 
-
+.has-error.err{
+ 
+  margin-left: auto;
+  text-align: center
+}
 
 
 
