@@ -23,13 +23,13 @@
 
                 $str1 = substr(md5(uniqid(mt_rand(), true)), 0, 2);
                 $str2 = substr(md5(uniqid(mt_rand(), true)), 0, 2);
-                $code = 'EXM-' . $str1 . $giftExam->id . $str2;
+                $code = 'EXMG-' . $str1 . $giftExam->id . $str2;
 
                 while (GiftExam::query()->where('exm', $code)->exists())
                 {
                     $str1 = substr(md5(uniqid(mt_rand(), true)), 0, 2);
                     $str2 = substr(md5(uniqid(mt_rand(), true)), 0, 2);
-                    $code = 'EXM-' . $str1 . $giftExam->id . $str2;
+                    $code = 'EXMG-' . $str1 . $giftExam->id . $str2;
                 }
 
                 $giftExam->exm = $code;
