@@ -114,7 +114,32 @@
                         @if($modify == 0)
 
                             <div class="row">
-                                <div class="col-md-6">
+
+                                <div class="col-md-6" style="float: right;">
+                                    <div class="form-group">
+                                        <label class="control-label">گرایش</label>
+                                        <select name="orientation" class="form-control menu dropdown-radius hide-search parent-select"
+                                                id="ori-select" {{ $modify==1? 'disabled' : '' }}>
+                                            <option id="0" value="" disabled selected>گرایش آزمون را انتخاب نمایید
+                                            </option>
+                                            @foreach($orientations as $orientation)
+                                                <option
+                                                        value="{{$orientation->id}}"
+                                                        {{old('orientation') == $orientation->id ? 'selected' : ''}}{{ $modify==1 && !old('orientation') && $lessonExam->orientation()[0]->id == $orientation->id ? 'selected' : '' }}>
+                                                    {{$orientation->title}}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            <small>{{ $errors->first('orientation') }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="col-md-6" style="float: left;">
                                     <label for="lesson-select" class="control-label">درس های آزمون</label>
                                     <select class="form-control menu12 dropdown-radius" id="lesson-select" name="gradeLessons[]" multiple>
                                         @foreach($gradeLessons as $gradeLesson)
@@ -127,26 +152,7 @@
                                         <small>{{ $errors->first('gradeLessons') }}</small>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">گرایش</label>
-                                        <select name="orientation" class="form-control menu dropdown-radius hide-search parent-select"
-                                                id="ori-select" {{ $modify==1? 'disabled' : '' }}>
-                                            <option id="0" value="" disabled selected>گرایش آزمون را انتخاب نمایید
-                                            </option>
-                                            @foreach($orientations as $orientation)
-                                                <option
-                                                    value="{{$orientation->id}}"
-                                                    {{old('orientation') == $orientation->id ? 'selected' : ''}}{{ $modify==1 && !old('orientation') && $lessonExam->orientation()[0]->id == $orientation->id ? 'selected' : '' }}>
-                                                    {{$orientation->title}}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            <small>{{ $errors->first('orientation') }}</small>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
 
                         @endif
