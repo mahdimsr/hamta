@@ -3,9 +3,11 @@
     namespace App\model;
 
     use App\Lib\Lib;
+    use Carbon\Carbon;
     use Illuminate\Database\Eloquent\Model;
     use Illuminate\Database\Eloquent\SoftDeletes;
     use Illuminate\Support\Facades\Storage;
+    use Morilog\Jalali\Jalalian;
 
 
     /**
@@ -30,7 +32,7 @@
 
         protected $table = 'lesson_exam';
 
-        protected $appends = ['answerSheetPath'];
+        protected $appends = ['answerSheetPath','persianCreatedAt','persianUpdatedAt'];
 
 
         protected static function boot()
@@ -41,9 +43,10 @@
 
             self::deleting(function($model)
             {
+
                 $model->examGradeLessons()->delete();
                 $model->questionExams()->delete();
-                Storage::disk('lessonExam')->delete($model->id . '/' . $model->answerSheet);
+                Storage::disk('lessonExam')->deleteDirectory($model->id );
 
             });
         }
@@ -58,10 +61,27 @@
         }
 
 
+        public function getPersianCreatedAtAttribute()
+        {
+            $date = Jalalian::fromCarbon($this->created_at)->format('%A, %d %B %y');
+
+            return $date;
+        }
+
+
+
+        public function getPersianUpdatedAtAttribute()
+        {
+            $date = Jalalian::fromCarbon($this->updated_at)->format('%A, %d %B %y');
+
+            return $date;
+        }
+
+
         public function examGradeLessons()
         {
 
-            return $this->hasMany(ExamGradeLesson::class, 'examId');
+            return $this->hasMany(ExamGradeLesson::class, 'examId')->where('type', '=', 'LESSON_EXAM');
         }
 
 
@@ -69,7 +89,7 @@
         {
 
             return $this->hasManyThrough(GradeLesson::class, ExamGradeLesson::class, 'examId', 'id', 'id', 'gradeLessonId')
-                        ->where('type','LESSON_EXAM');
+                        ->where('type', 'LESSON_EXAM');
         }
 
 
@@ -152,7 +172,7 @@
         public function questionExams()
         {
 
-            return $this->hasMany(QuestionExam::class, 'examId')->where('type','LESSON_EXAM');
+            return $this->hasMany(QuestionExam::class, 'examId')->where('type', 'LESSON_EXAM');
         }
 
     }

@@ -74,6 +74,7 @@
             $carbon               = Carbon::createFromTimestamp($date->getTimestamp());
             $giftExam->resultDate = $carbon->toDateTimeString();
 
+            $giftExam->save();
             //end activeDate section
 
             //save answerSheet
@@ -85,11 +86,11 @@
 
                 $giftExam->answerSheet = $answerSheet->hashName();
 
+                $giftExam->update();
             }
 
             //end answerSheet section
 
-            $giftExam->save();
             // insert relation
             foreach ($request->input('gradeLessons') as $gradeLessonId)
             {

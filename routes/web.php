@@ -227,12 +227,12 @@
     Route::get('/test', function()
     {
 
-        $lessonExam = \App\model\LessonExam::query()->with('gradeLessons')->find(4);
+        $lessonExam = \App\model\LessonExam::query()->with('gradeLessons')->find(1);
 
         $gradeLessons = \App\model\GradeLesson::all();
 
 
-        return $lessonExam->lessons();
+        return $lessonExam->examGradeLessons;
 
 
     })->name('test');

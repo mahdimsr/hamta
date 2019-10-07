@@ -31,7 +31,7 @@
         use SoftDeletes;
 
 
-        protected $appends = ['answerSheetPath', 'persianActiveTime'];
+        protected $appends = ['answerSheetPath', 'persianActiveTime','persianCreatedAt','persianUpdatedAt'];
 
 
         protected static function boot()
@@ -41,9 +41,10 @@
 
             self::deleting(function($model)
             {
+
                 $model->examGradeLessons()->delete();
                 $model->questionExams()->delete();
-                Storage::disk('giftExam')->delete($model->id . '/' . $model->answerSheet);
+                Storage::disk('giftExam')->deleteDirectory($model->id );
 
             });
         }
@@ -68,19 +69,36 @@
             return $date;
         }
 
+        public function getPersianCreatedAtAttribute()
+        {
+            $date = Jalalian::fromCarbon($this->created_at)->format('%A, %d %B %y');
+
+            return $date;
+        }
+
+
+
+        public function getPersianUpdatedAtAttribute()
+        {
+            $date = Jalalian::fromCarbon($this->updated_at)->format('%A, %d %B %y');
+
+            return $date;
+        }
+
 
         public function gradeLessons()
         {
 
             return $this->hasManyThrough(GradeLesson::class, ExamGradeLesson::class, 'examId', 'id', 'id', 'gradeLessonId')
-                        ->where('type','GIFT_EXAM');
+                        ->where('type', 'GIFT_EXAM');
         }
 
 
         public function examGradeLessons()
         {
 
-            return $this->hasMany(ExamGradeLesson::class, 'examId');
+            return $this->hasMany(ExamGradeLesson::class, 'examId')
+                        ->where('type', '=', 'GIFT_EXAM');
         }
 
 
@@ -159,10 +177,12 @@
             return $lessons;
         }
 
+
         public function questionExams()
         {
 
-            return $this->hasMany(QuestionExam::class, 'examId')->where('type','GIFT_EXAM');
+            return $this->hasMany(QuestionExam::class, 'examId')
+                        ->where('type', 'GIFT_EXAM');
         }
 
 
@@ -170,7 +190,7 @@
         {
 
             return $this->hasManyThrough(Question::class, QuestionExam::class, 'examId', 'id', 'id', 'questionId')
-                        ->where('type','GIFT_EXAM');
+                        ->where('type', 'GIFT_EXAM');
         }
 
     }

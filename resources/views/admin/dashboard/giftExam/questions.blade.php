@@ -2,21 +2,92 @@
 
 @section('content')
 
+    @if(\Illuminate\Support\Facades\Session::has('success'))
+
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>عملیات موفق!! </strong> {{\Illuminate\Support\Facades\Session::get('success')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+    @endif
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card cards">
+                <div class="card-header" id="nomargin1">
+                    <h4 class="title text-right ">مشخصات آزمون</h4>
+                </div>
+                <div dir="rtl" class="content ">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img class="image hover-bright" src="{{asset('image/admin/dashboard/exam.jpg')}}"
+                                 width="100%" height="100%">
+
+                        </div>
+                        <div class="col-md-7" id="col-right">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3" style="float: right;">
+                                    <p> عنوان آزمون: {{$exam->title}}</p>
+                                </div>
+                                <div class="col-md-3 col-sm-3">
+                                    <p> کد آزمون: {{$exam->exm}}</p>
+                                </div>
+                                <div class="col-md-5 col-sm-5">
+                                    <p> درس های آزمون:
+                                        @foreach($exam->lessons() as $lesson)
+                                            {{$lesson->title}}
+                                        @endforeach
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 20px;">
+                                <div class="col-md-3 col-sm-3" style="float: right;">
+                                    <p> گرایش آزمون:
+                                        {{$exam->orientation()[0]->title}}
+                                    </p>
+                                </div>
+                                <div class="col-md-3 col-sm-3">
+                                    <p> تاریخ درج:
+                                        {{$exam->persianCreatedAt}}</p>
+                                </div>
+                                <div class="col-md-5 col-sm-5">
+                                    <p> مقاطع تحصیلی آزمون:
+                                        @foreach($exam->grades() as $grade)
+                                            {{$grade->title}}
+                                        @endforeach
+                                    </p>
+                                </div>
+
+                                {{--<div class="col-md-3">--}}
+                                {{--<p>قیمت:</p>--}}
+                                {{--</div>--}}
+
+                            </div>
+
+
+                            <div class="row" style="margin-top: 20px;">
+                                <div class="col-md-3" style="float: right;">
+                                    <p> قیمت:
+                                        {{$exam->price}}</p>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-right">
+                    <p class="text-muted"> آخرین بروزرسانی: {{$exam->persianUpdatedAt}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-
-                @if(\Illuminate\Support\Facades\Session::has('success'))
-
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>عملیات موفق!! </strong> {{\Illuminate\Support\Facades\Session::get('success')}}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                @endif
-
                 <div class="header">
                     <h4 class="title text-right">سوالات آزمون</h4>
                     <a href="{{route('admin_giftExams_addQuestionShow',['exm' => $exam->exm])}}" style="font-size: 12px;"

@@ -72,6 +72,7 @@
             $carbon                 = Carbon::createFromTimestamp($dateTime->getTimestamp());
             $lessonExam->activeDate = $carbon->toDateTimeString();
 
+            $lessonExam->save();
             //end activeDate section
 
             //save answerSheet
@@ -83,10 +84,9 @@
 
                 $lessonExam->answerSheet = $answerSheet->hashName();
 
-
+                $lessonExam->update();
             }
 
-            $lessonExam->save();
 
             // insert relation
             foreach ($request->input('gradeLessons') as $gradeLessonId)
