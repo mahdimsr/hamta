@@ -15,13 +15,9 @@ class RegisterController extends Controller
 	public function admins()
 	{
 		$admin=Auth::guard('admin')->user();
-		if($admin->level=="A")
-		{
-		$admins = Admin::query()->whereNotIn('id', [$admin->id])->whereNotIn('level',['A'])->get();
+        $admins = Admin::query()->whereNotIn('id', [$admin->id])->whereNotIn('level',['A'])->get();
+
 		return view('admin.dashboard.admin.admins', compact('admins'));
-		}
-		else
-		return view('layouts.admin_dashboard');
 	}
 
 
@@ -29,13 +25,7 @@ class RegisterController extends Controller
 	public function addShow()
 	{
 		$modify=0;
-		$admin=Auth::guard('admin')->user();
-		if($admin->level=="A")
-		{
 		return view('admin.dashboard.admin.form', compact('modify'));
-		}
-		else
-		return view('layouts.admin_dashboard');
 	}
 
 

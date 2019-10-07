@@ -59,19 +59,7 @@
                                         @endforeach
                                     </p>
                                 </div>
-
-                                {{--<div class="col-md-3">--}}
-                                {{--<p>قیمت:</p>--}}
-                                {{--</div>--}}
-
                             </div>
-
-
-                            <div class="row" style="margin-top: 20px;">
-                                <div class="col-md-3" style="float: right;">
-                                    <p> قیمت:
-                                        {{$exam->price}}</p>
-                                </div>
 
 
                             </div>

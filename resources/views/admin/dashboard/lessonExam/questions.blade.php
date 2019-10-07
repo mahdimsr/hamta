@@ -50,11 +50,6 @@
                                         @endforeach
                                     </p>
                                 </div>
-
-                                {{--<div class="col-md-3">--}}
-                                {{--<p>قیمت:</p>--}}
-                                {{--</div>--}}
-
                             </div>
 
 
@@ -104,7 +99,7 @@
                                        id="remove-btn"
                                        type="button"
                                        style="font-size: 12px;" class="btn btn-danger">
-                                        حذف
+                                        حذف سوال از آزمون
                                     </a>
                                     <a href="{{ route('admin_ltlExams_editQuestionShow',['id' => $questionExam->questionId , 'exm' => $exam->exm]) }}"
                                        style="font-size: 12px;" class="btn btn-info">
