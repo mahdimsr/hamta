@@ -9,7 +9,56 @@
 <link rel="stylesheet" href="{{ asset('css/student/dashboard/exam-questions.css') }}">
 
 
+<div dir="rtl" class="row">
+    <div class="col-md-1">
+        <label class="label" style="font-size: 130%">
+            <input name="questionId[]" value="" id="question-check" onchange="sina()"
 
+                   class="label__checkbox" type="checkbox"/>
+            <span class="label__text">
+                  <span class="label__check">
+                        <i class="fa fa-check icon"></i>
+                </span>
+            </span>
+        </label>
+    </div>
+
+    <div class="col-md-11">
+        <div class="card cards">
+
+                <div class="card-header" id="correct-item1">این سوال است ببینید این سوال است ببینید این سوال است ببینید</div>
+
+            <div class="card-body">
+
+                <div dir="rtl" class="row text-right " style="margin: 0px;">
+                    <div class="col-md-9 col-lg-10" style="float: right">
+
+
+                        <ul class="answers">
+                            <li class="list-li"><p>گزینه است </p></li>
+                            <li class="list-li"><p> گزینه است </p></li>
+                            <li class="list-li"><p>گزینه است </p></li>
+                            <li class="list-li"><p>گزینه است </p></li>
+                        </ul>
+
+                    </div>
+                    <div class="col-md-3 col-lg-2 col-sm-2" style="float: right;">
+                        <a href="#"> <img class="question-img  imgs"
+                                          src="{{asset('image/admin/dashboard/test.png')}}"
+                                          width="120px" height="100px"></a>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="card-footer text-muted text-center" id="correct-item2">
+                <p>مقطع: سوم ، سطح سختی: آسان</p>
+            </div>
+        </div>
+    </div>
+
+</div>
 <div class="row">
         <div class="col-12">
             <h3>این قسمت مربوط به توضیحات ازمون می باشد</h3>
@@ -23,7 +72,7 @@
 
 <ul class="list-group list-group-flush">
 <li class="list-group-item active">
-    
+
 
 
 <p>ایا رسیدن به سرعت مجاز است؟ -1</p>
@@ -65,7 +114,7 @@
 
 
 <li class="list-group-item">
-    
+
 
 
 
@@ -80,7 +129,7 @@
 
 </li>
 <li class="list-group-item">
-    
+
 
 
 
@@ -110,7 +159,7 @@
 
 <ul class="list-group list-group-flush">
 <li class="list-group-item active">
-    
+
 
 
 <p>ایا رسیدن به سرعت مجاز است؟ -1</p>
@@ -159,7 +208,7 @@
 
 
 <li class="list-group-item">
-    
+
 
 
 
@@ -174,7 +223,7 @@
 
 </li>
 <li class="list-group-item">
-    
+
 
 
 
