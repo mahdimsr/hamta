@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
-use \Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Hash;
 use App\model\Student as Student;
 
 class AuthController extends Controller
@@ -21,7 +21,7 @@ class AuthController extends Controller
 	{
         $studentInfo=cookie::get('studentInfo');
         $studentPass=cookie::get('studentPass');
-		return view('student.auth.login',compact('studentInfo','studentPass'));
+        return view('student.auth.login',compact('studentInfo','studentPass'));
     }
 
 	public function showregister()
@@ -56,7 +56,7 @@ class AuthController extends Controller
 				Cookie::queue('studentPass', '');
 			}
 
-			// return redirect()->intended('student_dashboard_profile');
+
 
 			return redirect()->route('student_dashboard_profile');
 
@@ -117,4 +117,33 @@ class AuthController extends Controller
         return redirect()->route('student_dashboard_profile');
 
     }
+
+    public function forgetPassword(Request $request)
+    {
+        $this->validate($request,
+        [
+            'forgetPassword' => 'required'
+        ]
+    );
+
+    $student_mobile = Student::query()->where('mobile',$request->input('forgetPassword'))->first();
+    $student_email  = Student::query()->where('email',$request->input('forgetPassword'))->first();
+
+    if($student_email)
+    {
+        return redirect()->back()->with('status','sentToEmail');
+    }
+
+    else if($student_mobile)
+    {
+        return redirect()->back()->with('status','sentToMobile');
+    }
+
+    else
+    {
+        return redirect()->back()->withErrors(['forgetMessage'=>['.اطلاعات وارد شده صحیح نیست']]);
+    }
+
+    }
+
 }

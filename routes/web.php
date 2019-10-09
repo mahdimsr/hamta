@@ -25,6 +25,7 @@
             Route::get('/register', 'AuthController@showregister')->name('student_register_show');
             Route::get('/verify', 'AuthController@verify')->name('student_verify_show');
             Route::post('/register', 'AuthController@register')->name('student_register');
+            Route::post('/forgetPassword', 'AuthController@forgetPassword')->name('student_forgetPassword');
             Route::get('/logout', 'AuthController@logout')->name('student_logout');
         });
         Route::middleware('auth:student')->namespace('Dashboard')->prefix('student/dashboard')->group(function()
