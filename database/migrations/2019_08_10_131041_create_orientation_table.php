@@ -17,7 +17,7 @@ class CreateOrientationTable extends Migration
 		Schema::create('orientation', function(Blueprint $table)
 		{
 			$table->bigIncrements('id');
-			$table->string('code');
+			$table->string('discount');
 			$table->string('title');
 			$table->string('url');
 			$table->timestamps();

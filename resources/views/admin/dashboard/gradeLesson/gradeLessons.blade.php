@@ -27,7 +27,7 @@
 								<td>{{$gradeLesson->title}}</td>
 								<td>
 
-									<a href="{{route('admin_gradeLessons_remove',['code' => $gradeLesson->code])}}" id="remove-btn" type="button"
+									<a href="{{route('admin_gradeLessons_remove',['discount' => $gradeLesson->code])}}" id="remove-btn" type="button"
 											style="font-size: 12px;" class="btn btn-danger">
 										حذف
 									</a>

@@ -140,10 +140,15 @@
             });
 
 
-            Route::prefix('codes')->group(function()
+            Route::prefix('discount')->group(function()
             {
 
-                Route::get('/', 'CodeController@codes')->name('admin_codes_show');
+                Route::get('/', 'DiscountController@show')->name('admin_codes_show');
+                Route::get('/addShow', 'DiscountController@addShow')->name('admin_discount_addShow');
+                Route::post('/add', 'DiscountController@add')->name('admin_discount_add');
+                Route::get('/editShow/{id}', 'DiscountController@editShow')->name('admin_discount_editShow');
+                Route::post('/edit', 'DiscountController@edit')->name('admin_discount_edit');
+                Route::get('/remove/{id}', 'DiscountController@remove')->name('admin_discount_remove');
             });
 
 

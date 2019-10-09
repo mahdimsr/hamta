@@ -56,7 +56,7 @@
                                        'price'        => 'required|integer|min:0',
                                        'description'  => 'nullable|string|max:300',
                                        'duration'     => 'required|integer|min:0',
-                                       'answerSheet'  => 'required|file|mimes:pdf|max:5000'
+                                       'answerSheet'  => 'nullable|file|mimes:pdf|max:5000'
             ]);
 
 

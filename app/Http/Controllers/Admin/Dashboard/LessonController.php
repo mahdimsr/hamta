@@ -48,7 +48,7 @@
 
                 'titleLesson' => 'required|alpha|max:10',
                 'category'    => 'required',
-                'codeLesson'  => 'required|numeric|digits:3|unique:lesson,code',
+                'codeLesson'  => 'required|numeric|digits:3|unique:lesson,discount',
                 'urlLesson'   => 'required|string|unique:lesson,url',
 
             ]);
@@ -87,7 +87,7 @@
 
                 'titleLesson' => 'required|string|max:20',
                 'category'    => 'required',
-                'codeLesson'  => ['required', 'numeric', 'digits:3', Rule::unique('lesson', 'code')->ignore($lesson)],
+                'codeLesson'  => ['required', 'numeric', 'digits:3', Rule::unique('lesson', 'discount')->ignore($lesson)],
                 'urlLesson'   => ['required', 'string', Rule::unique('lesson', 'url')->ignore($lesson)],
 
             ]);
