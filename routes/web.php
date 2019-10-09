@@ -20,9 +20,9 @@
         Route::namespace('Auth')->prefix('students')->group(function()
         {
 
-            Route::get('/login', 'AuthController@showlogin')->name('student_login_show');
+            Route::get('/login', 'AuthController@showLogin')->name('student_login_show');
             Route::post('/login', 'AuthController@login')->name('student_login');
-            Route::get('/register', 'AuthController@showregister')->name('student_register_show');
+            Route::get('/register', 'AuthController@showRegister')->name('student_register_show');
             Route::get('/verify', 'AuthController@verify')->name('student_verify_show');
             Route::post('/register', 'AuthController@register')->name('student_register');
             Route::post('/forgetPassword', 'AuthController@forgetPassword')->name('student_forgetPassword');

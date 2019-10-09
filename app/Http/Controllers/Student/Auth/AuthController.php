@@ -18,14 +18,14 @@ class AuthController extends Controller
 		return view('student.auth.verify');
     }
 
-	public function showlogin()
+	public function showLogin()
 	{
         $studentInfo=cookie::get('studentInfo');
         $studentPass=cookie::get('studentPass');
         return view('student.auth.login',compact('studentInfo','studentPass'));
     }
 
-	public function showregister()
+	public function showRegister()
 	{
 
         return view('student.auth.register');
@@ -84,7 +84,7 @@ class AuthController extends Controller
 		else
 		{
 
-            return redirect()->back()->withErrors(['message'=>['.اطلاعات وارد شده صحیح نیست']]);
+            return redirect()->back()->withErrors(['loginFailed'=>['اطلاعات وارد شده صحیح نیست']]);
 
         }
 
@@ -127,39 +127,36 @@ class AuthController extends Controller
         ]
     );
 
-    $student_mobile = Student::query()->where('mobile',$request->input('forgetPassword'))->first();
-    $student_email  = Student::query()->where('email',$request->input('forgetPassword'))->first();
-
-    if($student_email)
+    if($student = Student::query()->where('email',$request->input('forgetPassword'))->first())
     {
 
         $newPassword = substr(md5(uniqid(mt_rand(), true)), 0, 6);
 
-        Mail::send('student.mail.forgetPassword', compact('student_email','newPassword'), function($message) use($student_email) {
-            $message->to($student_email->email)->subject('همپا | بازیابی رمز عبور');
+        Mail::send('student.mail.forgetPassword', compact('student','newPassword'), function($message) use($student) {
+            $message->to($student->email)->subject('بازیابی رمز عبور');
         });
 
         if(Mail::failures())
         {
-            return redirect()->back()->withErrors(['mailFailedMessage'=>['عملیات ناموفق']]);
+            return redirect()->back()->withErrors(['forgetPasswordFailed'=>['بازیابی رمز عبور ناموفق']]);
         }
         else
         {
-            $student_email->password=Hash::make($newPassword);
-            $student_email->update();
+            $student->password=Hash::make($newPassword);
+            $student->update();
 
             return redirect()->back()->with('status','sentToEmail');
         }
     }
 
-    else if($student_mobile)
+    else if($student = Student::query()->where('mobile',$request->input('forgetPassword'))->first())
     {
         return redirect()->back()->with('status','sentToMobile');
     }
 
     else
     {
-        return redirect()->back()->withErrors(['forgetMessage'=>['.اطلاعات وارد شده صحیح نیست']]);
+        return redirect()->back()->withErrors(['invalidInfo'=>['پست الکترونیکی یا شماره تلفن همراه وارد شده یافت نشد']]);
     }
 
     }
