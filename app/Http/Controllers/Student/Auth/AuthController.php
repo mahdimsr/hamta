@@ -18,14 +18,14 @@ class AuthController extends Controller
 		return view('student.auth.verify');
     }
 
-	public function showlogin()
+	public function showLogin()
 	{
         $studentInfo=cookie::get('studentInfo');
         $studentPass=cookie::get('studentPass');
         return view('student.auth.login',compact('studentInfo','studentPass'));
     }
 
-	public function showregister()
+	public function showRegister()
 	{
 
         return view('student.auth.register');
@@ -84,7 +84,7 @@ class AuthController extends Controller
 		else
 		{
 
-            return redirect()->back()->withErrors(['message'=>['.اطلاعات وارد شده صحیح نیست']]);
+            return redirect()->back()->withErrors(['loginFailed'=>['.اطلاعات وارد شده صحیح نیست']]);
 
         }
 
@@ -136,12 +136,12 @@ class AuthController extends Controller
         $newPassword = substr(md5(uniqid(mt_rand(), true)), 0, 6);
 
         Mail::send('student.mail.forgetPassword', compact('student_email','newPassword'), function($message) use($student_email) {
-            $message->to($student_email->email)->subject('همپا | بازیابی رمز عبور');
+            $message->to($student_email->email)->subject('بازیابی رمز عبور');
         });
 
         if(Mail::failures())
         {
-            return redirect()->back()->withErrors(['mailFailedMessage'=>['عملیات ناموفق']]);
+            return redirect()->back()->withErrors(['forgetPasswordFailed'=>['بازیابی رمز عبور ناموفق']]);
         }
         else
         {
@@ -159,7 +159,7 @@ class AuthController extends Controller
 
     else
     {
-        return redirect()->back()->withErrors(['forgetMessage'=>['.اطلاعات وارد شده صحیح نیست']]);
+        return redirect()->back()->withErrors(['invalidInfo'=>['.اطلاعات وارد شده صحیح نیست']]);
     }
 
     }

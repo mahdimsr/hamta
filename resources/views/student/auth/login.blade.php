@@ -211,19 +211,19 @@
             "positionClass": "md-toast-bottom-right",
           }
     new WOW().init();
-    @if ($errors->has('message'))
+    @if ($errors->has('loginFailed'))
     @{{ toastr.error('اطلاعات وارد شده صحیح نیست'); }}
     @endif
     @if ($errors->has('forgetPassword'))
     $('#darkModalForm').modal('show');
     @endif
-    @if ($errors->has('forgetMessage'))
+    @if ($errors->has('invalidInfo'))
     $('#darkModalForm').modal('show');
     @{{ toastr.error('اطلاعات وارد شده صحیح نیست'); }}
     @endif
-    @if ($errors->has('mailFailedMessage'))
+    @if ($errors->has('forgetPasswordFailed'))
     $('#darkModalForm').modal('show');
-    @{{ toastr.error('عملیات ناموفق'); }}
+    @{{ toastr.error('بازیابی رمز عبور ناموفق'); }}
     @endif
     @if (Session::get('status')=='sentToMobile')
     $('#darkModalForm').modal('show');
