@@ -84,7 +84,7 @@ class AuthController extends Controller
 		else
 		{
 
-            return redirect()->back()->withErrors(['loginFailed'=>['.اطلاعات وارد شده صحیح نیست']]);
+            return redirect()->back()->withErrors(['loginFailed'=>['اطلاعات وارد شده صحیح نیست']]);
 
         }
 
@@ -159,7 +159,7 @@ class AuthController extends Controller
 
     else
     {
-        return redirect()->back()->withErrors(['invalidInfo'=>['.اطلاعات وارد شده صحیح نیست']]);
+        return redirect()->back()->withErrors(['invalidInfo'=>['پست الکترونیکی یا شماره تلفن همراه وارد شده یافت نشد']]);
     }
 
     }

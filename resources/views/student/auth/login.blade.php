@@ -219,7 +219,7 @@
     @endif
     @if ($errors->has('invalidInfo'))
     $('#darkModalForm').modal('show');
-    @{{ toastr.error('اطلاعات وارد شده صحیح نیست'); }}
+    @{{ toastr.error('پست الکترونیکی یا شماره تلفن همراه وارد شده یافت نشد'); }}
     @endif
     @if ($errors->has('forgetPasswordFailed'))
     $('#darkModalForm').modal('show');
