@@ -221,6 +221,10 @@
     $('#darkModalForm').modal('show');
     @{{ toastr.error('اطلاعات وارد شده صحیح نیست'); }}
     @endif
+    @if ($errors->has('mailFailedMessage'))
+    $('#darkModalForm').modal('show');
+    @{{ toastr.error('عملیات ناموفق'); }}
+    @endif
     @if (Session::get('status')=='sentToMobile')
     $('#darkModalForm').modal('show');
     @{{ toastr.success('رمز عبور جدید برای تلفن همراه شما ارسال گردید'); }}

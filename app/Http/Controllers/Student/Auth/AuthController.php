@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\model\Student as Student;
 
 class AuthController extends Controller
@@ -131,7 +132,24 @@ class AuthController extends Controller
 
     if($student_email)
     {
-        return redirect()->back()->with('status','sentToEmail');
+
+        $newPassword = substr(md5(uniqid(mt_rand(), true)), 0, 6);
+
+        Mail::send('student.mail.forgetPassword', compact('student_email','newPassword'), function($message) use($student_email) {
+            $message->to($student_email->email)->subject('همپا | بازیابی رمز عبور');
+        });
+
+        if(Mail::failures())
+        {
+            return redirect()->back()->withErrors(['mailFailedMessage'=>['عملیات ناموفق']]);
+        }
+        else
+        {
+            $student_email->password=Hash::make($newPassword);
+            $student_email->update();
+
+            return redirect()->back()->with('status','sentToEmail');
+        }
     }
 
     else if($student_mobile)
