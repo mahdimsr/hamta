@@ -20,13 +20,16 @@
                     </div>
                     <p class="description text-right">
                     <p class="description text-right">
-                        <b>کد تخفیف </b>عبارتی حداکثر 8 حرفی است که دانش آموز برای استفاده از تخفیف مد نظر از این کد استفاده میکند.
+                        <b>کد </b>عبارتی حداکثر 8 حرفی است که دانش آموز برای استفاده از تخفیف یا شارژ مد نظر از این کد
+                        استفاده میکند.
                     </p>
                     <p class="description text-right">
-                        <b> مقدار تخفیف یا شارژ </b>درصد تخفیف یا مقدار مبلغی که در صورت استفاده از کد به دانش آموز تعلق میگیرد.
+                        <b> مقدار تخفیف یا شارژ </b>درصد تخفیف یا مقدار مبلغی که در صورت استفاده از کد به دانش آموز تعلق
+                        میگیرد.
                     </p>
                     <p class="description text-right">
-                        <b> تاریخ انقضا </b>تاریخی است که کد تخفیف تا آن تاریخ اعتبار دارد و از آن تاریخ به بعد کد قابل استفاده نخواهد بود.
+                        <b> تاریخ انقضا </b>تاریخی است که کد تخفیف تا آن تاریخ اعتبار دارد و از آن تاریخ به بعد کد قابل
+                        استفاده نخواهد بود.
                     </p>
                 </div>
                 <hr>
@@ -45,17 +48,44 @@
                         {{csrf_field()}}
 
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>نوع کد</label>
+                                    <select dir="rtl" name="type" class="form-control">
+                                        <option selected disabled>نوع کد را انتخاب نمایید</option>
+                                        <option value="">نوع کد را انتخاب نمایید</option>
+                                        <option value="">نوع کد را انتخاب نمایید</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('type') }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>کد</label>
+                                    <input name="code" dir="rtl" type="text" class="form-control"
+                                           placeholder="کد تخفیف را وارد نمایید" tabindex="2"
+                                           value="{{old('code') ? old('code') : ''}} {{ $modify==1 && !old('code') ? $discount->code : '' }}">
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('code') }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>تاریخ انقضا</label>
-                                    <input id="endDate" name="endDate" dir="rtl" type="text" class="form-control" tabindex="3"
+                                    <input id="endDate" name="endDate" dir="rtl" type="text" class="form-control"
+                                           tabindex="3"
                                            value="{{old('endDate') ? old('endDate') : $modify == 1 ? $discount->endDate : ''}}">
                                     <div class="invalid-feedback">
                                         <small>{{ $errors->first('endDate') }}</small>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>مقدار تخفیف(به درصد) یا مبلغ شارژ (به ریال)</label>
                                     <input name="value" dir="rtl" type="text" class="form-control"
@@ -63,17 +93,6 @@
                                            value="{{old('value') ? old('value') : ''}} {{ $modify==1 && !old('value') ? $discount->value : '' }}">
                                     <div class="invalid-feedback">
                                         <small>{{ $errors->first('value') }}</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>کد تخفیف</label>
-                                    <input name="code" dir="rtl" type="text" class="form-control"
-                                           placeholder="کد تخفیف را وارد نمایید" tabindex="2"
-                                           value="{{old('code') ? old('code') : ''}} {{ $modify==1 && !old('code') ? $discount->code : '' }}">
-                                    <div class="invalid-feedback">
-                                        <small>{{ $errors->first('code') }}</small>
                                     </div>
                                 </div>
                             </div>
