@@ -192,7 +192,8 @@
 <div style="color:#555555;font-family:&#39;Helvetica Neue&#39;, Helvetica, Arial, sans-serif;line-height:120%;padding-top:10px;padding-right:10px;padding-bottom:5px;padding-left:30px;">
 <div style="line-height: 14px; font-family: &#39;Helvetica Neue&#39;, Helvetica, Arial, sans-serif; font-size: 12px; color: #555555;">
 <p style="line-height: 28px; text-align: right; font-size: 12px; margin: 0;"><span style="font-size: 24px;"><strong>(سلام ({{ $student->name. $student->familyName }}</strong></span></p>
-<p style="font-size: 14px; line-height: 18px; text-align: center; margin: 0;"><span style="font-size: 15px;">ممنون که این سامانه را انتخاب کردین، نگران فراموشی رمز عبور خود نباشید. در این قسمت می توانید رمز عبور جدید خود را مشاهده کنید. رمز عبور موقتی : {{ $newPassword }} </span></p>
+<p style="font-size: 14px; line-height: 18px; text-align: center; margin: 0;"><span style="font-size: 15px;">ممنون که این سامانه را انتخاب کردین، نگران فراموشی رمز عبور خود نباشید. در این قسمت می توانید رمز عبور جدید خود را مشاهده کنید.</span></p>
+<p style="font-size: 14px; line-height: 18px; text-align: center; margin: 0;"><span style="font-size: 15px;">رمز عبور موقتی : {{ $newPassword }}</span></p>
 </div>
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
