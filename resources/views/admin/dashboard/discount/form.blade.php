@@ -51,24 +51,32 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>نوع کد</label>
-                                    @if($modify == 0)
-                                        <select dir="rtl" name="type" class="form-control">
-                                            <option selected disabled>نوع کد را انتخاب نمایید</option>
-                                            <option value="GENERAL-CHARGE"
-                                                {{$modify == 1 ? $discount->type == 'GENERAL-CHARGE' ? 'selected' : '' : '' }}>
-                                                شارژ حساب کاربری (کیف پول)
-                                            </option>
-                                            <option value="GENERAL-OFF"
-                                                {{$modify == 1 ? $discount->type == 'GENERAL-OFF' ? 'selected' : '' : '' }}>
-                                                تخفیف رویه تمامی محصولات و خدمات
-                                            </option>
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            <small>{{ $errors->first('type') }}</small>
-                                        </div>
-                                    @elseif($modify==1)
-                                        <input disabled dir="rtl" type="text" class="form-control" value="{{$discount->persianType}}"/>
-                                    @endif
+                                    <select dir="rtl" name="type" class="form-control" {{$modify==1 ? 'disabled' : ''}}>
+                                        <option selected disabled>نوع کد را انتخاب نمایید</option>
+                                        <option value="GENERAL-CHARGE"
+                                            {{$modify == 1 ? $discount->type == 'GENERAL-CHARGE' ? 'selected' : '' : '' }}>
+                                            شارژ حساب کاربری (کیف پول)
+                                        </option>
+                                        <option value="GENERAL-OFF"
+                                            {{$modify == 1 ? $discount->type == 'GENERAL-OFF' ? 'selected' : '' : '' }}>
+                                            تخفیف رویه تمامی محصولات و خدمات
+                                        </option>
+                                        <option value="STUDENT-OFF"
+                                            {{$modify == 1 ? $discount->type == 'STUDENT-OFF' ? 'selected' : '' : '' }}>
+                                            تخفیف اختصاصی دانش آموزان
+                                        </option>
+                                        <option value="STUDENT-CHARGE"
+                                            {{$modify == 1 ? $discount->type == 'STUDENT-CHARGE' ? 'selected' : '' : '' }}>
+                                            شارژ حساب اختصاصی دانش آموزان
+                                        </option>
+                                        <option value="EXAM-OFF"
+                                            {{$modify == 1 ? $discount->type == 'EXAM-OFF' ? 'selected' : '' : '' }}>
+                                            تخفیف اختصاصی آزمون ها
+                                        </option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('type') }}</small>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
