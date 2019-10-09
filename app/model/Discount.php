@@ -55,11 +55,13 @@
         public function getPersianTypeAttribute()
         {
 
-            $typeArray = ['GENERAL' => 'تمامی خدمات',
-                          'STUDENT' => 'اختصاصی دانش آموزان',
-                          'EXAM'    => 'اختصاصی آزمون ها'];
+            $typeArray = ['GENERAL-CHARGE' => 'شارژ حساب کاربری (همگانی)',
+                          'GENERAL-OFF'    => 'تخفیف رویه محصولات و خدمات',
+                          'STUDENT-OFF'    => 'تخفیف اختصاصی دانش آموزان',
+                          'STUDENT-CHARGE' => 'شارژ حساب اختصاصی دانش آموزان',
+                          'EXAM-OFF'       => 'تخفیف اختصاصی آزمون ها'];
 
-            return $typeArray[$this->type];
+            return $typeArray[ $this->type ];
         }
 
     }

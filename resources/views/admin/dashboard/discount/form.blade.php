@@ -43,7 +43,7 @@
 
                 <div class="content">
                     <form method="post"
-                          action="{{$modify == 0? route('admin_discount_add',['type' => 'GENERAL']) : route('admin_discount_edit',['id' => $discount->id])}}">
+                          action="{{$modify == 0? route('admin_discount_add') : route('admin_discount_edit',['id' => $discount->id])}}">
 
                         {{csrf_field()}}
 
@@ -51,14 +51,24 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>نوع کد</label>
-                                    <select dir="rtl" name="type" class="form-control">
-                                        <option selected disabled>نوع کد را انتخاب نمایید</option>
-                                        <option value="">نوع کد را انتخاب نمایید</option>
-                                        <option value="">نوع کد را انتخاب نمایید</option>
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        <small>{{ $errors->first('type') }}</small>
-                                    </div>
+                                    @if($modify == 0)
+                                        <select dir="rtl" name="type" class="form-control">
+                                            <option selected disabled>نوع کد را انتخاب نمایید</option>
+                                            <option value="GENERAL-CHARGE"
+                                                {{$modify == 1 ? $discount->type == 'GENERAL-CHARGE' ? 'selected' : '' : '' }}>
+                                                شارژ حساب کاربری (کیف پول)
+                                            </option>
+                                            <option value="GENERAL-OFF"
+                                                {{$modify == 1 ? $discount->type == 'GENERAL-OFF' ? 'selected' : '' : '' }}>
+                                                تخفیف رویه تمامی محصولات و خدمات
+                                            </option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            <small>{{ $errors->first('type') }}</small>
+                                        </div>
+                                    @elseif($modify==1)
+                                        <input disabled dir="rtl" type="text" class="form-control" value="{{$discount->persianType}}"/>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-md-6">
