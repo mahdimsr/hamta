@@ -118,6 +118,7 @@
                     <button class="btn purple-gradient btn-lg">ورود</button>
 
                   </div>
+                </form>
                   <hr class="young-passion-gradient color-block mb-3 mx-auto rounded-circle z-depth-1">
                       <p class="text-center">
                   <a href="#" class="font-weight-bold cyan-lighter-hover" data-toggle="modal" data-target="#darkModalForm">رمز عبور خود را فراموش کرده ام</a></p>
@@ -127,7 +128,7 @@
 
                     <div class="modal fade" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                     aria-hidden="true">
-                    <div class="modal-dialog form-dark" role="document">
+                    <div class="modal-dialog modal-dialog-centered form-dark" role="document">
                       <!--Content-->
                       <div class="modal-content card card-image">
                         <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
@@ -142,17 +143,19 @@
                           <!--Body-->
                           <div class="modal-body">
                             <!--Body-->
-                            <div class="md-form mb-5">
-                              <input type="email" id="Form-email5" class="form-control validate white-text">
-                              <label  for="Form-email5">ایمیل یا شماره تلفن خود را وارد کنید</label>
+                            <form action="{{ route ('student_forgetPassword') }}" method="POST">
+                               {{ csrf_field() }}
+                            <div class="md-form md-outline">
+                              <input type="text" name="forgetPassword" id="Form-email5" class="form-control white-text" value="{{ old('forgetPassword') }}">
+                              <label  for="Form-email5">پست الکترونیکی یا تلفن همراه</label>
                             </div>
-
-                            <div class="md-form pb-3">
-                                <button class="btn purple-gradient">دکمه</button>
+                            <small class="text-danger font-weight-bold">{{$errors->first('forgetPassword')}}</small>
+                            <div class="md-form pb-3 text-center">
+                                <button type="submit" class="btn purple-gradient">بازیابی</button>
 
 
                             </div>
-
+                            </form>
 
 
                             </div>
@@ -179,7 +182,7 @@
                               </div>
                             </div>
                           </div>
-                            </form>
+
                         </section>
 
 <!-- Footer -->
@@ -210,6 +213,25 @@
     new WOW().init();
     @if ($errors->has('message'))
     @{{ toastr.error('اطلاعات وارد شده صحیح نیست'); }}
+    @endif
+    @if ($errors->has('forgetPassword'))
+    $('#darkModalForm').modal('show');
+    @endif
+    @if ($errors->has('forgetMessage'))
+    $('#darkModalForm').modal('show');
+    @{{ toastr.error('اطلاعات وارد شده صحیح نیست'); }}
+    @endif
+    @if ($errors->has('mailFailedMessage'))
+    $('#darkModalForm').modal('show');
+    @{{ toastr.error('عملیات ناموفق'); }}
+    @endif
+    @if (Session::get('status')=='sentToMobile')
+    $('#darkModalForm').modal('show');
+    @{{ toastr.success('رمز عبور جدید برای تلفن همراه شما ارسال گردید'); }}
+    @endif
+    @if (Session::get('status')=='sentToEmail')
+    $('#darkModalForm').modal('show');
+    @{{ toastr.success('رمز عبور جدید برای پست الکترونیکی شما ارسال گردید'); }}
     @endif
   </script>
 
