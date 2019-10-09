@@ -13,7 +13,7 @@
      * @property int            $lessonId
      * @property int            $gradeId
      * @property int            $orientationId
-     * @property string         $discount
+     * @property string         $code
      * @property int            $ratio
      * @property string         $sort
      * @property \Carbon\Carbon $deleted_at

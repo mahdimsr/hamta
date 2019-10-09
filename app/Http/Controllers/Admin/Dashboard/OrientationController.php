@@ -45,7 +45,7 @@ class OrientationController extends Controller
 		$this->validate($request, [
 
 			'titleOrientation' => 'required|max:20',
-			'codeOrientation'  => 'required|numeric|digits:2|unique:orientation,discount',
+			'codeOrientation'  => 'required|numeric|digits:2|unique:orientation,code',
 			'urlOrientation'   => 'required|string|unique:orientation,url',
 
 		]);
@@ -87,7 +87,7 @@ class OrientationController extends Controller
 				'required',
 				'numeric',
 				'digits:2',
-				Rule::unique('orientation', 'discount')->ignore($orientation),
+				Rule::unique('orientation', 'code')->ignore($orientation),
 			],
 			'urlOrientation'   => ['required', 'string', Rule::unique('orientation', 'url')->ignore($orientation)],
 
