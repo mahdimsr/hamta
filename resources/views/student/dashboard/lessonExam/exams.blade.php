@@ -90,42 +90,6 @@
 @section('script')
 
 	<script type="text/javascript">
-
-
-		function addToCart(exm)
-		{
-
-
-			$.ajax({
-				type: 'POST',
-				url: "{{route('student_addToCart')}}",
-				data: {
-					_token: "{{ csrf_token() }}",
-					exm: exm
-				},
-				success: function(itemCount)
-				{
-					if (itemCount)
-					{
-						console.log('we have ' + itemCount);
-
-						var cart = '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' +
-							'<i class="fa fa-bank"></i>' +
-							'<p class="hidden-lg hidden-md">Dashboard</p>' +
-							'<p class="notification hidden-sm hidden-xs">'+itemCount+'</p>' +
-							'</a>';
-
-						$("#cart").append(cart);
-
-					}
-					else
-					{
-						console.log('no value');
-					}
-				}
-			});
-		}
-
 	</script>
 
 @endsection
