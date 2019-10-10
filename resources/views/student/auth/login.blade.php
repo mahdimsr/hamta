@@ -207,32 +207,32 @@
 
   <!-- Custom scripts -->
   <script>
-        toastr.options = {
-            "positionClass": "md-toast-bottom-right",
-          }
-    new WOW().init();
-    @if ($errors->has('loginFailed'))
-    @{{ toastr.error('اطلاعات وارد شده صحیح نیست'); }}
-    @endif
-    @if ($errors->has('forgetPassword'))
-    $('#darkModalForm').modal('show');
-    @endif
-    @if ($errors->has('invalidInfo'))
-    $('#darkModalForm').modal('show');
-    @{{ toastr.error('پست الکترونیکی یا شماره تلفن همراه وارد شده یافت نشد'); }}
-    @endif
-    @if ($errors->has('forgetPasswordFailed'))
-    $('#darkModalForm').modal('show');
-    @{{ toastr.error('بازیابی رمز عبور ناموفق'); }}
-    @endif
-    @if (Session::get('status')=='sentToMobile')
-    $('#darkModalForm').modal('show');
-    @{{ toastr.success('رمز عبور جدید برای تلفن همراه شما ارسال گردید'); }}
-    @endif
-    @if (Session::get('status')=='sentToEmail')
-    $('#darkModalForm').modal('show');
-    @{{ toastr.success('رمز عبور جدید برای پست الکترونیکی شما ارسال گردید'); }}
-    @endif
+    //     toastr.options = {
+    //         "positionClass": "md-toast-bottom-right",
+    //       }
+    // new WOW().init();
+    // @if ($errors->has('loginFailed'))
+    // @{{ toastr.error('اطلاعات وارد شده صحیح نیست'); }}
+    // @endif
+    // @if ($errors->has('forgetPassword'))
+    // $('#darkModalForm').modal('show');
+    // @endif
+    // @if ($errors->has('invalidInfo'))
+    // $('#darkModalForm').modal('show');
+    // @{{ toastr.error('پست الکترونیکی یا شماره تلفن همراه وارد شده یافت نشد'); }}
+    // @endif
+    // @if ($errors->has('forgetPasswordFailed'))
+    // $('#darkModalForm').modal('show');
+    // @{{ toastr.error('بازیابی رمز عبور ناموفق'); }}
+    // @endif
+    // @if (Session::get('status')=='sentToMobile')
+    // $('#darkModalForm').modal('show');
+    // @{{ toastr.success('رمز عبور جدید برای تلفن همراه شما ارسال گردید'); }}
+    // @endif
+    // @if (Session::get('status')=='sentToEmail')
+    // $('#darkModalForm').modal('show');
+    // @{{ toastr.success('رمز عبور جدید برای پست الکترونیکی شما ارسال گردید'); }}
+    // @endif
   </script>
 
 
