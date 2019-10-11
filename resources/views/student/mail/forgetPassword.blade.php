@@ -8,7 +8,6 @@
 <!--[if !mso]><!-->
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <!--<![endif]-->
-<title>همپا | بازیابی رمز عبور</title>
 <!--[if !mso]><!-->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css"/>
 
