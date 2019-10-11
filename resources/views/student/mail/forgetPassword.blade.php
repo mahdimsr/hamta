@@ -295,8 +295,8 @@
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 30px; padding-top: 10px; padding-bottom: 5px; ><![endif]-->
 <div style="color:#555555;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:5px;padding-left:30px;">
 <div style=" font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
-<p style="line-height: 1.2; font-size: 17px; text-align: right; mso-line-height-alt: 20px; mso-ansi-font-size: 18px; margin: 0;"><span style="font-size: 17px; mso-ansi-font-size: 18px;">سلام {{ $student->name.$student->familyName }} عزیز </span></p>
-<p style="line-height: 1.2; font-size: 17px; text-align: right; mso-line-height-alt: 20px; mso-ansi-font-size: 18px; margin: 0;"><span style="font-size: 17px; mso-ansi-font-size: 18px;">دانش آموز گرامی رمز عبور موقتی برای شما ایجاد گردید . لطفا بعد از ورود به حساب کاربری خود اقدام به تغییر رمز عبور نمایید .</span></p>
+<p style="line-height: 1.2; font-size: 17px; text-align: right; mso-line-height-alt: 20px; mso-ansi-font-size: 18px; margin: 0;"><span style="font-size: 17px; mso-ansi-font-size: 18px;">سلام {{ $student->name}} {{$student->familyName }} عزیز </span></p>
+<p style="line-height: 1.2; font-size: 17px; text-align: right; mso-line-height-alt: 20px; mso-ansi-font-size: 18px; margin: 0;"><span style="font-size: 17px; mso-ansi-font-size: 18px;">دانش آموز گرامی رمز عبور موقتی برای شما ایجاد گردید . لطفا پس ار ورود به حساب کاربری خود اقدام به تغییر رمز عبور نمایید </span></p>
 <p style="line-height: 1.2; font-size: 17px; text-align: center; mso-line-height-alt: 20px; mso-ansi-font-size: 18px; margin: 0;"><span style="font-size: 17px; mso-ansi-font-size: 18px;">{{ $newPassword }} : رمز عبور موقت</span></p>
 <p style="line-height: 1.2; font-size: 17px; text-align: center; mso-line-height-alt: 20px; mso-ansi-font-size: 18px; margin: 0;"><span style="font-size: 17px; mso-ansi-font-size: 18px;">       </span></p>
 </div>
