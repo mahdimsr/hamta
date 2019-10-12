@@ -1,96 +1,43 @@
 @extends('layouts.student_dashboard')
 @section('content')
 
-	<div class="row" dir="rtl">
-		<div class="col-md-6 col-sm-6" >
-		<div class="card text-center"  >
-			<div class="card-header"><h5 class="card-title">آزمون دوم</h5></div>
-			<div class="hover14">
-				<figure>
-					<img class="" src="{{asset('image/student/dashboard/exam.jpg')}}" class="card-img-top" alt="" width="100%" height="200rem">
-				</figure>
-			</div>
-			<div class="card-body">
-				<h5 class="card-title">توضیحات</h5>
-				<p class="card-text margin-card">این آزمون متشکل از سوالات چهار گزینه ای می باشد که از بانک سوالات مجموعه استخراج شده است.
-					موفق باشید</p>
-				<a href="{{ route('student_dashboard_lessonExams_questions') }}" class="ctrl-standard typ-subhed fx-bubbleDown">نمایش سوالات</a>
-			</div>
-			<div class="card-footer text-muteds text-center">
-				<p>مقطع:پایه ششم  -  مرکزآموزشی:نمونه مطهری  -  تاریخ:سال96  -  سطح سختی:راحت</p>
-			</div>
-		</div>
-		</div>
-		<div class="col-md-6 col-sm-6">
-			<div class="card text-center" >
-				<div class="card-header"><h5 class="card-title">آزمون اول</h5></div>
-				<div class="hover14">
-				<figure>
-				<img class="" src="{{asset('image/student/dashboard/exam.jpg')}}" class="card-img-top" alt="" width="100%" height="200rem">
-				</figure>
-				</div>
-				<div class="card-body">
-					<h5 class="card-title">توضیحات</h5>
-					<p class="card-text margin-card">این آزمون متشکل از سوالات چهار گزینه ای می باشد که از بانک سوالات مجموعه استخراج شده است.
-					موفق باشید</p>
-					<button class="ctrl-standard typ-subhed fx-bubbleDown">نمایش سوالات</button>
-				</div>
-				<div class="card-footer text-muteds text-center">
-					<p>مقطع:پایه ششم  -  مرکزآموزشی:نمونه مطهری  -  تاریخ:سال96  -  سطح سختی:راحت</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="row" dir="rtl">
-		<div class="col-md-6 col-sm-6">
-			<div class="card text-center" >
-				<div class="card-header"><h5 class="card-title">آزمون چهارم</h5></div>
-				<div class="hover14">
-					<figure>
-						<img class="" src="{{asset('image/student/dashboard/exam.jpg')}}" class="card-img-top" alt="" width="100%" height="200rem">
-					</figure>
-				</div>
-				<div class="card-body">
-					<h5 class="card-title">توضیحات</h5>
-					<p class="card-text margin-card">این آزمون متشکل از سوالات چهار گزینه ای می باشد که از بانک سوالات مجموعه استخراج شده است.
-						موفق باشید</p>
-					<button class="ctrl-standard typ-subhed fx-bubbleDown">نمایش سوالات</button>
-				</div>
-				<div class="card-footer text-muteds text-center">
-					<p>مقطع:پایه ششم  -  مرکزآموزشی:نمونه مطهری  -  تاریخ:سال96  -  سطح سختی:راحت</p>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-md-6 col-sm-6">
-			<div class="card text-center" >
-				<div class="card-header"><h5 class="card-title">آزمون سوم</h5></div>
-				<div class="hover14">
-					<figure>
-						<img class="" src="{{asset('image/student/dashboard/exam.jpg')}}" class="card-img-top" alt="" width="100%" height="200rem">
-					</figure>
-				</div>
-				<div class="card-body">
-					<h5 class="card-title">توضیحات</h5>
-					<p class="card-text margin-card">این آزمون متشکل از سوالات چهار گزینه ای می باشد که از بانک سوالات مجموعه استخراج شده است.
-						موفق باشید</p>
-					<button class="ctrl-standard typ-subhed fx-bubbleDown">نمایش سوالات</button>
-				</div>
-
-					<div class="card-footer text-muteds text-center">
-						<p>مقطع:پایه ششم  -  مرکزآموزشی:نمونه مطهری  -  تاریخ:سال96  -  سطح سختی:راحت</p>
-					</div>
-
-			</div>
-		</div>
-
-	</div>
+    <div class="row" dir="rtl">
+        @foreach($lessonExams as $lessonExam)
+            <div class="col-md-4 col-sm-4">
+                <div class="card text-center">
+                    <div class="card-header"><h5 class="card-title">{{$lessonExam->title}}</h5></div>
+                    <div class="hover14">
+                        <figure>
+                            <img class="" src="{{asset('image/student/dashboard/exam.jpg')}}" class="card-img-top"
+                                 alt="" width="100%" height="200rem">
+                        </figure>
+                    </div>
+                    <div class="card-body">
+                        @if($lessonExam->description)
+                            <h5 class="card-title">توضیحات</h5>
+                            <p class="card-text margin-card">
+                                {{$lessonExam->description}}
+                            </p>
+                        @endif
+                        <a href="{{ route('student_dashboard_lessonExams_questions') }}"
+                           class="ctrl-standard typ-subhed fx-bubbleDown">نمایش سوالات</a>
+                    </div>
+                    <div class="card-footer text-muteds text-center">
+                        <p>{{$lessonExam->persianCreatedAt}} </p>
+                        @foreach($lessonExam->grades() as $grade)
+                            <p>{{$grade->title}}</p>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
 @endsection
 
 @section('script')
 
-	<script type="text/javascript">
-	</script>
+    <script type="text/javascript">
+    </script>
 
 @endsection
 
