@@ -46,6 +46,7 @@
 
                 $model->examGradeLessons()->delete();
                 $model->questionExams()->delete();
+                $model->examCodes()->delete();
                 Storage::disk('lessonExam')->deleteDirectory($model->id );
 
             });
@@ -77,11 +78,16 @@
             return $date;
         }
 
+        public function examCodes()
+        {
+
+            return $this->hasMany(ExamCode::class, 'examId');
+        }
 
         public function examGradeLessons()
         {
 
-            return $this->hasMany(ExamGradeLesson::class, 'examId')->where('type', '=', 'LESSON_EXAM');
+            return $this->hasMany(ExamGradeLesson::class, 'examId')->where('type','LESSON_EXAM');
         }
 
 

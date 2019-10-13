@@ -27,6 +27,32 @@
 
         protected $appends = ['isExpired', 'persianEndDate', 'persianType'];
 
+        protected static function boot()
+        {
+
+            parent::boot();
+
+
+            self::deleting(function($model)
+            {
+
+                $model->studentCodes()->delete();
+                $model->examCodes()->delete();
+
+            });
+        }
+
+        public function studentCodes()
+        {
+
+            return $this->hasMany(StudentCode::class, 'discountId');
+        }
+
+        public function examCodes()
+        {
+
+            return $this->hasMany(ExamCode::class, 'discountId');
+        }
 
         public function getIsExpiredAttribute()
         {
@@ -55,11 +81,11 @@
         public function getPersianTypeAttribute()
         {
 
-            $typeArray = ['GENERAL-CHARGE' => 'شارژ حساب کاربری (همگانی)',
-                          'GENERAL-OFF'    => 'تخفیف رویه محصولات و خدمات',
-                          'STUDENT-OFF'    => 'تخفیف اختصاصی دانش آموزان',
-                          'STUDENT-CHARGE' => 'شارژ حساب اختصاصی دانش آموزان',
-                          'EXAM-OFF'       => 'تخفیف اختصاصی آزمون ها'];
+            $typeArray = ['GENERAL-CHARGE'            => 'شارژ حساب کاربری',
+                          'GENERAL-LESSONEXAM-OFF'    => 'تخفیف آزمون های درس به درس',
+                          'STUDENT-OFF'               => 'تخفیف اختصاصی دانش آموز',
+                          'STUDENT-CHARGE'            => 'شارژ حساب اختصاصی دانش آموز',
+                          'LESSONEXAM-OFF'            => 'تخفیف اختصاصی آزمون درس به درس'];
 
             return $typeArray[ $this->type ];
         }

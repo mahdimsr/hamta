@@ -78,7 +78,11 @@
 									<a href="{{route('admin_ltlExams_questionsShow',['exm' => $exam->exm])}}"
 									   style="font-size: 12px;" class="btn btn-success">
 										سوالات
-									</a>
+                                    </a>
+                                    <a href="{{route('admin_ltlExams_discounts',['exm' => $exam->exm])}}"
+                                            style="font-size: 12px;" class="btn btn-success">
+                                             کد های تخفیف
+                                         </a>
 
 								</td>
 							</tr>

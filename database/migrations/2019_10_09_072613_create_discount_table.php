@@ -22,7 +22,8 @@
                 $table->bigIncrements('id');
                 $table->string('code');
                 $table->integer('value');
-                $table->enum('type', ['GENERAL-OFF','GENERAL-CHARGE','STUDENT-OFF','STUDENT-CHARGE','EXAM-OFF']);
+                $table->integer('count');
+                $table->enum('type', ['GENERAL-LESSONEXAM-OFF','GENERAL-CHARGE','STUDENT-OFF','STUDENT-CHARGE','LESSONEXAM-OFF']);
                 $table->date('endDate');
                 $table->timestamps();
                 $table->softDeletes();
