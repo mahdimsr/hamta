@@ -9,29 +9,19 @@
 	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner">
 			<div class="carousel-item active">
-				<img class="d-block w-100" src="{{asset('image/homepage/blue_bubbles_2-wallpaper-1280x800.jpg')}}"
+				<img class="d-block w-100" src="{{asset('image/homepage/ازمون1-100.jpg')}}"
 					 alt="First slide">
-				<div class="carousel-caption d-none d-md-block">
-					<h5>سربرگ</h5>
-					<p>متن توضیح برای هر چیزی.</p>
-
-				</div>
+			
 			</div>
 			<div class="carousel-item">
-				<img class="d-block w-100" src="{{asset('image/homepage/city_of_love-wallpaper-3554x1999.jpg')}}"
+				<img class="d-block w-100" src="{{asset('image/homepage/اسلاید11-100.jpg')}}"
 					 alt="Second slide">
-				<div class="carousel-caption d-none d-md-block">
-					<h5>سربرگ</h5>
-					<p>متن توضیح برای هر چیزی.</p>
-				</div>
+			
 			</div>
 			<div class="carousel-item">
-				<img class="d-block w-100" src="{{asset('image/homepage/purple_texture-wallpaper-1280x720.jpg')}}"
+				<img class="d-block w-100" src="{{asset('image/homepage/بورسه-100.jpg')}}"
 					 alt="Third slide">
-				<div class="carousel-caption d-none d-md-block">
-					<h5>سربرگ</h5>
-					<p>متن توضیح برای هر چیزی.</p>
-				</div>
+		
 			</div>
 		</div>
 		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -100,7 +90,7 @@
 			<div class="d-lg-flex justify-content-between">
 				<div class="card-feature mb-5 mb-lg-0">
 					<div class="feature-icon" data-aos="fade-right"  data-aos-duration="2000">
-					<img src="{{asset('image/homepage/fogg-premium-upgrade-1.png')}}"  >
+					<img src="{{asset('image/homepage/Asset 111.svg')}}"  >
 					</div>
 					<h3>آزمون جایزه دار</h3>
 					<p>آزمون بده پول بگیر</p>
@@ -108,7 +98,7 @@
 
 				<div class="card-feature mb-5 mb-lg-0">
 					<div class="feature-icon" data-aos="fade-down"  data-aos-duration="2000">
-						<img src="{{asset('image/homepage/fogg-premium-upgrade-1.png')}}">
+						<img src="{{asset('image/homepage/Asset 11.svg')}}">
 					</div>
 					<h3>آزمون درس به درس</h3>
 					<p>پول بده آزمون بگیریم</p>
@@ -116,7 +106,7 @@
 
 				<div class="card-feature mb-5 mb-lg-0">
 					<div class="feature-icon"  data-aos="fade-left"  data-aos-duration="2000">
-					<img src="{{asset('image/homepage/fogg-premium-upgrade-1.png')}}">
+					<img src="{{asset('image/homepage/Asset 123.svg')}}">
 					</div>
 					<h3>اپلیکیشن</h3>
 					<p>دراز بکش و آزمون بده و پول بگیر</p>

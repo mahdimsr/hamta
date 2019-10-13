@@ -25,8 +25,8 @@
 	<div class="main_menu">
 		<nav class="navbar navbar-expand-lg navbar-light">
 			<div class="container box_1620">
-				<a class="navbar-brand logo_h" href="{{route('homepage')}}"><img
-							src="{{asset('image/homepage/logo.png')}}" alt=""></a>
+				<a class="navbar-brand" href="{{route('homepage')}}"><img
+							src="{{asset('image/homepage/اصلی.png')}}" alt="" width="100px" height="100px"></a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 						data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 						aria-expanded="false" aria-label="Toggle navigation">
