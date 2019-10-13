@@ -2,6 +2,7 @@
 
 @section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
 <link rel="stylesheet" href="{{ asset('css/admin/dashboard/popup.css') }}">
 	<div class="row">
 		<div class="col-md-12">

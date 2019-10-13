@@ -1,4 +1,8 @@
 
+body{
+  font-family: IRANSans-web, serif !important;
+}
+
 button {
     cursor: pointer;
   }
