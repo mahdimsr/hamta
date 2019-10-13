@@ -90,23 +90,33 @@
 
                     Route::get('/', 'LessonExamController@exams')->name('admin_ltlExams');
                     Route::get('/add', 'LessonExamController@addShow')->name('admin_ltlExams_addShow');
-                    Route::get('/edit/{exm}', 'LessonExamController@editShow')->name('admin_ltlExams_editShow');
-                    Route::post('/edit/{exm}', 'LessonExamController@edit')->name('admin_ltlExams_edit');
+                    Route::get('{exm}/edit', 'LessonExamController@editShow')->name('admin_ltlExams_editShow');
+                    Route::post('{exm}/edit', 'LessonExamController@edit')->name('admin_ltlExams_edit');
                     Route::post('/add', 'LessonExamController@add')->name('admin_ltlExams_add');
-                    Route::get('/remove/{exm}', 'LessonExamController@remove')->name('admin_ltlExams_remove');
+                    Route::get('{exm}/remove', 'LessonExamController@remove')->name('admin_ltlExams_remove');
 
-                    Route::prefix('/questions')->group(function()
+                    Route::prefix('/{exm}/discounts')->group(function()
+                    {
+                    Route::get('/', 'LessonExamController@discounts')->name('admin_ltlExams_discounts');
+                    Route::get('/add', 'LessonExamController@discountAddShow')->name('admin_ltlExams_discountAddShow');
+                    Route::post('/add', 'LessonExamController@discountAdd')->name('admin_ltlExams_discountAdd');
+                    Route::get('/edit/{discountId}', 'LessonExamController@discountEditShow')->name('admin_ltlExams_discountEditShow');
+                    Route::post('/edit/{discountId}', 'LessonExamController@discountEdit')->name('admin_ltlExams_discountEdit');
+                    Route::get('/remove/{discountId}', 'LessonExamController@discountRemove')->name('admin_ltlExams_discountRemove');
+                    });
+
+                    Route::prefix('{exm}/questions')->group(function()
                     {
 
-                        Route::get('/{exm}', 'LessonExamController@questionsShow')->name('admin_ltlExams_questionsShow');
-                        Route::get('/add/{exm}', 'LessonExamController@addQuestionShow')
+                        Route::get('/', 'LessonExamController@questionsShow')->name('admin_ltlExams_questionsShow');
+                        Route::get('/add', 'LessonExamController@addQuestionShow')
                              ->name('admin_ltlExams_addQuestionShow');
-                        Route::post('/add/{exm}', 'LessonExamController@addQuestion')->name('admin_ltlExams_addQuestion');
-                        Route::get('/edit/{exm}/{id}', 'LessonExamController@editQuestionShow')
+                        Route::post('/add', 'LessonExamController@addQuestion')->name('admin_ltlExams_addQuestion');
+                        Route::get('/edit/{id}', 'LessonExamController@editQuestionShow')
                              ->name('admin_ltlExams_editQuestionShow');
-                        Route::post('/edit/{exm}/{id}', 'LessonExamController@editQuestion')
+                        Route::post('/edit/{id}', 'LessonExamController@editQuestion')
                              ->name('admin_ltlExams_editQuestion');
-                        Route::get('/remove/{exm}/{id}', 'LessonExamController@removeQuestion')
+                        Route::get('/remove/{id}', 'LessonExamController@removeQuestion')
                              ->name('admin_ltlExams_removeQuestion');
                     });
                 });
@@ -117,23 +127,23 @@
                     Route::get('/', 'GiftExamController@exams')->name('admin_giftExams');
                     Route::get('/add', 'GiftExamController@addShow')->name('admin_giftExams_addShow');
                     Route::post('/add', 'GiftExamController@add')->name('admin_giftExams_add');
-                    Route::get('/edit/{exm}', 'GiftExamController@editShow')->name('admin_giftExams_editShow');
-                    Route::post('/edit/{exm}', 'GiftExamController@edit')->name('admin_giftExams_edit');
-                    Route::get('/remove/{exm}', 'GiftExamController@remove')->name('admin_giftExams_remove');
+                    Route::get('{exm}/edit', 'GiftExamController@editShow')->name('admin_giftExams_editShow');
+                    Route::post('{exm}/edit', 'GiftExamController@edit')->name('admin_giftExams_edit');
+                    Route::get('{exm}/remove', 'GiftExamController@remove')->name('admin_giftExams_remove');
 
 
-                    Route::prefix('/questions')->group(function()
+                    Route::prefix('{exm}/questions')->group(function()
                     {
 
-                        Route::get('/{exm}','GiftExamController@questionsShow')->name('admin_giftExams_questionsShow');
-                        Route::get('/add/{exm}', 'GiftExamController@addQuestionShow')
+                        Route::get('/','GiftExamController@questionsShow')->name('admin_giftExams_questionsShow');
+                        Route::get('/add', 'GiftExamController@addQuestionShow')
                              ->name('admin_giftExams_addQuestionShow');
-                        Route::post('/add/{exm}', 'GiftExamController@addQuestion')->name('admin_giftExams_addQuestion');
-                        Route::get('/edit/{exm}/{id}', 'GiftExamController@editQuestionShow')
+                        Route::post('/add', 'GiftExamController@addQuestion')->name('admin_giftExams_addQuestion');
+                        Route::get('/edit/{id}', 'GiftExamController@editQuestionShow')
                              ->name('admin_giftExams_editQuestionShow');
-                        Route::post('/edit/{exm}/{id}', 'GiftExamController@editQuestion')
+                        Route::post('/edit/{id}', 'GiftExamController@editQuestion')
                              ->name('admin_giftExams_editQuestion');
-                        Route::get('/remove/{exm}/{id}','GiftExamController@removeQuestion')->name('admin_giftExams_removeQuestion');
+                        Route::get('/remove/{id}','GiftExamController@removeQuestion')->name('admin_giftExams_removeQuestion');
 
                     });
 
@@ -145,10 +155,10 @@
             {
 
                 Route::get('/', 'DiscountController@show')->name('admin_codes_show');
-                Route::get('/addShow', 'DiscountController@addShow')->name('admin_discount_addShow');
+                Route::get('/add', 'DiscountController@addShow')->name('admin_discount_addShow');
                 Route::post('/add', 'DiscountController@add')->name('admin_discount_add');
-                Route::get('/editShow/{id}', 'DiscountController@editShow')->name('admin_discount_editShow');
-                Route::post('/edit', 'DiscountController@edit')->name('admin_discount_edit');
+                Route::get('/edit/{id}', 'DiscountController@editShow')->name('admin_discount_editShow');
+                Route::post('/edit/{id}', 'DiscountController@edit')->name('admin_discount_edit');
                 Route::get('/remove/{id}', 'DiscountController@remove')->name('admin_discount_remove');
             });
 
@@ -226,6 +236,16 @@
                 Route::get('/', 'StudentController@students')->name('admin_students');
                 Route::get('/edit/{id}', 'StudentController@editShow')->name('admin_students_editShow');
                 Route::post('/edit/{id}', 'StudentController@edit')->name('admin_students_edit');
+
+                Route::prefix('/{id}/discounts')->group(function()
+                {
+                Route::get('/', 'StudentController@discounts')->name('admin_students_discounts');
+                Route::get('/add', 'StudentController@discountAddShow')->name('admin_students_discountAddShow');
+                Route::post('/add', 'StudentController@discountAdd')->name('admin_students_discountAdd');
+                Route::get('/edit/{discountId}', 'StudentController@discountEditShow')->name('admin_students_discountEditShow');
+                Route::post('/edit/{discountId}', 'StudentController@discountEdit')->name('admin_students_discountEdit');
+                Route::get('/remove/{discountId}', 'StudentController@discountRemove')->name('admin_students_discountRemove');
+                });
             });
         });
     });

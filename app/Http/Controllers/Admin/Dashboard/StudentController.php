@@ -8,11 +8,14 @@
     use App\model\Grade;
     use App\model\Orientation;
     use App\model\Student;
+    use App\model\Discount;
+    use App\model\StudentCode;
     use Carbon\Carbon;
     use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
     use Illuminate\Validation\Rule;
     use Morilog\Jalali\CalendarUtils;
+
 
 
     class StudentController extends Controller
@@ -102,6 +105,97 @@
             $student->update();
 
             return redirect()->route('admin_students');
+        }
+
+        public function discounts($id)
+        {
+
+            $studentDiscounts = StudentCode::where('studentId',$id)->get();
+
+
+            return view('admin.dashboard.student.discounts', compact('studentDiscounts','id'));
+        }
+
+        public function discountAddShow($id)
+        {
+            $modify         = 0;
+
+            return view('admin.dashboard.student.discount_form', compact('modify','id'));
+        }
+
+        public function discountAdd(Request $request,$id)
+        {
+
+            $this->validate($request, ['code'    => 'required|string|max:8|unique:discount,code',
+                                       'value'   => 'required|numeric|min:0|max:100',
+                                       'count'   => 'required|numeric|min:1|max:20',
+                                       'endDate' => 'required']);
+
+            $discount = new Discount();
+
+            $discount->code  = $request->input('code');
+            $discount->value = $request->input('value');
+            $discount->count = $request->input('count');
+            $discount->type  = 'STUDENT-OFF';
+
+            //convert endDate
+            $persianDate       = Lib::convertFaToEn($request->input('endDate'));
+            $date              = CalendarUtils::createDatetimeFromFormat('Y/m/d', $persianDate);
+            $carbon            = Carbon::createFromTimestamp($date->getTimestamp());
+            $discount->endDate = $carbon->toDateTimeString();
+
+            $discount->save();
+
+            $studentCode = new StudentCode();
+
+            $studentCode->studentId  = $id;
+            $studentCode->discountId = $discount->id;
+            $studentCode->save();
+
+            return redirect()->back();
+        }
+
+        public function discountEditShow($id,$discountId)
+        {
+            $modify         = 1;
+            $discount       = Discount::query()->find($discountId);
+
+            return view('admin.dashboard.student.discount_form', compact('modify','id','discount'));
+        }
+
+        public function discountEdit(Request $request,$id,$discountId)
+        {
+
+            $discount = Discount::where('id',$discountId)->first();
+
+            $this->validate($request, ['code'    => ['required', 'string', 'max:8',
+                                       Rule::unique('discount', 'code')->ignore($discount)],
+                                       'value'   => 'required|numeric|min:0|max:100',
+                                       'count'   => 'required|numeric|min:1|max:20',
+                                       'endDate' => 'required']);
+
+            $discount->code  = $request->input('code');
+            $discount->value = $request->input('value');
+            $discount->count = $request->input('count');
+
+            //convert endDate
+            $persianDate       = Lib::convertFaToEn($request->input('endDate'));
+            $date              = CalendarUtils::createDatetimeFromFormat('Y/m/d', $persianDate);
+            $carbon            = Carbon::createFromTimestamp($date->getTimestamp());
+            $discount->endDate = $carbon->toDateTimeString();
+
+            $discount->save();
+
+            return redirect()->back();
+        }
+
+        public function discountRemove($id,$discountId)
+        {
+            $discount = Discount::query()->find($discountId);
+
+            $discount->delete();
+
+            return redirect()->back();
         }
 
     }

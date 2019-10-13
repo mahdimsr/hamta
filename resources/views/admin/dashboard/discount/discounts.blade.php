@@ -6,9 +6,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="header">
-                    <h4 class="title text-right">کدهای تخفیف</h4>
+                    <h4 class="title text-right">کدها</h4>
                     <a href="{{route('admin_discount_addShow')}}" style="font-size: 12px;" class="btn btn-info pull-right btn-table-header">
-                        افزودن کد تخفیف
+                        افزودن کد
                     </a>
                 </div>
                 <div dir="rtl" class="content table-responsive table-full-width">
@@ -16,14 +16,15 @@
                         <thead class="text-right">
                         <th>شماره</th>
                         <th>کد</th>
-                        <th>مقدار</th>
+                        <th>درصد</th>
                         <th>نوع</th>
                         <th>تاریخ انقضا</th>
-                        <th>وضعیف</th>
+                        <th>وضعیت</th>
+                        <th>تعداد دفعات استفاده</th>
                         <th>فرآیند</th>
                         </thead>
                         <tbody class="text-center">
-                        @foreach($discounts as $discount)
+                            @foreach($discounts as $discount)
                             <tr>
                                 <td>{{$discount->id}}</td>
                                 <td>{{$discount->code}}</td>
@@ -31,20 +32,20 @@
                                 <td>{{$discount->persianType}}</td>
                                 <td>{{$discount->persianEndDate}}</td>
                                 <td>{{$discount->isExpired ? 'منقضی شده' : 'فعال'}}</td>
+                                <td>{{$discount->count}}</td>
                                 <td>
 
                                     <a href="{{route('admin_discount_remove',['id' => $discount->id])}}" id="remove-btn" type="button"
                                        style="font-size: 12px;" class="btn btn-danger">
                                         حذف
                                     </a>
-                                    <a href="{{route('admin_discount_editShow',['url' => $discount->id])}}" style="font-size: 12px;" class="btn btn-info">
+                                    <a href="{{route('admin_discount_editShow',['id' => $discount->id])}}" style="font-size: 12px;" class="btn btn-info">
                                         ویرایش
                                     </a>
 
                                 </td>
                             </tr>
-                        @endforeach
-
+                            @endforeach
                         </tbody>
                     </table>
 

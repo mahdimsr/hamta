@@ -51,7 +51,7 @@ class Orientation extends Model
 
     public function gradeLessons()
 	{
-		return $this->hasMany(GradeLesson::class, 'gradeLessonId');
+		return $this->hasMany(GradeLesson::class, 'orientationId');
     }
 
 }

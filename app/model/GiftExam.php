@@ -98,7 +98,7 @@
         {
 
             return $this->hasMany(ExamGradeLesson::class, 'examId')
-                        ->where('type', '=', 'GIFT_EXAM');
+                        ->where('type','GIFT_EXAM');
         }
 
 

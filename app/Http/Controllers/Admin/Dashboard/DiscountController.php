@@ -18,7 +18,7 @@
         public function show()
         {
 
-            $discounts = Discount::all();
+            $discounts = Discount::whereNotIn('type',['STUDENT-OFF','LESSONEXAM-OFF','STUDENT-CHARGE'])->get();
 
 
             return view('admin.dashboard.discount.discounts', compact('discounts'));
@@ -37,8 +37,10 @@
         public function add(Request $request)
         {
 
-            $this->validate($request, ['code'    => 'required|string|max:15|unique:discount,code',
-                                       'value'   => 'required|integer|min:0',
+            $this->validate($request, ['code'    => 'required|string|max:8|unique:discount,code',
+                                       'value'   => 'required|numeric|min:0|max:100',
+                                       'type'    => 'required',
+                                       'count'   => 'required|numeric|min:1|max:20',
                                        'endDate' => 'required']);
 
             $discount = new Discount();
@@ -46,6 +48,7 @@
             $discount->code  = $request->input('code');
             $discount->value = $request->input('value');
             $discount->type  = $request->input('type');
+            $discount->count = $request->input('count');
 
             //convert endDate
             $persianDate       = Lib::convertFaToEn($request->input('endDate'));
@@ -70,18 +73,19 @@
         }
 
 
-        public function edit(Request $request)
+        public function edit(Request $request,$id)
         {
+            $discount = Discount::query()->find($id);
 
-            $this->validate($request, ['code'    => ['required', 'string', 'max:15'],
-                                       Rule::unique('discount', 'code'),
-                                       'value'   => 'required|integer|min:0',
+            $this->validate($request, ['code'    => ['required', 'string', 'max:8',
+                                       Rule::unique('discount', 'code')->ignore($discount)],
+                                       'value'   => 'required|numeric|min:0|max:100',
+                                       'count'   => 'required|numeric|min:1|max:20',
                                        'endDate' => 'required']);
-
-            $discount = Discount::query()->find($request->input('id'));
 
             $discount->code  = $request->input('code');
             $discount->value = $request->input('value');
+            $discount->count = $request->input('count');
 
             //convert endDate
             $persianDate       = Lib::convertFaToEn($request->input('endDate'));

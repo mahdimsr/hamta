@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-	<title>همپا | پنل دانش آموز</title>
+	<title>همپا | دانش آموز</title>
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
 	<meta name="viewport" content="width=device-width"/>
 
@@ -250,9 +250,9 @@
 			  s0.292,0.773,0,1.068l-2.505,2.528L12.491,11.491z"/>
 	</symbol>
   </svg>
-  
-  
-  
+
+
+
 </body>
 <!--   Core JS Files   -->
 <script src="{{asset('js/student/dashboard/jquery.3.2.1.min.js')}}" type="text/javascript"></script>

@@ -28,7 +28,11 @@
 									<a href="{{route('admin_students_editShow',['id' => $student->id])}}"
 									   style="font-size: 12px;" class="btn btn-info">
 										ویرایش
-									</a>
+                                    </a>
+                                    <a href="{{route('admin_students_discounts',['id' => $student->id])}}"
+                                            style="font-size: 12px;" class="btn btn-info">
+                                             کد های تخفیف
+                                    </a>
 								</td>
 							</tr>
 						@endforeach
