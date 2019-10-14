@@ -81,7 +81,14 @@
 
             $student = Auth::guard('student')->user();
 
-            return view('student.dashboard.lessonExam.exam_questions', compact('student','questions'));
+            return view('student.dashboard.lessonExam.exam_questions', compact('student', 'questions'));
+        }
+
+
+        public function questionsCorrect(Request $request)
+        {
+
+            return $request;
         }
 
     }
