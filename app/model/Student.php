@@ -1,41 +1,58 @@
 <?php
 
-namespace App\model;
+    namespace App\model;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+    use Illuminate\Database\Eloquent\SoftDeletes;
+    use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
-/**
- * @property \Carbon\Carbon $created_at
- * @property int $id
- * @property \Carbon\Carbon $updated_at
- * @property \Carbon\Carbon $deleted_at
- */
-class Student extends Authenticatable
-{
-	use SoftDeletes;
-
-	protected $table = 'student';
-
-    public function city()
+    /**
+     * @property \Carbon\Carbon $created_at
+     * @property int            $id
+     * @property \Carbon\Carbon $updated_at
+     * @property \Carbon\Carbon $deleted_at
+     */
+    class Student extends Authenticatable
     {
-        return $this->hasOne(City::class,'id','cityId');
-    }
 
-    public function orientation()
-    {
-        return $this->hasOne(Orientation::class,'id','orientationId');
-    }
+        use SoftDeletes;
 
-    public function grade()
-    {
-        return $this->hasOne(Grade::class,'id','gradeId');
-    }
+        protected $table = 'student';
 
-    public function scholarship()
-    {
-        return $this->hasOne(Scholarship::class,'studentId','id');
+
+        public function city()
+        {
+
+            return $this->hasOne(City::class, 'id', 'cityId');
+        }
+
+
+        public function orientation()
+        {
+
+            return $this->hasOne(Orientation::class, 'id', 'orientationId');
+        }
+
+
+        public function grade()
+        {
+
+            return $this->hasOne(Grade::class, 'id', 'gradeId');
+        }
+
+
+        public function scholarship()
+        {
+
+            return $this->hasOne(Scholarship::class, 'studentId', 'id');
+        }
+
+
+        public function transactions()
+        {
+
+            return $this->hasMany(Transaction::class, 'studentId');
+        }
+
     }
-}
 

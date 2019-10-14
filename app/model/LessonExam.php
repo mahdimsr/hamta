@@ -6,6 +6,7 @@
     use Carbon\Carbon;
     use Illuminate\Database\Eloquent\Model;
     use Illuminate\Database\Eloquent\SoftDeletes;
+    use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Storage;
     use Morilog\Jalali\Jalalian;
 
@@ -32,7 +33,7 @@
 
         protected $table = 'lesson_exam';
 
-        protected $appends = ['answerSheetPath','persianCreatedAt','persianUpdatedAt'];
+        protected $appends = ['answerSheetPath', 'persianCreatedAt', 'persianUpdatedAt'];
 
 
         protected static function boot()
@@ -46,6 +47,7 @@
 
                 $model->examGradeLessons()->delete();
                 $model->questionExams()->delete();
+
                 $model->examCodes()->delete();
                 Storage::disk('lessonExam')->deleteDirectory($model->id );
 
@@ -64,15 +66,16 @@
 
         public function getPersianCreatedAtAttribute()
         {
+
             $date = Jalalian::fromCarbon($this->created_at)->format('%A, %d %B %y');
 
             return $date;
         }
 
 
-
         public function getPersianUpdatedAtAttribute()
         {
+
             $date = Jalalian::fromCarbon($this->updated_at)->format('%A, %d %B %y');
 
             return $date;
@@ -179,6 +182,35 @@
         {
 
             return $this->hasMany(QuestionExam::class, 'examId')->where('type', 'LESSON_EXAM');
+        }
+
+
+        public function isPaid()
+        {
+
+            $student = Auth::guard('student')->user();
+
+            $auth_transactions = $student->transactions;
+
+            $isPaid = false;
+
+            if (count($auth_transactions) > 0)
+            {
+
+                foreach ($auth_transactions as $transaction)
+                {
+                    if (Transaction::query()->where('itemType', 'LESSON_EXAM')->where('itemId', $this->id)->exists())
+                    {
+                        $isPaid = true;
+                    }
+                }
+
+                return $isPaid;
+            }
+            else
+            {
+                return $isPaid;
+            }
         }
 
     }
