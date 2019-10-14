@@ -55,6 +55,9 @@
 
                     Route::post('/questions_correct', 'LessonExamController@questionsCorrect')
                          ->name('student_dashboard_lessonExams_questionsCorrect');
+
+                    Route::get('/result', 'LessonExamController@result')
+                         ->name('student_dashboard_lessonExams_result');
                 });
             });
             Route::prefix('cart')->group(function()

@@ -91,4 +91,12 @@
             return $request;
         }
 
+
+        public function result()
+        {
+            $student = Auth::guard('student')->user();
+
+            return view('student.dashboard.lessonExam.result',compact('student'));
+        }
+
     }
