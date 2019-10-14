@@ -42,7 +42,7 @@
 
                     //purchase
 
-                    $transaction           = new Transaction();
+                    $transaction = new Transaction();
 
                     $transaction->type     = 'PURCHASE';
                     $transaction->itemType = 'LESSON_EXAM';
@@ -72,12 +72,16 @@
         }
 
 
-        public function questions()
+        public function questions($exm)
         {
+
+            $lessonExam = LessonExam::query()->where('exm', $exm)->first();
+
+            $questions = $lessonExam->questions;
 
             $student = Auth::guard('student')->user();
 
-            return view('student.dashboard.lessonExam.exam_questions', compact('student'));
+            return view('student.dashboard.lessonExam.exam_questions', compact('student','questions'));
         }
 
     }

@@ -24,6 +24,8 @@
     <!--     datePicker     -->
     <link href="{{asset('datePicker/persian-datepicker.min.css')}}" rel="stylesheet"/>
 
+    @yield('link')
+
     <style>
         th
         {
