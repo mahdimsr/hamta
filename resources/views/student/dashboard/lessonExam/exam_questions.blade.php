@@ -24,49 +24,74 @@
              aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
     </div>
 
+    <form action="{{route('student_dashboard_lessonExams_questionsCorrect')}}" method="post">
 
-    @foreach($questions as $question)
+        {{csrf_field()}}
 
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item active">
-                <p>{{$question->text}}</p>
-            </li>
+        <div style="display: none">
+            {{$i=0}}
+        </div>
 
+        @foreach($questions as $question)
 
-            <li class="list-group-item">
-                <div class="inputGroup">
-                    <input id="radio1" name="{{'questionAnswer-' . $question->id}}" type="radio"/>
-                    <label for="radio1">{{$question->optionOne}}</label>
+            <in class="list-group list-group-flush">
+                <li class="list-group-item active">
+                    <p>{{$question->text}}</p>
+                </li>
+
+                <div style="display: none">
+                    {{$i++}}
                 </div>
-            </li>
+
+                <input name="{{'questions[' . $i . '][id]' }}" value="{{$question->id}}" type="text"
+                       style="display: none">
+
+                <li class="list-group-item">
+                    <div class="inputGroup">
+                        <input id="{{'radio1' . $question->id}}" name="{{'questions[' . $i . ']' . '[answer]' }}"
+                               value="1"
+                               type="radio"/>
+                        <label for="{{'radio1' . $question->id}}">{{$question->optionOne}}</label>
+                    </div>
+                </li>
 
 
-            <li class="list-group-item">
-                <div class="inputGroup">
-                    <input id="radio2" name="{{'questionAnswer-' . $question->id}}" type="radio"/>
-                    <label for="radio2">{{$question->optionTwo}}</label>
-                </div>
-            </li>
+                <li class="list-group-item">
+                    <div class="inputGroup">
+                        <input id="{{'radio2' . $question->id}}" name="{{'questions[' . $i . ']' . '[answer]' }}"
+                               value="2"
+                               type="radio"/>
+                        <label for="{{'radio2' . $question->id}}">{{$question->optionTwo}}</label>
+                    </div>
+                </li>
 
 
-            <li class="list-group-item">
-                <div class="inputGroup">
-                    <input id="radio3" name="{{'questionAnswer-' . $question->id}}" type="radio"/>
-                    <label for="radio3">{{$question->optionThree}}</label>
-                </div>
-            </li>
+                <li class="list-group-item">
+                    <div class="inputGroup">
+                        <input id="{{'radio3' . $question->id}}" name="{{'questions[' . $i . ']' . '[answer]' }}"
+                               value="3"
+                               type="radio"/>
+                        <label for="{{'radio3' . $question->id}}">{{$question->optionThree}}</label>
+                    </div>
+                </li>
 
-            <li class="list-group-item">
-                <div class="inputGroup">
-                    <input id="radio4" name="{{'questionAnswer-' . $question->id}}" type="radio"/>
-                    <label for="radio4">{{$question->optionFour}}</label>
-                </div>
-            </li>
+                <li class="list-group-item">
+                    <div class="inputGroup">
+                        <input id="{{'radio4' . $question->id}}" name="{{'questions[' . $i . ']' . '[answer]' }}"
+                               value="4"
+                               type="radio"/>
+                        <label for="{{'radio4' . $question->id}}">{{$question->optionFour}}</label>
+                    </div>
+                </li>
 
-        </ul>
+            </in>
 
-    @endforeach
+        @endforeach
 
+        <button type="submit" class="btn btn-info btn-fill pull-right">اتمام</button>
+        <div class="clearfix"></div>
+
+    </form>
 
 @endsection
 

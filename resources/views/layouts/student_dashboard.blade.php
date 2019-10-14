@@ -179,6 +179,16 @@
                                 <p class="hidden-lg hidden-md">جست وجو</p>
                             </a>
                         </li>
+                        <li>
+                            <a class="btn btn-fill btn-info" href="{{route('student_dashboard_lessonExams_result')}}">
+                                صفحه نتایج
+                            </a>
+                        </li>
+                        <li>
+                            <a class="btn btn-fill btn-info" href="{{route('student_test')}}">
+                                صفحه تست و آزمایش
+                            </a>
+                        </li>
                     </ul>
 
                     <ul class="nav navbar-nav text-right">
