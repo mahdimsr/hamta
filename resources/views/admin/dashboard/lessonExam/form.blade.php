@@ -72,7 +72,20 @@
                         {{csrf_field()}}
 
                         <div class="row">
-                            <div class="col-md-6">
+
+                            <div class="col-md-6 s-floatR">
+                                <div class="form-group">
+                                    <label class="control-label">عنوان</label>
+                                    <input name="title" class="form-control" type="text"
+                                           maxlength="20" tabindex="1" placeholder="عنوان آزمون را وارد نمایید"
+                                           value="{{old('title')}}{{ $modify==1 && !old('title') && $lessonExam->title ? $lessonExam->title : '' }}">
+                                </div>
+                                <div class="invalid-feedback">
+                                    <small>{{ $errors->first('title') }}</small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 s-floatL">
                                 <div class="form-group">
                                     <label class="control-label">قیمت</label>
                                     <input name="price" class="form-control" type="text"
@@ -84,33 +97,12 @@
                                     <small>{{ $errors->first('price') }}</small>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label">عنوان</label>
-                                    <input name="title" class="form-control" type="text"
-                                           maxlength="20" tabindex="1" placeholder="عنوان آزمون را وارد نمایید"
-                                           value="{{old('title')}}{{ $modify==1 && !old('title') && $lessonExam->title ? $lessonExam->title : '' }}">
-                                </div>
-                                <div class="invalid-feedback">
-                                    <small>{{ $errors->first('title') }}</small>
-                                </div>
-                            </div>
+
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label">زمان آزمون (به دقیقه)</label>
-                                    <input name="duration" class="form-control" type="text"
-                                           maxlength="10" tabindex="4"
-                                           value="{{old('duration')}}{{ $modify==1 && !old('duration') && $lessonExam->duration ? $lessonExam->duration : '' }}"
-                                           placeholder="مثلا: 60 دقیقه"/>
-                                </div>
-                                <div class="invalid-feedback">
-                                    <small>{{ $errors->first('duration') }}</small>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
+
+                            <div class="col-md-6 s-floatR">
                                 <div class="form-group">
                                     <label>تاریخ فعال شدن آزمون </label>
                                     <input dir="rtl" id="activeDate" name="activeDate" type="text"
@@ -122,6 +114,20 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col-md-6 s-floatL">
+                                <div class="form-group">
+                                    <label class="control-label">زمان آزمون (به دقیقه)</label>
+                                    <input name="duration" class="form-control" type="text"
+                                           maxlength="10" tabindex="4"
+                                           value="{{old('duration')}}{{ $modify==1 && !old('duration') && $lessonExam->duration ? $lessonExam->duration : '' }}"
+                                           placeholder="مثلا: 60 دقیقه"/>
+                                </div>
+                                <div class="invalid-feedback">
+                                    <small>{{ $errors->first('duration') }}</small>
+                                </div>
+                            </div>
+
                         </div>
 
                         @if($modify == 0)
@@ -175,7 +181,26 @@
                         @endif
 
                         <div class="row">
-                            <div class="{{ $modify==0 ? 'col-md-6' : 'col-md-12' }}">
+
+                            @if($modify==0)
+                                <div class="col-md-6 s-floatR" >
+                                    <label for="lesson-select" class="control-label">درس های آزمون</label>
+                                    <select class="form-control menu12 dropdown-radius" id="lesson-select" name="gradeLessons[]" multiple data-placeholder="درس های آزمون را انتخاب نمایید">
+                                        <option value="" id="0" disabled selected>دسته بندی دروس آزمون را انتخاب نمایید
+                                        </option>
+                                        @foreach($gradeLessons as $gradeLesson)
+                                            <option data-content="{{$gradeLesson->orientationId.$gradeLesson->lesson->parentId}}"
+                                                    value="{{$gradeLesson->id}}"
+                                            >{{$gradeLesson->lesson_grade}} - {{ $gradeLesson->sort_title }}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('gradeLessons') }}</small>
+                                    </div>
+                                </div>
+                            @endif
+
+                            <div class="{{ $modify==0 ? 'col-md-6' : 'col-md-12' }} s-floatL">
                                 <div class="form-group">
                                     <label class="control-label">پاسخ نامه سوالات (به صورت pdf)</label>
                                     <div class="input-file-container">
@@ -195,30 +220,14 @@
                                     <small>{{ $errors->first('answerSheet') }}</small>
                                 </div>
                             </div>
-                            @if($modify==0)
-                            <div class="col-md-6" style="float: right;">
-                                <label for="lesson-select" class="control-label">درس های آزمون</label>
-                                <select class="form-control menu12 dropdown-radius" id="lesson-select" name="gradeLessons[]" multiple data-placeholder="درس های آزمون را انتخاب نمایید">
-                                    <option value="" id="0" disabled selected>دسته بندی دروس آزمون را انتخاب نمایید
-                                    </option>
-                                    @foreach($gradeLessons as $gradeLesson)
-                                        <option data-content="{{$gradeLesson->orientationId.$gradeLesson->lesson->parentId}}"
-                                                value="{{$gradeLesson->id}}"
-                                        >{{$gradeLesson->lesson_grade}} - {{ $gradeLesson->sort_title }}</option>
-                                    @endforeach
-                                </select>
-                                <div class="invalid-feedback">
-                                    <small>{{ $errors->first('gradeLessons') }}</small>
-                                </div>
-                            </div>
-                            @endif
+
                         </div>
 
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="control-label">توضیحات</label>
-                                    <textarea name="description" class=" textarea-radius" type="text" placeholder="توضیحات مربوط به آزمون را وارد نمایید"
+                                    <textarea name="description" class=" textarea-radius form-control" type="text" placeholder="توضیحات مربوط به آزمون را وارد نمایید"
                                               tabindex="5">{{old('description')}}{{ $modify==1 && !old('description') && $lessonExam->description ? $lessonExam->description : '' }}</textarea>
                                 </div>
                                 <div class="invalid-feedback">

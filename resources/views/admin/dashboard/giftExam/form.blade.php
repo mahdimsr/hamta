@@ -193,7 +193,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="control-label">توضیحات</label>
-                                    <textarea name="description" class=" textarea-radius" type="text" placeholder="توضیحات مربوط به آزمون را وارد نمایید"
+                                    <textarea name="description" class=" textarea-radius form-control" type="text" placeholder="توضیحات مربوط به آزمون را وارد نمایید"
                                               tabindex="5">{{old('description')}}{{ $modify==1 && !old('description') && $giftExam->description ? $giftExam->description : '' }}</textarea>
                                 </div>
                                 <div class="invalid-feedback">
