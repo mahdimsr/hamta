@@ -38,14 +38,6 @@
                                 <td>{{count($exam->questionExams)}}</td>
                                 <td>
 
-                                    {{-- <a href="{{route('admin_ltlExams_remove',['exm' => $exam->exm])}}" id="remove-btn"
-                                            type="button"
-                                            style="font-size: 12px;" class="btn btn-danger">
-                                             حذف
-                                         </a>
-                                            --}}
-
-
                                     <button data-modal-trigger="remove-modal"
                                             data-remove-route="{{route('admin_ltlExams_remove',['exm' => $exam->exm])}}"
                                             class="trigger btn btn-danger">
@@ -82,14 +74,14 @@
                     <article class="content-wrapper">
                         <button class="close"></button>
                         <header class="modal-header">
-                            <h2>حذف اطلاعات</h2>
+                            <h2>حذف آزمون</h2>
                         </header>
                         <div class="content">
                             <p>ایا مایل هستید آزمون درس به درس ایحاد شده حذف شود؟</p>
                         </div>
                         <footer class="modal-footer">
-                            <a class="action">حذف شود</a>
-                            <button class="action">حذف نشود</button>
+                            <a class="action">بله</a>
+                            <button class="action" id="close">خیر</button>
                         </footer>
                     </article>
                 </div>
@@ -118,11 +110,13 @@
                 const modal          = document.querySelector('[data-modal=remove-modal]');
                 const contentWrapper = modal.querySelector('.content-wrapper');
                 const close          = modal.querySelector('.close');
+                const closeBtn       = modal.querySelector('#close');
                 const remove         = modal.querySelector('a');
 
                 remove.href = route;
 
                 close.addEventListener('click', () => modal.classList.remove('open'));
+                closeBtn.addEventListener('click', () => modal.classList.remove('open'));
                 modal.addEventListener('click', () => modal.classList.remove('open'));
                 contentWrapper.addEventListener('click', (e) => e.stopPropagation());
 
