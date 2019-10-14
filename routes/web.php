@@ -14,6 +14,8 @@
 
 
     Route::get('/', 'Content\ContentController@index')->name('homepage');
+
+
     Route::namespace('Student')->group(function()
     {
 
@@ -44,6 +46,7 @@
                 {
 
                     Route::get('/', 'LessonExamController@exams')->name('student_dashboard_lessonExams');
+                    Route::get('/purchase/{exm}', 'LessonExamController@purchase')->name('student_lessonExams_purchase');
                     Route::get('/questions', 'LessonExamController@questions')
                          ->name('student_dashboard_lessonExams_questions');
                 });
@@ -55,6 +58,8 @@
             });
         });
     });
+
+
     Route::namespace('Admin')->group(function()
     {
 
