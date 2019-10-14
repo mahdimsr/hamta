@@ -22,7 +22,7 @@
 
 
     }
-    @media (min-width: 560px) and (max-width: 740px) {
+    /* @media (min-width: 560px) and (max-width: 740px) {
       html,
       body,
       header,
@@ -37,7 +37,7 @@
       .view  {
         height: 650px;
       }
-    }
+    } */
 
 
   </style>
