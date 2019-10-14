@@ -64,7 +64,7 @@
                                     <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>نوع کد</label>
-                                                <select dir="rtl" name="type" class="form-control" {{$modify==1 ? 'disabled' : ''}}>
+                                                <select dir="rtl" name="type" class="form-control menu hide-search" {{$modify==1 ? 'disabled' : ''}}>
                                                     <option selected disabled>نوع کد را انتخاب نمایید</option>
                                                     <option value="GENERAL-CHARGE"
                                                         {{$modify == 1 ? $discount->type == 'GENERAL-CHARGE' ? 'selected' : '' : '' }}>
@@ -85,7 +85,7 @@
                                                 <label>کد</label>
                                                 <input name="code" dir="rtl" type="text" class="form-control"
                                                        placeholder="کد تخفیف را وارد نمایید" tabindex="2"
-                                                       value="{{old('code') ? old('code') : ''}} {{ $modify==1 && !old('code') ? $discount->code : '' }}">
+                                                       value="{{old('code') ? old('code') : ''}}{{ $modify==1 && !old('code') ? $discount->code : '' }}">
                                                 <div class="invalid-feedback">
                                                     <small>{{ $errors->first('code') }}</small>
                                                 </div>
@@ -109,7 +109,7 @@
                                     <label>درصد کد</label>
                                     <input name="value" dir="rtl" type="text" class="form-control"
                                            placeholder="مقدار تخفیف را وارد نمایید" tabindex="1"
-                                           value="{{old('value') ? old('value') : ''}} {{ $modify==1 && !old('value') ? $discount->value : '' }}">
+                                           value="{{old('value') ? old('value') : ''}}{{ $modify==1 && !old('value') ? $discount->value : '' }}">
                                     <div class="invalid-feedback">
                                         <small>{{ $errors->first('value') }}</small>
                                     </div>

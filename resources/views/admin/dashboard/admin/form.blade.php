@@ -50,10 +50,34 @@
 
 						{{csrf_field()}}
 						<div class="row">
+							<div class="col-md-4 s-floatR">
+								<div class="form-group">
+									<label>نام و نام خانوادگی</label>
+									<input name="fullName" dir="rtl" type="text" class="form-control"
+										   placeholder="نام و نام خانوادگی ادمین را وارد نمایید" tabindex="1"
+										   value="{{old('fullName') ? old('fullName') : ''}}{{ $modify==1 && !old('fullName') ? $admin->fullName : '' }}">
+									<div class="invalid-feedback">
+										<small>{{ $errors->first('fullName') }}</small>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-4 s-floatR">
+								<div class="form-group">
+									<label>نام کاربری</label>
+									<input name="username" dir="rtl" type="text" class="form-control"
+										   placeholder="نام کاربری ادمین را وارد کنید" tabindex="2"
+										   value="{{old('username') ? old('username') : ''}}{{ $modify==1 && !old('username') ? $admin->username: '' }}">
+									<div class="invalid-feedback">
+										<small>{{ $errors->first('username') }}</small>
+									</div>
+								</div>
+							</div>
+
 								<div class="col-md-4">
 										<div class="form-group">
 											<label>سطح دسترسی</label>
-											<select dir="rtl" name="level" class="form-control" tabindex="3">
+											<select dir="rtl" name="level" class="form-control menu hide-search " tabindex="3">
 												<option value="" selected disabled>سطح دسترسی را انتخاب نمایید</option>
 												<option value="A" {{old('level')=='A' ? 'selected' : '' }} {{$modify==1 && !old('level') && $admin->level=="A" ?'selected' : ''}}>سوپر ادمین</option>
 												<option value="B" {{old('level')=='B' ? 'selected' : '' }} {{$modify==1 && !old('level') && $admin->level=="B" ? 'selected' : ''}}>ادمین</option>
@@ -65,48 +89,32 @@
 											</div>
 										</div>
 									</div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>نام کاربری</label>
-									<input name="username" dir="rtl" type="text" class="form-control"
-										   placeholder="نام کاربری ادمین را وارد کنید" tabindex="2"
-										   value="{{old('username') ? old('username') : ''}} {{ $modify==1 && !old('username') ? $admin->username: '' }}">
-									<div class="invalid-feedback">
-										<small>{{ $errors->first('username') }}</small>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>نام و نام خانوادگی</label>
-									<input name="fullName" dir="rtl" type="text" class="form-control"
-										   placeholder="نام و نام خانوادگی ادمین را وارد نمایید" tabindex="1"
-										   value="{{old('fullName') ? old('fullName') : ''}} {{ $modify==1 && !old('fullName') ? $admin->fullName : '' }}">
-									<div class="invalid-feedback">
-										<small>{{ $errors->first('fullName') }}</small>
-									</div>
-								</div>
-							</div>
+
+
+
 						</div>
 						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>تکرار رمز عبور</label>
-									<input name="password_confirmation" dir="rtl" type="text" class="form-control" tabindex="4">
-									<div class="invalid-feedback">
-										<small>{{ $errors->first('password_confirmation') }}</small>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6">
+
+							<div class="col-md-6 s-floatR">
 								<div class="form-group">
 									<label>رمز عبور</label>
-									<input name="password" dir="rtl" type="text" class="form-control" tabindex="3">
+									<input name="password" dir="rtl" type="text" placeholder="رمز عبور را وارد کنید.." class="form-control" tabindex="3">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('password') }}</small>
 									</div>
 								</div>
 							</div>
+
+							<div class="col-md-6 s-floatL">
+								<div class="form-group">
+									<label>تکرار رمز عبور</label>
+									<input name="password_confirmation" dir="rtl" type="text" placeholder="رمز عبور خود را تکرار کنید.." class="form-control" tabindex="4">
+									<div class="invalid-feedback">
+										<small>{{ $errors->first('password_confirmation') }}</small>
+									</div>
+								</div>
+							</div>
+
 						</div>
 
 

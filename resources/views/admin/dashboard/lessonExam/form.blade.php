@@ -88,7 +88,7 @@
                                 <div class="form-group">
                                     <label class="control-label">نام</label>
                                     <input name="title" class="form-control" type="text"
-                                           maxlength="20" tabindex="1"
+                                           maxlength="20" tabindex="1" placeholder="نام آزمون را وارد کنید..."
                                            value="{{old('title')}}{{ $modify==1 && !old('title') && $lessonExam->title ? $lessonExam->title : '' }}">
                                 </div>
                                 <div class="invalid-feedback">
@@ -103,7 +103,7 @@
                                     <label class="control-label">زمان آزمون (به دقیقه)</label>
                                     <input name="duration" class="form-control" type="text"
                                            maxlength="10" tabindex="4"
-                                           value="{{old('duration')}} {{ $modify==1 && !old('duration') && $lessonExam->duration ? $lessonExam->duration : '' }}"
+                                           value="{{old('duration')}}{{ $modify==1 && !old('duration') && $lessonExam->duration ? $lessonExam->duration : '' }}"
                                            placeholder="مثلا: 60 دقیقه"/>
                                 </div>
                                 <div class="invalid-feedback">
@@ -128,7 +128,7 @@
 
                             <div class="row">
 
-                                <div class="col-md-6" style="float: right;">
+                                <div class="col-md-6 s-floatR" >
                                     <div class="form-group">
                                         <label class="control-label">گرایش</label>
                                         <select name="orientation" class="form-control menu dropdown-radius hide-search"
@@ -149,10 +149,10 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6" style="float: left;">
+                                <div class="col-md-6 s-floatL" >
                                     <div class="form-group">
                                         <label class="control-label">دسته بندی دروس</label>
-                                        <select name="category" id="category-select" class="form-control"
+                                        <select name="category" id="category-select" class="form-control menu dropdown-radius"
                                                 >
                                             <option id="0" value="" disabled selected>دسته بندی دروس آزمون را انتخاب نمایید
                                             </option>
@@ -199,6 +199,8 @@
                             <div class="col-md-6" style="float: right;">
                                 <label for="lesson-select" class="control-label">درس های آزمون</label>
                                 <select class="form-control menu12 dropdown-radius" id="lesson-select" name="gradeLessons[]" multiple>
+                                    <option value="" id="0" disabled selected>دسته بندی دروس آزمون را انتخاب نمایید
+                                    </option>
                                     @foreach($gradeLessons as $gradeLesson)
                                         <option data-content="{{$gradeLesson->orientationId.$gradeLesson->lesson->parentId}}"
                                                 value="{{$gradeLesson->id}}"

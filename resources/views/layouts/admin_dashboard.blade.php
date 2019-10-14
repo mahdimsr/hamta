@@ -211,6 +211,10 @@
 <script src="{{asset('datePicker/persian-datepicker.min.js')}}" type="text/javascript"></script>
 
 <script>
+    $(".menu").select2({
+        allowClear: true,
+
+    });
     $(".menu12").select2({
         allowClear: true,
         tags: true

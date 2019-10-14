@@ -56,24 +56,11 @@
 						{{csrf_field()}}
 
 						<div class="row">
-                                <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>عنوان درس</label>
-                                            <select dir="rtl" name="lesson" class="form-control">
-                                                <option value="" id="0" selected disabled>عنوان درس را انتخاب نمایید</option>
-                                                @foreach ( $lessons as $lesson )
-                                                    <option value="{{ $lesson->id }}" {{ old('lesson')==$lesson->id ? 'selected' : '' }}  {{ $modify == 1 && !old('lesson') && $gradeLesson->lessonId == $lesson->id ? 'selected' : '' }}>{{ $lesson->title.' - '.$lesson->code }}</option>
-                                                @endforeach
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                <small>{{ $errors->first('lesson') }}</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                            <div class="col-md-6">
+
+							<div class="col-md-6 s-floatR">
 								<div class="form-group">
 									<label>گرایش درس</label>
-									<select dir="rtl" name="orientation" id="orientation" class="form-control">
+									<select dir="rtl" name="orientation" id="orientation" class="form-control menu hide-search dropdown-radius">
 										<option value="" selected disabled>گرایش درس را انتخاب نمایید</option>
 										@foreach ( $orientations as $orientation )
 											<option value="{{ $orientation->id }}" {{ old('orientation')==$orientation->id ? 'selected' : '' }} {{ $modify == 1 && !old('orientation') && $gradeLesson->orientationId == $orientation->id? 'selected' : '' }}>{{ $orientation->title }}</option>
@@ -84,12 +71,28 @@
 									</div>
 								</div>
 							</div>
+
+                                <div class="col-md-6 s-floatL">
+                                        <div class="form-group">
+                                            <label>عنوان درس</label>
+                                            <select dir="rtl" name="lesson" class="form-control menu dropdown-radius">
+                                                <option value="" id="0" selected disabled>عنوان درس را انتخاب نمایید</option>
+                                                @foreach ( $lessons as $lesson )
+                                                    <option value="{{ $lesson->id }}" {{ old('lesson')==$lesson->id ? 'selected' : '' }}{{ $modify == 1 && !old('lesson') && $gradeLesson->lessonId == $lesson->id ? 'selected' : '' }}>{{ $lesson->title.' - '.$lesson->code }}</option>
+                                                @endforeach
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                <small>{{ $errors->first('lesson') }}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
 						</div>
 						<div class="row">
                                 <div class="col-md-4">
                                         <div class="form-group">
                                             <label>ضریب درس</label>
-                                            <input name="ratio" dir="rtl" type="text" class="form-control"
+                                            <input name="ratio" dir="rtl" type="text" class="form-control "
                                                    placeholder="ضریب درس را وارد نمایید" tabindex="2"
                                                    value="{{old('ratio') ? old('ratio') : ''}} {{ $modify==1 && !old('ratio') ? $gradeLesson->ratio : '' }}">
                                             <div class="invalid-feedback">
@@ -100,7 +103,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>نوع درس</label>
-                                            <select dir="rtl" name="type" class="form-control">
+                                            <select dir="rtl" name="type" class="form-control menu hide-search dropdown-radius">
                                                 <option value="" selected disabled>نوع درس را انتخاب نمایید</option>
                                                 <option value="EXPERT" {{ old('grade')=='EXPERT' ? 'selected' : '' }}{{$modify == 1 && !old('grade') && $gradeLesson->sort =='EXPERT'? 'selected' : '' }}>تخصصی</option>
                                                 <option value="GENERAL" {{ old('grade')=='GENERAL' ? 'selected' : '' }}{{$modify == 1 && !old('grade') && $gradeLesson->sort =='GENERAL'? 'selected' : '' }}>عمومی</option>
@@ -113,7 +116,7 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>مقطع درس</label>
-									<select dir="rtl" name="grade" class="form-control">
+									<select dir="rtl" name="grade" class="form-control menu hide-search dropdown-radius">
 										<option value="" selected disabled>مقطع درس را انتخاب نمایید</option>
 										@foreach ( $grades as $grade )
 											<option value="{{ $grade->id }}" {{ old('grade')==$grade->id ? 'selected' : '' }}  {{$modify == 1 && !old('grade') && $gradeLesson->gradeId == $grade->id ? 'selected' : '' }}>{{ $grade->title }}</option>

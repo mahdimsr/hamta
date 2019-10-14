@@ -51,39 +51,44 @@
 						{{csrf_field()}}
 
 						<div class="row">
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>پارامتر گرایش</label>
-									<input name="urlOrientation" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: mathematics" tabindex="3"
-										   value="{{old('urlOrientation') ? old('urlOrientation') : ''}} {{ $modify==1 && !old('urlOrientation') ? $orientation->url : '' }}">
-									<div class="invalid-feedback">
-										<small>{{ $errors->first('urlOrientation') }}</small>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>کد گرایش</label>
-									<input name="codeOrientation" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: 01" tabindex="2"
-										   value="{{old('codeOrientation') ? old('codeOrientation') : ''}} {{ $modify==1 && !old('codeOrientation') ? $orientation->code : '' }}">
-									<div class="invalid-feedback">
-										<small>{{ $errors->first('codeOrientation') }}</small>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
+
+							<div class="col-md-4 s-floatR">
 								<div class="form-group">
 									<label>عنوان گرایش</label>
 									<input name="titleOrientation" dir="rtl" type="text" class="form-control"
 										   placeholder="مثلا: ریاضی" tabindex="1"
-										   value="{{old('titleOrientation') ? old('titleOrientation') : ''}} {{ $modify==1 && !old('titleOrientation') ? $orientation->title : '' }}">
+										   value="{{old('titleOrientation') ? old('titleOrientation') : ''}}{{ $modify==1 && !old('titleOrientation') ? $orientation->title : '' }}">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('titleOrientation') }}</small>
 									</div>
 								</div>
 							</div>
+
+
+							<div class="col-md-4 s-floatR">
+								<div class="form-group">
+									<label>کد گرایش</label>
+									<input name="codeOrientation" dir="rtl" type="text" class="form-control"
+										   placeholder="مثلا: 01" tabindex="3"
+										   value="{{old('codeOrientation') ? old('codeOrientation') : ''}}{{ $modify==1 && !old('codeOrientation') ? $orientation->code : '' }}">
+									<div class="invalid-feedback">
+										<small>{{ $errors->first('codeOrientation') }}</small>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-4 ">
+								<div class="form-group">
+									<label>پارامتر گرایش</label>
+									<input name="urlOrientation" dir="rtl" type="text" class="form-control"
+										   placeholder="مثلا: mathematics" tabindex="2"
+										   value="{{old('urlOrientation') ? old('urlOrientation') : ''}}{{ $modify==1 && !old('urlOrientation') ? $orientation->url : '' }}">
+									<div class="invalid-feedback">
+										<small>{{ $errors->first('urlOrientation') }}</small>
+									</div>
+								</div>
+							</div>
+
 						</div>
 
 

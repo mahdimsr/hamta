@@ -52,7 +52,7 @@
                                             <label>پارامتر دسته بندی</label>
                                             <input name="urlCategory" dir="rtl" type="text" class="form-control"
                                                    placeholder="پارامتر دسته بندی را وارد نمایید" tabindex="3"
-                                                   value="{{old('urlCategory') ? old('urlCategory') : ''}} {{ $modify==1 && !old('urlCategory') ? $category->url : '' }}">
+                                                   value="{{old('urlCategory') ? old('urlCategory') : ''}}{{ $modify==1 && !old('urlCategory') ? $category->url : '' }}">
                                             <div class="invalid-feedback">
                                                 <small>{{ $errors->first('urlCategory') }}</small>
                                             </div>
@@ -63,7 +63,7 @@
 									<label>عنوان دسته بندی</label>
 									<input name="titleCategory" dir="rtl" type="text" class="form-control"
 										   placeholder="عنوان دسته بندی را وارد نمایید" tabindex="2"
-										   value="{{old('titleCategory') ? old('titleCategory') : ''}} {{ $modify==1 && !old('titleCategory') ? $category->title : '' }}">
+										   value="{{old('titleCategory') ? old('titleCategory') : ''}}{{ $modify==1 && !old('titleCategory') ? $category->title : '' }}">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('titleCategory') }}</small>
 									</div>

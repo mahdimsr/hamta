@@ -91,7 +91,7 @@
                                     <label>درصد تخفیف</label>
                                     <input name="value" dir="rtl" type="text" class="form-control"
                                            placeholder="درصد تخفیف را وارد نمایید" tabindex="3"
-                                           value="{{old('value') ? old('value') : ''}} {{ $modify==1 && !old('value') ? $discount->value : '' }}">
+                                           value="{{old('value') ? old('value') : ''}}{{ $modify==1 && !old('value') ? $discount->value : '' }}">
                                     <div class="invalid-feedback">
                                         <small>{{ $errors->first('value') }}</small>
                                     </div>

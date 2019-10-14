@@ -77,7 +77,7 @@
                                     <label class="control-label">زمان آزمون (به دقیقه)</label>
                                     <input name="duration" class="form-control" type="text"
                                            maxlength="10" tabindex="4"
-                                           value="{{old('duration')}} {{ $modify==1 && !old('duration') && $giftExam->duration ? $giftExam->duration : '' }}"
+                                           value="{{old('duration')}}{{ $modify==1 && !old('duration') && $giftExam->duration ? $giftExam->duration : '' }}"
                                            placeholder="مثلا: 60 دقیقه"/>
                                 </div>
                                 <div class="invalid-feedback">
@@ -88,7 +88,7 @@
                                 <div class="form-group">
                                     <label class="control-label">عنوان</label>
                                     <input name="title" class="form-control" type="text"
-                                           maxlength="20" tabindex="1"
+                                           maxlength="20" tabindex="1" placeholder="عنوان آزمون را وارد کنید.."
                                            value="{{old('title')}}{{ $modify==1 && !old('title') && $giftExam->title ? $giftExam->title : '' }}">
                                 </div>
                                 <div class="invalid-feedback">
