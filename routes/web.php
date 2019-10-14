@@ -56,8 +56,7 @@
                     Route::post('/questions_correct', 'LessonExamController@questionsCorrect')
                          ->name('student_dashboard_lessonExams_questionsCorrect');
 
-                    Route::get('/result', 'LessonExamController@result')
-                         ->name('student_dashboard_lessonExams_result');
+                    Route::get('/result', 'LessonExamController@result')->name('student_dashboard_lessonExams_result');
                 });
             });
             Route::prefix('cart')->group(function()
@@ -273,6 +272,16 @@
             });
         });
     });
+
+
+    Route::get('/student_test', function()
+    {
+
+        $student = \Illuminate\Support\Facades\Auth::guard('student')->user();
+
+        return view('student.dashboard.test',compact('student'));
+
+    })->name('student_test');
 
     Route::get('/test', function()
     {
