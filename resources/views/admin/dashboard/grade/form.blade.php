@@ -57,7 +57,7 @@
 									<label>پارامتر مقطع</label>
 									<input name="urlGrade" dir="rtl" type="text" class="form-control"
 										   placeholder="مثلا: tenth-grade" tabindex="3"
-										   value="{{old('urlGrade') ? old('urlGrade') : ''}} {{ $modify==1 && !old('urlGrade') ? $grade->url : '' }}">
+										   value="{{old('urlGrade') ? old('urlGrade') : ''}}{{ $modify==1 && !old('urlGrade') ? $grade->url : '' }}">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('urlGrade') }}</small>
 									</div>
@@ -68,7 +68,7 @@
 									<label>کد مقطع</label>
 									<input name="codeGrade" dir="rtl" type="text" class="form-control"
 										   placeholder="مثلا: 10" tabindex="2"
-										   value="{{old('codeGrade') ? old('codeGrade') : ''}} {{ $modify==1 && !old('codeGrade') ? $grade->code : '' }}">
+										   value="{{old('codeGrade') ? old('codeGrade') : ''}}{{ $modify==1 && !old('codeGrade') ? $grade->code : '' }}">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('codeGrade') }}</small>
 									</div>
@@ -79,7 +79,7 @@
 									<label>عنوان مقطع</label>
 									<input name="titleGrade" dir="rtl" type="text" class="form-control"
 										   placeholder="مثلا: مقطع دهم" tabindex="1"
-										   value="{{old('titleGrade') ? old('titleGrade') : '' }} {{ $modify==1 && !old('titleGrade') ? $grade->title : '' }}">
+										   value="{{old('titleGrade') ? old('titleGrade') : '' }}{{ $modify==1 && !old('titleGrade') ? $grade->title : '' }}">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('titleGrade') }}</small>
 									</div>

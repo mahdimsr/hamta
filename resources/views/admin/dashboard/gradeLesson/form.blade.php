@@ -94,7 +94,7 @@
                                             <label>ضریب درس</label>
                                             <input name="ratio" dir="rtl" type="text" class="form-control "
                                                    placeholder="ضریب درس را وارد نمایید" tabindex="2"
-                                                   value="{{old('ratio') ? old('ratio') : ''}} {{ $modify==1 && !old('ratio') ? $gradeLesson->ratio : '' }}">
+                                                   value="{{old('ratio') ? old('ratio') : ''}}{{ $modify==1 && !old('ratio') ? $gradeLesson->ratio : '' }}">
                                             <div class="invalid-feedback">
                                                 <small>{{ $errors->first('ratio') }}</small>
                                             </div>

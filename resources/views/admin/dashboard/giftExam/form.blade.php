@@ -130,7 +130,7 @@
                                 <div class="col-md-6">
                                     <label for="lesson-select" class="control-label">درس های آزمون</label>
                                     <select class="form-control menu12 dropdown-radius" id="lesson-select"
-                                            name="gradeLessons[]" multiple>
+                                            name="gradeLessons[]" multiple data-placeholder="درس های آزمون را انتخاب نمایید">
                                         @foreach($gradeLessons as $gradeLesson)
                                             <option data-content="{{$gradeLesson->orientationId}}"
                                                     value="{{$gradeLesson->id}}"
@@ -193,7 +193,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="control-label">توضیحات</label>
-                                    <textarea name="description" class=" textarea-radius" type="text"
+                                    <textarea name="description" class=" textarea-radius" type="text" placeholder="توضیحات مربوط به آزمون را وارد نمایید"
                                               tabindex="5">{{old('description')}}{{ $modify==1 && !old('description') && $giftExam->description ? $giftExam->description : '' }}</textarea>
                                 </div>
                                 <div class="invalid-feedback">

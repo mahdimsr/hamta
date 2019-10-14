@@ -133,7 +133,7 @@
                                         <label class="control-label">گرایش</label>
                                         <select name="orientation" class="form-control menu dropdown-radius hide-search"
                                                 id="ori-select">
-                                            <option id="0" value="" disabled selected>گرایش آزمون را انتخاب نمایید
+                                            <option value="" disabled selected>گرایش آزمون را انتخاب نمایید
                                             </option>
                                             @foreach($orientations as $orientation)
                                                 <option
@@ -198,7 +198,7 @@
                             @if($modify==0)
                             <div class="col-md-6" style="float: right;">
                                 <label for="lesson-select" class="control-label">درس های آزمون</label>
-                                <select class="form-control menu12 dropdown-radius" id="lesson-select" name="gradeLessons[]" multiple>
+                                <select class="form-control menu12 dropdown-radius" id="lesson-select" name="gradeLessons[]" multiple data-placeholder="درس های آزمون را انتخاب نمایید">
                                     <option value="" id="0" disabled selected>دسته بندی دروس آزمون را انتخاب نمایید
                                     </option>
                                     @foreach($gradeLessons as $gradeLesson)
@@ -218,7 +218,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="control-label">توضیحات</label>
-                                    <textarea name="description" class=" textarea-radius" type="text"
+                                    <textarea name="description" class=" textarea-radius" type="text" placeholder="توضیحات مربوط به آزمون را وارد نمایید"
                                               tabindex="5">{{old('description')}}{{ $modify==1 && !old('description') && $lessonExam->description ? $lessonExam->description : '' }}</textarea>
                                 </div>
                                 <div class="invalid-feedback">
@@ -268,7 +268,7 @@
 
         $("#ori-select").change(function()
         {
-            if(!$(this).val())
+            if(!$("#ori-select").val())
             options = categories.filter('[id=0]');
             else
             options = categories;
@@ -289,7 +289,7 @@
 
         $("#category-select").change(function ()
         {
-            var id     = $(this).val();
+            var id     = $("#category-select").val();
             var oriId  = $("#ori-select").val();
             options    = lessons.filter('[data-content=' + oriId + id + ']');
             $('#lesson-select').html(options);

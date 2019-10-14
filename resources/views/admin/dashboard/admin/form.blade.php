@@ -66,7 +66,7 @@
 								<div class="form-group">
 									<label>نام کاربری</label>
 									<input name="username" dir="rtl" type="text" class="form-control"
-										   placeholder="نام کاربری ادمین را وارد کنید" tabindex="2"
+										   placeholder="نام کاربری ادمین را وارد نمایید" tabindex="2"
 										   value="{{old('username') ? old('username') : ''}}{{ $modify==1 && !old('username') ? $admin->username: '' }}">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('username') }}</small>
@@ -98,7 +98,7 @@
 							<div class="col-md-6 s-floatR">
 								<div class="form-group">
 									<label>رمز عبور</label>
-									<input name="password" dir="rtl" type="text" placeholder="رمز عبور را وارد کنید.." class="form-control" tabindex="3">
+									<input name="password" dir="rtl" type="text" placeholder="رمز عبور را وارد نمایید" class="form-control" tabindex="3">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('password') }}</small>
 									</div>
@@ -108,7 +108,7 @@
 							<div class="col-md-6 s-floatL">
 								<div class="form-group">
 									<label>تکرار رمز عبور</label>
-									<input name="password_confirmation" dir="rtl" type="text" placeholder="رمز عبور خود را تکرار کنید.." class="form-control" tabindex="4">
+									<input name="password_confirmation" dir="rtl" type="text" placeholder="رمز عبور را تکرار نمایید" class="form-control" tabindex="4">
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('password_confirmation') }}</small>
 									</div>
