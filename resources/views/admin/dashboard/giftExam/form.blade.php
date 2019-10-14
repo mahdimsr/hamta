@@ -88,7 +88,7 @@
                                 <div class="form-group">
                                     <label class="control-label">عنوان</label>
                                     <input name="title" class="form-control" type="text"
-                                           maxlength="20" tabindex="1" placeholder="عنوان آزمون را وارد کنید.."
+                                           maxlength="20" tabindex="1" placeholder="عنوان آزمون را وارد نمایید"
                                            value="{{old('title')}}{{ $modify==1 && !old('title') && $giftExam->title ? $giftExam->title : '' }}">
                                 </div>
                                 <div class="invalid-feedback">

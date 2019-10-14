@@ -86,9 +86,9 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">نام</label>
+                                    <label class="control-label">عنوان</label>
                                     <input name="title" class="form-control" type="text"
-                                           maxlength="20" tabindex="1" placeholder="نام آزمون را وارد کنید..."
+                                           maxlength="20" tabindex="1" placeholder="عنوان آزمون را وارد نمایید"
                                            value="{{old('title')}}{{ $modify==1 && !old('title') && $lessonExam->title ? $lessonExam->title : '' }}">
                                 </div>
                                 <div class="invalid-feedback">
