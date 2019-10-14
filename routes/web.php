@@ -47,7 +47,7 @@
 
                     Route::get('/', 'LessonExamController@exams')->name('student_dashboard_lessonExams');
                     Route::get('/purchase/{exm}', 'LessonExamController@purchase')->name('student_lessonExams_purchase');
-                    Route::get('/questions', 'LessonExamController@questions')
+                    Route::get('/questions/{exm}', 'LessonExamController@questions')
                          ->name('student_dashboard_lessonExams_questions');
                 });
             });

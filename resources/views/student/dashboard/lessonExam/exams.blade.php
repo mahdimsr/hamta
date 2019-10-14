@@ -24,7 +24,7 @@
                         </p>
 
                         @if($lessonExam->isPaid())
-                            <a href="{{ route('student_dashboard_lessonExams_questions') }}"
+                            <a href="{{ route('student_dashboard_lessonExams_questions',['exm' => $lessonExam->exm]) }}"
                                class="ctrl-standard typ-subhed fx-bubbleDown">
                                 شرکت در آزمون
                             </a>
