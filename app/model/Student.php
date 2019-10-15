@@ -2,9 +2,10 @@
 
     namespace App\model;
 
+    use Carbon\Carbon;
     use Illuminate\Database\Eloquent\SoftDeletes;
     use Illuminate\Foundation\Auth\User as Authenticatable;
-
+    use Morilog\Jalali\Jalalian;
 
     /**
      * @property \Carbon\Carbon $created_at
@@ -19,6 +20,17 @@
 
         protected $table = 'student';
 
+        protected $appends = ['persian_birthday'];
+
+        public function getPersianBirthdayAttribute()
+        {
+
+            $carbon = Carbon::createFromDate($this->birthday);
+
+            $date = Jalalian::fromCarbon($carbon)->format('%Y/%m/%d');
+
+            return $date;
+        }
 
         public function city()
         {

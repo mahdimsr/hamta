@@ -43,15 +43,30 @@
                                             <small>{{ $errors->first('stdMessage') }} {{ $errors->first('notComplete') }}</small>
                                         </div>
                                     </div>
-                                <hr>
-
-                                    <label>پاسخ مسئول سایت:</label>
-                                    <div class="s-border">
-                                        <p id="admin-answer">
-                                            دانش آموز گرامی شما می توانید درخواست بورسیه خود را به همراه توضیحات برای مشاوران ما ارسال نمایید . پس از بررسی اطلاعات شما و صحت آنها نتیجه درخواست در اسرع وقت به اطلاع شما خواهد رسید. بهره مندی از بورسیه امکانات متنوعی را در اختیار شما خواهد گذاشت.
-                                        </p>
+                                @unless(empty($scholarship->adminMessage))
+                                <div class="col-md-12">
+                                    <div class="card text-right">
+                                        <div class="header ">
+                                            <h4 class="title">نتیجه درخواست</h4>
+                                        </div>
+                                        <div class="content">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label> وضعیت : {{ $scholarship->persian_status }}</label>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="s-border">
+                                                        <p id="admin-answer">
+                                                            {{ $scholarship->adminMessage }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-
+                                </div>
+                                @endunless
 
                                 @if(empty($scholarship))
                                     <button type="submit" class="btn btn-info btn-fill pull-right">ثبت درخواست</button>
@@ -73,25 +88,5 @@
 
 
     </div>
-    @unless(empty($scholarship->adminMessage))
-    <div class="col-md-12">
-        <div class="card text-right">
-            <div class="header ">
-                <h4 class="title">نتیجه درخواست</h4>
-            </div>
-            <div class="content">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label> وضعیت : {{ $scholarship->getPersianStatusAttribute() }}</label>
-                        </div>
-                        <hr>
-                        <p>{{ $scholarship->adminMessage }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    @endunless
 @endsection
 

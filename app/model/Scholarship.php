@@ -24,7 +24,7 @@ class Scholarship extends Model
 
 	protected $table = 'scholarship';
 
-	protected $appends = ['persianStatus'];
+	protected $appends = ['persian_status'];
 
 
 
