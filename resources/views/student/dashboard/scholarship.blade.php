@@ -43,6 +43,15 @@
                                             <small>{{ $errors->first('stdMessage') }} {{ $errors->first('notComplete') }}</small>
                                         </div>
                                     </div>
+                                <hr>
+
+                                    <label>پاسخ مسئول سایت:</label>
+                                    <div class="s-border">
+                                        <p id="admin-answer">
+                                            دانش آموز گرامی شما می توانید درخواست بورسیه خود را به همراه توضیحات برای مشاوران ما ارسال نمایید . پس از بررسی اطلاعات شما و صحت آنها نتیجه درخواست در اسرع وقت به اطلاع شما خواهد رسید. بهره مندی از بورسیه امکانات متنوعی را در اختیار شما خواهد گذاشت.
+                                        </p>
+                                    </div>
+
 
                                 @if(empty($scholarship))
                                     <button type="submit" class="btn btn-info btn-fill pull-right">ثبت درخواست</button>

@@ -879,3 +879,13 @@ input[type="text"][required] + label[placeholder]:before {
         width: 70px;
     }
 }
+.text-muted1{
+    color: rgba(47, 47, 47, 0.6)!important;
+}
+#li-margin ul{
+    margin: 0px;
+}
+#li-margin{
+    margin-top: 10px;
+}
+

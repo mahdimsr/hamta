@@ -555,4 +555,14 @@ img#disableds{
 }
 /*exam hoverimages style*/
 
+#admin-answer{
+    font-size: 14px;
+    color: #606060;
+}
+.s-border{
+    border-radius: 20px;
+    border: 1px solid #b7bfc4;
+    margin: 0px 0px 30px 0px;
+    padding: 10px 10px 10px 10px;
 
+}
