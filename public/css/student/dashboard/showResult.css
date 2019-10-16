@@ -1,0 +1,25 @@
+h1{
+    background-image: linear-gradient(to right, rgba(149, 52, 230, 0.33), rgba(0, 84, 255, 0.64));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+h5{
+    background-image: linear-gradient(to right, rgba(149, 52, 230, 0.33), rgba(0, 84, 255, 0.64));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+hr{
+border: 2px solid black;
+}
+.result-body{
+    display: inline-block;
+}
+.list-group{
+    padding-right: 0 !important;
+}
+.list-group-item{
+    font-size: medium;
+}
+.card-header{
+    font-size: x-large;
+}
