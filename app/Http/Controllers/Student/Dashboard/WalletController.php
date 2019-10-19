@@ -111,41 +111,51 @@ class WalletController extends Controller
         $Authority   = $request->get('Authority') ;
         $transaction = Transaction::query()->where('studentId',$student->id)->where('status','IN-PROGRESS')->where('code',$Authority)->first();
 
-        if ($request->get('Status') == 'OK')
+        if($transaction)
         {
-            $client = new nusoap_client('https://www.zarinpal.com/pg/services/WebGate/wsdl', 'wsdl');
-            $client->soap_defencoding = 'UTF-8';
-
-
-            $result = $client->call('PaymentVerification', [
-                [
-                    'MerchantID'     => $MerchantID,
-                    'Authority'      => $Authority,
-                    'Amount'         => $transaction->price/10,
-                ],
-            ]);
-
-            if ($result['Status'] == 100 && $transaction->studentId==$student->id)
+            if ($request->get('Status') == 'OK')
             {
+                $client = new nusoap_client('https://www.zarinpal.com/pg/services/WebGate/wsdl', 'wsdl');
+                $client->soap_defencoding = 'UTF-8';
 
-                if($transaction->discountPrice)
+
+                $result = $client->call('PaymentVerification', [
+                    [
+                        'MerchantID'     => $MerchantID,
+                        'Authority'      => $Authority,
+                        'Amount'         => $transaction->price/10,
+                    ],
+                ]);
+
+                if ($result['Status'] == 100 && $transaction->studentId==$student->id)
                 {
-                    $student->wallet+=$transaction->discountPrice;
-                    $student->update();
-                    $transaction->status ='SUCCESS';
-                    $transaction->update();
-                    return redirect()->route('student_wallet')->with('status','شارژ کیف پول شما با موفقیت انجام شد')->with('discount','کد شگفت انگیز برای شارژ شما اعمال گردید');
+
+                    if($transaction->discountPrice)
+                    {
+                        $student->wallet+=$transaction->discountPrice;
+                        $student->update();
+                        $transaction->status ='SUCCESS';
+                        $transaction->update();
+                        return redirect()->route('student_wallet')->with('status','شارژ کیف پول شما با موفقیت انجام شد')->with('discount','کد شگفت انگیز برای شارژ شما اعمال گردید');
+                    }
+
+                    else
+                    {
+                        $student->wallet+=$transaction->price;
+                        $student->update();
+                        $transaction->status ='SUCCESS';
+                        $transaction->update();
+                        return redirect()->route('student_wallet')->with('status','success');
+                    }
+
                 }
 
                 else
                 {
-                    $student->wallet+=$transaction->price;
-                    $student->update();
-                    $transaction->status ='SUCCESS';
+                    $transaction->status='FAILED';
                     $transaction->update();
-                    return redirect()->route('student_wallet')->with('status','success');
+                    return redirect()->route('student_wallet')->withErrors(['transactionFailed' => ['عملیات ناموفق']]);
                 }
-
             }
 
             else
@@ -158,11 +168,8 @@ class WalletController extends Controller
 
         else
         {
-            $transaction->status='FAILED';
-            $transaction->update();
-            return redirect()->route('student_wallet')->withErrors(['transactionFailed' => ['عملیات ناموفق']]);
+            return redirect()->route('student_wallet');
         }
-
 
     }
 }

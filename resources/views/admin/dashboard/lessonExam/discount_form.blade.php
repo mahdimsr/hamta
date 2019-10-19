@@ -24,9 +24,6 @@
                         استفاده میکند.
                     </p>
                     <p class="description text-right">
-                            <b>تعداد دفعات استفاده </b> مشخص می کند که کد مورد نظر تا چند بار میتواند در خرید محصولات استفاده شود.
-                        </p>
-                    <p class="description text-right">
                         <b> درصد تخفیف </b>درصد تخفیفی که در صورت استفاده از کد به دانش آموز تعلق
                         میگیرد.
                     </p>
@@ -51,18 +48,7 @@
 
 
                         <div class="row">
-                                <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label>تعداد دفعات استفاده</label>
-                                            <input name="count" dir="rtl" type="text" class="form-control"
-                                                 placeholder="تعداد دفعات استفاده کد را وارد نمایید" tabindex="2"
-                                                value="{{old('count') ? old('count') : ''}}{{ $modify==1 && !old('count') ? $discount->count : '' }}">
-                                            <div class="invalid-feedback">
-                                                <small>{{ $errors->first('count') }}</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                        <div class="col-md-9">
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>کد</label>
                                                 <input name="code" dir="rtl" type="text" class="form-control"

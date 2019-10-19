@@ -58,7 +58,7 @@
                                     </a>
                                     <a href="{{route('admin_ltlExams_discounts',['exm' => $exam->exm])}}"
                                        style="font-size: 12px;" class="btn btn-success">
-                                        کد های تخفیف
+                                        کد تخفیف
                                     </a>
 
                                 </td>

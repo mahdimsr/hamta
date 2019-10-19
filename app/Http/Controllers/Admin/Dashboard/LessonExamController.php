@@ -333,14 +333,13 @@
 
             $this->validate($request, ['code'    => 'required|string|max:8|unique:discount,code',
                                        'value'   => 'required|numeric|min:0|max:100',
-                                       'count'   => 'required|numeric|min:1|max:20',
                                        'endDate' => 'required']);
 
             $discount = new Discount();
 
             $discount->code  = $request->input('code');
             $discount->value = $request->input('value');
-            $discount->count = $request->input('count');
+            $discount->count = 1;
             $discount->type  = 'LESSONEXAM-OFF';
 
             //convert endDate
@@ -376,12 +375,11 @@
             $this->validate($request, ['code'    => ['required', 'string', 'max:8',
                                        Rule::unique('discount', 'code')->ignore($discount)],
                                        'value'   => 'required|numeric|min:0|max:100',
-                                       'count'   => 'required|numeric|min:1|max:20',
                                        'endDate' => 'required']);
 
             $discount->code  = $request->input('code');
             $discount->value = $request->input('value');
-            $discount->count = $request->input('count');
+            $discount->count = 1;
 
             //convert endDate
             $persianDate       = Lib::convertFaToEn($request->input('endDate'));
