@@ -12,7 +12,8 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>مبلغ شارژ (ریال)</label>
-                            <input dir="rtl" type="text" name="price" class="form-control"
+                            <input dir="rtl" type="text" name="price" class="form-control
+                            input-numeral"
                                    placeholder="مبلغ شارژ را وارد نمایید"
                                    value="{{ old('price')}}">
                             <div class="invalid-feedback">
@@ -27,6 +28,7 @@
                     <div class="form-group">
                         <label>کد شگفت انگیز</label>
                         <input dir="rtl" type="text" name="code" class="form-control"
+                          
                                placeholder="کد شگفت انگیز را وارد نمایید"
                                value="{{ old('code')}}">
                         <div class="invalid-feedback">
@@ -51,5 +53,19 @@
         </form>
     </div>
 </div>
+
+@section('script')
+<script src="https://nosir.github.io/cleave.js/dist/cleave.min.js"></script>
+<script>
+var cleaveNumeral = new Cleave('.input-numeral', {
+    numeral: true,
+    numeralThousandsGroupStyle: 'thousand'
+});
+
+
+</script>
+
+@endsection
+
 @endsection
 
