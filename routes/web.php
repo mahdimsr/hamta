@@ -283,6 +283,15 @@
 
     })->name('student_test');
 
+    Route::get('/student_test_charge', function()
+    {
+
+        $student = \Illuminate\Support\Facades\Auth::guard('student')->user();
+
+        return view('student.dashboard.charge_test',compact('student'));
+
+    })->name('student_test_charge');
+
     Route::get('/test', function()
     {
 

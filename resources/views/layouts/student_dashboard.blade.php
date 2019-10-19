@@ -24,7 +24,7 @@
     <!--     datePicker     -->
     <link href="{{asset('datePicker/persian-datepicker.min.css')}}" rel="stylesheet"/>
 
-    @yield('link')
+    @yield('style')
 
     <style>
         th
@@ -187,6 +187,11 @@
                         <li>
                             <a class="btn btn-fill btn-info" href="{{route('student_test')}}">
                                 صفحه تست و آزمایش
+                            </a>
+                        </li>
+                        <li>
+                            <a class="btn btn-fill btn-info" href="{{route('student_test_charge')}}">
+                                تست شارژ کیف پول
                             </a>
                         </li>
                     </ul>
