@@ -34,13 +34,17 @@
             self::creating(function($model)
             {
 
-                $student = Auth::guard('student')->user();
+                if($model->type=='PURCHASE')
+                {
 
+                $student = Auth::guard('student')->user();
                 $model->studentId = $student->id;
 
                 $code = substr(md5(uniqid(mt_rand(), true)), 0, 8);
 
                 $model->code = $code;
+
+                }
 
             });
         }

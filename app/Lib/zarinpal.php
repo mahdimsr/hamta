@@ -11,11 +11,8 @@ class zarinpal
         $this->MerchantID="6e70bb64-8e33-11e8-a395-005056a205be";
     }
 
-    public function pay($Amount,$Email,$Mobile)
+    public function pay($Amount,$Description,$Email,$Mobile,$CallbackURL)
     {
-        $Description = 'همپا | خرید آزمون';
-        $CallbackURL = route('');
-
                 $client = new nusoap_client('https://www.zarinpal.com/pg/services/WebGate/wsdl', 'wsdl');
                 $client->soap_defencoding = 'UTF-8';
                 $result = $client->call('PaymentRequest', [

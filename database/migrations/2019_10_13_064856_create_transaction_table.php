@@ -22,12 +22,13 @@
                 $table->bigIncrements('id');
                 $table->enum('type', ['CHARGE', 'PURCHASE']);
                 $table->integer('studentId');
-                $table->enum('itemType', ['LESSON_EXAM', 'GIFT_EXAM']);
-                $table->integer('itemId');
+                $table->enum('itemType', ['LESSON_EXAM'])->nullable();
+                $table->integer('itemId')->nullable();
                 $table->integer('price');
                 $table->integer('discountId')->nullable();
                 $table->integer('discountPrice')->nullable();
-                $table->string('code');
+                $table->string('code')->nullable();
+                $table->enum('status', ['IN-PROGRESS','FAILED','SUCCESS'])->default('IN-PROGRESS');
                 $table->timestamps();
                 $table->softDeletes();
             });

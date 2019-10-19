@@ -70,7 +70,7 @@
                                                         {{$modify == 1 ? $discount->type == 'GENERAL-CHARGE' ? 'selected' : '' : '' }}>
                                                         کد شگفت انگیز شارژ حساب کاربری
                                                     </option>
-                                                    <option value="GENERAL-OFF"
+                                                    <option value="GENERAL-LESSONEXAM-OFF"
                                                         {{$modify == 1 ? $discount->type == 'GENERAL-LESSONEXAM-OFF' ? 'selected' : '' : '' }}>
                                                      کد تخفیف آزمون های درس به درس
                                                     </option>

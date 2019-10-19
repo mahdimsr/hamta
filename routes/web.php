@@ -59,11 +59,13 @@
                     Route::get('/result', 'LessonExamController@result')->name('student_dashboard_lessonExams_result');
                 });
             });
-            Route::prefix('cart')->group(function()
+            Route::prefix('wallet')->group(function()
             {
-
-                Route::get('/', 'CartController@cart')->name('student_cart');
+                Route::get('/', 'WalletController@wallet')->name('student_wallet');
+                Route::post('/charge', 'WalletController@charge')->name('student_wallet_charge');
+                Route::get('/verify', 'WalletController@verify')->name('student_wallet_verify');
             });
+
         });
     });
 

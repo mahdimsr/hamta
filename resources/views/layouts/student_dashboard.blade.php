@@ -147,10 +147,10 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
 
-                        <li id="cart">
-                            <a href="{{route('student_cart')}}">
+                        <li>
+                            <a href="{{route('student_wallet')}}">
                                 <i class="fa fa-wallet"></i>
-                                <p class="hidden-lg hidden-md">سبد خرید</p>
+                                <p class="hidden-lg hidden-md">کیف پول</p>
                                 <span class="notification hidden-sm hidden-xs">{{$student->wallet/10}}</span>
                             </a>
                         </li>
