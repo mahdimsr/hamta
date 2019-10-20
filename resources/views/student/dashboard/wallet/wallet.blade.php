@@ -11,7 +11,7 @@
             <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>مبلغ شارژ (ریال)</label>
+                            <label>مبلغ شارژ (تومان)</label>
                             <input dir="rtl" type="text" name="price" class="form-control
                             input-numeral"
                                    placeholder="مبلغ شارژ را وارد نمایید"
@@ -28,7 +28,7 @@
                     <div class="form-group">
                         <label>کد شگفت انگیز</label>
                         <input dir="rtl" type="text" name="code" class="form-control"
-                          
+
                                placeholder="کد شگفت انگیز را وارد نمایید"
                                value="{{ old('code')}}">
                         <div class="invalid-feedback">

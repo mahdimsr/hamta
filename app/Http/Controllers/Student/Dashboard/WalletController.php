@@ -28,7 +28,7 @@ class WalletController extends Controller
             'code'  => 'nullable|string|exists:discount,code',
         ]);
 
-        $price = $request->input('price')/10;
+        $price = $request->input('price');
 
         if($request->get('code')!=null)
         {
@@ -53,9 +53,9 @@ class WalletController extends Controller
                         $transaction                = new Transaction();
                         $transaction->type          = 'CHARGE';
                         $transaction->studentId     = $student->id;
-                        $transaction->price         = $price*10;
+                        $transaction->price         = $price;
                         $transaction->discountId    = $discount_code->id;
-                        $transaction->discountPrice = $discountPrice*10;
+                        $transaction->discountPrice = $discountPrice;
                         $transaction->code          = $res;
                         $transaction->save();
                         return redirect('https://www.zarinpal.com/pg/StartPay/' . $res);
@@ -88,7 +88,7 @@ class WalletController extends Controller
                 $transaction                = new Transaction();
                 $transaction->type          = 'CHARGE';
                 $transaction->studentId     = $student->id;
-                $transaction->price         = $price*10;
+                $transaction->price         = $price;
                 $transaction->code          = $res;
                 $transaction->save();
                 return redirect('https://www.zarinpal.com/pg/StartPay/' . $res);
@@ -123,11 +123,11 @@ class WalletController extends Controller
                     [
                         'MerchantID'     => $MerchantID,
                         'Authority'      => $Authority,
-                        'Amount'         => $transaction->price/10,
+                        'Amount'         => $transaction->price,
                     ],
                 ]);
 
-                if ($result['Status'] == 100 && $transaction->studentId==$student->id)
+                if ($result['Status'] == 100)
                 {
 
                     if($transaction->discountPrice)
