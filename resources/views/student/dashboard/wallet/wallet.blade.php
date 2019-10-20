@@ -1,6 +1,7 @@
 @extends('layouts.student_dashboard')
-@section('style')
-/*
+@section('content')
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
 <style>
 
 @media (min-width: 992px){
@@ -37,8 +38,8 @@ ul.errors-list{
     line-height: 24px;
     position: absolute;
     padding: 8px 12px 4px;
-     top: 11%;
-     bottom: -26%;
+    /* top: 11%; */
+    /* bottom: -26%; */
     margin-left: 11px;
 }
 
@@ -66,7 +67,7 @@ ul.errors-list{
 
 
 
- .wallet-errors-name:after, .wallet-errors-name:before {
+/* .wallet-errors-name:after, .wallet-errors-name:before {
     content: '';
     border: 7px solid transparent;
     position: absolute;
@@ -79,22 +80,18 @@ ul.errors-list{
   .wallet-errors-name:before {
     border-right: 7px solid #fcc2c3;
     left: -15px;
-  }
+  } */
 .fas.fa-exclamation{
     position: relative;
 float: right;
 margin-top: 6%;
 margin-left: 6%;
 }
-justformargin{
+#justformargin{
 
     margin-top: -6px;
 }
 </style>
-*/
-@endsection
-@section('content')
-
 <div class="row" dir="rtl">
         <div class="col-md-3">
                 <div class="card ">
@@ -133,8 +130,14 @@ justformargin{
                                             <input dir="rtl" type="text" name="charge_value" class="form-control"
                                                    placeholder="مبلغ شارژ را وارد نمایید"
                                                    value="{{ old('charge_value')}}">
-                                            <div class="invalid-feedback">
-                                                        <small>{{ $errors->first('charge_value') }}</small>
+                                                   <div class="invalid-feedback">
+
+                                                    <small class="wallet-errors-name">
+
+                                                            <i class="fas fa-exclamation"></i>
+                                                            {{ $errors->first('charge_value') }}
+                                                    </small>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -146,23 +149,39 @@ justformargin{
                                         <input dir="rtl" type="text" name="charge_code" class="form-control"
                                                placeholder="کد شگفت انگیز را وارد نمایید"
                                                value="{{ old('charge_code')}}">
-                                        <div class="invalid-feedback">
-                                                    <small>{{ $errors->first('charge_code') }}</small>
-                                        </div>
+                                               <div class="invalid-feedback">
+                                                <small class="wallet-errors-name" id="justformargin">
+                                                         <i class="fas fa-exclamation"></i>
+
+                                                        {{ $errors->first('code') }}
+
+                                                </small>
+                                            </div>
                                     </div>
                                 </div>
 
                         </div>
                             <button type="submit" class="btn btn-info btn-fill pull-right">ورود به درگاه</button>
-                            <div class="clearfix"></div>
-                            <div>{{ $errors->first('chargeFailed') }}</div>
-                            <div>{{ $errors->first('transactionFailed') }}</div>
-                            @if(Session::get('status'))
-                            <div>{{ Session('status')}}</div>
-                            @endif
-                            @if(Session::get('discount'))
-                            <div>{{ Session('discount')}}</div>
-                            @endif
+                            <div class="row">
+                                <div class="errors-bg">
+                                <ul class="errors-list">
+
+                                <li>{{ $errors->first('codeExpired') }}</li>
+                                <li>{{ $errors->first('codeIncorrect') }}</li>
+                                <li>{{ $errors->first('chargeFailed') }}</li>
+                                <li>{{ $errors->first('transactionFailed') }}</li>
+                                @if(Session::get('status'))
+                                <div>{{ Session('status')}}</div>
+                                <li>{{ Session('status')}}</li>
+                                @endif
+                                @if(Session::get('discount'))
+                                <div>{{ Session('discount')}}</div>
+                                <li>{{ Session('discount')}}</li>
+                                @endif
+                                <div class="clearfix"></div>
+                                </ul>
+                                </div>
+                                </div>
                         </form>
                     </div>
                 </div>
@@ -172,7 +191,17 @@ justformargin{
 
 
 @section('script')
+<script src="https://nosir.github.io/cleave.js/dist/cleave.min.js"></script>
+$( ".form-control" )
+   $( ".input-element" ).val( va );
+  })
+   .keyup();
 
+
+
+
+
+</script>
 @endsection
 
 @endsection
