@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Student\Dashboard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
-use App\model\Scholarship as Scholarship;
+use App\model\Scholarship;
 
 class ScholarshipController extends Controller
 {
@@ -29,16 +28,8 @@ class ScholarshipController extends Controller
 
         $this->validate($request,
             [
-                'stdMessage'   =>  'Required|string|between:10,500'
+                'stdMessage'   =>  'Required|string|between:5,500'
             ]
-        );
-
-		$studentId = ['stdMessage' => $student->id];
-
-        $validator = Validator::make($studentId,
-        [
-			'stdMessage' => 'unique:scholarship,studentId',
-        ]
         );
 
         if($student->isComplete==0)
@@ -46,27 +37,27 @@ class ScholarshipController extends Controller
             return redirect()->back()->withErrors(['notComplete' => ['شما هنوز اطلاعات خود را تکمیل نکرده اید.']]);
         }
 
-		if ($validator->fails() && $scholarship->status!='NOT-SEEN')
+		if ($scholarship && $scholarship->status!='NOT-SEEN')
 		{
-			return redirect()->back()->with(['errors' => $validator->errors()]);
-		}
+            return redirect()->back();
+        }
 
-		else if ($validator->fails() && $scholarship->status=='NOT-SEEN')
+		if ($scholarship && $scholarship->status=='NOT-SEEN')
 		{
             $scholarship->stdMessage=$request->input('stdMessage');
             $scholarship->update();
-            return redirect()->route('student_dashboard_scholarship');
+            return redirect()->back();
         }
 
         else
         {
+            $scholarship = new Scholarship();
 
-            $scholarship=new Scholarship();
             $scholarship->studentId=Auth::guard('student')->id();
             $scholarship->stdMessage=$request->input('stdMessage');
             $scholarship->save();
-            return redirect()->route('student_dashboard_scholarship');
 
+            return redirect()->back();
         }
 
     }

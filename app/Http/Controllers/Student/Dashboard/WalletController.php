@@ -24,22 +24,22 @@ class WalletController extends Controller
         $student = Auth::guard('student')->user();
 
         $this->validate($request,[
-            'price' => 'required|numeric|min:1000',
-            'code'  => 'nullable|string|exists:discount,code',
+            'charge_value' => 'required|numeric|min:1000',
+            'charge_code'  => 'nullable|string|exists:discount,code',
         ]);
 
-        $price = $request->input('price');
+        $price = $request->input('charge_value');
 
-        if($request->get('code')!=null)
+        if($request->get('charge_code')!=null)
         {
-            $discount_code= Discount::query()->where('code',$request->input('code'))->first();
+            $discount_code= Discount::query()->where('code',$request->input('charge_code'))->first();
 
             if($discount_code->type=='GENERAL-CHARGE')
             {
 
                 if($discount_code->isExpired)
                 {
-                    return redirect()->back()->withErrors(['codeExpired' => ['کد منقضی شده است.']]);
+                    return redirect()->back()->withErrors(['charge_code' => ['کد مورد نظر منقضی شده است.']]);
                 }
 
                 else
@@ -74,7 +74,7 @@ class WalletController extends Controller
 
             else
             {
-                return redirect()->back()->withErrors(['codeIncorrect' => ['کد وارد شده قابل استفاده برای این بخش نیست']]);
+                return redirect()->back()->withErrors(['charge_code' => ['کد وارد شده برای این بخش قابل استفاده نیست.']]);
             }
         }
 
@@ -136,7 +136,7 @@ class WalletController extends Controller
                         $student->update();
                         $transaction->status ='SUCCESS';
                         $transaction->update();
-                        return redirect()->route('student_wallet')->with('status','شارژ کیف پول شما با موفقیت انجام شد')->with('discount','کد شگفت انگیز برای شارژ شما اعمال گردید');
+                        return redirect()->route('student_wallet')->with('status','شارژ کیف پول با موفقیت انجام شد.')->with('discount','کد شگفت انگیز برای شارژ شما اعمال گردید.');
                     }
 
                     else
@@ -145,7 +145,7 @@ class WalletController extends Controller
                         $student->update();
                         $transaction->status ='SUCCESS';
                         $transaction->update();
-                        return redirect()->route('student_wallet')->with('status','success');
+                        return redirect()->route('student_wallet')->with('status','شارژ کیف پول با موفقیت انجام شد.');
                     }
 
                 }
@@ -154,7 +154,7 @@ class WalletController extends Controller
                 {
                     $transaction->status='FAILED';
                     $transaction->update();
-                    return redirect()->route('student_wallet')->withErrors(['transactionFailed' => ['عملیات ناموفق']]);
+                    return redirect()->route('student_wallet')->withErrors(['transactionFailed' => ['شارژ کیف پول ناموفق']]);
                 }
             }
 
@@ -162,7 +162,7 @@ class WalletController extends Controller
             {
                 $transaction->status='FAILED';
                 $transaction->update();
-                return redirect()->route('student_wallet')->withErrors(['transactionFailed' => ['عملیات ناموفق']]);
+                return redirect()->route('student_wallet')->withErrors(['transactionFailed' => ['شارژ کیف پول ناموفق']]);
             }
         }
 

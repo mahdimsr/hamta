@@ -44,7 +44,7 @@
 					<h4 class="title">{{$student->isComplete==0?'تکمیل اطلاعات' : 'ویرایش اطلاعات'}}</h4>
 				</div>
 				<div class="content">
-					<form action="{{ $student->isComplete==0? route('student_dashboard_profile_update') : route('student_dashboard_profile_edit') }}" method="POST">
+					<form action="{{ $student->isComplete==0? route('student_dashboard_profile_update') : route('student_dashboard_profile_edit') }}" method="POST" autocomplete="off">
 						{{ csrf_field() }}
 						<div class="row">
 							<div class="col-md-4">
@@ -97,7 +97,7 @@
 									<input dir="rtl" type="text" name="nationalCode" class="form-control"
 										   placeholder="کد ملی خود را وارد نمایید"
                                            value="{{ old('nationalCode') ? old('nationalCode') : $student->nationalCode}}"
-                                           tabindex="5"
+                                           tabindex="5" maxlength="10"
                                            {{ $student->isComplete== 1? 'disabled' : '' }}  >
 
 									<div class="invalid-feedback">
@@ -123,7 +123,7 @@
 							<div class="col-md-6">
                                     <div class="form-group">
                                             <label>آدرس</label>
-                                            <textarea dir="rtl" name="address" rows="3" class="form-control textarea-radius" placeholder="آدرس خود را وارد نمایید" tabindex="8">{{ old('address')? old('address') : $student->address }}</textarea>
+                                            <textarea dir="rtl" maxlength="200" name="address" rows="3" class="form-control textarea-radius" placeholder="آدرس خود را وارد نمایید" tabindex="8">{{ old('address')? old('address') : $student->address }}</textarea>
                                             <div class="invalid-feedback">
                                                     <small>{{ $errors->first('address') }}</small>
                                             </div>
@@ -214,7 +214,7 @@
 							</div>
 
 							<div class="col-md-3 ">
-								<label for="grade">مقطع</label>
+								<label for="grade">مقطع تحصیلی</label>
 								<select dir="rtl" name="grade" class="form-control dropdown-radius menu hide-search "  id="grade" tabindex="10"  {{ $student->isComplete== 1? 'disabled' : '' }} >
 									<option value="" selected disabled>مقطع تحصیلی خود را انتخاب نمایید</option>
 									@foreach ( $grades as $grade )
@@ -227,10 +227,10 @@
 								</div>
 							</div>
 							<div class="col-md-3">
-								<label for="orientation">گرایش</label>
+								<label for="orientation">گرایش تحصیلی</label>
 								<select dir="rtl" name="orientation" class="form-control dropdown-radius menu hide-search"
 										id="orientation" tabindex="9"  {{ $student->isComplete== 1? 'disabled' : '' }} >
-									<option value="" selected disabled>گرایش خود را انتخاب نمایید</option>
+									<option value="" selected disabled>گرایش تحصیلی خود را انتخاب نمایید</option>
 									@foreach ( $orientations as $orientation )
 										<option value="{{ $orientation->id }}" {{ old('orientation')==$orientation->id? 'selected' : '' }} {{  $student->isComplete==1 && $student->orientationId==$orientation->id && !old('orientation')? 'selected' : '' }} >{{ $orientation->title }}</option>
 									@endforeach
@@ -247,7 +247,7 @@
 								<div class="form-group">
 									<label>شماره تلفن همراه یکی از والدین</label>
 									<input dir="rtl" name="parentPhone" type="text" class="form-control"
-										   placeholder="شماره تلفن همراه یکی از والدین را وارد نمایید"
+										   placeholder="شماره تلفن همراه یکی از والدین را وارد نمایید" maxlength="11"
                                            value="{{ old('parentPhone')? old('parentPhone') : $student->parentPhone}}"
                                            tabindex="15"
                                            >
@@ -260,7 +260,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>شماره تلفن منزل بدون پیش شماره</label>
-									<input dir="rtl" name="telePhone" type="text" class="form-control"
+									<input dir="rtl" name="telePhone" type="text" class="form-control" maxlength="8"
 										   placeholder="شماره تلفن منزل را وارد نمایید"
                                            value="{{ old('telePhone')? old('telePhone') : $student->telePhone }}"
                                            tabindex="14"
@@ -276,7 +276,7 @@
                                         <div class="form-group">
                                             <label>شماره تلفن همراه یکی از والدین</label>
                                             <input dir="rtl" name="parentPhone" type="text" class="form-control"
-                                                   placeholder="شماره تلفن همراه یکی از والدین را وارد نمایید"
+                                                   placeholder="شماره تلفن همراه یکی از والدین را وارد نمایید" maxlength="11"
                                                    value="{{ old('parentPhone')? old('parentPhone') : $student->parentPhone}}"
                                                    tabindex="16"
                                                    >
@@ -289,7 +289,7 @@
                                         <div class="form-group">
                                             <label>شماره تلفن منزل بدون پیش شماره</label>
                                             <input dir="rtl" name="telePhone" type="text" class="form-control"
-                                                   placeholder="شماره تلفن منزل را وارد نمایید"
+                                                   placeholder="شماره تلفن منزل را وارد نمایید" maxlength="8"
                                                    value="{{ old('telePhone')? old('telePhone') : $student->telePhone }}"
                                                    tabindex="15"
                                                    >
@@ -303,7 +303,7 @@
                                             <div class="form-group">
                                                 <label>شماره تلفن همراه دانش آموز</label>
                                                 <input dir="rtl" name="student_mobile_edit" type="text" class="form-control"
-                                                       placeholder="شماره تلفن همراه خود را وارد نمایید"
+                                                       placeholder="شماره تلفن همراه خود را وارد نمایید" maxlength="11"
                                                        value="{{ old('student_mobile_edit')? old('student_mobile_edit') : $student->mobile}}"
                                                        tabindex="14"
                                                        >
