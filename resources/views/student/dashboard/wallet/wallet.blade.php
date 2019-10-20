@@ -1,96 +1,27 @@
 @extends('layouts.student_dashboard')
 @section('content')
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
 <style>
 
-@media (min-width: 992px){
-.col-md-9 {
-    width: 75%;
-    position: absolute;
-    top: 12%;
-    left: 24%;
-}
-}
- ul{
-    list-style: none;
-
-}
-ul.errors-list{
-
-
-    position: relative;
-    top: 99%;
-    right: 4%;
-}
 .errors-bg{
 
-    background-color: #fce4e4;
-    border: 1px solid #fcc2c3;
-    border-radius: 7px;
-    -moz-border-radius: 7px;
-    -webkit-border-radius: 7px;
-    display: inline;
-    color: #cc0033;
-    float: left;
-    margin: 5rem 0rem 2rem 0rem;
-    font-weight: bold;
-    line-height: 24px;
-    position: absolute;
+    margin: 10px 0;
+  padding: 10px;
+  border-radius: 3px 3px 3px 3px;
+  color: #D8000C;
+  background-color: #FFBABA;
+  font-size: large
+} 
+
+.success{
+    margin: 10px 0;
     padding: 8px 12px 4px;
-    /* top: 11%; */
-    /* bottom: -26%; */
-    margin-left: 11px;
+  border-radius: 3px 3px 3px 3px;
+  color: #270;
+  background-color: #DFF2BF;
+  font-size: large
 }
 
-
- .wallet-errors-name{
-    background-color: #fce4e4;
-  border: 1px solid #fcc2c3;
-  border-radius: 7px;
-  -moz-border-radius: 7px;
-  -webkit-border-radius: 7px;
-  display: inline;
-  color: #cc0033;
-  float: right;
-  width: 19%;
-  margin-top: 2px;
-  font-weight: bold;
-  line-height: 24px;
-  position: relative;
-  padding: 7px 11px 4px;
-  margin-left: 17px;
-}
-
-
-
-
-
-
-/* .wallet-errors-name:after, .wallet-errors-name:before {
-    content: '';
-    border: 7px solid transparent;
-    position: absolute;
-    top: 11px;
-  }
-  .wallet-errors-name:after {
-    border-right: 7px solid #fce4e4;
-    left: -14px;
-  }
-  .wallet-errors-name:before {
-    border-right: 7px solid #fcc2c3;
-    left: -15px;
-  } */
-.fas.fa-exclamation{
-    position: relative;
-float: right;
-margin-top: 6%;
-margin-left: 6%;
-}
-#justformargin{
-
-    margin-top: -6px;
-}
 </style>
 <div class="row" dir="rtl">
         <div class="col-md-3">
@@ -110,7 +41,7 @@ margin-left: 6%;
                         دانش آموز گرامی در صورتی که دارای کد شگفت انگیز هستید می توانید از آن استفاده کرده و به اندازه درصد کد روی مبلغ وارد شده ، شارژ بیشتری دریافت نمایید .
                         </p>
                     </div>
-                    <hr>
+                   
                 </div>
             </div>
             <div class="col-md-9">
@@ -121,87 +52,67 @@ margin-left: 6%;
                     </div>
                     <div class="content ">
 
-                        <form action="{{ route('student_wallet_charge') }}" method="POST" class="needs-validation" novalidate>
-                            {{ csrf_field() }}
-                            <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>مبلغ شارژ (تومان)</label>
-                                            <input dir="rtl" type="text" name="charge_value" class="form-control"
-                                                   placeholder="مبلغ شارژ را وارد نمایید"
-                                                   value="{{ old('charge_value')}}">
-                                                   <div class="invalid-feedback">
+                        <div class="content ">
 
-                                                    <small class="wallet-errors-name">
-
-                                                            <i class="fas fa-exclamation"></i>
-                                                            {{ $errors->first('charge_value') }}
-                                                    </small>
+                            <form action="{{ route('student_wallet_charge') }}" method="POST" class="needs-validation" novalidate>
+                                {{ csrf_field() }}
+                                <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>مبلغ شارژ (تومان)</label>
+                                                <input dir="rtl" type="text" name="charge_value" class="form-control"
+                                                       placeholder="مبلغ شارژ را وارد نمایید"
+                                                       value="{{ old('charge_value')}}">
+                                                <div class="invalid-feedback">
+                                                            <small>{{ $errors->first('charge_value') }}</small>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>کد شگفت انگیز</label>
-                                        <input dir="rtl" type="text" name="charge_code" class="form-control"
-                                               placeholder="کد شگفت انگیز را وارد نمایید"
-                                               value="{{ old('charge_code')}}">
-                                               <div class="invalid-feedback">
-                                                <small class="wallet-errors-name" id="justformargin">
-                                                         <i class="fas fa-exclamation"></i>
-
-                                                        {{ $errors->first('code') }}
-
-                                                </small>
-                                            </div>
-                                    </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>کد شگفت انگیز</label>
+                                            <input dir="rtl" type="text" name="charge_code" class="form-control"
+                                                   placeholder="کد شگفت انگیز را وارد نمایید"
+                                                   value="{{ old('charge_code')}}">
+                                            <div class="invalid-feedback">
+                                                        <small>{{ $errors->first('charge_code') }}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                            </div>
+                                <button type="submit" class="btn btn-info btn-fill pull-right">ورود به درگاه</button>
+                                <div class="clearfix"></div>
 
-                        </div>
-                            <button type="submit" class="btn btn-info btn-fill pull-right">ورود به درگاه</button>
-                            <div class="row">
-                                <div class="errors-bg">
-                                <ul class="errors-list">
-
-                                <li>{{ $errors->first('codeExpired') }}</li>
-                                <li>{{ $errors->first('codeIncorrect') }}</li>
-                                <li>{{ $errors->first('chargeFailed') }}</li>
-                                <li>{{ $errors->first('transactionFailed') }}</li>
+                                {{-- {{ $errors->first('chargeFailed') }} --}}
+                                <div class="errors-bg"> 
+                                        <i class="fas fa-times"></i>
+                                    غیر موفقیت امیز</div>
+                             
+                                    {{-- {{ $errors->first('transactionFailed') }} --}}
+                                <div class="success">
+                                        <i class="fas fa-check"></i>
+                                    موفقیت امیز
+                                
+                                </div>
                                 @if(Session::get('status'))
                                 <div>{{ Session('status')}}</div>
-                                <li>{{ Session('status')}}</li>
                                 @endif
                                 @if(Session::get('discount'))
                                 <div>{{ Session('discount')}}</div>
-                                <li>{{ Session('discount')}}</li>
                                 @endif
-                                <div class="clearfix"></div>
-                                </ul>
-                                </div>
-                                </div>
-                        </form>
-                    </div>
-                </div>
+                            </form>
                         </div>
-</div>
+                       </div>
+                        </div>
+                    </div>
 
-
+                </div>
 
 @section('script')
-<script src="https://nosir.github.io/cleave.js/dist/cleave.min.js"></script>
-$( ".form-control" )
-   $( ".input-element" ).val( va );
-  })
-   .keyup();
 
-
-
-
-
-</script>
 @endsection
 
 @endsection
