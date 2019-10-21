@@ -133,7 +133,7 @@
                                             name="gradeLessons[]" multiple data-placeholder="درس های آزمون را انتخاب نمایید">
                                         @foreach($gradeLessons as $gradeLesson)
                                             <option data-content="{{$gradeLesson->orientationId}}"
-                                                    value="{{$gradeLesson->id}}"
+                                                    value="{{$gradeLesson->id}}" {{in_array($gradeLesson->id, old("gradeLessons") ?: []) ? 'selected': ''}}
                                             >{{$gradeLesson->lesson_grade}} - {{ $gradeLesson->sort_title }}</option>
                                         @endforeach
                                     </select>
