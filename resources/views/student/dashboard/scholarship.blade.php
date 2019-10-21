@@ -57,19 +57,21 @@
                                             <small>{{ $errors->first('stdMessage') }}{{ $errors->first('notComplete') }}</small>
                                         </div>
                                     </div>
+                                    @unless (!empty($scholarship->adminMessage))
+                                    <label>عکس کارنامه</label>
+                                    <div  class="col-md-5 " style="float: none;">
+                                        <div class="input-file-container">
+                                            <input class="input-file" id="my-file" type="file" name="scholarshipImage">
+                                            <label tabindex="2" for="my-file" class="input-file-trigger text-center">عکس کارنامه را آپلود نمایید</label>
+                                        </div>
+                                        <p class="file-return"></p>
+                                        <div class="invalid-feedback">
+                                            <small>{{ $errors->first('scholarshipImage') }}</small>
+                                        </div>
 
-                                <label>عکس کارنامه</label>
-                                <div  class="col-md-5 " style="float: none;">
-                                    <div class="input-file-container">
-                                        <input class="input-file" id="my-file" type="file" name="scholarshipImage">
-                                        <label tabindex="2" for="my-file" class="input-file-trigger text-center">عکس کارنامه را آپلود نمایید</label>
                                     </div>
-                                    <p class="file-return"></p>
-                                    <div class="invalid-feedback">
-                                        <small>{{ $errors->first('scholarshipImage') }}</small>
-                                    </div>
+                                    @endunless
 
-                                </div>
 
                                 @unless(empty($scholarship->adminMessage))
                                 <div class="col-md-12">
