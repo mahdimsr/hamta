@@ -61,18 +61,8 @@
                                         </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>تاریخ انقضا</label>
-                                    <input id="endDate" name="endDate" dir="rtl" type="text" class="form-control"
-                                           tabindex="4"
-                                           value="{{old('endDate') ? old('endDate') : '' }} {{ $modify == 1 && !old('endDate') ? $discount->endDate : ''}}">
-                                    <div class="invalid-feedback">
-                                        <small>{{ $errors->first('endDate') }}</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
+
+                            <div class="col-md-6 s-floatR">
                                 <div class="form-group">
                                     <label>درصد تخفیف</label>
                                     <input name="value" dir="rtl" type="text" class="form-control"
@@ -83,6 +73,19 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col-md-6 s-floatL">
+                                <div class="form-group">
+                                    <label>تاریخ انقضا</label>
+                                    <input id="endDate" name="endDate" dir="rtl" type="text" class="form-control"
+                                           tabindex="4"
+                                           value="{{old('endDate') ? old('endDate') : '' }} {{ $modify == 1 && !old('endDate') ? $discount->endDate : ''}}">
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('endDate') }}</small>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <button type="submit" class="btn btn-info btn-fill pull-left" tabindex="5">اعمال</button>
                         <div class="clearfix"></div>

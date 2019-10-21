@@ -1,4 +1,9 @@
 @extends('layouts.student_dashboard')
+@section('style')
+    <style>
+        @media (min-width:992px){.s-floatL{float:left!important;}.s-floatR{float: right!important;}}
+    </style>
+    @endsection
 @section('content')
 
     <div class="row" dir="rtl">
@@ -29,19 +34,40 @@
                     <h4 class="title">بورسیه</h4>
                 </div>
                 <div class="content">
-                    <form action="{{ route('student_dashboard_scholarship_submit') }}" method="POST" autocomplete="off">
+                    <form action="{{ route('student_dashboard_scholarship_submit') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
                         {{ csrf_field() }}
+
+
+
+
+
                         <div class="row">
                             <div class="col-md-12">
                                     <div class="form-group">
-                                        <p>توضیحات مربوط به درخواست</p>
-                                        <hr>
+
+
+
+
+
+
+
                                         <label>توضیحات درخواست</label>
                                         <textarea dir="rtl" maxlength="500" name="stdMessage" rows="5" class="form-control textarea-radius" placeholder="متن درخواست خود را وارد نمایید" @unless(empty($scholarship)) {{ $scholarship->status!='NOT-SEEN' ? 'disabled' : '' }} @endunless>@unless(empty($scholarship)){{ $scholarship->status && !old('stdMessage') ? $scholarship->stdMessage : '' }}@endunless{{ old('stdMessage') ? old('stdMessage') : '' }}</textarea>
                                         <div class="invalid-feedback">
                                             <small>{{ $errors->first('stdMessage') }}{{ $errors->first('notComplete') }}</small>
                                         </div>
                                     </div>
+
+                                <label>عکس کارنامه</label>
+                                <div  class="col-md-5 " style="float: none;">
+                                    <div class="input-file-container">
+                                        <input class="input-file" id="my-file" type="file">
+                                        <label tabindex="0" for="my-file" class="input-file-trigger text-center">عکس کارنامه را آپلود کنید...</label>
+                                    </div>
+                                    <p class="file-return"></p>
+
+                                </div>
+
                                 @unless(empty($scholarship->adminMessage))
                                 <div class="col-md-12">
                                     <div class="card text-right">

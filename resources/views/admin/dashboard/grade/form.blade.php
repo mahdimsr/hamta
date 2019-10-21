@@ -52,29 +52,8 @@
 						{{csrf_field()}}
 
 						<div class="row">
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>پارامتر مقطع</label>
-									<input name="urlGrade" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: tenth-grade" tabindex="3"
-										   value="{{old('urlGrade') ? old('urlGrade') : ''}}{{ $modify==1 && !old('urlGrade') ? $grade->url : '' }}">
-									<div class="invalid-feedback">
-										<small>{{ $errors->first('urlGrade') }}</small>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>کد مقطع</label>
-									<input name="codeGrade" dir="rtl" type="text" class="form-control"
-										   placeholder="مثلا: 10" tabindex="2"
-										   value="{{old('codeGrade') ? old('codeGrade') : ''}}{{ $modify==1 && !old('codeGrade') ? $grade->code : '' }}">
-									<div class="invalid-feedback">
-										<small>{{ $errors->first('codeGrade') }}</small>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
+
+							<div class="col-md-4 s-floatR">
 								<div class="form-group">
 									<label>عنوان مقطع</label>
 									<input name="titleGrade" dir="rtl" type="text" class="form-control"
@@ -85,6 +64,34 @@
 									</div>
 								</div>
 							</div>
+
+
+
+
+							<div class="col-md-4 s-floatR">
+								<div class="form-group">
+									<label>کد مقطع</label>
+									<input name="codeGrade" dir="rtl" type="text" class="form-control"
+										   placeholder="مثلا: 10" tabindex="2"
+										   value="{{old('codeGrade') ? old('codeGrade') : ''}}{{ $modify==1 && !old('codeGrade') ? $grade->code : '' }}">
+									<div class="invalid-feedback">
+										<small>{{ $errors->first('codeGrade') }}</small>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-4 s-floatL">
+								<div class="form-group">
+									<label>پارامتر مقطع</label>
+									<input name="urlGrade" dir="rtl" type="text" class="form-control"
+										   placeholder="مثلا: tenth-grade" tabindex="3"
+										   value="{{old('urlGrade') ? old('urlGrade') : ''}}{{ $modify==1 && !old('urlGrade') ? $grade->url : '' }}">
+									<div class="invalid-feedback">
+										<small>{{ $errors->first('urlGrade') }}</small>
+									</div>
+								</div>
+							</div>
+
 						</div>
 
 						<button type="submit" class="btn btn-info btn-fill pull-left" tabindex="4">اعمال</button>
