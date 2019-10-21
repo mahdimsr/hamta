@@ -32,11 +32,7 @@
             text-align : center;
         }
 
-        .error
-        {
-            color     : red;
-            font-size : 15px;
-        }
+
 
     </style>
 </head>

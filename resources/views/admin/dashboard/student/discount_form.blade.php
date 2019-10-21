@@ -51,7 +51,20 @@
 
 
                         <div class="row">
-                                <div class="col-md-3">
+
+                            <div class="col-md-9 s-floatR">
+                                <div class="form-group">
+                                    <label>کد</label>
+                                    <input name="code" dir="rtl" type="text" class="form-control"
+                                           placeholder="کد تخفیف را وارد نمایید" tabindex="1"
+                                           value="{{old('code') ? old('code') : ''}}{{ $modify==1 && !old('code') ? $discount->code : '' }}">
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('code') }}</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                                <div class="col-md-3 s-floatL">
                                         <div class="form-group">
                                             <label>تعداد دفعات استفاده</label>
                                             <input name="count" dir="rtl" type="text" class="form-control"
@@ -62,31 +75,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                        <div class="col-md-9">
-                                            <div class="form-group">
-                                                <label>کد</label>
-                                                <input name="code" dir="rtl" type="text" class="form-control"
-                                                    placeholder="کد تخفیف را وارد نمایید" tabindex="1"
-                                                    value="{{old('code') ? old('code') : ''}}{{ $modify==1 && !old('code') ? $discount->code : '' }}">
-                                                <div class="invalid-feedback">
-                                                    <small>{{ $errors->first('code') }}</small>
-                                                </div>
-                                            </div>
-                                        </div>
+
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>تاریخ انقضا</label>
-                                    <input id="endDate" name="endDate" dir="rtl" type="text" class="form-control"
-                                           tabindex="4"
-                                           value="{{old('endDate') ? old('endDate') : '' }} {{ $modify == 1 && !old('endDate') ? $discount->endDate : ''}}">
-                                    <div class="invalid-feedback">
-                                        <small>{{ $errors->first('endDate') }}</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
+
+                            <div class="col-md-6 s-floatR">
                                 <div class="form-group">
                                     <label>درصد تخفیف</label>
                                     <input name="value" dir="rtl" type="text" class="form-control"
@@ -94,6 +87,18 @@
                                            value="{{old('value') ? old('value') : ''}} {{ $modify==1 && !old('value') ? $discount->value : '' }}">
                                     <div class="invalid-feedback">
                                         <small>{{ $errors->first('value') }}</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 s-floatL">
+                                <div class="form-group">
+                                    <label>تاریخ انقضا</label>
+                                    <input id="endDate" name="endDate" dir="rtl" type="text" class="form-control"
+                                           tabindex="4"
+                                           value="{{old('endDate') ? old('endDate') : '' }} {{ $modify == 1 && !old('endDate') ? $discount->endDate : ''}}">
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('endDate') }}</small>
                                     </div>
                                 </div>
                             </div>

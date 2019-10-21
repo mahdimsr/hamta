@@ -47,18 +47,8 @@
 						{{csrf_field()}}
 
                         <div class="row">
-                                <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>پارامتر دسته بندی</label>
-                                            <input name="urlCategory" dir="rtl" type="text" class="form-control"
-                                                   placeholder="پارامتر دسته بندی را وارد نمایید" tabindex="3"
-                                                   value="{{old('urlCategory') ? old('urlCategory') : ''}}{{ $modify==1 && !old('urlCategory') ? $category->url : '' }}">
-                                            <div class="invalid-feedback">
-                                                <small>{{ $errors->first('urlCategory') }}</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                            <div class="col-md-6">
+
+							<div class="col-md-6 s-floatR">
 								<div class="form-group">
 									<label>عنوان دسته بندی</label>
 									<input name="titleCategory" dir="rtl" type="text" class="form-control"
@@ -69,6 +59,19 @@
 									</div>
 								</div>
 							</div>
+
+                                <div class="col-md-6 s-floatL">
+                                        <div class="form-group">
+                                            <label>پارامتر دسته بندی</label>
+                                            <input name="urlCategory" dir="rtl" type="text" class="form-control"
+                                                   placeholder="پارامتر دسته بندی را وارد نمایید" tabindex="3"
+                                                   value="{{old('urlCategory') ? old('urlCategory') : ''}}{{ $modify==1 && !old('urlCategory') ? $category->url : '' }}">
+                                            <div class="invalid-feedback">
+                                                <small>{{ $errors->first('urlCategory') }}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
                         </div>
 						<button type="submit" class="btn btn-info btn-fill pull-left" tabindex="4">اعمال</button>
 						<div class="clearfix"></div>

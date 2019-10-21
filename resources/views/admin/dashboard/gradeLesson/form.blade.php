@@ -89,31 +89,8 @@
 
 						</div>
 						<div class="row">
-                                <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>ضریب درس</label>
-                                            <input name="ratio" dir="rtl" type="text" class="form-control "
-                                                   placeholder="ضریب درس را وارد نمایید" tabindex="2"
-                                                   value="{{old('ratio') ? old('ratio') : ''}}{{ $modify==1 && !old('ratio') ? $gradeLesson->ratio : '' }}">
-                                            <div class="invalid-feedback">
-                                                <small>{{ $errors->first('ratio') }}</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>نوع درس</label>
-                                            <select dir="rtl" name="type" class="form-control menu hide-search dropdown-radius">
-                                                <option value="" selected disabled>نوع درس را انتخاب نمایید</option>
-                                                <option value="EXPERT" {{ old('grade')=='EXPERT' ? 'selected' : '' }}{{$modify == 1 && !old('grade') && $gradeLesson->sort =='EXPERT'? 'selected' : '' }}>تخصصی</option>
-                                                <option value="GENERAL" {{ old('grade')=='GENERAL' ? 'selected' : '' }}{{$modify == 1 && !old('grade') && $gradeLesson->sort =='GENERAL'? 'selected' : '' }}>عمومی</option>
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                <small>{{ $errors->first('type') }}</small>
-                                            </div>
-                                        </div>
-                                    </div>
-							<div class="col-md-4">
+
+							<div class="col-md-4 s-floatR">
 								<div class="form-group">
 									<label>مقطع درس</label>
 									<select dir="rtl" name="grade" class="form-control menu hide-search dropdown-radius">
@@ -126,7 +103,37 @@
 										<small>{{ $errors->first('grade') }}</small>
 									</div>
 								</div>
-                            </div>
+							</div>
+
+
+
+                                    <div class="col-md-4 s-floatR">
+                                        <div class="form-group">
+                                            <label>نوع درس</label>
+                                            <select dir="rtl" name="type" class="form-control menu hide-search dropdown-radius">
+                                                <option value="" selected disabled>نوع درس را انتخاب نمایید</option>
+                                                <option value="EXPERT" {{ old('grade')=='EXPERT' ? 'selected' : '' }}{{$modify == 1 && !old('grade') && $gradeLesson->sort =='EXPERT'? 'selected' : '' }}>تخصصی</option>
+                                                <option value="GENERAL" {{ old('grade')=='GENERAL' ? 'selected' : '' }}{{$modify == 1 && !old('grade') && $gradeLesson->sort =='GENERAL'? 'selected' : '' }}>عمومی</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                <small>{{ $errors->first('type') }}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+							<div class="col-md-4 s-floatL">
+								<div class="form-group">
+									<label>ضریب درس</label>
+									<input name="ratio" dir="rtl" type="text" class="form-control "
+										   placeholder="ضریب درس را وارد نمایید" tabindex="2"
+										   value="{{old('ratio') ? old('ratio') : ''}}{{ $modify==1 && !old('ratio') ? $gradeLesson->ratio : '' }}">
+									<div class="invalid-feedback">
+										<small>{{ $errors->first('ratio') }}</small>
+									</div>
+								</div>
+							</div>
+
 						</div>
 
 						<button type="submit" class="btn btn-info btn-fill pull-left">اعمال</button>
