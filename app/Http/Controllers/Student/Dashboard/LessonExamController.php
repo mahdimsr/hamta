@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers\Student\Dashboard;
 
+    use App\model\Discount;
     use App\model\LessonExam;
     use App\model\Transaction;
     use Illuminate\Http\Request;
@@ -23,51 +24,71 @@
         }
 
 
-        public function purchase($exm)
+        public function purchaseShow($exm)
         {
 
             $student = Auth::guard('student')->user();
 
             $lessonExam = LessonExam::query()->where('exm', $exm)->first();
 
-            if (!$lessonExam->isPaid())
+
+            return view('student.dashboard.lessonExam.purchase_show', compact('student', 'lessonExam'));
+        }
+
+
+        public function validateDiscountCode(Request $request)
+        {
+
+
+            $result = [];
+
+            //find student and lessonExam
+            $student = Auth::guard('student')->user();
+
+            $lessonExam = LessonExam::query()->where('exm', $request->input('exm'))->first();
+
+
+            $discount = Discount::query()->where('code', $request->input('discountCode'));
+
+            //check discount entity
+            if ($discount->exists())
             {
-                //purchase exam
+                $discountCode = $discount->first();
 
-                if ($student->wallet > $lessonExam->price)
+
+
+                if ($discountCode->isValid($lessonExam->id))
                 {
-                    //purchase exam
 
-                    //check discount code
+                    $result[ 'status' ]         = 'success';
+                    $result[ 'successMessage' ] = 'code is valid';
+                    $result[ 'discountCode' ]   = $discountCode;
 
-                    //purchase
-
-                    $transaction = new Transaction();
-
-                    $transaction->type     = 'PURCHASE';
-                    $transaction->itemType = 'LESSON_EXAM';
-                    $transaction->itemId   = $lessonExam->id;
-                    $transaction->price    = $lessonExam->price;
-
-                    $transaction->save();
-
-                    return redirect()->back();
-
+                    return $result;
                 }
                 else
                 {
-                    //alert wallet charge is not enough
+                    $result[ 'status' ]       = 'error';
+                    $result[ 'errorMessage' ] = 'code is not valid';
 
-                    return 'wallet charge is not enough';
+                    return $result;
                 }
+
             }
             else
             {
-                //alert exam is paid
+                $result[ 'status' ]       = 'error';
+                $result[ 'errorMessage' ] = 'code not exists';
 
-                return 'exam is paid already';
-
+                return $result;
             }
+        }
+
+
+        public function purchase(Request $request)
+        {
+
+            return $request;
 
         }
 
@@ -94,9 +115,10 @@
 
         public function result()
         {
+
             $student = Auth::guard('student')->user();
 
-            return view('student.dashboard.lessonExam.result',compact('student'));
+            return view('student.dashboard.lessonExam.result', compact('student'));
         }
 
     }

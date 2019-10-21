@@ -47,7 +47,16 @@
 
                     Route::get('/', 'LessonExamController@exams')->name('student_dashboard_lessonExams');
 
-                    Route::get('/purchase/{exm}', 'LessonExamController@purchase')
+
+                    //show payment page
+                    Route::get('/purchaseShow/{exm}', 'LessonExamController@purchaseShow')
+                         ->name('student_lessonExams_purchaseShow');
+
+                    //validate discount code
+                    Route::post('validateDiscountCode', 'LessonExamController@validateDiscountCode')
+                         ->name('student_lessonExams_validateDiscountCode');
+
+                    Route::post('/purchase/{exm}', 'LessonExamController@purchase')
                          ->name('student_lessonExams_purchase');
 
                     Route::get('/questions/{exm}', 'LessonExamController@questions')
@@ -61,6 +70,7 @@
             });
             Route::prefix('wallet')->group(function()
             {
+
                 Route::get('/', 'WalletController@wallet')->name('student_wallet');
                 Route::post('/charge', 'WalletController@charge')->name('student_wallet_charge');
                 Route::get('/verify', 'WalletController@verify')->name('student_wallet_verify');
@@ -281,7 +291,7 @@
 
         $student = \Illuminate\Support\Facades\Auth::guard('student')->user();
 
-        return view('student.dashboard.test',compact('student'));
+        return view('student.dashboard.test', compact('student'));
 
     })->name('student_test');
 
@@ -294,7 +304,7 @@
         $gradeLessons = \App\model\GradeLesson::all();
 
 
-        return $lessonExam->examGradeLessons;
+        return 'we are good';
 
 
     })->name('test');

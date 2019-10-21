@@ -23,17 +23,12 @@
                             {{$lessonExam->price/10 . ' تومان '}}
                         </p>
 
-                        @if($lessonExam->isPaid())
-                            <a href="{{ route('student_dashboard_lessonExams_questions',['exm' => $lessonExam->exm]) }}"
-                               class="ctrl-standard typ-subhed fx-bubbleDown">
-                                شرکت در آزمون
-                            </a>
-                        @else
-                            <a href="{{ route('student_lessonExams_purchase',['exm' => $lessonExam->exm]) }}"
-                               class="ctrl-standard typ-subhed fx-bubbleDown">
-                                خرید آزمون
-                            </a>
-                        @endif
+                            <button  class="ctrl-standard typ-subhed fx-bubbleDown">
+                                <a href="{{ route('student_lessonExams_purchaseShow',['exm' => $lessonExam->exm]) }}">
+                                    خرید آزمون
+                                </a>
+                            </button>
+
                     </div>
                     <div class="card-footer text-muteds text-center">
                         <p>{{$lessonExam->persianCreatedAt}} </p>
