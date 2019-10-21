@@ -81,7 +81,7 @@ class WalletController extends Controller
         else
         {
             $order = new zarinpal();
-            $res = $order->pay($price,'ممپا | شارژ کیف پول',$student->email,$student->mobile,route('student_wallet_verify'));
+            $res = $order->pay($price,'همپا | شارژ کیف پول',$student->email,$student->mobile,route('student_wallet_verify'));
 
             if($res)
             {
@@ -136,7 +136,7 @@ class WalletController extends Controller
                         $student->update();
                         $transaction->status ='SUCCESS';
                         $transaction->update();
-                        return redirect()->route('student_wallet')->with('status','شارژ کیف پول با موفقیت انجام شد.')->with('discount','کد شگفت انگیز برای شارژ شما اعمال گردید.');
+                        return redirect()->route('student_wallet')->with('status','شارژ کیف پول همراه با کد شگفت انگیز با موفقیت انجام شد.');
                     }
 
                     else

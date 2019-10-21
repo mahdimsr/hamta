@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Student\Dashboard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\model\Scholarship;
+use Image;
 
 class ScholarshipController extends Controller
 {
@@ -28,7 +30,8 @@ class ScholarshipController extends Controller
 
         $this->validate($request,
             [
-                'stdMessage'   =>  'Required|string|between:5,500'
+                'stdMessage'       =>  'Required|string|between:5,500',
+                'scholarshipImage' =>  'Required|image|max:1000',
             ]
         );
 
@@ -45,6 +48,15 @@ class ScholarshipController extends Controller
 		if ($scholarship && $scholarship->status=='NOT-SEEN')
 		{
             $scholarship->stdMessage=$request->input('stdMessage');
+            $image    = $request->file('scholarshipImage');
+            Storage::disk('student')->putFileAs($student->id.'/scholarship',$image,$scholarship->verifyImage);
+            $path                     = public_path('storage/students/'.$student->id.'/scholarship/'.$scholarship->verifyImage);
+            $resizeImage              = Image::make($path)->resize(700,700,function($constraint)
+            {
+                $constraint->aspectRatio();
+            });
+            $resizeImage->save($path);
+
             $scholarship->update();
             return redirect()->back();
         }
@@ -55,6 +67,17 @@ class ScholarshipController extends Controller
 
             $scholarship->studentId=Auth::guard('student')->id();
             $scholarship->stdMessage=$request->input('stdMessage');
+
+            $image    = $request->file('scholarshipImage');
+            Storage::disk('student')->put($student->id.'/scholarship',$image);
+            $scholarship->verifyImage = $image->hashName();
+            $path                     = public_path('storage/students/'.$student->id.'/scholarship/'.$scholarship->verifyImage);
+            $resizeImage              = Image::make($path)->resize(700,700,function($constraint)
+            {
+                $constraint->aspectRatio();
+            });
+            $resizeImage->save($path);
+
             $scholarship->save();
 
             return redirect()->back();

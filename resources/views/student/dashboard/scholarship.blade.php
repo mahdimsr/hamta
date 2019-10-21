@@ -52,7 +52,7 @@
 
 
                                         <label>توضیحات درخواست</label>
-                                        <textarea dir="rtl" maxlength="500" name="stdMessage" rows="5" class="form-control textarea-radius" placeholder="متن درخواست خود را وارد نمایید" @unless(empty($scholarship)) {{ $scholarship->status!='NOT-SEEN' ? 'disabled' : '' }} @endunless>@unless(empty($scholarship)){{ $scholarship->status && !old('stdMessage') ? $scholarship->stdMessage : '' }}@endunless{{ old('stdMessage') ? old('stdMessage') : '' }}</textarea>
+                                        <textarea dir="rtl" maxlength="500" name="stdMessage" tabindex="1" rows="5" class="form-control textarea-radius" placeholder="متن درخواست خود را وارد نمایید" @unless(empty($scholarship)) {{ $scholarship->status!='NOT-SEEN' ? 'disabled' : '' }} @endunless>@unless(empty($scholarship)){{ $scholarship->status && !old('stdMessage') ? $scholarship->stdMessage : '' }}@endunless{{ old('stdMessage') ? old('stdMessage') : '' }}</textarea>
                                         <div class="invalid-feedback">
                                             <small>{{ $errors->first('stdMessage') }}{{ $errors->first('notComplete') }}</small>
                                         </div>
@@ -61,10 +61,13 @@
                                 <label>عکس کارنامه</label>
                                 <div  class="col-md-5 " style="float: none;">
                                     <div class="input-file-container">
-                                        <input class="input-file" id="my-file" type="file">
-                                        <label tabindex="0" for="my-file" class="input-file-trigger text-center">عکس کارنامه را آپلود کنید...</label>
+                                        <input class="input-file" id="my-file" type="file" name="scholarshipImage">
+                                        <label tabindex="2" for="my-file" class="input-file-trigger text-center">عکس کارنامه را آپلود نمایید</label>
                                     </div>
                                     <p class="file-return"></p>
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('scholarshipImage') }}</small>
+                                    </div>
 
                                 </div>
 

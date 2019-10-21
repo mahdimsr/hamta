@@ -22,7 +22,8 @@ class CreateScholarshipTable extends Migration
 			$table->integer('adminId')->default(0);
 			$table->enum('status', ['ACCEPT', 'DECLINE', 'IN-PROGRESS', 'NOT-SEEN'])->default('NOT-SEEN');
 			$table->text('stdMessage');
-			$table->text('adminMessage')->nullable();
+            $table->text('adminMessage')->nullable();
+            $table->string('verifyImage')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});

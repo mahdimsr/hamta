@@ -1,6 +1,6 @@
 @extends('layouts.student_dashboard')
 @section('style')
-<style>
+    <style>
         .errors-bg{
             margin: 10px 0;
           padding: 10px;
@@ -8,7 +8,7 @@
           color: #D8000C;
           background-color: #FFBABA;
           font-size: 1.5rem
-        } 
+        }
         .success{
             margin: 10px 0;
             padding: 8px 12px 4px;
@@ -28,8 +28,8 @@
             color: #fff;
             padding: 5px
         }
-     
-        </style>
+
+    </style>
 @endsection
 @section('content')
 
@@ -51,13 +51,13 @@
                         دانش آموز گرامی در صورتی که دارای کد شگفت انگیز هستید می توانید از آن استفاده کرده و به اندازه درصد کد روی مبلغ وارد شده ، شارژ بیشتری دریافت نمایید .
                         </p>
                     </div>
-                   
+
                 </div>
             </div>
             <div class="col-md-9">
                 <div class="card text-right">
                     <div class="header">
-                     
+
                         <h4 class="title">کیف پول</h4>
                         <div class="remaining-money col-md-3">
                         <label>
@@ -96,30 +96,32 @@
                                             </div>
                                         </div>
                                     </div>
-    
+
                             </div>
                                 <button type="submit" class="btn btn-info btn-fill pull-right">ورود به درگاه</button>
                                 <div class="clearfix"></div>
 
-                                {{-- {{ $errors->first('chargeFailed') }} --}}
-                                <div class="errors-bg"> 
-                                        <i class="fas fa-times"></i>
-                                    غیر موفقیت امیز
-                                
+                                @if($errors->has('chargeFailed'))
+                                <div class="errors-bg">
+                                    <i class="fas fa-times"></i>
+                                    {{ $errors->first('chargeFailed') }}
                                 </div>
-                             
-                                    {{-- {{ $errors->first('transactionFailed') }} --}}
-                                <div class="success">
-                                        <i class="fas fa-check"></i>
-                                    موفقیت امیز
-                                
+                                @endif
+
+                                @if($errors->has('transactionFailed'))
+                                <div class="errors-bg">
+                                    <i class="fas fa-times"></i>
+                                    {{ $errors->first('transactionFailed') }}
                                 </div>
+                                @endif
+
                                 @if(Session::get('status'))
-                                <div>{{ Session('status')}}</div>
+                                <div class="success">
+                                    <i class="fas fa-check"></i>
+                                    {{ Session('status')}}
+                                </div>
                                 @endif
-                                @if(Session::get('discount'))
-                                <div>{{ Session('discount')}}</div>
-                                @endif
+
                             </form>
                         </div>
                        </div>
