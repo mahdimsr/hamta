@@ -52,7 +52,25 @@
                         {{csrf_field()}}
 
                         <div class="row">
-                            <div class="col-md-6">
+
+                            <div class="col-md-6 s-floatR">
+                                <div class="form-group">
+                                    <label>درس سوال</label>
+                                    <select dir="rtl" name="gradeLesson"
+                                            class="form-control  menu dropdown-radius hide-search" {{ $modify==1? 'disabled' : '' }}>
+                                        <option value="" id="0" selected disabled>درس سوال را انتخاب نمایید</option>
+                                        @foreach ( $exam->gradeLessons as $gradeLesson )
+                                            <option
+                                                    value="{{ $gradeLesson->id }}" {{ old('gradeLesson')== $gradeLesson->id ? 'selected' : '' }} {{ $modify==1 && !old('gradeLesson') && $question->gradeLessonId==$gradeLesson->id ? 'selected' : '' }}>{{ $gradeLesson->lesson_grade}}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('gradeLesson') }}</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 s-floatL">
                                 <div class="form-group">
                                     <label>مباحث سوال</label>
                                     <input name="description" dir="rtl" type="text" class="form-control "
@@ -63,27 +81,23 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>درس سوال</label>
-                                    <select dir="rtl" name="gradeLesson"
-                                            class="form-control  menu dropdown-radius hide-search" {{ $modify==1? 'disabled' : '' }}>
-                                        <option value="" id="0" selected disabled>درس سوال را انتخاب نمایید</option>
-                                        @foreach ( $exam->gradeLessons as $gradeLesson )
-                                            <option
-                                                value="{{ $gradeLesson->id }}" {{ old('gradeLesson')== $gradeLesson->id ? 'selected' : '' }} {{ $modify==1 && !old('gradeLesson') && $question->gradeLessonId==$gradeLesson->id ? 'selected' : '' }}>{{ $gradeLesson->lesson_grade}}</option>
-                                        @endforeach
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        <small>{{ $errors->first('gradeLesson') }}</small>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
 
 
                         <div class="row">
-                            <div class="col-md-6">
+
+
+                            <div class="col-md-6 s-floatR">
+                                <div class="form-group">
+                                    <label>نوع سوال</label>
+                                    <input name="questionType" dir="rtl" type="text" class="form-control"
+                                           placeholder="نوع سوال را وارد نمایید"
+                                           value="{{old('questionType')}}{{ $modify==1 && !old('questionType') && $question->questionType ? $question->questionType : '' }}">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 s-floatL">
                                 <div class="form-group">
                                     <label>درجه سختی سوال</label>
                                     <select dir="rtl" name="hardness" class="form-control  menu dropdown-radius hide-search">
@@ -114,14 +128,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>نوع سوال</label>
-                                    <input name="questionType" dir="rtl" type="text" class="form-control"
-                                           placeholder="نوع سوال را وارد نمایید"
-                                           value="{{old('questionType')}}{{ $modify==1 && !old('questionType') && $question->questionType ? $question->questionType : '' }}">
-                                </div>
-                            </div>
+
                         </div>
 
 
