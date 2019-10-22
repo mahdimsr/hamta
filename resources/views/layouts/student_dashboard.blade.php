@@ -1,17 +1,17 @@
 <!doctype html>
 <html lang="fa">
 <head>
-	<meta charset="utf-8"/>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-	<title>همپا | دانش آموز</title>
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
-	<meta name="viewport" content="width=device-width"/>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>همپا | دانش آموز</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
 
-	<!-- Bootstrap core CSS     -->
-	<link href="{{asset('css/student/dashboard/bootstrap.min.css')}}" rel="stylesheet"/>
-	<!-- Animation library for notifications   -->
-	<link href="{{asset('css/student/dashboard/animate.min.css')}}" rel="stylesheet"/>
-	<!--  Light Bootstrap Table core CSS    -->
+    <!-- Bootstrap core CSS     -->
+    <link href="{{asset('css/student/dashboard/bootstrap.min.css')}}" rel="stylesheet"/>
+    <!-- Animation library for notifications   -->
+    <link href="{{asset('css/student/dashboard/animate.min.css')}}" rel="stylesheet"/>
+    <!--  Light Bootstrap Table core CSS    -->
 
     <link href="{{asset('css/student/dashboard/dashboard.css')}}" rel="stylesheet"/>
     <link rel="icon" href="{{asset('favicon.png')}}" type="image/png">
@@ -146,7 +146,15 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-
+                        @if(isset($carts))
+                            <li>
+                                <a href="{{route('student_lessonExams_purchaseShow')}}">
+                                    <i class="fa fa-wallet"></i>
+                                    <p class="hidden-lg hidden-md">لیست خرید</p>
+                                    <span class="notification hidden-sm hidden-xs">{{count($carts)}}</span>
+                                </a>
+                            </li>
+                        @endif
                         <li>
                             <a href="{{route('student_wallet')}}">
                                 <i class="fa fa-wallet"></i>
@@ -262,9 +270,8 @@
 			  l-2.435-2.457L6.564,12.56c-0.292,0.295-0.766,0.295-1.058,0c-0.292-0.295-0.292-0.772,0-1.068L7.94,9.035L5.435,6.507
 			  c-0.292-0.295-0.292-0.773,0-1.068c0.293-0.295,0.766-0.295,1.059,0l2.504,2.528l2.505-2.528c0.292-0.295,0.767-0.295,1.059,0
 			  s0.292,0.773,0,1.068l-2.505,2.528L12.491,11.491z"/>
-	</symbol>
-  </svg>
-
+    </symbol>
+</svg>
 
 
 </body>

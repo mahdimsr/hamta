@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers\Student\Dashboard;
 
+    use App\model\Cart;
     use App\model\Discount;
     use App\model\LessonExam;
     use App\model\Transaction;
@@ -20,19 +21,58 @@
             $student     = Auth::guard('student')->user();
             $lessonExams = LessonExam::all();
 
-            return view('student.dashboard.lessonExam.exams', compact('student', 'lessonExams'));
+            $cart = Session::get('cart');
+
+            return view('student.dashboard.lessonExam.exams', compact('student', 'lessonExams', 'cart'));
         }
 
 
-        public function purchaseShow($exm)
+        public function addToCart($exm)
+        {
+
+            $lessonExam = LessonExam::query()->where('exm', $exm)->first();
+
+            //check if added before
+            if ($lessonExam->hasInCart())
+            {
+                return redirect()->back();
+            }
+            else
+            {
+                $cart = new Cart();
+
+                $cart->lessonExamId = $lessonExam->id;
+
+                $cart->save();
+
+                $authId = Auth::guard('student')->id();
+
+                $carts = Cart::query()->where('studentId', $authId)->get();
+
+                return redirect()->back()->with(['carts' => $carts]);
+            }
+
+        }
+
+
+        public function purchaseShow()
         {
 
             $student = Auth::guard('student')->user();
 
-            $lessonExam = LessonExam::query()->where('exm', $exm)->first();
+            $carts = Cart::query()->where('studentId', $student->id)->whereIn('transactionId',[0])->get();
+
+            // factor details such as price to pay...
+
+            $price = 0;
+
+            foreach ($carts as $cart)
+            {
+                $price += $cart->lessonExam->price;
+            }
 
 
-            return view('student.dashboard.lessonExam.purchase_show', compact('student', 'lessonExam'));
+            return view('student.dashboard.lessonExam.purchase_show', compact('student', 'price', 'carts'));
         }
 
 
@@ -45,8 +85,6 @@
             //find student and lessonExam
             $student = Auth::guard('student')->user();
 
-            $lessonExam = LessonExam::query()->where('exm', $request->input('exm'))->first();
-
 
             $discount = Discount::query()->where('code', $request->input('discountCode'));
 
@@ -56,8 +94,7 @@
                 $discountCode = $discount->first();
 
 
-
-                if ($discountCode->isValid($lessonExam->id))
+                if ($discountCode->isValid())
                 {
 
                     $result[ 'status' ]         = 'success';
@@ -85,10 +122,106 @@
         }
 
 
-        public function purchase(Request $request)
+        public function purchaseWallet(Request $request)
         {
 
-            return $request;
+            $student = Auth::guard('student')->user();
+
+            $carts = Cart::query()->where('studentId', $student->id)->whereIn('transactionId',[0])->get();
+
+            $price = 0;
+
+            foreach ($carts as $cart)
+            {
+                $price += $cart->lessonExam->price;
+            }
+
+
+            //check discount code
+            if ($request->input('discountCode') != null)
+            {
+                $discount = Discount::query()->where('code', $request->input('discountCode'));
+
+                // check discount validation
+                if ($discount->exists() && $discount->first()->isValid())
+                {
+
+                    $discountCode = $discount->first();
+
+                    $discountPrice = $price*((100 - $discountCode->value)/100);
+
+                    //check wallet value
+                    if ($student->wallet >= $discountPrice)
+                    {
+                        // create transaction
+
+                        $transaction = new Transaction();
+
+                        $transaction->type          = 'PURCHASE';
+                        $transaction->itemType      = 'LESSON_EXAM';
+                        $transaction->price         = $price;
+                        $transaction->discountId    = $discountCode->id;
+                        $transaction->discountPrice = $discountPrice;
+                        $transaction->status        = 'SUCCESS';
+
+                        $transaction->save();
+
+                        foreach ($carts as $cart)
+                        {
+                            $cart->setTransaction($transaction);
+                        }
+
+                        $student->wallet = $student->wallet - $discountPrice;
+                        $student->update();
+
+                        return redirect()->route('student_dashboard_profile');
+                    }
+                    else
+                    {
+                        return 'wallet value is not enough';
+                    }
+                }
+                else
+                {
+                    return redirect()->back()->withInput($request->all());
+                }
+            }
+            else
+            {
+                //does not have discount code
+
+                //check wallet value
+                if ($student->wallet >= $price)
+                {
+
+                    // create transaction
+
+                    $transaction = new Transaction();
+
+                    $transaction->type     = 'PURCHASE';
+                    $transaction->itemType = 'LESSON_EXAM';
+                    $transaction->price    = $price;
+                    $transaction->status   = 'SUCCESS';
+
+                    $transaction->save();
+
+                    foreach ($carts as $cart)
+                    {
+                        $cart->setTransaction($transaction);
+                    }
+
+
+                    $student->wallet = $student->wallet - $price;
+                    $student->update();
+
+                    return redirect()->route('student_dashboard_profile');
+                }
+                else
+                {
+                    return 'wallet value is not enough';
+                }
+            }
+
 
         }
 

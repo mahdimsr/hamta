@@ -18,6 +18,7 @@
      * @property int            $price
      * @property int            $discountId
      * @property int            $discountPrice
+     * @property string         $status
      * @property string         $code
      */
     class Transaction extends Model
@@ -34,16 +35,15 @@
             self::creating(function($model)
             {
 
-                if($model->type=='PURCHASE')
+                if ($model->type == 'PURCHASE')
                 {
 
-                $student = Auth::guard('student')->user();
-                $model->studentId = $student->id;
+                    $student          = Auth::guard('student')->user();
+                    $model->studentId = $student->id;
 
-                $code = substr(md5(uniqid(mt_rand(), true)), 0, 8);
+                    $code = substr(md5(uniqid(mt_rand(), true)), 0, 8);
 
-                $model->code = $code;
-
+                    $model->code = $code;
                 }
 
             });

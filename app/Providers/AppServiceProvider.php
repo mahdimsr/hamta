@@ -1,36 +1,57 @@
 <?php
 
-namespace App\Providers;
+    namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Auth;
+    use App\model\Cart;
+    use Illuminate\Support\ServiceProvider;
+    use Illuminate\Support\Facades\Auth;
 
-class AppServiceProvider extends ServiceProvider
-{
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
+
+    class AppServiceProvider extends ServiceProvider
     {
-        //
-    }
 
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        //
-        view()->composer('*', function($view){
-            $view->with('adminUser', Auth::guard('admin')->user());
-          });
+        /**
+         * Register any application services.
+         *
+         * @return void
+         */
+        public function register()
+        {
+            //
+        }
 
-          view()->composer('*', function($view){
-            $view->with('studentUser', Auth::guard('student')->user());
-          });
+
+        /**
+         * Bootstrap any application services.
+         *
+         * @return void
+         */
+        public function boot()
+        {
+
+            //
+            view()->composer('*', function($view)
+            {
+
+                $view->with('adminUser', Auth::guard('admin')->user());
+            });
+
+            view()->composer('*', function($view)
+            {
+
+                $view->with('student', Auth::guard('student')->user());
+            });
+
+
+            view()->composer('*', function($view)
+            {
+
+                $authId = Auth::guard('student')->id();
+                $carts  = Cart::query()->where('studentId', $authId)->whereIn('transactionId',[0])->get();
+
+                $view->with('carts', $carts);
+            });
+
+        }
+
     }
-}

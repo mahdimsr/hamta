@@ -203,31 +203,20 @@
         }
 
 
-        public function isPaid()
+        public function hasInCart()
         {
 
-            $student = Auth::guard('student')->user();
+            $authId = Auth::guard('student')->id();
 
-            $auth_transactions = $student->transactions;
+            $lessonExam = Cart::query()->where('lessonExamId', $this->id)->where('studentId', $authId);
 
-            $isPaid = false;
-
-            if (count($auth_transactions) > 0)
+            if ($lessonExam->exists())
             {
-
-                foreach ($auth_transactions as $transaction)
-                {
-                    if (Transaction::query()->where('itemType', 'LESSON_EXAM')->where('itemId', $this->id)->exists())
-                    {
-                        $isPaid = true;
-                    }
-                }
-
-                return $isPaid;
+                return true;
             }
             else
             {
-                return $isPaid;
+                return false;
             }
         }
 

@@ -48,16 +48,20 @@
                     Route::get('/', 'LessonExamController@exams')->name('student_dashboard_lessonExams');
 
 
+                    //add exams to cart
+                    Route::get('/addToCart/{exm}', 'LessonExamController@addToCart')
+                         ->name('student_lessonExams_addToCart');
+
                     //show payment page
-                    Route::get('/purchaseShow/{exm}', 'LessonExamController@purchaseShow')
+                    Route::get('/purchaseShow', 'LessonExamController@purchaseShow')
                          ->name('student_lessonExams_purchaseShow');
 
                     //validate discount code
                     Route::post('validateDiscountCode', 'LessonExamController@validateDiscountCode')
                          ->name('student_lessonExams_validateDiscountCode');
 
-                    Route::post('/purchase/{exm}', 'LessonExamController@purchase')
-                         ->name('student_lessonExams_purchase');
+                    Route::post('/purchaseWallet', 'LessonExamController@purchaseWallet')
+                         ->name('student_lessonExams_purchaseWallet');
 
                     Route::get('/questions/{exm}', 'LessonExamController@questions')
                          ->name('student_dashboard_lessonExams_questions');

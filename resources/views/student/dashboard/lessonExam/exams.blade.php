@@ -23,11 +23,17 @@
                             {{$lessonExam->price/10 . ' تومان '}}
                         </p>
 
-                            <button  class="ctrl-standard typ-subhed fx-bubbleDown">
-                                <a href="{{ route('student_lessonExams_purchaseShow',['exm' => $lessonExam->exm]) }}">
-                                    خرید آزمون
+                        @if($lessonExam->hasInCart())
+                            <button class="ctrl-standard typ-subhed fx-bubbleDown">
+                                در لیست خرید موجود است
+                            </button>
+                        @else
+                            <button class="ctrl-standard typ-subhed fx-bubbleDown">
+                                <a href="{{ route('student_lessonExams_addToCart',['exm' => $lessonExam->exm]) }}">
+                                    افزودن به لیست خرید
                                 </a>
                             </button>
+                        @endif
 
                     </div>
                     <div class="card-footer text-muteds text-center">
@@ -45,6 +51,8 @@
 @section('script')
 
     <script type="text/javascript">
+
+
     </script>
 
 @endsection

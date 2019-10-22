@@ -7,6 +7,7 @@
     use Illuminate\Foundation\Auth\User as Authenticatable;
     use Morilog\Jalali\Jalalian;
 
+
     /**
      * @property \Carbon\Carbon $created_at
      * @property int            $id
@@ -22,6 +23,7 @@
 
         protected $appends = ['persian_birthday'];
 
+
         public function getPersianBirthdayAttribute()
         {
 
@@ -31,6 +33,7 @@
 
             return $date;
         }
+
 
         public function city()
         {
@@ -64,6 +67,13 @@
         {
 
             return $this->hasMany(Transaction::class, 'studentId');
+        }
+
+
+        public function carts()
+        {
+
+            return $this->hasMany(Cart::class, 'studentId');
         }
 
     }
