@@ -66,6 +66,24 @@
                 Route::get('/verify', 'WalletController@verify')->name('student_wallet_verify');
             });
 
+            Route::get('/discounts', function()
+            {
+
+                $student = \Illuminate\Support\Facades\Auth::guard('student')->user();
+
+                return view('student.dashboard.discount.discounts',compact('student'));
+
+            })->name('student_discounts');
+
+            Route::get('/transactions', function()
+            {
+
+                $student = \Illuminate\Support\Facades\Auth::guard('student')->user();
+
+                return view('student.dashboard.transaction.transactions',compact('student'));
+
+            })->name('student_transactions');
+
         });
     });
 
