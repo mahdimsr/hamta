@@ -134,6 +134,7 @@ class WalletController extends Controller
                     {
                         $student->wallet+=$transaction->discountPrice;
                         $student->update();
+                        $transaction->code   = ltrim($Authority, '0');
                         $transaction->status ='SUCCESS';
                         $transaction->update();
                         return redirect()->route('student_wallet')->with('status','شارژ کیف پول همراه با کد شگفت انگیز با موفقیت انجام شد.');
@@ -143,6 +144,7 @@ class WalletController extends Controller
                     {
                         $student->wallet+=$transaction->price;
                         $student->update();
+                        $transaction->code   = ltrim($Authority, '0');
                         $transaction->status ='SUCCESS';
                         $transaction->update();
                         return redirect()->route('student_wallet')->with('status','شارژ کیف پول با موفقیت انجام شد.');
@@ -152,6 +154,7 @@ class WalletController extends Controller
 
                 else
                 {
+                    $transaction->code   = ltrim($Authority, '0');
                     $transaction->status='FAILED';
                     $transaction->update();
                     return redirect()->route('student_wallet')->withErrors(['transactionFailed' => ['شارژ کیف پول ناموفق']]);
@@ -160,6 +163,7 @@ class WalletController extends Controller
 
             else
             {
+                $transaction->code   = ltrim($Authority, '0');
                 $transaction->status='FAILED';
                 $transaction->update();
                 return redirect()->route('student_wallet')->withErrors(['transactionFailed' => ['شارژ کیف پول ناموفق']]);

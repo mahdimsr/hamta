@@ -7,7 +7,6 @@
 			<div class="card">
 				<div class="header">
 					<h4 class="title text-right">آزمون های جایزه دار</h4>
-					<p class="category text-right">تمامی آزمون های جایزه دار</p>
 					<a href="{{route('admin_giftExams_addShow')}}" style="font-size: 12px;"
 					   class="btn btn-info pull-right btn-table-header">
 						افزودن آزمون جدید

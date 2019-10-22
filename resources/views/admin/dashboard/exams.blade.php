@@ -20,7 +20,7 @@
 				<div class="content">
 					<hr>
 					<div id="" class="">
-						<a href="{{route('student_dashboard_lessonExams')}}">
+						<a href="{{route('admin_ltlExams')}}">
 							<img class="image" src="{{asset('image/student/dashboard/exam.jpg')}} ">
 						</a>
 					</div>
@@ -49,7 +49,9 @@
 				<div class="content">
 					<hr>
 					<div id="" class="">
-						<img class="image" src="{{asset('image/student/dashboard/exam.jpg')}} ">
+                        <a href="{{route('admin_giftExams')}}">
+							<img class="image" src="{{asset('image/student/dashboard/exam.jpg')}} ">
+						</a>
 					</div>
 					<div class="footer">
 						<hr style="margin-top: 20px;">

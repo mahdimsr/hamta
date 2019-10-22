@@ -53,85 +53,72 @@
             <!-- Rounded tabs -->
             <ul  id="myTab" role="tablist" class="nav nav-tabs nav-pills text-right " >
                 <li class="nav-item active">
-                    <a id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"  class="nav-link   ">اولی</a>
+                    <a id="purchase-tab" data-toggle="tab" href="#purchase" role="tab" aria-controls="purchase" aria-selected="true"  class="nav-link   ">خرید</a>
                 </li>
                 <li class="nav-item ">
-                    <a id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false" class="nav-link ">دومی</a>
+                    <a id="charge-tab" data-toggle="tab" href="#charge" role="tab" aria-controls="charge" aria-selected="false" class="nav-link ">شارژ</a>
                 </li>
 
             </ul>
             <div id="myTabContent" class="tab-content">
-                <div id="home" role="tabpanel" aria-labelledby="home-tab" class="tab-pane active">
+                <div id="purchase" role="tabpanel" aria-labelledby="purchase-tab" class="tab-pane active">
 
                     <div dir="rtl" class="content table-responsive table-full-width">
                         <table class="table table-hover table-striped">
                             <thead class="text-right">
-                            <th>کد گرایش</th>
-                            <th>عنوان گرایش</th>
-                            <th>فرآیند</th>
+                            <th>نوع</th>
+                            <th>مشخصه</th>
+                            <th>قیمت (تومان)</th>
+                            <th>کد تخفیف - درصد</th>
+                            <th>قیمت با اعمال کد تخفیف (تومان)</th>
+                            <th>شناسه پرداخت</th>
+                            <th>تاریخ</th>
                             </thead>
                             <tbody class="text-center">
-
+                                @foreach($purchases as $purchase)
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-
-                                        <a  id="remove-btn" type="button"
-                                           style="font-size: 12px;" class="btn btn-danger">
-                                            حذف
-                                        </a>
-                                        <a  style="font-size: 12px;" class="btn btn-info">
-                                            ویرایش
-                                        </a>
-
-                                    </td>
+                                    <td>{{ $purchase->persian_itemType }}</td>
+                                    <td>{{ $purchase->lessonExams->exm }}</td>
+                                    <td>{{ number_format($purchase->price) }}</td>
+                                    <td>{{ $purchase->discountId? $purchase->discount->code.' - '.$purchase->discount->value.'%' : '-'  }}</td>
+                                    <td>{{ $purchase->discountId? number_format($purchase->discountPrice) : '-'  }}</td>
+                                    <td>{{ $purchase->code }}</td>
+                                    <td>{{ $purchase->persian_updatedAt }}</td>
                                 </tr>
-
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-
-                                        <a  id="remove-btn" type="button"
-                                            style="font-size: 12px;" class="btn btn-danger">
-                                            حذف
-                                        </a>
-                                        <a  style="font-size: 12px;" class="btn btn-info">
-                                            ویرایش
-                                        </a>
-
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-
-                                        <a  id="remove-btn" type="button"
-                                            style="font-size: 12px;" class="btn btn-danger">
-                                            حذف
-                                        </a>
-                                        <a  style="font-size: 12px;" class="btn btn-info">
-                                            ویرایش
-                                        </a>
-
-                                    </td>
-                                </tr>
-
+                                @endforeach
                             </tbody>
                         </table>
 
                     </div>
 
                 </div>
-                <div id="profile" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade ">
+                <div id="charge" role="tabpanel" aria-labelledby="charge-tab" class="tab-pane fade ">
+                    <div dir="rtl" class="content table-responsive table-full-width">
+                        <table class="table table-hover table-striped">
+                            <thead class="text-right">
+                            <th>مبلغ (تومان)</th>
+                            <th>کد تخفیف - درصد</th>
+                            <th>مبلغ با اعمال کد تخفیف (تومان)</th>
+                            <th>شناسه پرداخت</th>
+                            <th>تاریخ</th>
+                            </thead>
+                            <tbody class="text-center">
+                                @foreach($charges as $charge)
+                                <tr>
+                                    <td>{{ number_format($charge->price) }}</td>
+                                    <td>{{ $charge->discountId? $charge->discount->code.' - '.$charge->discount->value.'%' : '-'  }}</td>
+                                    <td>{{ $charge->discountId? number_format($charge->discountPrice) : '-'  }}</td>
+                                    <td>{{ $charge->code }}</td>
+                                    <td>{{ $charge->persian_updatedAt }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
 
+                    </div>
                 </div>
 
             </div>
-            <!-- End rounded tabs -->
         </div>
 
 

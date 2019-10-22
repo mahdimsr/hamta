@@ -196,22 +196,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>عکس برای سوال</label>
-                                    <div class="input-file-container">
-                                        <input class="input-file" name="photo" id="my-file" type="file"
-                                               >
-                                        <label tabindex="0" for="my-file" class="input-file-trigger text-center">
-                                                         آپلود عکس
-                                        </label>
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        <small>{{ $errors->first('photo') }}</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 s-floatR">
                                 <div class="form-group">
                                     <label>گزینه صحیح</label>
                                     <select dir="rtl" name="answer" class="form-control  menu dropdown-radius hide-search">
@@ -236,6 +221,21 @@
                                 </div>
                                 <div class="invalid-feedback">
                                     <small>{{ $errors->first('answer') }}</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6 s-floatL">
+                                <div class="form-group">
+                                    <label>عکس برای سوال</label>
+                                    <div class="input-file-container">
+                                        <input class="input-file" name="photo" id="my-file" type="file"
+                                               >
+                                        <label tabindex="0" for="my-file" class="input-file-trigger text-center">
+                                                         آپلود عکس
+                                        </label>
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('photo') }}</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>

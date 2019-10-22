@@ -75,7 +75,7 @@
                                     <label>مباحث سوال</label>
                                     <input name="description" dir="rtl" type="text" class="form-control "
                                            placeholder="مباحث سوال را وارد نمایید"
-                                           value="{{old('description')}} {{ $modify==1 && !old('description') && $question->description ? $question->description : '' }}">
+                                           value="{{old('description')}}{{ $modify==1 && !old('description') && $question->description ? $question->description : '' }}">
                                     <div class="invalid-feedback">
                                         <small>{{ $errors->first('description') }}</small>
                                     </div>
@@ -91,7 +91,7 @@
                                     <label>نوع سوال</label>
                                     <input name="questionType" dir="rtl" type="text" class="form-control"
                                            placeholder="نوع سوال را وارد نمایید"
-                                           value="{{old('questionType')}} {{ $modify==1 && !old('questionType') && $question->questionType ? $question->questionType : '' }}">
+                                           value="{{old('questionType')}}{{ $modify==1 && !old('questionType') && $question->questionType ? $question->questionType : '' }}">
                                 </div>
                             </div>
 
@@ -195,19 +195,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>عکس برای سوال</label>
-                                    <div class="input-file-container">
-                                        <input class="input-file" id="my-file" type="file" name="scholarshipImage">
-                                        <label tabindex="2" for="my-file" class="input-file-trigger text-center">عکس سوال</label>
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        <small>{{ $errors->first('photo') }}</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 s-floatR">
                                 <div class="form-group">
                                     <label>گزینه صحیح</label>
                                     <select dir="rtl" name="answer" class="form-control menu hide-search dropdown-radius">
@@ -232,6 +220,18 @@
                                 </div>
                                 <div class="invalid-feedback">
                                     <small>{{ $errors->first('answer') }}</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6 s-floatL">
+                                <div class="form-group">
+                                    <label>عکس برای سوال</label>
+                                    <div class="input-file-container">
+                                        <input class="input-file" id="my-file" type="file" name="scholarshipImage">
+                                        <label tabindex="2" for="my-file" class="input-file-trigger text-center">عکس سوال</label>
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('photo') }}</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>

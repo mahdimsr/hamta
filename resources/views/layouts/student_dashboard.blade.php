@@ -204,7 +204,7 @@
                                     <a href="{{ route('student_dashboard_profile')}}">ویرایش پروفایل</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('student_transactions') }}"> تراکنش ها</a>
+                                    <a href="{{ route('student_transactions') }}">تراکنش های من</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('student_discounts') }}">کد تخفیف</a>

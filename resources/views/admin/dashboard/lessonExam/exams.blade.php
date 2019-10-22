@@ -12,7 +12,6 @@
             <div class="card">
                 <div class="header">
                     <h4 class="title text-right">آزمون های درس به درس</h4>
-                    <p class="category text-right">تمامی آزمون های درس به درس</p>
                     <a href="{{route('admin_ltlExams_addShow')}}" style="font-size: 12px;"
                        class="btn btn-info pull-right btn-table-header">
                         افزودن آزمون جدید

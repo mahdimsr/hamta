@@ -4,7 +4,7 @@
 
     use Illuminate\Database\Eloquent\Model;
     use Illuminate\Support\Facades\Auth;
-
+    use Morilog\Jalali\Jalalian;
 
     /**
      * @property \Carbon\Carbon $created_at
@@ -25,6 +25,7 @@
 
         protected $table = 'transaction';
 
+        protected $appends = ['persian_updatedAt', 'persian_itemType'];
 
         protected static function boot()
         {
@@ -49,6 +50,28 @@
             });
         }
 
+        public function getPersianUpdatedAtAttribute()
+        {
+
+            $date = Jalalian::fromCarbon($this->updated_at)->format('%Y/%m/%d');
+
+            return $date;
+        }
+
+        public function getPersianItemTypeAttribute()
+        {
+            return $this->persianEnum($this->itemType);
+        }
+
+        public function persianEnum($enumKey)
+        {
+            $enumArray = [
+
+                'LESSON_EXAM'    => 'آزمون درس به درس',
+            ];
+
+            return $enumArray[$enumKey];
+        }
 
         public function student()
         {
@@ -60,15 +83,13 @@
         public function lessonExams()
         {
 
-            return $this->hasMany(LessonExam::class, 'itemId')->where('itemType', 'LESSON_EXAM');
+            return $this->belongsTo(LessonExam::class, 'itemId');
         }
 
-
-        public function giftExams()
+        public function discount()
         {
 
-            return $this->hasMany(GiftExam::class, 'itemId')->where('itemType', 'GIFT_EXAM');
+            return $this->belongsTo(Discount::class, 'discountId');
         }
-
 
     }

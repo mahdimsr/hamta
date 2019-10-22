@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Http\Controllers\Student\Dashboard;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\model\StudentCode;
+use App\model\Transaction;
+use Illuminate\Support\Facades\Auth;
+
+
+class DashboardController extends Controller
+{
+	public function exams()
+	{
+
+		$student = Auth::guard('student')->user();
+
+		return view('student.dashboard.exams', compact('student'));
+	}
+
+    public function transactions()
+	{
+
+        $student   = Auth::guard('student')->user();
+        $purchases = Transaction::query()->where('studentId',$student->id)->where('type','PURCHASE')->where('status','SUCCESS')->get();
+        $charges   = Transaction::query()->where('studentId',$student->id)->where('type','CHARGE')->where('status','SUCCESS')->get();
+
+		return view('student.dashboard.transaction.transactions', compact('student','purchases','charges'));
+    }
+
+    public function discounts()
+	{
+
+        $student   = Auth::guard('student')->user();
+        $discounts = StudentCode::query()->where('studentId',$student->id)->get();
+
+		return view('student.dashboard.discount.discounts', compact('student','discounts'));
+    }
+
+}
