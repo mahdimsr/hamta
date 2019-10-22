@@ -889,3 +889,29 @@ input[type="text"][required] + label[placeholder]:before {
     margin-top: 10px;
 }
 
+div.disabled {
+    background-color: rgba(163, 153, 153, 0.14)!important;
+}
+.isDisabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+.tooltip-sina .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    font-size: 10px;
+    bottom: 34px;
+    right: 30px;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    transition: 0.8s;
+    position: absolute;
+    z-index: 1;
+}
+img#disableds {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
