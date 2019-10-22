@@ -1,9 +1,7 @@
 @extends('layouts.admin_dashboard')
 @section('style')
+    <style>
 
-	
-@endsection
-<style>
 	.modal {
 		position: relative;
 		left: 0;
@@ -11,14 +9,14 @@
 		width: 100%;
 		height: 60px;
 		z-index: 999;
-	
+
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		transition: 0.4s;
 	  }
 	  .modal-container {
-		
+
 		max-width: 720px;
 		width: 100%;
 		border-radius: 10px;
@@ -32,11 +30,11 @@
 		-webkit-transform: translateY(100px) scale(0.4);
 				transform: translateY(100px) scale(0.4);
 	  }
-	  
+
 	  .modal-left {
-	  
+
 		background: #fff;
-		
+
 		transition-duration: 0.5s;
 		-webkit-transform: translateY(80px);
 				transform: translateY(80px);
@@ -44,7 +42,7 @@
 	  }
 	  .modal-button {
 		color: #7d695e;
-	
+
 		font-size: 18px;
 		cursor: pointer;
 		border: 0;
@@ -115,16 +113,19 @@
 		padding: 0;
 		cursor: pointer;
 	  }
-	  
+
 	  @media (max-width: 750px) {
 		.modal-container {
 		  width: 90%;
 		}
-	  
-	   
+
+
 	  }
-	  
+
 	</style>
+
+@endsection
+
 @section('content')
 
 	<div class="row" dir="rtl">
@@ -153,9 +154,9 @@
 							  </svg>
 									</button>
 								</div>
-								<button class="modal-button">دکمه نمایش کارنامه</button>
-							  
-										  </div>
+								<button class="modal-button">کارنامه دانش آموز</button>
+
+								</div>
 
 
 
@@ -243,34 +244,34 @@
 
 
 	</div>
+@endsection
 @section('script')
-<script>
+    <script>
 
 	const body = document.querySelector("body");
 	const modal = document.querySelector(".modal");
 	const modalButton = document.querySelector(".modal-button");
 	const closeButton = document.querySelector(".close-button");
 	let isOpened = false;
-	
+
 	const openModal = () => {
 	  modal.classList.add("is-open");
 	  body.style.overflow = "hidden";
 	};
-	
+
 	const closeModal = () => {
 	  modal.classList.remove("is-open");
 	  body.style.overflow = "initial";
 	};
-	
-	
-	
+
+
+
 	modalButton.addEventListener("click", openModal);
 	closeButton.addEventListener("click", closeModal);
-	
+
 	document.onkeydown = evt => {
 	  evt = evt || window.event;
 	  evt.keyCode === 27 ? closeModal() : false;
 	};
-		</script>
-@endsection
+	</script>
 @endsection

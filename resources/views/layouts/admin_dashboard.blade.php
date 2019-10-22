@@ -10,7 +10,6 @@
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
 	<meta name="viewport" content="width=device-width"/>
 
-	<!--  CSS for Demo Purpose, don't include it in your project     -->
 	<link href="{{asset('css/admin/dashboard/demo.css')}}" rel="stylesheet"/>
 	<!-- Bootstrap core CSS     -->
     <link href="{{asset('css/admin/dashboard/bootstrap.min.css')}}" rel="stylesheet"/>
@@ -24,7 +23,7 @@
     {{-- datePicker --}}
     <link href="{{asset('datePicker/persian-datepicker.min.css')}}" rel="stylesheet"/>
 	<link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
-    @yield('link')
+    @yield('style')
 </head>
 <body>
 
