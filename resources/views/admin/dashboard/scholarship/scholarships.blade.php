@@ -1,5 +1,7 @@
 @extends('layouts.admin_dashboard')
+@section('style')
 
+@endsection
 @section('content')
 
 	<div class="row">
@@ -34,7 +36,7 @@
 					</table>
 
 				</div>
-			</div>
+		</div>
 		</div>
 	</div>
 @endsection
@@ -42,7 +44,6 @@
 @section('script')
 
 	<script>
-
 
 	</script>
 

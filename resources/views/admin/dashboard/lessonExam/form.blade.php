@@ -60,7 +60,7 @@
         <div class="col-md-7">
             <div dir="rtl" class="card ">
                 <div class="header ">
-                    <h4 class="title">افزودن آزمون درس به درس</h4>
+                    <h4 class="title">{{ $modify==0? 'افزودن آزمون درس به درس' : 'ویرایش آزمون درس به درس' }}</h4>
                 </div>
 
                 <div class="content">
@@ -87,11 +87,11 @@
 
                             <div class="col-md-6 s-floatL">
                                 <div class="form-group">
-                                    <label class="control-label">قیمت</label>
+                                    <label class="control-label">قیمت (تومان)</label>
                                     <input name="price" class="form-control" type="text"
                                            maxlength="10" tabindex="2"
                                            value="{{old('price')}}{{ $modify==1 && !old('price') && $lessonExam->price ? $lessonExam->price : '' }}"
-                                           placeholder="مثلا: 50000 ريال"/>
+                                           placeholder="قیمت آزمون را وارد نمایید"/>
                                 </div>
                                 <div class="invalid-feedback">
                                     <small>{{ $errors->first('price') }}</small>
@@ -117,11 +117,11 @@
 
                             <div class="col-md-6 s-floatL">
                                 <div class="form-group">
-                                    <label class="control-label">زمان آزمون (به دقیقه)</label>
+                                    <label class="control-label">زمان آزمون (دقیقه)</label>
                                     <input name="duration" class="form-control" type="text"
                                            maxlength="10" tabindex="4"
                                            value="{{old('duration')}}{{ $modify==1 && !old('duration') && $lessonExam->duration ? $lessonExam->duration : '' }}"
-                                           placeholder="مثلا: 60 دقیقه"/>
+                                           placeholder="زمان آزمون را وارد نمایید"/>
                                 </div>
                                 <div class="invalid-feedback">
                                     <small>{{ $errors->first('duration') }}</small>
@@ -190,7 +190,7 @@
                                         </option>
                                         @foreach($gradeLessons as $gradeLesson)
                                             <option data-content="{{$gradeLesson->orientationId.$gradeLesson->lesson->parentId}}"
-                                                    value="{{$gradeLesson->id}}"
+                                                    value="{{$gradeLesson->id}}" {{in_array($gradeLesson->id, old("gradeLessons") ?: []) ? 'selected': ''}}
                                             >{{$gradeLesson->lesson_grade}} - {{ $gradeLesson->sort_title }}</option>
                                         @endforeach
                                     </select>

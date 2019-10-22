@@ -74,7 +74,14 @@ return [
 			'root'       => storage_path('app/public/question'),
 			'url'        => env('APP_URL') . '/hamta/storage/app/public/question',
 			'visibility' => 'public',
-		],
+        ],
+
+        'student' => [
+			'driver'     => 'local',
+			'root'       => storage_path('app/public/students'),
+			'url'        => env('APP_URL') . '/storage/app/public',
+			'visibility' => 'public',
+        ],
 
 		's3' => [
 			'driver' => 's3',
@@ -83,7 +90,7 @@ return [
 			'region' => env('AWS_DEFAULT_REGION'),
 			'bucket' => env('AWS_BUCKET'),
 			'url'    => env('AWS_URL'),
-		],
+        ],
 
 	],
 

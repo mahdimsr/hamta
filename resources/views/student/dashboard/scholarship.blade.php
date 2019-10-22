@@ -1,4 +1,9 @@
 @extends('layouts.student_dashboard')
+@section('style')
+    <style>
+        @media (min-width:992px){.s-floatL{float:left!important;}.s-floatR{float: right!important;}}
+    </style>
+    @endsection
 @section('content')
 
     <div class="row" dir="rtl">
@@ -29,20 +34,45 @@
                     <h4 class="title">بورسیه</h4>
                 </div>
                 <div class="content">
-                    <form action="{{ route('student_dashboard_scholarship_submit') }}" method="POST" class="needs-validation" novalidate>
+                    <form action="{{ route('student_dashboard_scholarship_submit') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
                         {{ csrf_field() }}
+
+
+
+
+
                         <div class="row">
                             <div class="col-md-12">
                                     <div class="form-group">
-                                        <p>توضیحات مربوط به درخواست</p>
-                                        <hr>
-                                        <label>توضیحات درخواست</label>
-                                        <textarea dir="rtl" name="stdMessage" rows="5" class="form-control textarea-radius" placeholder="متن درخواست خود را وارد نمایید" required @unless(empty($scholarship)) {{ $scholarship->status!='NOT-SEEN' ? 'disabled' : '' }} @endunless>@unless(empty($scholarship)){{ $scholarship->status && !old('stdMessage') ? $scholarship->stdMessage : '' }}@endunless{{ old('stdMessage') ? old('stdMessage') : '' }}</textarea>
 
+
+
+
+
+
+
+                                        <label>توضیحات درخواست</label>
+                                        <textarea dir="rtl" maxlength="500" name="stdMessage" tabindex="1" rows="5" class="form-control textarea-radius" placeholder="متن درخواست خود را وارد نمایید" @unless(empty($scholarship)) {{ $scholarship->status!='NOT-SEEN' ? 'disabled' : '' }} @endunless>@unless(empty($scholarship)){{ $scholarship->status && !old('stdMessage') ? $scholarship->stdMessage : '' }}@endunless{{ old('stdMessage') ? old('stdMessage') : '' }}</textarea>
                                         <div class="invalid-feedback">
-                                            <small>{{ $errors->first('stdMessage') }} {{ $errors->first('notComplete') }}</small>
+                                            <small>{{ $errors->first('stdMessage') }}{{ $errors->first('notComplete') }}</small>
                                         </div>
                                     </div>
+                                    @unless (!empty($scholarship->adminMessage))
+                                    <label>عکس کارنامه</label>
+                                    <div  class="col-md-5 " style="float: none;">
+                                        <div class="input-file-container">
+                                            <input class="input-file" id="my-file" type="file" name="scholarshipImage">
+                                            <label tabindex="2" for="my-file" class="input-file-trigger text-center">عکس کارنامه را آپلود نمایید</label>
+                                        </div>
+                                        <p class="file-return"></p>
+                                        <div class="invalid-feedback">
+                                            <small>{{ $errors->first('scholarshipImage') }}</small>
+                                        </div>
+
+                                    </div>
+                                    @endunless
+
+
                                 @unless(empty($scholarship->adminMessage))
                                 <div class="col-md-12">
                                     <div class="card text-right">

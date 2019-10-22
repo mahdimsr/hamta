@@ -14,9 +14,9 @@
           <label  class="input-label">کد تخفیف</label>
           <input type="text"  placeholder="کد تخفیف">
         </div>
-  
+
       <div class="modal-buttons">
-        
+
         <button class="input-button"><input type="submit" value="اعمال"></button>
         <button class="input-button"><a href="#">
 
@@ -32,7 +32,7 @@
         </button>
 
       </div>
-     
+
     </div>
     <div class="modal-right">
       <img src="{{ asset('image/student/dashboard/student-test.jpg') }}" alt="">

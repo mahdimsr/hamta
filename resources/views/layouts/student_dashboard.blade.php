@@ -32,11 +32,7 @@
             text-align : center;
         }
 
-        .error
-        {
-            color     : red;
-            font-size : 15px;
-        }
+
 
     </style>
 </head>
@@ -159,7 +155,7 @@
                             <a href="{{route('student_wallet')}}">
                                 <i class="fa fa-wallet"></i>
                                 <p class="hidden-lg hidden-md">کیف پول</p>
-                                <span class="notification hidden-sm hidden-xs">{{$student->wallet/10}}</span>
+                                <span class="notification hidden-sm hidden-xs">{{$student->wallet}}</span>
                             </a>
                         </li>
                         <li class="dropdown">
@@ -216,7 +212,10 @@
                                     <a href="{{ route('student_dashboard_profile')}}">ویرایش پروفایل</a>
                                 </li>
                                 <li>
-                                    <a href="#"> تنظیمات</a>
+                                    <a href="{{ route('student_transactions') }}">تراکنش های من</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('student_discounts') }}">کد تخفیف</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('student_logout') }}"> خروج</a>

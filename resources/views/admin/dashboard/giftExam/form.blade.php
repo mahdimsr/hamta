@@ -60,7 +60,7 @@
         <div class="col-md-7">
             <div dir="rtl" class="card ">
                 <div class="header ">
-                    <h4 class="title">افزودن آزمون جایزه دار</h4>
+                    <h4 class="title">{{ $modify==0? 'افزودن آزمون جایزه دار' : 'ویرایش آزمون جایزه دار' }}</h4>
                 </div>
 
                 <div class="content">
@@ -72,19 +72,8 @@
                         {{csrf_field()}}
 
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label">زمان آزمون (به دقیقه)</label>
-                                    <input name="duration" class="form-control" type="text"
-                                           maxlength="10" tabindex="4"
-                                           value="{{old('duration')}}{{ $modify==1 && !old('duration') && $giftExam->duration ? $giftExam->duration : '' }}"
-                                           placeholder="مثلا: 60 دقیقه"/>
-                                </div>
-                                <div class="invalid-feedback">
-                                    <small>{{ $errors->first('duration') }}</small>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
+
+                            <div class="col-md-6 s-floatR">
                                 <div class="form-group">
                                     <label class="control-label">عنوان</label>
                                     <input name="title" class="form-control" type="text"
@@ -95,22 +84,25 @@
                                     <small>{{ $errors->first('title') }}</small>
                                 </div>
                             </div>
+
+                            <div class="col-md-6 s-floatL">
+                                <div class="form-group">
+                                    <label class="control-label">زمان آزمون (دقیقه)</label>
+                                    <input name="duration" class="form-control" type="text"
+                                           maxlength="10" tabindex="4"
+                                           value="{{old('duration')}}{{ $modify==1 && !old('duration') && $giftExam->duration ? $giftExam->duration : '' }}"
+                                           placeholder="زمان آزمون را وارد نمایید"/>
+                                </div>
+                                <div class="invalid-feedback">
+                                    <small>{{ $errors->first('duration') }}</small>
+                                </div>
+                            </div>
+
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>تاریخ اعلام نتایج آزمون</label>
-                                    <input dir="rtl" id="resultDate" name="resultDate" type="text"
-                                           class="form-control"
-                                           tabindex="3"
-                                           value="{{ old('resultDate') }}{{ $modify==1 && !old('resultDate') && $giftExam->resultDate ? $giftExam->resultDate : '' }}">
-                                    <div class="invalid-feedback">
-                                        <small>{{ $errors->first('resultDate') }}</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
+
+                            <div class="col-md-6 s-floatR">
                                 <div class="form-group">
                                     <label>زمان و تاریخ فعال شدن آزمون</label>
                                     <input dir="rtl" id="activeTime" name="activeTime" type="text"
@@ -122,26 +114,26 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col-md-6 s-floatL">
+                                <div class="form-group">
+                                    <label>تاریخ اعلام نتایج آزمون</label>
+                                    <input dir="rtl" id="resultDate" name="resultDate" type="text"
+                                           class="form-control"
+                                           tabindex="3"
+                                           value="{{ old('resultDate') }}{{ $modify==1 && !old('resultDate') && $giftExam->resultDate ? $giftExam->resultDate : '' }}">
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('resultDate') }}</small>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
                         @if($modify == 0)
 
                             <div class="row">
-                                <div class="col-md-6">
-                                    <label for="lesson-select" class="control-label">درس های آزمون</label>
-                                    <select class="form-control menu12 dropdown-radius" id="lesson-select"
-                                            name="gradeLessons[]" multiple data-placeholder="درس های آزمون را انتخاب نمایید">
-                                        @foreach($gradeLessons as $gradeLesson)
-                                            <option data-content="{{$gradeLesson->orientationId}}"
-                                                    value="{{$gradeLesson->id}}"
-                                            >{{$gradeLesson->lesson_grade}} - {{ $gradeLesson->sort_title }}</option>
-                                        @endforeach
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        <small>{{ $errors->first('gradeLessons') }}</small>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 s-floatR">
                                     <div class="form-group">
                                         <label class="control-label">گرایش</label>
                                         <select name="orientation"
@@ -151,8 +143,8 @@
                                             </option>
                                             @foreach($orientations as $orientation)
                                                 <option
-                                                    value="{{$orientation->id}}"
-                                                    {{old('orientation') == $orientation->id ? 'selected' : ''}}{{ $modify==1 && !old('orientation') && $lessonExam->orientation()[0]->id == $orientation->id ? 'selected' : '' }}>
+                                                        value="{{$orientation->id}}"
+                                                        {{old('orientation') == $orientation->id ? 'selected' : ''}}{{ $modify==1 && !old('orientation') && $lessonExam->orientation()[0]->id == $orientation->id ? 'selected' : '' }}>
                                                     {{$orientation->title}}
                                                 </option>
                                             @endforeach
@@ -162,6 +154,22 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="col-md-6 s-floatL">
+                                    <label for="lesson-select" class="control-label">درس های آزمون</label>
+                                    <select class="form-control menu12 dropdown-radius" id="lesson-select"
+                                            name="gradeLessons[]" multiple data-placeholder="درس های آزمون را انتخاب نمایید">
+                                        @foreach($gradeLessons as $gradeLesson)
+                                            <option data-content="{{$gradeLesson->orientationId}}"
+                                                    value="{{$gradeLesson->id}}" {{in_array($gradeLesson->id, old("gradeLessons") ?: []) ? 'selected': ''}}
+                                            >{{$gradeLesson->lesson_grade}} - {{ $gradeLesson->sort_title }}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('gradeLessons') }}</small>
+                                    </div>
+                                </div>
+
                             </div>
 
                         @endif
