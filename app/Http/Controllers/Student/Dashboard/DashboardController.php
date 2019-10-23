@@ -32,10 +32,10 @@ class DashboardController extends Controller
     public function discounts()
 	{
 
-        $student   = Auth::guard('student')->user();
-        $discounts = StudentCode::query()->where('studentId',$student->id)->get();
+        $student          = Auth::guard('student')->user();
+        $studentDiscounts = StudentCode::query()->where('studentId',$student->id)->get();
 
-		return view('student.dashboard.discount.discounts', compact('student','discounts'));
+		return view('student.dashboard.discount.discounts', compact('student','studentDiscounts'));
     }
 
 }
