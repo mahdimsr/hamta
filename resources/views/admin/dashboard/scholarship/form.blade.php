@@ -1,8 +1,9 @@
 @extends('layouts.admin_dashboard')
-
-@section('content')
+@section('style')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="{{ asset('css/admin/dashboard/scholarship-result.css') }}">
+@endsection
+@section('content')
 	<div class="row" dir="rtl">
 		<div class="col-md-12">
 			<div class="card text-right">
@@ -22,7 +23,7 @@
 
 								</div>
 								<div class="modal-right">
-								  <img src="{{ asset('image/student/dashboard/student-test.jpg') }}" alt="">
+								  <img src="{{ asset('storage/students/'.$scholarship->studentId.'/scholarship/'.$scholarship->verifyImage) }}" alt="scholarshipImage">
 								</div>
 								<button class="icon-button close-button">
 									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
@@ -32,7 +33,7 @@
 							  </div>
 							  <button class="modal-button">نمایش کارنامه</button>
 							</div>
-							
+
 
 
 
@@ -123,7 +124,7 @@
 
 @endsection
 @section('script')
-<script>
+    <script>
 
 	const body = document.querySelector("body");
 	const modal = document.querySelector(".modal");
@@ -131,27 +132,27 @@
 	const closeButton = document.querySelector(".close-button");
 	const scrollDown = document.querySelector(".scroll-down");
 	let isOpened = false;
-	
+
 	const openModal = () => {
 	  modal.classList.add("is-open");
 	  body.style.overflow = "hidden";
 	};
-	
+
 	const closeModal = () => {
 	  modal.classList.remove("is-open");
 	  body.style.overflow = "initial";
 	};
-	
-	
-	
+
+
+
 	modalButton.addEventListener("click", openModal);
 	closeButton.addEventListener("click", closeModal);
-	
+
 	document.onkeydown = evt => {
 	  evt = evt || window.event;
 	  evt.keyCode === 27 ? closeModal() : false;
 	};
-	
+
 	</script>
 @endsection
 
