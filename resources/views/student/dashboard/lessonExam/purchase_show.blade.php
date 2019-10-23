@@ -27,8 +27,6 @@
 
             {{csrf_field()}}
 
-
-
             <div class="card" dir="rtl">
                 <div class="card-header">
                     توضیحات پرداخت
@@ -59,12 +57,11 @@
                 </ul>
             </div>
 
-            <button onclick="purchaseWallet('{{route('student_lessonExams_purchaseWallet',['carts' => $carts])}}')"
+            <button onclick="purchaseWallet('{{route('student_lessonExams_purchaseWallet')}}')"
                     type="submit" class="btn btn-success btn-fill">
                 پرداخت با کیف پول
             </button>
-
-            <button type="submit" class="btn btn-success btn-fill">
+            <button type="submit" class="btn btn-success btn-fill" onclick="purchaseBank('{{route('student_wallet_purchaseLessonExam')}}')">
                 پرداخت از طریق درگاه بانکی
             </button>
         </form>
@@ -128,6 +125,16 @@
             const form = document.querySelector("form");
 
             console.log(form);
+
+            form.action = route;
+        }
+
+
+        function purchaseBank(route)
+        {
+            const form = document.querySelector("form");
+
+            console.log(route);
 
             form.action = route;
         }

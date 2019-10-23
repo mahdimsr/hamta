@@ -22,7 +22,7 @@
             $lessonExam              = new LessonExam();
             $lessonExam->title       = 'آزمون پیش فرض سامانه';
             $lessonExam->description = 'علی جان هرکی دوست داری سیدر رو پاک نکن';
-            $lessonExam->price       = 50000;
+            $lessonExam->price       = 10000;
             $lessonExam->activeDate  = Carbon::yesterday();
             $lessonExam->duration    = 30;
             $lessonExam->save();

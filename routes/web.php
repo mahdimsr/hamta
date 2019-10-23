@@ -76,12 +76,17 @@
             {
 
                 Route::get('/', 'WalletController@wallet')->name('student_wallet');
+
                 Route::post('/charge', 'WalletController@charge')->name('student_wallet_charge');
+
+                Route::post('/purchaseLessonExam', 'WalletController@purchaseLessonExam')
+                     ->name('student_wallet_purchaseLessonExam');
+
                 Route::get('/verify', 'WalletController@verify')->name('student_wallet_verify');
             });
 
-            Route::get('/discounts','DashboardController@discounts')->name('student_discounts');
-            Route::get('/transactions','DashboardController@transactions')->name('student_transactions');
+            Route::get('/discounts', 'DashboardController@discounts')->name('student_discounts');
+            Route::get('/transactions', 'DashboardController@transactions')->name('student_transactions');
 
         });
     });
