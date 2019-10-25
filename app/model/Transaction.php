@@ -42,7 +42,7 @@
                     $student          = Auth::guard('student')->user();
                     $model->studentId = $student->id;
 
-                    $code = substr(md5(uniqid(mt_rand(), true)), 0, 8);
+                    $code = substr(md5(uniqid(mt_rand(), true)), 0, 9);
 
                     $model->code = $code;
                 }

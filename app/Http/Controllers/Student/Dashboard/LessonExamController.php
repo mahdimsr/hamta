@@ -15,7 +15,7 @@
     class LessonExamController extends Controller
     {
 
-        public function exams()
+        public function lessonExams()
         {
 
             $student     = Auth::guard('student')->user();
@@ -55,7 +55,7 @@
         }
 
 
-        public function purchaseShow()
+        public function purchaseForm()
         {
 
             $student = Auth::guard('student')->user();

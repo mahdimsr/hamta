@@ -18,7 +18,7 @@ use App\Lib\Lib;
 class ProfileController extends Controller
 {
 
-	public function profile()
+	public function profileForm()
 	{
 
 		$student      = Auth::guard('student')->user();
@@ -26,13 +26,13 @@ class ProfileController extends Controller
 		$grades       = Grade::all();
         $orientations = Orientation::all();
         $provinces    = Province::all();
-		return view('student.dashboard.profile', compact('student', 'cities','provinces', 'grades', 'orientations'));
+		return view('student.dashboard.profile.form', compact('student', 'cities','provinces', 'grades', 'orientations'));
 
 	}
 
 
 
-	public function update(Request $request)
+	public function updateProfile(Request $request)
 	{
 
         $student = Auth::guard('student')->user();
@@ -93,11 +93,11 @@ class ProfileController extends Controller
 		$student->update();
         }
 
-        return redirect()->route('student_dashboard_profile');
+        return redirect()->route('student_dashboard_profile_form');
 
     }
 
-	public function edit(Request $request)
+	public function editProfile(Request $request)
 	{
 
 		$student = Auth::guard('student')->user();
@@ -122,7 +122,7 @@ class ProfileController extends Controller
         $student->mobile       = $request->input('student_mobile_edit');
 		$student->update();
 
-		return redirect()->route('student_dashboard_profile');
+		return redirect()->route('student_dashboard_profile_form');
 
 	}
 
