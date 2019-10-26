@@ -62,7 +62,7 @@
                     </a>
                 </li>
                 <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_scholarship' ? 'active' : ''}}">
-                    <a href="{{ route('student_dashboard_scholarship')}}">
+                    <a href="{{ route('student_dashboard_scholarship_form')}}">
                         <i class="fa fa-graduation-cap"></i>
                         <p>بورسیه</p>
                     </a>
@@ -138,13 +138,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a dir="rtl" class="navbar-brand" href="{{ route('student_dashboard_profile') }}"></a>
+                    <a dir="rtl" class="navbar-brand" href=""></a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         @if(isset($carts))
                             <li>
-                                <a href="{{route('student_lessonExams_purchaseShow')}}">
+                                <a href="{{route('student_dashboard_lessonExams_purchaseForm')}}">
                                     <i class="fa fa-wallet"></i>
                                     <p class="hidden-lg hidden-md">لیست خرید</p>
                                     <span class="notification hidden-sm hidden-xs">{{count($carts)}}</span>
@@ -152,7 +152,7 @@
                             </li>
                         @endif
                         <li>
-                            <a href="{{route('student_wallet')}}">
+                            <a href="{{route('student_dashboard_wallet_form')}}">
                                 <i class="fa fa-wallet"></i>
                                 <p class="hidden-lg hidden-md">کیف پول</p>
                                 <span class="notification hidden-sm hidden-xs">{{$student->wallet}}</span>
@@ -209,16 +209,16 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="{{ route('student_dashboard_profile')}}">ویرایش پروفایل</a>
+                                    <a href="{{ route('student_dashboard_profile_form')}}">ویرایش پروفایل</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('student_transactions') }}">تراکنش های من</a>
+                                    <a href="{{ route('student_dashboard_transactions') }}">تراکنش های من</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('student_discounts') }}">کد تخفیف</a>
+                                    <a href="{{ route('student_dashboard_discounts') }}">کد تخفیف</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('student_logout') }}"> خروج</a>
+                                    <a href="{{ route('student_dashboard_logout') }}"> خروج</a>
                                 </li>
 
                             </ul>

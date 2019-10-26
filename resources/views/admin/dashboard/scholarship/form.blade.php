@@ -21,7 +21,7 @@
 
 								</div>
 								<div class="modal-right">
-								  <img src="{{ asset('storage/students/'.$scholarship->studentId.'/scholarship/'.$scholarship->verifyImage) }}" alt="scholarshipImage">
+								  <img src="{{ $scholarship->image }}" alt="scholarshipImage">
 								</div>
 								<button class="icon-button close-button">
 									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">

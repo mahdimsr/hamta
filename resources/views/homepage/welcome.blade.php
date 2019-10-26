@@ -11,17 +11,17 @@
 			<div class="carousel-item active">
 				<img class="d-block w-100" src="{{asset('image/homepage/ازمون1-100.jpg')}}"
 					 alt="First slide">
-			
+
 			</div>
 			<div class="carousel-item">
 				<img class="d-block w-100" src="{{asset('image/homepage/اسلاید11-100.jpg')}}"
 					 alt="Second slide">
-			
+
 			</div>
 			<div class="carousel-item">
 				<img class="d-block w-100" src="{{asset('image/homepage/بورسه-100.jpg')}}"
 					 alt="Third slide">
-		
+
 			</div>
 		</div>
 		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -114,7 +114,7 @@
 			</div>
 			<div class="row mt-5">
 				<div class="col-12 text-center">
-					<a class="button mr-3 mb-2" href="{{route('student_login_show')}}">همتایی شو</a>
+					<a class="button mr-3 mb-2" href="{{route('student_login_form')}}">همتایی شو</a>
 				</div>
 			</div>
 		</div>

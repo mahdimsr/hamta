@@ -20,7 +20,7 @@
                             </p>
                         @endif
                         <p class="card-text margin-card">
-                            {{$lessonExam->price/10 . ' تومان '}}
+                            {{$lessonExam->price . ' تومان '}}
                         </p>
 
                         @if($lessonExam->hasInCart())
@@ -29,7 +29,7 @@
                             </button>
                         @else
                             <button class="ctrl-standard typ-subhed fx-bubbleDown">
-                                <a href="{{ route('student_lessonExams_addToCart',['exm' => $lessonExam->exm]) }}">
+                                <a href="{{ route('student_dashboard_lessonExams_addToCart',['exm' => $lessonExam->exm]) }}">
                                     افزودن به لیست خرید
                                 </a>
                             </button>

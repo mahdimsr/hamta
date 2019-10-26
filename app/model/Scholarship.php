@@ -24,7 +24,7 @@ class Scholarship extends Model
 
 	protected $table = 'scholarship';
 
-	protected $appends = ['persian_status'];
+	protected $appends = ['persian_status','image'];
 
 
 
@@ -51,7 +51,11 @@ class Scholarship extends Model
 		return $this->persianEnum($this->status);
 	}
 
-
+	public function getImageAttribute()
+	{
+        $url = asset('storage/students/'.$this->studentId.'/scholarship/'.$this->verifyImage);
+		return $url;
+	}
 
 	public function student()
 	{

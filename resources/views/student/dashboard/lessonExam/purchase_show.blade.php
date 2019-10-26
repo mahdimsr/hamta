@@ -57,11 +57,11 @@
                 </ul>
             </div>
 
-            <button onclick="purchaseWallet('{{route('student_lessonExams_purchaseWallet')}}')"
+            <button onclick="purchaseWallet('{{route('student_dashboard_lessonExams_purchaseWallet')}}')"
                     type="submit" class="btn btn-success btn-fill">
                 پرداخت با کیف پول
             </button>
-            <button type="submit" class="btn btn-success btn-fill" onclick="purchaseBank('{{route('student_wallet_purchaseLessonExam')}}')">
+            <button type="submit" class="btn btn-success btn-fill" onclick="purchaseBank('{{route('student_dashboard_wallet_purchaseLessonExam')}}')">
                 پرداخت از طریق درگاه بانکی
             </button>
         </form>
@@ -81,7 +81,7 @@
             $.ajax({
 
                 type : "POST",
-                url  : "{{route('student_lessonExams_validateDiscountCode')}}",
+                url  : "{{route('student_dashboard_lessonExams_validateDiscountCode')}}",
                 data :
                     {
 

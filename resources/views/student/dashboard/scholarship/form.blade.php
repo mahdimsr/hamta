@@ -34,7 +34,7 @@
                     <h4 class="title">بورسیه</h4>
                 </div>
                 <div class="content">
-                    <form action="{{ route('student_dashboard_scholarship_submit') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
+                    <form action="{{ route('student_dashboard_scholarship') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
 

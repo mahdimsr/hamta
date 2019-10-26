@@ -50,7 +50,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
             <div class="container">
-              <a class="navbar-brand" href="{{ route('student_register_show') }}"><strong>همپا | دانش آموزان</strong></a>
+              <a class="navbar-brand" href="{{ route('student_register_form') }}"><strong>همپا | دانش آموزان</strong></a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7"
                 aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -61,10 +61,10 @@
                           <a class="nav-link" href="{{ route('homepage') }}">خانه</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="{{ route('student_login_show') }}">ورود<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('student_login_form') }}">ورود<span class="sr-only">(current)</span></a>
                       </li>
                       <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('student_register_show') }}">ثبت نام</a>
+                        <a class="nav-link" href="{{ route('student_register_form') }}">ثبت نام</a>
                       </li>
                   </ul>
               </div>
@@ -92,7 +92,7 @@
 
                   <!-- Body -->
                   <div class="md-form md-outline">
-                    <input type="text" id="orangeForm-name" class="form-control "  name="student_mobile" value="{{old('student_mobile')}}">
+                    <input type="text" id="orangeForm-name" class="form-control " maxlength="11"  name="student_mobile" value="{{old('student_mobile')}}">
                     <label for="orangeForm-name">شماره تلفن همراه</label>
                     <small class="text-danger font-weight-bold">{{$errors->first('student_mobile')}}</small>
 
