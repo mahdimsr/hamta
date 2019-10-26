@@ -24,9 +24,9 @@
                 $table->integer('studentId');
                 $table->enum('itemType', ['LESSON_EXAM'])->nullable();
                 $table->integer('itemId')->nullable();
-                $table->integer('price');
+                $table->float('price');
                 $table->integer('discountId')->nullable();
-                $table->integer('discountPrice')->nullable();
+                $table->float('discountPrice')->nullable();
                 $table->string('code')->nullable();
                 $table->enum('status', ['IN-PROGRESS','FAILED','SUCCESS'])->default('IN-PROGRESS');
                 $table->timestamps();
