@@ -7,7 +7,6 @@
 			<div class="card">
 				<div class="header">
 					<h4 class="title text-right">ادمین ها</h4>
-					<p class="category text-right">شما فقط ادمین هایی را میتوانید مشاهده کنید که سطح دسترسی پایین تر از شما دارند</p>
 					<a href="{{route('admin_admins_addShow')}}" style="font-size: 12px;" class="btn btn-info pull-right btn-table-header">
 						افزودن ادمین جدید
 					</a>

@@ -34,7 +34,7 @@ class CreateStudentTable extends Migration
 			$table->date('birthday')->nullable();
 			$table->string('telePhone')->nullable();
 			$table->string('parentPhone')->nullable();
-			$table->integer('wallet')->default(0);
+			$table->float('wallet')->default(0);
 			$table->string('mobileToken')->nullable();
             $table->string('emailToken')->nullable();
             $table->string('profileImage')->nullable();

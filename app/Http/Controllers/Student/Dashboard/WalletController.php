@@ -15,16 +15,16 @@
     class WalletController extends Controller
     {
 
-        public function wallet()
+        public function walletForm()
         {
 
             $student = Auth::guard('student')->user();
 
-            return view('student.dashboard.wallet.wallet', compact('student'));
+            return view('student.dashboard.wallet.form', compact('student'));
         }
 
 
-        public function charge(Request $request)
+        public function walletCharge(Request $request)
         {
 
             $student = Auth::guard('student')->user();
@@ -52,7 +52,7 @@
                         $order         = new zarinpal();
 
                         $res
-                            = $order->pay($price, 'همپا | شارژ کیف پول', $student->email, $student->mobile, route('student_wallet_verify'));
+                            = $order->pay($price, 'همپا | شارژ کیف پول', $student->email, $student->mobile, route('student_dashboard_wallet_verify'));
 
                         if ($res)
                         {
@@ -70,9 +70,6 @@
 
                         else
                         {
-                            $transaction->status = 'FAILED';
-                            $transaction->update();
-
                             return redirect()->back()->withErrors(['chargeFailed' => ['خطا در اتصال به درگاه']]);
                         }
 
@@ -92,7 +89,7 @@
             {
                 $order = new zarinpal();
                 $res
-                       = $order->pay($price, 'همپا | شارژ کیف پول', $student->email, $student->mobile, route('student_wallet_verify'));
+                       = $order->pay($price, 'همپا | شارژ کیف پول', $student->email, $student->mobile, route('student_dashboard_wallet_verify'));
 
                 if ($res)
                 {
@@ -108,9 +105,6 @@
 
                 else
                 {
-                    $transaction->status = 'FAILED';
-                    $transaction->update();
-
                     return redirect()->back()->withErrors(['chargeFailed' => ['خطا در اتصال به درگاه']]);
                 }
 
@@ -118,7 +112,7 @@
         }
 
 
-        public function verify(Request $request)
+        public function walletVerify(Request $request)
         {
 
             $student     = Auth::guard('student')->user();
@@ -154,7 +148,7 @@
                             $transaction->update();
 
                             return redirect()
-                                ->route('student_wallet')
+                                ->route('student_dashboard_wallet_form')
                                 ->with('status', 'شارژ کیف پول همراه با کد شگفت انگیز با موفقیت انجام شد.');
                         }
 
@@ -167,7 +161,7 @@
                             $transaction->update();
 
                             return redirect()
-                                ->route('student_wallet')
+                                ->route('student_dashboard_wallet_form')
                                 ->with('status', 'شارژ کیف پول با موفقیت انجام شد.');
                         }
 
@@ -180,7 +174,7 @@
                         $transaction->update();
 
                         return redirect()
-                            ->route('student_wallet')
+                            ->route('student_dashboard_wallet_form')
                             ->withErrors(['transactionFailed' => ['شارژ کیف پول ناموفق']]);
                     }
                 }
@@ -192,20 +186,20 @@
                     $transaction->update();
 
                     return redirect()
-                        ->route('student_wallet')
+                        ->route('student_dashboard_wallet_form')
                         ->withErrors(['transactionFailed' => ['شارژ کیف پول ناموفق']]);
                 }
             }
 
             else
             {
-                return redirect()->route('student_wallet');
+                return redirect()->route('student_dashboard_wallet_form');
             }
 
         }
 
 
-        public function purchaseLessonExam(Request $request)
+        public function walletPurchaseLessonExam(Request $request)
         {
 
             $student = Auth::guard('student')->user();
@@ -234,12 +228,12 @@
 
                     //payment
 
-                    $zarinpalPrice = $discountPrice/10;
+                    $zarinpalPrice = $discountPrice;
 
                     $order = new zarinpal();
 
                     $res
-                        = $order->pay($zarinpalPrice, 'همپا | خرید آزمون', $student->email, $student->mobile, route('student_wallet_verify'));
+                        = $order->pay($zarinpalPrice, 'همپا | خرید آزمون', $student->email, $student->mobile, route('student_dashboard_wallet_verify'));
 
                     $transaction = new Transaction();
 
@@ -275,10 +269,10 @@
 
                 $order = new zarinpal();
 
-                $zarinpalPrice = $price/10;
+                $zarinpalPrice = $price;
 
                 $res
-                    = $order->pay($zarinpalPrice, 'همپا | خرید آزمون', $student->email, $student->mobile, route('student_wallet_verify'));
+                    = $order->pay($zarinpalPrice, 'همپا | خرید آزمون', $student->email, $student->mobile, route('student_dashboard_wallet_verify'));
 
                 $transaction = new Transaction();
                 $transaction->type      = 'PURCHASE';

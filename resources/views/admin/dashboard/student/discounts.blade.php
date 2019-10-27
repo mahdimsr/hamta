@@ -24,7 +24,6 @@
                         </thead>
                         <tbody class="text-center">
                                 @foreach($studentDiscounts as $studentDiscount)
-                                @if($studentDiscount->discount->type=='STUDENT-OFF')
                                 <tr>
                                     <td>{{$studentDiscount->discount->code}}</td>
                                     <td>{{$studentDiscount->discount->value}}</td>
@@ -42,7 +41,6 @@
                                         </a>
                                     </td>
                                 </tr>
-                                @endif
                                 @endforeach
                         </tbody>
                     </table>

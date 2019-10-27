@@ -69,7 +69,7 @@
 
                         <div class="content ">
 
-                            <form action="{{ route('student_wallet_charge') }}" method="POST" class="needs-validation" novalidate>
+                            <form action="{{ route('student_dashboard_wallet_charge') }}" method="POST" class="needs-validation" novalidate>
                                 {{ csrf_field() }}
                                 <div class="row">
                                         <div class="col-md-12">

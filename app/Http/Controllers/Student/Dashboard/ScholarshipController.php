@@ -13,16 +13,16 @@ class ScholarshipController extends Controller
 {
 
 
-    public function scholarship()
+    public function scholarshipForm()
     {
 
         $student      = Auth::guard('student')->user();
         $scholarship  = $student->scholarship()->first();
-        return view('student.dashboard.scholarship',compact('student','scholarship'));
+        return view('student.dashboard.scholarship.form',compact('student','scholarship'));
 
     }
 
-    public function submit(Request $request)
+    public function scholarship(Request $request)
     {
 
         $student      = Auth::guard('student')->user();

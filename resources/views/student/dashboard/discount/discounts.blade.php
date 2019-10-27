@@ -60,14 +60,16 @@
                             <th>تاریخ انقضا</th>
                             </thead>
                             <tbody class="text-center">
-                                @foreach($discounts as $discount)
+                                @foreach($studentDiscounts as $studentDiscount)
+                                @if(!$studentDiscount->discount->isExpired)
                                 <tr>
-                                    <td>{{ $discount->discount->code }}</td>
-                                    <td>% {{ $discount->discount->value }}</td>
-                                    <td>{{ $discount->discount->count }} بار</td>
-                                    <td></td>
-                                    <td>{{ $discount->discount->persianEndDate }}</td>
+                                    <td>{{ $studentDiscount->discount->code }}</td>
+                                    <td>% {{ $studentDiscount->discount->value }}</td>
+                                    <td>{{ $studentDiscount->discount->count }} بار</td>
+                                    <td>-</td>
+                                    <td>{{ $studentDiscount->discount->persianEndDate }}</td>
                                 </tr>
+                                @endif
                                 @endforeach
                             </tbody>
                         </table>

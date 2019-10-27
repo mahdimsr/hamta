@@ -13,19 +13,19 @@ use App\model\Student as Student;
 class AuthController extends Controller
 {
 
-    public function verify()
+    public function verifyForm()
 	{
 		return view('student.auth.verify');
     }
 
-	public function showLogin()
+	public function loginForm()
 	{
         $studentInfo=cookie::get('studentInfo');
         $studentPass=cookie::get('studentPass');
         return view('student.auth.login',compact('studentInfo','studentPass'));
     }
 
-	public function showRegister()
+	public function registerForm()
 	{
 
         return view('student.auth.register');
@@ -59,7 +59,7 @@ class AuthController extends Controller
 
 
 
-			return redirect()->route('student_dashboard_profile');
+			return redirect()->route('student_dashboard_profile_form');
 
         }
 
@@ -77,7 +77,7 @@ class AuthController extends Controller
 				Cookie::queue('studentPass', '');
 
 			}
-            return redirect()->route('student_dashboard_profile');
+            return redirect()->route('student_dashboard_profile_form');
 
         }
 
@@ -93,7 +93,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::guard('student')->logout();
-        return redirect()->route('student_login_show');
+        return redirect()->route('student_login_form');
     }
 
 
@@ -115,7 +115,7 @@ class AuthController extends Controller
 
         Auth::guard('student')->login($student, false);
 
-        return redirect()->route('student_dashboard_profile');
+        return redirect()->route('student_dashboard_profile_form');
 
     }
 
