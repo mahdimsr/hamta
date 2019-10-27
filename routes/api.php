@@ -23,6 +23,7 @@
         {
 
             Route::post('login', 'AuthController@login')->name('api_student_login');
+            Route::post('register', 'AuthController@register')->name('api_student_register');
 
         });
 

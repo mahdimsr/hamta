@@ -18,11 +18,21 @@
     class Student extends Authenticatable
     {
 
-        use SoftDeletes,HasApiTokens;
+        use SoftDeletes, HasApiTokens;
 
         protected $table = 'student';
 
         protected $appends = ['persian_birthday'];
+
+        protected $casts
+            = [
+
+                'mobileVerified' => 'boolean',
+                'emailVerified'  => 'boolean',
+                'isActive'       => 'boolean',
+                'isComplete'     => 'boolean',
+
+            ];
 
 
         public function getPersianBirthdayAttribute()

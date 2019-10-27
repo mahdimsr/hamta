@@ -2,11 +2,14 @@
 
     namespace App\Http\Controllers\Api\Student;
 
+    use App\model\Student;
     use Carbon\Carbon;
     use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
     use Illuminate\Support\Facades\Auth;
+    use Illuminate\Support\Facades\Hash;
     use Illuminate\Support\Facades\Validator;
+    use Laravel\Passport\Passport;
 
 
     class AuthController extends Controller
@@ -37,7 +40,7 @@
                     $token       = $tokenResult->token;
                     $token->save();
 
-                    return response()->json(['status'       => 'ok',
+                    return response()->json(['status'       => 'OK',
                                              'access_token' => $tokenResult->accessToken,
                                              'token_type'   => 'Bearer',
                                              'student'      => $student,
@@ -46,11 +49,47 @@
                 }
                 else
                 {
-                    return response()->json(['status'  => 'error',
+                    return response()->json(['status'  => 'ERROR',
                                              'message' => 'شماره یا رمز عبور اشتباه وارد شده']);
                 }
             }
 
+
+        }
+
+
+        public function register(Request $request)
+        {
+
+            $v = Validator::make($request->all(), [
+
+                'mobile'         => 'required_without:email|unique:student,mobile',
+                'email'          => 'required_without:mobile|unique:student,email',
+                'password'       => 'required',
+                'repeatPassword' => 'same:password'
+
+            ]);
+
+            if ($v->fails())
+            {
+                return response()->json(['status' => 'ERROR-INPUT', 'error' => $v->errors()]);
+            }
+
+            $student = new Student();
+
+            $student->mobile   = $request->input('mobile');
+            $student->password = Hash::make($request->input('password'));
+
+            $student->save();
+
+            $tokenResult = $student->createToken('Personal Access Token');
+            $token       = $tokenResult->token;
+            $token->save();
+
+            return response()->json(['status'       => 'OK',
+                                     'access_token' => $tokenResult->accessToken,
+                                     'token_type'   => 'Bearer',
+                                     'student'      => $student]);
 
         }
 
