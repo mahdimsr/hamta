@@ -26,10 +26,11 @@
 
         });
 
-        Route::middleware('auth:student-api')->get('/test', function()
+        Route::middleware('auth:api')->group(function()
         {
 
-            return 'test';
+            Route::get('/index', 'IndexController@index')->name('api_student_index');
+
 
         });
 

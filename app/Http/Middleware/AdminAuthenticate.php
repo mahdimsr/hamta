@@ -19,7 +19,7 @@ class AdminAuthenticate
 	{
 		if (!Auth::guard('admin')->check())
 		{
-    		return redirect()->route('admin.auth.show');
+    		return redirect()->route('admin_auth_show');
 		}
 
 		return $next($request);
