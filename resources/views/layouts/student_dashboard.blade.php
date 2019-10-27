@@ -39,7 +39,7 @@
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="blue" data-image="{{asset('image/student/dashboard/sidebar-5.jpg')}}">
+    <div class="sidebar" data-color="blue"  data-image="{{asset('image/student/dashboard/pattern.jpg')}}">
 
         <!--
 
