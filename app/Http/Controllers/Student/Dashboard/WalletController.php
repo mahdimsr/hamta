@@ -216,34 +216,29 @@
             //check discount code
             if ($request->input('discountCode') != null)
             {
-                $discount = Discount::query()->where('code', $request->input('discountCode'));
+                $discount = Discount::query()->where('code', $request->input('discountCode'))->first();
 
                 // check discount validation
-                if ($discount->exists() && $discount->first()->isValid())
+                if ($discount->exists() && $discount->isValid())
                 {
 
-                    $discountCode = $discount->first();
-
-                    $discountPrice = $price*((100 - $discountCode->value)/100);
+                    $discountPrice = $price*((100 - $discount->value)/100);
 
                     //payment
 
-                    $zarinpalPrice = $discountPrice;
-
                     $order = new zarinpal();
 
-                    $res
-                        = $order->pay($zarinpalPrice, 'همپا | خرید آزمون', $student->email, $student->mobile, route('student_dashboard_wallet_verify'));
+                    $res= $order->pay($discountPrice, 'همپا | خرید آزمون', $student->email, $student->mobile, route('student_dashboard_wallet_purchaseLessonExamVerify'));
 
-                    $transaction = new Transaction();
+
 
                     if ($res)
                     {
-                        $transaction->type          = 'PURCHASE';
+                        $transaction                = new Transaction();
+                        $transaction->type          = 'CHARGE';
                         $transaction->studentId     = $student->id;
-                        $transaction->itemType      = 'LESSON_EXAM';
                         $transaction->price         = $price;
-                        $transaction->discountId    = $discountCode->id;
+                        $transaction->discountId    = $discount->id;
                         $transaction->discountPrice = $discountPrice;
                         $transaction->code          = $res;
                         $transaction->save();
@@ -252,15 +247,14 @@
                     }
                     else
                     {
-                        $transaction->status = 'FAILED';
-                        $transaction->update();
-
                         return redirect()->back()->withErrors(['chargeFailed' => ['خطا در اتصال به درگاه']]);
                     }
                 }
                 else
                 {
-                    return 'not valid discount code';
+                    return redirect()
+                    ->back()
+                    ->withErrors(['charge_code' => ['کد وارد شده برای این بخش قابل استفاده نیست.']]);
                 }
             }
             else
@@ -269,38 +263,150 @@
 
                 $order = new zarinpal();
 
-                $zarinpalPrice = $price;
-
-                $res
-                    = $order->pay($zarinpalPrice, 'همپا | خرید آزمون', $student->email, $student->mobile, route('student_dashboard_wallet_verify'));
-
-                $transaction = new Transaction();
-                $transaction->type      = 'PURCHASE';
-                $transaction->studentId = $student->id;
-                $transaction->itemType  = 'LESSON_EXAM';
-                $transaction->price     = $price;
-                $transaction->code      = $res;
+                $res= $order->pay($price, 'همپا | خرید آزمون', $student->email, $student->mobile, route('student_dashboard_wallet_purchaseLessonExamVerify'));
 
                 if ($res)
                 {
-
-                    $transaction->status    = 'SUCCESS';
+                    $transaction            = new Transaction();
+                    $transaction->type      = 'CHARGE';
+                    $transaction->studentId = $student->id;
+                    $transaction->price     = $price;
+                    $transaction->code      = $res;
                     $transaction->save();
-
-                    foreach ($carts as $cart)
-                    {
-                        $cart->setTransaction($transaction);
-                    }
 
                     return redirect('https://www.zarinpal.com/pg/StartPay/' . $res);
                 }
                 else
                 {
-                    $transaction->status = 'FAILED';
-                    $transaction->save();
-
                     return redirect()->back()->withErrors(['chargeFailed' => ['خطا در اتصال به درگاه']]);
                 }
+            }
+
+        }
+
+        public function walletPurchaseLessonExamVerify(Request $request)
+        {
+
+            $student     = Auth::guard('student')->user();
+            $MerchantID  = '6e70bb64-8e33-11e8-a395-005056a205be';
+            $Authority   = $request->get('Authority');
+            $transaction = Transaction::query()
+                                      ->where('studentId', $student->id)
+                                      ->where('status', 'IN-PROGRESS')
+                                      ->where('code', $Authority)
+                                      ->first();
+            $carts = Cart::query()->where('studentId', $student->id)->whereIn('transactionId', [0])->get();
+
+            if ($transaction)
+            {
+                if ($request->get('Status') == 'OK')
+                {
+                    $client                   = new nusoap_client('https://www.zarinpal.com/pg/services/WebGate/wsdl', 'wsdl');
+                    $client->soap_defencoding = 'UTF-8';
+
+                    if ($transaction->discountPrice)
+                    {
+                    $result = $client->call('PaymentVerification', [['MerchantID' => $MerchantID,
+                                                                     'Authority'  => $Authority,
+                                                                     'Amount'     => $transaction->discountPrice,],]);
+                    }
+
+                    else
+                    {
+                        $result = $client->call('PaymentVerification', [['MerchantID' => $MerchantID,
+                        'Authority'  => $Authority,
+                        'Amount'     => $transaction->price,],]);
+                    }
+
+                    if ($result[ 'Status' ] == 100)
+                    {
+
+                        if ($transaction->discountPrice)
+                        {
+                            $transaction->code   = ltrim($Authority, '0');
+                            $transaction->status = 'SUCCESS';
+                            $transaction->update();
+
+                            $discount   = $transaction->discount();
+
+                            foreach($carts as $cart)
+                            {
+                                $lessonExam = $cart->lessonExam();
+
+                                $cart_transaction                 = new Transaction();
+                                $cart_transaction->type           = 'PURCHASE';
+                                $cart_transaction->studentId      = $student->id;
+                                $cart_transaction->itemId         = $lessonExam->id;
+                                $cart_transaction->itemType       = 'LESSON_EXAM';
+                                $cart_transaction->price          = $lessonExam->price;
+                                $cart_transaction->discountId     = $discount->id;
+                                $cart_transaction->discountPrice  = $lessonExam->price*((100 - $discount->value)/100);
+                                $cart_transaction->save();
+                                $cart->setTransaction($cart_transaction->id);
+
+                            }
+
+                            return redirect()
+                                ->route('student_dashboard_lessonExams_purchaseForm')
+                                ->with('status', 'خرید آزمون همراه با کد تخفیف با موفقیت انجام شد.');
+                        }
+
+                        else
+                        {
+                            $transaction->code   = ltrim($Authority, '0');
+                            $transaction->status = 'SUCCESS';
+                            $transaction->update();
+
+                            $discount   = $transaction->discount();
+
+                            foreach($carts as $cart)
+                            {
+                                $lessonExam = $cart->lessonExam();
+
+                                $cart_transaction            = new Transaction();
+                                $cart_transaction->type      = 'PURCHASE';
+                                $cart_transaction->itemId    = $lessonExam->id;
+                                $cart_transaction->itemType  = 'LESSON_EXAM';
+                                $cart_transaction->studentId = $student->id;
+                                $cart_transaction->price     = $lessonExam->price;
+                                $cart_transaction->save();
+                                $cart->setTransaction($cart_transaction->id);
+
+                            }
+                            return redirect()
+                                ->route('student_dashboard_lessonExams_purchaseForm')
+                                ->with('status', 'خرید آزمون با موفقیت انجام شد.');
+                        }
+
+                    }
+
+                    else
+                    {
+                        $transaction->code   = ltrim($Authority, '0');
+                        $transaction->status = 'FAILED';
+                        $transaction->update();
+
+                        return redirect()
+                            ->route('student_dashboard_lessonExams_purchaseForm')
+                            ->withErrors(['transactionFailed' => ['خرید آزمون ناموفق']]);
+                    }
+                }
+
+                else
+                {
+                    $transaction->code   = ltrim($Authority, '0');
+                    $transaction->status = 'FAILED';
+                    $transaction->update();
+
+                    return redirect()
+                        ->route('student_dashboard_lessonExams_purchaseForm')
+                        ->withErrors(['transactionFailed' => ['خرید آزمون ناموفق']]);
+                }
+            }
+
+            else
+            {
+                return redirect()->route('student_dashboard_lessonExams_purchaseForm');
             }
 
         }
