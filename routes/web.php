@@ -85,6 +85,8 @@
                 Route::post('/purchaseLessonExam', 'WalletController@walletPurchaseLessonExam')
                      ->name('student_dashboard_wallet_purchaseLessonExam');
 
+                     Route::get('/purchaseLessonExamVerify', 'WalletController@walletPurchaseLessonExamVerify')
+                     ->name('student_dashboard_wallet_purchaseLessonExamVerify');
                 Route::get('/verify', 'WalletController@walletVerify')->name('student_dashboard_wallet_verify');
             });
 
