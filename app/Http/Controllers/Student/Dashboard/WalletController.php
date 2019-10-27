@@ -70,9 +70,6 @@
 
                         else
                         {
-                            $transaction->status = 'FAILED';
-                            $transaction->update();
-
                             return redirect()->back()->withErrors(['chargeFailed' => ['خطا در اتصال به درگاه']]);
                         }
 
@@ -108,9 +105,6 @@
 
                 else
                 {
-                    $transaction->status = 'FAILED';
-                    $transaction->update();
-
                     return redirect()->back()->withErrors(['chargeFailed' => ['خطا در اتصال به درگاه']]);
                 }
 

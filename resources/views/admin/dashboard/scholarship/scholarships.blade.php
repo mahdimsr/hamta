@@ -9,7 +9,6 @@
 			<div class="card">
 				<div class="header">
 					<h4 class="title text-right">بورسیه ها</h4>
-					<p class="category text-right">زیرنویس جدول</p>
 				</div>
 				<div dir="rtl" class="content table-responsive table-full-width">
 					<table class="table table-hover table-striped">
