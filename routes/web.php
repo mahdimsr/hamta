@@ -34,6 +34,7 @@
         {
 
             Route::get('/profile', 'ProfileController@profileForm')->name('student_dashboard_profile_form');
+      
             Route::post('/profile', 'ProfileController@updateProfile')->name('student_dashboard_profile_update');
             Route::post('/profileEdit', 'ProfileController@editProfile')->name('student_dashboard_profile_edit');
             Route::get('/scholarship', 'ScholarshipController@scholarshipForm')->name('student_dashboard_scholarship_form');
@@ -322,3 +323,4 @@
 
 
     })->name('test');
+

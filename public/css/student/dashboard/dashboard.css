@@ -356,8 +356,8 @@ input:focus {
 
 .sidebar .nav i {
     font-size: 28px;
-    float: left;
-    margin-right: 15px;
+    float: right;
+    margin-left: 15px;
     line-height: 30px;
     width: 30px;
     text-align: center;
