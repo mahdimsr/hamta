@@ -38,4 +38,8 @@ class DashboardController extends Controller
 		return view('student.dashboard.discount.discounts', compact('student','studentDiscounts'));
     }
 
+    public function content()
+    {
+        return view('layouts.content');
+    }
 }

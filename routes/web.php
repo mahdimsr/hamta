@@ -32,9 +32,9 @@
         });
         Route::middleware('auth:student')->namespace('Dashboard')->prefix('student/dashboard')->group(function()
         {
-
+            Route::get('/content', 'DashboardController@content')->name('student_dashboard_content');
             Route::get('/profile', 'ProfileController@profileForm')->name('student_dashboard_profile_form');
-      
+
             Route::post('/profile', 'ProfileController@updateProfile')->name('student_dashboard_profile_update');
             Route::post('/profileEdit', 'ProfileController@editProfile')->name('student_dashboard_profile_edit');
             Route::get('/scholarship', 'ScholarshipController@scholarshipForm')->name('student_dashboard_scholarship_form');
@@ -92,6 +92,7 @@
 
             Route::get('/discounts', 'DashboardController@discounts')->name('student_dashboard_discounts');
             Route::get('/transactions', 'DashboardController@transactions')->name('student_dashboard_transactions');
+
 
         });
     });
