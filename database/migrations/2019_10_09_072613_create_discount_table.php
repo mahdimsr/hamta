@@ -23,7 +23,7 @@
                 $table->string('code');
                 $table->integer('value');
                 $table->integer('count');
-                $table->enum('type', ['GENERAL-LESSONEXAM-OFF','GENERAL-CHARGE','STUDENT-OFF','STUDENT-CHARGE','LESSONEXAM-OFF']);
+                $table->enum('type', ['GENERAL-LESSONEXAM-OFF','GENERAL-CHARGE','STUDENT-OFF','STUDENT-CHARGE']);
                 $table->date('endDate');
                 $table->timestamps();
                 $table->softDeletes();

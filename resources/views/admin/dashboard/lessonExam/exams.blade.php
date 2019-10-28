@@ -1,6 +1,6 @@
 @extends('layouts.admin_dashboard')
 
-@section('link')
+@section('style')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="{{ asset('css/admin/dashboard/popup.css') }}">
 @endsection
@@ -54,10 +54,6 @@
                                     <a href="{{route('admin_ltlExams_questionsShow',['exm' => $exam->exm])}}"
                                        style="font-size: 12px;" class="btn btn-success">
                                         سوالات
-                                    </a>
-                                    <a href="{{route('admin_ltlExams_discounts',['exm' => $exam->exm])}}"
-                                       style="font-size: 12px;" class="btn btn-success">
-                                        کد تخفیف
                                     </a>
 
                                 </td>

@@ -138,21 +138,6 @@
                     Route::post('/add', 'LessonExamController@add')->name('admin_ltlExams_add');
                     Route::get('{exm}/remove', 'LessonExamController@remove')->name('admin_ltlExams_remove');
 
-                    Route::prefix('/{exm}/discounts')->group(function()
-                    {
-
-                        Route::get('/', 'LessonExamController@discounts')->name('admin_ltlExams_discounts');
-                        Route::get('/add', 'LessonExamController@discountAddShow')
-                             ->name('admin_ltlExams_discountAddShow');
-                        Route::post('/add', 'LessonExamController@discountAdd')->name('admin_ltlExams_discountAdd');
-                        Route::get('/edit/{discountId}', 'LessonExamController@discountEditShow')
-                             ->name('admin_ltlExams_discountEditShow');
-                        Route::post('/edit/{discountId}', 'LessonExamController@discountEdit')
-                             ->name('admin_ltlExams_discountEdit');
-                        Route::get('/remove/{discountId}', 'LessonExamController@discountRemove')
-                             ->name('admin_ltlExams_discountRemove');
-                    });
-
                     Route::prefix('{exm}/questions')->group(function()
                     {
 

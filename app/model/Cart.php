@@ -62,10 +62,10 @@
 
 
         //update transactionId
-        public function setTransaction($transaction)
+        public function setTransaction($transactionId)
         {
 
-            $this->transactionId = $transaction->id;
+            $this->transactionId = $transactionId;
 
             $this->update();
         }

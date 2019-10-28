@@ -183,7 +183,7 @@
                         <div class="row">
 
                             @if($modify==0)
-                                <div class="col-md-6 s-floatR" >
+                                <div class="col-md-12 s-floatR" >
                                     <label for="lesson-select" class="control-label">درس های آزمون</label>
                                     <select class="form-control menu12 dropdown-radius" id="lesson-select" name="gradeLessons[]" multiple data-placeholder="درس های آزمون را انتخاب نمایید">
                                         <option value="" id="0" disabled selected>دسته بندی دروس آزمون را انتخاب نمایید

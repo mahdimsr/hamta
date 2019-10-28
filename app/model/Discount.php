@@ -83,7 +83,7 @@
         }
 
 
-        public function isValid($examId = null)
+        public function isValid()
         {
 
             //validation Code for any type
@@ -103,28 +103,11 @@
                         $hasUsedCount = Transaction::query()
                                                    ->where('discountId', $this->id)
                                                    ->where('studentId', $authId)
+                                                   ->where('type','PURCHASE')
+                                                   ->where('status','SUCCESS')
                                                    ->count();
 
                         return $this->count > $hasUsedCount;
-
-                        break;
-
-                    case 'LESSONEXAM-OFF':
-
-                        $discountCode = ExamCode::query()
-                                            ->where('examId', $examId)
-                                            ->where('discountId', $this->id);
-
-                        if ($discountCode->exists())
-                        {
-                            return $this->count > $discountCode->get()->count;
-                        }
-                        else
-                        {
-                            return false;
-
-                        }
-
 
                         break;
 
@@ -136,7 +119,14 @@
 
                         if ($discountCode->exists())
                         {
-                            return $this->count > $discountCode->get()->count;
+                            $hasUsedCount = Transaction::query()
+                            ->where('discountId', $this->id)
+                            ->where('studentId', $authId)
+                            ->where('type','PURCHASE')
+                            ->where('status','SUCCESS')
+                            ->count();
+
+                            return $this->count > $hasUsedCount;
                         }
                         else
                         {
@@ -150,6 +140,41 @@
 
         }
 
+        public function generalChargeIsValid()
+        {
+
+            //validation Code for any type
+
+            if ($this->isExpired)
+            {
+                return false;
+            }
+            else
+            {
+                $authId = Auth::guard('student')->id();
+
+                if ($this->type=='GENERAL-CHARGE')
+                {
+
+                    $hasUsedCount = Transaction::query()
+                            ->where('discountId', $this->id)
+                            ->where('studentId', $authId)
+                            ->where('type','CHARGE')
+                            ->where('status','SUCCESS')
+                            ->count();
+
+                    return $this->count > $hasUsedCount;
+                }
+
+                else
+                {
+                    return false;
+                }
+
+            }
+        }
+
+
 
         public function getPersianTypeAttribute()
         {
@@ -157,8 +182,7 @@
             $typeArray = ['GENERAL-CHARGE'         => 'شارژ حساب کاربری',
                           'GENERAL-LESSONEXAM-OFF' => 'تخفیف آزمون های درس به درس',
                           'STUDENT-OFF'            => 'تخفیف اختصاصی دانش آموز',
-                          'STUDENT-CHARGE'         => 'شارژ حساب اختصاصی دانش آموز',
-                          'LESSONEXAM-OFF'         => 'تخفیف اختصاصی آزمون درس به درس'];
+                          'STUDENT-CHARGE'         => 'شارژ حساب اختصاصی دانش آموز'];
 
             return $typeArray[ $this->type ];
         }
