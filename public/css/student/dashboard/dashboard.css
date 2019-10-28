@@ -104,7 +104,7 @@ h5, .h5 {
 h6, .h6 {
     font-size: 14px;
     font-weight: 600;
-    text-transform: uppercase;
+  
 }
 
 p {
@@ -286,7 +286,7 @@ input:focus {
 }
 
 .sidebar .logo .simple-text {
-    text-transform: uppercase;
+
     padding: 5px 0px;
     display: block;
     font-size: 18px;
@@ -348,10 +348,10 @@ input:focus {
 
 .sidebar .nav p {
     margin: 0;
-    line-height: 30px;
+    line-height: 20px;
     font-size: 12px;
     font-weight: 600;
-    text-transform: uppercase;
+  
     margin-left: 45px;
 }
 
@@ -359,7 +359,7 @@ input:focus {
     font-size: 28px;
     float: right;
     margin-left: 15px;
-    line-height: 30px;
+    line-height: 20px;
     width: 30px;
     text-align: center;
 }
@@ -371,8 +371,7 @@ input:focus {
 }
 
 .sidebar .logo {
-    padding: 10px 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border: none;
 }
 
 .sidebar .logo p {
@@ -385,7 +384,7 @@ input:focus {
 }
 
 .sidebar .logo .simple-text {
-    text-transform: uppercase;
+
     padding: 5px 0px;
     display: block;
     font-size: 18px;
@@ -1212,7 +1211,7 @@ fieldset[disabled] .btn-neutral.active {
 .table > thead > tr > th {
     border-bottom-width: 1px;
     font-size: 12px;
-    text-transform: uppercase;
+    
     color: #9A9A9A;
     font-weight: 400;
     padding-bottom: 5px;
@@ -2239,7 +2238,7 @@ fieldset[disabled] .btn-neutral.active {
 .card label {
     font-size: 12px;
     margin-bottom: 5px;
-    text-transform: uppercase;
+
 }
 
 .card .title {
@@ -2287,7 +2286,7 @@ fieldset[disabled] .btn-neutral.active {
 .card .author {
     margin-top: -40px;
     font-weight: 600;
-    text-transform: uppercase;
+ 
 }
 
 .card .author i {
@@ -3821,4 +3820,29 @@ fieldset[disabled] .btn-neutral.active {
         -ms-overflow-style: -ms-autohiding-scrollbar;
         -webkit-overflow-scrolling: touch;
     }
+}
+/* استایل خودم */
+.user-profile{
+    right: 50%;
+    transform: translate(20%,0%);
+}
+.user-profile img{
+    height: 100px;
+    border-radius: 50%;
+    width: 100px;
+}
+.bagdet{
+    margin: 2px 20px;
+    background-color: tomato;
+    border-radius: 25px;
+    padding: 15px 0px 15px 0px;
+}
+.badget-content{
+    text-align: center;
+}
+.badget-header{
+    color: black;
+}
+.badget-rem{
+    color: black;
 }
