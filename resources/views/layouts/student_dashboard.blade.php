@@ -49,16 +49,21 @@
         -->
 
         <div class="sidebar-wrapper">
-            <div class="logo" dir="rtl">
-                <a class="simple-text">
-                    {{$student->isComplete==0 ? 'دانش آموز گرامی خوش آمدی!' :$student->name.' '.$student->familyName.' خوش آمدی!' }}
-                </a>
-            </div>
+      
             <ul class="nav text-right ">
+                <li class="user-profile">
+                    <img src="{{ asset('image/student/dashboard/full-screen-image-3.jpg') }}" alt="">
+
+                </li>
+                <div class="logo" dir="rtl">
+                        <a class="simple-text">
+                            {{$student->isComplete==0 ? 'دانش آموز گرامی خوش آمدی!' :$student->name.' '.$student->familyName.' خوش آمدی!' }}
+                        </a>
+                    </div>
                 <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_exams' ? 'active' : ''}}">
                     <a href="{{route('student_dashboard_exams')}}">
                         <i class="fa fa-file"></i>
-                        <p>آزمون های آنلاین</p>
+                        <p>آزمون های من</p>
                     </a>
                 </li>
                 <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_scholarship' ? 'active' : ''}}">
@@ -71,58 +76,68 @@
                     <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
                         <span class="tooltiptext">!!!در حال راه اندازی</span>
                         <i class="fa fa-file-video"></i>
-                        <p>ویدیو آموزشی</p>
+                        <p>کد های تخفیف من</p>
                     </a>
                 </li>
                 <li>
                     <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
                         <span class="tooltiptext">!!!در حال راه اندازی</span>
                         <i class="fa fa-university"></i>
-                        <p>کلاس های آنلاین</p>
+                        <p>کیف پول من</p>
                     </a>
                 </li>
                 <li>
                     <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
                         <span class="tooltiptext">!!!در حال راه اندازی</span>
                         <i class="fa fa-users"></i>
-                        <p>من و مشاورم</p>
+                        <p>اطلاعات شخصی من</p>
                     </a>
                 </li>
-                <li>
+                {{-- <li>
                     <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
                         <span class="tooltiptext">!!!در حال راه اندازی</span>
                         <i class="fa fa-book"></i>
                         <p>کتاب های کمک درسی</p>
                     </a>
-                </li>
-                <li>
+                </li> --}}
+                {{-- <li>
                     <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
                         <span class="tooltiptext">!!!در حال راه اندازی</span>
                         <i class="fa fa-clock"></i>
                         <p>فرصتی تا کنکور</p>
                     </a>
-                </li>
-                <li>
+                </li> --}}
+                {{-- <li>
                     <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
                         <span class="tooltiptext">!!!در حال راه اندازی</span>
                         <i class="fa fa-gamepad"></i>
                         <p>بازی و سرگرمی</p>
                     </a>
-                </li>
-                <li>
+                </li> --}}
+                {{-- <li>
                     <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
                         <span class="tooltiptext">!!!در حال راه اندازی</span>
                         <i class="fa fa-newspaper"></i>
                         <p>معرفی دبیر</p>
                     </a>
-                </li>
-                <li>
+                </li> --}}
+                {{-- <li>
                     <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
                         <span class="tooltiptext">!!!در حال راه اندازی</span>
                         <i class="fa fa-comments"></i>
                         <p>بحث و گفتگو</p>
                     </a>
+                </li> --}}
+
+                
+                <li class="bagdet">
+                    <div class="badget-content">
+                        <div class="badget-header">میتونه عنوان باشه</div>
+                        <div class="badget-rem">باقی مانده پول رو به این شکل اینجا بزاریم</div>
+                    </div>
                 </li>
+
+
             </ul>
         </div>
     </div>
