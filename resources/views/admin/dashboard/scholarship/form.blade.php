@@ -1,7 +1,9 @@
 @extends('layouts.admin_dashboard')
-@section('content')
+@section('style')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="{{ asset('css/admin/dashboard/scholarship-result.css') }}">
+@endsection
+@section('content')
 	<div class="row" dir="rtl">
 		<div class="col-md-12">
 			<div class="card text-right">
