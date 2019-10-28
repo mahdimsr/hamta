@@ -1,7 +1,5 @@
 @extends('layouts.admin_dashboard')
-@section('link')
-
-
+@section('style')
 @endsection
 @section('content')
 
