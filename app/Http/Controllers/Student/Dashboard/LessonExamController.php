@@ -40,13 +40,10 @@
             else
             {
                 $cart = new Cart();
-
                 $cart->lessonExamId = $lessonExam->id;
-
                 $cart->save();
 
                 $authId = Auth::guard('student')->id();
-
                 $carts = Cart::query()->where('studentId', $authId)->get();
 
                 return redirect()->back()->with(['carts' => $carts]);
@@ -79,46 +76,42 @@
         public function validateDiscountCode(Request $request)
         {
 
-
             $result = [];
 
-            //find student and lessonExam
-            $student = Auth::guard('student')->user();
-
-
-            $discount = Discount::query()->where('code', $request->input('discountCode'));
+            $discount = Discount::query()->where('code', $request->input('discountCode'))->first();
 
             //check discount entity
-            if ($discount->exists())
+            if ($discount)
             {
-                $discountCode = $discount->first();
 
-
-                if ($discountCode->isValid())
+                if ($discount->isValid())
                 {
 
                     $result[ 'status' ]         = 'success';
-                    $result[ 'successMessage' ] = 'code is valid';
-                    $result[ 'discountCode' ]   = $discountCode;
+                    $result[ 'successMessage' ] = 'کد تخفیف وارد شده معتبر است.';
+                    $result[ 'discountCode' ]   = $discount;
 
                     return $result;
                 }
+
                 else
                 {
                     $result[ 'status' ]       = 'error';
-                    $result[ 'errorMessage' ] = 'code is not valid';
+                    $result[ 'errorMessage' ] = 'کد تخفیف وارد شده معتبر نیست.';
 
                     return $result;
                 }
 
             }
+
             else
             {
                 $result[ 'status' ]       = 'error';
-                $result[ 'errorMessage' ] = 'code not exists';
+                $result[ 'errorMessage' ] = 'کد تخفیف وارد شده صحیح نیست.';
 
                 return $result;
             }
+
         }
 
 
@@ -127,8 +120,7 @@
 
             $student = Auth::guard('student')->user();
 
-            $carts = Cart::query()->where('studentId', $student->id)->whereIn('transactionId',[0])->get();
-
+            $carts = Cart::query()->where('studentId', $student->id)->where('transactionId',0)->get();
             $price = 0;
 
             foreach ($carts as $cart)
@@ -140,86 +132,91 @@
             //check discount code
             if ($request->input('discountCode') != null)
             {
-                $discount = Discount::query()->where('code', $request->input('discountCode'));
+                $discount = Discount::query()->where('code', $request->input('discountCode'))->first();
 
                 // check discount validation
-                if ($discount->exists() && $discount->first()->isValid())
+                if ($discount && $discount->isValid())
                 {
 
-                    $discountCode = $discount->first();
-
-                    $discountPrice = $price*((100 - $discountCode->value)/100);
+                    $discountPrice = $price*((100 - $discount->value)/100);
 
                     //check wallet value
                     if ($student->wallet >= $discountPrice)
                     {
                         // create transaction
 
-                        $transaction = new Transaction();
-
-                        $transaction->type          = 'PURCHASE';
-                        $transaction->itemType      = 'LESSON_EXAM';
-                        $transaction->price         = $price;
-                        $transaction->discountId    = $discountCode->id;
-                        $transaction->discountPrice = $discountPrice;
-                        $transaction->status        = 'SUCCESS';
-
-                        $transaction->save();
-
-                        foreach ($carts as $cart)
+                        foreach($carts as $cart)
                         {
-                            $cart->setTransaction($transaction);
-                        }
+                            $lessonExam = $cart->lessonExam;
 
+                            $cart_transaction                 = new Transaction();
+                            $cart_transaction->type           = 'PURCHASE';
+                            $cart_transaction->studentId      = $student->id;
+                            $cart_transaction->itemId         = $lessonExam->id;
+                            $cart_transaction->itemType       = 'LESSON_EXAM';
+                            $cart_transaction->price          = $lessonExam->price;
+                            $cart_transaction->discountId     = $discount->id;
+                            $cart_transaction->discountPrice  = $discountPrice;
+                            $cart_transaction->status         = 'SUCCESS';
+                            $cart_transaction->save();
+                            $cart->setTransaction($cart_transaction->id);
+
+                        }
                         $student->wallet = $student->wallet - $discountPrice;
                         $student->update();
 
-                        return redirect()->route('student_dashboard_profile');
+                        return redirect()->route('student_dashboard_transactions');
                     }
+
                     else
                     {
-                        return 'wallet value is not enough';
+                        return redirect()->back()->withErrors(['notEnoughCharge'=>'شارژ کیف پول شما برای خرید کافی نیست.']);
                     }
+
                 }
+
                 else
                 {
-                    return redirect()->back()->withInput($request->all());
+                    return redirect()->back()->withErrors(['invalidDiscountCode'=>'کد تخفیف وارد شده معتبر نیست.']);
                 }
+
             }
+
             else
             {
                 //does not have discount code
 
-                //check wallet value
                 if ($student->wallet >= $price)
                 {
 
                     // create transaction
 
-                    $transaction = new Transaction();
-
-                    $transaction->type     = 'PURCHASE';
-                    $transaction->itemType = 'LESSON_EXAM';
-                    $transaction->price    = $price;
-                    $transaction->status   = 'SUCCESS';
-
-                    $transaction->save();
-
-                    foreach ($carts as $cart)
+                    foreach($carts as $cart)
                     {
-                        $cart->setTransaction($transaction);
+                        $lessonExam = $cart->lessonExam;
+
+                        $cart_transaction                 = new Transaction();
+                        $cart_transaction->type           = 'PURCHASE';
+                        $cart_transaction->studentId      = $student->id;
+                        $cart_transaction->itemId         = $lessonExam->id;
+                        $cart_transaction->itemType       = 'LESSON_EXAM';
+                        $cart_transaction->price          = $lessonExam->price;
+                        $cart_transaction->status         = 'SUCCESS';
+                        $cart_transaction->save();
+                        $cart->setTransaction($cart_transaction->id);
+
                     }
-
-
                     $student->wallet = $student->wallet - $price;
                     $student->update();
 
-                    return redirect()->route('student_dashboard_profile');
+                    return redirect()->route('student_dashboard_transactions');
                 }
+
                 else
                 {
-                    return 'wallet value is not enough';
+                    return redirect()->back()->withErrors(['notEnoughCharge'=>'شارژ کیف پول شما برای خرید کافی نیست.']);
                 }
+
             }
 
 

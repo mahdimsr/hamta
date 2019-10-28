@@ -34,7 +34,7 @@
         {
 
             Route::get('/profile', 'ProfileController@profileForm')->name('student_dashboard_profile_form');
-      
+
             Route::post('/profile', 'ProfileController@updateProfile')->name('student_dashboard_profile_update');
             Route::post('/profileEdit', 'ProfileController@editProfile')->name('student_dashboard_profile_edit');
             Route::get('/scholarship', 'ScholarshipController@scholarshipForm')->name('student_dashboard_scholarship_form');
@@ -136,21 +136,6 @@
                     Route::post('{exm}/edit', 'LessonExamController@edit')->name('admin_ltlExams_edit');
                     Route::post('/add', 'LessonExamController@add')->name('admin_ltlExams_add');
                     Route::get('{exm}/remove', 'LessonExamController@remove')->name('admin_ltlExams_remove');
-
-                    Route::prefix('/{exm}/discounts')->group(function()
-                    {
-
-                        Route::get('/', 'LessonExamController@discounts')->name('admin_ltlExams_discounts');
-                        Route::get('/add', 'LessonExamController@discountAddShow')
-                             ->name('admin_ltlExams_discountAddShow');
-                        Route::post('/add', 'LessonExamController@discountAdd')->name('admin_ltlExams_discountAdd');
-                        Route::get('/edit/{discountId}', 'LessonExamController@discountEditShow')
-                             ->name('admin_ltlExams_discountEditShow');
-                        Route::post('/edit/{discountId}', 'LessonExamController@discountEdit')
-                             ->name('admin_ltlExams_discountEdit');
-                        Route::get('/remove/{discountId}', 'LessonExamController@discountRemove')
-                             ->name('admin_ltlExams_discountRemove');
-                    });
 
                     Route::prefix('{exm}/questions')->group(function()
                     {

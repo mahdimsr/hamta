@@ -56,14 +56,16 @@
                     </li>
                 </ul>
             </div>
-
+            @if($price <= $student->wallet)
             <button onclick="purchaseWallet('{{route('student_dashboard_lessonExams_purchaseWallet')}}')"
                     type="submit" class="btn btn-success btn-fill">
                 پرداخت با کیف پول
             </button>
+            @else
             <button type="submit" class="btn btn-success btn-fill" onclick="purchaseBank('{{route('student_dashboard_wallet_purchaseLessonExam')}}')">
                 پرداخت از طریق درگاه بانکی
             </button>
+            @endif
         </form>
 
     </div>

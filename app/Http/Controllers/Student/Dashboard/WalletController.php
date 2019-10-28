@@ -38,21 +38,13 @@
             {
                 $discount_code = Discount::query()->where('code', $request->input('charge_code'))->first();
 
-                if ($discount_code->type == 'GENERAL-CHARGE')
+                if ($discount_code->generalChargeIsValid())
                 {
 
-                    if ($discount_code->isExpired)
-                    {
-                        return redirect()->back()->withErrors(['charge_code' => ['کد مورد نظر منقضی شده است.']]);
-                    }
-
-                    else
-                    {
                         $discountPrice = $price + ($price*$discount_code->value)/100;
                         $order         = new zarinpal();
 
-                        $res
-                            = $order->pay($price, 'همپا | شارژ کیف پول', $student->email, $student->mobile, route('student_dashboard_wallet_verify'));
+                        $res= $order->pay($price, 'همپا | شارژ کیف پول', $student->email, $student->mobile, route('student_dashboard_wallet_verify'));
 
                         if ($res)
                         {
@@ -70,26 +62,22 @@
 
                         else
                         {
-                            return redirect()->back()->withErrors(['chargeFailed' => ['خطا در اتصال به درگاه']]);
+                            return redirect()->back()->withErrors(['chargeFailed' => ['خطا در اتصال به درگاه']])->withInput($request->all());
                         }
 
-                    }
 
                 }
 
                 else
                 {
-                    return redirect()
-                        ->back()
-                        ->withErrors(['charge_code' => ['کد وارد شده برای این بخش قابل استفاده نیست.']]);
+                    return redirect()->back()->withErrors(['charge_code' => ['کد شگفت انگیز وارد شده معتبر نیست.']])->withInput($request->all());
                 }
             }
 
             else
             {
                 $order = new zarinpal();
-                $res
-                       = $order->pay($price, 'همپا | شارژ کیف پول', $student->email, $student->mobile, route('student_dashboard_wallet_verify'));
+                $res= $order->pay($price, 'همپا | شارژ کیف پول', $student->email, $student->mobile, route('student_dashboard_wallet_verify'));
 
                 if ($res)
                 {
@@ -105,7 +93,7 @@
 
                 else
                 {
-                    return redirect()->back()->withErrors(['chargeFailed' => ['خطا در اتصال به درگاه']]);
+                    return redirect()->back()->withErrors(['chargeFailed' => ['خطا در اتصال به درگاه']])->withInput($request->all());
                 }
 
             }
@@ -118,11 +106,7 @@
             $student     = Auth::guard('student')->user();
             $MerchantID  = '6e70bb64-8e33-11e8-a395-005056a205be';
             $Authority   = $request->get('Authority');
-            $transaction = Transaction::query()
-                                      ->where('studentId', $student->id)
-                                      ->where('status', 'IN-PROGRESS')
-                                      ->where('code', $Authority)
-                                      ->first();
+            $transaction = Transaction::query()->where('studentId', $student->id)->where('status', 'IN-PROGRESS')->where('code', $Authority)->first();
 
             if ($transaction)
             {
@@ -160,9 +144,7 @@
                             $transaction->status = 'SUCCESS';
                             $transaction->update();
 
-                            return redirect()
-                                ->route('student_dashboard_wallet_form')
-                                ->with('status', 'شارژ کیف پول با موفقیت انجام شد.');
+                            return redirect()->route('student_dashboard_wallet_form')->with('status', 'شارژ کیف پول با موفقیت انجام شد.');
                         }
 
                     }
@@ -173,9 +155,7 @@
                         $transaction->status = 'FAILED';
                         $transaction->update();
 
-                        return redirect()
-                            ->route('student_dashboard_wallet_form')
-                            ->withErrors(['transactionFailed' => ['شارژ کیف پول ناموفق']]);
+                        return redirect()->route('student_dashboard_wallet_form')->withErrors(['transactionFailed' => ['شارژ کیف پول ناموفق']]);
                     }
                 }
 
@@ -185,9 +165,7 @@
                     $transaction->status = 'FAILED';
                     $transaction->update();
 
-                    return redirect()
-                        ->route('student_dashboard_wallet_form')
-                        ->withErrors(['transactionFailed' => ['شارژ کیف پول ناموفق']]);
+                    return redirect()->route('student_dashboard_wallet_form')->withErrors(['transactionFailed' => ['شارژ کیف پول ناموفق']]);
                 }
             }
 
@@ -204,7 +182,7 @@
 
             $student = Auth::guard('student')->user();
 
-            $carts = Cart::query()->where('studentId', $student->id)->whereIn('transactionId', [0])->get();
+            $carts = Cart::query()->where('studentId', $student->id)->where('transactionId', 0)->get();
 
             $price = 0;
 
@@ -219,7 +197,7 @@
                 $discount = Discount::query()->where('code', $request->input('discountCode'))->first();
 
                 // check discount validation
-                if ($discount->exists() && $discount->isValid())
+                if ($discount && $discount->isValid())
                 {
 
                     $discountPrice = $price*((100 - $discount->value)/100);
@@ -230,16 +208,13 @@
 
                     $res= $order->pay($discountPrice, 'همپا | خرید آزمون', $student->email, $student->mobile, route('student_dashboard_wallet_purchaseLessonExamVerify'));
 
-
-
                     if ($res)
                     {
                         $transaction                = new Transaction();
                         $transaction->type          = 'CHARGE';
                         $transaction->studentId     = $student->id;
-                        $transaction->price         = $price;
+                        $transaction->price         = $discountPrice;
                         $transaction->discountId    = $discount->id;
-                        $transaction->discountPrice = $discountPrice;
                         $transaction->code          = $res;
                         $transaction->save();
 
@@ -252,9 +227,7 @@
                 }
                 else
                 {
-                    return redirect()
-                    ->back()
-                    ->withErrors(['charge_code' => ['کد وارد شده برای این بخش قابل استفاده نیست.']]);
+                    return redirect()->back()->withErrors(['charge_code' => ['کد تخفیف وارد شده معتبر نیست.']]);
                 }
             }
             else
@@ -290,12 +263,8 @@
             $student     = Auth::guard('student')->user();
             $MerchantID  = '6e70bb64-8e33-11e8-a395-005056a205be';
             $Authority   = $request->get('Authority');
-            $transaction = Transaction::query()
-                                      ->where('studentId', $student->id)
-                                      ->where('status', 'IN-PROGRESS')
-                                      ->where('code', $Authority)
-                                      ->first();
-            $carts = Cart::query()->where('studentId', $student->id)->whereIn('transactionId', [0])->get();
+            $transaction = Transaction::query()->where('studentId', $student->id)->where('status', 'IN-PROGRESS')->where('code', $Authority)->first();
+            $carts = Cart::query()->where('studentId', $student->id)->where('transactionId', 0)->get();
 
             if ($transaction)
             {
@@ -304,30 +273,17 @@
                     $client                   = new nusoap_client('https://www.zarinpal.com/pg/services/WebGate/wsdl', 'wsdl');
                     $client->soap_defencoding = 'UTF-8';
 
-                    if ($transaction->discountPrice)
-                    {
-                    $result = $client->call('PaymentVerification', [['MerchantID' => $MerchantID,
-                                                                     'Authority'  => $Authority,
-                                                                     'Amount'     => $transaction->discountPrice,],]);
-                    }
-
-                    else
-                    {
                         $result = $client->call('PaymentVerification', [['MerchantID' => $MerchantID,
                         'Authority'  => $Authority,
                         'Amount'     => $transaction->price,],]);
-                    }
 
                     if ($result[ 'Status' ] == 100)
                     {
 
-                        if ($transaction->discountPrice)
+                        if ($transaction->discountId)
                         {
-                            $transaction->code   = ltrim($Authority, '0');
-                            $transaction->status = 'SUCCESS';
-                            $transaction->update();
 
-                            $discount   = $transaction->discount();
+                            $discount   = $transaction->discount;
 
                             foreach($carts as $cart)
                             {
@@ -341,14 +297,17 @@
                                 $cart_transaction->price          = $lessonExam->price;
                                 $cart_transaction->discountId     = $discount->id;
                                 $cart_transaction->discountPrice  = $lessonExam->price*((100 - $discount->value)/100);
+                                $cart_transaction->status         = 'SUCCESS';
                                 $cart_transaction->save();
                                 $cart->setTransaction($cart_transaction->id);
 
                             }
 
-                            return redirect()
-                                ->route('student_dashboard_lessonExams_purchaseForm')
-                                ->with('status', 'خرید آزمون همراه با کد تخفیف با موفقیت انجام شد.');
+                            $transaction->code       = ltrim($Authority, '0');
+                            $transaction->status     = 'SUCCESS';
+                            $transaction->discountId = null;
+                            $transaction->update();
+                            return redirect()->route('student_dashboard_transactions')->with('status', 'خرید آزمون همراه با کد تخفیف با موفقیت انجام شد.');
                         }
 
                         else
@@ -356,8 +315,6 @@
                             $transaction->code   = ltrim($Authority, '0');
                             $transaction->status = 'SUCCESS';
                             $transaction->update();
-
-                            $discount   = $transaction->discount();
 
                             foreach($carts as $cart)
                             {
@@ -369,13 +326,12 @@
                                 $cart_transaction->itemType  = 'LESSON_EXAM';
                                 $cart_transaction->studentId = $student->id;
                                 $cart_transaction->price     = $lessonExam->price;
+                                $cart_transaction->status    = 'SUCCESS';
                                 $cart_transaction->save();
                                 $cart->setTransaction($cart_transaction->id);
 
                             }
-                            return redirect()
-                                ->route('student_dashboard_lessonExams_purchaseForm')
-                                ->with('status', 'خرید آزمون با موفقیت انجام شد.');
+                            return redirect()->route('student_dashboard_transactions')->with('status', 'خرید آزمون با موفقیت انجام شد.');
                         }
 
                     }
@@ -386,9 +342,7 @@
                         $transaction->status = 'FAILED';
                         $transaction->update();
 
-                        return redirect()
-                            ->route('student_dashboard_lessonExams_purchaseForm')
-                            ->withErrors(['transactionFailed' => ['خرید آزمون ناموفق']]);
+                        return redirect()->route('student_dashboard_lessonExams_purchaseForm')->withErrors(['transactionFailed' => ['خرید آزمون ناموفق']]);
                     }
                 }
 
@@ -398,9 +352,7 @@
                     $transaction->status = 'FAILED';
                     $transaction->update();
 
-                    return redirect()
-                        ->route('student_dashboard_lessonExams_purchaseForm')
-                        ->withErrors(['transactionFailed' => ['خرید آزمون ناموفق']]);
+                    return redirect()->route('student_dashboard_lessonExams_purchaseForm')->withErrors(['transactionFailed' => ['خرید آزمون ناموفق']]);
                 }
             }
 

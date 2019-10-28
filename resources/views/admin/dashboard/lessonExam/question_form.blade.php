@@ -196,7 +196,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6 s-floatR">
+                            <div class="col-md-4 s-floatR">
                                 <div class="form-group">
                                     <label>گزینه صحیح</label>
                                     <select dir="rtl" name="answer" class="form-control  menu dropdown-radius hide-search">
@@ -223,19 +223,14 @@
                                     <small>{{ $errors->first('answer') }}</small>
                                 </div>
                             </div>
-
-                        </div>
-
-                        <div class="row">
-
-                            <div class="col-md-6 s-floatR">
+                            <div class="col-md-4 s-floatR">
                                 <div class="form-group">
                                     <label>عکس برای سوال (در صورت نیاز)</label>
                                     <div class="input-file-container">
                                         <input class="input-file" name="photo" id="my-file" type="file"
                                         >
                                         <label tabindex="0" for="my-file" class="input-file-trigger text-center">
-                                            {{$modify == 1? $question->photo ? 'به روز رسانی عکس سوال' : 'آپلود عکس سوال' : 'آپلود عکس سوال'}}
+                                            {{$modify == 1 && $question->photo ? 'ویرایش عکس سوال' : 'آپلود عکس سوال'}}
                                         </label>
                                     </div>
                                     <div class="invalid-feedback">
@@ -244,14 +239,14 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6 s-floatL">
+                            <div class="col-md-4 s-floatL">
                                 <div class="form-group">
                                     <label>عکس پاسخ تشریحی سوال</label>
                                     <div class="input-file-container">
                                         <input class="input-file" name="answerImage" id="my-file" type="file">
 
                                         <label tabindex="0" for="my-file" class="input-file-trigger text-center">
-                                            {{$modify == 1? $question->answerImage ? 'به روز رسانی پاسخ تشریحی سوال' : 'آپلود پاسخ تشریحی سوال' : 'آپلود پاسخ تشریحی سوال'}}
+                                            {{$modify == 1 && $question->answerImage ? 'ویرایش پاسخ تشریحی سوال' : 'آپلود پاسخ تشریحی سوال'}}
                                         </label>
                                     </div>
                                     <div class="invalid-feedback">

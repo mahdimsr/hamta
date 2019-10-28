@@ -177,29 +177,6 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="control-label">پاسخ نامه سوالات (به صورت pdf)</label>
-                                    <div class="input-file-container">
-                                        <input class="input-file" name="answerSheet" id="my-file" type="file"
-                                               accept=" .pdf">
-                                        <label tabindex="0" for="my-file" class="input-file-trigger text-center">
-                                            {{ $modify == 1 ? $giftExam->answerSheet != null ? 'پاسخنامه دارد، ولی میتوانید مجددا آپلود کنید' : 'پاسخنامه ندارد' : 'آپلود پاسخنامه'}}
-                                        </label>
-                                    </div>
-                                    <p class="file-return"></p>
-                                    @if($modify == 1 && $giftExam->answerSheet != null)
-                                        <a class="file-return" href="{{$giftExam->answerSheetPath}}">دانلود
-                                            پاسخنامه</a>
-                                    @endif
-                                </div>
-                                <div class="invalid-feedback">
-                                    <small>{{ $errors->first('answerSheet') }}</small>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
                                     <label class="control-label">توضیحات</label>
                                     <textarea name="description" class=" textarea-radius form-control" type="text" placeholder="توضیحات مربوط به آزمون را وارد نمایید"
                                               tabindex="5">{{old('description')}}{{ $modify==1 && !old('description') && $giftExam->description ? $giftExam->description : '' }}</textarea>
