@@ -24,7 +24,6 @@
                 $table->string('title');
                 $table->string('description')->nullable();
                 $table->float('price')->nullable()->default(0);
-                $table->string('answerSheet')->nullable();
                 $table->date('activeDate')->nullable();
                 $table->integer('duration')->nullable();
                 $table->enum('status', ['COMPLETE', 'IN-QUESTION', 'IN-COMPLETE']);

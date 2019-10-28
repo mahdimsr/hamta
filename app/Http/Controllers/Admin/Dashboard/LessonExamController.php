@@ -36,12 +36,12 @@
         public function addShow()
         {
 
-            $modify = 0;
+            $modify       = 0;
             $orientations = Orientation::all();
             $gradeLessons = GradeLesson::all();
-            $categories   = Lesson::query()->where('parentId',0)->get();
+            $categories   = Lesson::query()->where('parentId', 0)->get();
 
-            return view('admin.dashboard.lessonExam.form', compact('modify', 'orientations', 'gradeLessons','categories'));
+            return view('admin.dashboard.lessonExam.form', compact('modify', 'orientations', 'gradeLessons', 'categories'));
         }
 
 
@@ -56,9 +56,7 @@
                                        'category'     => 'required',
                                        'price'        => 'required|integer|min:0',
                                        'description'  => 'nullable|string|max:300',
-                                       'duration'     => 'required|integer|min:0',
-                                       'answerSheet'  => 'nullable|file|mimes:pdf|max:5000'
-            ]);
+                                       'duration'     => 'required|integer|min:0',]);
 
 
             $lessonExam              = new LessonExam();
@@ -75,18 +73,6 @@
 
             $lessonExam->save();
             //end activeDate section
-
-            //save answerSheet
-            if ($request->hasFile('answerSheet'))
-            {
-                $answerSheet = $request->file('answerSheet');
-
-                Storage::disk('lessonExam')->put($lessonExam->id, $answerSheet);
-
-                $lessonExam->answerSheet = $answerSheet->hashName();
-
-                $lessonExam->update();
-            }
 
 
             // insert relation
@@ -109,8 +95,8 @@
         public function editShow($exm)
         {
 
-            $modify = 1;
-            $lessonExam       = LessonExam::query()->where('exm', $exm)->first();
+            $modify     = 1;
+            $lessonExam = LessonExam::query()->where('exm', $exm)->first();
 
             return view('admin.dashboard.lessonExam.form', compact('modify', 'lessonExam'));
         }
@@ -123,7 +109,6 @@
                                        'activeDate'  => 'required',
                                        'price'       => 'required|integer|min:0',
                                        'description' => 'nullable|string|max:300',
-                                       'answerSheet' => 'nullable|file|mimes:pdf|max:5000',
                                        'duration'    => 'required|integer|min:0']);
 
 
@@ -140,19 +125,6 @@
             //end activeDate section
             $lessonExam->duration = $request->input('duration');
 
-
-            //save answerSheet
-            if ($request->hasFile('answerSheet'))
-            {
-                $answerSheet = $request->file('answerSheet');
-
-                Storage::disk('lessonExam')->put($lessonExam->id, $answerSheet);
-
-                Storage::disk('lessonExam')->delete($lessonExam->id . '/' . $lessonExam->answerSheet);
-
-                $lessonExam->answerSheet = $answerSheet->hashName();
-
-            }
 
             //end answerSheet section
 
@@ -179,16 +151,16 @@
         {
 
             $exam          = LessonExam::query()->where('exm', $exm)->first();
-            $questionExams = QuestionExam::query()->where('examId', $exam->id)->where('type','LESSON_EXAM')->get();
+            $questionExams = QuestionExam::query()->where('examId', $exam->id)->where('type', 'LESSON_EXAM')->get();
 
             return view('admin.dashboard.lessonExam.questions', compact('questionExams', 'exam'));
         }
 
 
-        public function removeQuestion($exm,$id)
+        public function removeQuestion($exm, $id)
         {
 
-            $questionExam = QuestionExam::query()->where('id', $id)->where('type','LESSON_EXAM')->first();
+            $questionExam = QuestionExam::query()->where('id', $id)->where('type', 'LESSON_EXAM')->first();
 
             $questionExam->delete();
 
@@ -224,6 +196,7 @@
         public function addQuestion(Request $request, $exm)
         {
 
+
             $this->validate($request, [
 
                 'gradeLesson'  => 'required',
@@ -237,6 +210,7 @@
                 'optionOne'    => 'required',
                 'answer'       => ['required', Rule::in(['1', '2', '3', '4'])],
                 'photo'        => 'image',
+                'answerImage'  => 'image|max:1000',
 
             ]);
 
@@ -255,6 +229,31 @@
             $question->hardness      = $request->input('hardness');
 
             $question->save();
+
+            // store images
+            if ($request->hasFile('photo'))
+            {
+                $photo = $request->file('photo');
+
+                Storage::disk('question')->put($question->id . '/photo', $photo);
+
+                $question->photo = $photo->hashName();
+
+                $question->update();
+            }
+
+
+            if ($request->hasFile('answerImage'))
+            {
+                $answerImage = $request->file('answerImage');
+
+                Storage::disk('question')->put($question->id . '/answerImage', $answerImage);
+
+                $question->answerImage = $answerImage->hashName();
+
+                $question->update();
+            }
+
 
             $exam = LessonExam::query()->where('exm', $exm)->first();
 
@@ -275,6 +274,7 @@
         public function editQuestion(Request $request, $exm, $id)
         {
 
+
             $this->validate($request, [
 
                 'questionType' => 'nullable',
@@ -287,6 +287,7 @@
                 'optionOne'    => 'required',
                 'answer'       => ['required', Rule::in(['1', '2', '3', '4'])],
                 'photo'        => 'image',
+                'answerImage'  => 'image|max:1000',
 
             ]);
 
@@ -305,30 +306,64 @@
 
             $question->update();
 
+
+            // store images
+            if ($request->hasFile('photo'))
+            {
+                $photo = $request->file('photo');
+
+                Storage::disk('question')->delete($question->id . '/photo/' . $question->photo);
+
+                Storage::disk('question')->put($question->id . '/photo', $photo);
+
+                $question->photo = $photo->hashName();
+
+                $question->update();
+            }
+
+
+            if ($request->hasFile('answerImage'))
+            {
+                $answerImage = $request->file('answerImage');
+
+                Storage::disk('question')->delete($question->id . '/answerImage/' . $question->answerImage);
+
+                Storage::disk('question')->put($question->id . '/answerImage', $answerImage);
+
+                $question->answerImage = $answerImage->hashName();
+
+                $question->update();
+            }
+
             return redirect()->back();
 
         }
 
+
         public function discounts($exm)
         {
-            $lessonExam    = LessonExam::where('exm',$exm)->first();
-            $examDiscounts = ExamCode::where('examId',$lessonExam->id)->get();
+
+            $lessonExam    = LessonExam::where('exm', $exm)->first();
+            $examDiscounts = ExamCode::where('examId', $lessonExam->id)->get();
 
 
-            return view('admin.dashboard.lessonExam.discounts', compact('examDiscounts','exm'));
+            return view('admin.dashboard.lessonExam.discounts', compact('examDiscounts', 'exm'));
         }
+
 
         public function discountAddShow($exm)
         {
-            $modify         = 0;
 
-            return view('admin.dashboard.lessonExam.discount_form', compact('modify','exm'));
+            $modify = 0;
+
+            return view('admin.dashboard.lessonExam.discount_form', compact('modify', 'exm'));
         }
 
-        public function discountAdd(Request $request,$exm)
+
+        public function discountAdd(Request $request, $exm)
         {
 
-            $lessonExam    = LessonExam::where('exm',$exm)->first();
+            $lessonExam = LessonExam::where('exm', $exm)->first();
 
             $this->validate($request, ['code'    => 'required|string|max:8|unique:discount,code',
                                        'value'   => 'required|numeric|min:0|max:100',
@@ -358,21 +393,26 @@
             return redirect()->back();
         }
 
-        public function discountEditShow($exm,$discountId)
-        {
-            $modify         = 1;
-            $discount       = Discount::query()->find($discountId);
 
-            return view('admin.dashboard.lessonExam.discount_form', compact('modify','exm','discount'));
+        public function discountEditShow($exm, $discountId)
+        {
+
+            $modify   = 1;
+            $discount = Discount::query()->find($discountId);
+
+            return view('admin.dashboard.lessonExam.discount_form', compact('modify', 'exm', 'discount'));
         }
 
-        public function discountEdit(Request $request,$exm,$discountId)
+
+        public function discountEdit(Request $request, $exm, $discountId)
         {
 
-            $discount = Discount::where('id',$discountId)->first();
+            $discount = Discount::where('id', $discountId)->first();
 
-            $this->validate($request, ['code'    => ['required', 'string', 'max:8',
-                                       Rule::unique('discount', 'code')->ignore($discount)],
+            $this->validate($request, ['code'    => ['required',
+                                                     'string',
+                                                     'max:8',
+                                                     Rule::unique('discount', 'code')->ignore($discount)],
                                        'value'   => 'required|numeric|min:0|max:100',
                                        'endDate' => 'required']);
 
@@ -391,8 +431,10 @@
             return redirect()->back();
         }
 
-        public function discountRemove($exm,$discountId)
+
+        public function discountRemove($exm, $discountId)
         {
+
             $discount = Discount::query()->find($discountId);
 
             $discount->delete();

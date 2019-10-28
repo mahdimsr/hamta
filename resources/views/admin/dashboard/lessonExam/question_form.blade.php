@@ -223,14 +223,19 @@
                                     <small>{{ $errors->first('answer') }}</small>
                                 </div>
                             </div>
-                            <div class="col-md-6 s-floatL">
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 s-floatR">
                                 <div class="form-group">
-                                    <label>عکس برای سوال</label>
+                                    <label>عکس برای سوال (در صورت نیاز)</label>
                                     <div class="input-file-container">
                                         <input class="input-file" name="photo" id="my-file" type="file"
-                                               >
+                                        >
                                         <label tabindex="0" for="my-file" class="input-file-trigger text-center">
-                                                         آپلود عکس
+                                            {{$modify == 1? $question->photo ? 'به روز رسانی عکس سوال' : 'آپلود عکس سوال' : 'آپلود عکس سوال'}}
                                         </label>
                                     </div>
                                     <div class="invalid-feedback">
@@ -238,7 +243,26 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col-md-6 s-floatL">
+                                <div class="form-group">
+                                    <label>عکس پاسخ تشریحی سوال</label>
+                                    <div class="input-file-container">
+                                        <input class="input-file" name="answerImage" id="my-file" type="file">
+
+                                        <label tabindex="0" for="my-file" class="input-file-trigger text-center">
+                                            {{$modify == 1? $question->answerImage ? 'به روز رسانی پاسخ تشریحی سوال' : 'آپلود پاسخ تشریحی سوال' : 'آپلود پاسخ تشریحی سوال'}}
+                                        </label>
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('answerImage') }}</small>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
+
                         <button type="submit"
                                 class="btn btn-fill btn-info pull-left">{{ $modify== 0 ? 'ذخیره و درج سوال بعدی' : 'ویرایش سوال' }}</button>
                         <div class="clearfix"></div>
