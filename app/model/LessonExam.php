@@ -19,7 +19,6 @@
      * @property string         $title
      * @property string         $description
      * @property string         $price
-     * @property string         $answerSheet
      * @property string         $activeDate
      * @property integer        $duration
      * @property string         $status
@@ -33,7 +32,7 @@
 
         protected $table = 'lesson_exam';
 
-        protected $appends = ['answerSheetPath', 'persianCreatedAt', 'persianUpdatedAt'];
+        protected $appends = ['persianCreatedAt', 'persianUpdatedAt'];
 
 
         protected static function boot()
@@ -54,14 +53,6 @@
             });
         }
 
-
-        public function getAnswerSheetPathAttribute()
-        {
-
-            $path = Storage::disk('lessonExam')->url($this->id . '/' . $this->answerSheet);
-
-            return $path;
-        }
 
 
         public function getPersianCreatedAtAttribute()

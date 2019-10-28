@@ -5,6 +5,7 @@
     use Carbon\Carbon;
     use Illuminate\Database\Eloquent\SoftDeletes;
     use Illuminate\Foundation\Auth\User as Authenticatable;
+    use Laravel\Passport\HasApiTokens;
     use Morilog\Jalali\Jalalian;
 
 
@@ -17,11 +18,21 @@
     class Student extends Authenticatable
     {
 
-        use SoftDeletes;
+        use SoftDeletes, HasApiTokens;
 
         protected $table = 'student';
 
         protected $appends = ['persian_birthday'];
+
+        protected $casts
+            = [
+
+                'mobileVerified' => 'boolean',
+                'emailVerified'  => 'boolean',
+                'isActive'       => 'boolean',
+                'isComplete'     => 'boolean',
+
+            ];
 
 
         public function getPersianBirthdayAttribute()

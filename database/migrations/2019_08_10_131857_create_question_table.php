@@ -31,6 +31,7 @@
                 $table->enum('hardness', ['1', '2', '3', '4', '5']);
                 $table->string('description')->nullable();
                 $table->string('photo')->nullable();
+                $table->string('answerImage')->nullable();
                 $table->timestamps();
                 $table->softDeletes();
             });
