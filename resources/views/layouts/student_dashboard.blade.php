@@ -157,7 +157,7 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        @if(isset($carts))
+                        {{-- @if(isset($carts))
                             <li>
                                 <a href="{{route('student_dashboard_lessonExams_purchaseForm')}}">
                                     <i class="fa fa-wallet"></i>
@@ -165,15 +165,15 @@
                                     <span class="notification hidden-sm hidden-xs">{{count($carts)}}</span>
                                 </a>
                             </li>
-                        @endif
-                        <li>
+                        @endif --}}
+                        {{-- <li>
                             <a href="{{route('student_dashboard_wallet_form')}}">
                                 <i class="fa fa-wallet"></i>
                                 <p class="hidden-lg hidden-md">کیف پول</p>
                                 <span class="notification hidden-sm hidden-xs">{{$student->wallet}}</span>
                             </a>
-                        </li>
-                        <li class="dropdown">
+                        </li> --}}
+                        {{-- <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
                                 <i class="fa fa-globe"></i>
@@ -191,21 +191,26 @@
                                 <li><a href="#">اعلان 4</a></li>
                                 <li><a href="#"> اعلان</a></li>
                             </ul>
-                        </li>
-                        <li>
+                        </li> --}}
+                        {{-- <li>
                             <a href="">
                                 <i class="fa fa-search"></i>
                                 <p class="hidden-lg hidden-md">جست وجو</p>
                             </a>
-                        </li>
+                        </li> --}}
                         <li>
-                            <a class="btn btn-fill btn-info" href="{{route('student_dashboard_lessonExams_result')}}">
-                                صفحه نتایج
+                            <a class="active" href="{{route('student_dashboard_lessonExams_result')}}">
+                           ایتم اول
                             </a>
                         </li>
                         <li>
-                            <a class="btn btn-fill btn-info" href="{{route('student_test')}}">
-                                صفحه تست و آزمایش
+                            <a class="" href="{{route('student_test')}}">
+                               ایتم دوم
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="{{route('student_test')}}">
+                                ایتم سوم
                             </a>
                         </li>
                     </ul>

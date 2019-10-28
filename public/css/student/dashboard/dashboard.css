@@ -339,7 +339,7 @@ input:focus {
 
 .sidebar .nav li.separator {
     margin: 15px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    /* border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
 }
 
 .sidebar .nav li.separator + li {
@@ -1693,7 +1693,7 @@ fieldset[disabled] .btn-neutral.active {
 }
 
 .navbar.fixed {
-    width: calc(100% - $sidebar-width);
+    width: calc(100% - sidebar-width);
     right: 0;
     left: auto;
     border-radius: 0;
@@ -1799,14 +1799,17 @@ fieldset[disabled] .btn-neutral.active {
 }
 
 .navbar-default {
-    background-color: rgba(255, 255, 255, 0.96);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+border: none;
 }
 
 .navbar-default .navbar-nav > li > a:not(.btn) {
     color: #9A9A9A;
+    font-size: 13px;
 }
-
+.navbar-default .navbar-nav > li > a:not(.btn).active{
+    color: black;
+    border-bottom: red solid 1px;
+}
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:not(.btn):hover,
 .navbar-default .navbar-nav > .active > a:not(.btn):focus,
@@ -3333,6 +3336,11 @@ fieldset[disabled] .btn-neutral.active {
     .navbar-collapse .nav li > a,
     .sidebar .nav li > a {
         padding: 10px 15px;
+    }
+    .navbar-collapse .nav li > a,
+    .sidebar .nav li > a.active{
+        color: black;
+        border-bottom: red solid 1px;
     }
     .navbar-collapse .nav,
     .sidebar .nav {
