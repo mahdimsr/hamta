@@ -142,12 +142,12 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        @if(isset($carts))
+                        @if(isset($cart))
                             <li>
                                 <a href="{{route('student_dashboard_lessonExams_purchaseForm')}}">
                                     <i class="fa fa-wallet"></i>
                                     <p class="hidden-lg hidden-md">لیست خرید</p>
-                                    <span class="notification hidden-sm hidden-xs">{{count($carts)}}</span>
+                                    <span class="notification hidden-sm hidden-xs">{{count($cart)}}</span>
                                 </a>
                             </li>
                         @endif

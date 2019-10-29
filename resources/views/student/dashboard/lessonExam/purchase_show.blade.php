@@ -8,6 +8,7 @@
 @endsection
 
 @section('content')
+    @if(!$cart->isEmpty())
     <div class="container">
         <div class="row" dir="rtl">
 
@@ -35,7 +36,7 @@
                     <li class="list-group-item">آزمون درس به درس با کد: <span>#</span></li>
                     <li class="list-group-item">پرداخت توسط: <span>{{$student->name.' ' . $student->familyName}}</span>
                     </li>
-                    <li class="list-group-item">قیمت پرداختی (ریال): <span>{{$price}}</span></li>
+                    <li class="list-group-item">قیمت پرداختی (تومان): <span>{{$price}}</span></li>
                     <li class="list-group-item">اگر کد تخفیف دارین وارد نمایید...
                         <div class="row" dir="rtl">
                             <div class="col-md-4">
@@ -52,23 +53,30 @@
                     </li>
                     <li class="list-group-item">قیمت نهایی برای پرداخت:
                         <span id="finalPrice" name="finalPrice">{{$price}}</span>
-                        ریال
+                        تومان
                     </li>
                 </ul>
             </div>
-            @if($price <= $student->wallet)
-            <button onclick="purchaseWallet('{{route('student_dashboard_lessonExams_purchaseWallet')}}')"
-                    type="submit" class="btn btn-success btn-fill">
+            @if($student->wallet<$price)
+            <button id="purchaseWalletBtn" onclick="purchaseWallet('{{route('student_dashboard_lessonExams_purchaseWallet')}}')"
+                    type="submit" class="btn btn-success btn-fill" disabled>
                 پرداخت با کیف پول
             </button>
-            @else
-            <button type="submit" class="btn btn-success btn-fill" onclick="purchaseBank('{{route('student_dashboard_wallet_purchaseLessonExam')}}')">
+            <button id="purchaseBankBtn" type="submit" class="btn btn-success btn-fill" onclick="purchaseBank('{{route('student_dashboard_wallet_purchaseLessonExam')}}')">
                 پرداخت از طریق درگاه بانکی
             </button>
+            @else
+            <button id="purchaseWalletBtn" onclick="purchaseWallet('{{route('student_dashboard_lessonExams_purchaseWallet')}}')"
+            type="submit" class="btn btn-success btn-fill">
+                پرداخت با کیف پول
+            </button>
             @endif
+            {{ $errors->first('discountUsability') }}
+            {{ $errors->first('invalidDiscountCode') }}
         </form>
 
     </div>
+    @endif
     <script>
 
 
@@ -78,7 +86,8 @@
             const discountError = document.querySelector('#discountError');
             const finalPrice    = document.querySelector('#finalPrice');
 
-            const price = {{$price}};
+            const price  = {{$price}};
+            const wallet = {{ $student->wallet }};
 
             $.ajax({
 
@@ -101,12 +110,19 @@
 
                         finalPrice.innerText = price;
 
-                    } else if (result.status === 'success')
+                    }
+                    else if (result.status === 'success')
                     {
 
                         discountError.innerText = result.successMessage;
+                        discountPrice = price * ((100 - result.discountCode.value) / 100);
+                        finalPrice.innerText = discountPrice ;
 
-                        finalPrice.innerText = price * ((100 - result.discountCode.value) / 100);
+                        if(wallet > discountPrice && wallet < price)
+                        {
+                            $('#purchaseWalletBtn').prop('disabled', false);
+                            $('#purchaseBankBtn').remove();
+                        }
 
                         console.log(result);
                     }

@@ -34,7 +34,6 @@
         {
 
             Route::get('/profile', 'ProfileController@profileForm')->name('student_dashboard_profile_form');
-
             Route::post('/profile', 'ProfileController@updateProfile')->name('student_dashboard_profile_update');
             Route::post('/profileEdit', 'ProfileController@editProfile')->name('student_dashboard_profile_edit');
             Route::get('/scholarship', 'ScholarshipController@scholarshipForm')->name('student_dashboard_scholarship_form');
@@ -42,51 +41,28 @@
 
             Route::prefix('exams')->group(function()
             {
-
                 Route::get('/', 'DashboardController@exams')->name('student_dashboard_exams');
 
                 Route::prefix('lesson')->group(function()
                 {
-
                     Route::get('/', 'LessonExamController@lessonExams')->name('student_dashboard_lessonExams');
-
-
-                    //add exams to cart
-                    Route::get('/addToCart/{exm}', 'LessonExamController@addToCart')
-                         ->name('student_dashboard_lessonExams_addToCart');
-
-                    //show payment page
-                    Route::get('/purchase', 'LessonExamController@purchaseForm')
-                         ->name('student_dashboard_lessonExams_purchaseForm');
-
-                    //validate discount code
-                    Route::post('validateDiscountCode', 'LessonExamController@validateDiscountCode')
-                         ->name('student_dashboard_lessonExams_validateDiscountCode');
-
-                    Route::post('/purchaseWallet', 'LessonExamController@purchaseWallet')
-                         ->name('student_dashboard_lessonExams_purchaseWallet');
-
-                    Route::get('/questions/{exm}', 'LessonExamController@questions')
-                         ->name('student_dashboard_lessonExams_questions');
-
-                    Route::post('/questions_correct', 'LessonExamController@questionsCorrect')
-                         ->name('student_dashboard_lessonExams_questionsCorrect');
-
+                    Route::get('/addToCart/{exm}', 'LessonExamController@addToCart')->name('student_dashboard_lessonExams_addToCart');
+                    Route::get('/purchase', 'LessonExamController@purchaseForm')->name('student_dashboard_lessonExams_purchaseForm');
+                    Route::post('validateDiscountCode', 'LessonExamController@validateDiscountCode')->name('student_dashboard_lessonExams_validateDiscountCode');
+                    Route::post('/purchaseWallet', 'LessonExamController@purchaseWallet')->name('student_dashboard_lessonExams_purchaseWallet');
+                    Route::get('/questions/{exm}', 'LessonExamController@questions')->name('student_dashboard_lessonExams_questions');
+                    Route::post('/questions_correct', 'LessonExamController@questionsCorrect')->name('student_dashboard_lessonExams_questionsCorrect');
                     Route::get('/result', 'LessonExamController@result')->name('student_dashboard_lessonExams_result');
                 });
+
             });
+
             Route::prefix('wallet')->group(function()
             {
-
                 Route::get('/', 'WalletController@walletForm')->name('student_dashboard_wallet_form');
-
                 Route::post('/charge', 'WalletController@walletCharge')->name('student_dashboard_wallet_charge');
-
-                Route::post('/purchaseLessonExam', 'WalletController@walletPurchaseLessonExam')
-                     ->name('student_dashboard_wallet_purchaseLessonExam');
-
-                     Route::get('/purchaseLessonExamVerify', 'WalletController@walletPurchaseLessonExamVerify')
-                     ->name('student_dashboard_wallet_purchaseLessonExamVerify');
+                Route::post('/purchaseLessonExam', 'WalletController@walletPurchaseLessonExam')->name('student_dashboard_wallet_purchaseLessonExam');
+                Route::get('/purchaseLessonExamVerify', 'WalletController@walletPurchaseLessonExamVerify')->name('student_dashboard_wallet_purchaseLessonExamVerify');
                 Route::get('/verify', 'WalletController@walletVerify')->name('student_dashboard_wallet_verify');
             });
 

@@ -32,7 +32,7 @@
                             <tr>
                                 <td>{{$exam->exm}}</td>
                                 <td>{{$exam->title}}</td>
-                                <td>{{$exam->price/10 . ' تومان '}}</td>
+                                <td>{{$exam->price . ' تومان '}}</td>
                                 <td>{{$exam->answerSheet ? 'دارد' : 'ندارد'}}</td>
                                 <td>{{count($exam->questionExams)}}</td>
                                 <td>

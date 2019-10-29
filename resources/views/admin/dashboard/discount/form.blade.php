@@ -70,11 +70,11 @@
                                     <select dir="rtl" name="type" class="form-control menu hide-search" {{$modify==1 ? 'disabled' : ''}}>
                                         <option selected disabled>نوع کد را انتخاب نمایید</option>
                                         <option value="GENERAL-CHARGE"
-                                                {{$modify == 1 ? $discount->type == 'GENERAL-CHARGE' ? 'selected' : '' : '' }}>
+                                                {{ old('type') == 'GENERAL-CHARGE' ? 'selected' : '' }}>
                                             کد شگفت انگیز شارژ حساب کاربری
                                         </option>
                                         <option value="GENERAL-LESSONEXAM-OFF"
-                                                {{$modify == 1 ? $discount->type == 'GENERAL-LESSONEXAM-OFF' ? 'selected' : '' : '' }}>
+                                                {{  old('type') ==  'GENERAL-LESSONEXAM-OFF' ? 'selected' :  '' }}>
                                             کد تخفیف آزمون های درس به درس
                                         </option>
                                     </select>
