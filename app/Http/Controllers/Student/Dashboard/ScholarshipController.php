@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 use App\model\Scholarship;
 use Image;
 
@@ -17,7 +18,7 @@ class ScholarshipController extends Controller
     {
 
         $student      = Auth::guard('student')->user();
-        $scholarship  = $student->scholarship()->first();
+        $scholarship  = Scholarship::query()->where('studentId',$student->id)->first();
         return view('student.dashboard.scholarship.form',compact('student','scholarship'));
 
     }
@@ -26,12 +27,12 @@ class ScholarshipController extends Controller
     {
 
         $student      = Auth::guard('student')->user();
-        $scholarship  = $student->scholarship()->first();
+        $scholarship  = Scholarship::query()->where('studentId',$student->id)->first();
 
         $this->validate($request,
             [
                 'stdMessage'       =>  'Required|string|between:5,500',
-                'scholarshipImage' =>  'Required|image|max:1000',
+                'scholarshipImage' =>  [Rule::requiredIf(empty($scholarship)),'image','max:1000'],
             ]
         );
 
@@ -48,6 +49,9 @@ class ScholarshipController extends Controller
 		if ($scholarship && $scholarship->status=='NOT-SEEN')
 		{
             $scholarship->stdMessage=$request->input('stdMessage');
+
+            if($request->hasFile('scholarshipImage'))
+            {
             $image    = $request->file('scholarshipImage');
             Storage::disk('student')->putFileAs($student->id.'/scholarship',$image,$scholarship->verifyImage);
             $path                     = public_path('storage/students/'.$student->id.'/scholarship/'.$scholarship->verifyImage);
@@ -56,6 +60,7 @@ class ScholarshipController extends Controller
                 $constraint->aspectRatio();
             });
             $resizeImage->save($path);
+            }
 
             $scholarship->update();
             return redirect()->back();
@@ -64,7 +69,6 @@ class ScholarshipController extends Controller
         else
         {
             $scholarship = new Scholarship();
-
             $scholarship->studentId=Auth::guard('student')->id();
             $scholarship->stdMessage=$request->input('stdMessage');
 
@@ -79,7 +83,6 @@ class ScholarshipController extends Controller
             $resizeImage->save($path);
 
             $scholarship->save();
-
             return redirect()->back();
         }
 

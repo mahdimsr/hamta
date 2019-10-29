@@ -74,17 +74,6 @@
 					<h4 class="title">پاسخ به درخواست</h4>
 				</div>
 
-
-				@if ($errors->any())
-					<div class="alert alert-danger">
-						<ul>
-							@foreach ($errors->all() as $error)
-								<li>{{ $error }}</li>
-							@endforeach
-						</ul>
-					</div>
-				@endif
-
 				<div class="content">
 					<form method="POST" action="{{route('admin_scholarships_answer',['url' => $scholarship->url])}}">
 
@@ -95,7 +84,10 @@
 								<div class="form-group">
 									<label>توضیحات پاسخ</label>
 									<textarea dir="rtl" name="adminMessage" rows="5" class="form-control textarea-radius"
-											  placeholder="به درخواست پاسخ دهید">{{$scholarship->adminMessage}}</textarea>
+                                              placeholder="به درخواست پاسخ دهید">{{ old('adminMessage')? old('adminMessage') : '' }}{{ $scholarship->adminMessage && !old('adminMessage') ? $scholarship->adminMessage: ''}}</textarea>
+                                              <div class="invalid-feedback">
+                                                <small>{{ $errors->first('adminMessage') }}</small>
+                                            </div>
 								</div>
 							</div>
 						</div>
@@ -104,10 +96,13 @@
 								<div class="form-group">
 									<label>وضعیت درخواست</label>
 									<select dir="rtl" name="status" class="form-control menu hide-search">
-										<option value="IN-PROGRESS" {{ old('status')==$scholarship->status? 'selected' : '' }}{{!old('status') && $scholarship->status =='IN-PROGRESS' ? 'selected' : '' }}>درحال پردازش</option>
-										<option value="ACCEPT" {{ old('status')==$scholarship->status? 'selected' : '' }}{{ !old('status') && $scholarship->status=='ACCEPT' ? 'selected' : '' }}>پذیرش بورسیه</option>
-										<option value="DECLINE" {{ old('status')==$scholarship->status? 'selected' : '' }}{{ !old('status') && $scholarship->status=='DECLINE' ? 'selected' : '' }}>رد کردن درخواست</option>
-									</select>
+                                        <option value="" selected disabled>وضعیت درخواست را انتخاب نمایید</option>
+										<option value="ACCEPT" {{ old('status')=='ACCEPT'? 'selected' : '' }}{{ !old('status') && $scholarship->status=='ACCEPT' ? 'selected' : '' }}>پذیرش بورسیه</option>
+										<option value="DECLINE" {{ old('status')=='DECLINE'? 'selected' : '' }}{{ !old('status') && $scholarship->status=='DECLINE' ? 'selected' : '' }}>رد درخواست</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('status') }}</small>
+                                    </div>
 								</div>
 							</div>
 						</div>

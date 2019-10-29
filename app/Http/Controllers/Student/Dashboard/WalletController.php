@@ -189,78 +189,78 @@
                 $price += $cart->lessonExam->price;
             }
 
-            if ($request->input('discountCode') != null)
-            {
-                $discount = Discount::query()->where('code', $request->input('discountCode'))->first();
-
-                if ($discount && $discount->isValid())
+                if ($request->input('discountCode') != null)
                 {
-                    $usable = $discount->usable();
+                    $discount = Discount::query()->where('code', $request->input('discountCode'))->first();
 
-                    if($usable >= $numberofExams)
+                    if ($discount && $discount->isValid())
                     {
-                        $discountPrice = $price*((100 - $discount->value)/100);
+                        $usable = $discount->usable();
 
-                        $order = new zarinpal();
-                        $res   = $order->pay($discountPrice, 'همپا | خرید آزمون', $student->email, $student->mobile, route('student_dashboard_wallet_purchaseLessonExamVerify'));
-
-                        if ($res)
+                        if($usable >= $numberofExams)
                         {
-                            $transaction                = new Transaction();
-                            $transaction->type          = 'CHARGE';
-                            $transaction->studentId     = $student->id;
-                            $transaction->price         = $discountPrice;
-                            $transaction->discountId    = $discount->id;
-                            $transaction->code          = $res;
-                            $transaction->save();
-                            return redirect('https://www.zarinpal.com/pg/StartPay/' . $res);
+                            $discountPrice = $price*((100 - $discount->value)/100);
+
+                            $order = new zarinpal();
+                            $res   = $order->pay($discountPrice, 'همپا | خرید آزمون', $student->email, $student->mobile, route('student_dashboard_wallet_purchaseLessonExamVerify'));
+
+                            if ($res)
+                            {
+                                $transaction                = new Transaction();
+                                $transaction->type          = 'CHARGE';
+                                $transaction->studentId     = $student->id;
+                                $transaction->price         = $discountPrice;
+                                $transaction->discountId    = $discount->id;
+                                $transaction->code          = $res;
+                                $transaction->save();
+                                return redirect('https://www.zarinpal.com/pg/StartPay/' . $res);
+                            }
+
+                            else
+                            {
+                                return redirect()->back()->withErrors(['chargeFailed' => ['خطا در اتصال به درگاه']])->withInput($request->all());
+                            }
+
                         }
 
                         else
                         {
-                            return redirect()->back()->withErrors(['chargeFailed' => ['خطا در اتصال به درگاه']])->withInput($request->all());
+                            $message = 'این کد تخفیف فقط برای ' . $usable . ' آزمون دیگر قابل استفاده است.';
+                            return redirect()->back()->withErrors(['discountUsability' => $message])->withInput($request->all());
                         }
 
                     }
 
                     else
                     {
-                        $message = 'این کد تخفیف فقط برای ' . $usable . ' آزمون دیگر قابل استفاده است.';
-                        return redirect()->back()->withErrors(['discountUsability' => $message])->withInput($request->all());
+                        return redirect()->back()->withErrors(['invalidDiscountCode' => ['کد تخفیف وارد شده معتبر نیست.']])->withInput($request->all());
                     }
 
                 }
 
                 else
                 {
-                    return redirect()->back()->withErrors(['invalidDiscountCode' => ['کد تخفیف وارد شده معتبر نیست.']])->withInput($request->all());
+
+                    $order = new zarinpal();
+                    $res   = $order->pay($price, 'همپا | خرید آزمون', $student->email, $student->mobile, route('student_dashboard_wallet_purchaseLessonExamVerify'));
+
+                    if ($res)
+                    {
+                        $transaction            = new Transaction();
+                        $transaction->type      = 'CHARGE';
+                        $transaction->studentId = $student->id;
+                        $transaction->price     = $price;
+                        $transaction->code      = $res;
+                        $transaction->save();
+                        return redirect('https://www.zarinpal.com/pg/StartPay/' . $res);
+                    }
+
+                    else
+                    {
+                        return redirect()->back()->withErrors(['chargeFailed' => ['خطا در اتصال به درگاه']])->withInput($request->all());
+                    }
+
                 }
-
-            }
-
-            else
-            {
-
-                $order = new zarinpal();
-                $res   = $order->pay($price, 'همپا | خرید آزمون', $student->email, $student->mobile, route('student_dashboard_wallet_purchaseLessonExamVerify'));
-
-                if ($res)
-                {
-                    $transaction            = new Transaction();
-                    $transaction->type      = 'CHARGE';
-                    $transaction->studentId = $student->id;
-                    $transaction->price     = $price;
-                    $transaction->code      = $res;
-                    $transaction->save();
-                    return redirect('https://www.zarinpal.com/pg/StartPay/' . $res);
-                }
-
-                else
-                {
-                    return redirect()->back()->withErrors(['chargeFailed' => ['خطا در اتصال به درگاه']])->withInput($request->all());
-                }
-
-            }
             }
 
             else
