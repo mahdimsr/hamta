@@ -198,17 +198,36 @@
         {
 
             $authId = Auth::guard('student')->id();
+            $lessonExam = Cart::query()->where('lessonExamId', $this->id)->where('studentId', $authId)->where('transactionId',0)->first();
 
-            $lessonExam = Cart::query()->where('lessonExamId', $this->id)->where('studentId', $authId);
-
-            if ($lessonExam->exists())
+            if ($lessonExam)
             {
                 return true;
             }
+
             else
             {
                 return false;
             }
+
+        }
+
+        public function hasPurchased()
+        {
+
+            $authId = Auth::guard('student')->id();
+            $lessonExam = Cart::query()->where('lessonExamId', $this->id)->where('studentId', $authId)->whereNotIn('transactionId',[0])->first();
+
+            if ($lessonExam)
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
+
         }
 
     }

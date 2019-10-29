@@ -82,6 +82,17 @@
 
         }
 
+        public function usable()
+        {
+            $authId       = Auth::guard('student')->id();
+            $hasUsedCount = Transaction::query()
+            ->where('discountId', $this->id)
+            ->where('studentId', $authId)
+            ->where('type','PURCHASE')
+            ->where('status','SUCCESS')
+            ->count();
+            return $this->count - $hasUsedCount;
+        }
 
         public function isValid()
         {
@@ -92,6 +103,7 @@
             {
                 return false;
             }
+
             else
             {
                 $authId = Auth::guard('student')->id();
@@ -128,6 +140,7 @@
 
                             return $this->count > $hasUsedCount;
                         }
+
                         else
                         {
                             return false;

@@ -23,16 +23,20 @@
                             {{$lessonExam->price . ' تومان '}}
                         </p>
 
-                        @if($lessonExam->hasInCart())
+                        @if($lessonExam->hasInCart() && !$lessonExam->hasPurchased())
                             <button class="ctrl-standard typ-subhed fx-bubbleDown">
                                 در لیست خرید موجود است
                             </button>
+                        @elseif($lessonExam->hasPurchased())
+                        <button class="ctrl-standard typ-subhed fx-bubbleDown">
+                            شرکت در آزمون
+                        </button>
                         @else
                             <button class="ctrl-standard typ-subhed fx-bubbleDown">
                                 <a href="{{ route('student_dashboard_lessonExams_addToCart',['exm' => $lessonExam->exm]) }}">
                                     افزودن به لیست خرید
                                 </a>
-                            </button>
+                        </button>
                         @endif
 
                     </div>

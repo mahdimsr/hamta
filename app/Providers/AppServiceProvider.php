@@ -32,13 +32,11 @@
             //
             view()->composer('*', function($view)
             {
-
                 $view->with('adminUser', Auth::guard('admin')->user());
             });
 
             view()->composer('*', function($view)
             {
-
                 $view->with('student', Auth::guard('student')->user());
             });
 
@@ -47,9 +45,8 @@
             {
 
                 $authId = Auth::guard('student')->id();
-                $carts  = Cart::query()->where('studentId', $authId)->whereIn('transactionId',[0])->get();
-
-                $view->with('carts', $carts);
+                $cart   = Cart::query()->where('studentId', $authId)->where('transactionId',0)->get();
+                $view->with('cart', $cart);
             });
 
         }
