@@ -112,8 +112,8 @@
                                             <label>نوع درس</label>
                                             <select dir="rtl" name="type" class="form-control menu hide-search dropdown-radius">
                                                 <option value="" selected disabled>نوع درس را انتخاب نمایید</option>
-                                                <option value="EXPERT" {{ old('grade')=='EXPERT' ? 'selected' : '' }}{{$modify == 1 && !old('grade') && $gradeLesson->sort =='EXPERT'? 'selected' : '' }}>تخصصی</option>
-                                                <option value="GENERAL" {{ old('grade')=='GENERAL' ? 'selected' : '' }}{{$modify == 1 && !old('grade') && $gradeLesson->sort =='GENERAL'? 'selected' : '' }}>عمومی</option>
+                                                <option value="EXPERT" {{ old('type')=='EXPERT' ? 'selected' : '' }}{{$modify == 1 && !old('type') && $gradeLesson->sort =='EXPERT'? 'selected' : '' }}>تخصصی</option>
+                                                <option value="GENERAL" {{ old('type')=='GENERAL' ? 'selected' : '' }}{{$modify == 1 && !old('type') && $gradeLesson->sort =='GENERAL'? 'selected' : '' }}>عمومی</option>
                                             </select>
                                             <div class="invalid-feedback">
                                                 <small>{{ $errors->first('type') }}</small>

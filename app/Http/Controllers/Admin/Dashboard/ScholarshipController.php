@@ -21,7 +21,13 @@ class ScholarshipController extends Controller
 
 	public function show($url)
 	{
-		$scholarship = Scholarship::query()->where('url', $url)->first();
+        $scholarship         = Scholarship::query()->where('url', $url)->first();
+
+        if($scholarship->status =='NOT-SEEN')
+        {
+        $scholarship->status ='IN-PROGRESS';
+        $scholarship->update();
+        }
 
 		return view('admin.dashboard.scholarship.form', compact('scholarship'));
 	}
@@ -34,8 +40,8 @@ class ScholarshipController extends Controller
 
 		$this->validate($request, [
 
-			'adminMessage' => 'required|string|between:10,500',
-			'status'       => 'required|in:IN-PROGRESS,ACCEPT,DECLINE',
+			'adminMessage' => 'required|string|between:5,500',
+			'status'       => 'required|in:ACCEPT,DECLINE',
 		]);
 
 		$scholarship->status       = $request->input('status');
