@@ -18,6 +18,11 @@ class AuthController extends Controller
 		return view('student.auth.verify');
     }
 
+    public function newPasswordForm()
+	{
+		return view('student.auth.newPassword');
+    }
+
 	public function loginForm()
 	{
         $studentInfo=cookie::get('studentInfo');

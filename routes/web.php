@@ -27,6 +27,7 @@
             Route::get('/register', 'AuthController@registerForm')->name('student_register_form');
             Route::post('/register', 'AuthController@register')->name('student_register');
             Route::get('/verify', 'AuthController@verifyForm')->name('student_verify_form');
+            Route::get('/newPassword', 'AuthController@newPasswordForm')->name('student_newPassword_form');
             Route::post('/forgetPassword', 'AuthController@forgetPassword')->name('student_forgetPassword');
             Route::get('/logout', 'AuthController@logout')->name('student_dashboard_logout');
         });
