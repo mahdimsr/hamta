@@ -4,7 +4,7 @@ html{
 	-ms-text-size-adjust:100%;
 	-webkit-text-size-adjust:100%
 }
-body{
+.back-bg{
 	background-image:url("../../../image/student/auth/auth.jpg") !important;
 
 	/* Full height */
@@ -17,7 +17,18 @@ body{
     font-family: IRANSans-web, serif !important;
 }
 
+.back-bg::after{
+	content: "";
+	top: 0;
+	left: 0;
+    
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+	position: absolute;
+	background-color: rgba(62,69,81,.7);
 
+}
 
 h1{
 	font-size:2em;
@@ -1895,3 +1906,129 @@ footer.page-footer {
     position: absolute;
     width: 100%;
 }
+
+
+
+
+
+
+
+/* تغییرات */
+
+
+
+.back-link-arrow{
+    position: absolute;
+    top: 4%;
+    left: 5%;
+    font-size: 20px;
+
+}
+.fas.fa-arrow-left{
+color: #2bbbad!important;
+
+}
+
+
+
+  .timer {
+	width: 550px;
+	height: 248px;
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -275px;
+	margin-top: -124px;
+	color: #2bbbad!important;
+	z-index: -1;
+  }
+  .timer * {
+	cursor: default;
+  }
+  .timer h3 {
+	width: 100%;
+	font-size: 26px;
+	letter-spacing: 4px;
+	text-align: center;
+  }
+  .timer--clock {
+	
+	position: relative;
+	
+	margin-top: 22px;
+	overflow: hidden;
+	left: 41%;
+	top: 58%;
+  }
+  .timer--clock .clock-display-grp {
+	width: 100%;
+	position: relative;
+  }
+  .timer--clock .clock-display-grp .number-grp {
+	width: auto;
+	display: block;
+	height: 156px;
+	float: left;
+	overflow: hidden;
+  }
+  .timer--clock .clock-display-grp .number-grp .number-grp-wrp {
+	width: 100%;
+	position: relative;
+  }
+  .timer--clock .clock-display-grp .number-grp .number-grp-wrp .num {
+	width: 100%;
+	position: relative;
+	height: 156px;
+  }
+  .timer--clock .clock-display-grp .number-grp .number-grp-wrp .num p {
+	width: auto;
+	display: table;
+	font-size: 30px;
+	line-height: 150px;
+	font-weight: bold;
+  }
+  .timer--clock .clock-separator {
+	width: auto;
+	float: left;
+	display: block;
+	height: 156px;
+  }
+  .timer--clock .clock-separator p {
+	width: auto;
+	display: table;
+	font-size: 30px;
+	line-height: 150px;
+	font-weight: bold;
+  }
+
+  /* .reload {
+	width: 125px;
+	height: 14px;
+	position: absolute;
+	bottom: 50vh;
+	left: 50%;
+	margin-left: -62.5px;
+	opacity: 0;
+	display: none;
+	cursor: pointer;
+	z-index: 9999;
+  }
+  .reload:hover svg path {
+	fill: #666666;
+  }
+  .reload:hover p {
+	color: #666666;
+  }
+  .reload svg {
+	width: 12px;
+	height: 12px;
+	float: left;
+	margin-right: 10px;
+  }
+  .reload p {
+	color: #2b2b2b;
+	font-size: 12px;
+	float: left;
+	line-height: 11px;
+  } */
