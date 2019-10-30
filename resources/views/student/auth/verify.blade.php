@@ -17,6 +17,7 @@
    <link rel="icon" href="{{asset('favicon.png')}}" type="image/png">
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" /> 
+   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
   </head>
 
  <body class="back-bg">
@@ -56,8 +57,9 @@
 
              <!-- Insert OTP -->
 
-               <input maxlength="5" id="otpinput" type="number" required="" min="0" inputmode="numeric" pattern="[0-9]*"
+               <input maxlength="5" id="otpinput" type="number" required="" min="0" inputmode="numeric" pattern="[0-9]"
                       placeholder="XXXXXXX" autocomplete="off" name="#" minlength="0"
+                      onkeypress="javascript:return isNumber(event)"
                       title='لطفا عدد وارد کنید' autofocus/>
 
 
@@ -136,16 +138,13 @@
               </div>
         
            </div>
-           {{-- <div class="reload">
-              <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 65 65" enable-background="new 0 0 65 65" xml:space="preserve">
-                 <path fill="#2b2b2b" d="M60.2,2.5c-2.3-0.2-4.4,1.5-4.6,3.9l-0.2,2.3c-6-5.6-13.8-8.7-22-8.7C15.5,0,0.9,14.5,0.9,32.4c0,17.9,14.5,32.4,32.4,32.4
-                    c12.3,0,23.5-6.9,29-17.9c1.1-2.1,0.2-4.7-1.9-5.7c-2.1-1.1-4.7-0.2-5.7,1.9c-4.1,8.1-12.3,13.2-21.4,13.2
-                    c-13.2,0-23.9-10.7-23.9-23.9c0-13.2,10.7-23.9,23.9-23.9c6.1,0,11.9,2.3,16.4,6.5l-3.4-0.3c-2.3-0.2-4.4,1.5-4.6,3.9
-                    c-0.2,2.3,1.5,4.4,3.9,4.6l12.7,1.1c0.1,0,0.3,0,0.4,0c1,0,2-0.3,2.7-1c0.9-0.7,1.4-1.8,1.5-2.9l1.2-13.4
-                    C64.3,4.7,62.5,2.7,60.2,2.5z"/>
-               </svg>
+            <div class="reload">
+ 
+               <button class="btn btn-default btn-warning btn-next">
+                  ارسال دوباره رمز
+               </button>
           
-           </div> --}}
+            </div>
            <div class="inner-container-footer">
              <button type="submit" name="#" value="#"
                      class="btn btn-default btn-big btn-warning btn-next">
@@ -203,7 +202,13 @@
 
 
 
+function isNumber(evt) {
+        var iKeyCode = (evt.which) ? evt.which : evt.keyCode
+        if (iKeyCode > 31 && (iKeyCode < 48 || iKeyCode > 57))
+            return false;
 
+        return true;
+    } 
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -254,7 +259,7 @@ $("#otpinput").val('');
         });
         TweenLite.defaultEase = Expo.easeOut;
 
-initTimer("00:10"); // other ways --> "0:15" "03:5" "5:2"
+initTimer("00:05"); // other ways --> "0:15" "03:5" "5:2"
 
 var reloadBtn = document.querySelector('.reload');
 var timerEl = document.querySelector('.timer');
@@ -348,7 +353,7 @@ reloadBtn.addEventListener('click', function () {
       } 
    });
    TweenMax.to(timerEl, 1, { opacity: 1 });
-   initTimer("12:35");
+   initTimer("00:05");
 });
 </script>
  </html>
