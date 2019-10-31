@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers\Api\Student;
 
+    use App\Http\Controllers\Api\ApiHelper;
     use App\model\Student;
     use Carbon\Carbon;
     use Illuminate\Http\Request;
@@ -15,6 +16,9 @@
     class AuthController extends Controller
     {
 
+
+
+
         public function login(Request $request)
         {
 
@@ -23,11 +27,15 @@
                 'mobile'   => 'required',
                 'password' => 'required'
 
+            ],[
+
+            ],[
+                'mobile' => 'شماره تلفن'
             ]);
 
             if ($v->fails())
             {
-                return response()->json(['status' => 'inputError', 'errors' => $v->errors()]);
+                return response()->json(['status' => ApiHelper::$errorType['validation'], 'errors' => $v->errors()]);
             }
             else
             {
@@ -40,7 +48,7 @@
                     $token       = $tokenResult->token;
                     $token->save();
 
-                    return response()->json(['status'       => 'OK',
+                    return response()->json(['status'       => ApiHelper::$errorType['ok'],
                                              'access_token' => $tokenResult->accessToken,
                                              'token_type'   => 'Bearer',
                                              'student'      => $student,
@@ -49,8 +57,8 @@
                 }
                 else
                 {
-                    return response()->json(['status'  => 'ERROR',
-                                             'message' => 'شماره یا رمز عبور اشتباه وارد شده']);
+                    return response()->json(['status'  => ApiHelper::$errorType['error'],
+                                             'errorMessage' => 'شماره یا رمز عبور اشتباه وارد شده']);
                 }
             }
 
@@ -72,7 +80,7 @@
 
             if ($v->fails())
             {
-                return response()->json(['status' => 'ERROR-INPUT', 'error' => $v->errors()]);
+                return response()->json(['status' => ApiHelper::$errorType['validation'], 'errors' => $v->errors()]);
             }
 
             $student = new Student();
@@ -86,7 +94,7 @@
             $token       = $tokenResult->token;
             $token->save();
 
-            return response()->json(['status'       => 'OK',
+            return response()->json(['status'       => ApiHelper::$errorType['ok'],
                                      'access_token' => $tokenResult->accessToken,
                                      'token_type'   => 'Bearer',
                                      'student'      => $student]);
