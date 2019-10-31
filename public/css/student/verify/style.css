@@ -4,29 +4,35 @@ html{
 	-ms-text-size-adjust:100%;
 	-webkit-text-size-adjust:100%
 }
+body{
+	overflow: hidden;
+}
 .back-bg{
 	background-image:url("../../../image/student/auth/auth.jpg") !important;
 
 	/* Full height */
-	height: 100%;
+	height: 100vh;
   
 	/* Center and scale the image nicely */
 	background-position: center;
 	background-repeat: no-repeat;
     background-size: cover;
-    font-family: IRANSans-web, serif !important;
+	font-family: IRANSans-web, serif !important;
+
+	
 }
 
 .back-bg::after{
 	content: "";
 	top: 0;
 	left: 0;
-    
+	height: 125vh;
 	right: 0;
 	bottom: 0;
 	z-index: -1;
 	position: absolute;
 	background-color: rgba(62,69,81,.7);
+
 
 }
 
@@ -1318,9 +1324,11 @@ input:invalid{
 }
 
 .imglogos{
-	padding-top:2px;
-	padding-right:2px;
-	padding-left:2px
+    padding-top: 0px;
+    padding-right: 2px;
+    padding-left: 2px;
+    width: 100px;
+    height: 100px;
 }
 
 
@@ -1395,8 +1403,8 @@ input:invalid{
 	width:85%
 }
 .inner-container-header{
-	padding-top:20px;
-	height:140px
+    padding-top: 44px;
+    height: 146px;
 }
 .inner-container-body{
 	height:210px;
