@@ -234,6 +234,7 @@ input:focus {
 }
 
 .sidebar {
+
     position: fixed;
     top: 0;
     bottom: 0;
@@ -250,6 +251,7 @@ input:focus {
 }
 
 .sidebar .sidebar-wrapper {
+    background-color: #cfeaff4a;
     position: relative;
     max-height: calc(100vh - 75px);
     min-height: 100%;
@@ -292,7 +294,7 @@ input:focus {
     font-size: 18px;
     color: #FFFFFF;
     text-align: center;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 30px;
 }
 
@@ -388,9 +390,9 @@ input:focus {
     padding: 5px 0px;
     display: block;
     font-size: 18px;
-    color: #FFFFFF;
+    color: #000000;
     text-align: center;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 30px;
 }
 
@@ -512,7 +514,8 @@ input:focus {
     position: relative;
     z-index: 2;
     float: left;
-    width: calc(100% - 260px);
+    width: calc(100% - 421px);
+    background-color: #ffffff;
 }
 
 .main-panel > .content {
@@ -3831,7 +3834,7 @@ border: none;
 }
 /* استایل خودم */
 .user-profile{
-    right: 50%;
+    right: 56%;
     transform: translate(20%,0%);
 }
 .user-profile img{
@@ -3840,17 +3843,12 @@ border: none;
     width: 100px;
 }
 .bagdet{
-    margin: 2px 20px;
-    background-color: tomato;
+    margin: 6em 20px;
+background-color: #EC5574;
+    filter: opacity(1) ;
     border-radius: 25px;
     padding: 15px 0px 15px 0px;
 }
 .badget-content{
     text-align: center;
-}
-.badget-header{
-    color: black;
-}
-.badget-rem{
-    color: black;
 }
