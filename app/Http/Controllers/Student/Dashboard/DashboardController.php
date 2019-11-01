@@ -11,13 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-	public function exams()
-	{
-
-		$student = Auth::guard('student')->user();
-
-		return view('student.dashboard.exams', compact('student'));
-	}
 
     public function transactions()
 	{
@@ -40,6 +33,6 @@ class DashboardController extends Controller
 
     public function content()
     {
-        return view('layouts.content');
+        return view('student.dashboard.main');
     }
 }
