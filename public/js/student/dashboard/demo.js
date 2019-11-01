@@ -270,21 +270,32 @@ demo = {
 // });
 
 // input file
-document.querySelector("html").classList.add('js');
+// document.querySelector("html").classList.add('js');
+//
+// var fileInput  = document.querySelector( ".input-file" ),
+//     button     = document.querySelector( ".input-file-trigger" ),
+//     the_return = document.querySelector(".file-return");
+//
+// button.addEventListener( "keydown", function( event ) {
+//     if ( event.keyCode == 13 || event.keyCode == 32 ) {
+//         fileInput.focus();
+//     }
+// });
+// button.addEventListener( "click", function( event ) {
+//     fileInput.focus();
+//     return false;
+// });
+// fileInput.addEventListener( "change", function( event ) {
+//     the_return.innerHTML = this.value;
+// });
 
-var fileInput  = document.querySelector( ".input-file" ),
-    button     = document.querySelector( ".input-file-trigger" ),
-    the_return = document.querySelector(".file-return");
 
-button.addEventListener( "keydown", function( event ) {
-    if ( event.keyCode == 13 || event.keyCode == 32 ) {
-        fileInput.focus();
-    }
+$('#clock').countdown('2020/10/10', function(event) {
+    var $this = $(this).html(event.strftime(''
+        + '<span>%w</span> weeks '
+        + '<span>%d</span> days '
+        + '<span>%H</span> hr '
+        + '<span>%M</span> min '
+        + '<span>%S</span> sec'));
 });
-button.addEventListener( "click", function( event ) {
-    fileInput.focus();
-    return false;
-});
-fileInput.addEventListener( "change", function( event ) {
-    the_return.innerHTML = this.value;
-});
+
