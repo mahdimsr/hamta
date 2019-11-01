@@ -165,7 +165,7 @@
                                     <span class="notification hidden-sm hidden-xs">{{count($cart)}}</span>
                                 </a>
                             </li>
-                        @endif --}}
+                        @endif 
                         {{-- <li>
                             <a href="{{route('student_dashboard_wallet_form')}}">
                                 <i class="fa fa-wallet"></i>
