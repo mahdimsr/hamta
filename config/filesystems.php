@@ -55,33 +55,12 @@ return [
 			'visibility' => 'public',
 		],
 
-		'lessonExam' => [
-			'driver'     => 'local',
-			'root'       => storage_path('app/public/lessonExam'),
-			'url'        => env('APP_URL') . '/hamta/storage/app/public/lessonExam',
-			'visibility' => 'public',
-		],
-
 		'question' => [
 			'driver'     => 'local',
-			'root'       => storage_path('app/public/question'),
+			'root'       => storage_path('app/public/questions'),
 			'url'        => env('APP_URL') . '/hamta/storage/app/public/question',
 			'visibility' => 'public',
 		],
-
-		'giftExam' => [
-			'driver'     => 'local',
-			'root'       => storage_path('app/public/giftExam'),
-			'url'        => env('APP_URL') . '/hamta/storage/app/public/giftExam',
-			'visibility' => 'public',
-		],
-
-		'question' => [
-			'driver'     => 'local',
-			'root'       => storage_path('app/public/question'),
-			'url'        => env('APP_URL') . '/hamta/storage/app/public/question',
-			'visibility' => 'public',
-        ],
 
         'student' => [
 			'driver'     => 'local',

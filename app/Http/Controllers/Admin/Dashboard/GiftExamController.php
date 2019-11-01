@@ -52,7 +52,6 @@
                                        'activeTime'   => 'required',
                                        'gradeLessons' => 'required',
                                        'description'  => 'nullable|string|max:300',
-                                       'answerSheet'  => 'required|file|mimes:pdf|max:5000',
                                        'duration'     => 'nullable|integer|min:0',]);
 
 
@@ -76,20 +75,6 @@
 
             $giftExam->save();
             //end activeDate section
-
-            //save answerSheet
-            if ($request->hasFile('answerSheet'))
-            {
-                $answerSheet = $request->file('answerSheet');
-
-                Storage::disk('giftExam')->put($giftExam->id, $answerSheet);
-
-                $giftExam->answerSheet = $answerSheet->hashName();
-
-                $giftExam->update();
-            }
-
-            //end answerSheet section
 
             // insert relation
             foreach ($request->input('gradeLessons') as $gradeLessonId)
@@ -122,7 +107,6 @@
             $this->validate($request, ['title'       => 'required|string|max:20',
                                        'activeTime'  => 'required',
                                        'description' => 'nullable|string|max:300',
-                                       'answerSheet' => 'nullable|file|mimes:pdf|max:5000',
                                        'duration'    => 'nullable|integer|min:0',]);
 
 
@@ -146,23 +130,7 @@
 
             //end activeDate section
 
-
-            //save answerSheet
-            if ($request->hasFile('answerSheet'))
-            {
-                $answerSheet = $request->file('answerSheet');
-
-                Storage::disk('giftExam')->put($giftExam->id, $answerSheet);
-
-                Storage::disk('giftExam')->delete($giftExam->id . '/' . $giftExam->answerSheet);
-
-                $giftExam->answerSheet = $answerSheet->hashName();
-
-
-            }
-
             $giftExam->update();
-            //end answerSheet section
 
             return redirect()->route('admin_giftExams');
 
@@ -226,7 +194,8 @@
                 'optionTwo'    => 'required',
                 'optionOne'    => 'required',
                 'answer'       => ['required', Rule::in(['1', '2', '3', '4'])],
-                'photo'        => 'image',
+                'photo'        => 'image|max:1000',
+                'answerImage'  => 'image|max:1000',
 
             ]);
 
@@ -244,20 +213,32 @@
             $question->answer        = $request->input('answer');
             $question->hardness      = $request->input('hardness');
 
-
+            $question->save();
 
             //set image if exists
-            if ($request->hasFile('image'))
+            if ($request->hasFile('photo'))
             {
-                $image = $request->file('image');
+                $photo = $request->file('photo');
 
-                Storage::disk('question')->put($question->id, $image);
+                Storage::disk('question')->put($question->id . '/photo', $photo);
 
-                $question->image = $image->hashName();
+                $question->photo = $photo->hashName();
 
+                $question->update();
             }
 
-            $question->save();
+            if ($request->hasFile('answerImage'))
+            {
+                $answerImage = $request->file('answerImage');
+
+                Storage::disk('question')->put($question->id . '/answerImage', $answerImage);
+
+                $question->answerImage = $answerImage->hashName();
+
+                $question->update();
+            }
+
+
 
             $giftExam = GiftExam::query()->where('exm',$exm)->first();
 
@@ -296,7 +277,8 @@
                 'optionTwo'    => 'required',
                 'optionOne'    => 'required',
                 'answer'       => ['required', Rule::in(['1', '2', '3', '4'])],
-                'photo'        => 'image',
+                'photo'        => 'image|max:1000',
+                'answerImage'  => 'image|max:1000',
 
             ]);
 
@@ -314,6 +296,33 @@
             $question->hardness     = $request->input('hardness');
 
             $question->update();
+
+            if ($request->hasFile('photo'))
+            {
+                $photo = $request->file('photo');
+
+                Storage::disk('question')->delete($question->id . '/photo/' . $question->photo);
+
+                Storage::disk('question')->put($question->id . '/photo', $photo);
+
+                $question->photo = $photo->hashName();
+
+                $question->update();
+            }
+
+
+            if ($request->hasFile('answerImage'))
+            {
+                $answerImage = $request->file('answerImage');
+
+                Storage::disk('question')->delete($question->id . '/answerImage/' . $question->answerImage);
+
+                Storage::disk('question')->put($question->id . '/answerImage', $answerImage);
+
+                $question->answerImage = $answerImage->hashName();
+
+                $question->update();
+            }
 
             return redirect()->back();
 

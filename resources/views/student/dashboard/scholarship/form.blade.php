@@ -52,17 +52,17 @@
 
 
                                         <label>توضیحات درخواست</label>
-                                        <textarea dir="rtl" maxlength="500" name="stdMessage" tabindex="1" rows="5" class="form-control textarea-radius" placeholder="متن درخواست خود را وارد نمایید" @unless(empty($scholarship)) {{ $scholarship->status!='NOT-SEEN' ? 'disabled' : '' }} @endunless>@unless(empty($scholarship)){{ $scholarship->status && !old('stdMessage') ? $scholarship->stdMessage : '' }}@endunless{{ old('stdMessage') ? old('stdMessage') : '' }}</textarea>
+                                        <textarea dir="rtl" maxlength="500" name="stdMessage" tabindex="1" rows="5" class="form-control textarea-radius" placeholder="متن درخواست خود را وارد نمایید" {{ $scholarship && $scholarship->status!='NOT-SEEN'?'disabled':''}}>{{ $scholarship && !old('stdMessage') ? $scholarship->stdMessage : '' }}{{ old('stdMessage') ? old('stdMessage') : '' }}</textarea>
                                         <div class="invalid-feedback">
                                             <small>{{ $errors->first('stdMessage') }}{{ $errors->first('notComplete') }}</small>
                                         </div>
                                     </div>
-                                    @unless (!empty($scholarship->adminMessage))
+                                    @if ($scholarship && $scholarship->status =='NOT-SEEN' || !$scholarship)
                                     <label>عکس کارنامه</label>
                                     <div  class="col-md-5 " style="float: none;">
                                         <div class="input-file-container">
                                             <input class="input-file" id="my-file" type="file" name="scholarshipImage">
-                                            <label tabindex="2" for="my-file" class="input-file-trigger text-center">عکس کارنامه را آپلود نمایید</label>
+                                            <label tabindex="2" for="my-file" class="input-file-trigger text-center">{{ $scholarship ? 'به روز رسانی عکس کارنامه' :'آپلود عکس کارنامه' }}</label>
                                         </div>
                                         <p class="file-return"></p>
                                         <div class="invalid-feedback">
@@ -70,10 +70,10 @@
                                         </div>
 
                                     </div>
-                                    @endunless
+                                    @endif
 
 
-                                @unless(empty($scholarship->adminMessage))
+                                @if($scholarship && $scholarship->status!='NOT-SEEN')
                                 <div class="col-md-12">
                                     <div class="card text-right">
                                         <div class="header ">
@@ -96,17 +96,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                @endunless
-
-                                @if(empty($scholarship))
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">ثبت درخواست</button>
                                 @endif
 
-                                @if (!empty($scholarship))
-                                    @if ($scholarship->status=='NOT-SEEN')
-                                        <button type="submit" class="btn btn-info btn-fill pull-right">ویرایش درخواست</button>
-                                    @endif
-                                @endif
+                                    <button type="submit" class="btn btn-info btn-fill pull-left" {{ $scholarship && $scholarship->status!= 'NOT-SEEN' ? 'disabled' : ''}}>{{ $scholarship ? 'ویرایش درخواست' : 'ثبت درخواست' }}</button>
 
                                 <div class="clearfix"></div>
                             </div>

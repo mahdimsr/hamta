@@ -1,7 +1,5 @@
 @extends('layouts.admin_dashboard')
-@section('link')
-
-
+@section('style')
 @endsection
 @section('content')
 
@@ -173,29 +171,6 @@
                             </div>
 
                         @endif
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label class="control-label">پاسخ نامه سوالات (به صورت pdf)</label>
-                                    <div class="input-file-container">
-                                        <input class="input-file" name="answerSheet" id="my-file" type="file"
-                                               accept=" .pdf">
-                                        <label tabindex="0" for="my-file" class="input-file-trigger text-center">
-                                            {{ $modify == 1 ? $giftExam->answerSheet != null ? 'پاسخنامه دارد، ولی میتوانید مجددا آپلود کنید' : 'پاسخنامه ندارد' : 'آپلود پاسخنامه'}}
-                                        </label>
-                                    </div>
-                                    <p class="file-return"></p>
-                                    @if($modify == 1 && $giftExam->answerSheet != null)
-                                        <a class="file-return" href="{{$giftExam->answerSheetPath}}">دانلود
-                                            پاسخنامه</a>
-                                    @endif
-                                </div>
-                                <div class="invalid-feedback">
-                                    <small>{{ $errors->first('answerSheet') }}</small>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="row">
                             <div class="col-md-12">

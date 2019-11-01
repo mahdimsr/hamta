@@ -9,8 +9,6 @@
     use App\model\Orientation;
     use App\model\Question;
     use App\model\QuestionExam;
-    use App\model\ExamCode;
-    use App\model\Discount;
     use Carbon\Carbon;
     use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
@@ -209,7 +207,7 @@
                 'optionTwo'    => 'required',
                 'optionOne'    => 'required',
                 'answer'       => ['required', Rule::in(['1', '2', '3', '4'])],
-                'photo'        => 'image',
+                'photo'        => 'image|max:1000',
                 'answerImage'  => 'image|max:1000',
 
             ]);
@@ -286,7 +284,7 @@
                 'optionTwo'    => 'required',
                 'optionOne'    => 'required',
                 'answer'       => ['required', Rule::in(['1', '2', '3', '4'])],
-                'photo'        => 'image',
+                'photo'        => 'image|max:1000',
                 'answerImage'  => 'image|max:1000',
 
             ]);
@@ -337,109 +335,6 @@
 
             return redirect()->back();
 
-        }
-
-
-        public function discounts($exm)
-        {
-
-            $lessonExam    = LessonExam::where('exm', $exm)->first();
-            $examDiscounts = ExamCode::where('examId', $lessonExam->id)->get();
-
-
-            return view('admin.dashboard.lessonExam.discounts', compact('examDiscounts', 'exm'));
-        }
-
-
-        public function discountAddShow($exm)
-        {
-
-            $modify = 0;
-
-            return view('admin.dashboard.lessonExam.discount_form', compact('modify', 'exm'));
-        }
-
-
-        public function discountAdd(Request $request, $exm)
-        {
-
-            $lessonExam = LessonExam::where('exm', $exm)->first();
-
-            $this->validate($request, ['code'    => 'required|string|max:8|unique:discount,code',
-                                       'value'   => 'required|numeric|min:0|max:100',
-                                       'endDate' => 'required']);
-
-            $discount = new Discount();
-
-            $discount->code  = $request->input('code');
-            $discount->value = $request->input('value');
-            $discount->count = 1;
-            $discount->type  = 'LESSONEXAM-OFF';
-
-            //convert endDate
-            $persianDate       = Lib::convertFaToEn($request->input('endDate'));
-            $date              = CalendarUtils::createDatetimeFromFormat('Y/m/d', $persianDate);
-            $carbon            = Carbon::createFromTimestamp($date->getTimestamp());
-            $discount->endDate = $carbon->toDateTimeString();
-
-            $discount->save();
-
-            $examCode = new ExamCode();
-
-            $examCode->examId     = $lessonExam->id;
-            $examCode->discountId = $discount->id;
-            $examCode->save();
-
-            return redirect()->back();
-        }
-
-
-        public function discountEditShow($exm, $discountId)
-        {
-
-            $modify   = 1;
-            $discount = Discount::query()->find($discountId);
-
-            return view('admin.dashboard.lessonExam.discount_form', compact('modify', 'exm', 'discount'));
-        }
-
-
-        public function discountEdit(Request $request, $exm, $discountId)
-        {
-
-            $discount = Discount::where('id', $discountId)->first();
-
-            $this->validate($request, ['code'    => ['required',
-                                                     'string',
-                                                     'max:8',
-                                                     Rule::unique('discount', 'code')->ignore($discount)],
-                                       'value'   => 'required|numeric|min:0|max:100',
-                                       'endDate' => 'required']);
-
-            $discount->code  = $request->input('code');
-            $discount->value = $request->input('value');
-            $discount->count = 1;
-
-            //convert endDate
-            $persianDate       = Lib::convertFaToEn($request->input('endDate'));
-            $date              = CalendarUtils::createDatetimeFromFormat('Y/m/d', $persianDate);
-            $carbon            = Carbon::createFromTimestamp($date->getTimestamp());
-            $discount->endDate = $carbon->toDateTimeString();
-
-            $discount->save();
-
-            return redirect()->back();
-        }
-
-
-        public function discountRemove($exm, $discountId)
-        {
-
-            $discount = Discount::query()->find($discountId);
-
-            $discount->delete();
-
-            return redirect()->back();
         }
 
     }

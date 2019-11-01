@@ -49,16 +49,21 @@
         -->
 
         <div class="sidebar-wrapper">
-            <div class="logo" dir="rtl">
-                <a class="simple-text">
-                    {{$student->isComplete==0 ? 'دانش آموز گرامی خوش آمدی!' :$student->name.' '.$student->familyName.' خوش آمدی!' }}
-                </a>
-            </div>
+
             <ul class="nav text-right ">
+                <li class="user-profile">
+                    <img src="{{ asset('image/student/dashboard/full-screen-image-3.jpg') }}" alt="">
+
+                </li>
+                <div class="logo" dir="rtl">
+                        <a class="simple-text">
+                            {{$student->isComplete==0 ? 'دانش آموز گرامی خوش آمدی!' :$student->name.' '.$student->familyName.' خوش آمدی!' }}
+                        </a>
+                    </div>
                 <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_exams' ? 'active' : ''}}">
                     <a href="{{route('student_dashboard_exams')}}">
                         <i class="fa fa-file"></i>
-                        <p>آزمون های آنلاین</p>
+                        <p>آزمون های من</p>
                     </a>
                 </li>
                 <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_scholarship' ? 'active' : ''}}">
@@ -71,58 +76,68 @@
                     <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
                         <span class="tooltiptext">!!!در حال راه اندازی</span>
                         <i class="fa fa-file-video"></i>
-                        <p>ویدیو آموزشی</p>
+                        <p>کد های تخفیف من</p>
                     </a>
                 </li>
                 <li>
                     <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
                         <span class="tooltiptext">!!!در حال راه اندازی</span>
                         <i class="fa fa-university"></i>
-                        <p>کلاس های آنلاین</p>
+                        <p>کیف پول من</p>
                     </a>
                 </li>
                 <li>
                     <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
                         <span class="tooltiptext">!!!در حال راه اندازی</span>
                         <i class="fa fa-users"></i>
-                        <p>من و مشاورم</p>
+                        <p>اطلاعات شخصی من</p>
                     </a>
                 </li>
-                <li>
+                {{-- <li>
                     <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
                         <span class="tooltiptext">!!!در حال راه اندازی</span>
                         <i class="fa fa-book"></i>
                         <p>کتاب های کمک درسی</p>
                     </a>
-                </li>
-                <li>
+                </li> --}}
+                {{-- <li>
                     <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
                         <span class="tooltiptext">!!!در حال راه اندازی</span>
                         <i class="fa fa-clock"></i>
                         <p>فرصتی تا کنکور</p>
                     </a>
-                </li>
-                <li>
+                </li> --}}
+                {{-- <li>
                     <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
                         <span class="tooltiptext">!!!در حال راه اندازی</span>
                         <i class="fa fa-gamepad"></i>
                         <p>بازی و سرگرمی</p>
                     </a>
-                </li>
-                <li>
+                </li> --}}
+                {{-- <li>
                     <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
                         <span class="tooltiptext">!!!در حال راه اندازی</span>
                         <i class="fa fa-newspaper"></i>
                         <p>معرفی دبیر</p>
                     </a>
-                </li>
-                <li>
+                </li> --}}
+                {{-- <li>
                     <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
                         <span class="tooltiptext">!!!در حال راه اندازی</span>
                         <i class="fa fa-comments"></i>
                         <p>بحث و گفتگو</p>
                     </a>
+                </li> --}}
+
+
+                <li class="bagdet">
+                    <div class="badget-content">
+                        <div class="badget-header">میتونه عنوان باشه</div>
+                        <div class="badget-rem">باقی مانده پول رو به این شکل اینجا بزاریم</div>
+                    </div>
                 </li>
+
+
             </ul>
         </div>
     </div>
@@ -142,23 +157,23 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        @if(isset($carts))
+                        @if(isset($cart))
                             <li>
                                 <a href="{{route('student_dashboard_lessonExams_purchaseForm')}}">
                                     <i class="fa fa-wallet"></i>
                                     <p class="hidden-lg hidden-md">لیست خرید</p>
-                                    <span class="notification hidden-sm hidden-xs">{{count($carts)}}</span>
+                                    <span class="notification hidden-sm hidden-xs">{{count($cart)}}</span>
                                 </a>
                             </li>
-                        @endif
-                        <li>
+                        @endif --}}
+                        {{-- <li>
                             <a href="{{route('student_dashboard_wallet_form')}}">
                                 <i class="fa fa-wallet"></i>
                                 <p class="hidden-lg hidden-md">کیف پول</p>
                                 <span class="notification hidden-sm hidden-xs">{{$student->wallet}}</span>
                             </a>
-                        </li>
-                        <li class="dropdown">
+                        </li> --}}
+                        {{-- <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
                                 <i class="fa fa-globe"></i>
@@ -176,21 +191,26 @@
                                 <li><a href="#">اعلان 4</a></li>
                                 <li><a href="#"> اعلان</a></li>
                             </ul>
-                        </li>
-                        <li>
+                        </li> --}}
+                        {{-- <li>
                             <a href="">
                                 <i class="fa fa-search"></i>
                                 <p class="hidden-lg hidden-md">جست وجو</p>
                             </a>
-                        </li>
+                        </li> --}}
                         <li>
-                            <a class="btn btn-fill btn-info" href="{{route('student_dashboard_lessonExams_result')}}">
-                                صفحه نتایج
+                            <a class="active" href="{{route('student_dashboard_lessonExams_result')}}">
+                           ایتم اول
                             </a>
                         </li>
                         <li>
-                            <a class="btn btn-fill btn-info" href="{{route('student_test')}}">
-                                صفحه تست و آزمایش
+                            <a class="" href="{{route('student_test')}}">
+                               ایتم دوم
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="{{route('student_test')}}">
+                                ایتم سوم
                             </a>
                         </li>
                     </ul>

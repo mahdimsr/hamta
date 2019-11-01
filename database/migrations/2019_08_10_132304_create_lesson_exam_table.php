@@ -23,7 +23,7 @@
                 $table->string('exm')->nullable();
                 $table->string('title');
                 $table->string('description')->nullable();
-                $table->float('price')->nullable()->default(0);
+                $table->integer('price')->nullable()->default(0);
                 $table->date('activeDate')->nullable();
                 $table->integer('duration')->nullable();
                 $table->enum('status', ['COMPLETE', 'IN-QUESTION', 'IN-COMPLETE']);

@@ -27,14 +27,14 @@
             Route::get('/register', 'AuthController@registerForm')->name('student_register_form');
             Route::post('/register', 'AuthController@register')->name('student_register');
             Route::get('/verify', 'AuthController@verifyForm')->name('student_verify_form');
+            Route::get('/newPassword', 'AuthController@newPasswordForm')->name('student_newPassword_form');
             Route::post('/forgetPassword', 'AuthController@forgetPassword')->name('student_forgetPassword');
             Route::get('/logout', 'AuthController@logout')->name('student_dashboard_logout');
         });
         Route::middleware('auth:student')->namespace('Dashboard')->prefix('student/dashboard')->group(function()
         {
-
+            Route::get('/content', 'DashboardController@content')->name('student_dashboard_content');
             Route::get('/profile', 'ProfileController@profileForm')->name('student_dashboard_profile_form');
-      
             Route::post('/profile', 'ProfileController@updateProfile')->name('student_dashboard_profile_update');
             Route::post('/profileEdit', 'ProfileController@editProfile')->name('student_dashboard_profile_edit');
             Route::get('/scholarship', 'ScholarshipController@scholarshipForm')->name('student_dashboard_scholarship_form');
@@ -42,56 +42,34 @@
 
             Route::prefix('exams')->group(function()
             {
-
                 Route::get('/', 'DashboardController@exams')->name('student_dashboard_exams');
 
                 Route::prefix('lesson')->group(function()
                 {
-
                     Route::get('/', 'LessonExamController@lessonExams')->name('student_dashboard_lessonExams');
-
-
-                    //add exams to cart
-                    Route::get('/addToCart/{exm}', 'LessonExamController@addToCart')
-                         ->name('student_dashboard_lessonExams_addToCart');
-
-                    //show payment page
-                    Route::get('/purchase', 'LessonExamController@purchaseForm')
-                         ->name('student_dashboard_lessonExams_purchaseForm');
-
-                    //validate discount code
-                    Route::post('validateDiscountCode', 'LessonExamController@validateDiscountCode')
-                         ->name('student_dashboard_lessonExams_validateDiscountCode');
-
-                    Route::post('/purchaseWallet', 'LessonExamController@purchaseWallet')
-                         ->name('student_dashboard_lessonExams_purchaseWallet');
-
-                    Route::get('/questions/{exm}', 'LessonExamController@questions')
-                         ->name('student_dashboard_lessonExams_questions');
-
-                    Route::post('/questions_correct', 'LessonExamController@questionsCorrect')
-                         ->name('student_dashboard_lessonExams_questionsCorrect');
-
+                    Route::get('/addToCart/{exm}', 'LessonExamController@addToCart')->name('student_dashboard_lessonExams_addToCart');
+                    Route::get('/purchase', 'LessonExamController@purchaseForm')->name('student_dashboard_lessonExams_purchaseForm');
+                    Route::post('validateDiscountCode', 'LessonExamController@validateDiscountCode')->name('student_dashboard_lessonExams_validateDiscountCode');
+                    Route::post('/purchaseWallet', 'LessonExamController@purchaseWallet')->name('student_dashboard_lessonExams_purchaseWallet');
+                    Route::get('/questions/{exm}', 'LessonExamController@questions')->name('student_dashboard_lessonExams_questions');
+                    Route::post('/questions_correct', 'LessonExamController@questionsCorrect')->name('student_dashboard_lessonExams_questionsCorrect');
                     Route::get('/result', 'LessonExamController@result')->name('student_dashboard_lessonExams_result');
                 });
+
             });
+
             Route::prefix('wallet')->group(function()
             {
-
                 Route::get('/', 'WalletController@walletForm')->name('student_dashboard_wallet_form');
-
                 Route::post('/charge', 'WalletController@walletCharge')->name('student_dashboard_wallet_charge');
-
-                Route::post('/purchaseLessonExam', 'WalletController@walletPurchaseLessonExam')
-                     ->name('student_dashboard_wallet_purchaseLessonExam');
-
-                     Route::get('/purchaseLessonExamVerify', 'WalletController@walletPurchaseLessonExamVerify')
-                     ->name('student_dashboard_wallet_purchaseLessonExamVerify');
+                Route::post('/purchaseLessonExam', 'WalletController@walletPurchaseLessonExam')->name('student_dashboard_wallet_purchaseLessonExam');
+                Route::get('/purchaseLessonExamVerify', 'WalletController@walletPurchaseLessonExamVerify')->name('student_dashboard_wallet_purchaseLessonExamVerify');
                 Route::get('/verify', 'WalletController@walletVerify')->name('student_dashboard_wallet_verify');
             });
 
             Route::get('/discounts', 'DashboardController@discounts')->name('student_dashboard_discounts');
             Route::get('/transactions', 'DashboardController@transactions')->name('student_dashboard_transactions');
+
 
         });
     });
@@ -136,21 +114,6 @@
                     Route::post('{exm}/edit', 'LessonExamController@edit')->name('admin_ltlExams_edit');
                     Route::post('/add', 'LessonExamController@add')->name('admin_ltlExams_add');
                     Route::get('{exm}/remove', 'LessonExamController@remove')->name('admin_ltlExams_remove');
-
-                    Route::prefix('/{exm}/discounts')->group(function()
-                    {
-
-                        Route::get('/', 'LessonExamController@discounts')->name('admin_ltlExams_discounts');
-                        Route::get('/add', 'LessonExamController@discountAddShow')
-                             ->name('admin_ltlExams_discountAddShow');
-                        Route::post('/add', 'LessonExamController@discountAdd')->name('admin_ltlExams_discountAdd');
-                        Route::get('/edit/{discountId}', 'LessonExamController@discountEditShow')
-                             ->name('admin_ltlExams_discountEditShow');
-                        Route::post('/edit/{discountId}', 'LessonExamController@discountEdit')
-                             ->name('admin_ltlExams_discountEdit');
-                        Route::get('/remove/{discountId}', 'LessonExamController@discountRemove')
-                             ->name('admin_ltlExams_discountRemove');
-                    });
 
                     Route::prefix('{exm}/questions')->group(function()
                     {

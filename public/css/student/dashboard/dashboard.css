@@ -104,7 +104,7 @@ h5, .h5 {
 h6, .h6 {
     font-size: 14px;
     font-weight: 600;
-    text-transform: uppercase;
+  
 }
 
 p {
@@ -234,6 +234,7 @@ input:focus {
 }
 
 .sidebar {
+
     position: fixed;
     top: 0;
     bottom: 0;
@@ -250,6 +251,7 @@ input:focus {
 }
 
 .sidebar .sidebar-wrapper {
+    background-color: #cfeaff4a;
     position: relative;
     max-height: calc(100vh - 75px);
     min-height: 100%;
@@ -286,13 +288,13 @@ input:focus {
 }
 
 .sidebar .logo .simple-text {
-    text-transform: uppercase;
+
     padding: 5px 0px;
     display: block;
     font-size: 18px;
     color: #FFFFFF;
     text-align: center;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 30px;
 }
 
@@ -339,7 +341,7 @@ input:focus {
 
 .sidebar .nav li.separator {
     margin: 15px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    /* border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
 }
 
 .sidebar .nav li.separator + li {
@@ -348,10 +350,10 @@ input:focus {
 
 .sidebar .nav p {
     margin: 0;
-    line-height: 30px;
+    line-height: 20px;
     font-size: 12px;
     font-weight: 600;
-    text-transform: uppercase;
+  
     margin-left: 45px;
 }
 
@@ -359,7 +361,7 @@ input:focus {
     font-size: 28px;
     float: right;
     margin-left: 15px;
-    line-height: 30px;
+    line-height: 20px;
     width: 30px;
     text-align: center;
 }
@@ -371,8 +373,7 @@ input:focus {
 }
 
 .sidebar .logo {
-    padding: 10px 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border: none;
 }
 
 .sidebar .logo p {
@@ -385,13 +386,13 @@ input:focus {
 }
 
 .sidebar .logo .simple-text {
-    text-transform: uppercase;
+
     padding: 5px 0px;
     display: block;
     font-size: 18px;
-    color: #FFFFFF;
+    color: #000000;
     text-align: center;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 30px;
 }
 
@@ -513,7 +514,8 @@ input:focus {
     position: relative;
     z-index: 2;
     float: left;
-    width: calc(100% - 260px);
+    width: calc(100% - 421px);
+    background-color: #ffffff;
 }
 
 .main-panel > .content {
@@ -1212,7 +1214,7 @@ fieldset[disabled] .btn-neutral.active {
 .table > thead > tr > th {
     border-bottom-width: 1px;
     font-size: 12px;
-    text-transform: uppercase;
+    
     color: #9A9A9A;
     font-weight: 400;
     padding-bottom: 5px;
@@ -1694,7 +1696,7 @@ fieldset[disabled] .btn-neutral.active {
 }
 
 .navbar.fixed {
-    width: calc(100% - $sidebar-width);
+    width: calc(100% - sidebar-width);
     right: 0;
     left: auto;
     border-radius: 0;
@@ -1800,14 +1802,17 @@ fieldset[disabled] .btn-neutral.active {
 }
 
 .navbar-default {
-    background-color: rgba(255, 255, 255, 0.96);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+border: none;
 }
 
 .navbar-default .navbar-nav > li > a:not(.btn) {
     color: #9A9A9A;
+    font-size: 13px;
 }
-
+.navbar-default .navbar-nav > li > a:not(.btn).active{
+    color: black;
+    border-bottom: red solid 1px;
+}
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:not(.btn):hover,
 .navbar-default .navbar-nav > .active > a:not(.btn):focus,
@@ -2239,7 +2244,7 @@ fieldset[disabled] .btn-neutral.active {
 .card label {
     font-size: 12px;
     margin-bottom: 5px;
-    text-transform: uppercase;
+
 }
 
 .card .title {
@@ -2287,7 +2292,7 @@ fieldset[disabled] .btn-neutral.active {
 .card .author {
     margin-top: -40px;
     font-weight: 600;
-    text-transform: uppercase;
+ 
 }
 
 .card .author i {
@@ -3335,6 +3340,11 @@ fieldset[disabled] .btn-neutral.active {
     .sidebar .nav li > a {
         padding: 10px 15px;
     }
+    .navbar-collapse .nav li > a,
+    .sidebar .nav li > a.active{
+        color: black;
+        border-bottom: red solid 1px;
+    }
     .navbar-collapse .nav,
     .sidebar .nav {
         margin-top: 10px;
@@ -3821,4 +3831,24 @@ fieldset[disabled] .btn-neutral.active {
         -ms-overflow-style: -ms-autohiding-scrollbar;
         -webkit-overflow-scrolling: touch;
     }
+}
+/* استایل خودم */
+.user-profile{
+    right: 56%;
+    transform: translate(20%,0%);
+}
+.user-profile img{
+    height: 100px;
+    border-radius: 50%;
+    width: 100px;
+}
+.bagdet{
+    margin: 6em 20px;
+background-color: #EC5574;
+    filter: opacity(1) ;
+    border-radius: 25px;
+    padding: 15px 0px 15px 0px;
+}
+.badget-content{
+    text-align: center;
 }
