@@ -64,7 +64,7 @@ class AuthController extends Controller
 
 
 
-			return redirect()->route('student_dashboard_profile_form');
+			return redirect()->route('student_dashboard_content');
 
         }
 
