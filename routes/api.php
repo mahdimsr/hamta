@@ -33,6 +33,12 @@
             Route::get('/index', 'IndexController@index')->name('api_student_index');
 
 
+            Route::prefix('lessonExams')->group(function()
+            {
+
+                Route::get('/','LessonExamController@lessonExams')->name('api_student_lessonExams');
+
+            });
         });
 
 

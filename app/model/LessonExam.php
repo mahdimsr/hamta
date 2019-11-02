@@ -34,6 +34,13 @@
 
         protected $appends = ['persianCreatedAt', 'persianUpdatedAt'];
 
+        protected $casts
+            = [
+
+                'isPublic' => 'boolean',
+
+            ];
+
 
         protected static function boot()
         {
