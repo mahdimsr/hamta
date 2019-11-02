@@ -29,7 +29,9 @@
                             </button>
                         @elseif($lessonExam->hasPurchased())
                         <button class="ctrl-standard typ-subhed fx-bubbleDown">
-                            شرکت در آزمون
+                            <a href="{{ route('student_dashboard_lessonExams_questions',['exm' => $lessonExam->exm]) }}">
+                                شرکت در آزمون
+                            </a>
                         </button>
                         @else
                             <button class="ctrl-standard typ-subhed fx-bubbleDown">
