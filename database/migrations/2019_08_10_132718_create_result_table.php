@@ -20,9 +20,10 @@ class CreateResultTable extends Migration
             $table->enum('type',['LESSONEXAM','GIFTEXAM']);
             $table->integer('studentId');
             $table->integer('examId');
-            $table->integer('blankAnswers');
-			$table->integer('correctAnswers');
-			$table->integer('wrongAnswers');
+            $table->integer('blankAnswers')->default(0);
+			$table->integer('correctAnswers')->default(0);
+            $table->integer('wrongAnswers')->default(0);
+            $table->enum('status',['IN-PROGRESS','COMPLETE']);
 			$table->timestamps();
 			$table->softDeletes();
 		});

@@ -234,7 +234,7 @@
         {
 
             $authId    = Auth::guard('student')->id();
-            $result    = Result::query()->where('examId', $this->id)->where('studentId', $authId)->where('type','LESSONEXAM')->first();
+            $result    = Result::query()->where('examId', $this->id)->where('studentId', $authId)->where('type','LESSONEXAM')->where('status','COMPLETE')->first();
 
             if ($result)
             {
@@ -245,6 +245,26 @@
             {
                 return false;
             }
+
+        }
+
+        public function remainingTime()
+        {
+
+            $authId       = Auth::guard('student')->id();
+            $result       = Result::query()->where('studentId',$authId)->where('examId',$this->id)->first();
+            $durationTime = $result->created_at->addMinutes($this->duration)->addSeconds(2);
+            $now          = Carbon::now();
+
+                if($now->gte($durationTime))
+                {
+                    return '00:01';
+                }
+
+                else
+                {
+                    return  gmdate('i:s', $durationTime->diffInSeconds($now));
+                }
 
         }
 

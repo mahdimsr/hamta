@@ -212,7 +212,7 @@
              aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
     </div>
 
-    <form action="{{route('student_dashboard_lessonExams_result',['exm' => $lessonExam->exm])}}" method="post">
+    <form id="form" action="{{route('student_dashboard_lessonExams_result',['exm' => $lessonExam->exm])}}" method="post">
 
         {{csrf_field()}}
 
@@ -270,7 +270,6 @@
 
     </form>
 
-
 @endsection
 
 
@@ -278,7 +277,7 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js'></script>
 <script type="text/javascript">
 TweenLite.defaultEase = Expo.easeOut;
-var time = {{ $lessonExam->duration }} + ':00';
+var time = "{{ $examTime }}";
 initTimer(time); // other ways --> "0:15" "03:5" "5:2"
 
 var reloadBtn = document.querySelector('.reload');
@@ -369,8 +368,7 @@ function countdownFinished() {
 
     });
    }, 1000);
-   var route = '{{ route('student_dashboard_lessonExams') }}';
-   location.replace(route);
+   document.getElementById('form').submit();
 }
 
 // reloadBtn.addEventListener('click', function () {
