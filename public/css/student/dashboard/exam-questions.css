@@ -501,3 +501,118 @@ h3{
               transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, -225, 0, 1);
     }
   }
+
+/* تایمر */
+
+
+
+
+
+
+
+
+
+
+
+
+/* تغییرات */
+
+
+
+.back-link-arrow{
+    position: absolute;
+    top: 4%;
+    left: 5%;
+    font-size: 20px;
+
+}
+.fas.fa-arrow-left{
+color: #2bbbad!important;
+
+}
+
+
+
+  .timer {
+	width: 550px;
+	height: 248px;
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -275px;
+	margin-top: -124px;
+	color: #2bbbad!important;
+	z-index: -1;
+  }
+  .timer * {
+	cursor: default;
+  }
+  .timer h3 {
+	width: 100%;
+	font-size: 26px;
+	letter-spacing: 4px;
+	text-align: center;
+  }
+  .timer--clock {
+	
+	position: relative;
+	
+	margin-top: 22px;
+	overflow: hidden;
+	left: 41%;
+	top: 58%;
+  }
+  .timer--clock .clock-display-grp {
+	width: 100%;
+	position: relative;
+  }
+  .timer--clock .clock-display-grp .number-grp {
+	width: auto;
+	display: block;
+	height: 156px;
+	float: left;
+	overflow: hidden;
+  }
+  .timer--clock .clock-display-grp .number-grp .number-grp-wrp {
+	width: 100%;
+	position: relative;
+  }
+  .timer--clock .clock-display-grp .number-grp .number-grp-wrp .num {
+	width: 100%;
+	position: relative;
+	height: 156px;
+  }
+  .timer--clock .clock-display-grp .number-grp .number-grp-wrp .num p {
+	width: auto;
+	display: table;
+	font-size: 30px;
+	line-height: 150px;
+	font-weight: bold;
+  }
+  .timer--clock .clock-separator {
+	width: auto;
+	float: left;
+	display: block;
+	height: 156px;
+  }
+  .timer--clock .clock-separator p {
+	width: auto;
+	display: table;
+	font-size: 30px;
+	line-height: 150px;
+	font-weight: bold;
+  }
+
+  .reload {
+	width: 121px;
+    height: 14px;
+    position: relative;
+    bottom: 3rem;
+    left: 34%;
+ 
+    opacity: 0;
+    display: none;
+    cursor: pointer;
+    z-index: 9999;
+  }
