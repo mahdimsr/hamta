@@ -47,13 +47,12 @@
                 Route::prefix('lesson')->group(function()
                 {
                     Route::get('/', 'LessonExamController@lessonExams')->name('student_dashboard_lessonExams');
-                    Route::get('/addToCart/{exm}', 'LessonExamController@addToCart')->name('student_dashboard_lessonExams_addToCart');
+                    Route::get('{exm}/addToCart', 'LessonExamController@addToCart')->name('student_dashboard_lessonExams_addToCart');
                     Route::get('/purchase', 'LessonExamController@purchaseForm')->name('student_dashboard_lessonExams_purchaseForm');
                     Route::post('validateDiscountCode', 'LessonExamController@validateDiscountCode')->name('student_dashboard_lessonExams_validateDiscountCode');
                     Route::post('/purchaseWallet', 'LessonExamController@purchaseWallet')->name('student_dashboard_lessonExams_purchaseWallet');
-                    Route::get('/questions/{exm}', 'LessonExamController@questions')->name('student_dashboard_lessonExams_questions');
-                    Route::post('/questions_correct', 'LessonExamController@questionsCorrect')->name('student_dashboard_lessonExams_questionsCorrect');
-                    Route::get('/result', 'LessonExamController@result')->name('student_dashboard_lessonExams_result');
+                    Route::get('{exm}/questions', 'LessonExamController@questions')->name('student_dashboard_lessonExams_questions');
+                    Route::post('{exm}/result', 'LessonExamController@result')->name('student_dashboard_lessonExams_result');
                 });
 
             });
@@ -67,6 +66,7 @@
                 Route::get('/verify', 'WalletController@walletVerify')->name('student_dashboard_wallet_verify');
             });
 
+            Route::get('/results', 'DashboardController@results')->name('student_dashboard_results');
             Route::get('/discounts', 'DashboardController@discounts')->name('student_dashboard_discounts');
             Route::get('/transactions', 'DashboardController@transactions')->name('student_dashboard_transactions');
 
