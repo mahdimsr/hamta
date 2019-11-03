@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Student\Dashboard;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\model\Result;
 use App\model\StudentCode;
 use App\model\Transaction;
 use Illuminate\Support\Facades\Auth;
@@ -35,4 +36,13 @@ class DashboardController extends Controller
     {
         return view('student.dashboard.main');
     }
+    public function results()
+	{
+
+        $student  = Auth::guard('student')->user();
+        $results  = Result::query()->where('studentId',$student->id)->get();
+
+		return view('student.dashboard.lessonExam.result', compact('student','results'));
+    }
+
 }

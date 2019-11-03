@@ -20,7 +20,7 @@
             <li><input type="checkbox" id="checkboxOne" ><label for="checkboxOne">دوازدهم</label></li>
             <li><input type="checkbox" id="checkboxTwo"><label for="checkboxTwo">یازدهم</label></li>
             <li><input type="checkbox" id="checkboxThree"><label for="checkboxThree">دهم</label></li>
-            
+
           </ul>
 
       </div>
@@ -40,12 +40,64 @@
     <div class="container">
       <h4 class="display-4">
         <div id="circle-gerayesh">
-   
+
+    <div class="row" dir="rtl">
+        @foreach($lessonExams as $lessonExam)
+            @if(!$lessonExam->hasUsed())
+            <div class="col-md-4 col-sm-4">
+                <div class="card text-center">
+                    <div class="card-header"><h5 class="card-title">{{$lessonExam->title}}</h5></div>
+                    <div class="hover14">
+                        <figure>
+                            <img class="" src="{{asset('image/student/dashboard/exam.jpg')}}" class="card-img-top"
+                                 alt="" width="100%" height="200rem">
+                        </figure>
+                    </div>
+                    <div class="card-body">
+                        @if($lessonExam->description)
+                            <h5 class="card-title">توضیحات</h5>
+                            <p class="card-text margin-card">
+                                {{$lessonExam->description}}
+                            </p>
+                        @endif
+                        <p class="card-text margin-card">
+                            {{$lessonExam->price . ' تومان '}}
+                        </p>
+
+                        @if($lessonExam->hasInCart() && !$lessonExam->hasPurchased())
+                            <button class="ctrl-standard typ-subhed fx-bubbleDown">
+                                در لیست خرید موجود است
+                            </button>
+                        @elseif($lessonExam->hasPurchased())
+                        <button class="ctrl-standard typ-subhed fx-bubbleDown">
+                            <a href="{{ route('student_dashboard_lessonExams_questions',['exm' => $lessonExam->exm]) }}">
+                                شرکت در آزمون
+                            </a>
+                        </button>
+                        @else
+                            <button class="ctrl-standard typ-subhed fx-bubbleDown">
+                                <a href="{{ route('student_dashboard_lessonExams_addToCart',['exm' => $lessonExam->exm]) }}">
+                                    افزودن به لیست خرید
+                                </a>
+                        </button>
+                        @endif
+
+                    </div>
+                    <div class="card-footer text-muteds text-center">
+                        <p>{{$lessonExam->persianCreatedAt}} </p>
+                        @foreach($lessonExam->grades() as $grade)
+                            <p>{{$grade->title}}</p>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            @endif
+        @endforeach
     </div>
     گرایش
     </h4>
       <div class="lead">
-          
+
             <ul class="kp-cboxtags">
                     <li><input type="checkbox" id="checkboxfour" ><label for="checkboxfour">انسانی</label></li>
                     <li><input type="checkbox" id="checkboxfive"><label for="checkboxfive">تجربی</label></li>
@@ -59,7 +111,7 @@
   </div>
   <hr>
   <h4 dir="rtl">ازمون درس به درس</h4>
-  
+
   <div id="app" class="containerC">
         <card data-image="{{asset('image/student/auth/auth.jpg')}}">
             <h4 slot="header">ریاضی 1</h4>
