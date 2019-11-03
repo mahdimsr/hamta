@@ -25,7 +25,7 @@
 
         protected $table = 'grade_lesson';
 
-        protected $appends = ['title', 'lesson_grade','sort_title'];
+        protected $appends = ['title', 'lesson_grade', 'sort_title'];
 
 
         protected static function boot()
@@ -35,6 +35,7 @@
 
             self::deleting(function($model)
             {
+
                 $model->examGradeLessons()->delete();
                 $model->questions()->delete();
             });
@@ -73,27 +74,31 @@
             return $lessonTitle . ' - ' . $gradeTitle;
         }
 
+
         public function getSortTitleAttribute()
         {
+
             return $this->SortPersianEnum($this->sort);
         }
 
+
         public function SortPersianEnum($enumKey)
         {
-            $sortArray =
-            [
-                'GENERAL' => 'عمومی',
-                'EXPERT'  => 'تخصصی'
-            ];
 
-            return $sortArray[$enumKey];
+            $sortArray
+                = ['GENERAL' => 'عمومی',
+                   'EXPERT'  => 'تخصصی'];
+
+            return $sortArray[ $enumKey ];
         }
+
 
         public function orientation()
         {
 
-            return $this->belongsTo(Orientation::class,'orientationId');
+            return $this->belongsTo(Orientation::class, 'orientationId');
         }
+
 
         public function grade()
         {
@@ -120,6 +125,22 @@
         {
 
             return $this->hasMany(Question::class, 'gradeLessonId');
+        }
+
+
+        public function lessonExams()
+        {
+
+            return $this->hasManyThrough(LessonExam::class, ExamGradeLesson::class, 'gradeLessonId', 'id', 'id', 'examId')
+                        ->where('type', 'LESSON_EXAM');
+
+        }
+
+
+        public function examGradeLesson_lessonExamType()
+        {
+
+            return $this->hasMany(ExamGradeLesson::class, 'gradeLessonId')->where('type', 'LESSON_EXAM');
         }
 
 

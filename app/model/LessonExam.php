@@ -61,7 +61,6 @@
         }
 
 
-
         public function getPersianCreatedAtAttribute()
         {
 
@@ -204,8 +203,12 @@
         public function hasInCart()
         {
 
-            $authId = Auth::guard('student')->id();
-            $lessonExam = Cart::query()->where('lessonExamId', $this->id)->where('studentId', $authId)->where('transactionId',0)->first();
+            $authId     = Auth::guard('student')->id();
+            $lessonExam = Cart::query()
+                              ->where('lessonExamId', $this->id)
+                              ->where('studentId', $authId)
+                              ->where('transactionId', 0)
+                              ->first();
 
             if ($lessonExam)
             {
@@ -219,11 +222,16 @@
 
         }
 
+
         public function hasPurchased()
         {
 
-            $authId = Auth::guard('student')->id();
-            $lessonExam = Cart::query()->where('lessonExamId', $this->id)->where('studentId', $authId)->whereNotIn('transactionId',[0])->first();
+            $authId     = Auth::guard('student')->id();
+            $lessonExam = Cart::query()
+                              ->where('lessonExamId', $this->id)
+                              ->where('studentId', $authId)
+                              ->whereNotIn('transactionId', [0])
+                              ->first();
 
             if ($lessonExam)
             {
@@ -235,6 +243,61 @@
                 return false;
             }
 
+        }
+
+
+        public static function filterExam($gradeId, $orientationId)
+        {
+
+            $gradeLessons = null;
+
+            if (isset($gradeId) && $orientationId == null)
+            {
+                $gradeLessons = GradeLesson::query()->whereIn('gradeId', $gradeId)->get();
+            }
+            elseif (isset($orientationId) && $gradeId == null)
+            {
+                $gradeLessons = GradeLesson::query()->whereIn('orientationId', $orientationId)->get();
+            }
+            elseif (isset($gradeId) && isset($orientationId))
+            {
+                $gradeLessons = GradeLesson::query()
+                                           ->whereIn('gradeId', $gradeId)
+                                           ->whereIn('orientationId', $orientationId)
+                                           ->get();
+            }
+
+            $examGradeLessonArray = [];
+            $i                    = 0;
+
+
+            foreach ($gradeLessons as $gradeLesson)
+            {
+                $examGradeLesson = $gradeLesson->examGradeLesson_lessonExamType;
+
+                if (count($examGradeLesson) > 0)
+                {
+
+                    $examGradeLessonArray[ $i++ ] = $examGradeLesson[ 0 ];
+                }
+            }
+
+            $uniqueArray = Lib::unique_ObjectArray($examGradeLessonArray,'examId');
+
+
+
+            $exams = [];
+            $i     = 0;
+
+            foreach ($uniqueArray as $examId)
+            {
+                $lessonExam = LessonExam::query()->find($examId);
+
+                $exams[$i++] = $lessonExam;
+            }
+
+
+            return $exams;
         }
 
     }

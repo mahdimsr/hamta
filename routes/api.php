@@ -36,10 +36,20 @@
             Route::prefix('lessonExams')->group(function()
             {
 
-                Route::get('/','LessonExamController@lessonExams')->name('api_student_lessonExams');
+                Route::get('/', 'LessonExamController@lessonExams')->name('api_student_lessonExams');
 
             });
         });
 
+
+        Route::get('test', function()
+        {
+            $grade = \App\model\Grade::query()->whereIn('id',[1,2])->get();
+
+            $lessonExams = \App\model\LessonExam::filterExam($grade,null);
+
+
+            return $lessonExams;
+        });
 
     });

@@ -79,7 +79,7 @@
         public function lessonExam()
         {
 
-            return $this->belongsTo(LessonExam::class, 'examId')->where('type', '=', 'LESSON_EXAM');
+            return $this->belongsTo(LessonExam::class, 'examId');
         }
 
 
