@@ -16,11 +16,13 @@ class CreateResultTable extends Migration
 	{
 		Schema::create('result', function(Blueprint $table)
 		{
-			$table->bigIncrements('id');
-			$table->integer('score');
-			$table->string('answerSheet');
-			$table->string('currentAnswers');
-			$table->string('wrongAnswers');
+            $table->bigIncrements('id');
+            $table->enum('type',['LESSONEXAM','GIFTEXAM']);
+            $table->integer('studentId');
+            $table->integer('examId');
+            $table->integer('blankAnswers');
+			$table->integer('correctAnswers');
+			$table->integer('wrongAnswers');
 			$table->timestamps();
 			$table->softDeletes();
 		});

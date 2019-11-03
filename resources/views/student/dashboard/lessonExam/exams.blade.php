@@ -3,6 +3,7 @@
 
     <div class="row" dir="rtl">
         @foreach($lessonExams as $lessonExam)
+            @if(!$lessonExam->hasUsed())
             <div class="col-md-4 col-sm-4">
                 <div class="card text-center">
                     <div class="card-header"><h5 class="card-title">{{$lessonExam->title}}</h5></div>
@@ -50,6 +51,7 @@
                     </div>
                 </div>
             </div>
+            @endif
         @endforeach
     </div>
 @endsection

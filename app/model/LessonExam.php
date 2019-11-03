@@ -230,4 +230,26 @@
 
         }
 
+        public function hasUsed()
+        {
+
+            $authId    = Auth::guard('student')->id();
+            $result    = Result::query()->where('examId', $this->id)->where('studentId', $authId)->where('type','LESSONEXAM')->first();
+
+            if ($result)
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public function results()
+        {
+            return $this->hasMany(Result::class,'examId');
+        }
     }

@@ -8,6 +8,7 @@
     use App\model\Transaction;
     use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
+    use App\model\Result;
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Session;
 
@@ -215,30 +216,70 @@
 
         public function questions($exm)
         {
-
+            $student = Auth::guard('student')->user();
             $lessonExam = LessonExam::query()->where('exm', $exm)->first();
 
-            $questions = $lessonExam->questions;
+            if($lessonExam && $lessonExam->hasPurchased() && !$lessonExam->hasUsed())
+            {
+                return view('student.dashboard.lessonExam.exam_questions', compact('student', 'lessonExam'));
+            }
 
-            $student = Auth::guard('student')->user();
+            else
+            {
+                 return redirect()->route('student_dashboard_lessonExams');
+            }
 
-            return view('student.dashboard.lessonExam.exam_questions', compact('student', 'questions'));
         }
 
-
-        public function questionsCorrect(Request $request)
-        {
-
-            return $request;
-        }
-
-
-        public function result()
+        public function result(Request $request ,$exm)
         {
 
             $student = Auth::guard('student')->user();
+            $lessonExam = LessonExam::query()->where('exm', $exm)->first();
 
-            return view('student.dashboard.lessonExam.result', compact('student'));
+            if($lessonExam && $lessonExam->hasPurchased() && !$lessonExam->hasUsed())
+            {
+                $correctAnswers=0;
+                $wrongAnswers=0;
+                $examQuestions = $lessonExam->questions;
+                $questions     = $request->get('questions');
+
+                if($questions)
+                {
+                    foreach($examQuestions as $examQuestion)
+                    {
+                        foreach($questions as $key => $question)
+                        {
+                            if($examQuestion->id==ltrim($key,'answer') && $examQuestion->answer==$question)
+                            {
+                                $correctAnswers++;
+                            }
+
+                            if($examQuestion->id==ltrim($key,'answer')  && $examQuestion->answer!=$question)
+                            {
+                                $wrongAnswers++;
+                            }
+                        }
+                    }
+                }
+
+                $result                 = new Result();
+                $result->type           = 'LESSONEXAM';
+                $result->studentId      = $student->id;
+                $result->examId         = $lessonExam->id;
+                $result->correctAnswers = $correctAnswers;
+                $result->wrongAnswers   = $wrongAnswers;
+                $result->blankAnswers   = count($examQuestions)-($correctAnswers+$wrongAnswers);
+                $result->save();
+
+                return redirect()->route('student_dashboard_results');
+            }
+
+            else
+            {
+                return redirect()->route('student_dashboard_lessonExams');
+            }
+
         }
 
     }

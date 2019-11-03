@@ -184,7 +184,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="btn btn-fill btn-info" href="{{route('student_dashboard_lessonExams_result')}}">
+                            <a class="btn btn-fill btn-info" href="{{ route('student_dashboard_results') }}">
                                 صفحه نتایج
                             </a>
                         </li>
