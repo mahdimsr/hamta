@@ -1,111 +1,109 @@
 @extends('layouts.student_dashboard')
 
-@section('link')
+@section('style')
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-
     <link rel="stylesheet" href="{{ asset('css/student/dashboard/exam-questions.css') }}">
+    <style>
 
+
+
+        .timer {
+            width: 550px;
+            height: 248px;
+            display: block;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            margin-left: -275px;
+            margin-top: -124px;
+            color: #2bbbad!important;
+            z-index: 2;
+          }
+          .timer * {
+            cursor: default;
+          }
+          .timer h3 {
+            width: 100%;
+            font-size: 26px;
+            letter-spacing: 4px;
+            text-align: center;
+          }
+          .timer--clock {
+
+            position: relative;
+
+            margin-top: 22px;
+            overflow: hidden;
+            left: 41%;
+            top: 58%;
+          }
+          .timer--clock .clock-display-grp {
+            width: 100%;
+            position: relative;
+          }
+          .timer--clock .clock-display-grp .number-grp {
+            width: auto;
+            display: block;
+            height: 156px;
+            float: left;
+            overflow: hidden;
+          }
+          .timer--clock .clock-display-grp .number-grp .number-grp-wrp {
+            width: 100%;
+            position: relative;
+          }
+          .timer--clock .clock-display-grp .number-grp .number-grp-wrp .num {
+            width: 100%;
+            position: relative;
+            height: 156px;
+          }
+          .timer--clock .clock-display-grp .number-grp .number-grp-wrp .num p {
+            width: auto;
+            display: table;
+            font-size: 30px;
+            line-height: 150px;
+            font-weight: bold;
+          }
+          .timer--clock .clock-separator {
+            width: auto;
+            float: left;
+            display: block;
+            height: 156px;
+          }
+          .timer--clock .clock-separator p {
+            width: auto;
+            display: table;
+            font-size: 30px;
+            line-height: 150px;
+            font-weight: bold;
+          }
+
+          .reload {
+           background: #2bbbad;
+           height: 100vh;
+           width: 100vh;
+            position: relative;
+            bottom: 3rem;
+            left: 34%;
+            opacity: 0.9;
+            display: none;
+
+            z-index: 9999;
+          }
+        .modd{
+
+        }
+        </style>
 @endsection
 
 @section('content')
-<style>
-
-
-
-.timer {
-	width: 550px;
-	height: 248px;
-	display: block;
-	position: relative;
-	top: 50%;
-	left: 50%;
-	margin-left: -275px;
-	margin-top: -124px;
-	color: #2bbbad!important;
-	z-index: 2;
-  }
-  .timer * {
-	cursor: default;
-  }
-  .timer h3 {
-	width: 100%;
-	font-size: 26px;
-	letter-spacing: 4px;
-	text-align: center;
-  }
-  .timer--clock {
-	
-	position: relative;
-	
-	margin-top: 22px;
-	overflow: hidden;
-	left: 41%;
-	top: 58%;
-  }
-  .timer--clock .clock-display-grp {
-	width: 100%;
-	position: relative;
-  }
-  .timer--clock .clock-display-grp .number-grp {
-	width: auto;
-	display: block;
-	height: 156px;
-	float: left;
-	overflow: hidden;
-  }
-  .timer--clock .clock-display-grp .number-grp .number-grp-wrp {
-	width: 100%;
-	position: relative;
-  }
-  .timer--clock .clock-display-grp .number-grp .number-grp-wrp .num {
-	width: 100%;
-	position: relative;
-	height: 156px;
-  }
-  .timer--clock .clock-display-grp .number-grp .number-grp-wrp .num p {
-	width: auto;
-	display: table;
-	font-size: 30px;
-	line-height: 150px;
-	font-weight: bold;
-  }
-  .timer--clock .clock-separator {
-	width: auto;
-	float: left;
-	display: block;
-	height: 156px;
-  }
-  .timer--clock .clock-separator p {
-	width: auto;
-	display: table;
-	font-size: 30px;
-	line-height: 150px;
-	font-weight: bold;
-  }
-
-  .reload {
-   background: #2bbbad;
-   height: 100vh;
-   width: 100vh;
-    position: relative;
-    bottom: 3rem;
-    left: 34%;
-    opacity: 0.9;
-    display: none;
-   
-    z-index: 9999;
-  }
-.modd{
-
-}
-</style>
 
     <div class="row">
     <div class="col-12">
       <div class="timer">
-       
+
          <div class="timer--clock">
             <div class="minutes-group clock-display-grp">
                <div class="first number-grp">
@@ -169,7 +167,7 @@
                </div>
             </div>
          </div>
-    
+
       </div>
       <div class="reload">
          <div class="moddd">
@@ -272,23 +270,23 @@
 
     </form>
 
-   
+
 @endsection
 
 
 @section('script')
-<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js'></script> 
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js'></script>
 <script type="text/javascript">
 TweenLite.defaultEase = Expo.easeOut;
-
-initTimer("00:01"); // other ways --> "0:15" "03:5" "5:2"
+var time = {{ $lessonExam->duration }} + ':00';
+initTimer(time); // other ways --> "0:15" "03:5" "5:2"
 
 var reloadBtn = document.querySelector('.reload');
 var timerEl = document.querySelector('.timer');
 var col=document.querySelector('col-12');
 
 function initTimer (t) {
-   
+
    var self = this,
        timerEl = document.querySelector('.timer'),
        minutesGroupEl = timerEl.querySelector('.minutes-group'),
@@ -356,7 +354,7 @@ function initTimer (t) {
       });
 
    }
-   
+
    setTimeout(updateTimer, 1000);
 
 }
@@ -365,19 +363,21 @@ function countdownFinished() {
    setTimeout(function () {
       TweenMax.set(reloadBtn, { scale: 0.8, display: 'block' });
       TweenMax.to(timerEl, 1, { opacity: 0.2 });
-      TweenMax.to(reloadBtn, 0.5, { scale: 1, opacity: 1 }); 
+      TweenMax.to(reloadBtn, 0.5, { scale: 1, opacity: 1 });
       TweenMax.to(".list-group-item", .3, {
       opacity: 0,
-   
- });
+
+    });
    }, 1000);
+   var route = '{{ route('student_dashboard_lessonExams') }}';
+   location.replace(route);
 }
 
 // reloadBtn.addEventListener('click', function () {
 //    TweenMax.to(this, 0.5, { opacity: 0, onComplete:
-//       function () { 
+//       function () {
 //          reloadBtn.style.display= "none";
-//       } 
+//       }
 //    });
 //    TweenMax.to(timerEl, 1, { opacity: 1 });
 //    initTimer("00:05");
