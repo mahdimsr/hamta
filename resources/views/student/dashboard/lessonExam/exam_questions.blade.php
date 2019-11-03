@@ -10,83 +10,197 @@
 @endsection
 
 @section('content')
+<style>
 
+
+
+.timer {
+	width: 550px;
+	height: 248px;
+	display: block;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	margin-left: -275px;
+	margin-top: -124px;
+	color: #2bbbad!important;
+	z-index: 2;
+  }
+  .timer * {
+	cursor: default;
+  }
+  .timer h3 {
+	width: 100%;
+	font-size: 26px;
+	letter-spacing: 4px;
+	text-align: center;
+  }
+  .timer--clock {
+	
+	position: relative;
+	
+	margin-top: 22px;
+	overflow: hidden;
+	left: 41%;
+	top: 58%;
+  }
+  .timer--clock .clock-display-grp {
+	width: 100%;
+	position: relative;
+  }
+  .timer--clock .clock-display-grp .number-grp {
+	width: auto;
+	display: block;
+	height: 156px;
+	float: left;
+	overflow: hidden;
+  }
+  .timer--clock .clock-display-grp .number-grp .number-grp-wrp {
+	width: 100%;
+	position: relative;
+  }
+  .timer--clock .clock-display-grp .number-grp .number-grp-wrp .num {
+	width: 100%;
+	position: relative;
+	height: 156px;
+  }
+  .timer--clock .clock-display-grp .number-grp .number-grp-wrp .num p {
+	width: auto;
+	display: table;
+	font-size: 30px;
+	line-height: 150px;
+	font-weight: bold;
+  }
+  .timer--clock .clock-separator {
+	width: auto;
+	float: left;
+	display: block;
+	height: 156px;
+  }
+  .timer--clock .clock-separator p {
+	width: auto;
+	display: table;
+	font-size: 30px;
+	line-height: 150px;
+	font-weight: bold;
+  }
+
+  .reload {
+   background: #2bbbad;
+   height: 100vh;
+   width: 100vh;
+    position: relative;
+    bottom: 3rem;
+    left: 34%;
+    opacity: 0.9;
+    display: none;
+   
+    z-index: 9999;
+  }
+.modd{
+
+}
+</style>
 
     <div class="row">
     <div class="col-12">
-        <div class="timer">
-            <div class="timer--clock">
-               <div class="minutes-group clock-display-grp">
-                  <div class="first number-grp">
-                     <div class="number-grp-wrp">
-                        <div class="num num-0"><p>0</p></div>
-                        <div class="num num-1"><p>1</p></div>
-                        <div class="num num-2"><p>2</p></div>
-                        <div class="num num-3"><p>3</p></div>
-                        <div class="num num-4"><p>4</p></div>
-                        <div class="num num-5"><p>5</p></div>
-                        <div class="num num-6"><p>6</p></div>
-                        <div class="num num-7"><p>7</p></div>
-                        <div class="num num-8"><p>8</p></div>
-                        <div class="num num-9"><p>9</p></div>
-                     </div>
-                  </div>
-                  <div class="second number-grp">
-                     <div class="number-grp-wrp">
-                        <div class="num num-0"><p>0</p></div>
-                        <div class="num num-1"><p>1</p></div>
-                        <div class="num num-2"><p>2</p></div>
-                        <div class="num num-3"><p>3</p></div>
-                        <div class="num num-4"><p>4</p></div>
-                        <div class="num num-5"><p>5</p></div>
-                        <div class="num num-6"><p>6</p></div>
-                        <div class="num num-7"><p>7</p></div>
-                        <div class="num num-8"><p>8</p></div>
-                        <div class="num num-9"><p>9</p></div>
-                     </div>
+      <div class="timer">
+       
+         <div class="timer--clock">
+            <div class="minutes-group clock-display-grp">
+               <div class="first number-grp">
+                  <div class="number-grp-wrp">
+                     <div class="num num-0"><p>0</p></div>
+                     <div class="num num-1"><p>1</p></div>
+                     <div class="num num-2"><p>2</p></div>
+                     <div class="num num-3"><p>3</p></div>
+                     <div class="num num-4"><p>4</p></div>
+                     <div class="num num-5"><p>5</p></div>
+                     <div class="num num-6"><p>6</p></div>
+                     <div class="num num-7"><p>7</p></div>
+                     <div class="num num-8"><p>8</p></div>
+                     <div class="num num-9"><p>9</p></div>
                   </div>
                </div>
-               <div class="clock-separator"><p>:</p></div>
-               <div class="seconds-group clock-display-grp">
-                  <div class="first number-grp">
-                     <div class="number-grp-wrp">
-                        <div class="num num-0"><p>0</p></div>
-                        <div class="num num-1"><p>1</p></div>
-                        <div class="num num-2"><p>2</p></div>
-                        <div class="num num-3"><p>3</p></div>
-                        <div class="num num-4"><p>4</p></div>
-                        <div class="num num-5"><p>5</p></div>
-                        <div class="num num-6"><p>6</p></div>
-                        <div class="num num-7"><p>7</p></div>
-                        <div class="num num-8"><p>8</p></div>
-                        <div class="num num-9"><p>9</p></div>
-                     </div>
-                  </div>
-                  <div class="second number-grp">
-                     <div class="number-grp-wrp">
-                        <div class="num num-0"><p>0</p></div>
-                        <div class="num num-1"><p>1</p></div>
-                        <div class="num num-2"><p>2</p></div>
-                        <div class="num num-3"><p>3</p></div>
-                        <div class="num num-4"><p>4</p></div>
-                        <div class="num num-5"><p>5</p></div>
-                        <div class="num num-6"><p>6</p></div>
-                        <div class="num num-7"><p>7</p></div>
-                        <div class="num num-8"><p>8</p></div>
-                        <div class="num num-9"><p>9</p></div>
-                     </div>
+               <div class="second number-grp">
+                  <div class="number-grp-wrp">
+                     <div class="num num-0"><p>0</p></div>
+                     <div class="num num-1"><p>1</p></div>
+                     <div class="num num-2"><p>2</p></div>
+                     <div class="num num-3"><p>3</p></div>
+                     <div class="num num-4"><p>4</p></div>
+                     <div class="num num-5"><p>5</p></div>
+                     <div class="num num-6"><p>6</p></div>
+                     <div class="num num-7"><p>7</p></div>
+                     <div class="num num-8"><p>8</p></div>
+                     <div class="num num-9"><p>9</p></div>
                   </div>
                </div>
             </div>
-      
+            <div class="clock-separator"><p>:</p></div>
+            <div class="seconds-group clock-display-grp">
+               <div class="first number-grp">
+                  <div class="number-grp-wrp">
+                     <div class="num num-0"><p>0</p></div>
+                     <div class="num num-1"><p>1</p></div>
+                     <div class="num num-2"><p>2</p></div>
+                     <div class="num num-3"><p>3</p></div>
+                     <div class="num num-4"><p>4</p></div>
+                     <div class="num num-5"><p>5</p></div>
+                     <div class="num num-6"><p>6</p></div>
+                     <div class="num num-7"><p>7</p></div>
+                     <div class="num num-8"><p>8</p></div>
+                     <div class="num num-9"><p>9</p></div>
+                  </div>
+               </div>
+               <div class="second number-grp">
+                  <div class="number-grp-wrp">
+                     <div class="num num-0"><p>0</p></div>
+                     <div class="num num-1"><p>1</p></div>
+                     <div class="num num-2"><p>2</p></div>
+                     <div class="num num-3"><p>3</p></div>
+                     <div class="num num-4"><p>4</p></div>
+                     <div class="num num-5"><p>5</p></div>
+                     <div class="num num-6"><p>6</p></div>
+                     <div class="num num-7"><p>7</p></div>
+                     <div class="num num-8"><p>8</p></div>
+                     <div class="num num-9"><p>9</p></div>
+                  </div>
+               </div>
+            </div>
          </div>
-          <div class="reload">
+    
+      </div>
+      <div class="reload">
+         <div class="moddd">
 
-             <button class="btn btn-default btn-warning btn-next">
-                ارسال دوباره رمز
-             </button>
-        
-          </div>
+
+
+
+
+
+               <h1>هر حرکتی میزنی اینجا بزن</h1>
+
+
+
+
+
+            <h4>دانش اموز عزیز وقت شما به پایان رسید</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+         </div>
+      </div>
 
     </div>
         <div class="col-12">
@@ -157,17 +271,21 @@
         <div class="clearfix"></div>
 
     </form>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js'></script> 
 
+   
 @endsection
 
 
 @section('script')
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js'></script> 
 <script type="text/javascript">
-initTimer("00:05"); // other ways --> "0:15" "03:5" "5:2"
+TweenLite.defaultEase = Expo.easeOut;
+
+initTimer("00:01"); // other ways --> "0:15" "03:5" "5:2"
 
 var reloadBtn = document.querySelector('.reload');
 var timerEl = document.querySelector('.timer');
+var col=document.querySelector('col-12');
 
 function initTimer (t) {
    
@@ -248,18 +366,22 @@ function countdownFinished() {
       TweenMax.set(reloadBtn, { scale: 0.8, display: 'block' });
       TweenMax.to(timerEl, 1, { opacity: 0.2 });
       TweenMax.to(reloadBtn, 0.5, { scale: 1, opacity: 1 }); 
+      TweenMax.to(".list-group-item", .3, {
+      opacity: 0,
+   
+ });
    }, 1000);
 }
 
-reloadBtn.addEventListener('click', function () {
-   TweenMax.to(this, 0.5, { opacity: 0, onComplete:
-      function () { 
-         reloadBtn.style.display= "none";
-      } 
-   });
-   TweenMax.to(timerEl, 1, { opacity: 1 });
-   initTimer("00:05");
-});
+// reloadBtn.addEventListener('click', function () {
+//    TweenMax.to(this, 0.5, { opacity: 0, onComplete:
+//       function () { 
+//          reloadBtn.style.display= "none";
+//       } 
+//    });
+//    TweenMax.to(timerEl, 1, { opacity: 1 });
+//    initTimer("00:05");
+// });
 </script>
 
 @endsection
