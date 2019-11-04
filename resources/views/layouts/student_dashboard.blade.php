@@ -165,7 +165,7 @@
                                     <span class="notification hidden-sm hidden-xs">{{count($cart)}}</span>
                                 </a>
                             </li>
-                        @endif
+                        @endif 
                         {{-- <li>
                             <a href="{{route('student_dashboard_wallet_form')}}">
                                 <i class="fa fa-wallet"></i>
@@ -206,8 +206,6 @@
                         <li>
                             <a class="" href="{{route('student_test')}}">
                                ایتم دوم
-                            <a class="btn btn-fill btn-info" href="{{ route('student_dashboard_results') }}">
-                                صفحه نتایج
                             </a>
                         </li>
                         <li>
