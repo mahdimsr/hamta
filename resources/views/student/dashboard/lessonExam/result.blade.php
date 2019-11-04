@@ -73,16 +73,14 @@
                                     <th>تاریخ شرکت</th>
                                     </thead>
                                     <tbody class="text-center">
-                                        @foreach($results as $result)
-                                        @if($result->type=='LESSONEXAM')
+                                        @foreach($lessonExams as $lessonExam)
                                         <tr>
-                                            <td>{{ $result->lessonExam->exm }}</td>
-                                            <td>{{ $result->blankAnswers }}</td>
-                                            <td>{{ $result->correctAnswers }}</td>
-                                            <td>{{ $result->wrongAnswers }}</td>
-                                            <td>{{ $result->persianCreatedAt }}</td>
+                                            <td>{{ $lessonExam->lessonExam->exm }}</td>
+                                            <td>{{ $lessonExam->blankAnswers }}</td>
+                                            <td>{{ $lessonExam->correctAnswers }}</td>
+                                            <td>{{ $lessonExam->wrongAnswers }}</td>
+                                            <td>{{ $lessonExam->persianCreatedAt }}</td>
                                         </tr>
-                                        @endif
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -101,16 +99,14 @@
                                     <th>تاریخ شرکت</th>
                                     </thead>
                                     <tbody class="text-center">
-                                        @foreach($results as $result)
-                                        @if($result->type=='GIFTEXAM')
+                                        @foreach($giftExams as $giftExams)
                                         <tr>
-                                            <td>{{ $result->lessonExam->exm }}</td>
-                                            <td>{{ $result->blankAnswers }}</td>
-                                            <td>{{ $result->correctAnswers }}</td>
-                                            <td>{{ $result->wrongAnswers }}</td>
-                                            <td>{{ $result->persianCreatedAt }}</td>
+                                            <td>{{ $giftExams->giftExam->exm }}</td>
+                                            <td>{{ $giftExams->blankAnswers }}</td>
+                                            <td>{{ $giftExams->correctAnswers }}</td>
+                                            <td>{{ $giftExams->wrongAnswers }}</td>
+                                            <td>{{ $giftExams->persianCreatedAt }}</td>
                                         </tr>
-                                        @endif
                                         @endforeach
                                     </tbody>
                                 </table>
