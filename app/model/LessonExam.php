@@ -32,7 +32,7 @@
 
         protected $table = 'lesson_exam';
 
-        protected $appends = ['persianCreatedAt', 'persianUpdatedAt'];
+        protected $appends = ['persianCreatedAt', 'persianUpdatedAt','grades','orientations','questionCount','lessons'];
 
         protected $casts
             = [
@@ -76,6 +76,35 @@
             $date = Jalalian::fromCarbon($this->updated_at)->format('%A, %d %B %y');
 
             return $date;
+        }
+
+
+        public function getQuestionCountAttribute()
+        {
+            $count = count($this->questions);
+
+            return $count;
+        }
+
+
+        public function getGradesAttribute()
+        {
+
+            return $this->grades();
+        }
+
+
+        public function getOrientationsAttribute()
+        {
+
+            return $this->orientation();
+        }
+
+
+        public function getLessonsAttribute()
+        {
+
+            return $this->lessons();
         }
 
 
@@ -246,24 +275,24 @@
         }
 
 
-        public static function filterExam($gradeId, $orientationId)
+        public static function filterExam($grade, $orientation)
         {
 
             $gradeLessons = null;
 
-            if (isset($gradeId) && $orientationId == null)
+            if (isset($grade) && $orientation == null)
             {
-                $gradeLessons = GradeLesson::query()->whereIn('gradeId', $gradeId)->get();
+                $gradeLessons = GradeLesson::query()->whereIn('gradeId', $grade)->get();
             }
-            elseif (isset($orientationId) && $gradeId == null)
+            elseif (isset($orientation) && $grade == null)
             {
-                $gradeLessons = GradeLesson::query()->whereIn('orientationId', $orientationId)->get();
+                $gradeLessons = GradeLesson::query()->whereIn('orientationId', $orientation)->get();
             }
-            elseif (isset($gradeId) && isset($orientationId))
+            elseif (isset($grade) && isset($orientation))
             {
                 $gradeLessons = GradeLesson::query()
-                                           ->whereIn('gradeId', $gradeId)
-                                           ->whereIn('orientationId', $orientationId)
+                                           ->whereIn('gradeId', $grade)
+                                           ->whereIn('orientationId', $orientation)
                                            ->get();
             }
 
@@ -286,18 +315,10 @@
 
 
 
-            $exams = [];
-            $i     = 0;
-
-            foreach ($uniqueArray as $examId)
-            {
-                $lessonExam = LessonExam::query()->find($examId);
-
-                $exams[$i++] = $lessonExam;
-            }
+            $lessonExam = LessonExam::query()->whereIn('id',$uniqueArray)->paginate();
 
 
-            return $exams;
+            return $lessonExam;
         }
 
         public function hasUsed()

@@ -42,11 +42,14 @@
         });
 
 
-        Route::get('test', function()
+        Route::get('test', function(Request $request)
         {
-            $grade = \App\model\Grade::query()->whereIn('id',[1,2])->get();
 
-            $lessonExams = \App\model\LessonExam::filterExam($grade,null);
+            $grade = \App\model\Grade::query()->where('url', 'Tenth')->first();
+
+            $orientation = \App\model\Orientation::query()->where('url', 'Science')->first();
+
+            $lessonExams = \App\model\LessonExam::filterExam($grade,$orientation);
 
 
             return $lessonExams;

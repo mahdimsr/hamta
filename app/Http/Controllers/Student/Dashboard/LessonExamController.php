@@ -27,6 +27,13 @@
         }
 
 
+        public function details()
+        {
+
+            return view('student.dashboard.lessonExam.details');
+        }
+
+
         public function addToCart($exm)
         {
 

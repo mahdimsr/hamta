@@ -44,10 +44,14 @@
             {
                 Route::get('/', 'DashboardController@exams')->name('student_dashboard_exams');
 
-                Route::prefix('lesson')->group(function()
+                Route::prefix('lessonToLesson')->group(function()
                 {
                     Route::get('/', 'LessonExamController@lessonExams')->name('student_dashboard_lessonExams');
+
                     Route::get('{exm}/addToCart', 'LessonExamController@addToCart')->name('student_dashboard_lessonExams_addToCart');
+
+                    Route::get('/details', 'LessonExamController@details')->name('student_dashboard_lessonExam_details');
+
                     Route::get('/purchase', 'LessonExamController@purchaseForm')->name('student_dashboard_lessonExams_purchaseForm');
                     Route::post('validateDiscountCode', 'LessonExamController@validateDiscountCode')->name('student_dashboard_lessonExams_validateDiscountCode');
                     Route::post('/purchaseWallet', 'LessonExamController@purchaseWallet')->name('student_dashboard_lessonExams_purchaseWallet');

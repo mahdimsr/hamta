@@ -5,6 +5,7 @@
     use App\Http\Controllers\Api\ApiHelper;
     use App\model\Grade;
     use App\model\LessonExam;
+    use App\model\Orientation;
     use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
 
@@ -17,11 +18,25 @@
 
             $lessonExams = null;
 
+
+
             $grade = Grade::query()->where('url', $request->input('gradeUrl'))->first();
 
+            $orientation = Orientation::query()->where('url', $request->input('orientationUrl'))->first();
 
 
-            $lessonExams = LessonExam::query()->paginate();
+
+            if ($request->has('gradeUrl') || $request->has('orientationUrl'))
+            {
+                $lessonExams = LessonExam::filterExam($grade, $orientation);
+
+            }
+            else
+            {
+                $lessonExams = LessonExam::query()->paginate();
+
+            }
+
 
             return response()->json(['status'   => ApiHelper::$errorType[ 'ok' ],
                                      'dataList' => $lessonExams]);
