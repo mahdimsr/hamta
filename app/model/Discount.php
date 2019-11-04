@@ -153,6 +153,41 @@
 
         }
 
+        public function isValidAdmin($id)
+        {
+
+            if ($this->isExpired)
+            {
+                return false;
+            }
+
+            else
+            {
+                        $discountCode = StudentCode::query()
+                                               ->where('discountId', $this->id)
+                                               ->where('studentId', $id);
+
+                        if ($discountCode->exists())
+                        {
+                            $hasUsedCount = Transaction::query()
+                            ->where('discountId', $this->id)
+                            ->where('studentId', $id)
+                            ->where('type','PURCHASE')
+                            ->where('status','SUCCESS')
+                            ->count();
+
+                            return $this->count > $hasUsedCount;
+                        }
+
+                        else
+                        {
+                            return false;
+
+                        }
+            }
+
+        }
+
         public function generalChargeIsValid()
         {
 

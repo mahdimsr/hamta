@@ -39,10 +39,11 @@ class DashboardController extends Controller
     public function results()
 	{
 
-        $student  = Auth::guard('student')->user();
-        $results  = Result::query()->where('studentId',$student->id)->get();
+        $student      = Auth::guard('student')->user();
+        $lessonExams  = Result::query()->where('studentId',$student->id)->where('type','LESSONEXAM')->where('status','COMPLETE')->get();
+        $giftExams    = Result::query()->where('studentId',$student->id)->where('type','GIFTEXAM')->where('status','COMPLETE')->get();
 
-		return view('student.dashboard.lessonExam.result', compact('student','results'));
+		return view('student.dashboard.lessonExam.result', compact('student','lessonExams','giftExams'));
     }
 
 }
