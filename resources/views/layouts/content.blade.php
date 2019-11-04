@@ -184,7 +184,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="" href="{{route('student_test')}}">
+                            <a class="" href="{{route('student_dashboard_lessonExam_details')}}">
                                 ایتم سوم
                             </a>
                         </li>
