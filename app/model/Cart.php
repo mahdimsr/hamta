@@ -32,8 +32,13 @@
             self::creating(function($model)
             {
 
-                $authId = Auth::guard('student')->id();
-                $model->studentId = $authId;
+                if ($model->studentId == null)
+                {
+                    $authId = Auth::guard('student')->id();
+                    $model->studentId = $authId;
+                }
+
+
 
             });
         }
@@ -62,6 +67,7 @@
 
         public function setTransaction($transactionId)
         {
+
             $this->transactionId = $transactionId;
             $this->update();
         }

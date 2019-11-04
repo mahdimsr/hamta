@@ -32,7 +32,13 @@
 
         protected $table = 'lesson_exam';
 
-        protected $appends = ['persianCreatedAt', 'persianUpdatedAt','grades','orientations','questionCount','lessons'];
+        protected $appends
+            = ['persianCreatedAt',
+               'persianUpdatedAt',
+               'grades',
+               'orientations',
+               'questionCount',
+               'lessons'];
 
         protected $casts
             = [
@@ -81,6 +87,7 @@
 
         public function getQuestionCountAttribute()
         {
+
             $count = count($this->questions);
 
             return $count;
@@ -229,10 +236,14 @@
         }
 
 
-        public function hasInCart()
+        public function hasInCart($authId = null)
         {
 
-            $authId     = Auth::guard('student')->id();
+            if ($authId == null)
+            {
+                $authId = Auth::guard('student')->id();
+            }
+
             $lessonExam = Cart::query()
                               ->where('lessonExamId', $this->id)
                               ->where('studentId', $authId)
@@ -255,7 +266,7 @@
         public function hasPurchased()
         {
 
-            $authId     = Auth::guard('student')->id();
+            $authId = Auth::guard('student')->id();
             $lessonExam = Cart::query()
                               ->where('lessonExamId', $this->id)
                               ->where('studentId', $authId)
@@ -311,11 +322,10 @@
                 }
             }
 
-            $uniqueArray = Lib::unique_ObjectArray($examGradeLessonArray,'examId');
+            $uniqueArray = Lib::unique_ObjectArray($examGradeLessonArray, 'examId');
 
 
-
-            $lessonExam = LessonExam::query()->whereIn('id',$uniqueArray)->paginate();
+            $lessonExam = LessonExam::query()->whereIn('id', $uniqueArray)->paginate();
 
 
             return $lessonExam;

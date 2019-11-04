@@ -17,12 +17,28 @@
 
             $student = Auth::guard('api')->user();
 
-            $carts = Cart::query()->where('studentId', '=', $student->id)->where('transactionId', '=', 0)->get();
+            $cartCount = Cart::query()->where('studentId', '=', $student->id)->where('transactionId', '=', 0)->count();
 
 
-            return response()->json(['status'  => ApiHelper::$statusType[ 'ok' ],
-                                     'carts'   => $carts,
-                                     'student' => $student]);
+            return response()->json(['status'    => ApiHelper::$statusType[ 'ok' ],
+                                     'cartCount' => $cartCount,
+                                     'student'   => $student]);
+        }
+
+
+        public function cart()
+        {
+
+            $student = Auth::guard('api')->user();
+            $cart    = Cart::query()
+                           ->where('studentId', '=', $student->id)
+                           ->where('transactionId', '=', 0)
+                           ->with('lessonExam')
+                           ->get();
+
+            return response()->json(['status' => ApiHelper::$statusType[ 'ok' ],
+                                     'carts'   => $cart]);
+
         }
 
     }

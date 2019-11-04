@@ -31,12 +31,15 @@
         {
 
             Route::get('/index', 'IndexController@index')->name('api_student_index');
+            Route::get('/cart', 'IndexController@cart')->name('api_student_cart');
 
 
             Route::prefix('lessonExams')->group(function()
             {
 
                 Route::get('/', 'LessonExamController@lessonExams')->name('api_student_lessonExams');
+
+                Route::post('/add', 'LessonExamController@addToCart')->name('api_student_lessonExam_add');
 
             });
         });
