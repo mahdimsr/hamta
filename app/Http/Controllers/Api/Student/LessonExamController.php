@@ -38,7 +38,7 @@
             }
 
 
-            return response()->json(['status'   => ApiHelper::$errorType[ 'ok' ],
+            return response()->json(['status'   => ApiHelper::$statusType[ 'ok' ],
                                      'dataList' => $lessonExams]);
         }
 

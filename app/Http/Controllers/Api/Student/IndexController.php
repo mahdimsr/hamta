@@ -1,15 +1,28 @@
 <?php
 
-namespace App\Http\Controllers\Api\Student;
+    namespace App\Http\Controllers\Api\Student;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+    use App\Http\Controllers\Api\ApiHelper;
+    use App\model\Cart;
+    use Illuminate\Http\Request;
+    use App\Http\Controllers\Controller;
+    use Illuminate\Support\Facades\Auth;
 
-class IndexController extends Controller
-{
 
-    public function index()
+    class IndexController extends Controller
     {
-        return response()->json([ 'status' => 'ok']);
+
+        public function index()
+        {
+
+            $student = Auth::guard('api')->user();
+
+            $carts = Cart::query()->where('studentId', '=', $student->id)->where('transactionId', '=', 0)->get();
+
+
+            return response()->json(['status'  => ApiHelper::$statusType[ 'ok' ],
+                                     'carts'   => $carts,
+                                     'student' => $student]);
+        }
+
     }
-}

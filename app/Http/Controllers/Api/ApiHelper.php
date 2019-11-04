@@ -7,6 +7,6 @@
     class ApiHelper
     {
 
-        public static $errorType = ['validation' => 'Validation', 'error' => 'ERROR', 'ok' => 'OK'];
+        public static $statusType = ['validation' => 'Validation', 'error' => 'ERROR', 'ok' => 'OK'];
 
     }

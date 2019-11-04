@@ -35,7 +35,7 @@
 
             if ($v->fails())
             {
-                return response()->json(['status' => ApiHelper::$errorType['validation'], 'errors' => $v->errors()]);
+                return response()->json(['status' => ApiHelper::$statusType[ 'validation'], 'errors' => $v->errors()]);
             }
             else
             {
@@ -48,7 +48,7 @@
                     $token       = $tokenResult->token;
                     $token->save();
 
-                    return response()->json(['status'       => ApiHelper::$errorType['ok'],
+                    return response()->json(['status'       => ApiHelper::$statusType[ 'ok'],
                                              'access_token' => $tokenResult->accessToken,
                                              'token_type'   => 'Bearer',
                                              'student'      => $student,
@@ -57,7 +57,7 @@
                 }
                 else
                 {
-                    return response()->json(['status'  => ApiHelper::$errorType['error'],
+                    return response()->json(['status'  => ApiHelper::$statusType[ 'error'],
                                              'errorMessage' => 'شماره یا رمز عبور اشتباه وارد شده']);
                 }
             }
@@ -80,7 +80,7 @@
 
             if ($v->fails())
             {
-                return response()->json(['status' => ApiHelper::$errorType['validation'], 'errors' => $v->errors()]);
+                return response()->json(['status' => ApiHelper::$statusType[ 'validation'], 'errors' => $v->errors()]);
             }
 
             $student = new Student();
@@ -94,7 +94,7 @@
             $token       = $tokenResult->token;
             $token->save();
 
-            return response()->json(['status'       => ApiHelper::$errorType['ok'],
+            return response()->json(['status'       => ApiHelper::$statusType[ 'ok'],
                                      'access_token' => $tokenResult->accessToken,
                                      'token_type'   => 'Bearer',
                                      'student'      => $student]);
