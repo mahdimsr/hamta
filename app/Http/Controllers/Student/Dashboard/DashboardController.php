@@ -31,8 +31,21 @@ class DashboardController extends Controller
 		return view('student.dashboard.discount.discounts', compact('student','studentDiscounts'));
     }
 
+
     public function content()
     {
+
         return view('student.dashboard.main');
+    }
+
+    public function results()
+	{
+
+        $student      = Auth::guard('student')->user();
+        $lessonExams  = Result::query()->where('studentId',$student->id)->where('type','LESSONEXAM')->where('status','COMPLETE')->get();
+        $giftExams    = Result::query()->where('studentId',$student->id)->where('type','GIFTEXAM')->where('status','COMPLETE')->get();
+
+		return view('student.dashboard.lessonExam.result', compact('student','lessonExams','giftExams'));
+
     }
 }
