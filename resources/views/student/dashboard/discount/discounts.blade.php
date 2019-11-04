@@ -56,17 +56,15 @@
                             <th>کد تخفیف</th>
                             <th>درصد</th>
                             <th>قابل استفاده برای</th>
-                            <th>دفعات استفاده</th>
                             <th>تاریخ انقضا</th>
                             </thead>
                             <tbody class="text-center">
                                 @foreach($studentDiscounts as $studentDiscount)
-                                @if(!$studentDiscount->discount->isExpired)
+                                @if($studentDiscount->discount->isValid())
                                 <tr>
                                     <td>{{ $studentDiscount->discount->code }}</td>
                                     <td>% {{ $studentDiscount->discount->value }}</td>
-                                    <td>{{ $studentDiscount->discount->count }} بار</td>
-                                    <td>-</td>
+                                    <td>{{ $studentDiscount->discount->usable() }} بار</td>
                                     <td>{{ $studentDiscount->discount->persianEndDate }}</td>
                                 </tr>
                                 @endif

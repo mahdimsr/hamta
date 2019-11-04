@@ -29,7 +29,7 @@
                                     <td>{{$studentDiscount->discount->value}}</td>
                                     <td>{{$studentDiscount->discount->persianType}}</td>
                                     <td>{{$studentDiscount->discount->persianEndDate}}</td>
-                                    <td>{{$studentDiscount->discount->isExpired ? 'منقضی شده' : 'فعال'}}</td>
+                                    <td>{{ $studentDiscount->discount->isValid($studentDiscount->student->id) ? 'منقضی شده' : 'فعال'}}</td>
                                     <td>{{$studentDiscount->discount->count}}</td>
                                     <td>
                                         <a href="{{route('admin_students_discountRemove',['id' => $id ,'discountId' => $studentDiscount->discount->id])}}" id="remove-btn" type="button"
