@@ -278,7 +278,7 @@
                     }
                 }
 
-                $result                 = Result::query()->where('studentId',$student->id)->where('examId',$lessonExam->id)->first();
+                $result                 = Result::query()->where('studentId',$student->id)->where('examId',$lessonExam->id)->where('status','IN-PROGRESS')->first();
                 $result->correctAnswers = $correctAnswers;
                 $result->wrongAnswers   = $wrongAnswers;
                 $result->blankAnswers   = count($examQuestions)-($correctAnswers+$wrongAnswers);
