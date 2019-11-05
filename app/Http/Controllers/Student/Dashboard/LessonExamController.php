@@ -234,8 +234,7 @@
                     $result->save();
                 }
 
-                $examTime = $lessonExam->remainingTime();
-                return view('student.dashboard.lessonExam.exam_questions', compact('student', 'lessonExam','examTime'));
+                return view('student.dashboard.lessonExam.exam_questions', compact('student', 'lessonExam'));
             }
 
             else

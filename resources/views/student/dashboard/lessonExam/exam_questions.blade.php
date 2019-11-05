@@ -277,7 +277,7 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js'></script>
 <script type="text/javascript">
 TweenLite.defaultEase = Expo.easeOut;
-var time = "{{ $examTime }}";
+var time = "{{ $lessonExam->remainingTime() }}";
 initTimer(time); // other ways --> "0:15" "03:5" "5:2"
 
 var reloadBtn = document.querySelector('.reload');
