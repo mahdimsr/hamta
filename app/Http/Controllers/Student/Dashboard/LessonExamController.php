@@ -266,11 +266,13 @@
                             if($examQuestion->id==ltrim($key,'answer') && $examQuestion->answer==$question)
                             {
                                 $correctAnswers++;
+                                break;
                             }
 
                             if($examQuestion->id==ltrim($key,'answer')  && $examQuestion->answer!=$question)
                             {
                                 $wrongAnswers++;
+                                break;
                             }
                         }
                     }
