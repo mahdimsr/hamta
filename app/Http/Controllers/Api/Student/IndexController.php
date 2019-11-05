@@ -37,7 +37,32 @@
                            ->get();
 
             return response()->json(['status' => ApiHelper::$statusType[ 'ok' ],
-                                     'carts'   => $cart]);
+                                     'carts'  => $cart]);
+
+        }
+
+
+        public function removeCartItem(Request $request)
+        {
+
+            $student   = Auth::guard('api')->user();
+            $cart      = Cart::query()->find($request->input('cartId'));
+
+            try
+            {
+                $cart->delete();
+
+                return response()->json(['status'       => ApiHelper::$statusType[ 'ok' ],
+                                         'isCartRemove' => true,]);
+
+            }
+            catch (\Exception $e)
+            {
+                return response()->json(['status'       => ApiHelper::$statusType[ 'error' ],
+                                         'isCartRemove' => false,
+                                         'errorMessage'    => 'مشکلی در سامانه پیش آمده.']);
+            }
+
 
         }
 
