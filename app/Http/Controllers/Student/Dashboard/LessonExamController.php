@@ -241,8 +241,7 @@
                     $result->save();
                 }
 
-                $examTime = $lessonExam->remainingTime();
-                return view('student.dashboard.lessonExam.exam_questions', compact('student', 'lessonExam','examTime'));
+                return view('student.dashboard.lessonExam.exam_questions', compact('student', 'lessonExam'));
             }
 
             else
@@ -274,17 +273,19 @@
                             if($examQuestion->id==ltrim($key,'answer') && $examQuestion->answer==$question)
                             {
                                 $correctAnswers++;
+                                break;
                             }
 
                             if($examQuestion->id==ltrim($key,'answer')  && $examQuestion->answer!=$question)
                             {
                                 $wrongAnswers++;
+                                break;
                             }
                         }
                     }
                 }
 
-                $result                 = Result::query()->where('studentId',$student->id)->where('examId',$lessonExam->id)->first();
+                $result                 = Result::query()->where('studentId',$student->id)->where('examId',$lessonExam->id)->where('status','IN-PROGRESS')->first();
                 $result->correctAnswers = $correctAnswers;
                 $result->wrongAnswers   = $wrongAnswers;
                 $result->blankAnswers   = count($examQuestions)-($correctAnswers+$wrongAnswers);
