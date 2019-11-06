@@ -110,7 +110,7 @@
                 <div class="cancel-icon">
                  <i class="fas fa-window-close"></i>
                 </div>
-                </div>
+                </div>  
               </div>
             
 

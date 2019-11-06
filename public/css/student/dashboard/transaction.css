@@ -1,0 +1,28 @@
+.pink-bg{
+    position: relative;
+    background-color: lightpink;
+    width: 307px;
+    right: 0px;
+    float: right;
+    height: 200px;
+    box-shadow: -7px 13px palevioletred;
+}
+
+img.fisrt-jpg {
+    opacity: 0.5;
+    height: 100px;
+   
+
+}
+h4.pink-title {
+    text-align: right;
+    margin-right: 20px;
+    color: #fff;
+}
+.factor {
+
+    right: 0%;
+    top: 60%;
+    margin-right: 10px;
+    position: absolute;
+}
