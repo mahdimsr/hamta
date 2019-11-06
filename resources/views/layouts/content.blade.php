@@ -174,6 +174,11 @@
                     <ul class="nav navbar-nav navbar-right">
 
                         <li>
+                            <a class="active" href="{{route('student_dashboard_lessonExams_purchaseForm')}}">
+                                سبد خرید
+                            </a>
+                        </li>
+                        <li>
                             <a class="active" href="{{route('student_dashboard_lessonExams_result')}}">
                                 ایتم اول
                             </a>
