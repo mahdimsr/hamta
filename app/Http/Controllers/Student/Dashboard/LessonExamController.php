@@ -6,10 +6,10 @@
     use App\model\Discount;
     use App\model\LessonExam;
     use App\model\Transaction;
+    use App\model\Result;
     use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
     use Illuminate\Support\Facades\Auth;
-    use Illuminate\Support\Facades\Session;
 
 
     class LessonExamController extends Controller
@@ -232,27 +232,47 @@
 
         }
 
-
         public function questions($exm)
         {
-
+            $student = Auth::guard('student')->user();
             $lessonExam = LessonExam::query()->where('exm', $exm)->first();
 
-            $questions = $lessonExam->questions;
+            if($lessonExam && $lessonExam->hasPurchased() && !$lessonExam->hasUsed())
+            {
+                $result           = Result::query()->where('studentId',$student->id)->where('examId',$lessonExam->id)->where('status','IN-PROGRESS')->first();
+
+                if(!$result)
+                {
+                    $result                 = new Result();
+                    $result->type           = 'LESSONEXAM';
+                    $result->studentId      = $student->id;
+                    $result->examId         = $lessonExam->id;
+                    $result->status         = 'IN-PROGRESS';
+                    $result->save();
+                }
+
                 return view('student.dashboard.lessonExam.exam_questions', compact('student', 'lessonExam'));
             }
 
-            $student = Auth::guard('student')->user();
+            else
+            {
+                 return redirect()->route('student_dashboard_lessonExams');
+            }
 
-            return view('student.dashboard.lessonExam.exam_questions', compact('student', 'questions'));
         }
 
-
-        public function questionsCorrect(Request $request)
+        public function result(Request $request ,$exm)
         {
 
-            return $request;
-        }
+            $student = Auth::guard('student')->user();
+            $lessonExam = LessonExam::query()->where('exm', $exm)->first();
+
+            if($lessonExam && $lessonExam->hasPurchased() && !$lessonExam->hasUsed())
+            {
+                $correctAnswers=0;
+                $wrongAnswers=0;
+                $examQuestions = $lessonExam->questions;
+                $questions     = $request->get('questions');
 
                 if($questions)
                 {
@@ -282,12 +302,14 @@
                 $result->status         = 'COMPLETE';
                 $result->update();
 
-        public function result()
-        {
+                return redirect()->route('student_dashboard_results');
+            }
 
-            $student = Auth::guard('student')->user();
+            else
+            {
+                return redirect()->route('student_dashboard_lessonExams');
+            }
 
-            return view('student.dashboard.lessonExam.result', compact('student'));
         }
 
     }
