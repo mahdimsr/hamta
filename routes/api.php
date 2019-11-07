@@ -32,9 +32,16 @@
 
             Route::get('/index', 'IndexController@index')->name('api_student_index');
 
-            Route::get('/cart', 'IndexController@cart')->name('api_student_cart');
+            Route::prefix('cart')->group(function()
+            {
+                Route::get('/', 'CartController@cart')->name('api_student_cart');
 
-            Route::post('/removeCart', 'IndexController@removeCartItem')->name('api_student_removeCartItem');
+                Route::post('/remove', 'CartController@removeCartItem')->name('api_student_removeCartItem');
+
+                Route::post('/purchase','CartController@purchase')->name('api_student_purchaseCart');
+            });
+
+
 
 
             Route::prefix('lessonExams')->group(function()
@@ -49,17 +56,12 @@
         });
 
 
-        Route::get('test', function(Request $request)
+        Route::post('test', function(Request $request)
         {
 
-            $grade = \App\model\Grade::query()->where('url', 'Tenth')->first();
-
-            $orientation = \App\model\Orientation::query()->where('url', 'Science')->first();
-
-            $lessonExams = \App\model\LessonExam::filterExam($grade, $orientation);
 
 
-            return $lessonExams;
+            return $request;
         });
 
     });

@@ -11,7 +11,7 @@
 <div class="row"><h3 class="exam-title" dir="rtl">ازمون شماره 1</h3></div>
     <div class="container">
         <div class="jumbotron" dir="rtl">
-            
+
                 <div class="row">
                     <div class="col-12">
                         <ul class="header">
@@ -19,7 +19,7 @@
                 <li class="header-item" dir="ltr">
                         <i class="fas fa-calendar-week"></i>
                     1398/3/23</li>
-                    
+
                 </ul>
                 </div>
                 </div>
@@ -37,7 +37,7 @@
                 </div>
                 </ul>
             </div>
-               
+
                 <div class="row">
 
                         <ul class="lead">
@@ -63,14 +63,14 @@
                                 <ul class="lead">
                                         <div class="payeh">
                                         <li class="payeh-fitst-item">قیمت:</li>
-                                        
+
                                     </div>
                                     <div class="gerayesh">
                                         <li class="gerayesh-first-item">ریال:</li>
                                         <li>300000000000</li>
                                     </div>
                                     </ul>
-        
+
                         </div>
                         <div class="shop-icon" dir="ltr">
                             <a href="#">
@@ -82,7 +82,7 @@
               </div>
     </div>
 </div>
-    
+
 @endsection
 @section('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
