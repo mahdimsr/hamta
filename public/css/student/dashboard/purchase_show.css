@@ -17,16 +17,18 @@ section.card-content {
     margin-bottom: 0;
     display: inline-block;
     margin: 10px;
-    border-radius: 6%;
+    border: none;
+    border-radius: 60px 10px;
+    
 }
 .hampa-logo {
-    margin-top: 10px;
+    margin-top: 20px;
     height: 65px;
     float: left;
     border: 0.5px solid;
     width: 65px;
     border-color: deepskyblue;
-    margin-left: 10px;
+    margin-left: 15px;
     border-radius: 20%;
 }
 .card .header {
@@ -77,7 +79,9 @@ section.form-content {
     display: grid !important;
     border: 0.5px solid;
     padding: 10px;
-    border-radius: 4%;
+    border: none;
+    border-radius: 40px 10px;
+    
     background-color: #070f1312;
     box-shadow: 5px 10px 8px #888888;
 }
