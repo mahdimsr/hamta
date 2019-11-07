@@ -108,6 +108,7 @@ class ProfileController extends Controller
                 'telePhone'           => 'nullable|digits:8',
                 'city'                => 'required|exists:city,id',
                 'province'            => 'required|exists:province,id',
+                'school'              => 'nullable|string',
                 'parentPhone'         => ['required', 'digits:11', 'regex:/^(\+98|0)?9\d{9}$/'],
                 'student_mobile_edit' => ['required','digits:11','regex:/^(\+98|0)?9\d{9}$/',Rule::unique('student', 'mobile')->ignore($student)],
 			]
@@ -115,6 +116,7 @@ class ProfileController extends Controller
 
 		$student->email        = $request->input('email');
         $student->address      = $request->input('address');
+        $student->school       = $request->input('school');
         $student->cityId       = $request->input('city');
 		$student->telePhone    = $request->input('telePhone');
         $student->parentPhone  = $request->input('parentPhone');

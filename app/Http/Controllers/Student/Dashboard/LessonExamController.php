@@ -239,6 +239,8 @@
             $lessonExam = LessonExam::query()->where('exm', $exm)->first();
 
             $questions = $lessonExam->questions;
+                return view('student.dashboard.lessonExam.exam_questions', compact('student', 'lessonExam'));
+            }
 
             $student = Auth::guard('student')->user();
 
@@ -252,6 +254,33 @@
             return $request;
         }
 
+                if($questions)
+                {
+                    foreach($examQuestions as $examQuestion)
+                    {
+                        foreach($questions as $key => $question)
+                        {
+                            if($examQuestion->id==ltrim($key,'answer') && $examQuestion->answer==$question)
+                            {
+                                $correctAnswers++;
+                                break;
+                            }
+
+                            if($examQuestion->id==ltrim($key,'answer')  && $examQuestion->answer!=$question)
+                            {
+                                $wrongAnswers++;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                $result                 = Result::query()->where('studentId',$student->id)->where('examId',$lessonExam->id)->where('status','IN-PROGRESS')->first();
+                $result->correctAnswers = $correctAnswers;
+                $result->wrongAnswers   = $wrongAnswers;
+                $result->blankAnswers   = count($examQuestions)-($correctAnswers+$wrongAnswers);
+                $result->status         = 'COMPLETE';
+                $result->update();
 
         public function result()
         {

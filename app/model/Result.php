@@ -17,4 +17,22 @@ class Result extends Model
     use SoftDeletes;
 
     protected $table = 'result';
+    protected $appends = ['persianCreatedAt'];
+
+    public function getPersianCreatedAtAttribute()
+    {
+        $date = Jalalian::fromCarbon($this->created_at)->format('%A, %d %B %y');
+        return $date;
+    }
+
+    public function lessonExam()
+    {
+        return $this->belongsTo(LessonExam::class, 'examId');
+    }
+
+    public function giftExam()
+    {
+        return $this->belongsTo(GiftExam::class, 'examId');
+    }
+
 }

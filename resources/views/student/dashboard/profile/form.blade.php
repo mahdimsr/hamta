@@ -208,7 +208,7 @@
 										   placeholder="نام مدرسه خود را وارد نمایید"
                                            value="{{ old('school')? old('school') : $student->school }}"
                                            tabindex="11"
-                                           {{ $student->isComplete== 1? 'disabled' : '' }}  >
+                                        >
 
 									<div class="invalid-feedback">
 										<small>{{ $errors->first('school') }}</small>
