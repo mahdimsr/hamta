@@ -13,31 +13,35 @@
 <h4 dir="rtl">فاکتورها</h4>
 
 <div id="app">
+    @foreach($purchases as $purchase)
 <div class="card" dir="rtl">
         <div class="card-body">
 
 
-          <p class="card-body-item">نوع پراخت:</p>
+          <p class="card-body-item">نوع پرداخت :</p>
           <p class="card-body-item-second">خرید آزمون درس به درس</p>
 
 
-            <p class="card-body-item">کد فاکتور:</p>
-            <p class="card-body-item-second">4351</p>
+            <p class="card-body-item">کد فاکتور :</p>
+            <p class="card-body-item-second">{{ $purchase->code }}</p>
 
 
           <div class="card-body">
-              <p class="card-body-item">قیمت نهایی:</p>
-              <p class="card-body-item-second">54000</p>
-            </div>
-            <div class="card-body">
-                <p class="card-body-item">قیمت با تخفیف:</p>
-                <p class="card-body-item-with">00346</p>
-                <p class="card-body-item-second">5346</p>
-              </div>
+              <p class="card-body-item">قیمت :</p>
+              <p class="card-body-item-second">{{ $purchase->price }}</p>
+        </div>
 
+            @if($purchase->discountPrice )
+            <div class="card-body">
+                <p class="card-body-item">قیمت با کد تخفیف :</p>
+                <p class="card-body-item-with">{{ $purchase->discountPrice }}</p>
+                <p class="card-body-item-second">{{ $purchase->discount->code }}</p>
+            </div>
+            @endif
 
         </div>
       </div>
+@endforeach
 </div>
 
 
