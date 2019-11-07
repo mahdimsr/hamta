@@ -6,12 +6,10 @@
     use App\model\Discount;
     use App\model\LessonExam;
     use App\model\Transaction;
+    use App\model\Result;
     use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
-    use App\model\Result;
     use Illuminate\Support\Facades\Auth;
-    use Carbon\Carbon;
-    use Illuminate\Support\Facades\Session;
 
 
     class LessonExamController extends Controller
@@ -70,6 +68,19 @@
             return view('student.dashboard.lessonExam.purchase_show', compact('student', 'price'));
         }
 
+        public function removeCartItem($id)
+        {
+
+            $student = Auth::guard('student')->user();
+            $cartItem = Cart::query()->where('id', $id)->where('studentId',$student->id)->first();
+
+            if($cartItem)
+            {
+            $cartItem->delete();
+            }
+
+            return redirect()->route('student_dashboard_lessonExams_purchaseForm');
+        }
 
         public function validateDiscountCode(Request $request)
         {
@@ -220,7 +231,6 @@
 
 
         }
-
 
         public function questions($exm)
         {

@@ -4,7 +4,7 @@ namespace App\model;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Morilog\Jalali\Jalalian;
+
 
 /**
  * @property \Carbon\Carbon $created_at

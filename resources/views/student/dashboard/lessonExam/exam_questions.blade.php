@@ -1,206 +1,18 @@
-@extends('layouts.student_dashboard')
+@extends('layouts.content')
 
-@section('style')
+@section('link')
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
     <link rel="stylesheet" href="{{ asset('css/student/dashboard/exam-questions.css') }}">
-    <style>
 
-
-
-        .timer {
-            width: 550px;
-            height: 248px;
-            display: block;
-            position: relative;
-            top: 50%;
-            left: 50%;
-            margin-left: -275px;
-            margin-top: -124px;
-            color: #2bbbad!important;
-            z-index: 2;
-          }
-          .timer * {
-            cursor: default;
-          }
-          .timer h3 {
-            width: 100%;
-            font-size: 26px;
-            letter-spacing: 4px;
-            text-align: center;
-          }
-          .timer--clock {
-
-            position: relative;
-
-            margin-top: 22px;
-            overflow: hidden;
-            left: 41%;
-            top: 58%;
-          }
-          .timer--clock .clock-display-grp {
-            width: 100%;
-            position: relative;
-          }
-          .timer--clock .clock-display-grp .number-grp {
-            width: auto;
-            display: block;
-            height: 156px;
-            float: left;
-            overflow: hidden;
-          }
-          .timer--clock .clock-display-grp .number-grp .number-grp-wrp {
-            width: 100%;
-            position: relative;
-          }
-          .timer--clock .clock-display-grp .number-grp .number-grp-wrp .num {
-            width: 100%;
-            position: relative;
-            height: 156px;
-          }
-          .timer--clock .clock-display-grp .number-grp .number-grp-wrp .num p {
-            width: auto;
-            display: table;
-            font-size: 30px;
-            line-height: 150px;
-            font-weight: bold;
-          }
-          .timer--clock .clock-separator {
-            width: auto;
-            float: left;
-            display: block;
-            height: 156px;
-          }
-          .timer--clock .clock-separator p {
-            width: auto;
-            display: table;
-            font-size: 30px;
-            line-height: 150px;
-            font-weight: bold;
-          }
-
-          .reload {
-           background: #2bbbad;
-           height: 100vh;
-           width: 100vh;
-            position: relative;
-            bottom: 3rem;
-            left: 34%;
-            opacity: 0.9;
-            display: none;
-
-            z-index: 9999;
-          }
-        .modd{
-
-        }
-        </style>
 @endsection
 
 @section('content')
 
+
     <div class="row">
-    <div class="col-12">
-      <div class="timer">
-
-         <div class="timer--clock">
-            <div class="minutes-group clock-display-grp">
-               <div class="first number-grp">
-                  <div class="number-grp-wrp">
-                     <div class="num num-0"><p>0</p></div>
-                     <div class="num num-1"><p>1</p></div>
-                     <div class="num num-2"><p>2</p></div>
-                     <div class="num num-3"><p>3</p></div>
-                     <div class="num num-4"><p>4</p></div>
-                     <div class="num num-5"><p>5</p></div>
-                     <div class="num num-6"><p>6</p></div>
-                     <div class="num num-7"><p>7</p></div>
-                     <div class="num num-8"><p>8</p></div>
-                     <div class="num num-9"><p>9</p></div>
-                  </div>
-               </div>
-               <div class="second number-grp">
-                  <div class="number-grp-wrp">
-                     <div class="num num-0"><p>0</p></div>
-                     <div class="num num-1"><p>1</p></div>
-                     <div class="num num-2"><p>2</p></div>
-                     <div class="num num-3"><p>3</p></div>
-                     <div class="num num-4"><p>4</p></div>
-                     <div class="num num-5"><p>5</p></div>
-                     <div class="num num-6"><p>6</p></div>
-                     <div class="num num-7"><p>7</p></div>
-                     <div class="num num-8"><p>8</p></div>
-                     <div class="num num-9"><p>9</p></div>
-                  </div>
-               </div>
-            </div>
-            <div class="clock-separator"><p>:</p></div>
-            <div class="seconds-group clock-display-grp">
-               <div class="first number-grp">
-                  <div class="number-grp-wrp">
-                     <div class="num num-0"><p>0</p></div>
-                     <div class="num num-1"><p>1</p></div>
-                     <div class="num num-2"><p>2</p></div>
-                     <div class="num num-3"><p>3</p></div>
-                     <div class="num num-4"><p>4</p></div>
-                     <div class="num num-5"><p>5</p></div>
-                     <div class="num num-6"><p>6</p></div>
-                     <div class="num num-7"><p>7</p></div>
-                     <div class="num num-8"><p>8</p></div>
-                     <div class="num num-9"><p>9</p></div>
-                  </div>
-               </div>
-               <div class="second number-grp">
-                  <div class="number-grp-wrp">
-                     <div class="num num-0"><p>0</p></div>
-                     <div class="num num-1"><p>1</p></div>
-                     <div class="num num-2"><p>2</p></div>
-                     <div class="num num-3"><p>3</p></div>
-                     <div class="num num-4"><p>4</p></div>
-                     <div class="num num-5"><p>5</p></div>
-                     <div class="num num-6"><p>6</p></div>
-                     <div class="num num-7"><p>7</p></div>
-                     <div class="num num-8"><p>8</p></div>
-                     <div class="num num-9"><p>9</p></div>
-                  </div>
-               </div>
-            </div>
-         </div>
-
-      </div>
-      <div class="reload">
-         <div class="moddd">
-
-
-
-
-
-
-               <h1>هر حرکتی میزنی اینجا بزن</h1>
-
-
-
-
-
-            <h4>دانش اموز عزیز وقت شما به پایان رسید</h4>
-
-
-
-
-
-
-
-
-
-
-
-
-
-         </div>
-      </div>
-
-    </div>
         <div class="col-12">
             <h3>این قسمت مربوط به توضیحات ازمون می باشد</h3>
         </div>
@@ -212,20 +24,31 @@
              aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
     </div>
 
-    <form id="form" action="{{route('student_dashboard_lessonExams_result',['exm' => $lessonExam->exm])}}" method="post">
+    <form action="{{route('student_dashboard_lessonExams_questionsCorrect')}}" method="post">
 
         {{csrf_field()}}
 
-        @foreach($lessonExam->questions as $question)
+        <div style="display: none">
+            {{$i=0}}
+        </div>
+
+        @foreach($questions as $question)
 
             <in class="list-group list-group-flush">
                 <li class="list-group-item active">
                     <p>{{$question->text}}</p>
                 </li>
 
+                <div style="display: none">
+                    {{$i++}}
+                </div>
+
+                <input name="{{'questions[' . $i . '][id]' }}" value="{{$question->id}}" type="text"
+                       style="display: none">
+
                 <li class="list-group-item">
                     <div class="inputGroup">
-                        <input id="{{'radio1' . $question->id}}" name="{{'questions[answer' . $question->id . ']'}}"
+                        <input id="{{'radio1' . $question->id}}" name="{{'questions[' . $i . ']' . '[answer]' }}"
                                value="1"
                                type="radio"/>
                         <label for="{{'radio1' . $question->id}}">{{$question->optionOne}}</label>
@@ -235,7 +58,7 @@
 
                 <li class="list-group-item">
                     <div class="inputGroup">
-                        <input id="{{'radio2' . $question->id}}" name="{{'questions[answer' . $question->id . ']'}}"
+                        <input id="{{'radio2' . $question->id}}" name="{{'questions[' . $i . ']' . '[answer]' }}"
                                value="2"
                                type="radio"/>
                         <label for="{{'radio2' . $question->id}}">{{$question->optionTwo}}</label>
@@ -245,7 +68,7 @@
 
                 <li class="list-group-item">
                     <div class="inputGroup">
-                        <input id="{{'radio3' . $question->id}}" name="{{'questions[answer' . $question->id . ']'}}"
+                        <input id="{{'radio3' . $question->id}}" name="{{'questions[' . $i . ']' . '[answer]' }}"
                                value="3"
                                type="radio"/>
                         <label for="{{'radio3' . $question->id}}">{{$question->optionThree}}</label>
@@ -254,7 +77,7 @@
 
                 <li class="list-group-item">
                     <div class="inputGroup">
-                        <input id="{{'radio4' . $question->id}}" name="{{'questions[answer' . $question->id . ']'}}"
+                        <input id="{{'radio4' . $question->id}}" name="{{'questions[' . $i . ']' . '[answer]' }}"
                                value="4"
                                type="radio"/>
                         <label for="{{'radio4' . $question->id}}">{{$question->optionFour}}</label>
@@ -371,16 +194,6 @@ function countdownFinished() {
    document.getElementById('form').submit();
 }
 
-// reloadBtn.addEventListener('click', function () {
-//    TweenMax.to(this, 0.5, { opacity: 0, onComplete:
-//       function () {
-//          reloadBtn.style.display= "none";
-//       }
-//    });
-//    TweenMax.to(timerEl, 1, { opacity: 1 });
-//    initTimer("00:05");
-// });
-</script>
 
 @endsection
 

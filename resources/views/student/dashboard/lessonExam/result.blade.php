@@ -1,50 +1,10 @@
-@extends('layouts.student_dashboard')
-@section('style')
-    <style>
-
-
-        .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
-            color: #fff;
-            background-color: #2daebc;
-        }
-        .card .content {
-            padding: 0px 15px 0px 15px;
-        }
-
-
-
-
-         .active {
-            background: none;
-            color: #555;
-            border-color: #2b90d9;
-        }
-
-        .nav-item{
-            float: right!important;
-        }
-        #home-tab {
-            font-size: 1.2em;
-        }
-         #profile-tab{
-             font-size: 1.2em;
-         }
-         .table-striped>tbody>tr:nth-of-type(odd) {
-             background-color: rgba(172, 253, 255, 0.38);
-         }
-         .table-striped>tbody>tr:nth-of-type(even) {
-             background-color: rgba(93, 249, 68, 0.29);
-         }
-         .table-striped>tbody>tr:nth-of-type(odd):hover {
-             background-color: rgb(255, 251, 244);
-         }
-         .table-striped>tbody>tr:nth-of-type(even):hover {
-             background-color: rgb(241, 246, 249);
-         }
-    </style>
-@endsection
+@extends('layouts.content')
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/student/dashboard/showResult.css') }}">
+<div class="container">
+<div class="row" dir="rtl">
 
+        <h1>صفحه نتایج</h1>
 
 <div class="row">
     <div class="col-md-12">
@@ -111,14 +71,29 @@
                                     </tbody>
                                 </table>
 
-                    </div>
-                </div>
-
-            </div>
+        <div id="time" dir="rtl">
+            <h5 class="time-header">نشان دادن زمان ازمون</h5>
         </div>
+        <hr>
+        <div class="card" dir="rtl">
+                <div class="card-header">
+                  توضیحات ازمون
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">تعداد سوالات :<span>656</span></li>
+                  <li class="list-group-item">تعداد غلط <span>656</span></li>
+                  <li class="list-group-item">تعداد درست <span>656</span></li>
+                  <li class="list-group-item">دانلود فایل سوال ها <span>656</span></li>
+                  <li class="list-group-item">کارنامه <span>656</span></li>
+                </ul>
+              </div>
 
 
-</div>
+
     </div>
+    <script>
+
+
+    </script>
 @endsection
 

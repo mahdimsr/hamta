@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Student\Dashboard;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\model\Result;
 use App\model\StudentCode;
 use App\model\Transaction;
 use Illuminate\Support\Facades\Auth;
@@ -32,10 +31,17 @@ class DashboardController extends Controller
 		return view('student.dashboard.discount.discounts', compact('student','studentDiscounts'));
     }
 
-    public function content()
+    public function home()
     {
-        return view('student.dashboard.main');
+        return view('student.dashboard.home');
     }
+
+    public function logout()
+    {
+        Auth::guard('student')->logout();
+        return redirect()->route('student_login_form');
+    }
+
     public function results()
 	{
 
