@@ -34,14 +34,15 @@
 
             Route::prefix('cart')->group(function()
             {
+
                 Route::get('/', 'CartController@cart')->name('api_student_cart');
 
                 Route::post('/remove', 'CartController@removeCartItem')->name('api_student_removeCartItem');
 
-                Route::post('/purchase','CartController@purchase')->name('api_student_purchaseCart');
+                Route::post('/purchase', 'CartController@purchase')->name('api_student_purchaseCart');
+
+                Route::get('/transactions', 'CartController@transactions')->name('api_student_transactions');
             });
-
-
 
 
             Route::prefix('lessonExams')->group(function()
@@ -58,7 +59,6 @@
 
         Route::post('test', function(Request $request)
         {
-
 
 
             return $request;

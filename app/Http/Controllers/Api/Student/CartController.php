@@ -114,4 +114,46 @@
             }
         }
 
+
+        public function transactions()
+        {
+
+            $student = Auth::user();
+
+            $transactions = Transaction::query()
+                                       ->where('studentId', $student->id)
+                                       ->where('itemType', '=', 'LESSON_EXAM')
+                                       ->get();
+
+            $customData = [];
+
+            foreach ($transactions as $transaction)
+            {
+                $item[ 'code' ] = $transaction->code;
+
+                if ($transaction->discountId)
+                {
+                    $item[ 'price' ] = $transaction->descountPrice;
+                }
+                else
+                {
+                    $item[ 'price' ] = $transaction->price;
+                }
+
+                if ($transaction->type == 'PURCHASE')
+                {
+                    $item[ 'persian_itemType' ] = 'خرید آزمون درس به درس';
+                }
+                elseif ($transaction->type == 'CHARGE')
+                {
+                    $item[ 'persian_itemType' ] = 'شارژ کیف پول';
+                }
+
+                array_push($customData, $item);
+            }
+
+            return response()->json(['status'       => ApiHelper::$statusType[ 'ok' ],
+                                     'transactions' => $customData]);
+        }
+
     }
