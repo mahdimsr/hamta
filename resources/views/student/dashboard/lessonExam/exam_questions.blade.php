@@ -1,4 +1,4 @@
-@extends('layouts.student_dashboard')
+@extends('layouts.content')
 
 @section('link')
 

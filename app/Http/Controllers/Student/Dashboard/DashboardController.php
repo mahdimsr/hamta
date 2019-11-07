@@ -31,8 +31,15 @@ class DashboardController extends Controller
 		return view('student.dashboard.discount.discounts', compact('student','studentDiscounts'));
     }
 
-    public function content()
+    public function home()
     {
-        return view('student.dashboard.main');
+        return view('student.dashboard.home');
     }
+
+    public function logout()
+    {
+        Auth::guard('student')->logout();
+        return redirect()->route('student_login_form');
+    }
+
 }

@@ -18,7 +18,7 @@ class Authenticate extends Middleware
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
         if ($request->is('student/*')) {
-            return route('student_auth');
+            return route('student_login_form');
         }
         if ($request->is('admin/*')) {
             return route('admin_auth_show');

@@ -1,4 +1,4 @@
-@extends('layouts.student_dashboard')
+@extends('layouts.content')
 @section('content')
 	<div class="row" dir="rtl">
 		<div class="col-md-3">
@@ -15,7 +15,7 @@
 					</div>
 
 
-					
+
                     <p class="description text-right"><br>
                         @if($student->isComplete == 0)
                         در این قسمت اطلاعات خود را تکمیل نمایید تا بتوانید از امکانات بینظیر سایت بهره مند شوید ! دقت کنید که بعد از تکمیل اطلاعات برخی از فیلد ها قابل ویرایش نخواهند بود.

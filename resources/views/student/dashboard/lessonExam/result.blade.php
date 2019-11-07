@@ -1,13 +1,13 @@
-@extends('layouts.student_dashboard')
+@extends('layouts.content')
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/student/dashboard/showResult.css') }}">
-<div class="container">   
+<div class="container">
 <div class="row" dir="rtl">
 
         <h1>صفحه نتایج</h1>
 
     </div>
-  
+
         <div id="time" dir="rtl">
             <h5 class="time-header">نشان دادن زمان ازمون</h5>
         </div>
@@ -29,8 +29,8 @@
 
     </div>
     <script>
-    
-    
+
+
     </script>
 @endsection
 

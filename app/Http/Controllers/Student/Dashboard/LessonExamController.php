@@ -68,6 +68,19 @@
             return view('student.dashboard.lessonExam.purchase_show', compact('student', 'price'));
         }
 
+        public function removeCartItem($id)
+        {
+
+            $student = Auth::guard('student')->user();
+            $cartItem = Cart::query()->where('id', $id)->where('studentId',$student->id)->first();
+
+            if($cartItem)
+            {
+            $cartItem->delete();
+            }
+
+            return redirect()->route('student_dashboard_lessonExams_purchaseForm');
+        }
 
         public function validateDiscountCode(Request $request)
         {

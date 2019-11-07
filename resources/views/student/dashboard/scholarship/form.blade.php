@@ -1,4 +1,4 @@
-@extends('layouts.student_dashboard')
+@extends('layouts.content')
 @section('style')
     <style>
         @media (min-width:992px){.s-floatL{float:left!important;}.s-floatR{float: right!important;}}
