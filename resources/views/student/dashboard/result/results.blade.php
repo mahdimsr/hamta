@@ -1,14 +1,7 @@
-@extends('layouts.content')
+@extends('layouts.student_dashboard')
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/student/dashboard/showResult.css') }}">
-<div class="container">
-<div class="row" dir="rtl">
-
-        <h1>صفحه نتایج</h1>
-
 <div class="row">
     <div class="col-md-12">
-
         <div  class="card cards">
             <!-- Rounded tabs -->
             <ul  id="myTab" role="tablist" class="nav nav-tabs nav-pills text-right " >
@@ -70,30 +63,11 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-
-        <div id="time" dir="rtl">
-            <h5 class="time-header">نشان دادن زمان ازمون</h5>
-        </div>
-        <hr>
-        <div class="card" dir="rtl">
-                <div class="card-header">
-                  توضیحات ازمون
+                    </div>
                 </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">تعداد سوالات :<span>656</span></li>
-                  <li class="list-group-item">تعداد غلط <span>656</span></li>
-                  <li class="list-group-item">تعداد درست <span>656</span></li>
-                  <li class="list-group-item">دانلود فایل سوال ها <span>656</span></li>
-                  <li class="list-group-item">کارنامه <span>656</span></li>
-                </ul>
-              </div>
-
-
-
+            </div>
+        </div>
     </div>
-    <script>
-
-
-    </script>
+</div>
 @endsection
 

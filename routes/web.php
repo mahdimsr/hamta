@@ -49,25 +49,25 @@
 
             Route::prefix('exams')->group(function()
             {
-                Route::get('/', 'DashboardController@exams')->name('student_dashboard_exams');
 
                 Route::prefix('lesson')->group(function()
                 {
-                    Route::get('/', 'LessonExamController@lessonExams')->name('student_dashboard_lessonExams');
-
-                    Route::get('{exm}/addToCart', 'LessonExamController@addToCart')->name('student_dashboard_lessonExams_addToCart');
-
-                    Route::get('/details', 'LessonExamController@details')->name('student_dashboard_lessonExam_details');
-
-                    Route::get('/purchase', 'LessonExamController@purchaseForm')->name('student_dashboard_lessonExams_purchaseForm');
-                    Route::get('/removeCartItem/{id}', 'LessonExamController@removeCartItem')->name('student_dashboard_lessonExams_removeCartItem');
-                    Route::post('validateDiscountCode', 'LessonExamController@validateDiscountCode')->name('student_dashboard_lessonExams_validateDiscountCode');
-                    Route::post('/purchaseWallet', 'LessonExamController@purchaseWallet')->name('student_dashboard_lessonExams_purchaseWallet');
-                    Route::get('/questions/{exm}', 'LessonExamController@questions')->name('student_dashboard_lessonExams_questions');
-                    Route::post('/questions_correct', 'LessonExamController@questionsCorrect')->name('student_dashboard_lessonExams_questionsCorrect');
-                    Route::get('/result', 'LessonExamController@result')->name('student_dashboard_lessonExams_result');
+                    Route::get('/', 'LessonExamController@exams')->name('student_dashboard_lessonExams');
+                    Route::get('/addToCart/{exm}', 'LessonExamController@addToCart')->name('student_dashboard_lessonExams_addToCart');
+                    Route::get('/{exm}/details', 'LessonExamController@details')->name('student_dashboard_lessonExam_details');
+                    Route::get('/{exm}/questions', 'LessonExamController@questions')->name('student_dashboard_lessonExams_questions');
                 });
 
+            });
+
+            Route::prefix('cart')->group(function()
+            {
+                Route::get('/', 'CartController@cartForm')->name('student_dashboard_cart_form');
+                Route::get('/remove/{id}', 'CartController@remove')->name('student_dashboard_cart_remove');
+                Route::post('/discount', 'CartController@discount')->name('student_dashboard_cart_discount');
+                Route::post('/purchase/wallet', 'CartController@purchaseWallet')->name('student_dashboard_cart_purchaseWallet');
+                Route::post('/purchase/bank', 'CartController@purchaseBank')->name('student_dashboard_cart_purchaseBank');
+                Route::get('/purchase/bank/verify', 'CartController@purchaseBankVerify')->name('student_dashboard_cart_purchaseBankVerify');
             });
 
             Route::prefix('wallet')->group(function()
@@ -75,15 +75,15 @@
                 Route::get('/', 'WalletController@walletForm')->name('student_dashboard_wallet_form');
                 Route::post('/charge', 'WalletController@walletCharge')->name('student_dashboard_wallet_charge');
                 Route::get('/verify', 'WalletController@walletVerify')->name('student_dashboard_wallet_verify');
-                Route::post('/purchaseLessonExam', 'WalletController@walletPurchaseLessonExam')->name('student_dashboard_wallet_purchaseLessonExam');
-                Route::get('/purchaseLessonExamVerify', 'WalletController@walletPurchaseLessonExamVerify')->name('student_dashboard_wallet_purchaseLessonExamVerify');
             });
 
             Route::get('/discounts', 'DashboardController@discounts')->name('student_dashboard_discounts');
             Route::get('/transactions', 'DashboardController@transactions')->name('student_dashboard_transactions');
+            Route::get('/results', 'DashboardController@results')->name('student_dashboard_results');
 
             Route::get('/logout', 'DashboardController@logout')->name('student_dashboard_logout');
         });
+
     });
 
 
@@ -276,28 +276,4 @@
             });
         });
     });
-
-
-    Route::get('/student_test', function()
-    {
-
-        $student = \Illuminate\Support\Facades\Auth::guard('student')->user();
-
-        return view('student.dashboard.test', compact('student'));
-
-    })->name('student_test');
-
-
-    Route::get('/test', function()
-    {
-
-        $lessonExam = \App\model\LessonExam::query()->with('gradeLessons')->find(1);
-
-        $gradeLessons = \App\model\GradeLesson::all();
-
-
-        return 'we are good';
-
-
-    })->name('test');
 

@@ -17,128 +17,143 @@
     <link rel="icon" href="{{asset('favicon.png')}}" type="image/png">
     <!--  CSS for Demo Purpose, dont include it in your project     -->
     <link href="{{asset('css/student/dashboard/demo.css')}}" rel="stylesheet"/>
-    <link href="{{asset('css/student/dashboard/select2.min.css')}}" rel="stylesheet"/>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
     <!--     datePicker     -->
-    <link href="{{asset('datePicker/persian-datepicker.min.css')}}" rel="stylesheet"/>
+
 
     @yield('style')
 
     <style>
+        .sidebar .nav i {
+            font-size: 15px;
+
+        }
+        @media (min-width: 990px) {
+            .row.equal {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .sidebar{
+                width: 420px;
+            }
+            .sidebar .sidebar-wrapper{
+                width: 420px;
+            }
+            .navbar-right {
+
+                margin-right: -7px;
+            }
+            .sidebar .logo .simple-text {
+                margin-left: 20px;
+            }
+        }
         th
         {
             text-align : center;
         }
 
-
+        @media (min-width:992px)
+        {
+            .s-floatL{float:left!important;}
+            .s-floatR{float: right!important;}
+        }
 
     </style>
 </head>
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="blue"  data-image="{{asset('image/student/dashboard/pattern.jpg')}}">
+    <div class="sidebar" >
 
-        <!--
 
-            Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
-            Tip 2: you can also add an image using data-image tag
-
-        -->
 
         <div class="sidebar-wrapper">
 
             <ul class="nav text-right ">
                 <li class="user-profile">
-                    <img src="{{ asset('image/student/dashboard/full-screen-image-3.jpg') }}" alt="">
+                    <img src="{{ asset('image/student/dashboard/profile1.png') }}" alt="">
 
                 </li>
                 <div class="logo" dir="rtl">
-                        <a class="simple-text">
-                            {{$student->isComplete==0 ? 'دانش آموز گرامی خوش آمدی!' :$student->name.' '.$student->familyName.' خوش آمدی!' }}
-                        </a>
-                    </div>
-                <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_exams' ? 'active' : ''}}">
-                    <a href="{{route('student_dashboard_exams')}}">
-                        <i class="fa fa-file"></i>
-                        <p>آزمون های من</p>
+                    <a class="simple-text">
+                        امیر رضا محمدی
+                    </a>
+                </div>
+<hr id="sidebar-hr">
+                <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_scholarship' ? 'active' : ''}}">
+                    <a href="#">
+                        <i class="fa fa-graduation-cap"></i>
+                        <p class="slider-par"> حساب کاربری</p>
+                        <span class="slider-span">اطلاعات شخصی شما</span>
                     </a>
                 </li>
+<hr id="sidebar-hr">
+                <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == '' ? 'active' : ''}}">
+                    <a href="">
+                        <i class="fa fa-file"></i>
+                        <p class="slider-par">آزمون های من</p>
+                        <span class="slider-span"> :تعداد آزمون ها شما</span>
+                    </a>
+                </li>
+
+                <hr id="sidebar-hr">
+
                 <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_scholarship' ? 'active' : ''}}">
                     <a href="{{ route('student_dashboard_scholarship_form')}}">
                         <i class="fa fa-graduation-cap"></i>
-                        <p>بورسیه</p>
+                        <p class="slider-par">بورسیه</p>
+                        <span class="slider-span"> :نتیجه درخواست شما</span>
                     </a>
                 </li>
-                <li>
-                    <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
-                        <span class="tooltiptext">!!!در حال راه اندازی</span>
-                        <i class="fa fa-file-video"></i>
-                        <p>کد های تخفیف من</p>
-                    </a>
-                </li>
-                <li>
-                    <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
-                        <span class="tooltiptext">!!!در حال راه اندازی</span>
-                        <i class="fa fa-university"></i>
-                        <p>کیف پول من</p>
-                    </a>
-                </li>
-                <li>
-                    <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
-                        <span class="tooltiptext">!!!در حال راه اندازی</span>
-                        <i class="fa fa-users"></i>
-                        <p>اطلاعات شخصی من</p>
-                    </a>
-                </li>
-                {{-- <li>
-                    <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
-                        <span class="tooltiptext">!!!در حال راه اندازی</span>
-                        <i class="fa fa-book"></i>
-                        <p>کتاب های کمک درسی</p>
-                    </a>
-                </li> --}}
-                {{-- <li>
-                    <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
-                        <span class="tooltiptext">!!!در حال راه اندازی</span>
-                        <i class="fa fa-clock"></i>
-                        <p>فرصتی تا کنکور</p>
-                    </a>
-                </li> --}}
-                {{-- <li>
-                    <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
-                        <span class="tooltiptext">!!!در حال راه اندازی</span>
-                        <i class="fa fa-gamepad"></i>
-                        <p>بازی و سرگرمی</p>
-                    </a>
-                </li> --}}
-                {{-- <li>
-                    <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
-                        <span class="tooltiptext">!!!در حال راه اندازی</span>
-                        <i class="fa fa-newspaper"></i>
-                        <p>معرفی دبیر</p>
-                    </a>
-                </li> --}}
-                {{-- <li>
-                    <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
-                        <span class="tooltiptext">!!!در حال راه اندازی</span>
-                        <i class="fa fa-comments"></i>
-                        <p>بحث و گفتگو</p>
-                    </a>
-                </li> --}}
 
+<hr id="sidebar-hr">
 
-                <li class="bagdet">
-                    <div class="badget-content">
-                        <div class="badget-header">میتونه عنوان باشه</div>
-                        <div class="badget-rem">باقی مانده پول رو به این شکل اینجا بزاریم</div>
-                    </div>
+                <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_scholarship' ? 'active' : ''}}">
+                    <a href="#">
+                        <i class="fa fa-graduation-cap"></i>
+                        <p class="slider-par">کدهای تخفیف من</p>
+                        <span class="slider-span">تعداد کدهای تخفیف قابل استفاده:</span>
+                    </a>
+                </li>
+
+<hr id="sidebar-hr">
+                <li style="margin-bottom: 8px;">
+                    <a>
+                    <p class="slider-par">:باقیمانده کیف پول</p>
+                    </a>
+                    <a id="addfund1" href="#">
+                        <u> <span id="addfund">< خرید مقداری اعتبار</span></u>
+                    </a>
                 </li>
 
 
             </ul>
+
+                    {{--<div class="bagdet">--}}
+                    {{--<div class="badget-content">--}}
+
+
+                        {{--<hr id="badge">--}}
+                        {{--<p id="footer-badge">شما دانشجو خواهید شد آری آری تلاش کن </p>--}}
+                    {{--</div>--}}
+                    {{--</div>--}}
+            <hr id="sidebar-hr">
+                    <div class="row" style="margin-top: 50px">
+                        <div class="col-md-6 text-center" style="float: right;">
+
+                            <a href="#"> <img src="https://img.icons8.com/ios/100/000000/exit.png" width="30px" height="35px"> </a>
+
+                        </div>
+                        <div class="col-md-6 text-center" >
+                            <a href="#">  <img  src="https://img.icons8.com/ios/100/000000/automatic.png" width="40px" height="40px"></a>
+                        </div>
+
+                    </div>
+
+
+
         </div>
     </div>
 
@@ -157,60 +172,20 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        @if(isset($cart))
-                            <li>
-                                <a href="{{route('student_dashboard_lessonExams_purchaseForm')}}">
-                                    <i class="fa fa-wallet"></i>
-                                    <p class="hidden-lg hidden-md">لیست خرید</p>
-                                    <span class="notification hidden-sm hidden-xs">{{count($cart)}}</span>
-                                </a>
-                            </li>
-                        @endif 
-                        {{-- <li>
-                            <a href="{{route('student_dashboard_wallet_form')}}">
-                                <i class="fa fa-wallet"></i>
-                                <p class="hidden-lg hidden-md">کیف پول</p>
-                                <span class="notification hidden-sm hidden-xs">{{$student->wallet}}</span>
-                            </a>
-                        </li> --}}
-                        {{-- <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-                                <i class="fa fa-globe"></i>
-
-                                <b class="caret "></b>
-                                <p class="hidden-lg hidden-md">
-                                    اعلان ها
-                                    <b class="caret"></b>
-                                </p>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">اعلان 1</a></li>
-                                <li><a href="#">اعلان 2</a></li>
-                                <li><a href="#">اعلان 3</a></li>
-                                <li><a href="#">اعلان 4</a></li>
-                                <li><a href="#"> اعلان</a></li>
-                            </ul>
-                        </li> --}}
-                        {{-- <li>
-                            <a href="">
-                                <i class="fa fa-search"></i>
-                                <p class="hidden-lg hidden-md">جست وجو</p>
-                            </a>
-                        </li> --}}
                         <li>
-                            <a class="active" href="{{route('student_dashboard_lessonExams_result')}}">
-                           ایتم اول
+                            <a class="active" href="{{route('student_dashboard_cart_form')}}">
+                                سبد خرید
                             </a>
                         </li>
                         <li>
-                            <a class="" href="{{route('student_test')}}">
-                               ایتم دوم
+                            <a class="active" href="">
+                                ایتم اول
                             </a>
                         </li>
                         <li>
-                            <a class="" href="{{route('student_test')}}">
-                                ایتم سوم
+                            <a class="" href="{{route('student_dashboard_lessonExams')}}">
+                                آزمون های درس به درس
                             </a>
                         </li>
                     </ul>
@@ -238,6 +213,9 @@
                                     <a href="{{ route('student_dashboard_discounts') }}">کد تخفیف</a>
                                 </li>
                                 <li>
+                                        <a href="{{ route('student_dashboard_results') }}">نتایج آزمون ها</a>
+                                    </li>
+                                <li>
                                     <a href="{{ route('student_dashboard_logout') }}"> خروج</a>
                                 </li>
 
@@ -250,34 +228,17 @@
                 </div>
             </div>
         </nav>
-
+<hr>
 
         <div class="content">
             <div class="container-fluid">
                 @yield('content')
+
             </div>
         </div>
 
 
-        <footer class="footer">
-            <div dir="rtl" class="row">
-                <div class="col-md-4">
-                    <ul class=" socila-list">
-                        <li><img href="#" src="http://placehold.it/48x48" alt=""/></li>
-                        <li><img href="#" src="http://placehold.it/48x48" alt=""/></li>
-                        <li><img href="#" src="http://placehold.it/48x48" alt=""/></li>
-                        <li><img href="#" src="http://placehold.it/48x48" alt=""/></li>
-                        <li><img href="#" src="http://placehold.it/48x48" alt=""/></li>
-                        <li><img href="#" src="http://placehold.it/48x48" alt=""/></li>
-                    </ul>
-                </div>
-                <div class="col-md-8">
-                    <p class="copyright pull-right">
-                        تمامی حقوق این سایت متعلق به شرکت کاروفن گستر آراد می باشد.
-                    </p>
-                </div>
-            </div>
-        </footer>
+
 
     </div>
 </div>
@@ -300,25 +261,15 @@
 
 <script src="{{asset('js/student/dashboard/bootstrap.min.js')}}" type="text/javascript"></script>
 
-<!-- Date Picker -->
-<script src="{{asset('datePicker/persian-date.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('datePicker/persian-datepicker.min.js')}}" type="text/javascript"></script>
 
-<!--  Charts Plugin -->
-<script src="{{asset('js/student/dashboard/chartist.min.js')}}"></script>
-
-<!--  Notifications Plugin    -->
-<script src="{{asset('js/student/dashboard/bootstrap-notify.js')}}"></script>
-
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-<script src="{{asset('js/student/dashboard/select2.min.js')}}"></script>
-<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="{{asset('js/student/dashboard/dashboard.js')}}"></script>
 
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="{{asset('js/student/dashboard/demo.js')}}"></script>
+
 <script>
+
+
     //Bootstrap Validation
     /* (function() {
      'use strict';
@@ -337,6 +288,7 @@
      });
      }, false);
      })(); */
+    require('jquery-countdown');
     //Drop down optional
     $(".menu").select2({
         allowClear : true,
@@ -349,6 +301,7 @@
         tokenSeparators : [',', ' ']
     })
 </script>
+<script src="{{asset('js/student/dashboard/jquery.countdown.min.js')}}"></script>
 
 @yield('script')
 

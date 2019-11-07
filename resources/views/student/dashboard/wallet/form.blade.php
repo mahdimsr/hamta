@@ -1,4 +1,4 @@
-@extends('layouts.content')
+@extends('layouts.student_dashboard')
 @section('style')
     <style>
         .errors-bg{

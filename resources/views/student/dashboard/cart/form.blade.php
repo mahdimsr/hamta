@@ -1,4 +1,4 @@
-@extends('layouts.content')
+@extends('layouts.student_dashboard')
 @section('style')
 <link rel="stylesheet" href="{{ asset('css/student/dashboard/purchase_show.css') }}">
 @endsection
@@ -29,7 +29,7 @@
       </ul>
      <hr class="card-hr">
     <div class="cancel-icon">
-     <a href="{{ route('student_dashboard_lessonExams_removeCartItem',['id'=> $item->id]) }}"><i class="fas fa-window-close"></i></a>
+     <a href="{{ route('student_dashboard_cart_remove',['id'=> $item->id]) }}"><i class="fas fa-window-close"></i></a>
     </div>
     </div>
   </div>
@@ -72,19 +72,19 @@
         @if($student->wallet<$price)
         <div class="row">
             <div class="col-md-6">
-            <button id="purchaseWalletBtn" onclick="purchaseWallet('{{route('student_dashboard_lessonExams_purchaseWallet')}}')"
+            <button id="purchaseWalletBtn" onclick="setRoute('{{route('student_dashboard_cart_purchaseWallet')}}')"
                     type="submit" class="btn btn-success btn-lg btn-block remaining" disabled>
                 پرداخت با کیف پول
             </button>
             </div>
             <div class="col-md-6">
-            <button id="purchaseBankBtn" type="submit" class="btn btn-success btn-lg btn-block remaining" onclick="purchaseBank('{{route('student_dashboard_wallet_purchaseLessonExam')}}')">
+            <button id="purchaseBankBtn" type="submit" class="btn btn-success btn-lg btn-block remaining" onclick="setRoute('{{route('student_dashboard_cart_purchaseBank')}}')">
                 پرداخت از طریق درگاه بانکی
             </button>
             </div>
         </div>
         @else
-        <button id="purchaseWalletBtn" onclick="purchaseWallet('{{route('student_dashboard_lessonExams_purchaseWallet')}}')"
+        <button id="purchaseWalletBtn" onclick="setRoute('{{route('student_dashboard_cart_purchaseWallet')}}')"
         type="submit" class="btn btn-success btn-lg btn-block remaining">
             پرداخت با کیف پول
         </button>
@@ -111,7 +111,7 @@
         $.ajax({
 
             type : "POST",
-            url  : "{{route('student_dashboard_lessonExams_validateDiscountCode')}}",
+            url  : "{{route('student_dashboard_cart_discount')}}",
             data :
                 {
 
@@ -140,36 +140,16 @@
                         $('#purchaseBankBtn').remove();
                     }
 
-                    console.log(result);
                 }
 
             },
-
-            error : (error) =>
-            {
-                console.log(error);
-            }
-
         });
     }
 
 
-    function purchaseWallet(route)
+    function setRoute(route)
     {
         const form = document.querySelector("form");
-
-        console.log(form);
-
-        form.action = route;
-    }
-
-
-    function purchaseBank(route)
-    {
-        const form = document.querySelector("form");
-
-        console.log(route);
-
         form.action = route;
     }
 

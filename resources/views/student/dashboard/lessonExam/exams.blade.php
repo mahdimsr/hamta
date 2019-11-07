@@ -1,4 +1,4 @@
-@extends('layouts.content')
+@extends('layouts.student_dashboard')
 @section('style')
 <link rel="stylesheet" href="{{ asset('css/student/dashboard/exams.css') }}">
 
@@ -20,68 +20,23 @@
             <li><input type="checkbox" id="checkboxOne" ><label for="checkboxOne">دوازدهم</label></li>
             <li><input type="checkbox" id="checkboxTwo"><label for="checkboxTwo">یازدهم</label></li>
             <li><input type="checkbox" id="checkboxThree"><label for="checkboxThree">دهم</label></li>
-            
+
           </ul>
 
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
   <hr>
-  <div class="jumbotron jumbotron-fluid" dir="rtl">
-    <div class="container">
-      <h4 class="display-4">
-        <div id="circle-gerayesh">
-   
-    </div>
-    گرایش
-    </h4>
-      <div class="lead">
-          
-            <ul class="kp-cboxtags">
-                    <li><input type="checkbox" id="checkboxfour" ><label for="checkboxfour">انسانی</label></li>
-                    <li><input type="checkbox" id="checkboxfive"><label for="checkboxfive">تجربی</label></li>
-                    <li><input type="checkbox" id="checkboxsix"><label for="checkboxsix">ریاضی و فیزیک</label></li>
-                  </ul>
+  <h4 dir="rtl">آزمون های درس به درس</h4>
 
-
-
-      </div>
-    </div>
-  </div>
-  <hr>
-  <h4 dir="rtl">ازمون درس به درس</h4>
-  
   <div id="app" class="containerC">
-        <card data-image="{{asset('image/student/auth/auth.jpg')}}">
-            <h4 slot="header">ریاضی 1</h4>
-        </card>
-        <card data-image="{{asset('image/student/auth/auth.jpg')}}">
-            <h4 slot="header">ریاضی 1</h4>
-        </card>
-        <card data-image="{{asset('image/student/auth/auth.jpg')}}">
-            <h4 slot="header">ریاضی 1</h4>
-        </card>
-        <card data-image="{{asset('image/homepage/اسلاید11-100.jpg')}}">
-           <h4 slot="header">ریاضی 1</h4>
-        </card>
-        <card data-image="{{asset('image/homepage/اسلاید11-100.jpg')}}">
-            <h4 slot="header">ریاضی 1</h4>
-          </card>
-          <card data-image="{{asset('image/homepage/اسلاید11-100.jpg')}}">
-            <h4 slot="header">ریاضی 1</h4>
-          </card>
-          <card data-image="{{asset('image/homepage/اسلاید11-100.jpg')}}">
-            <h4 slot="header">ریاضی 1</h4>
-          </card>
+      @foreach ($lessonExams as $lessonExam )
+      <a href="{{ route('student_dashboard_lessonExam_details',['exm'=>$lessonExam->exm]) }}">
+      <card data-image="{{asset('image/student/auth/auth.jpg')}}">
+        <h4 slot="header">{{ $lessonExam->title }}</h4>
+      </card>
+      </a>
+      @endforeach
       </div>
 @endsection
 

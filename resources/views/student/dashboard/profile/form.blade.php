@@ -1,4 +1,4 @@
-@extends('layouts.content')
+@extends('layouts.student_dashboard')
 @section('content')
 	<div class="row" dir="rtl">
 		<div class="col-md-3">
