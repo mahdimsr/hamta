@@ -42,13 +42,23 @@ a#addfund1{
     transition: 0.5s ;
 }
 .pic-card:hover{
-    filter: blur(0px) grayscale(0);
+    /*filter: blur(0px) grayscale(0);*/
 }
 
 hr#sidebar-hr{
 
     margin: 0px 0px 0px 0px !important;
     border-top: 1px solid #ffffff!important;
+}
+.card-text1{
+    margin: 0px 0px 0px 0px !important;
+    padding: 0px 0px 0px 0px !important;
+    position: absolute;
+    color: #ffffff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 
