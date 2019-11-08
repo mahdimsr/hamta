@@ -60,5 +60,23 @@ hr#sidebar-hr{
     transform: translate(-50%, -50%);
     text-align: center;
 }
+.row{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
 
+@media (max-width:990px) {
+    .col-margin{
+        margin-top: 15px;
+        margin-bottom: 10px;
 
+    }
+    .card-text1{
+        font-size: 6em;
+    }
+}
+
+.disabled{
+    cursor: not-allowed;
+
+}

@@ -36,10 +36,10 @@
                 flex-wrap: wrap;
             }
             .sidebar{
-                width: 420px;
+                width: 350px;
             }
             .sidebar .sidebar-wrapper{
-                width: 420px;
+                width: 350px;
             }
             .navbar-right {
 
@@ -124,33 +124,16 @@
                     <p class="slider-par">:باقیمانده کیف پول</p>
                     </a>
                     <a id="addfund1" href="#">
-                        <u> <span id="addfund">< خرید مقداری اعتبار</span></u>
+                         <span id="addfund">< خرید مقداری اعتبار</span>
                     </a>
                 </li>
 
 
             </ul>
 
-                    {{--<div class="bagdet">--}}
-                    {{--<div class="badget-content">--}}
-
-
-                        {{--<hr id="badge">--}}
-                        {{--<p id="footer-badge">شما دانشجو خواهید شد آری آری تلاش کن </p>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
+ 
             <hr id="sidebar-hr">
-                    <div class="row" style="margin-top: 50px">
-                        <div class="col-md-6 text-center" style="float: right;">
 
-                            <a href="#"> <img src="https://img.icons8.com/ios/100/000000/exit.png" width="30px" height="35px"> </a>
-
-                        </div>
-                        <div class="col-md-6 text-center" >
-                            <a href="#">  <img  src="https://img.icons8.com/ios/100/000000/automatic.png" width="40px" height="40px"></a>
-                        </div>
-
-                    </div>
 
 
 
