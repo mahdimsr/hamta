@@ -21,10 +21,10 @@
           <p class="card-body-item">نوع پرداخت :</p>
           <p class="card-body-item-second">خرید آزمون درس به درس</p>
 
-
+        <div>
             <p class="card-body-item">کد فاکتور :</p>
             <p class="card-body-item-second">{{ $purchase->code }}</p>
-
+        </div>
 
           <div class="card-body">
               <p class="card-body-item">قیمت :</p>

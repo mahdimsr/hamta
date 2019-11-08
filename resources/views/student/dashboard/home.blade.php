@@ -14,6 +14,10 @@
                 font-size: 5em;
                 font-weight: 400;
             }
+            .card-text1 {
+                font-size: 9em;
+                font-weight: 400;
+            }
         }
 
         @media (min-width: 1800px) {
