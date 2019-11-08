@@ -16,5 +16,9 @@ class StudentCode extends Model
         return $this->belongsTo(Discount::class,'discountId');
     }
 
+    public function student()
+    {
+        return $this->belongsTo(Student::class,'studentId');
+    }
 
 }

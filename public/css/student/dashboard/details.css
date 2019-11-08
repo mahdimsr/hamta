@@ -1,0 +1,112 @@
+.back-bg{
+    background: no-repeat;
+    background-size: cover;
+    position: absolute;
+   
+    overflow: hidden;
+      z-index: -2;  
+}
+  .back-bg::after{
+    content: "";
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -4;
+	position: absolute;
+	background: rgba(62,69,81,.7);
+
+
+}  
+.main-panel > .content {
+     padding: 0;
+    
+     
+
+}
+h3.exam-title {
+  
+    right: 10%;
+    margin-right: 10%;
+    color: #fff;
+    
+   
+}
+.jumbotron{
+
+    background: #fff;
+    border-radius: 6% !important;
+    margin: 10px 20px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    position: absolute;
+    width: 90%;
+  
+    
+   
+   
+}
+
+.header{
+    display: flex;
+    font-size: 19px;
+}
+ul.header{
+    list-style: none;
+}
+.header-item-title{
+    color: gray;
+}
+.header-item{
+    position: absolute;
+    left: 7%;
+}
+ul.lead{
+    list-style: none;
+    display: flex;
+    font-size: 16px;
+}
+.payeh{
+    display: inline-flex;
+}
+.payeh-fitst-item{
+    
+    margin-left: 20px;
+    font-weight: 900;
+    margin-right: -20px;
+}
+.gerayesh{
+    display: inline-flex;
+    position: absolute;
+    left: 10%
+}
+.gerayesh-first-item{
+    margin-left: 20px;
+    font-weight: 900;
+}
+
+h3.description-title {
+    font-weight: 900;
+}
+
+p.description-body {
+    font-size: 12px;
+}
+
+.shop-icon {
+    
+
+    bottom: 10%;
+    left: 10%;
+    background: #fff;
+    cursor: pointer;
+    z-index: 5;
+   
+ 
+}
+i.fas.fa-cart-arrow-down {
+    font-size: 15px;
+    color: black;
+    cursor: pointer;
+    z-index: 5;
+}

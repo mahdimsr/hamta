@@ -1,0 +1,76 @@
+
+img.fisrt-jpg {
+    float: right;
+    right: 0%;
+  
+}
+
+    section.pink-bg {
+        display: block;
+        position: relative;
+        float: right;
+        margin-left: 18%;
+        width: 100%;
+    }
+   
+    
+
+section.factor {
+    display: inline;
+}
+.card {
+    height: 40%;
+    padding: 10px;
+    padding-right: 30px;
+    width: 65%;
+   
+    background: linear-gradient(15deg,  #4e55d9 50%, #3b96eb 50.1%);
+    margin-bottom: 0;
+    border: none;
+    border-radius: 40px 10px;
+    margin: 10px;
+    color: #fff;
+    right: 10%;
+    float: right;
+    display: flex;
+ 
+}
+.card-title {
+    display: flex;
+}
+.main-panel > .content {
+  padding:0
+    
+}
+p.card-title-item {
+    margin-right: 20%;
+    font-weight: 900;
+    font-size: 16px;
+}
+
+p.card-body-item {
+    display: inline-block;
+    margin-right: 20%;
+}
+.card-body-item-with{
+    display: inline-block;
+    padding: 8px;
+    border: 0.5px solid;
+    border-radius: 6px;
+    margin-right: 10%;
+}
+#app{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.card > div{
+    
+    flex: 1;
+}
+p.card-body-item-second {
+    float: left;
+   
+}

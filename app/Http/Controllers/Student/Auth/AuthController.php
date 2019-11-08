@@ -64,7 +64,7 @@ class AuthController extends Controller
 
 
 
-			return redirect()->route('student_dashboard_content');
+			return redirect()->route('student_dashboard_home');
 
         }
 
@@ -82,7 +82,7 @@ class AuthController extends Controller
 				Cookie::queue('studentPass', '');
 
 			}
-            return redirect()->route('student_dashboard_profile_form');
+            return redirect()->route('student_dashboard_home');
 
         }
 
@@ -94,13 +94,6 @@ class AuthController extends Controller
         }
 
     }
-
-    public function logout()
-    {
-        Auth::guard('student')->logout();
-        return redirect()->route('student_login_form');
-    }
-
 
 	public function register(Request $request)
     {
