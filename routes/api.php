@@ -32,6 +32,13 @@
 
             Route::get('/index', 'IndexController@index')->name('api_student_index');
 
+            Route::prefix('profile')->group(function()
+            {
+
+                Route::get('/myExams','ProfileController@myExams')->name('api_student_myExams');
+
+            });
+
             Route::prefix('cart')->group(function()
             {
 

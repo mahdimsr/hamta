@@ -34,7 +34,7 @@
 
                 if ($model->studentId == null)
                 {
-                    $authId = Auth::guard('student')->id();
+                    $authId = Auth::id();
                     $model->studentId = $authId;
                 }
 

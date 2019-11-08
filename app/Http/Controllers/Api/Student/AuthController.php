@@ -71,8 +71,7 @@
 
             $v = Validator::make($request->all(), [
 
-                'mobile'         => 'required_without:email|unique:student,mobile',
-                'email'          => 'required_without:mobile|unique:student,email',
+                'mobile'         => 'required|unique:student,mobile',
                 'password'       => 'required',
                 'repeatPassword' => 'same:password'
 
