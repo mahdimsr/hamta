@@ -11,15 +11,15 @@
 
 @endsection
 @section('content')
-<form action="{{ route('student_dashboard_lessonExams_questions',['exm'=>$lessonExam->exm]) }}" method="POST">
-@foreach ($lessonExam->questions() as $key => $question )
+<form action="{{ route('student_dashboard_lessonExams_result',['exm'=>$lessonExam->exm]) }}" method="POST">
+@foreach ($lessonExam->questions as $key => $question )
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
         <div class="card card-question">
             <div class="question-number">
-                <h3 class="text-center question-number-text">$key</h3>
+                <h3 class="text-center question-number-text">{{ ++$key }}</h3>
             </div>
-            <p dir="rtl" class="question-text">$question->text</p>
+            <p dir="rtl" class="question-text">{{ $question->text }}</p>
         </div>
 
     </div>
@@ -51,28 +51,28 @@
                 <li>
                     <label for="opt1" class="radio">
                         <input type="radio" name="questions[$question->id]" id="opt1" class="hidden"/>
-                        <span class="label"></span>$question->optionOne
+                        <span class="label"></span>{{ $question->optionOne }}
                     </label>
 
                 </li>
                 <li>
                     <label for="opt2" class="radio ">
                         <input type="radio" name="questions[$question->id]" id="opt2" class="hidden"/>
-                        <span class="label"></span>$question->optionTwo
+                        <span class="label"></span>{{ $question->optionTwo }}
                     </label>
 
                 </li>
                 <li>
                     <label for="opt3" class="radio">
                         <input type="radio" name="questions[$question->id]" id="opt3" class="hidden"/>
-                        <span class="label"></span>$question->optionThree
+                        <span class="label"></span>{{ $question->optionThree }}
                     </label>
 
                 </li>
                 <li>
                     <label for="opt4" class="radio">
                         <input type="radio" name="questions[$question->id]" id="opt4" class="hidden"/>
-                        <span class="label"></span>$question->optionThree
+                        <span class="label"></span>{{ $question->optionThree }}
                     </label>
 
                 </li>
