@@ -80,3 +80,122 @@ hr#sidebar-hr{
     cursor: not-allowed;
 
 }
+/*exam questions css*/
+.colorful-shape{
+    background-color: #A1CAFF;
+
+}
+.card-question{
+    background-color: #566FC6 !important;
+    align-content: center;
+}
+.question-number{
+    position: absolute;
+    border-radius: 100%;
+    background-color: #ffffff;
+    left: 47%;
+    top: -27%;
+    width: 50px;
+    height: 50px;
+}
+.question-text{
+    padding: 31px 22px 24px 20px;
+    font-size: 2.4em;
+    font-weight: 500;
+}
+h3.question-number-text{
+    margin: 13px 0 5px!important;
+}
+.card-question-content{
+    background-color: #A1CAFF;
+    border-radius: 12px!important;
+}
+ul.question-answer{
+    padding: 200px 86px 15px 15px;
+    list-style: decimal;
+    font-size: 2em;
+    font-weight: 300;
+
+}
+.question-answer{
+    padding:25px 50px 39px 20px;
+}
+
+.question-answer li:nth-child(n+2){
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+.question-notice{
+    padding: 41px 51px 0px 20px;
+    font-family: inherit;
+    font-size: 2em;
+float: right;
+}
+@media (min-width: 1462px) and (max-width:1654px) {
+
+
+    .mr-3 {
+        margin-top: 3em;
+
+    }
+}
+@media (min-width: 990px) {
+
+    .col-fright{
+        float: right!important;
+    }
+    .col-fleft{
+        float: left!important;
+    }
+}
+
+
+
+.radio {
+    position: relative;
+    cursor: pointer;
+    line-height: 20px;
+    font-size: 16px;
+    margin: 15px;
+}
+.radio .label {
+    position: relative;
+    display: block;
+    float: left;
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #000000;
+    border-radius: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+.radio .label:after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background: #225cff;
+    transform: scale(0);
+    transition: all 0.2s ease;
+    opacity: 0.08;
+    pointer-events: none;
+}
+.radio:hover .label:after {
+    transform: scale(3.6);
+}
+input[type="radio"]:checked + .label {
+    border-color: #225cff;
+}
+input[type="radio"]:checked + .label:after {
+    transform: scale(1);
+    transition: all 0.2s cubic-bezier(0.35, 0.9, 0.4, 0.9);
+    opacity: 1;
+}
+.question-answer label:nth-child(n+1){
+    color: black!important;
+    font-size: 16px!important;
+    margin: 0px!important;
+}
