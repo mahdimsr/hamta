@@ -11,13 +11,15 @@
 
 @endsection
 @section('content')
+<form action="{{ route('student_dashboard_lessonExams_questions',['exm'=>$lessonExam->exm]) }}" method="POST">
+@foreach ($lessonExam->questions() as $key => $question )
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
         <div class="card card-question">
             <div class="question-number">
-                <h3 class="text-center question-number-text">1</h3>
+                <h3 class="text-center question-number-text">$key</h3>
             </div>
-            <p dir="rtl" class="question-text">با در نظر گرفتن تاریخ صدر اسلام پیامبر در چه سالی هجرت کردند و چرا؟</p>
+            <p dir="rtl" class="question-text">$question->text</p>
         </div>
 
     </div>
@@ -29,7 +31,7 @@
     <div class="col-md-12" style="    margin: -63px 0px 0px 0px;    position: initial;">
 
         <div class="card card-question-content">
-
+                @if($question->photo)
                 <div class="col-md-12">
                     <p  class="question-notice text-right">
                         .اگر این سوال دارای تصویر الحاقی باشد در این بخش شما می توانید به آن دسترسی داشته باشید
@@ -42,34 +44,35 @@
 
                     </div>
                 </div>
+                @endif
 
 
             <ul dir="rtl" class="question-answer">
                 <li>
                     <label for="opt1" class="radio">
-                        <input type="radio" name="rdo" id="opt1" class="hidden"/>
-                        <span class="label"></span>در سال فلان به دلیل شرایط سخت واقع در مکه و فشار دیگر قبیله های محلی که خیلی زورگو بودن
+                        <input type="radio" name="questions[$question->id]" id="opt1" class="hidden"/>
+                        <span class="label"></span>$question->optionOne
                     </label>
 
                 </li>
                 <li>
                     <label for="opt2" class="radio ">
-                        <input type="radio" name="rdo" id="opt2" class="hidden"/>
-                        <span class="label"></span>در سال فلان به دلیل شرایط سخت واقع در مکه و فشار دیگر قبیله های محلی که خیلی زورگو بودن
+                        <input type="radio" name="questions[$question->id]" id="opt2" class="hidden"/>
+                        <span class="label"></span>$question->optionTwo
                     </label>
 
                 </li>
                 <li>
                     <label for="opt3" class="radio">
-                        <input type="radio" name="rdo" id="opt3" class="hidden"/>
-                        <span class="label"></span>در سال فلان به دلیل شرایط سخت واقع در مکه و فشار دیگر قبیله های محلی که خیلی زورگو بودن
+                        <input type="radio" name="questions[$question->id]" id="opt3" class="hidden"/>
+                        <span class="label"></span>$question->optionThree
                     </label>
 
                 </li>
                 <li>
                     <label for="opt4" class="radio">
-                        <input type="radio" name="rdo" id="opt4" class="hidden"/>
-                        <span class="label"></span>در سال فلان به دلیل شرایط سخت واقع در مکه و فشار دیگر قبیله های محلی که خیلی زورگو بودن
+                        <input type="radio" name="questions[$question->id]" id="opt4" class="hidden"/>
+                        <span class="label"></span>$question->optionThree
                     </label>
 
                 </li>
@@ -79,6 +82,9 @@
         </div>
 
     </div>
+
+@endforeach
+</form>
 
 
 

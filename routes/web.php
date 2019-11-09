@@ -53,7 +53,7 @@
                 Route::prefix('lesson')->group(function()
                 {
                     Route::get('/', 'LessonExamController@exams')->name('student_dashboard_lessonExams');
-                    Route::get('/addToCart/{exm}', 'LessonExamController@addToCart')->name('student_dashboard_lessonExams_addToCart');
+                    Route::get('{exm}/cart/add', 'LessonExamController@addToCart')->name('student_dashboard_lessonExams_addToCart');
                     Route::get('/{exm}/details', 'LessonExamController@details')->name('student_dashboard_lessonExam_details');
                     Route::get('/{exm}/questions', 'LessonExamController@questions')->name('student_dashboard_lessonExams_questions');
                 });
@@ -82,7 +82,6 @@
             Route::get('/results', 'DashboardController@results')->name('student_dashboard_results');
 
             Route::get('/logout', 'DashboardController@logout')->name('student_dashboard_logout');
-            Route::get('/test', 'DashboardController@test')->name('test');
         });
 
     });

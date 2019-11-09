@@ -72,7 +72,7 @@
                                     </div>
                                     <div class="gerayesh">
                                         <li class="gerayesh-first-item">تومان</li>
-                                        <li>{{ $lessonExam->price }}</li>
+                                        <li>{{ number_format($lessonExam->price) }}</li>
                                     </div>
                                     </ul>
 

@@ -186,11 +186,6 @@
                             </a>
                         </li>
                         <li>
-                            <a class="active" href="{{ route('test') }}">
-                                شرکت در آزمون
-                            </a>
-                        </li>
-                        <li>
                             <a class="" href="{{route('student_dashboard_lessonExams')}}">
                                 آزمون های درس به درس
                             </a>
