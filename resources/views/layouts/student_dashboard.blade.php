@@ -26,6 +26,10 @@
     @yield('style')
 
     <style>
+        .main-panel {
+
+            background-color: #F7F7FA;
+        }
         .sidebar .nav i {
             font-size: 15px;
 
