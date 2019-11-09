@@ -50,7 +50,6 @@ p.card-title-item {
 
 p.card-body-item {
     display: inline-block;
-    margin-right: 20%;
 }
 .card-body-item-with{
     display: inline-block;
@@ -74,3 +73,46 @@ p.card-body-item-second {
     float: left;
    
 }
+p.card-body-item-with {
+    margin-right: 20%;
+}
+.when-empty-image{
+   height: 400px;
+   width: 400px; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 475px) {
+ 
+    p.card-title-item {
+        font-weight: normal;
+        font-size: 11px;
+    }
+    p.card-body-item {
+        font-size: 11px;
+    }
+    p.card-body-item-second {
+        font-size: 11px;
+    }
+    p.card-body-item-with {
+        font-size: 11px;
+    }
+  }
