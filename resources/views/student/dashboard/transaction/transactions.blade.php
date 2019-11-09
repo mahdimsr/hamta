@@ -1,6 +1,13 @@
 @extends('layouts.student_dashboard')
 @section('style')
 <link rel="stylesheet" href="{{ asset('css\student\dashboard\transaction.css') }}">
+<style>
+
+
+  .active{
+      color: red;
+  }
+</style>
 @endsection
 @section('content')
 
@@ -44,11 +51,17 @@
 @endforeach
 </div>
 
+<div id="app">
+<div class="when-empty">
+    <h4 dir="rtl">تراکنشی وجود ندارد</h4>
+<img class="when-empty-image" src="{{ asset('image/student/dashboard/empty_cart.svg') }}">
+
+</div>
+</div>
 
 
-
-
-</section>
+@endsection
+@section('script')
 
 
 @endsection
