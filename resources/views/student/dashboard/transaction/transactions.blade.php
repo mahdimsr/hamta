@@ -1,13 +1,7 @@
 @extends('layouts.student_dashboard')
 @section('style')
 <link rel="stylesheet" href="{{ asset('css\student\dashboard\transaction.css') }}">
-<style>
 
-
-  .active{
-      color: red;
-  }
-</style>
 @endsection
 @section('content')
 
