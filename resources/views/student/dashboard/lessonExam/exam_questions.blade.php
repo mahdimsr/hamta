@@ -50,29 +50,29 @@
             <ul dir="rtl" class="question-answer">
                 <li>
                     <label for="opt1" class="radio">
-                        <input type="radio" name="questions[$question->id]" id="opt1" class="hidden"/>
+                        <input type="radio" name="questions[answer{{ $question->id }}]" id="opt1" class="hidden"/>
                         <span class="label"></span>{{ $question->optionOne }}
                     </label>
 
                 </li>
                 <li>
                     <label for="opt2" class="radio ">
-                        <input type="radio" name="questions[$question->id]" id="opt2" class="hidden"/>
+                        <input type="radio" name="questions[answer{{ $question->id }}]" id="opt2" class="hidden"/>
                         <span class="label"></span>{{ $question->optionTwo }}
                     </label>
 
                 </li>
                 <li>
                     <label for="opt3" class="radio">
-                        <input type="radio" name="questions[$question->id]" id="opt3" class="hidden"/>
+                        <input type="radio" name="questions[answer{{ $question->id }}]" id="opt3" class="hidden"/>
                         <span class="label"></span>{{ $question->optionThree }}
                     </label>
 
                 </li>
                 <li>
                     <label for="opt4" class="radio">
-                        <input type="radio" name="questions[$question->id]" id="opt4" class="hidden"/>
-                        <span class="label"></span>{{ $question->optionThree }}
+                        <input type="radio" name="questions[answer{{ $question->id }}]" id="opt4" class="hidden"/>
+                        <span class="label"></span>{{ $question->optionFour }}
                     </label>
 
                 </li>
@@ -84,6 +84,7 @@
     </div>
 
 @endforeach
+<button type="submit">اتمام</button>
 </form>
 
 

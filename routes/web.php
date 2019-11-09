@@ -56,6 +56,7 @@
                     Route::get('{exm}/cart/add', 'LessonExamController@addToCart')->name('student_dashboard_lessonExams_addToCart');
                     Route::get('{exm}/details', 'LessonExamController@details')->name('student_dashboard_lessonExam_details');
                     Route::get('{exm}/questions', 'LessonExamController@questions')->name('student_dashboard_lessonExams_questions');
+                    Route::post('{exm}/result', 'LessonExamController@result')->name('student_dashboard_lessonExams_result');
                 });
 
             });
