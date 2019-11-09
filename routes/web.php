@@ -82,6 +82,7 @@
             Route::get('/results', 'DashboardController@results')->name('student_dashboard_results');
 
             Route::get('/logout', 'DashboardController@logout')->name('student_dashboard_logout');
+            Route::get('/test', 'DashboardController@test')->name('test');
         });
 
     });

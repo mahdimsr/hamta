@@ -118,7 +118,7 @@
                     </a>
                 </li>
 
- 
+
             <hr id="sidebar-hr">
             <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_scholarship' ? 'active' : ''}} disabled">
                 <a >
@@ -182,8 +182,8 @@
                             </a>
                         </li>
                         <li>
-                            <a class="active" href="">
-                                ایتم اول
+                            <a class="active" href="{{ route('test') }}">
+                                شرکت در آزمون
                             </a>
                         </li>
                         <li>

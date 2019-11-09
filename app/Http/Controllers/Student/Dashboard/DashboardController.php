@@ -53,4 +53,9 @@ class DashboardController extends Controller
 		return view('student.dashboard.result.results', compact('student','lessonExams','giftExams'));
     }
 
+    public function test()
+    {
+        return view('student.dashboard.lessonExam.exam_questions');
+    }
+
 }
