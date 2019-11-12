@@ -26,22 +26,28 @@
     <div class="card" dir="rtl">
             <div class="card-body">
 
-
+            <div>
               <p class="card-body-item">نوع پرداخت :</p>
-              <p class="card-body-item-second">خرید آزمون درس به درس</p>
+              <p class="card-body-item-second">آزمون درس به درس</p>
+            </div>
+
+            <div>
+                    <p class="card-body-item">مشخصه :</p>
+                    <p class="card-body-item-second">{{ $purchase->lessonExam->exm }}</p>
+            </div>
 
             <div>
                 <p class="card-body-item">کد فاکتور :</p>
                 <p class="card-body-item-second">{{ $purchase->code }}</p>
             </div>
 
-              <div class="card-body">
+              <div>
                   <p class="card-body-item">قیمت :</p>
                   <p class="card-body-item-second">{{ number_format($purchase->price) }} تومان</p>
             </div>
 
                 @if($purchase->discountPrice )
-                <div class="card-body">
+                <div>
                     <p class="card-body-item">قیمت با کد تخفیف :</p>
                     <p class="card-body-item-with">{{ $purchase->discount->code }}</p>
                     <p class="card-body-item-second">{{ number_format($purchase->discountPrice) }} تومان</p>

@@ -80,7 +80,7 @@
         }
 
 
-        public function lessonExams()
+        public function lessonExam()
         {
 
             return $this->belongsTo(LessonExam::class, 'itemId');
