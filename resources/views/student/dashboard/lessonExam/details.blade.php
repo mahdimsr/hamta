@@ -51,13 +51,13 @@
                             </div>
                             <div class="gerayesh">
                                 <li class="gerayesh-first-item">زمان :</li>
-                                <li>{{ $lessonExam->duration }}</li>
+                                <li>{{ $lessonExam->duration }} دقیقه</li>
                             </div>
                             </ul>
 
                 </div>
                 <h3 class="description-title">
-                    توضیحات:
+                    توضیحات :
                 </h3>
                  <p class="description-body">
                     {{ $lessonExam->description ? $lessonExam->description : 'بدون توضیحات' }}
@@ -78,9 +78,13 @@
 
                         </div>
                         <div class="shop-icon" dir="ltr">
+                            @if($lessonExam->hasInCart())
+                            <b>.در سبد خرید موجود است</b>
+                            @else
                             <a href="{{ route('student_dashboard_lessonExams_addToCart',['exm'=> $lessonExam->exm]) }}">
-                            <i class="fas fa-cart-arrow-down"></i>
-                            </a>
+                                    <i class="fas fa-cart-arrow-down"></i>
+                                    </a>
+                            @endif
                         </div>
 
               </div>

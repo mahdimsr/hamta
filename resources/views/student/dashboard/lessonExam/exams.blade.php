@@ -31,11 +31,13 @@
 
   <div id="app" class="containerC">
       @foreach ($lessonExams as $lessonExam )
+      @if (!$lessonExam->hasPurchased())
       <a href="{{ route('student_dashboard_lessonExam_details',['exm'=>$lessonExam->exm]) }}">
-      <card data-image="{{asset('image/student/auth/auth.jpg')}}">
-        <h4 slot="header">{{ $lessonExam->title }}</h4>
-      </card>
-      </a>
+            <card data-image="{{asset('image/student/auth/auth.jpg')}}">
+              <h4 slot="header">{{ $lessonExam->title }}</h4>
+            </card>
+            </a>
+      @endif
       @endforeach
       </div>
 @endsection

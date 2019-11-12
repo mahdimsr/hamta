@@ -38,7 +38,7 @@
     </div>
 
     <div class="row equal ">
-        <a id="link" href="#">
+        <a id="link" href="{{ route('student_dashboard_lessonExams') }}">
             <div class="col-md-8 col-margin ">
                 <p class="card-text1 ">آزمون درس به درس</p>
                 <img class="pic-card" src="{{ asset('image/student/dashboard/exam-lesson.jpg') }}" alt="" width="100%"
@@ -46,9 +46,9 @@
             </div>
         </a>
 
-        <a id="link" href="#">
+        <a id="link" href="{{ route('student_dashboard_scholarship_form') }}">
             <div class="col-md-4 col-margin ">
-                <p class="card-text1 ">بورسیه همپا</p>
+                <p class="card-text1 ">بورسیه</p>
                 <img class="pic-card" src="{{ asset('image/student/dashboard/scholarship3.jpg') }}" alt="" width="100%"
                      height="100%">
             </div>

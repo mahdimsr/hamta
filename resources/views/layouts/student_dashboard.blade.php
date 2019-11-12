@@ -179,15 +179,9 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-
                         <li>
                             <a class="active" href="{{route('student_dashboard_cart_form')}}">
                                 سبد خرید
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" href="{{route('student_dashboard_lessonExams')}}">
-                                آزمون های درس به درس
                             </a>
                         </li>
                     </ul>
