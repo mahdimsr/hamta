@@ -252,9 +252,12 @@ h1 + p, p + p {
   }
 
   .card-info * {
-    position: relative;
+ 
+    text-align: right;
+  
     z-index: 1;
-    transform: translate(66%, 11%);
+    font-size: 14px;
+    transform: translate(-4%, 11%);
   }
   .card-info:after {
     content: '';

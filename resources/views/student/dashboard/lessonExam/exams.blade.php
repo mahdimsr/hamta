@@ -5,8 +5,7 @@
 @endsection
 @section('content')
 
-<input type="search" placeholder="search">
-<hr>
+
 <div class="jumbotron jumbotron-fluid" dir="rtl">
     <div class="container">
       <h4 class="display-4">
@@ -34,7 +33,7 @@
       @if (!$lessonExam->hasPurchased())
       <a href="{{ route('student_dashboard_lessonExam_details',['exm'=>$lessonExam->exm]) }}">
             <card data-image="{{asset('image/student/auth/auth.jpg')}}">
-              <h4 slot="header">{{ $lessonExam->title }}</h4>
+              <h4 slot="header"> {{ $lessonExam->title }}</h4>
             </card>
             </a>
       @endif
