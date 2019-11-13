@@ -129,7 +129,7 @@
                     </div>
                 </div>
                 <div class="row " >
-                    <div class="col-md-12"style="    margin-top: 5px;">
+                    <div class="col-md-12"style="    top: 9px;">
                         <p class="card-text1 disabled">بازی و سرگرمی</p>
                         <img class="pic-card disabled" src="{{ asset('image/student/dashboard/game1.jpg') }}" alt="" width="100%"
                              height="100%">
