@@ -114,43 +114,7 @@
 
 <hr id="sidebar-hr">
 
-                <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_scholarship' ? 'active' : ''}} disabled">
-                    <a >
-                        <i class="fa fa-graduation-cap"></i>
-                        <p class="slider-par">فرصتی تا کنکور</p>
-                        <span class="slider-span">نکات کنکوری</span>
-                    </a>
-                </li>
-
-
-            <hr id="sidebar-hr">
-            <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_scholarship' ? 'active' : ''}} disabled">
-                <a >
-                    <i class="fa fa-graduation-cap"></i>
-                    <p class="slider-par">بازی و سرگرمی</p>
-                    <span class="slider-span">:تعداد سرگرمی ها</span>
-                </a>
-            </li>
-
-            <hr id="sidebar-hr">
-            <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_scholarship' ? 'active' : ''}} disabled">
-                <a>
-                    <i class="fa fa-graduation-cap"></i>
-                    <p class="slider-par">معرفی دبیر</p>
-                    <span class="slider-span">:تعداد دبیران معرفی شده</span>
-                </a>
-            </li>
-
-            <hr id="sidebar-hr">
-            <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_scholarship' ? 'active' : ''}} disabled">
-                <a >
-                    <i class="fa fa-graduation-cap"></i>
-                    <p class="slider-par">بحث و گفتگو</p>
-                    <span class="slider-span">:تعداد افراد آنلاین</span>
-                </a>
-            </li>
-
-                <hr id="sidebar-hr">
+                
                 <li style="margin-bottom: 8px;">
                     <a>
                         <p class="slider-par">:باقیمانده کیف پول</p>
