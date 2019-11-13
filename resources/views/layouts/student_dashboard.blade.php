@@ -114,7 +114,7 @@
 
 <hr id="sidebar-hr">
 
-                
+
                 <li style="margin-bottom: 8px;">
                     <a>
                         <p class="slider-par">:باقیمانده کیف پول</p>
