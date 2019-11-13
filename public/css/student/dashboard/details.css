@@ -140,7 +140,7 @@ a.add-to-cart {
 	text-decoration: none;
 	text-align: center;
 	left: 24px;
-	position: absolute;
+	
 	top: 48px;
 	display: block;
 	box-shadow: 0 3px 6px rgba(255, 171, 0, 0.16), 0 3px 6px rgba(255, 171, 0, 0.23);
