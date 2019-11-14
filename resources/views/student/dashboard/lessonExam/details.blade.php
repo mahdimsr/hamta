@@ -85,12 +85,12 @@
 
                            
                                 <a href="#" class="add-to-cart">اضافه شدن به سبد خرید</a>
-                                <a href="#" class="cart"><span></span></a>
+                                <a href="{{ route('student_dashboard_lessonExams_addToCart',['exm'=> $lessonExam->exm]) }} " class="cart"><span></span></a>
                          
                             
                             @endif
                         </div>
-                        {{-- {{ route('student_dashboard_lessonExams_addToCart',['exm'=> $lessonExam->exm]) }} --}}
+               
               </div>
     </div>
 </div>
