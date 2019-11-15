@@ -112,6 +112,9 @@ h3.question-number-text{
 }
 ul.question-answer-withoutaxe{
     padding: 200px 41px 15px 15px;
+}
+ul.question-answer{
+    padding: 20px 86px 15px 15px;
     list-style: decimal;
     font-size: 2em;
     font-weight: 300;
