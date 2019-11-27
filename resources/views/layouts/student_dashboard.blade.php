@@ -76,10 +76,17 @@
         <div class="sidebar-wrapper">
 
             <ul class="nav text-right ">
-                <li class="user-profile">
-                    <img src="{{ asset('image/student/dashboard/profile1.png') }}" alt="">
+                <div class="user-profile">
+                    <div class="avatarWrapper">
+                        <div class="avatar">
+                            <div class="uploadOverlay"><a href="#"><img class="image-s" src="{{ asset('image/student/dashboard/edit.png') }}"></a></div>
 
-                </li>
+                        <img src="{{ asset('image/student/dashboard/user1.png') }}" alt="">
+
+                        </div>
+                    </div>
+
+                </div>
                 <div class="logo" dir="rtl">
                     <a class="simple-text">
                         امیر رضا محمدی
