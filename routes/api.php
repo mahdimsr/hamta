@@ -27,6 +27,9 @@
 
         });
 
+        Route::get('/checkUpdate', 'IndexController@checkUpdate')->name('api_student_update');
+
+
         Route::middleware('auth:api')->group(function()
         {
 
@@ -35,7 +38,10 @@
             Route::prefix('profile')->group(function()
             {
 
-                Route::get('/myExams','ProfileController@myExams')->name('api_student_myExams');
+                Route::get('/myExams', 'ProfileController@myExams')->name('api_student_myExams');
+                Route::get('/myProfile', 'ProfileController@myProfile')->name('api_student_myProfile');
+                Route::post('/updateMyProfile', 'ProfileController@updateMyProfile')
+                     ->name('api_student_updateMyProfile');
 
             });
 
@@ -58,6 +64,8 @@
                 Route::get('/', 'LessonExamController@lessonExams')->name('api_student_lessonExams');
 
                 Route::post('/add', 'LessonExamController@addToCart')->name('api_student_lessonExam_add');
+
+                Route::get('/questions/{lessonExamId}','LessonExamController@questions')->name('api_student_lessonExam_questions');
 
 
             });

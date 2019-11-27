@@ -19,14 +19,22 @@
         {
 
             $student = Auth::guard('api')->user();
-            $cart    = Cart::query()
+            $carts   = Cart::query()
                            ->where('studentId', '=', $student->id)
                            ->where('transactionId', '=', 0)
                            ->with('lessonExam')
                            ->get();
 
-            return response()->json(['status' => ApiHelper::$statusType[ 'ok' ],
-                                     'carts'  => $cart]);
+            $mainPrice = 0;
+
+            foreach ($carts as $cart)
+            {
+                $mainPrice = $mainPrice + $cart->lessonExam->price;
+            }
+
+            return response()->json(['status'    => ApiHelper::$statusType[ 'ok' ],
+                                     'mainPrice' => $mainPrice,
+                                     'carts'     => $carts]);
 
         }
 

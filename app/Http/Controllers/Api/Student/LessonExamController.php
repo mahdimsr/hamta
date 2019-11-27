@@ -66,10 +66,15 @@
 
                 $lessonExam = LessonExam::query()->where('exm', $request->input('exm'))->first();
 
-                if ($lessonExam->hasInCart($student->id))
+                if ($lessonExam->hasInCart())
                 {
                     return response()->json(['status'       => ApiHelper::$statusType[ 'error' ],
                                              'errorMessage' => 'این آزمون در سبد خرید موجود است.']);
+                }
+                elseif ($lessonExam->hasPurchased())
+                {
+                    return response()->json(['status'       => ApiHelper::$statusType[ 'error' ],
+                                             'errorMessage' => 'این آزمون را قبلا خریداری کرده اید.']);
                 }
                 else
                 {
@@ -79,7 +84,10 @@
                     $cart->studentId    = $student->id;
                     $cart->save();
 
-                    $cartCount = Cart::query()->where('studentId', '=', $student->id)->where('transactionId', '=', 0)->count();
+                    $cartCount = Cart::query()
+                                     ->where('studentId', '=', $student->id)
+                                     ->where('transactionId', '=', 0)
+                                     ->count();
 
                     return response()->json(['status'    => ApiHelper::$statusType[ 'ok' ],
                                              'cartCount' => $cartCount]);
@@ -90,7 +98,17 @@
         }
 
 
+        public function questions($lessonExamId)
+        {
 
+            $status = null;
 
+            $lessonExam = LessonExam::query()->with('questions')->find($lessonExamId);
+
+            $status = ApiHelper::$statusType['ok'];
+
+            return response()->json(['status'     => $status,
+                                     'lessonExam' => $lessonExam]);
+        }
 
     }

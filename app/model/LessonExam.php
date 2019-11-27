@@ -236,13 +236,12 @@
         }
 
 
-        public function hasInCart($authId = null)
+        public function hasInCart()
         {
 
-            if ($authId == null)
-            {
-                $authId = Auth::guard('student')->id();
-            }
+
+            $authId = Auth::id();
+
 
             $lessonExam = Cart::query()
                               ->where('lessonExamId', $this->id)
@@ -266,7 +265,7 @@
         public function hasPurchased()
         {
 
-            $authId = Auth::guard('student')->id();
+            $authId     = Auth::id();
             $lessonExam = Cart::query()
                               ->where('lessonExamId', $this->id)
                               ->where('studentId', $authId)
@@ -277,7 +276,6 @@
             {
                 return true;
             }
-
             else
             {
                 return false;

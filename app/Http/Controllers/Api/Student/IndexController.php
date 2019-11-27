@@ -12,6 +12,25 @@
     class IndexController extends Controller
     {
 
+        public function checkUpdate(Request $request)
+        {
+
+            $version     = '1.0';
+            $title       = 'نسخه اول';
+            $message
+                         = 'این نسخه اولین انتشار اپلیکیشن سامانه است و امکان داره که مشکلاتی داشته باشه. از بابت مشلات پیش آمده معذرت میخواهیم و در اولین فرصت سعی میکنیم که برطرفشون کنیم.';
+            $hasUpdate   = false;
+            $forceUpdate = false;
+
+            return response()->json(['status'      => ApiHelper::$statusType[ 'ok' ],
+                                     'version'     => $version,
+                                     'title'       => $title,
+                                     'message'     => $message,
+                                     'hasUpdate'   => $hasUpdate,
+                                     'forceUpdate' => $forceUpdate]);
+        }
+
+
         public function index()
         {
 
@@ -24,7 +43,6 @@
                                      'cartCount' => $cartCount,
                                      'student'   => $student]);
         }
-
 
 
     }
