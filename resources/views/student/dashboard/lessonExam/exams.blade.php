@@ -1,12 +1,16 @@
-@extends('layouts.content')
+@extends('layouts.student_dashboard')
 @section('style')
 <link rel="stylesheet" href="{{ asset('css/student/dashboard/exams.css') }}">
+<style>
 
+.deactivate{
+  display: none
+}
+</style>
 @endsection
 @section('content')
 
-<input type="search" placeholder="search">
-<hr>
+
 <div class="jumbotron jumbotron-fluid" dir="rtl">
     <div class="container">
       <h4 class="display-4">
@@ -17,76 +21,74 @@
 
         <ul class="ks-cboxtags">
             {{-- حلقه هم در ایدی و هم در فور --}}
-            <li><input type="checkbox" id="checkboxOne" ><label for="checkboxOne">دوازدهم</label></li>
-            <li><input type="checkbox" id="checkboxTwo"><label for="checkboxTwo">یازدهم</label></li>
-            <li><input type="checkbox" id="checkboxThree"><label for="checkboxThree">دهم</label></li>
-            
+            <li><input type="checkbox" id="checkboxOne" alt="one"><label for="checkboxOne">دوازدهم</label></li>
+            <li><input type="checkbox" id="checkboxTwo" alt="two"><label for="checkboxTwo">یازدهم</label></li>
+            <li><input type="checkbox" id="checkboxThree" alt="three"><label for="checkboxThree">دهم</label></li>
+
           </ul>
 
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
   <hr>
-  <div class="jumbotron jumbotron-fluid" dir="rtl">
-    <div class="container">
-      <h4 class="display-4">
-        <div id="circle-gerayesh">
-   
-    </div>
-    گرایش
-    </h4>
-      <div class="lead">
-          
-            <ul class="kp-cboxtags">
-                    <li><input type="checkbox" id="checkboxfour" ><label for="checkboxfour">انسانی</label></li>
-                    <li><input type="checkbox" id="checkboxfive"><label for="checkboxfive">تجربی</label></li>
-                    <li><input type="checkbox" id="checkboxsix"><label for="checkboxsix">ریاضی و فیزیک</label></li>
-                  </ul>
+  <h4 dir="rtl">آزمون های درس به درس</h4>
 
-
-
-      </div>
-    </div>
-  </div>
-  <hr>
-  <h4 dir="rtl">ازمون درس به درس</h4>
-  
   <div id="app" class="containerC">
-        <card data-image="{{asset('image/student/auth/auth.jpg')}}">
-            <h4 slot="header">ریاضی 1</h4>
-        </card>
-        <card data-image="{{asset('image/student/auth/auth.jpg')}}">
-            <h4 slot="header">ریاضی 1</h4>
-        </card>
-        <card data-image="{{asset('image/student/auth/auth.jpg')}}">
-            <h4 slot="header">ریاضی 1</h4>
-        </card>
-        <card data-image="{{asset('image/homepage/اسلاید11-100.jpg')}}">
-           <h4 slot="header">ریاضی 1</h4>
-        </card>
-        <card data-image="{{asset('image/homepage/اسلاید11-100.jpg')}}">
-            <h4 slot="header">ریاضی 1</h4>
-          </card>
-          <card data-image="{{asset('image/homepage/اسلاید11-100.jpg')}}">
-            <h4 slot="header">ریاضی 1</h4>
-          </card>
-          <card data-image="{{asset('image/homepage/اسلاید11-100.jpg')}}">
-            <h4 slot="header">ریاضی 1</h4>
-          </card>
+ 
+    <div id="one" class="deactivate">
+      <a href="#">
+            <card data-image="{{asset('image/student/auth/auth.jpg')}}">
+              <h4 slot="header">1 ریاضی</h4>
+            </card>
+            </a>
+    </div>
+
+        <div id="two" class="deactivate">
+            <a href="#">
+              <card data-image="{{asset('image/student/auth/auth.jpg')}}">
+                <h4 slot="header"> 2ریاضی</h4>
+              </card>
+              </a>
+            </div>
+<div id="three" class="deactivate">
+              <a href="#">
+                <card data-image="{{asset('image/student/auth/auth.jpg')}}">
+                  <h4 slot="header"> 3ریاضی</h4>
+                </card>
+                </a>
+</div>
       </div>
+
+
+      {{-- @foreach ($lessonExams as $lessonExam )
+      @if (!$lessonExam->hasPurchased())
+      <a href="{{ route('student_dashboard_lessonExam_details',['exm'=>$lessonExam->exm]) }}">
+            <card data-image="{{asset('image/student/auth/auth.jpg')}}">
+              <h4 slot="header"> {{ $lessonExam->title }}</h4>
+            </card>
+            </a>
+      @endif
+      @endforeach
+     
+ --}}
+
+
+
+
+
+
 @endsection
 
 @section('script')
 <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.min.js'></script>
+<script> 
+
+$( "input[type=checkbox]" ).on( "click",function(){
+  var result=$("#"+$(this).attr("alt")).toggleClass("deactivate");
+  console.log(result);
+});
+
+</script>
     <script type="text/javascript">
 Vue.config.devtools = true;
 

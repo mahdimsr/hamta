@@ -15,7 +15,6 @@
     class Result extends Model
     {
 
-        use SoftDeletes;
 
         protected $table = 'result';
 
@@ -44,4 +43,4 @@
             return $this->belongsTo(GiftExam::class, 'examId');
         }
 
-    }
+}

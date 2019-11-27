@@ -1,0 +1,127 @@
+.main-panel > .content {
+  padding:0;
+  margin-left: 10%;
+    
+}
+section.card-content {
+    margin-bottom: 20px;
+}
+.card-title{
+    color: #fff;
+    margin-right: 20px;
+}
+.card {
+    height: 40%;
+    width: 40%;
+    background-color: #4e55d9;
+    margin-bottom: 0;
+    display: inline-block;
+    margin: 10px;
+    border: none;
+    border-radius: 60px 10px;
+    
+}
+.hampa-logo {
+    margin-top: 20px;
+    height: 65px;
+    float: left;
+    border: 0.5px solid;
+    width: 65px;
+    border-color: deepskyblue;
+    margin-left: 15px;
+    border-radius: 20%;
+}
+.card .header {
+    padding: 15px 15px 0;
+    display: inline-flex;
+}
+ul.exam {
+    list-style: none;
+    display: flex;
+}
+li.exam-item {
+    font-size: 14px;
+    color: #fff;
+    margin-left: 20%;;
+  
+}
+ul.price {
+    display: flex;
+    list-style: none;
+}
+li.price-item {
+    font-size: 14px;
+    color: #fff;
+    margin-left: 20%;
+}
+.card-hr{
+    margin-left: 35%;
+
+}
+i.fas.fa-window-close {
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+.cancel-icon {
+    position: relative;
+    right: 47%;
+}
+
+
+
+section.form-content {
+    margin-right: 20%;
+    margin-left: 9px;
+    
+}
+.form-row {
+    display: grid !important;
+    border: 0.5px solid;
+    padding: 10px;
+    border: none;
+    border-radius: 40px 10px;
+    
+    background-color: #070f1312;
+    box-shadow: 5px 10px 8px #888888;
+}
+.form-group.input-inline {
+    display: flex !important;
+}
+
+ul.form-price {
+    list-style: none;
+    display: inline-flex;
+}
+
+ul.form-price-with {
+    display: inline-flex;
+    list-style: none;
+}
+button.btn.btn-success.btn-lg.btn-block.remaining {
+    margin-top: 25px;
+    margin-bottom: 80px;
+}
+
+li.form-price-item {
+    font-size: 14px;
+    font-weight: 900;
+}
+li.form-price-with-item {
+
+    font-weight: 900;
+    font-size: 14px;
+ 
+}
+li.form-price-with-item-p {
+  
+    font-weight: 900;
+    font-size: 14px;
+
+    margin-right: 60px;
+}
+li.form-price-item-p {
+    font-size: 14px;
+    font-weight: 900;
+    margin-right: 130px
+}

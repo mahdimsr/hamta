@@ -45,7 +45,7 @@
                             <div class="row" style="margin-top: 20px;">
                                 <div class="col-md-3 col-sm-3" style="float: right;">
                                     <p> گرایش آزمون:
-                                        {{$exam->orientation()[0]->title}}
+                                        {{$exam->orientation()->title}}
                                     </p>
                                 </div>
                                 <div class="col-md-3 col-sm-3">

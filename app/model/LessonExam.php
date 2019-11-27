@@ -32,13 +32,7 @@
 
         protected $table = 'lesson_exam';
 
-        protected $appends
-            = ['persianCreatedAt',
-               'persianUpdatedAt',
-               'grades',
-               'orientations',
-               'questionCount',
-               'lessons'];
+        protected $appends = ['active','persianCreatedAt', 'persianUpdatedAt','grades','orientations','questionCount','lessons'];
 
         protected $casts
             = [
@@ -75,6 +69,13 @@
             return $date;
         }
 
+        public function getActiveAttribute()
+        {
+            $carbon = Carbon::createFromDate($this->activeDate);
+            $date = Jalalian::fromCarbon($carbon)->format('%A, %d %B %y');
+
+            return $date;
+        }
 
         public function getPersianUpdatedAtAttribute()
         {
@@ -181,14 +182,8 @@
 
             $unique_oriId = Lib::unique_ObjectArray($orientationArray, 'id');
 
-            $orientation = array();
+            $orientation = Orientation::query()->find($unique_oriId[0]);
 
-            foreach ($unique_oriId as $id)
-            {
-                $ori = Orientation::query()->find($id);
-
-                array_push($orientation, $ori);
-            }
 
             return $orientation;
 
@@ -283,6 +278,48 @@
 
         }
 
+        public function hasUsed()
+        {
+
+            $authId    = Auth::guard('student')->id();
+            $result    = Result::query()->where('examId', $this->id)->where('studentId', $authId)->where('type','LESSONEXAM')->where('status','COMPLETE')->first();
+
+            if ($result)
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public function remainingTime()
+        {
+
+            $authId       = Auth::guard('student')->id();
+            $result       = Result::query()->where('studentId',$authId)->where('examId',$this->id)->first();
+            $durationTime = $result->created_at->addMinutes($this->duration)->addSeconds(2);
+            $now          = Carbon::now();
+
+                if($now->gte($durationTime))
+                {
+                    return '00:01';
+                }
+
+                else
+                {
+                    return  gmdate('i:s', $durationTime->diffInSeconds($now));
+                }
+
+        }
+
+        public function results()
+        {
+            return $this->hasMany(Result::class,'examId');
+        }
 
         public static function filterExam($grade, $orientation)
         {
@@ -327,6 +364,40 @@
 
 
             return $lessonExam;
+        }
+
+        public function grade()
+        {
+
+            $gradeArray = array();
+
+            foreach ($this->gradeLessons as $gradeLesson)
+            {
+                array_push($gradeArray, $gradeLesson->grade);
+            }
+
+            $unique_gradeId = Lib::unique_ObjectArray($gradeArray, 'id');
+            $grade = Grade::query()->find(max($unique_gradeId));
+
+            return $grade;
+        }
+
+        public static function filter()
+        {
+            $student      = Auth::guard('student')->user();
+            $grade        = $student->grade;
+            $lessonExams  = LessonExam::all();
+            $target_array = [];
+
+                foreach($lessonExams as $lessonExam)
+                {
+                    if($lessonExam->orientation()->id==$student->orientationId && $grade->id >= $lessonExam->grade()->id)
+                    {
+                        array_push($target_array,$lessonExam);
+                    }
+                }
+
+            return $target_array;
         }
 
     }

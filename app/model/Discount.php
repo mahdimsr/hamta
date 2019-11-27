@@ -97,8 +97,6 @@
         public function isValid()
         {
 
-            //validation Code for any type
-
             if ($this->isExpired)
             {
                 return false;
@@ -190,8 +188,6 @@
 
         public function generalChargeIsValid()
         {
-
-            //validation Code for any type
 
             if ($this->isExpired)
             {

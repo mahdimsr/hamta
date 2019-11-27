@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\model\StudentCode;
 use App\model\Transaction;
+use App\model\Result;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -32,10 +33,15 @@ class DashboardController extends Controller
     }
 
 
-    public function content()
+    public function home()
     {
+        return view('student.dashboard.home');
+    }
 
-        return view('student.dashboard.main');
+    public function logout()
+    {
+        Auth::guard('student')->logout();
+        return redirect()->route('student_login_form');
     }
 
     public function results()
@@ -45,7 +51,8 @@ class DashboardController extends Controller
         $lessonExams  = Result::query()->where('studentId',$student->id)->where('type','LESSONEXAM')->where('status','COMPLETE')->get();
         $giftExams    = Result::query()->where('studentId',$student->id)->where('type','GIFTEXAM')->where('status','COMPLETE')->get();
 
-		return view('student.dashboard.lessonExam.result', compact('student','lessonExams','giftExams'));
 
+		return view('student.dashboard.result.results', compact('student','lessonExams','giftExams'));
     }
+
 }
