@@ -21,9 +21,9 @@
 
         <ul class="ks-cboxtags">
             {{-- حلقه هم در ایدی و هم در فور --}}
-            <li><input type="checkbox" id="checkboxOne" alt="one" checked><label for="checkboxOne">دوازدهم</label></li>
-            <li><input type="checkbox" id="checkboxTwo" alt="two" checked><label for="checkboxTwo">یازدهم</label></li>
-            <li><input type="checkbox" id="checkboxThree" alt="three" checked><label for="checkboxThree">دهم</label></li>
+            <li><input type="checkbox" id="checkboxOne" alt="3" checked><label for="checkboxOne">دوازدهم</label></li>
+            <li><input type="checkbox" id="checkboxTwo" alt="2" checked><label for="checkboxTwo">یازدهم</label></li>
+            <li><input type="checkbox" id="checkboxThree" alt="1" checked><label for="checkboxThree">دهم</label></li>
 
           </ul>
 
@@ -34,43 +34,19 @@
   <h4 dir="rtl">آزمون های درس به درس</h4>
 
   <div id="app" class="containerC">
- 
-    <div id="one" >
-      <a href="#">
-            <card data-image="{{asset('image/student/auth/auth.jpg')}}">
-              <h4 slot="header">1 ریاضی</h4>
-            </card>
-            </a>
-    </div>
-
-        <div id="two" >
-            <a href="#">
-              <card data-image="{{asset('image/student/auth/auth.jpg')}}">
-                <h4 slot="header"> 2ریاضی</h4>
-              </card>
-              </a>
-            </div>
-<div id="three">
-              <a href="#">
-                <card data-image="{{asset('image/student/auth/auth.jpg')}}">
-                  <h4 slot="header"> 3ریاضی</h4>
-                </card>
-                </a>
-</div>
-      </div>
-
-
-      {{-- @foreach ($lessonExams as $lessonExam )
+      @foreach ($lessonExams as $lessonExam )
       @if (!$lessonExam->hasPurchased())
-      <a href="{{ route('student_dashboard_lessonExam_details',['exm'=>$lessonExam->exm]) }}">
+      <a href="{{ route('student_dashboard_lessonExam_details',['exm'=>$lessonExam->exm]) }}" data-grade="{{ $lessonExam->grade()->id }}">
             <card data-image="{{asset('image/student/auth/auth.jpg')}}">
               <h4 slot="header"> {{ $lessonExam->title }}</h4>
             </card>
-            </a>
+      </a>
       @endif
       @endforeach
-     
- --}}
+  </div>
+
+
+
 
 
 
@@ -81,10 +57,10 @@
 
 @section('script')
 <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.min.js'></script>
-<script> 
+<script>
 
 $( "input[type=checkbox]" ).on( "click",function(){
-  var result=$("#"+$(this).attr("alt")).toggleClass("deactivate");
+  var result=$('a[data-grade='+$(this).attr("alt")+']').toggleClass("deactivate");
   console.log(result);
 });
 

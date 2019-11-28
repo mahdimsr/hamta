@@ -1,7 +1,7 @@
 .main-panel > .content {
   padding:0;
   margin-left: 10%;
-    
+
 }
 section.card-content {
     margin-bottom: 20px;
@@ -19,7 +19,7 @@ section.card-content {
     margin: 10px;
     border: none;
     border-radius: 60px 10px;
-    
+
 }
 .hampa-logo {
     margin-top: 20px;
@@ -43,7 +43,7 @@ li.exam-item {
     font-size: 14px;
     color: #fff;
     margin-left: 20%;;
-  
+
 }
 ul.price {
     display: flex;
@@ -73,7 +73,7 @@ i.fas.fa-window-close {
 section.form-content {
     margin-right: 20%;
     margin-left: 9px;
-    
+
 }
 .form-row {
     display: grid !important;
@@ -81,7 +81,7 @@ section.form-content {
     padding: 10px;
     border: none;
     border-radius: 40px 10px;
-    
+
     background-color: #070f1312;
     box-shadow: 5px 10px 8px #888888;
 }
@@ -111,10 +111,10 @@ li.form-price-with-item {
 
     font-weight: 900;
     font-size: 14px;
- 
+
 }
 li.form-price-with-item-p {
-  
+
     font-weight: 900;
     font-size: 14px;
 
@@ -125,3 +125,14 @@ li.form-price-item-p {
     font-weight: 900;
     margin-right: 130px
 }
+#app{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.when-empty-image{
+    height: 400px;
+    width: 400px;
+ }

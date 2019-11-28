@@ -57,7 +57,7 @@
                                 <div class="form-group">
                                     <label>درس سوال</label>
                                     <select dir="rtl" name="gradeLesson"
-                                            class="form-control  menu dropdown-radius hide-search" {{ $modify==1? 'disabled' : '' }}>
+                                            class="form-control  menu dropdown-radius hide-search" {{ $modify==1? 'disabled' : '' }} tabindex="1">
                                         <option value="" id="0" selected disabled>درس سوال را انتخاب نمایید</option>
                                         @foreach ( $exam->gradeLessons as $gradeLesson )
                                             <option
@@ -75,7 +75,7 @@
                                     <label>مباحث سوال</label>
                                     <input name="description" dir="rtl" type="text" class="form-control "
                                            placeholder="مباحث سوال را وارد نمایید"
-                                           value="{{old('description')}}{{ $modify==1 && !old('description') && $question->description ? $question->description : '' }}">
+                                           value="{{old('description')}}{{ $modify==1 && !old('description') && $question->description ? $question->description : '' }}" tabindex="2">
                                     <div class="invalid-feedback">
                                         <small>{{ $errors->first('description') }}</small>
                                     </div>
@@ -93,14 +93,14 @@
                                     <label>نوع سوال</label>
                                     <input name="questionType" dir="rtl" type="text" class="form-control"
                                            placeholder="نوع سوال را وارد نمایید"
-                                           value="{{old('questionType')}}{{ $modify==1 && !old('questionType') && $question->questionType ? $question->questionType : '' }}">
+                                           value="{{old('questionType')}}{{ $modify==1 && !old('questionType') && $question->questionType ? $question->questionType : '' }}" tabindex="3">
                                 </div>
                             </div>
 
                             <div class="col-md-6 s-floatL">
                                 <div class="form-group">
                                     <label>درجه سختی سوال</label>
-                                    <select dir="rtl" name="hardness" class="form-control  menu dropdown-radius hide-search">
+                                    <select dir="rtl" name="hardness" class="form-control  menu dropdown-radius hide-search" tabindex="4">
                                         <option value="" selected disabled>درجه سختی سوال را انتخاب نمایید</option>
                                         <option
                                             value="1" {{old('hardness') == '1' ? 'selected' : ''}}{{ $modify==1 && !old('hardness') && $question->hardness== '1' ? 'selected' : '' }}>
@@ -136,7 +136,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>صورت سوال</label>
-                                    <textarea dir="rtl" name="text" rows="4" tabindex="1" class="form-control textarea-radius"
+                                    <textarea dir="rtl" name="text" rows="4" tabindex="5" class="form-control textarea-radius"
                                               placeholder="صورت سوال را وارد نمایید">{{old('text')}}{{ $modify==1 && !old('text') && $question->text ? $question->text : '' }}</textarea>
                                     <div class="invalid-feedback">
                                         <small>{{ $errors->first('text') }}</small>
@@ -149,7 +149,7 @@
                             <div class="col-md-6 s-floatR">
                                 <div class="form-group">
                                     <label>گزینه اول</label>
-                                    <textarea dir="rtl" name="optionOne" rows="3" tabindex="2" class="form-control textarea-radius"
+                                    <textarea dir="rtl" name="optionOne" rows="3" tabindex="6" class="form-control textarea-radius"
                                               placeholder="گزینه اول سوال را وارد نمایید">{{old('optionOne')}}{{ $modify==1 && !old('optionOne') && $question->optionOne ? $question->optionOne : '' }}</textarea>
                                     <div class="invalid-feedback">
                                         <small>{{ $errors->first('optionOne') }}</small>
@@ -160,7 +160,7 @@
                             <div class="col-md-6 s-floatL">
                                 <div class="form-group">
                                     <label>گزینه دوم</label>
-                                    <textarea dir="rtl" name="optionTwo" rows="3" tabindex="3" class="form-control textarea-radius"
+                                    <textarea dir="rtl" name="optionTwo" rows="3" tabindex="7" class="form-control textarea-radius"
                                               placeholder="گزینه دوم سوال را وارد نمایید">{{old('optionTwo')}}{{ $modify==1 && !old('optionTwo') && $question->optionTwo ? $question->optionTwo : '' }}</textarea>
                                     <div class="invalid-feedback">
                                         <small>{{ $errors->first('optionTwo') }}</small>
@@ -174,7 +174,7 @@
                             <div class="col-md-6 s-floatR">
                                 <div class="form-group">
                                     <label>گزینه سوم</label>
-                                    <textarea dir="rtl" name="optionThree" rows="3" tabindex="4" class="form-control textarea-radius"
+                                    <textarea dir="rtl" name="optionThree" rows="3" tabindex="8" class="form-control textarea-radius"
                                               placeholder="گزینه سوم سوال را وارد نمایید">{{old('optionThree')}}{{ $modify==1 && !old('optionThree') && $question->optionThree ? $question->optionThree : '' }}</textarea>
                                     <div class="invalid-feedback">
                                         <small>{{ $errors->first('optionThree') }}</small>
@@ -185,7 +185,7 @@
                             <div class="col-md-6 s-floatL">
                                 <div class="form-group">
                                     <label>گزینه چهارم</label>
-                                    <textarea dir="rtl" name="optionFour" rows="3" tabindex="5" class="form-control textarea-radius"
+                                    <textarea dir="rtl" name="optionFour" rows="3" tabindex="9" class="form-control textarea-radius"
                                               placeholder="گزینه چهارم سوال را وارد نمایید">{{old('optionFour')}}{{ $modify==1 && !old('optionFour') && $question->optionFour ? $question->optionFour : '' }}</textarea>
                                     <div class="invalid-feedback">
                                         <small>{{ $errors->first('optionFour') }}</small>
@@ -199,7 +199,7 @@
                             <div class="col-md-4 s-floatR">
                                 <div class="form-group">
                                     <label>گزینه صحیح</label>
-                                    <select dir="rtl" name="answer" class="form-control  menu dropdown-radius hide-search">
+                                    <select dir="rtl" name="answer" class="form-control  menu dropdown-radius hide-search" tabindex="10">
                                         <option value="" disabled selected>گزینه صحیح را انتخاب نمایید</option>
                                         <option
                                             value="1" {{old('answer') == '1' ? 'selected' : ''}}{{ $modify==1 && !old('answer') && $question->answer== '1' ? 'selected' : '' }}>
@@ -228,8 +228,8 @@
                                     <label>عکس برای سوال (در صورت نیاز)</label>
                                     <div class="input-file-container">
                                         <input class="input-file" name="photo" id="my-file" type="file"
-                                        >
-                                        <label tabindex="0" for="my-file" class="input-file-trigger text-center">
+                                        tabindex="11">
+                                        <label  for="my-file" class="input-file-trigger text-center">
                                             {{$modify == 1 && $question->photo ? 'ویرایش عکس سوال' : 'آپلود عکس سوال'}}
                                         </label>
                                     </div>
@@ -243,9 +243,9 @@
                                 <div class="form-group">
                                     <label>عکس پاسخ تشریحی سوال</label>
                                     <div class="input-file-container">
-                                        <input class="input-file" name="answerImage" id="my-file" type="file">
+                                        <input class="input-file" name="answerImage" id="my-file" type="file" tabindex="12">
 
-                                        <label tabindex="0" for="my-file" class="input-file-trigger text-center">
+                                        <label for="my-file" class="input-file-trigger text-center">
                                             {{$modify == 1 && $question->answerImage ? 'ویرایش پاسخ تشریحی سوال' : 'آپلود پاسخ تشریحی سوال'}}
                                         </label>
                                     </div>
@@ -259,7 +259,7 @@
                         </div>
 
                         <button type="submit"
-                                class="btn btn-fill btn-info pull-left">{{ $modify== 0 ? 'ذخیره و درج سوال بعدی' : 'ویرایش سوال' }}</button>
+                                class="btn btn-fill btn-info pull-left" tabindex="14">{{ $modify== 0 ? 'ذخیره و درج سوال بعدی' : 'ویرایش سوال' }}</button>
                         <div class="clearfix"></div>
                     </form>
                 </div>

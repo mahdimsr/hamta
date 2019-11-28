@@ -6,12 +6,9 @@
 @section('content')
 @if($purchases->isEmpty())
 <div id="app">
-    <div class="when-empty">
-        <h4 dir="rtl">تراکنشی وجود ندارد</h4>
     <img class="when-empty-image" src="{{ asset('image/student/dashboard/empty_cart.svg') }}">
-
-    </div>
-    </div>
+    <h4 class="text-center" dir="rtl">هنوز تراکنشی ثبت نشده است.</h4>
+</div>
 @else
 <section class="pink-bg row" >
 

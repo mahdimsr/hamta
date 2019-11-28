@@ -151,8 +151,10 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a class="active" href="{{route('student_dashboard_cart_form')}}">
-                                سبد خرید
+                            <a href="{{route('student_dashboard_cart_form')}}">
+                                <i class="fa fa-shopping-cart"></i>
+                                <p class="hidden-lg hidden-md">سبد خرید</p>
+                                <span class="notification hidden-sm hidden-xs">{{count($cart)}}</span>
                             </a>
                         </li>
                     </ul>

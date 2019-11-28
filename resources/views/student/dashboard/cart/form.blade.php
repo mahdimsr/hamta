@@ -4,13 +4,9 @@
 @endsection
 
 @section('content')
-
-
-<h3 dir="rtl">سبد خرید</h3>
-<section class="card-content">
-
-
+@if(!$cart->isEmpty())
 @foreach($cart as $item)
+<section class="card-content">
 <div class="card" dir="rtl">
     <div class="card-body">
         <div class="header row">
@@ -32,11 +28,9 @@
      <a href="{{ route('student_dashboard_cart_remove',['id'=> $item->id]) }}"><i class="fas fa-window-close"></i></a>
     </div>
     </div>
-  </div>
-@endforeach
+</div>
 </section>
-
-
+@endforeach
 <section class="form-content">
 <form action="" dir="rtl" method="post">
 
@@ -90,9 +84,13 @@
         </button>
         @endif
       </form>
-
 </section>
-
+@else
+<div id="app">
+    <img class="when-empty-image" src="{{ asset('image/student/dashboard/empty_cart.svg') }}">
+    <h4 class="text-center" dir="rtl">سبد خرید شما خالیست!</h4>
+</div>
+@endif
 @endsection
 
 @section('script')
