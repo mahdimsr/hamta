@@ -82,7 +82,7 @@
                             @if($lessonExam->hasInCart())
                             <b>.در سبد خرید موجود است</b>
                             @else
-                                <a href="{{ route('student_dashboard_lessonExams_addToCart',['exm'=> $lessonExam->exm]) }} " class="add-to-cart">اضافه شدن به سبد خرید<span class="fa fa-cart-plus"></span></a>
+                                <a href="{{ route('student_dashboard_lessonExams_addToCart',['exm'=> $lessonExam->exm]) }} " class="add-to-cart"><span class="fa fa-cart-plus"></span>اضافه شدن به سبد خرید</a>
                             @endif
                         </div>
 
