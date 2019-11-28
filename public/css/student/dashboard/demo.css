@@ -212,3 +212,72 @@ input[type="radio"]:checked + .label:after {
 .hidden {
     display: none;
 }
+
+/*profile image */
+.avatarWrapper{
+    position: relative;
+}
+.avatar{
+    background-color: #c4c4c4;
+    border-radius: 100%;
+    width: 108px;
+    padding: 4px 4px 1px 0px;
+    height: 108px;
+}
+.user-profile {
+    right: 56%;
+    transform: translate(39%,0%)!important;
+}
+.avatar.active {
+    border-radius: 100% 0 20px 100%;
+    background-color: #CC0000;
+}
+.avatar .uploadOverlay, .avatar .uploadCompleteOverlay {
+    background-color: rgba(111, 188, 255, 0.63);
+    -webkit-transition: all 250ms ease;
+    -moz-transition: all 250ms ease;
+    -ms-transition: all 250ms ease;
+    -o-transition: all 250ms ease;
+    transition: all 250ms ease;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 100%;
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    left: 4px;
+    top: 4px;
+    opacity: 0;
+}
+.avatar .uploadOverlay , .avatar .uploadCompleteOverlay .image-s  {
+    vertical-align: bottom;
+    display: inline-block;
+    /*line-height: 200px;*/
+    text-align: center;
+
+    /*height: 200px;*/
+    /*width: 200px;*/
+    color: white;
+}
+.image-s{
+    height: 30px!important;
+    width: 30px!important;
+    border-radius: 0px!important;
+    top: 10px;
+    position: relative;
+    top: 34px;
+}
+.avatar:hover .uploadOverlay {
+    -webkit-transition: all 250ms ease;
+    -moz-transition: all 250ms ease;
+    -ms-transition: all 250ms ease;
+    -o-transition: all 250ms ease;
+    transition: all 250ms ease;
+    opacity: 1;
+
+}
+.avatar .uploadCompleteOverlay {
+    background-color: rgba(104, 174, 0, 0.9);
+    opacity: 1;
+
+}
