@@ -23,7 +23,7 @@
                 $table->string('exm')->nullable();
                 $table->string('title');
                 $table->string('description')->nullable();
-                $table->string('answerSheet')->nullable();
+                $table->string('answersheet')->nullable();
                 $table->integer('duration');
                 $table->timestamp('activeTime');
                 $table->date('resultDate');

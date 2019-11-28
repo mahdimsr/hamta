@@ -54,7 +54,6 @@
                 $model->examGradeLessons()->delete();
                 $model->questionExams()->delete();
                 $model->examDiscounts()->delete();
-                $model->examCodes()->delete();
                 Storage::disk('lessonExam')->deleteDirectory($model->id);
 
             });
@@ -114,14 +113,6 @@
 
             return $this->lessons();
         }
-
-
-        public function examCodes()
-        {
-
-            return $this->hasMany(ExamCode::class, 'examId');
-        }
-
 
         public function examDiscounts()
         {

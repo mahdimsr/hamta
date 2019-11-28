@@ -23,6 +23,7 @@
                 $table->string('exm')->nullable();
                 $table->string('title');
                 $table->string('description')->nullable();
+                $table->string('answersheet')->nullable();
                 $table->integer('price')->nullable()->default(0);
                 $table->date('activeDate')->nullable();
                 $table->integer('duration')->nullable();

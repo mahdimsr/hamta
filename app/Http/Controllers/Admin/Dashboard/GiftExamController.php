@@ -51,6 +51,7 @@
             $this->validate($request, ['title'        => 'required|string|max:20',
                                        'activeTime'   => 'required',
                                        'gradeLessons' => 'required',
+                                       'answersheet'  => 'mimes:pdf|max:2000',
                                        'description'  => 'nullable|string|max:300',
                                        'duration'     => 'nullable|integer|min:0',]);
 
@@ -75,6 +76,17 @@
 
             $giftExam->save();
             //end activeDate section
+
+            if ($request->hasFile('answersheet'))
+            {
+                $answersheet = $request->file('answersheet');
+
+                Storage::disk('giftExam')->put($giftExam->id . '/answersheet', $answersheet);
+
+                $giftExam->answersheet = $answersheet->hashName();
+
+                $giftExam->update();
+            }
 
             // insert relation
             foreach ($request->input('gradeLessons') as $gradeLessonId)
@@ -107,6 +119,7 @@
             $this->validate($request, ['title'       => 'required|string|max:20',
                                        'activeTime'  => 'required',
                                        'description' => 'nullable|string|max:300',
+                                       'answersheet'  => 'mimes:pdf|max:2000',
                                        'duration'    => 'nullable|integer|min:0',]);
 
 
@@ -129,6 +142,16 @@
             $giftExam->resultDate = $carbon->toDateTimeString();
 
             //end activeDate section
+
+            if ($request->hasFile('answersheet'))
+            {
+                $answersheet = $request->file('answersheet');
+
+                Storage::disk('giftExam')->put($giftExam->id . '/answersheet', $answersheet);
+
+                $giftExam->answersheet = $answersheet->hashName();
+
+            }
 
             $giftExam->update();
 

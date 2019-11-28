@@ -58,7 +58,21 @@ return [
 		'question' => [
 			'driver'     => 'local',
 			'root'       => storage_path('app/public/questions'),
-			'url'        => env('APP_URL') . '/hamta/storage/app/public/question',
+			'url'        => env('APP_URL') . 'storage/app/public/questions',
+			'visibility' => 'public',
+        ],
+
+        'lessonExam' => [
+			'driver'     => 'local',
+			'root'       => storage_path('app/public/lessonExams'),
+			'url'        => env('APP_URL') . 'storage/app/public/lessonExams',
+			'visibility' => 'public',
+        ],
+
+        'giftExam' => [
+			'driver'     => 'local',
+			'root'       => storage_path('app/public/giftExams'),
+			'url'        => env('APP_URL') . 'storage/app/public/giftExams',
 			'visibility' => 'public',
 		],
 

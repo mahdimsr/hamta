@@ -171,7 +171,22 @@
                             </div>
 
                         @endif
-
+                        <div class="row">
+                            <div class="col-md-12 s-floatR">
+                                <div class="form-group">
+                                    <label>پاسخنامه تشریحی</label>
+                                    <div class="input-file-container">
+                                        <input class="input-file" name="answersheet" id="my-file" type="file" tabindex="12">
+                                        <label for="my-file" class="input-file-trigger text-center">
+                                            {{$modify == 1 && $giftExam->answersheet ? 'ویرایش پاسخ نامه تشریحی' : 'آپلود پاسخ نامه تشریحی'}}
+                                        </label>
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('answersheet') }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">

@@ -52,6 +52,7 @@
                                        'orientation'  => 'required',
                                        'gradeLessons' => 'required',
                                        'category'     => 'required',
+                                       'answersheet'  => 'mimes:pdf|max:2000',
                                        'price'        => 'required|integer|min:0',
                                        'description'  => 'nullable|string|max:300',
                                        'duration'     => 'required|integer|min:0',]);
@@ -72,6 +73,16 @@
             $lessonExam->save();
             //end activeDate section
 
+            if ($request->hasFile('answersheet'))
+            {
+                $answersheet = $request->file('answersheet');
+
+                Storage::disk('lessonExam')->put($lessonExam->id . '/answersheet', $answersheet);
+
+                $lessonExam->answersheet = $answersheet->hashName();
+
+                $lessonExam->update();
+            }
 
             // insert relation
             foreach ($request->input('gradeLessons') as $gradeLessonId)
@@ -107,6 +118,7 @@
                                        'activeDate'  => 'required',
                                        'price'       => 'required|integer|min:0',
                                        'description' => 'nullable|string|max:300',
+                                       'answersheet' => 'mimes:pdf|max:2000',
                                        'duration'    => 'required|integer|min:0']);
 
 
@@ -123,7 +135,15 @@
             //end activeDate section
             $lessonExam->duration = $request->input('duration');
 
+            if ($request->hasFile('answersheet'))
+            {
+                $answersheet = $request->file('answersheet');
 
+                Storage::disk('lessonExam')->put($lessonExam->id . '/answersheet', $answersheet);
+
+                $lessonExam->answersheet = $answersheet->hashName();
+
+            }
             //end answerSheet section
 
             $lessonExam->update();

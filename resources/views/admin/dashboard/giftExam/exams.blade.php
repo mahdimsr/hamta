@@ -28,7 +28,7 @@
 								<td>{{$exam->exm}}</td>
 								<td>{{$exam->title}}</td>
 								<td>{{$exam->persianActiveTime}}</td>
-								<td>{{$exam->answerSheet ? 'دارد' : 'ندارد'}}</td>
+								<td>{{$exam->answersheet ? 'دارد' : 'ندارد'}}</td>
                                 <td>{{count($exam->questionExams)}}</td>
 								<td>
 

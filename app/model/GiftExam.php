@@ -44,7 +44,7 @@
 
                 $model->examGradeLessons()->delete();
                 $model->questionExams()->delete();
-                Storage::disk('giftExam')->deleteDirectory($model->id );
+                Storage::disk('giftExam')->deleteDirectory($model->id);
 
             });
         }
