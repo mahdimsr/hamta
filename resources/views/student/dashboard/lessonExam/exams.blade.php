@@ -21,9 +21,9 @@
 
         <ul class="ks-cboxtags">
             {{-- حلقه هم در ایدی و هم در فور --}}
-            <li><input type="checkbox" id="checkboxOne" alt="one"><label for="checkboxOne">دوازدهم</label></li>
-            <li><input type="checkbox" id="checkboxTwo" alt="two"><label for="checkboxTwo">یازدهم</label></li>
-            <li><input type="checkbox" id="checkboxThree" alt="three"><label for="checkboxThree">دهم</label></li>
+            <li><input type="checkbox" id="checkboxOne" alt="one" checked><label for="checkboxOne">دوازدهم</label></li>
+            <li><input type="checkbox" id="checkboxTwo" alt="two" checked><label for="checkboxTwo">یازدهم</label></li>
+            <li><input type="checkbox" id="checkboxThree" alt="three" checked><label for="checkboxThree">دهم</label></li>
 
           </ul>
 
@@ -35,7 +35,7 @@
 
   <div id="app" class="containerC">
  
-    <div id="one" class="deactivate">
+    <div id="one" >
       <a href="#">
             <card data-image="{{asset('image/student/auth/auth.jpg')}}">
               <h4 slot="header">1 ریاضی</h4>
@@ -43,14 +43,14 @@
             </a>
     </div>
 
-        <div id="two" class="deactivate">
+        <div id="two" >
             <a href="#">
               <card data-image="{{asset('image/student/auth/auth.jpg')}}">
                 <h4 slot="header"> 2ریاضی</h4>
               </card>
               </a>
             </div>
-<div id="three" class="deactivate">
+<div id="three">
               <a href="#">
                 <card data-image="{{asset('image/student/auth/auth.jpg')}}">
                   <h4 slot="header"> 3ریاضی</h4>
