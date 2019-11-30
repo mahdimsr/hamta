@@ -502,14 +502,14 @@ img {
         <div class="card card-question-content">
                 <div class="col-md-12">
 
-                    <p  class="question-notice text-right">
-                            <div class="gallery">
-                            <figure>
-                                    <img src="{{asset('image/homepage/home/speaker-1.png')}}" alt="" />
+                    <p  class="question-notice text-right">:در صورت وجود عکس در این قسمت می توانید آن را مشاهده کنید</p>
+                            <div class=" col-md-3 question-image ">
+                            <figure class="">
+                                    <img src="{{asset('image/homepage/home/speaker-1.png')}}" alt="" width="63px" height="82px"/>
 
                                   </figure>
 </div>
-                    </p>
+
 
                     <div class="col-md-2 mr-3" >
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none;">
@@ -524,7 +524,7 @@ img {
                     </div>
                 </div>
 
-<fieldset id="question-answer1">
+
             <ul dir="rtl" class="question-answer-withaxe question-answer">
                 <li>
                     <label  class="radio">
@@ -556,7 +556,7 @@ img {
                 </li>
 
             </ul>
-</fieldset>
+
         </div>
 
     </div>
@@ -580,7 +580,7 @@ img {
 
         <div class="card card-question-content">
 
-            <fieldset id="question-answer1">
+
                 <ul dir="rtl" class="question-answer-withoutaxe question-answer">
                     <li>
                         <label  class="radio">
@@ -612,7 +612,7 @@ img {
                     </li>
 
                 </ul>
-            </fieldset>
+
         </div>
 
     </div>

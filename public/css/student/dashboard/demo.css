@@ -111,17 +111,18 @@ h3.question-number-text{
     border-radius: 12px!important;
 }
 ul.question-answer-withoutaxe{
-    padding: 200px 41px 15px 15px;
+    padding: 40px 41px 15px 15px;
 }
 ul.question-answer{
-    padding: 20px 86px 15px 15px;
+    /*padding: 20px 86px 15px 15px;*/
     list-style: decimal;
     font-size: 2em;
     font-weight: 300;
 
 }
 .question-answer{
-    padding:25px 50px 39px 20px;
+    display: flow-root;
+    /*padding:25px 50px 39px 20px;*/
 }
 
 .question-answer li:nth-child(n+2){
@@ -131,11 +132,14 @@ ul.question-answer{
 .question-notice{
     padding: 41px 51px 0px 20px;
     font-family: inherit;
-    font-size: 2em;
-float: right;
+    font-size: 1.4em;
+    float: right;
+}
+.question-image{
+    margin: 45px 0px 20px 0px;
 }
 ul.question-answer-withaxe{
-    padding: 54px 41px 15px 15px;
+    padding: 0px 41px 15px 15px;
     list-style: decimal;
     font-size: 2em;
     font-weight: 300;
