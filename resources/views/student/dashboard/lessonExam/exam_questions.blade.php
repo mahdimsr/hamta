@@ -505,7 +505,7 @@ img {
                     <p  class="question-notice text-right">:در صورت وجود عکس در این قسمت می توانید آن را مشاهده کنید</p>
                             <div class=" col-md-3 question-image ">
                             <figure class="">
-                                    <img src="{{asset('image/homepage/home/speaker-1.png')}}" alt="" width="63px" height="82px"/>
+                                    <img src="{{ $question->image }}" alt="" width="63px" height="82px"/>
 
                                   </figure>
 </div>

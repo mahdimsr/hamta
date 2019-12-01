@@ -18,7 +18,7 @@ class Question extends Model
 
 	protected $table = 'question';
 
-	protected $appends = ['hardnessLabel'];
+	protected $appends = ['hardnessLabel','image'];
 
 	protected static function boot()
 	{
@@ -55,5 +55,11 @@ class Question extends Model
 		];
 
 		return $hardnessArray[$this->hardness];
+    }
+
+    public function getImageAttribute()
+	{
+        $url = asset('storage/questions/'.$this->id.'/photo/'.$this->photo);
+		return $url;
 	}
 }
