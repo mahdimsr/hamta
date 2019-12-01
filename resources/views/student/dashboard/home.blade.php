@@ -33,9 +33,7 @@
 @section('content')
 
 
-    <div dir="rtl" class="">
-        <h4>امکانات سامانه: </h4>
-    </div>
+
 
     <div class="row equal ">
 

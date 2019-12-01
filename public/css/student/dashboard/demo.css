@@ -44,7 +44,10 @@ a#addfund1{
 .pic-card:hover{
     /*filter: blur(0px) grayscale(0);*/
 }
-
+.sidebar .sidebar-wrapper{
+    overflow: unset;
+    position: absolute;
+}
 hr#sidebar-hr{
 
     margin: 0px 0px 0px 0px !important;
@@ -284,4 +287,22 @@ input[type="radio"]:checked + .label:after {
     background-color: rgba(104, 174, 0, 0.9);
     opacity: 1;
 
+}
+svg.svg-hover{
+    transition: 200ms;
+    fill: #7b7b7b;
+}
+svg.svg-hover:hover{
+fill: rgb(111, 188, 255);
+}
+.caret{
+    transition: 200ms;
+}
+.caret:hover{
+    fill: rgb(111, 188, 255)!important;
+}
+.svg-sidebar{
+    float: right;
+    margin-left: 15px;
+    line-height: 20px;
 }
