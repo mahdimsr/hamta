@@ -49,7 +49,7 @@
 
             Route::prefix('exams')->group(function()
             {
-
+                Route::get('/purchased', 'DashboardController@purchased')->name('student_dashboard_purchasedExams');
                 Route::prefix('lesson')->group(function()
                 {
                     Route::get('/', 'LessonExamController@exams')->name('student_dashboard_lessonExams');
@@ -57,6 +57,7 @@
                     Route::get('{exm}/details', 'LessonExamController@details')->name('student_dashboard_lessonExam_details');
                     Route::get('{exm}/questions', 'LessonExamController@questions')->name('student_dashboard_lessonExams_questions');
                     Route::post('{exm}/result', 'LessonExamController@result')->name('student_dashboard_lessonExams_result');
+
                 });
 
             });

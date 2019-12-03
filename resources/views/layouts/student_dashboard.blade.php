@@ -155,7 +155,7 @@
 <hr id="sidebar-hr">
 
                 <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == '' ? 'active' : ''}}">
-                    <a href="">
+                    <a href="{{ route('student_dashboard_purchasedExams') }}">
                         <svg class="svg-sidebar" height="18.5px" width="18.5px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                              viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
 <g>

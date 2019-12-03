@@ -478,7 +478,8 @@ img {
 
 @endsection
 @section('content')
-<form action="" method="POST">
+<form id="form" action="{{ route('student_dashboard_lessonExams_result',['exm' => $lessonExam->exm]) }}" method="POST">
+    {{ csrf_field() }}
 @foreach ($lessonExam->questions as $key => $question )
 @if($question->photo)
 <div class="row">
@@ -831,7 +832,7 @@ function countdownFinished() {
       TweenMax.to(timerEl, 1, { opacity: 0.2 });
       TweenMax.to(reloadBtn, 0.5, { scale: 1, opacity: 1 });
    }, 1000);
-
+   document.getElementById('form').submit();
 }
 
 reloadBtn.addEventListener('click', function () {

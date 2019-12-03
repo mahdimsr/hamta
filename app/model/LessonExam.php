@@ -391,4 +391,20 @@
             return $target_array;
         }
 
+        public static function purchased()
+        {
+            $student      = Auth::guard('student')->user();
+            $lessonExams  = LessonExam::all();
+            $target_array = [];
+
+                foreach($lessonExams as $lessonExam)
+                {
+                    if($lessonExam->hasPurchased())
+                    {
+                        array_push($target_array,$lessonExam);
+                    }
+                }
+
+            return $target_array;
+        }
     }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\model\StudentCode;
 use App\model\Transaction;
+use App\model\LessonExam;
 use App\model\Result;
 use Illuminate\Support\Facades\Auth;
 
@@ -53,6 +54,15 @@ class DashboardController extends Controller
 
 
 		return view('student.dashboard.result.results', compact('student','lessonExams','giftExams'));
+    }
+
+    public function purchased()
+    {
+
+        $student        = Auth::guard('student')->user();
+        $purchasedExams = LessonExam::purchased();
+
+        return view('student.dashboard.lessonExam.purchasedExams', compact('student', 'purchasedExams'));
     }
 
 }
