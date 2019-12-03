@@ -113,25 +113,25 @@ tl.fromTo(back_bg,1,{height: "0%"},{height: "80%" , ease: Power2.easeInOut})
 )
 .fromTo(jumbotron, 1, {opacity:0},{opacity: 1},"-=0.7")
 
-$(document).ready(function() {
-	var count = 0;
-	$("a.add-to-cart").click(function(event) {
-		count++;
-		$("a.add-to-cart").addClass("size");
-		setTimeout(function() {
-			$("a.add-to-cart").addClass("hover");
-		}, 200);
-		setTimeout(function() {
-			$("a.cart > span").addClass("counter");
-			$("a.cart > span.counter").text(count);
-		}, 400);
-		setTimeout(function() {
-			$("a.add-to-cart").removeClass("hover");
-			$("a.add-to-cart").removeClass("size");
-		}, 600);
-		event.preventDefault();
-	});
-});
+// $(document).ready(function() {
+// 	var count = 0;
+// 	$("a.add-to-cart").click(function(event) {
+// 		count++;
+// 		$("a.add-to-cart").addClass("size");
+// 		setTimeout(function() {
+// 			$("a.add-to-cart").addClass("hover");
+// 		}, 200);
+// 		setTimeout(function() {
+// 			$("a.cart > span").addClass("counter");
+// 			$("a.cart > span.counter").text(count);
+// 		}, 400);
+// 		setTimeout(function() {
+// 			$("a.add-to-cart").removeClass("hover");
+// 			$("a.add-to-cart").removeClass("size");
+// 		}, 600);
+// 		event.preventDefault();
+// 	});
+// });
 
 
 </script>
