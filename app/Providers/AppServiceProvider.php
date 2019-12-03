@@ -3,7 +3,10 @@
     namespace App\Providers;
 
     use App\model\Cart;
-    use Illuminate\Support\ServiceProvider;
+use App\model\Scholarship;
+use App\model\StudentCode;
+use App\model\Transaction;
+use Illuminate\Support\ServiceProvider;
     use Illuminate\Support\Facades\Auth;
 
 
@@ -43,10 +46,24 @@
 
             view()->composer('*', function($view)
             {
+                $authId             = Auth::guard('student')->id();
+                $discountNumbers    = 0;
 
-                $authId = Auth::guard('student')->id();
-                $cart   = Cart::query()->where('studentId', $authId)->where('transactionId',0)->get();
+                $cart           = Cart::query()->where('studentId', $authId)->where('transactionId',0)->get();
+                $purchasedExams = Transaction::query()->where('studentId',$authId)->where('type','PURCHASE')->where('itemType','LESSON_EXAM')->where('status','SUCCESS')->get();
+                $studentCodes   = StudentCode::query()->where('studentId',$authId)->get();
+                $scholarship    = Scholarship::query()->where('studentId',$authId)->first();
+
+                foreach($studentCodes as $studentCode)
+                {
+                    if(!$studentCode->discount->isExpired)
+                        $discountNumbers++;
+                }
+
                 $view->with('cart', $cart);
+                $view->with('discountNumbers', $discountNumbers);
+                $view->with('scholarship', $scholarship);
+                $view->with('examNumbers', count($purchasedExams));
             });
 
         }

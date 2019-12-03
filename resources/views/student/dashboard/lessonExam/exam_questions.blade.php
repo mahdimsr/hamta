@@ -746,7 +746,7 @@ popup.init()
 
 TweenLite.defaultEase = Expo.easeOut;
 
-initTimer("05:05"); // other ways --> "0:15" "03:5" "5:2"
+initTimer("{{ $lessonExam->remainingTime() }}"); // other ways --> "0:15" "03:5" "5:2"
 
 var reloadBtn = document.querySelector('.reload');
 var timerEl = document.querySelector('.timer');
@@ -831,6 +831,7 @@ function countdownFinished() {
       TweenMax.to(timerEl, 1, { opacity: 0.2 });
       TweenMax.to(reloadBtn, 0.5, { scale: 1, opacity: 1 });
    }, 1000);
+
 }
 
 reloadBtn.addEventListener('click', function () {

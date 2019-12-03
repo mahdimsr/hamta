@@ -80,7 +80,9 @@
                         </div>
                         <div class="shop-icon" dir="ltr">
                             @if($lessonExam->hasInCart())
-                            <b>.در سبد خرید موجود است</b>
+                            <a class="add-to-cart">موجود در سبد خرید</a>
+                            @elseif($lessonExam->hasPurchased())
+                            <a href="{{ route('student_dashboard_lessonExams_questions',['exm'=> $lessonExam->exm]) }}" class="add-to-cart">شرکت در آزمون</a>
                             @else
                                 <a href="{{ route('student_dashboard_lessonExams_addToCart',['exm'=> $lessonExam->exm]) }} " class="add-to-cart"><span class="fa fa-cart-plus"></span>اضافه شدن به سبد خرید</a>
                             @endif

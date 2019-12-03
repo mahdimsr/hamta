@@ -35,7 +35,7 @@
 
             $lessonExam = LessonExam::query()->where('exm', $exm)->first();
 
-            if ($lessonExam->hasInCart())
+            if ($lessonExam->hasInCart() && !$lessonExam->hasPurchased())
             {
                 return redirect()->back();
             }
