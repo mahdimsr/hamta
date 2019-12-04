@@ -1,6 +1,25 @@
 @extends('layouts.student_dashboard')
 @section('style')
 <link rel="stylesheet" href="{{ asset('css/student/dashboard/purchase_show.css') }}">
+<style>
+    .errors-bg{
+        margin: 10px 0;
+      padding: 10px;
+      border-radius: 3px 3px 3px 3px;
+      color: #D8000C;
+      background-color: #FFBABA;
+      font-size: 1.5rem
+    }
+    .success{
+        margin: 10px 0;
+        padding: 8px 12px 4px;
+      border-radius: 3px 3px 3px 3px;
+      color: #270;
+      background-color: #DFF2BF;
+      font-size: 1.5rem
+    }
+
+</style>
 @endsection
 
 @section('content')
@@ -58,9 +77,36 @@
                 <li id="finalPrice" class="form-price-with-item-p"></li>
           </ul>
           <div>
-                {{ $errors->first('discountUsability') }}
-                {{ $errors->first('invalidDiscountCode') }}
-                {{ $errors->first('chargeFailed') }}
+                @if($errors->has('transactionFailed'))
+                <div class="errors-bg">
+                    <i class="fas fa-times"></i>
+                    {{ $errors->first('transactionFailed') }}
+                </div>
+                @endif
+                @if($errors->has('notEnoughCharge'))
+                <div class="errors-bg">
+                    <i class="fas fa-times"></i>
+                    {{ $errors->first('notEnoughCharge') }}
+                </div>
+                @endif
+                @if($errors->has('chargeFailed'))
+                <div class="errors-bg">
+                    <i class="fas fa-times"></i>
+                    {{ $errors->first('chargeFailed') }}
+                </div>
+                @endif
+                @if($errors->has('invalidDiscountCode'))
+                <div class="errors-bg">
+                    <i class="fas fa-times"></i>
+                    {{ $errors->first('invalidDiscountCode') }}
+                </div>
+                @endif
+                @if($errors->has('discountUsability'))
+                <div class="errors-bg">
+                    <i class="fas fa-times"></i>
+                    {{ $errors->first('discountUsability') }}
+                </div>
+                @endif
           </div>
         </div>
         @if($student->wallet<$price)

@@ -76,7 +76,7 @@ class CartController extends Controller
         else
         {
             $result[ 'status' ]       = 'error';
-            $result[ 'errorMessage' ] = 'کد تخفیف وارد شده صحیح نیست.';
+            $result[ 'errorMessage' ] = 'کد تخفیف وارد شده معتبر نیست.';
             return $result;
         }
 
