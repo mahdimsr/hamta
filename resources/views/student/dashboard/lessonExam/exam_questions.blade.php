@@ -529,28 +529,28 @@ img {
             <ul dir="rtl" class="question-answer-withaxe question-answer">
                 <li>
                     <label  class="radio">
-                        <input type="radio" name="questions[answer{{ $question->id }}]"  class="hidden"/>
+                        <input type="radio" name="questions[answer{{ $question->id }}]" value="1"   class="hidden"/>
                         <span class="label"></span>{{ $question->optionOne }}
                     </label>
 
                 </li>
                 <li>
                     <label  class="radio ">
-                        <input type="radio" name="questions[answer{{ $question->id }}]"  class="hidden"/>
+                        <input type="radio" name="questions[answer{{ $question->id }}]" value="2"   class="hidden"/>
                         <span class="label"></span>{{ $question->optionTwo }}
                     </label>
 
                 </li>
                 <li>
                     <label  class="radio">
-                        <input type="radio" name="questions[answer{{ $question->id }}]"  class="hidden"/>
+                        <input type="radio" name="questions[answer{{ $question->id }}]" value="3"  class="hidden"/>
                         <span class="label"></span>{{ $question->optionThree }}
                     </label>
 
                 </li>
                 <li>
                     <label  class="radio">
-                        <input type="radio" name="questions[answer{{ $question->id }}]"  class="hidden"/>
+                        <input type="radio" name="questions[answer{{ $question->id }}]" value="4"   class="hidden"/>
                         <span class="label"></span>{{ $question->optionFour }}
                     </label>
 
@@ -585,28 +585,28 @@ img {
                 <ul dir="rtl" class="question-answer-withoutaxe question-answer">
                     <li>
                         <label  class="radio">
-                            <input type="radio" name="questions[answer{{ $question->id }}]"  class="hidden"/>
+                            <input type="radio" name="questions[answer{{ $question->id }}]" value="1"  class="hidden"/>
                             <span class="label"></span>{{ $question->optionOne }}
                         </label>
 
                     </li>
                     <li>
                         <label  class="radio ">
-                            <input type="radio" name="questions[answer{{ $question->id }}]"  class="hidden"/>
+                            <input type="radio" name="questions[answer{{ $question->id }}]" value="2"  class="hidden"/>
                             <span class="label"></span>{{ $question->optionTwo }}
                         </label>
 
                     </li>
                     <li>
                         <label  class="radio">
-                            <input type="radio" name="questions[answer{{ $question->id }}]"  class="hidden"/>
+                            <input type="radio" name="questions[answer{{ $question->id }}]" value="3"   class="hidden"/>
                             <span class="label"></span>{{ $question->optionThree }}
                         </label>
 
                     </li>
                     <li>
                         <label  class="radio">
-                            <input type="radio" name="questions[answer{{ $question->id }}]"  class="hidden"/>
+                            <input type="radio" name="questions[answer{{ $question->id }}]" value="4"   class="hidden"/>
                             <span class="label"></span>{{ $question->optionFour }}
                         </label>
 

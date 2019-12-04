@@ -35,7 +35,7 @@
 
   <div id="app" class="containerC">
       @foreach ($lessonExams as $lessonExam )
-      @if (!$lessonExam->hasPurchased())
+      @if (!$lessonExam->hasPurchased() && $lessonExam->isReady())
       <a href="{{ route('student_dashboard_lessonExam_details',['exm'=>$lessonExam->exm]) }}" data-grade="{{ $lessonExam->grade()->id }}">
             <card data-image="{{asset('image/student/auth/auth.jpg')}}">
               <h4 slot="header"> {{ $lessonExam->title }}</h4>

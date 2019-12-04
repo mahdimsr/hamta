@@ -407,4 +407,15 @@
 
             return $target_array;
         }
+
+        public function isReady()
+        {
+
+            $today = Carbon::now();
+
+            $isExpired = $today->gte($this->activeDate);
+
+            return $isExpired;
+        }
+
     }
