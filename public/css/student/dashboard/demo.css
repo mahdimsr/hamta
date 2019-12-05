@@ -306,3 +306,69 @@ fill: rgb(111, 188, 255);
     margin-left: 15px;
     line-height: 20px;
 }
+.slider-par-money{
+    color: rgb(22, 16, 16)!important;
+    margin-left: 0px!important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    margin-top: 10px!important;
+}
+.card-money{
+    background: rgb(85,96,128);
+    background: linear-gradient(280deg, rgba(85,96,128,1) 10%, rgba(55,145,162,1) 92%);
+    border-radius: 7px;
+    box-shadow: 0px 0px 20px 3px rgb(60, 138, 157), 0px 0px 4px 0px rgba(235, 243, 250, 0.31);
+    transition: 1s;
+}
+.card-money-par{
+    padding: 10px 10px 10px 10px;
+    text-align: center;
+    margin-left: 0px!important;
+    color: #ffffff!important;
+}
+.card-money:hover{
+    /*background: rgb(55,145,162);*/
+    /*background: linear-gradient(280deg, rgba(55,145,162,1) 10%, rgba(85,96,128,1) 92%);*/
+    box-shadow: none;
+
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+    transition-timing-function: ease-in;
+}
+
+ .tooltiptext {
+     visibility: hidden;
+        width: 70px;
+     background-color: #00cb8c;
+     color: #fff;
+     text-align: center;
+     border-radius: 6px;
+     padding: 5px 0;
+     top: 7px;
+     margin-left: 5px;
+     position: absolute;
+     z-index: 1;
+     transition: 1s ease-in;
+
+}
+.card-money:hover .tooltiptext {
+    visibility: visible;
+    transition-timing-function: ease-in;
+}
+.list-server{
+    list-style: none;
+    display: inline-flex;
+}
+.list-server-answer{
+    color: #5d5d5d !important;
+    font-weight: 600!important;
+    margin-right: 5px;
+
+}
+.list-server-req{
+    margin-right: 4.6em;
+    line-height: 2;
+}
