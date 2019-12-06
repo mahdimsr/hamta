@@ -545,13 +545,11 @@
 
                         <div class="col-md-5">
                             <div class="card-money">
-                                <a href="#">
                                     <div class="card-body">
-                                   <p class="card-money-par">      تومان      {{ $student->wallet }}</p>
+                                   <p class="card-money-par">تومان {{ $student->wallet }}</p>
 
                                 </div>
-                                </a>
-                                <span class="tooltiptext"> خرید اعتبار</span>
+                                <a href="{{ route('student_dashboard_wallet_form') }}"><span class="tooltiptext"> خرید اعتبار</span></a>
                             </div>
 
 
