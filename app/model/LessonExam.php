@@ -32,7 +32,16 @@
 
         protected $table = 'lesson_exam';
 
-        protected $appends = ['active','persianCreatedAt', 'persianUpdatedAt','grades','orientations','questionCount','lessons'];
+        protected $appends
+            = ['active',
+               'photo',
+               'hasUsed',
+               'persianCreatedAt',
+               'persianUpdatedAt',
+               'grades',
+               'orientations',
+               'questionCount',
+               'lessons'];
 
         protected $casts
             = [
@@ -61,6 +70,29 @@
         }
 
 
+        public function getPhotoAttribute()
+        {
+
+            $photoNameArray = ['Physics-one'   => 'physic.png',
+                               'Physics-two'   => 'physic.png',
+                               'Physics-three' => 'physic.png'];
+
+
+            $lesson = $this->lessons()[ 0 ];
+
+            $url = asset('image/lessonExam/' . $photoNameArray[ $lesson->url ]);
+
+            return $url;
+        }
+
+
+        public function gethasUsedAttribute()
+        {
+
+            return $this->hasUsed();
+        }
+
+
         public function getPersianCreatedAtAttribute()
         {
 
@@ -69,13 +101,16 @@
             return $date;
         }
 
+
         public function getActiveAttribute()
         {
+
             $carbon = Carbon::createFromDate($this->activeDate);
-            $date = Jalalian::fromCarbon($carbon)->format('%A, %d %B %y');
+            $date   = Jalalian::fromCarbon($carbon)->format('%A, %d %B %y');
 
             return $date;
         }
+
 
         public function getPersianUpdatedAtAttribute()
         {
@@ -182,7 +217,7 @@
 
             $unique_oriId = Lib::unique_ObjectArray($orientationArray, 'id');
 
-            $orientation = Orientation::query()->find($unique_oriId[0]);
+            $orientation = Orientation::query()->find($unique_oriId[ 0 ]);
 
 
             return $orientation;
@@ -278,11 +313,16 @@
 
         }
 
+
         public function hasUsed()
         {
 
-            $authId    = Auth::guard('student')->id();
-            $result    = Result::query()->where('examId', $this->id)->where('studentId', $authId)->where('type','LESSONEXAM')->where('status','COMPLETE')->first();
+            $authId = Auth::id();
+            $result = Result::query()
+                            ->where('examId', $this->id)
+                            ->where('studentId', $authId)
+                            ->where('type', 'LESSONEXAM')
+                            ->first();
 
             if ($result)
             {
@@ -296,30 +336,34 @@
 
         }
 
+
         public function remainingTime()
         {
 
             $authId       = Auth::guard('student')->id();
-            $result       = Result::query()->where('studentId',$authId)->where('examId',$this->id)->first();
+            $result       = Result::query()->where('studentId', $authId)->where('examId', $this->id)->first();
             $durationTime = $result->created_at->addMinutes($this->duration)->addSeconds(2);
             $now          = Carbon::now();
 
-                if($now->gte($durationTime))
-                {
-                    return '00:01';
-                }
+            if ($now->gte($durationTime))
+            {
+                return '00:01';
+            }
 
-                else
-                {
-                    return  gmdate('i:s', $durationTime->diffInSeconds($now));
-                }
+            else
+            {
+                return gmdate('i:s', $durationTime->diffInSeconds($now));
+            }
 
         }
+
 
         public function results()
         {
-            return $this->hasMany(Result::class,'examId');
+
+            return $this->hasMany(Result::class, 'examId');
         }
+
 
         public static function filterExam($grade, $orientation)
         {
@@ -366,6 +410,7 @@
             return $lessonExam;
         }
 
+
         public function grade()
         {
 
@@ -377,27 +422,30 @@
             }
 
             $unique_gradeId = Lib::unique_ObjectArray($gradeArray, 'id');
-            $grade = Grade::query()->find(max($unique_gradeId));
+            $grade          = Grade::query()->find(max($unique_gradeId));
 
             return $grade;
         }
 
+
         public static function filter()
         {
+
             $student      = Auth::guard('student')->user();
             $grade        = $student->grade;
             $lessonExams  = LessonExam::all();
             $target_array = [];
 
-                foreach($lessonExams as $lessonExam)
+            foreach ($lessonExams as $lessonExam)
+            {
+                if ($lessonExam->orientation()->id == $student->orientationId && $grade->id >= $lessonExam->grade()->id)
                 {
-                    if($lessonExam->orientation()->id==$student->orientationId && $grade->id >= $lessonExam->grade()->id)
-                    {
-                        array_push($target_array,$lessonExam);
-                    }
+                    array_push($target_array, $lessonExam);
                 }
+            }
 
             return $target_array;
         }
+
 
     }

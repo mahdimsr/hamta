@@ -4,6 +4,8 @@
 
     use Illuminate\Database\Eloquent\Model;
     use Illuminate\Database\Eloquent\SoftDeletes;
+    use Illuminate\Support\Facades\Auth;
+    use Morilog\Jalali\Jalalian;
 
 
     /**
@@ -19,6 +21,20 @@
         protected $table = 'result';
 
         protected $appends = ['persianCreatedAt'];
+
+
+        protected static function boot()
+        {
+
+            parent::boot();
+
+            self::creating(function($model)
+            {
+                $model->studentId = Auth::id();
+
+            });
+
+        }
 
 
         public function getPersianCreatedAtAttribute()
@@ -43,4 +59,4 @@
             return $this->belongsTo(GiftExam::class, 'examId');
         }
 
-}
+    }
