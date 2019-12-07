@@ -7,11 +7,18 @@
                 flex-wrap: wrap;
             }
 
+
         }
 
+        @media (min-width: 990px) and (max-width: 1400px) {
+            .col-margin-mid{
+                top: 7px;
+            }
+
+        }
         @media (min-width: 1200px) and (max-width: 1740px) {
             .card-text1 {
-                font-size: 5em;
+                font-size: 3em;
                 font-weight: 400;
             }
 
@@ -65,16 +72,10 @@
     <div class="row equal ">
 
 
-        <a id="link" >
-            <div class="col-md-4 col-margin ">
-                <p class="card-text1 disabled">من و مشاورم</p>
-                <img class="pic-card disabled" src="{{ asset('image/student/dashboard/me-and-the.jpg') }}" alt="" width="100%"
-                     height="100%">
-            </div>
-        </a>
+
 
         <a id="link" >
-            <div class="col-md-4 col-margin ">
+            <div class="col-md-8 col-margin ">
                 <p class="card-text1 disabled ">کلاس آنلاین</p>
                 <img class="pic-card disabled" src="{{ asset('image/student/dashboard/online-class.jpg') }}" alt="" width="100%"
                      height="100%">
@@ -102,11 +103,14 @@
                 </div>
             </div>
             </a>
-            {{--<div class="row ">--}}
-                {{--<div class="col-md-12">--}}
 
-                {{--</div>--}}
-            {{--</div>--}}
+            <a id="link" >
+            <div class="col-md-12 col-margin col-margin-mid " style="padding: 5px 0px 0px 0px;">
+            <p class="card-text1 disabled">من و مشاورم</p>
+            <img class="pic-card disabled" src="{{ asset('image/student/dashboard/me-and-the.jpg') }}" alt="" width="100%"
+            height="100%">
+            </div>
+            </a>
 
         </div>
 

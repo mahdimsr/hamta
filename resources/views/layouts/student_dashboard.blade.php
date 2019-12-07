@@ -79,7 +79,7 @@
                 <div class="user-profile">
                     <div class="avatarWrapper">
                         <div class="avatar">
-                            <div class="uploadOverlay"><a href="#"><img class="image-s" src="{{ asset('image/student/dashboard/edit.png') }}"></a></div>
+                            <div class="uploadOverlay"><img class="image-s" src="{{ asset('image/student/dashboard/edit.png') }}"></div>
 
                         <img src="{{ asset('image/student/dashboard/user1.png') }}" alt="">
 
@@ -546,10 +546,19 @@
                         <div class="col-md-5">
                             <div class="card-money">
                                     <div class="card-body">
-                                   <p class="card-money-par">تومان {{ $student->wallet }}</p>
+                                      <a href="{{ route('student_dashboard_wallet_form') }}">
+                                          <ul class="list-server-money">
+                                            <li>
+                                                <span class="card-money-par"> تومان </span>
+                                            </li>
+                                            <li>
+                                                <span class="list-server-money"> {{ $student->wallet }}</span>
+                                            </li>
+                                        </ul>
+                                      </a>
 
                                 </div>
-                                <a href="{{ route('student_dashboard_wallet_form') }}"><span class="tooltiptext"> خرید اعتبار</span></a>
+                                <span class="tooltiptext"> خرید اعتبار</span>
                             </div>
 
 
@@ -559,13 +568,6 @@
                         </div>
 
 
-
-                    {{--<a>--}}
-                        {{--<p class="slider-par">تومان {{ $student->wallet }} : باقیمانده کیف پول</p>--}}
-                    {{--</a>--}}
-                    {{--<a id="addfund1" href="{{ route('student_dashboard_wallet_form') }}">--}}
-                        {{--<span id="addfund">< خرید مقداری اعتبار</span>--}}
-                    {{--</a>--}}
                 </li>
 
             </ul>
