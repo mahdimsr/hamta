@@ -17,281 +17,572 @@
     <link rel="icon" href="{{asset('favicon.png')}}" type="image/png">
     <!--  CSS for Demo Purpose, dont include it in your project     -->
     <link href="{{asset('css/student/dashboard/demo.css')}}" rel="stylesheet"/>
-    <link href="{{asset('css/student/dashboard/select2.min.css')}}" rel="stylesheet"/>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
     <!--     datePicker     -->
-    <link href="{{asset('datePicker/persian-datepicker.min.css')}}" rel="stylesheet"/>
+
 
     @yield('style')
 
     <style>
+
+        .sidebar .nav p {
+
+            margin-left: 15px;
+        }
+
+        @-webkit-keyframes poppy {
+            0% {
+                -webkit-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+                transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            }
+            3.4% {
+                -webkit-transform: matrix3d(0.316, 0, 0, 0, 0, 0.407, 0, 0, 0, 0, 1, 0, -94.672, -91.573, 0, 1);
+                transform: matrix3d(0.316, 0, 0, 0, 0, 0.407, 0, 0, 0, 0, 1, 0, -94.672, -91.573, 0, 1);
+            }
+            4.3% {
+                -webkit-transform: matrix3d(0.408, 0, 0, 0, 0, 0.54, 0, 0, 0, 0, 1, 0, -122.527, -121.509, 0, 1);
+                transform: matrix3d(0.408, 0, 0, 0, 0, 0.54, 0, 0, 0, 0, 1, 0, -122.527, -121.509, 0, 1);
+            }
+            4.7% {
+                -webkit-transform: matrix3d(0.45, 0, 0, 0, 0, 0.599, 0, 0, 0, 0, 1, 0, -134.908, -134.843, 0, 1);
+                transform: matrix3d(0.45, 0, 0, 0, 0, 0.599, 0, 0, 0, 0, 1, 0, -134.908, -134.843, 0, 1);
+            }
+            6.81% {
+                -webkit-transform: matrix3d(0.659, 0, 0, 0, 0, 0.893, 0, 0, 0, 0, 1, 0, -197.77, -200.879, 0, 1);
+                transform: matrix3d(0.659, 0, 0, 0, 0, 0.893, 0, 0, 0, 0, 1, 0, -197.77, -200.879, 0, 1);
+            }
+            8.61% {
+                -webkit-transform: matrix3d(0.82, 0, 0, 0, 0, 1.097, 0, 0, 0, 0, 1, 0, -245.972, -246.757, 0, 1);
+                transform: matrix3d(0.82, 0, 0, 0, 0, 1.097, 0, 0, 0, 0, 1, 0, -245.972, -246.757, 0, 1);
+            }
+            9.41% {
+                -webkit-transform: matrix3d(0.883, 0, 0, 0, 0, 1.168, 0, 0, 0, 0, 1, 0, -265.038, -262.804, 0, 1);
+                transform: matrix3d(0.883, 0, 0, 0, 0, 1.168, 0, 0, 0, 0, 1, 0, -265.038, -262.804, 0, 1);
+            }
+            10.21% {
+                -webkit-transform: matrix3d(0.942, 0, 0, 0, 0, 1.226, 0, 0, 0, 0, 1, 0, -282.462, -275.93, 0, 1);
+                transform: matrix3d(0.942, 0, 0, 0, 0, 1.226, 0, 0, 0, 0, 1, 0, -282.462, -275.93, 0, 1);
+            }
+            12.91% {
+                -webkit-transform: matrix3d(1.094, 0, 0, 0, 0, 1.328, 0, 0, 0, 0, 1, 0, -328.332, -298.813, 0, 1);
+                transform: matrix3d(1.094, 0, 0, 0, 0, 1.328, 0, 0, 0, 0, 1, 0, -328.332, -298.813, 0, 1);
+            }
+            13.61% {
+                -webkit-transform: matrix3d(1.123, 0, 0, 0, 0, 1.332, 0, 0, 0, 0, 1, 0, -336.934, -299.783, 0, 1);
+                transform: matrix3d(1.123, 0, 0, 0, 0, 1.332, 0, 0, 0, 0, 1, 0, -336.934, -299.783, 0, 1);
+            }
+            14.11% {
+                -webkit-transform: matrix3d(1.141, 0, 0, 0, 0, 1.331, 0, 0, 0, 0, 1, 0, -342.273, -299.395, 0, 1);
+                transform: matrix3d(1.141, 0, 0, 0, 0, 1.331, 0, 0, 0, 0, 1, 0, -342.273, -299.395, 0, 1);
+            }
+            17.22% {
+                -webkit-transform: matrix3d(1.205, 0, 0, 0, 0, 1.252, 0, 0, 0, 0, 1, 0, -361.606, -281.592, 0, 1);
+                transform: matrix3d(1.205, 0, 0, 0, 0, 1.252, 0, 0, 0, 0, 1, 0, -361.606, -281.592, 0, 1);
+            }
+            17.52% {
+                -webkit-transform: matrix3d(1.208, 0, 0, 0, 0, 1.239, 0, 0, 0, 0, 1, 0, -362.348, -278.88, 0, 1);
+                transform: matrix3d(1.208, 0, 0, 0, 0, 1.239, 0, 0, 0, 0, 1, 0, -362.348, -278.88, 0, 1);
+            }
+            18.72% {
+                -webkit-transform: matrix3d(1.212, 0, 0, 0, 0, 1.187, 0, 0, 0, 0, 1, 0, -363.633, -267.15, 0, 1);
+                transform: matrix3d(1.212, 0, 0, 0, 0, 1.187, 0, 0, 0, 0, 1, 0, -363.633, -267.15, 0, 1);
+            }
+            21.32% {
+                -webkit-transform: matrix3d(1.196, 0, 0, 0, 0, 1.069, 0, 0, 0, 0, 1, 0, -358.864, -240.617, 0, 1);
+                transform: matrix3d(1.196, 0, 0, 0, 0, 1.069, 0, 0, 0, 0, 1, 0, -358.864, -240.617, 0, 1);
+            }
+            24.32% {
+                -webkit-transform: matrix3d(1.151, 0, 0, 0, 0, 0.96, 0, 0, 0, 0, 1, 0, -345.164, -216.073, 0, 1);
+                transform: matrix3d(1.151, 0, 0, 0, 0, 0.96, 0, 0, 0, 0, 1, 0, -345.164, -216.073, 0, 1);
+            }
+            25.23% {
+                -webkit-transform: matrix3d(1.134, 0, 0, 0, 0, 0.938, 0, 0, 0, 0, 1, 0, -340.193, -210.948, 0, 1);
+                transform: matrix3d(1.134, 0, 0, 0, 0, 0.938, 0, 0, 0, 0, 1, 0, -340.193, -210.948, 0, 1);
+            }
+            28.33% {
+                -webkit-transform: matrix3d(1.075, 0, 0, 0, 0, 0.898, 0, 0, 0, 0, 1, 0, -322.647, -202.048, 0, 1);
+                transform: matrix3d(1.075, 0, 0, 0, 0, 0.898, 0, 0, 0, 0, 1, 0, -322.647, -202.048, 0, 1);
+            }
+            29.03% {
+                -webkit-transform: matrix3d(1.063, 0, 0, 0, 0, 0.897, 0, 0, 0, 0, 1, 0, -318.884, -201.771, 0, 1);
+                transform: matrix3d(1.063, 0, 0, 0, 0, 0.897, 0, 0, 0, 0, 1, 0, -318.884, -201.771, 0, 1);
+            }
+            29.93% {
+                -webkit-transform: matrix3d(1.048, 0, 0, 0, 0, 0.899, 0, 0, 0, 0, 1, 0, -314.277, -202.202, 0, 1);
+                transform: matrix3d(1.048, 0, 0, 0, 0, 0.899, 0, 0, 0, 0, 1, 0, -314.277, -202.202, 0, 1);
+            }
+            35.54% {
+                -webkit-transform: matrix3d(0.979, 0, 0, 0, 0, 0.962, 0, 0, 0, 0, 1, 0, -293.828, -216.499, 0, 1);
+                transform: matrix3d(0.979, 0, 0, 0, 0, 0.962, 0, 0, 0, 0, 1, 0, -293.828, -216.499, 0, 1);
+            }
+            36.74% {
+                -webkit-transform: matrix3d(0.972, 0, 0, 0, 0, 0.979, 0, 0, 0, 0, 1, 0, -291.489, -220.242, 0, 1);
+                transform: matrix3d(0.972, 0, 0, 0, 0, 0.979, 0, 0, 0, 0, 1, 0, -291.489, -220.242, 0, 1);
+            }
+            39.44% {
+                -webkit-transform: matrix3d(0.962, 0, 0, 0, 0, 1.01, 0, 0, 0, 0, 1, 0, -288.62, -227.228, 0, 1);
+                transform: matrix3d(0.962, 0, 0, 0, 0, 1.01, 0, 0, 0, 0, 1, 0, -288.62, -227.228, 0, 1);
+            }
+            41.04% {
+                -webkit-transform: matrix3d(0.961, 0, 0, 0, 0, 1.022, 0, 0, 0, 0, 1, 0, -288.247, -229.999, 0, 1);
+                transform: matrix3d(0.961, 0, 0, 0, 0, 1.022, 0, 0, 0, 0, 1, 0, -288.247, -229.999, 0, 1);
+            }
+            44.44% {
+                -webkit-transform: matrix3d(0.966, 0, 0, 0, 0, 1.032, 0, 0, 0, 0, 1, 0, -289.763, -232.215, 0, 1);
+                transform: matrix3d(0.966, 0, 0, 0, 0, 1.032, 0, 0, 0, 0, 1, 0, -289.763, -232.215, 0, 1);
+            }
+            52.15% {
+                -webkit-transform: matrix3d(0.991, 0, 0, 0, 0, 1.006, 0, 0, 0, 0, 1, 0, -297.363, -226.449, 0, 1);
+                transform: matrix3d(0.991, 0, 0, 0, 0, 1.006, 0, 0, 0, 0, 1, 0, -297.363, -226.449, 0, 1);
+            }
+            59.86% {
+                -webkit-transform: matrix3d(1.006, 0, 0, 0, 0, 0.99, 0, 0, 0, 0, 1, 0, -301.813, -222.759, 0, 1);
+                transform: matrix3d(1.006, 0, 0, 0, 0, 0.99, 0, 0, 0, 0, 1, 0, -301.813, -222.759, 0, 1);
+            }
+            61.66% {
+                -webkit-transform: matrix3d(1.007, 0, 0, 0, 0, 0.991, 0, 0, 0, 0, 1, 0, -302.102, -222.926, 0, 1);
+                transform: matrix3d(1.007, 0, 0, 0, 0, 0.991, 0, 0, 0, 0, 1, 0, -302.102, -222.926, 0, 1);
+            }
+            63.26% {
+                -webkit-transform: matrix3d(1.007, 0, 0, 0, 0, 0.992, 0, 0, 0, 0, 1, 0, -302.171, -223.276, 0, 1);
+                transform: matrix3d(1.007, 0, 0, 0, 0, 0.992, 0, 0, 0, 0, 1, 0, -302.171, -223.276, 0, 1);
+            }
+            75.28% {
+                -webkit-transform: matrix3d(1.001, 0, 0, 0, 0, 1.003, 0, 0, 0, 0, 1, 0, -300.341, -225.696, 0, 1);
+                transform: matrix3d(1.001, 0, 0, 0, 0, 1.003, 0, 0, 0, 0, 1, 0, -300.341, -225.696, 0, 1);
+            }
+            83.98% {
+                -webkit-transform: matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -299.61, -225.049, 0, 1);
+                transform: matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -299.61, -225.049, 0, 1);
+            }
+            85.49% {
+                -webkit-transform: matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -299.599, -224.94, 0, 1);
+                transform: matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -299.599, -224.94, 0, 1);
+            }
+            90.69% {
+                -webkit-transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, -299.705, -224.784, 0, 1);
+                transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, -299.705, -224.784, 0, 1);
+            }
+            100% {
+                -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, -225, 0, 1);
+                transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, -225, 0, 1);
+            }
+        }
+
+        @keyframes poppy {
+            0% {
+                -webkit-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+                transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            }
+            3.4% {
+                -webkit-transform: matrix3d(0.316, 0, 0, 0, 0, 0.407, 0, 0, 0, 0, 1, 0, -94.672, -91.573, 0, 1);
+                transform: matrix3d(0.316, 0, 0, 0, 0, 0.407, 0, 0, 0, 0, 1, 0, -94.672, -91.573, 0, 1);
+            }
+            4.3% {
+                -webkit-transform: matrix3d(0.408, 0, 0, 0, 0, 0.54, 0, 0, 0, 0, 1, 0, -122.527, -121.509, 0, 1);
+                transform: matrix3d(0.408, 0, 0, 0, 0, 0.54, 0, 0, 0, 0, 1, 0, -122.527, -121.509, 0, 1);
+            }
+            4.7% {
+                -webkit-transform: matrix3d(0.45, 0, 0, 0, 0, 0.599, 0, 0, 0, 0, 1, 0, -134.908, -134.843, 0, 1);
+                transform: matrix3d(0.45, 0, 0, 0, 0, 0.599, 0, 0, 0, 0, 1, 0, -134.908, -134.843, 0, 1);
+            }
+            6.81% {
+                -webkit-transform: matrix3d(0.659, 0, 0, 0, 0, 0.893, 0, 0, 0, 0, 1, 0, -197.77, -200.879, 0, 1);
+                transform: matrix3d(0.659, 0, 0, 0, 0, 0.893, 0, 0, 0, 0, 1, 0, -197.77, -200.879, 0, 1);
+            }
+            8.61% {
+                -webkit-transform: matrix3d(0.82, 0, 0, 0, 0, 1.097, 0, 0, 0, 0, 1, 0, -245.972, -246.757, 0, 1);
+                transform: matrix3d(0.82, 0, 0, 0, 0, 1.097, 0, 0, 0, 0, 1, 0, -245.972, -246.757, 0, 1);
+            }
+            9.41% {
+                -webkit-transform: matrix3d(0.883, 0, 0, 0, 0, 1.168, 0, 0, 0, 0, 1, 0, -265.038, -262.804, 0, 1);
+                transform: matrix3d(0.883, 0, 0, 0, 0, 1.168, 0, 0, 0, 0, 1, 0, -265.038, -262.804, 0, 1);
+            }
+            10.21% {
+                -webkit-transform: matrix3d(0.942, 0, 0, 0, 0, 1.226, 0, 0, 0, 0, 1, 0, -282.462, -275.93, 0, 1);
+                transform: matrix3d(0.942, 0, 0, 0, 0, 1.226, 0, 0, 0, 0, 1, 0, -282.462, -275.93, 0, 1);
+            }
+            12.91% {
+                -webkit-transform: matrix3d(1.094, 0, 0, 0, 0, 1.328, 0, 0, 0, 0, 1, 0, -328.332, -298.813, 0, 1);
+                transform: matrix3d(1.094, 0, 0, 0, 0, 1.328, 0, 0, 0, 0, 1, 0, -328.332, -298.813, 0, 1);
+            }
+            13.61% {
+                -webkit-transform: matrix3d(1.123, 0, 0, 0, 0, 1.332, 0, 0, 0, 0, 1, 0, -336.934, -299.783, 0, 1);
+                transform: matrix3d(1.123, 0, 0, 0, 0, 1.332, 0, 0, 0, 0, 1, 0, -336.934, -299.783, 0, 1);
+            }
+            14.11% {
+                -webkit-transform: matrix3d(1.141, 0, 0, 0, 0, 1.331, 0, 0, 0, 0, 1, 0, -342.273, -299.395, 0, 1);
+                transform: matrix3d(1.141, 0, 0, 0, 0, 1.331, 0, 0, 0, 0, 1, 0, -342.273, -299.395, 0, 1);
+            }
+            17.22% {
+                -webkit-transform: matrix3d(1.205, 0, 0, 0, 0, 1.252, 0, 0, 0, 0, 1, 0, -361.606, -281.592, 0, 1);
+                transform: matrix3d(1.205, 0, 0, 0, 0, 1.252, 0, 0, 0, 0, 1, 0, -361.606, -281.592, 0, 1);
+            }
+            17.52% {
+                -webkit-transform: matrix3d(1.208, 0, 0, 0, 0, 1.239, 0, 0, 0, 0, 1, 0, -362.348, -278.88, 0, 1);
+                transform: matrix3d(1.208, 0, 0, 0, 0, 1.239, 0, 0, 0, 0, 1, 0, -362.348, -278.88, 0, 1);
+            }
+            18.72% {
+                -webkit-transform: matrix3d(1.212, 0, 0, 0, 0, 1.187, 0, 0, 0, 0, 1, 0, -363.633, -267.15, 0, 1);
+                transform: matrix3d(1.212, 0, 0, 0, 0, 1.187, 0, 0, 0, 0, 1, 0, -363.633, -267.15, 0, 1);
+            }
+            21.32% {
+                -webkit-transform: matrix3d(1.196, 0, 0, 0, 0, 1.069, 0, 0, 0, 0, 1, 0, -358.864, -240.617, 0, 1);
+                transform: matrix3d(1.196, 0, 0, 0, 0, 1.069, 0, 0, 0, 0, 1, 0, -358.864, -240.617, 0, 1);
+            }
+            24.32% {
+                -webkit-transform: matrix3d(1.151, 0, 0, 0, 0, 0.96, 0, 0, 0, 0, 1, 0, -345.164, -216.073, 0, 1);
+                transform: matrix3d(1.151, 0, 0, 0, 0, 0.96, 0, 0, 0, 0, 1, 0, -345.164, -216.073, 0, 1);
+            }
+            25.23% {
+                -webkit-transform: matrix3d(1.134, 0, 0, 0, 0, 0.938, 0, 0, 0, 0, 1, 0, -340.193, -210.948, 0, 1);
+                transform: matrix3d(1.134, 0, 0, 0, 0, 0.938, 0, 0, 0, 0, 1, 0, -340.193, -210.948, 0, 1);
+            }
+            28.33% {
+                -webkit-transform: matrix3d(1.075, 0, 0, 0, 0, 0.898, 0, 0, 0, 0, 1, 0, -322.647, -202.048, 0, 1);
+                transform: matrix3d(1.075, 0, 0, 0, 0, 0.898, 0, 0, 0, 0, 1, 0, -322.647, -202.048, 0, 1);
+            }
+            29.03% {
+                -webkit-transform: matrix3d(1.063, 0, 0, 0, 0, 0.897, 0, 0, 0, 0, 1, 0, -318.884, -201.771, 0, 1);
+                transform: matrix3d(1.063, 0, 0, 0, 0, 0.897, 0, 0, 0, 0, 1, 0, -318.884, -201.771, 0, 1);
+            }
+            29.93% {
+                -webkit-transform: matrix3d(1.048, 0, 0, 0, 0, 0.899, 0, 0, 0, 0, 1, 0, -314.277, -202.202, 0, 1);
+                transform: matrix3d(1.048, 0, 0, 0, 0, 0.899, 0, 0, 0, 0, 1, 0, -314.277, -202.202, 0, 1);
+            }
+            35.54% {
+                -webkit-transform: matrix3d(0.979, 0, 0, 0, 0, 0.962, 0, 0, 0, 0, 1, 0, -293.828, -216.499, 0, 1);
+                transform: matrix3d(0.979, 0, 0, 0, 0, 0.962, 0, 0, 0, 0, 1, 0, -293.828, -216.499, 0, 1);
+            }
+            36.74% {
+                -webkit-transform: matrix3d(0.972, 0, 0, 0, 0, 0.979, 0, 0, 0, 0, 1, 0, -291.489, -220.242, 0, 1);
+                transform: matrix3d(0.972, 0, 0, 0, 0, 0.979, 0, 0, 0, 0, 1, 0, -291.489, -220.242, 0, 1);
+            }
+            39.44% {
+                -webkit-transform: matrix3d(0.962, 0, 0, 0, 0, 1.01, 0, 0, 0, 0, 1, 0, -288.62, -227.228, 0, 1);
+                transform: matrix3d(0.962, 0, 0, 0, 0, 1.01, 0, 0, 0, 0, 1, 0, -288.62, -227.228, 0, 1);
+            }
+            41.04% {
+                -webkit-transform: matrix3d(0.961, 0, 0, 0, 0, 1.022, 0, 0, 0, 0, 1, 0, -288.247, -229.999, 0, 1);
+                transform: matrix3d(0.961, 0, 0, 0, 0, 1.022, 0, 0, 0, 0, 1, 0, -288.247, -229.999, 0, 1);
+            }
+            44.44% {
+                -webkit-transform: matrix3d(0.966, 0, 0, 0, 0, 1.032, 0, 0, 0, 0, 1, 0, -289.763, -232.215, 0, 1);
+                transform: matrix3d(0.966, 0, 0, 0, 0, 1.032, 0, 0, 0, 0, 1, 0, -289.763, -232.215, 0, 1);
+            }
+            52.15% {
+                -webkit-transform: matrix3d(0.991, 0, 0, 0, 0, 1.006, 0, 0, 0, 0, 1, 0, -297.363, -226.449, 0, 1);
+                transform: matrix3d(0.991, 0, 0, 0, 0, 1.006, 0, 0, 0, 0, 1, 0, -297.363, -226.449, 0, 1);
+            }
+            59.86% {
+                -webkit-transform: matrix3d(1.006, 0, 0, 0, 0, 0.99, 0, 0, 0, 0, 1, 0, -301.813, -222.759, 0, 1);
+                transform: matrix3d(1.006, 0, 0, 0, 0, 0.99, 0, 0, 0, 0, 1, 0, -301.813, -222.759, 0, 1);
+            }
+            61.66% {
+                -webkit-transform: matrix3d(1.007, 0, 0, 0, 0, 0.991, 0, 0, 0, 0, 1, 0, -302.102, -222.926, 0, 1);
+                transform: matrix3d(1.007, 0, 0, 0, 0, 0.991, 0, 0, 0, 0, 1, 0, -302.102, -222.926, 0, 1);
+            }
+            63.26% {
+                -webkit-transform: matrix3d(1.007, 0, 0, 0, 0, 0.992, 0, 0, 0, 0, 1, 0, -302.171, -223.276, 0, 1);
+                transform: matrix3d(1.007, 0, 0, 0, 0, 0.992, 0, 0, 0, 0, 1, 0, -302.171, -223.276, 0, 1);
+            }
+            75.28% {
+                -webkit-transform: matrix3d(1.001, 0, 0, 0, 0, 1.003, 0, 0, 0, 0, 1, 0, -300.341, -225.696, 0, 1);
+                transform: matrix3d(1.001, 0, 0, 0, 0, 1.003, 0, 0, 0, 0, 1, 0, -300.341, -225.696, 0, 1);
+            }
+            83.98% {
+                -webkit-transform: matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -299.61, -225.049, 0, 1);
+                transform: matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -299.61, -225.049, 0, 1);
+            }
+            85.49% {
+                -webkit-transform: matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -299.599, -224.94, 0, 1);
+                transform: matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -299.599, -224.94, 0, 1);
+            }
+            90.69% {
+                -webkit-transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, -299.705, -224.784, 0, 1);
+                transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, -299.705, -224.784, 0, 1);
+            }
+            100% {
+                -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, -225, 0, 1);
+                transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, -225, 0, 1);
+            }
+        }
+
+        .timer {
+
+            margin-left: 85px;
+            color: #2bbbad!important;
+
+        }
+        .timer * {
+            cursor: default;
+        }
+        .timer h3 {
+            width: 100%;
+            font-size: 26px;
+            letter-spacing: 4px;
+            text-align: center;
+        }
+        .timer--clock {
+
+
+
+            margin-top: 22px;
+            overflow: hidden;
+            left: 41%;
+            top: 58%;
+        }
+        .timer--clock .clock-display-grp {
+            width: 100%;
+            position: relative;
+        }
+        .timer--clock .clock-display-grp .number-grp {
+            width: auto;
+            display: block;
+            height: 156px;
+            float: left;
+            overflow: hidden;
+        }
+        .timer--clock .clock-display-grp .number-grp .number-grp-wrp {
+            width: 100%;
+            position: relative;
+        }
+        .timer--clock .clock-display-grp .number-grp .number-grp-wrp .num {
+            width: 100%;
+            position: relative;
+            height: 156px;
+        }
+        .timer--clock .clock-display-grp .number-grp .number-grp-wrp .num p {
+            width: auto;
+            display: table;
+            font-size: 30px;
+            line-height: 150px;
+            font-weight: bold;
+        }
+        .timer--clock .clock-separator {
+            width: auto;
+            float: left;
+            display: block;
+            height: 156px;
+        }
+        .timer--clock .clock-separator p {
+            width: auto;
+            display: table;
+            font-size: 30px;
+            line-height: 150px;
+            font-weight: bold;
+        }
+
+        .reload {
+            width: 121px;
+            height: 14px;
+            position: relative;
+            bottom: 3rem;
+            left: 34%;
+
+            opacity: 0;
+            display: none;
+            cursor: pointer;
+            z-index: 9999;
+        }
+
+
+
+        .main-panel {
+
+            background-color: #F7F7FA;
+        }
+        .sidebar .nav i {
+            font-size: 15px;
+
+        }
+        @media (min-width: 990px) {
+            .row.equal {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .sidebar{
+                width: 350px;
+            }
+            .sidebar .sidebar-wrapper{
+                width: 350px;
+            }
+            .navbar-right {
+
+                margin-right: -7px;
+            }
+            .sidebar .logo .simple-text {
+                margin-left: 20px;
+            }
+        }
         th
         {
             text-align : center;
         }
 
-
+        @media (min-width:992px)
+        {
+            .s-floatL{float:left!important;}
+            .s-floatR{float: right!important;}
+        }
 
     </style>
 </head>
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="blue"  data-image="{{asset('image/student/dashboard/pattern.jpg')}}">
+    <div class="sidebar" >
 
-        <!--
 
-            Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
-            Tip 2: you can also add an image using data-image tag
-
-        -->
 
         <div class="sidebar-wrapper">
 
             <ul class="nav text-right ">
-                <li class="user-profile">
-                    <img src="{{ asset('image/student/dashboard/full-screen-image-3.jpg') }}" alt="">
+                <div class="user-profile">
+                    <div class="avatarWrapper">
+                        <div class="avatar" >
+                            <div class="uploadOverlay"><img class="image-s"  src="{{ asset('image/student/dashboard/edit.png') }}"></div>
 
-                </li>
+                            <img style="display: inline;" src="{{ asset('image/student/dashboard/user1.png') }}" alt="">
+
+                        </div>
+                    </div>
+
+                </div>
                 <div class="logo" dir="rtl">
-                        <a class="simple-text">
-                            {{$student->isComplete==0 ? 'دانش آموز گرامی خوش آمدی!' :$student->name.' '.$student->familyName.' خوش آمدی!' }}
-                        </a>
+                    <a class="simple-text">
+                        {{ $student->isComplete ? $student->name.' '.$student->familyName : 'به سامانه همپا خوش آمدید.' }}
+                    </a>
+                </div>
+                <hr id="sidebar-hr">
+
+                <ul class="list-server-examblade">
+                    <li>
+                        <span class="list-server-answer"> EXML-761d4</span>
+                    </li>
+                    <li>
+                        <span class="listserver-titleexamblade"> : کد آزمون</span>
+                    </li>
+
+                    <li>
+                        <span class="list-server-answer"> 30</span>
+                    </li>
+                    <li>
+                        <span class="listserver-titleexamblade"> : تعداد سوالات</span>
+                    </li>
+                </ul>
+                <hr id="sidebar-hr">
+                <ul class="list-server-examblade">
+
+
+
+                    <li>
+                        <span class="list-server-answer">ریاضی 1, جبر</span>
+                    </li>
+                    <li>
+                        <span class="listserver-titleexamblade"> : نام درس ها</span>
+                    </li>
+                </ul>
+                <hr id="sidebar-hr">
+
+                <div class="timer">
+                    <div class="timer--clock">
+                        <div class="minutes-group clock-display-grp">
+                            <div class="first number-grp">
+                                <div class="number-grp-wrp">
+                                    <div class="num num-0"><p>0</p></div>
+                                    <div class="num num-1"><p>1</p></div>
+                                    <div class="num num-2"><p>2</p></div>
+                                    <div class="num num-3"><p>3</p></div>
+                                    <div class="num num-4"><p>4</p></div>
+                                    <div class="num num-5"><p>5</p></div>
+                                    <div class="num num-6"><p>6</p></div>
+                                    <div class="num num-7"><p>7</p></div>
+                                    <div class="num num-8"><p>8</p></div>
+                                    <div class="num num-9"><p>9</p></div>
+                                </div>
+                            </div>
+                            <div class="second number-grp">
+                                <div class="number-grp-wrp">
+                                    <div class="num num-0"><p>0</p></div>
+                                    <div class="num num-1"><p>1</p></div>
+                                    <div class="num num-2"><p>2</p></div>
+                                    <div class="num num-3"><p>3</p></div>
+                                    <div class="num num-4"><p>4</p></div>
+                                    <div class="num num-5"><p>5</p></div>
+                                    <div class="num num-6"><p>6</p></div>
+                                    <div class="num num-7"><p>7</p></div>
+                                    <div class="num num-8"><p>8</p></div>
+                                    <div class="num num-9"><p>9</p></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clock-separator"><p>:</p></div>
+                        <div class="seconds-group clock-display-grp">
+                            <div class="first number-grp">
+                                <div class="number-grp-wrp">
+                                    <div class="num num-0"><p>0</p></div>
+                                    <div class="num num-1"><p>1</p></div>
+                                    <div class="num num-2"><p>2</p></div>
+                                    <div class="num num-3"><p>3</p></div>
+                                    <div class="num num-4"><p>4</p></div>
+                                    <div class="num num-5"><p>5</p></div>
+                                    <div class="num num-6"><p>6</p></div>
+                                    <div class="num num-7"><p>7</p></div>
+                                    <div class="num num-8"><p>8</p></div>
+                                    <div class="num num-9"><p>9</p></div>
+                                </div>
+                            </div>
+                            <div class="second number-grp">
+                                <div class="number-grp-wrp">
+                                    <div class="num num-0"><p>0</p></div>
+                                    <div class="num num-1"><p>1</p></div>
+                                    <div class="num num-2"><p>2</p></div>
+                                    <div class="num num-3"><p>3</p></div>
+                                    <div class="num num-4"><p>4</p></div>
+                                    <div class="num num-5"><p>5</p></div>
+                                    <div class="num num-6"><p>6</p></div>
+                                    <div class="num num-7"><p>7</p></div>
+                                    <div class="num num-8"><p>8</p></div>
+                                    <div class="num num-9"><p>9</p></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_exams' ? 'active' : ''}}">
-                    <a href="{{route('student_dashboard_exams')}}">
-                        <i class="fa fa-file"></i>
-                        <p>آزمون های من</p>
-                    </a>
-                </li>
-                <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'student_dashboard_scholarship' ? 'active' : ''}}">
-                    <a href="{{ route('student_dashboard_scholarship_form')}}">
-                        <i class="fa fa-graduation-cap"></i>
-                        <p>بورسیه</p>
-                    </a>
-                </li>
-                <li>
-                    <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
-                        <span class="tooltiptext">!!!در حال راه اندازی</span>
-                        <i class="fa fa-file-video"></i>
-                        <p>کد های تخفیف من</p>
-                    </a>
-                </li>
-                <li>
-                    <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
-                        <span class="tooltiptext">!!!در حال راه اندازی</span>
-                        <i class="fa fa-university"></i>
-                        <p>کیف پول من</p>
-                    </a>
-                </li>
-                <li>
-                    <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
-                        <span class="tooltiptext">!!!در حال راه اندازی</span>
-                        <i class="fa fa-users"></i>
-                        <p>اطلاعات شخصی من</p>
-                    </a>
-                </li>
-                {{-- <li>
-                    <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
-                        <span class="tooltiptext">!!!در حال راه اندازی</span>
-                        <i class="fa fa-book"></i>
-                        <p>کتاب های کمک درسی</p>
-                    </a>
-                </li> --}}
-                {{-- <li>
-                    <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
-                        <span class="tooltiptext">!!!در حال راه اندازی</span>
-                        <i class="fa fa-clock"></i>
-                        <p>فرصتی تا کنکور</p>
-                    </a>
-                </li> --}}
-                {{-- <li>
-                    <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
-                        <span class="tooltiptext">!!!در حال راه اندازی</span>
-                        <i class="fa fa-gamepad"></i>
-                        <p>بازی و سرگرمی</p>
-                    </a>
-                </li> --}}
-                {{-- <li>
-                    <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
-                        <span class="tooltiptext">!!!در حال راه اندازی</span>
-                        <i class="fa fa-newspaper"></i>
-                        <p>معرفی دبیر</p>
-                    </a>
-                </li> --}}
-                {{-- <li>
-                    <a class="isDisabled tooltip-sina" aria-disabled="true" href="#" style="color: #a0abb1">
-                        <span class="tooltiptext">!!!در حال راه اندازی</span>
-                        <i class="fa fa-comments"></i>
-                        <p>بحث و گفتگو</p>
-                    </a>
-                </li> --}}
 
-
-                <li class="bagdet">
-                    <div class="badget-content">
-                        <div class="badget-header">میتونه عنوان باشه</div>
-                        <div class="badget-rem">باقی مانده پول رو به این شکل اینجا بزاریم</div>
-                    </div>
-                </li>
-
+                </div>
+                <hr id="sidebar-hr">
+                <ul style="margin: 170px 0px 30px 0px; ">
+                <div class="col-md-6">
+                        <button  class=" button-end  " type="submit">اتمام</button>
+                </div>
+                <div class="col-md-6">
+                        <button class="button-perv" type="">بازگشت</button>
+                </div>
+                </ul>
 
             </ul>
         </div>
     </div>
 
     <div class="main-panel">
-        <nav class="navbar navbar-default navbar-fixed">
-            <div class="container-fluid">
-                <div class="navbar-header " style="float: right;">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse"
-                            data-target="#navigation-example-2">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a dir="rtl" class="navbar-brand" href=""></a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        @if(isset($cart))
-                            <li>
-                                <a href="{{route('student_dashboard_lessonExams_purchaseForm')}}">
-                                    <i class="fa fa-wallet"></i>
-                                    <p class="hidden-lg hidden-md">لیست خرید</p>
-                                    <span class="notification hidden-sm hidden-xs">{{count($cart)}}</span>
-                                </a>
-                            </li>
-                        @endif 
-                        {{-- <li>
-                            <a href="{{route('student_dashboard_wallet_form')}}">
-                                <i class="fa fa-wallet"></i>
-                                <p class="hidden-lg hidden-md">کیف پول</p>
-                                <span class="notification hidden-sm hidden-xs">{{$student->wallet}}</span>
-                            </a>
-                        </li> --}}
-                        {{-- <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-                                <i class="fa fa-globe"></i>
-
-                                <b class="caret "></b>
-                                <p class="hidden-lg hidden-md">
-                                    اعلان ها
-                                    <b class="caret"></b>
-                                </p>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">اعلان 1</a></li>
-                                <li><a href="#">اعلان 2</a></li>
-                                <li><a href="#">اعلان 3</a></li>
-                                <li><a href="#">اعلان 4</a></li>
-                                <li><a href="#"> اعلان</a></li>
-                            </ul>
-                        </li> --}}
-                        {{-- <li>
-                            <a href="">
-                                <i class="fa fa-search"></i>
-                                <p class="hidden-lg hidden-md">جست وجو</p>
-                            </a>
-                        </li> --}}
-                        <li>
-                            <a class="active" href="{{route('student_dashboard_lessonExams_result')}}">
-                           ایتم اول
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" href="{{route('student_test')}}">
-                               ایتم دوم
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" href="{{route('student_test')}}">
-                                ایتم سوم
-                            </a>
-                        </li>
-                    </ul>
-
-                    <ul class="nav navbar-nav text-right">
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown"
-                               aria-expanded="false">
-                                <i class="fa fa-user"></i>
-                                <b class="caret "></b>
-                                <p class="hidden-lg hidden-md">
-
-                                    حساب کاربری
-                                    <b class="caret hidden-sm hidden-xs"></b>
-                                </p>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="{{ route('student_dashboard_profile_form')}}">ویرایش پروفایل</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('student_dashboard_transactions') }}">تراکنش های من</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('student_dashboard_discounts') }}">کد تخفیف</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('student_dashboard_logout') }}"> خروج</a>
-                                </li>
-
-                            </ul>
-
-                        </li>
-
-                        <li class="separator hidden-lg"></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
+        <hr style="margin: 30px 0px 0px 0px; border-color: #f7f7fa;">
 
         <div class="content">
             <div class="container-fluid">
                 @yield('content')
+
             </div>
         </div>
 
 
-        <footer class="footer">
-            <div dir="rtl" class="row">
-                <div class="col-md-4">
-                    <ul class=" socila-list">
-                        <li><img href="#" src="http://placehold.it/48x48" alt=""/></li>
-                        <li><img href="#" src="http://placehold.it/48x48" alt=""/></li>
-                        <li><img href="#" src="http://placehold.it/48x48" alt=""/></li>
-                        <li><img href="#" src="http://placehold.it/48x48" alt=""/></li>
-                        <li><img href="#" src="http://placehold.it/48x48" alt=""/></li>
-                        <li><img href="#" src="http://placehold.it/48x48" alt=""/></li>
-                    </ul>
-                </div>
-                <div class="col-md-8">
-                    <p class="copyright pull-right">
-                        تمامی حقوق این سایت متعلق به شرکت کاروفن گستر آراد می باشد.
-                    </p>
-                </div>
-            </div>
-        </footer>
+
 
     </div>
 </div>
-
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none;">
-    <symbol id="close" viewBox="0 0 18 18">
-        <path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M9,0.493C4.302,0.493,0.493,4.302,0.493,9S4.302,17.507,9,17.507
-			  S17.507,13.698,17.507,9S13.698,0.493,9,0.493z M12.491,11.491c0.292,0.296,0.292,0.773,0,1.068c-0.293,0.295-0.767,0.295-1.059,0
-			  l-2.435-2.457L6.564,12.56c-0.292,0.295-0.766,0.295-1.058,0c-0.292-0.295-0.292-0.772,0-1.068L7.94,9.035L5.435,6.507
-			  c-0.292-0.295-0.292-0.773,0-1.068c0.293-0.295,0.766-0.295,1.059,0l2.504,2.528l2.505-2.528c0.292-0.295,0.767-0.295,1.059,0
-			  s0.292,0.773,0,1.068l-2.505,2.528L12.491,11.491z"/>
-    </symbol>
-</svg>
-
 
 </body>
 <!--   Core JS Files   -->
@@ -300,25 +591,15 @@
 
 <script src="{{asset('js/student/dashboard/bootstrap.min.js')}}" type="text/javascript"></script>
 
-<!-- Date Picker -->
-<script src="{{asset('datePicker/persian-date.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('datePicker/persian-datepicker.min.js')}}" type="text/javascript"></script>
 
-<!--  Charts Plugin -->
-<script src="{{asset('js/student/dashboard/chartist.min.js')}}"></script>
-
-<!--  Notifications Plugin    -->
-<script src="{{asset('js/student/dashboard/bootstrap-notify.js')}}"></script>
-
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-<script src="{{asset('js/student/dashboard/select2.min.js')}}"></script>
-<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="{{asset('js/student/dashboard/dashboard.js')}}"></script>
 
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="{{asset('js/student/dashboard/demo.js')}}"></script>
+
 <script>
+
+
     //Bootstrap Validation
     /* (function() {
      'use strict';
@@ -337,6 +618,7 @@
      });
      }, false);
      })(); */
+    require('jquery-countdown');
     //Drop down optional
     $(".menu").select2({
         allowClear : true,
@@ -349,6 +631,147 @@
         tokenSeparators : [',', ' ']
     })
 </script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js'></script>
+
+<script>
+    popup = {
+        init: function(){
+            $('figure').click(function(){
+                popup.open($(this));
+            });
+
+            $(document).on('click', '.popup img', function(){
+                return false;
+            }).on('click', '.popup', function(){
+                popup.close();
+            })
+        },
+        open: function($figure) {
+            $('.gallery').addClass('pop');
+            $popup = $('<div class="popup" />').appendTo($('body'));
+            $fig = $figure.clone().appendTo($('.popup'));
+            $bg = $('<div class="bg" />').appendTo($('.popup'));
+            $close = $('<div class="close"><svg><use xlink:href="#close"></use></svg></div>').appendTo($fig);
+            $shadow = $('<div class="shadow" />').appendTo($fig);
+            src = $('img', $fig).attr('src');
+            $shadow.css({backgroundImage: 'url(' + src + ')'});
+            $bg.css({backgroundImage: 'url(' + src + ')'});
+            setTimeout(function(){
+                $('.popup').addClass('pop');
+            }, 10);
+        },
+        close: function(){
+            $('.gallery, .popup').removeClass('pop');
+            setTimeout(function(){
+                $('.popup').remove()
+            }, 100);
+        }
+    }
+
+    popup.init()
+
+
+    TweenLite.defaultEase = Expo.easeOut;
+
+    initTimer("{{ $lessonExam->remainingTime() }}"); // other ways --> "0:15" "03:5" "5:2"
+
+    var reloadBtn = document.querySelector('.reload');
+    var timerEl = document.querySelector('.timer');
+
+    function initTimer (t) {
+
+        var self = this,
+            timerEl = document.querySelector('.timer'),
+            minutesGroupEl = timerEl.querySelector('.minutes-group'),
+            secondsGroupEl = timerEl.querySelector('.seconds-group'),
+
+            minutesGroup = {
+                firstNum: minutesGroupEl.querySelector('.first'),
+                secondNum: minutesGroupEl.querySelector('.second')
+            },
+
+            secondsGroup = {
+                firstNum: secondsGroupEl.querySelector('.first'),
+                secondNum: secondsGroupEl.querySelector('.second')
+            };
+
+        var time = {
+            min: t.split(':')[0],
+            sec: t.split(':')[1]
+        };
+
+        var timeNumbers;
+
+        function updateTimer() {
+
+            var timestr;
+            var date = new Date();
+
+            date.setHours(0);
+            date.setMinutes(time.min);
+            date.setSeconds(time.sec);
+
+            var newDate = new Date(date.valueOf() - 1000);
+            var temp = newDate.toTimeString().split(" ");
+            var tempsplit = temp[0].split(':');
+
+            time.min = tempsplit[1];
+            time.sec = tempsplit[2];
+
+            timestr = time.min + time.sec;
+            timeNumbers = timestr.split('');
+            updateTimerDisplay(timeNumbers);
+
+//      if(timestr === '0000')
+//         countdownFinished();
+
+            if(timestr != '0000')
+                setTimeout(updateTimer, 1000);
+
+        }
+
+        function updateTimerDisplay(arr) {
+
+            animateNum(minutesGroup.firstNum, arr[0]);
+            animateNum(minutesGroup.secondNum, arr[1]);
+            animateNum(secondsGroup.firstNum, arr[2]);
+            animateNum(secondsGroup.secondNum, arr[3]);
+
+        }
+
+        function animateNum (group, arrayValue) {
+
+            TweenMax.killTweensOf(group.querySelector('.number-grp-wrp'));
+            TweenMax.to(group.querySelector('.number-grp-wrp'), 1, {
+                y: - group.querySelector('.num-' + arrayValue).offsetTop
+            });
+
+        }
+
+        setTimeout(updateTimer, 1000);
+
+    }
+
+    function countdownFinished() {
+        setTimeout(function () {
+            TweenMax.set(reloadBtn, { scale: 0.8, display: 'block' });
+            TweenMax.to(timerEl, 1, { opacity: 0.2 });
+            TweenMax.to(reloadBtn, 0.5, { scale: 1, opacity: 1 });
+        }, 1000);
+        document.getElementById('form').submit();
+    }
+
+    reloadBtn.addEventListener('click', function () {
+        TweenMax.to(this, 0.5, { opacity: 0, onComplete:
+            function () {
+                reloadBtn.style.display= "none";
+            }
+        });
+        TweenMax.to(timerEl, 1, { opacity: 1 });
+        initTimer("00:05");
+    });
+</script>
+<script src="{{asset('js/student/dashboard/jquery.countdown.min.js')}}"></script>
 
 @yield('script')
 

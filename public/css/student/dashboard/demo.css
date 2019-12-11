@@ -93,21 +93,22 @@ hr#sidebar-hr{
     align-content: center;
 }
 .question-number{
-    position: absolute;
+    position: relative;
     border-radius: 100%;
     background-color: #ffffff;
     left: 47%;
-    top: -27%;
+
+    bottom: 27px;
     width: 50px;
     height: 50px;
 }
 .question-text{
-    padding: 31px 22px 24px 20px;
-    font-size: 2.4em;
+    padding: 0px 22px 24px 20px;
+    font-size: 2em;
     font-weight: 500;
 }
 h3.question-number-text{
-    margin: 13px 0 5px!important;
+   padding: 12px;
 }
 .card-question-content{
     background-color: #A1CAFF;
@@ -387,4 +388,54 @@ ul.list-server-money{
 }
 .list-server-money{
     margin-right: 1em!important;
+}
+.listserver-titleexamblade{
+    color: #000;
+    margin-right: 3.6em;
+    font-weight: 600;
+    line-height: 0;
+    font-size: 13px;
+}
+.list-server-examblade{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    list-style: none;
+    display: inline-flex;
+
+}
+.button-end{
+    color: black;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    border: solid 0.5px #b6b6b6;
+    padding: 10px 30px 9px 30px;
+    background: linear-gradient(280deg, rgba(63, 255, 236, 0.52) 10%, rgb(161, 202, 255) 92%);
+    transition: 1s;
+    margin-right: 40px;
+}
+
+.button-end:hover{
+    background-color: rgba(77, 255, 240, 0.92);
+    border: solid 0.5px #737373;
+
+}
+.button-perv{
+    color: black;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    border: solid 0.5px #b6b6b6;
+    padding: 10px 30px 9px 30px;
+    background: linear-gradient(280deg, rgba(63, 255, 236, 0.52) 10%, rgb(161, 202, 255) 92%);
+    transition: 1s;
+    margin-right: 30px;
+}
+.button-perv:hover{
+    background-color: rgba(73, 255, 211, 0.92);
+    border: solid 0.5px #737373;
+
+
 }

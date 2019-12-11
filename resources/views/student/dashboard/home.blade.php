@@ -1,4 +1,4 @@
-@extends('layouts.student_dashboard')
+@extends('layouts.student_dashboard_')
 @section('style')
     <style>
         @media (min-width: 990px) {
