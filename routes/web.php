@@ -39,6 +39,12 @@
                 Route::get('/', 'ProfileController@profileForm')->name('student_dashboard_profile_form');
                 Route::post('/update', 'ProfileController@profileUpdate')->name('student_dashboard_profile_update');
                 Route::post('/edit', 'ProfileController@profileEdit')->name('student_dashboard_profile_edit');
+
+                Route::prefix('settings')->group(function()
+                {
+                    Route::get('/', 'ProfileController@profileFormSettings')->name('student_dashboard_profile_form_settings');
+                });
+
             });
 
             Route::prefix('scholarship')->group(function()

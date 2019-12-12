@@ -127,5 +127,11 @@ class ProfileController extends Controller
 
 	}
 
+	public function profileFormSettings()
+	{
 
+		$student      = Auth::guard('student')->user();
+		return view('student.dashboard.profile.settings', compact('student'));
+
+	}
 }
