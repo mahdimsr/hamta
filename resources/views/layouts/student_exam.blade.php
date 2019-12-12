@@ -460,14 +460,14 @@
 
                 <ul class="list-server-examblade">
                     <li>
-                        <span class="list-server-answer"> EXML-761d4</span>
+                        <span class="list-server-answer"> {{ $lessonExam->exm }} </span>
                     </li>
                     <li>
                         <span class="listserver-titleexamblade"> : کد آزمون</span>
                     </li>
 
                     <li>
-                        <span class="list-server-answer"> 30</span>
+                        <span class="list-server-answer"> {{ count($lessonExam->questions) }}</span>
                     </li>
                     <li>
                         <span class="listserver-titleexamblade"> : تعداد سوالات</span>
@@ -479,7 +479,11 @@
 
 
                     <li>
-                        <span class="list-server-answer">ریاضی 1, جبر</span>
+                        <span class="list-server-answer">
+                                @foreach($lessonExam->lessons() as $lesson)
+                                {{$lesson->title}}
+                                @endforeach
+                        </span>
                     </li>
                     <li>
                         <span class="listserver-titleexamblade"> : نام درس ها</span>
@@ -556,7 +560,7 @@
                 <hr id="sidebar-hr">
                 <ul style="position: absolute; bottom: 0; ">
                 <div class="col-md-6">
-                        <button  class=" button-end  " type="submit">اتمام</button>
+                        <button  class="button-end" type="submit">اتمام</button>
                 </div>
                 <div class="col-md-6">
                         <button class="button-perv" type="">بازگشت</button>

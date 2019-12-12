@@ -121,7 +121,7 @@ class CartController extends Controller
                                 $cart_transaction->discountPrice  = $lessonExam->price*((100 - $discount->value)/100);
                                 $cart_transaction->status         = 'SUCCESS';
                                 $cart_transaction->save();
-                                $cart->setTransaction($cart_transaction->id);
+                                $cart->setTransaction($cart_transaction->id)->with('tab','purchase');
                             }
 
                             $student->wallet = $student->wallet - $discountPrice;
@@ -172,7 +172,7 @@ class CartController extends Controller
 
                     $student->wallet = $student->wallet - $price;
                     $student->update();
-                    return redirect()->route('student_dashboard_transactions');
+                    return redirect()->route('student_dashboard_transactions')->with('tab','purchase');
                 }
 
                 else
@@ -328,7 +328,7 @@ class CartController extends Controller
                         $transaction->status     = 'SUCCESS';
                         $transaction->discountId = null;
                         $transaction->update();
-                        return redirect()->route('student_dashboard_transactions')->with('status', 'خرید آزمون همراه با کد تخفیف با موفقیت انجام شد.');
+                        return redirect()->route('student_dashboard_transactions')->with('status', 'خرید آزمون همراه با کد تخفیف با موفقیت انجام شد.')->with('tab','purchase');
                     }
 
                     else
@@ -350,7 +350,7 @@ class CartController extends Controller
                         $transaction->code   = ltrim($Authority, '0');
                         $transaction->status = 'SUCCESS';
                         $transaction->update();
-                        return redirect()->route('student_dashboard_transactions')->with('status', 'خرید آزمون با موفقیت انجام شد.');
+                        return redirect()->route('student_dashboard_transactions')->with('status', 'خرید آزمون با موفقیت انجام شد.')->with('tab','purchase');
                     }
 
                 }

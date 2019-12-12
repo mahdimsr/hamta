@@ -1,4 +1,4 @@
-@extends('layouts.student_dashboard_old')
+@extends('layouts.student_exam')
 
 @section('link')
 
@@ -118,7 +118,7 @@ img {
 @endsection
 @section('content')
 <form id="form" action="{{ route('student_dashboard_lessonExams_result',['exm' => $lessonExam->exm]) }}" method="POST">
-    {{ csrf_field() }}
+{{ csrf_field() }}
 @foreach ($lessonExam->questions as $key => $question )
 @if($question->photo)
 <div class="row">
