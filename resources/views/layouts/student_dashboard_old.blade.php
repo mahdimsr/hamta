@@ -554,7 +554,7 @@
 
                 </div>
                 <hr id="sidebar-hr">
-                <ul style="margin: 170px 0px 30px 0px; ">
+                <ul style="position: absolute; bottom: 0; ">
                 <div class="col-md-6">
                         <button  class=" button-end  " type="submit">اتمام</button>
                 </div>
