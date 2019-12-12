@@ -7,18 +7,18 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-2">
 
-            <a aria-controls="purchase" data-toggle="tab" href="#purchase" id="purchase-tab" role="tab">   <div class="card-transaction-red">
+            <a aria-controls="purchase" data-toggle="tab" href="#purchase" id="purchase-tab" role="tab" >   <div class="card-transaction-red" >
                     <div class="card-transaction-header">
                         <p>خرید محصول</p>
                     </div>
-                    <div class="card-transaction-body">
-                        <svg class="svg-hover-transaction" xmlns="http://www.w3.org/2000/svg" width="140.218" height="73.415" viewBox="0 0 140.218 73.415">
+                    <div class="card-transaction-body" >
+                        <svg class="svg-hover-transaction " xmlns="http://www.w3.org/2000/svg" width="140.218" height="73.415" viewBox="0 0 140.218 73.415">
                             <path id="Polygon_1" data-name="Polygon 1" d="M60.925,8.76a12,12,0,0,1,17.151,0l40.961,41.845A12,12,0,0,1,110.461,71H28.539a12,12,0,0,1-8.575-20.394Z" transform="matrix(-1, -0.017, 0.017, -1, 138.979, 73.415)"  opacity="0.39"/>
                         </svg>
-                        <svg class="svg-hover-transaction" xmlns="http://www.w3.org/2000/svg" width="140.218" height="73.415" viewBox="0 0 140.218 73.415">
+                        <svg class="svg-hover-transaction " xmlns="http://www.w3.org/2000/svg" width="140.218" height="73.415" viewBox="0 0 140.218 73.415">
                             <path id="Polygon_1" data-name="Polygon 1" d="M60.925,8.76a12,12,0,0,1,17.151,0l40.961,41.845A12,12,0,0,1,110.461,71H28.539a12,12,0,0,1-8.575-20.394Z" transform="matrix(-1, -0.017, 0.017, -1, 138.979, 73.415)"  opacity="0.39"/>
                         </svg>
-                        <svg class="svg-hover-transaction" xmlns="http://www.w3.org/2000/svg" width="140.218" height="73.415" viewBox="0 0 140.218 73.415">
+                        <svg class="svg-hover-transaction " xmlns="http://www.w3.org/2000/svg" width="140.218" height="73.415" viewBox="0 0 140.218 73.415">
                             <path id="Polygon_1" data-name="Polygon 1" d="M60.925,8.76a12,12,0,0,1,17.151,0l40.961,41.845A12,12,0,0,1,110.461,71H28.539a12,12,0,0,1-8.575-20.394Z" transform="matrix(-1, -0.017, 0.017, -1, 138.979, 73.415)"  opacity="0.39"/>
                         </svg>
                     </div>
@@ -28,7 +28,7 @@
 
 
         <div class="col-md-4">
-               <a aria-controls="charge" data-toggle="tab" href="#charge" role="tab"> <div class="card-transaction-blue">
+               <a aria-controls="charge" data-toggle="tab" href="#charge" role="tab"> <div class="card-transaction-blue"  >
                     <div class="card-transaction-header">
                             <p>شارژ اعتبار</p>
                     </div>
@@ -50,14 +50,16 @@
                </a>
         </div>
     </div>
-<div class="card-transaction">
     <div class="tab-content">
         <div class="tab-pane active" id="charge" role="tabpanel">
+            <div class="card-transaction">
+
                 @if($charges->isEmpty())
-                <div id="app">
+                    <div class="col-md-6 col-md-offset-4 ">
                     <img class="when-empty-image" src="{{ asset('image/student/dashboard/empty_cart.svg') }}">
-                    <h4 class="text-center" dir="rtl">هنوز تراکنشی ثبت نشده است.</h4>
-                </div>
+
+                    </div>
+                    <h4 style="display: table-footer-group" class="text-center" dir="rtl">هنوز تراکنشی ثبت نشده است.</h4>
                 @else
             <section class="factor row">
                 <div id="app">
@@ -94,6 +96,7 @@
                 </div>
                 </section>
                 @endif
+        </div>
         </div>
         <div class="tab-pane" id="purchase" role="tabpanel">
                 @if($purchases->isEmpty())
@@ -145,8 +148,9 @@
                 </div>
                 </section>
                 @endif
+
         </div>
-    </div>
+
 </div>
 
 

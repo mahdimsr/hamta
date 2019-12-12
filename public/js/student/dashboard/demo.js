@@ -299,3 +299,4 @@ $('#clock').countdown('2020/10/10', function(event) {
         + '<span>%S</span> sec'));
 });
 
+//tab select
