@@ -52,14 +52,16 @@
     </div>
     <div class="tab-content">
         <div class="tab-pane active" id="charge" role="tabpanel">
-            <div class="card-transaction">
+
 
                 @if($charges->isEmpty())
-                    <div class="col-md-6 col-md-offset-4 ">
+                <div class="card-transaction">
+                    <div class="col-md-4 col-md-offset-4 ">
                     <img src="{{ asset('image/student/dashboard/empty_cart.svg') }}" width="100%" height="100%">
 
                     </div>
-                    <h4 style="display: table-footer-group" class="text-center" dir="rtl">هنوز تراکنشی ثبت نشده است.</h4>
+                    <h4 style="display: table-footer-group; margin-top: 10px;" class="text-center" dir="rtl">هنوز تراکنشی ثبت نشده است.</h4>
+            </div>
                 @else
             <section class="factor row">
                 <div id="app">
@@ -96,13 +98,15 @@
                 </div>
                 </section>
                 @endif
-        </div>
+
         </div>
         <div class="tab-pane" id="purchase" role="tabpanel">
                 @if($purchases->isEmpty())
-                <div id="app">
-                    <img class="when-empty-image" src="{{ asset('image/student/dashboard/empty_cart.svg') }}">
-                    <h4 class="text-center" dir="rtl">هنوز تراکنشی ثبت نشده است.</h4>
+                <div class="card-transaction">
+                        <div class="col-md-6 col-md-offset-4 ">
+                            <img src="{{ asset('image/student/dashboard/empty_cart.svg') }}" width="100%" height="100%">
+                        </div>
+                        <h4 style="display: table-footer-group; margin-top: 10px;" class="text-center" dir="rtl">هنوز تراکنشی ثبت نشده است.</h4>
                 </div>
                 @else
             <section class="factor row">

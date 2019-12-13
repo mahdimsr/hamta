@@ -494,6 +494,9 @@ display: flex;
     fill: #61716c !important;
 
 }
+.card-transaction img{
+    margin-bottom: 20px;
+}
 .card-transaction{
     display: table;
     width: 100%;
