@@ -514,11 +514,14 @@ padding: 20px;
     border-top: solid 0.5px #e8e8e8;
     height: 50px;
     background-color: #ebf3fa;
+    margin-top: 30px;
 }
 .footer-body{
     color: #388fa0;
     font-size: 12px;
     font-weight: 500;
     font-family: inherit;
-    padding: 10px;
+    padding: 15px 10px 10px 10px;
+
+
 }
