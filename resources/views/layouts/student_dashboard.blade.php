@@ -693,7 +693,7 @@
 
         </div>
         <footer class="footer-Sdashboard">
-            <p class="text-center footer-body"> .تمامی حقوق مادی و معنوی این وب سایت متعلق به شرکت کاروفن گسترآراد می باشد</p>
+            <p class="text-center footer-body">توسعه و پیاده سازی توسط گروه برنامه نویسی وندا</p>
         </footer>
 
 

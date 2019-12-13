@@ -177,7 +177,7 @@
 		<footer class="footer">
 			<div class="container-fluid">
 				<p class="copyright pull-right">
-					.تمامی حقوق این سایت متعلق به شرکت کاروفن گستر آراد می باشد
+                    توسعه و پیاده سازی توسط گروه برنامه نویسی وندا
 				</p>
 			</div>
 		</footer>
