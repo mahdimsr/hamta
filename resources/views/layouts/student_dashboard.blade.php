@@ -690,13 +690,17 @@
                 @yield('content')
 
             </div>
-        </div>
 
+        </div>
+        <footer class="footer-Sdashboard">
+            <p class="text-center footer-body"> .تمامی حقوق مادی و معنوی این وب سایت متعلق به شرکت کاروفن گسترآراد می باشد</p>
+        </footer>
 
 
 
     </div>
 </div>
+
 
 </body>
 <!--   Core JS Files   -->

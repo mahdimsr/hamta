@@ -504,3 +504,21 @@ display: flex;
 padding: 20px;
 
 }
+.selected{
+    fill: #000!important;
+}
+.footer-Sdashboard{
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    border-top: solid 0.5px #e8e8e8;
+    height: 50px;
+    background-color: #ebf3fa;
+}
+.footer-body{
+    color: #388fa0;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: inherit;
+    padding: 10px;
+}
