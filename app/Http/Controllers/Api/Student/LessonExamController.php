@@ -3,12 +3,16 @@
     namespace App\Http\Controllers\Api\Student;
 
     use App\Http\Controllers\Api\ApiHelper;
+    use App\Lib\Lib;
     use App\model\Cart;
     use App\model\Discount;
     use App\model\Grade;
     use App\model\LessonExam;
     use App\model\Orientation;
+    use App\model\Question;
+    use App\model\Result;
     use App\model\Transaction;
+    use Carbon\Carbon;
     use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
     use Illuminate\Support\Facades\Auth;
@@ -101,14 +105,143 @@
         public function questions($lessonExamId)
         {
 
-            $status = null;
+            $status   = null;
+            $duration = 0;
+            $finished = false;
 
             $lessonExam = LessonExam::query()->with('questions')->find($lessonExamId);
+            $student    = Auth::user();
 
-            $status = ApiHelper::$statusType['ok'];
+            if ($lessonExam && $lessonExam->hasPurchased())
+            {
+                if ($lessonExam->hasUsed())
+                {
+                    $result = Result::query()
+                                    ->where('studentId', $student->id)
+                                    ->where('examId', $lessonExam->id)
+                                    ->first();
+
+                    if ($result->status == 'IN-PROGRESS')
+                    {
+                        $finished = false;
+
+                    }
+                    else
+                    {
+                        $finished = true;
+                    }
+
+                }
+                else
+                {
+                    $result            = new Result();
+                    $result->type      = 'LESSONEXAM';
+                    $result->studentId = $student->id;
+                    $result->examId    = $lessonExam->id;
+                    $result->status    = 'IN-PROGRESS';
+                    $result->save();
+
+                    $finished = false;
+                    $duration = $lessonExam->duration;
+                }
+
+            }
+
+            $status = ApiHelper::$statusType[ 'ok' ];
 
             return response()->json(['status'     => $status,
+                                     'config'     => ['isFinished' => $finished, 'duration' => $duration],
                                      'lessonExam' => $lessonExam]);
         }
+
+
+        public function finishExam($lessonExamId, Request $request)
+        {
+
+            $message = null;
+
+            $message = 'همه چی خوبه';
+
+            $lessonExam = LessonExam::query()->find($lessonExamId);
+
+
+            $oldResult = Result::query()->where('studentId', Auth::id())->where('examId', $lessonExamId)->exists();
+
+
+            if ($oldResult)
+            {
+                $message = 'شما قبلا در آزمون شرکت کرده اید';
+
+
+            }
+            else
+            {
+
+
+                $correctAnswers = 0;
+                $wrongAnswers   = 0;
+                $blankAnswers   = 0;
+                $examQuestions  = $lessonExam->questions;
+                $questions      = $request->get('questions');
+
+
+                foreach ($questions as $item)
+                {
+
+                    $question = Question::query()->find($item[ 'id' ]);
+
+
+                    if ($item[ 'answer' ] == 0)
+                    {
+                        $blankAnswers = $blankAnswers + 1;
+                    }
+                    else
+                    {
+                        if ($question->answer == $item[ 'answer' ])
+                        {
+                            $correctAnswers = $correctAnswers + 1;
+                        }
+                        else
+                        {
+                            $wrongAnswers = $wrongAnswers + 1;
+                        }
+                    }
+                }
+
+
+                $result                 = new Result();
+                $result->type           = 'LESSONEXAM';
+                $result->examId         = $lessonExam->id;
+                $result->blankAnswers   = $blankAnswers;
+                $result->correctAnswers = $correctAnswers;
+                $result->wrongAnswers   = $wrongAnswers;
+                $result->status         = 'COMPLETE';
+                $result->save();
+
+            }
+
+
+            return response()->json(['status'  => ApiHelper::$statusType[ 'ok' ],
+                                     'isDone'  => true,
+                                     'message' => $message]);
+        }
+
+
+        public function result($lessonExamId)
+        {
+
+            $student = Auth::user();
+
+            $result = Result::query()
+                            ->where('type', 'LESSONEXAM')
+                            ->where('examId', $lessonExamId)
+                            ->where('studentId', $student->id)
+                            ->first();
+
+            return response()->json(['status' => ApiHelper::$statusType[ 'ok' ],
+                                     'result' => $result]);
+
+        }
+
 
     }

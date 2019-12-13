@@ -38,9 +38,22 @@
 
             $cartCount = Cart::query()->where('studentId', '=', $student->id)->where('transactionId', '=', 0)->count();
 
+            $images = ['lessonExam'  => asset('image/student/dashboard/exam-lesson.jpg'),
+                       'giftExam'    => asset('image/student/dashboard/gift-exam.jpg'),
+                       'generalExam' => asset('image/student/dashboard/General-exam.jpg'),
+                       'scholarship' => asset('image/student/dashboard/scholarship3.jpg'),
+                       'onlineClass' => asset('image/student/dashboard/Online-class.jpg'),
+                       'meAndThe'    => asset('image/student/dashboard/me-and-the.jpg'),
+                       'books'       => asset('image/student/dashboard/Books.jpg'),
+                       'untilKonkur' => asset('image/student/dashboard/to-konkor.jpg'),
+                       'teacher'     => asset('image/student/dashboard/Teacher.jpg'),
+                       'discussion'  => asset('image/student/dashboard/discussion.jpg'),
+                       'game'        => asset('image/student/dashboard/game1.jpg'),];
+
 
             return response()->json(['status'    => ApiHelper::$statusType[ 'ok' ],
                                      'cartCount' => $cartCount,
+                                     'itemPhoto' => $images,
                                      'student'   => $student]);
         }
 

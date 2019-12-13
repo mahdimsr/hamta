@@ -65,18 +65,26 @@
 
                 Route::post('/add', 'LessonExamController@addToCart')->name('api_student_lessonExam_add');
 
-                Route::get('/questions/{lessonExamId}','LessonExamController@questions')->name('api_student_lessonExam_questions');
+                Route::get('/questions/{lessonExamId}', 'LessonExamController@questions')
+                     ->name('api_student_lessonExam_questions');
 
+                Route::post('/finishExam/{lessonExamId}', 'LessonExamController@finishExam')
+                     ->name('api_student_lessonExam_finishExam');
+
+
+                Route::get('/result/{lessonExamId}','LessonExamController@result')->name('api_student_lessonExam_result');
 
             });
         });
 
 
-        Route::post('test', function(Request $request)
+        Route::get('test', function()
         {
 
+            $lessonExam = \App\model\LessonExam::query()->find(1);
 
-            return $request;
+
+            return $lessonExam;
         });
 
     });
