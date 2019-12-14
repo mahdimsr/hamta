@@ -87,9 +87,56 @@
                             <a class="add-to-cart">نتیجه آزمون</a>
                             @else
                                 <a href="{{ route('student_dashboard_lessonExams_addToCart',['exm'=> $lessonExam->exm]) }} " class="add-to-cart"><span class="fa fa-cart-plus"></span>اضافه شدن به سبد خرید</a>
+                                <button data-modal-trigger="trigger-1" class="trigger">
+                          
+                                    مشاهده پاسخنامه
+                                 </button>
                             @endif
                         </div>
+                     
 
+                        <div data-modal="trigger-1" class="modal">
+                            <article class="content-wrapper">
+                                <button class="close"></button>
+                                <header class="modal-header">
+                                    <h2>پاسخنامه زبان</h2>
+                                </header>
+                                <div class="content">
+                                    <div class="red-bg">24</div>
+                                    <div class="green-bg">30</div>
+                                    <div class="main-bg">
+                                        <ul>
+                                            <li>
+                                                تعداد سوالات
+                                            <span>30</span>
+                                            </li>
+                                            <li>تعداد پاسخ های درست
+                                                <span>24</span>
+                                            </li>
+                                            <li>تعداد پاسخ غلط
+                                                <span>5</span>
+                                            </li>
+                                            <li>تعداد سوال های بدون پاسخ
+                                                <span>1</span>
+                                            </li>
+                                            <li>تاریخ ارائه آزمون
+                                                <span>1398/3/23</span>
+                                            </li>
+                                            <li>تاریخ ایجاد پاسخانمه
+                                                <span>1398/3/23</span>
+                                            </li>
+                                           
+                                        </ul>
+                                    </div>
+                                    <div class="yellow-bg">5</div>
+                                    <div class="blue-bg">1</div>
+                                </div>
+                                <footer class="modal-footer">
+                                    <button class="action">فایل پیوست پاسخنامه</button>
+                                  
+                                </footer>
+                            </article>
+                        </div>
               </div>
     </div>
 </div>
@@ -117,25 +164,26 @@ tl.fromTo(back_bg,1,{height: "0%"},{height: "80%" , ease: Power2.easeInOut})
 )
 .fromTo(jumbotron, 1, {opacity:0},{opacity: 1},"-=0.7")
 
-// $(document).ready(function() {
-// 	var count = 0;
-// 	$("a.add-to-cart").click(function(event) {
-// 		count++;
-// 		$("a.add-to-cart").addClass("size");
-// 		setTimeout(function() {
-// 			$("a.add-to-cart").addClass("hover");
-// 		}, 200);
-// 		setTimeout(function() {
-// 			$("a.cart > span").addClass("counter");
-// 			$("a.cart > span.counter").text(count);
-// 		}, 400);
-// 		setTimeout(function() {
-// 			$("a.add-to-cart").removeClass("hover");
-// 			$("a.add-to-cart").removeClass("size");
-// 		}, 600);
-// 		event.preventDefault();
-// 	});
-// });
+const buttons = document.querySelectorAll(`button[data-modal-trigger]`);
+
+for(let button of buttons) {
+	modalEvent(button);
+}
+
+function modalEvent(button) {
+	button.addEventListener('click', () => {
+		const trigger = button.getAttribute('data-modal-trigger');
+		const modal = document.querySelector(`[data-modal=${trigger}]`);
+		const contentWrapper = modal.querySelector('.content-wrapper');
+		const close = modal.querySelector('.close');
+
+		close.addEventListener('click', () => modal.classList.remove('open'));
+		modal.addEventListener('click', () => modal.classList.remove('open'));
+		contentWrapper.addEventListener('click', (e) => e.stopPropagation());
+
+		modal.classList.toggle('open');
+	});
+}
 
 
 </script>
