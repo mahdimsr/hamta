@@ -51,7 +51,7 @@
             $this->validate($request, ['title'        => 'required|string|max:20',
                                        'activeTime'   => 'required',
                                        'gradeLessons' => 'required',
-                                       'answersheet'  => 'mimes:pdf|max:2000',
+                                       'answersheet'  => 'required|mimes:pdf|max:2000',
                                        'description'  => 'nullable|string|max:300',
                                        'duration'     => 'nullable|integer|min:0',]);
 
@@ -119,7 +119,7 @@
             $this->validate($request, ['title'       => 'required|string|max:20',
                                        'activeTime'  => 'required',
                                        'description' => 'nullable|string|max:300',
-                                       'answersheet'  => 'mimes:pdf|max:2000',
+                                       'answersheet' => 'mimes:pdf|max:2000',
                                        'duration'    => 'nullable|integer|min:0',]);
 
 

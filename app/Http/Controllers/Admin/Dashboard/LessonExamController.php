@@ -52,7 +52,7 @@
                                        'orientation'  => 'required',
                                        'gradeLessons' => 'required',
                                        'category'     => 'required',
-                                       'answersheet'  => 'mimes:pdf|max:2000',
+                                       'answersheet'  => 'required|mimes:pdf|max:2000',
                                        'price'        => 'required|integer|min:0',
                                        'description'  => 'nullable|string|max:300',
                                        'duration'     => 'required|integer|min:0',]);
