@@ -45,17 +45,6 @@ class DashboardController extends Controller
         return redirect()->route('student_login_form');
     }
 
-    public function results()
-	{
-
-        $student      = Auth::guard('student')->user();
-        $lessonExams  = Result::query()->where('studentId',$student->id)->where('type','LESSONEXAM')->where('status','COMPLETE')->get();
-        $giftExams    = Result::query()->where('studentId',$student->id)->where('type','GIFTEXAM')->where('status','COMPLETE')->get();
-
-
-		return view('student.dashboard.result.results', compact('student','lessonExams','giftExams'));
-    }
-
     public function purchased()
     {
 

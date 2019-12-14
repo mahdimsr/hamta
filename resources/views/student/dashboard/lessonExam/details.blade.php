@@ -84,58 +84,51 @@
                             @elseif($lessonExam->hasPurchased() && !$lessonExam->hasUsed())
                             <a href="{{ route('student_dashboard_lessonExams_questions',['exm'=> $lessonExam->exm]) }}" class="add-to-cart">شرکت در آزمون</a>
                             @elseif($lessonExam->hasPurchased() && $lessonExam->hasUsed())
-                            <a class="add-to-cart">نتیجه آزمون</a>
-                            @else
-                                <a href="{{ route('student_dashboard_lessonExams_addToCart',['exm'=> $lessonExam->exm]) }} " class="add-to-cart"><span class="fa fa-cart-plus"></span>اضافه شدن به سبد خرید</a>
-                                <button data-modal-trigger="trigger-1" class="trigger">
-                          
-                                    مشاهده پاسخنامه
-                                 </button>
-                            @endif
-                        </div>
-                     
-
+                            <button data-modal-trigger="trigger-1" class="trigger">نتیجه آزمون</button>
                         <div data-modal="trigger-1" class="modal">
                             <article class="content-wrapper">
                                 <button class="close"></button>
                                 <header class="modal-header">
-                                    <h2>پاسخنامه زبان</h2>
+                                    <h2>{{ $lessonExam->exm }} پاسخنامه آزمون </h2>
                                 </header>
                                 <div class="content">
-                                    <div class="red-bg">24</div>
-                                    <div class="green-bg">30</div>
+                                    <div class="red-bg">{{$lessonExam->result()->correctAnswers  }}</div>
+                                    <div class="green-bg">{{ count($lessonExam->questionExams) }}</div>
                                     <div class="main-bg">
                                         <ul>
                                             <li>
                                                 تعداد سوالات
-                                            <span>30</span>
+                                            <span>{{ count($lessonExam->questionExams) }}</span>
                                             </li>
                                             <li>تعداد پاسخ های درست
-                                                <span>24</span>
+                                                <span>{{$lessonExam->result()->correctAnswers  }}</span>
                                             </li>
                                             <li>تعداد پاسخ غلط
-                                                <span>5</span>
+                                                <span>{{$lessonExam->result()->wrongAnswers  }}</span>
                                             </li>
                                             <li>تعداد سوال های بدون پاسخ
-                                                <span>1</span>
+                                                <span>{{$lessonExam->result()->blankAnswers  }}</span>
                                             </li>
                                             <li>تاریخ ارائه آزمون
-                                                <span>1398/3/23</span>
+                                                <span>{{$lessonExam->active  }}</span>
                                             </li>
-                                            <li>تاریخ ایجاد پاسخانمه
-                                                <span>1398/3/23</span>
+                                            <li> تاریخ شرکت در آزمون
+                                                <span> {{$lessonExam->result()->PersianCreatedAt  }} </span>
                                             </li>
-                                           
+
                                         </ul>
                                     </div>
-                                    <div class="yellow-bg">5</div>
-                                    <div class="blue-bg">1</div>
+                                    <div class="yellow-bg">{{$lessonExam->result()->wrongAnswers  }}</div>
+                                    <div class="blue-bg">{{$lessonExam->result()->blankAnswers  }}</div>
                                 </div>
                                 <footer class="modal-footer">
-                                    <button class="action">فایل پیوست پاسخنامه</button>
-                                  
+                                    <button class="action"><a href="{{ route('student_dashboard_lessonExams_downloadAnswersheet',['exm'=>$lessonExam->exm]) }}" target="_blank">فایل پیوست پاسخنامه</a></button>
                                 </footer>
                             </article>
+                            </div>
+                            @else
+                                <a href="{{ route('student_dashboard_lessonExams_addToCart',['exm'=> $lessonExam->exm]) }} " class="add-to-cart"><span class="fa fa-cart-plus"></span>اضافه شدن به سبد خرید</a>
+                            @endif
                         </div>
               </div>
     </div>

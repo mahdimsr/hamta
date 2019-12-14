@@ -117,7 +117,6 @@ img {
 
 @endsection
 @section('content')
-<form id="form" action="{{ route('student_dashboard_lessonExams_result',['exm' => $lessonExam->exm]) }}" method="POST">
 {{ csrf_field() }}
 @foreach ($lessonExam->questions as $key => $question )
 @if($question->photo)
@@ -265,15 +264,6 @@ img {
 </div>
 
 </form>
-
-
-
-<div class="reload">
-
-   <button class="btn btn-default btn-warning btn-next">
-      <a href="#">ارسال دوباره رمز</a>
-   </button>
-  </div>
 @endsection
 
 

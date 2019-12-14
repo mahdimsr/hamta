@@ -63,6 +63,7 @@
                     Route::get('{exm}/details', 'LessonExamController@details')->name('student_dashboard_lessonExam_details');
                     Route::get('{exm}/questions', 'LessonExamController@questions')->name('student_dashboard_lessonExams_questions');
                     Route::post('{exm}/result', 'LessonExamController@result')->name('student_dashboard_lessonExams_result');
+                    Route::get('{exm}/answersheet', 'LessonExamController@downloadAnswersheet')->name('student_dashboard_lessonExams_downloadAnswersheet');
 
                 });
 
@@ -87,7 +88,6 @@
 
             Route::get('/discounts', 'DashboardController@discounts')->name('student_dashboard_discounts');
             Route::get('/transactions', 'DashboardController@transactions')->name('student_dashboard_transactions');
-            Route::get('/results', 'DashboardController@results')->name('student_dashboard_results');
 
             Route::get('/logout', 'DashboardController@logout')->name('student_dashboard_logout');
         });

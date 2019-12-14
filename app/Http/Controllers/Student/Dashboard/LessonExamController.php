@@ -8,6 +8,7 @@
     use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
     use Illuminate\Support\Facades\Auth;
+    use Illuminate\Support\Facades\Storage;
 
 
     class LessonExamController extends Controller
@@ -57,18 +58,6 @@
 
             if($lessonExam && $lessonExam->hasPurchased() && !$lessonExam->hasUsed())
             {
-                $result = Result::query()->where('studentId',$student->id)->where('examId',$lessonExam->id)->where('status','IN-PROGRESS')->first();
-
-                if(!$result)
-                {
-                    $result                 = new Result();
-                    $result->type           = 'LESSONEXAM';
-                    $result->studentId      = $student->id;
-                    $result->examId         = $lessonExam->id;
-                    $result->status         = 'IN-PROGRESS';
-                    $result->save();
-                }
-
                 return view('student.dashboard.lessonExam.exam_questions', compact('student', 'lessonExam'));
             }
 
@@ -87,8 +76,8 @@
 
             if($lessonExam && $lessonExam->hasPurchased() && !$lessonExam->hasUsed())
             {
-                $correctAnswers=0;
-                $wrongAnswers=0;
+                $correctAnswers= 0;
+                $wrongAnswers  = 0;
                 $examQuestions = $lessonExam->questions;
                 $questions     = $request->get('questions');
 
@@ -113,19 +102,40 @@
                     }
                 }
 
-                $result                 = Result::query()->where('studentId',$student->id)->where('examId',$lessonExam->id)->where('status','IN-PROGRESS')->first();
+                $result                 = new Result();
+                $result->type           = 'LESSONEXAM';
+                $result->studentId      = $student->id;
+                $result->examId         = $lessonExam->id;
                 $result->correctAnswers = $correctAnswers;
                 $result->wrongAnswers   = $wrongAnswers;
                 $result->blankAnswers   = count($examQuestions)-($correctAnswers+$wrongAnswers);
                 $result->status         = 'COMPLETE';
-                $result->update();
+                $result->save();
 
-                return redirect()->route('student_dashboard_results');
+                return redirect()->route('student_dashboard_purchasedExams');
             }
 
             else
             {
                 return redirect()->route('student_dashboard_lessonExams');
+            }
+
+        }
+
+        public function downloadAnswersheet($exm)
+        {
+            $student    = Auth::guard('student')->user();
+            $lessonExam = LessonExam::query()->where('exm', $exm)->first();
+            $result     = Result::query()->where('studentId',$student->id)->where('type','LESSONEXAM')->where('examId',$lessonExam->id)->where('status','COMPLETE')->first();
+
+            if($result)
+            {
+                return Storage::disk('lessonExam')->download($lessonExam->id.'/answersheet/'.$lessonExam->answersheet, $lessonExam->exm.'.pdf');
+            }
+
+            else
+            {
+                return redirect()->back();
             }
 
         }

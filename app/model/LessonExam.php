@@ -41,7 +41,8 @@
                'grades',
                'orientations',
                'questionCount',
-               'lessons'];
+               'lessons',
+            ];
 
         protected $casts
             = [
@@ -327,7 +328,7 @@
 
         }
 
-
+        /*
         public function remainingTime()
         {
 
@@ -347,6 +348,7 @@
             }
 
         }
+        */
 
 
         public function results()
@@ -438,7 +440,7 @@
             return $target_array;
         }
 
-        public function purchased()
+        public static function purchased()
         {
             $lessonExams  = LessonExam::all();
             $target_array = [];
@@ -462,6 +464,13 @@
             $isExpired = $today->gte($this->activeDate);
 
             return $isExpired;
+        }
+
+        public function result()
+        {
+            $student      = Auth::guard('student')->user();
+            $result       = Result::query()->where('studentId',$student->id)->where('type','LESSONEXAM')->where('examId',$this->id)->where('status','COMPLETE')->first();
+            return $result;
         }
 
     }

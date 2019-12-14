@@ -558,6 +558,7 @@
 
                 </div>
                 <hr id="sidebar-hr">
+                <form id="form" action="{{ route('student_dashboard_lessonExams_result',['exm' => $lessonExam->exm]) }}" method="POST">
                 <ul style="position: absolute; bottom: 0; ">
                 <div class="col-md-6">
                         <button  class="button-end" type="submit">اتمام</button>
@@ -677,7 +678,7 @@
 
     TweenLite.defaultEase = Expo.easeOut;
 
-    initTimer("{{ $lessonExam->remainingTime() }}"); // other ways --> "0:15" "03:5" "5:2"
+    initTimer("{{ $lessonExam->duration }}:00"); // other ways --> "0:15" "03:5" "5:2"
 
     var reloadBtn = document.querySelector('.reload');
     var timerEl = document.querySelector('.timer');
