@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-2">
 
-            <a aria-controls="purchase" data-toggle="tab" href="#purchase" id="purchase-tab" role="tab" >   <div class="card-transaction-red" >
+            <a aria-controls="purchase" data-toggle="tab" href="#purchase" id="purchase-tab" role="tab" onclick="purchaseactive()" >   <div class="card-transaction-red" >
                     <div class="card-transaction-header">
                         <p>خرید محصول</p>
                     </div>
@@ -28,7 +28,7 @@
 
 
         <div class="col-md-4">
-               <a aria-controls="charge" data-toggle="tab"  href="#charge" role="tab"> <div class="card-transaction-blue  "  >
+               <a aria-controls="charge" data-toggle="tab"  href="#charge" id="charge-tab" role="tab" onclick="chargeactive()"> <div class="card-transaction-blue  "  >
                     <div class="card-transaction-header">
                             <p>شارژ اعتبار</p>
                     </div>
@@ -103,7 +103,7 @@
         <div class="tab-pane" id="purchase" role="tabpanel">
                 @if($purchases->isEmpty())
                 <div class="card-transaction">
-                        <div class="col-md-6 col-md-offset-4 ">
+                        <div class="col-md-4 col-md-offset-4 ">
                             <img src="{{ asset('image/student/dashboard/empty_cart.svg') }}" width="100%" height="100%">
                         </div>
                         <h4 style="display: table-footer-group; margin-top: 10px;" class="text-center" dir="rtl">هنوز تراکنشی ثبت نشده است.</h4>
@@ -162,9 +162,24 @@
 @endsection
 @section('script')
     <script>
+
     @if (Session::get('tab')=='purchase')
     $("#purchase-tab").tab('show');
+    $('#purchase-tab svg').removeClass('svg-hover-transaction');
     @endif
+
+    function purchaseactive()
+    {
+        $('#purchase-tab svg').removeClass('svg-hover-transaction');
+        $('#charge-tab svg').addClass('svg-hover-transaction');
+    }
+
+    function chargeactive()
+    {
+        $('#charge-tab svg').removeClass('svg-hover-transaction');
+        $('#purchase-tab svg').addClass('svg-hover-transaction');
+    }
+
     </script>
 
 @endsection
