@@ -53,7 +53,7 @@
         public function getPersianUpdatedAtAttribute()
         {
 
-            $date = Jalalian::fromCarbon($this->updated_at)->format('%Y/%m/%d');
+            $date = Jalalian::fromCarbon($this->updated_at)->format('%Y/%m/%d H:i:s');
 
             return $date;
         }
