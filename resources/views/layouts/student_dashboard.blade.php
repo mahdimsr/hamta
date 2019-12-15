@@ -34,6 +34,16 @@
             font-size: 15px;
 
         }
+        @media (max-width: 990px) {
+            .card-money{
+                width: 77px;
+                font-size: 10px!important;
+            }
+            .card-money .card-body{
+                display: -webkit-inline-box;
+            }
+
+        }
         @media (min-width: 990px) {
             .row.equal {
                 display: flex;
@@ -543,7 +553,7 @@
 
                 <li style="margin-bottom: 8px; top:21px;">
 
-                        <div class="col-md-5">
+                        <div class="">
                             <div class="card-money">
                                     <div class="card-body">
                                       <a href="{{ route('student_dashboard_wallet_form') }}">

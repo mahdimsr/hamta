@@ -46,7 +46,7 @@ a#addfund1{
 }
 .sidebar .sidebar-wrapper{
     background-color: #eff8ff!important;
-    overflow: scroll;
+    overflow: visible;
     overflow-x: hidden;
     position: absolute;
 }
@@ -326,6 +326,8 @@ fill: rgb(111, 188, 255);
     border-radius: 7px;
     box-shadow: 0px 0px 20px 3px rgb(60, 138, 157), 0px 0px 4px 0px rgba(235, 243, 250, 0.31);
     transition: 1s;
+    float: left;
+    margin-left: 30px;
 }
 .card-money-par{
     padding: 10px 10px 10px 10px;

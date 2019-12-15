@@ -74,6 +74,8 @@ img {
 .popup figure img {
   position: relative;
   z-index: 2;
+    height: 500px!important;
+    width: 500px!important;
 }
 
 .popup figure .shadow {
