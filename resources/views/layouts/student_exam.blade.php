@@ -312,7 +312,7 @@
 
         .timer {
 
-            margin-left: 85px;
+
             color: #2bbbad!important;
 
         }
@@ -328,7 +328,7 @@
         .timer--clock {
 
 
-
+            position: relative;
             margin-top: 22px;
             overflow: hidden;
             left: 41%;
@@ -559,7 +559,7 @@
                 </div>
                 <hr id="sidebar-hr">
                 <form id="form" action="{{ route('student_dashboard_lessonExams_result',['exm' => $lessonExam->exm]) }}" method="POST">
-                <ul style="position: absolute; bottom: 0; ">
+                <ul style="position: absolute; bottom: 30px; ">
                 <div class="col-md-6">
                         <button  class="button-end" type="submit">اتمام</button>
                 </div>
