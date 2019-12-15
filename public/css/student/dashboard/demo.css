@@ -45,7 +45,9 @@ a#addfund1{
     /*filter: blur(0px) grayscale(0);*/
 }
 .sidebar .sidebar-wrapper{
-    overflow: unset;
+    background-color: #eff8ff!important;
+    overflow: scroll;
+    overflow-x: hidden;
     position: absolute;
 }
 hr#sidebar-hr{
@@ -364,6 +366,7 @@ fill: rgb(111, 188, 255);
     transition-timing-function: ease-in;
 }
 .list-server{
+    width: max-content;
     list-style: none;
     display: inline-flex;
 }
@@ -378,6 +381,7 @@ fill: rgb(111, 188, 255);
     line-height: 2;
 }
 ul.list-server-money{
+
     text-align: center;
     padding: 10px 10px 10px 10px!important;
     list-style: none;
@@ -395,6 +399,9 @@ ul.list-server-money{
     font-weight: 600;
     line-height: 0;
     font-size: 13px;
+}
+.sidebar .nav p {
+    margin: 0px !important;
 }
 .list-server-examblade{
     margin-top: 30px;
