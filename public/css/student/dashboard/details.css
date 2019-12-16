@@ -399,7 +399,7 @@ a.cart > span.counter {
 }
 .main-bg {
 	background-color: palevioletred;
-    border-radius: 50%;
+    border-radius: 15%;
     text-align: center;
 
 	top: 20%;
@@ -411,7 +411,7 @@ a.cart > span.counter {
 .main-bg ul{
 	list-style: none;
     text-align: right;
-    left: 16%;
+    left: -8%;
     top: 10%;
     position: inherit;
 }
@@ -434,6 +434,7 @@ a.cart > span.counter {
     bottom: 20%;
 	left: 5%;
 	font-size: 24px;
+	z-index: -1;
 }
 .blue-bg {
     background-color: skyblue;
