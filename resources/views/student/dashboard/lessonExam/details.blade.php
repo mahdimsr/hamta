@@ -113,7 +113,7 @@
                                                 <span>{{$lessonExam->active  }}</span>
                                             </li>
                                             <li> تاریخ شرکت در آزمون
-                                                <span> {{$lessonExam->result()->PersianCreatedAt  }} </span>
+                                                <span> {{$lessonExam->result()->PersianCreatedAt}} </span>
                                             </li>
 
                                         </ul>
@@ -122,7 +122,7 @@
                                     <div class="blue-bg">{{$lessonExam->result()->blankAnswers  }}</div>
                                 </div>
                                 <footer class="modal-footer">
-                                    <button class="action"><a href="{{ route('student_dashboard_lessonExams_downloadAnswersheet',['exm'=>$lessonExam->exm]) }}" target="_blank">فایل پیوست پاسخنامه</a></button>
+                                    <a class="action" href="{{ route('student_dashboard_lessonExams_downloadAnswersheet',['exm'=>$lessonExam->exm]) }}" target="_blank">فایل پیوست پاسخنامه</a>
                                 </footer>
                             </article>
                             </div>

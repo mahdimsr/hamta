@@ -2,9 +2,9 @@
     background: no-repeat;
     background-size: cover;
     position: absolute;
-   
+
     overflow: hidden;
-    z-index: 1;   
+    z-index: 1;
 }
   .back-bg::before{
     content: "";
@@ -17,21 +17,21 @@
 	background: rgba(87, 95, 109, 0.5);
 
 
-}  
+}
 .main-panel > .content {
      padding: 0;
      z-index: -11;
-    
-     
+
+
 
 }
 h3.exam-title {
-  
+
     right: 10%;
     margin-right: 10%;
     color: #fff;
-    
-   
+
+
 }
 .jumbotron{
 
@@ -44,10 +44,10 @@ h3.exam-title {
     padding-top: 15px;
     position: absolute;
     width: 90%;
-  
-    
-   
-   
+
+
+
+
 }
 
 .header{
@@ -73,7 +73,7 @@ ul.lead{
     display: inline-flex;
 }
 .payeh-fitst-item{
-    
+
     margin-left: 20px;
     font-weight: 900;
     margin-right: -20px;
@@ -97,15 +97,15 @@ p.description-body {
 }
 
 .shop-icon {
-    
+
 	display: inline-flex;
     bottom: 10%;
     left: 10%;
-  
-   
+
+
     z-index: 5;
-   
- 
+
+
 }
 i.fas.fa-cart-arrow-down {
     font-size: 15px;
@@ -137,7 +137,7 @@ i.fas.fa-cart-arrow-down {
   .trigger:hover {
 	box-shadow: 0 0.875rem 1.75rem rgba(0, 0, 0, 0.25), 0 0.625rem 0.625rem rgba(0, 0, 0, 0.22);
   }
-  
+
   .modal {
 	position: fixed;
 	top: 0;
@@ -275,7 +275,7 @@ i.fas.fa-cart-arrow-down {
   .modal .content-wrapper .modal-footer .action:hover:before {
 	width: 100%;
   }
-  
+
 
 
 
@@ -300,7 +300,7 @@ a.add-to-cart {
 	text-decoration: none;
 	text-align: center;
 	left: 24px;
-	
+
 	top: 48px;
 	display: block;
 	box-shadow: 0 3px 6px rgba(255, 171, 0, 0.16), 0 3px 6px rgba(255, 171, 0, 0.23);
@@ -423,7 +423,7 @@ a.cart > span.counter {
 }
 
 .yellow-bg {
-	background-color: #e37a03; 
+	background-color: #e37a03;
 	width: 100px;
     height: 100px;
     text-align: center;
@@ -455,12 +455,12 @@ a.cart > span.counter {
     height: 48px;
 	background: #e16de1;
     font-size: 12px;
-    
+    padding-top: 1.25rem;
     color: rgb(255, 255, 255);
     -moz-border-radius: 24px;
     -webkit-border-radius: 24px;
     border-radius: 24px;
     text-decoration: none;
     text-align: center;
- 
+
 }
