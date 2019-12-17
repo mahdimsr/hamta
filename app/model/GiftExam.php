@@ -139,14 +139,8 @@
 
             $unique_oriId = Lib::unique_ObjectArray($orientationArray, 'id');
 
-            $orientation = array();
+            $orientation = Orientation::query()->find($unique_oriId[ 0 ]);
 
-            foreach ($unique_oriId as $id)
-            {
-                $ori = Orientation::query()->find($id);
-
-                array_push($orientation, $ori);
-            }
 
             return $orientation;
 

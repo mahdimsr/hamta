@@ -50,11 +50,6 @@
                                         @endforeach
                                     </p>
                                 </div>
-
-                                {{--<div class="col-md-3">--}}
-                                {{--<p>قیمت:</p>--}}
-                                {{--</div>--}}
-
                             </div>
 
 
@@ -100,12 +95,12 @@
                                 <td>{{$questionExam->question->gradeLesson->lesson_grade}}</td>
                                 <td>
 
-                                    <a href="{{ route('admin_ltlExams_removeQuestion',['id' => $questionExam->id,'exm'=>$exam->exm]) }}"
-                                       id="remove-btn"
-                                       type="button"
-                                       style="font-size: 12px;" class="btn btn-danger">
+                                    <button data-modal-trigger="remove-modal"
+                                            data-remove-route="{{ route('admin_ltlExams_removeQuestion',['id' => $questionExam->id,'exm'=>$exam->exm]) }}"
+                                            class="trigger btn btn-danger" style="font-size: 12px;">
+
                                         حذف
-                                    </a>
+                                    </button>
                                     <a href="{{ route('admin_ltlExams_editQuestionShow',['id' => $questionExam->questionId , 'exm' => $exam->exm]) }}"
                                        style="font-size: 12px;" class="btn btn-info">
                                         ویرایش
@@ -119,15 +114,23 @@
                     </table>
 
                 </div>
+                <div data-modal="remove-modal" class="modal">
+                    <article class="content-wrapper">
+                        <button class="close"></button>
+                        <header class="modal-header">
+                            <h2>حذف سوال آزمون</h2>
+                        </header>
+                        <div class="content"  dir="rtl">
+                            <p>آیا مایل هستید  سوال آزمون درس به درس ایجاد شده حذف شود؟</p>
+                        </div>
+                        <footer class="modal-footer">
+                            <a class="action">بله</a>
+                            <button class="action" id="close">خیر</button>
+                        </footer>
+                    </article>
+                </div>
             </div>
         </div>
     </div>
-@endsection
-
-@section('script')
-
-    <script>
-
-    </script>
 
 @endsection

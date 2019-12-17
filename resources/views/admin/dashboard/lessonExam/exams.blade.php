@@ -1,10 +1,4 @@
 @extends('layouts.admin_dashboard')
-
-@section('style')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link rel="stylesheet" href="{{ asset('css/admin/dashboard/popup.css') }}">
-@endsection
-
 @section('content')
 
     <div class="row">
@@ -39,10 +33,9 @@
 
                                     <button data-modal-trigger="remove-modal"
                                             data-remove-route="{{route('admin_ltlExams_remove',['exm' => $exam->exm])}}"
-                                            class="trigger btn btn-danger">
-
+                                            class="trigger btn btn-danger" style="font-size: 12px;">
                                         حذف
-                                    </button>
+                                </button>
 
 
                                     <a href="{{route('admin_ltlExams_editShow',['exm' => $exam->exm])}}"
@@ -71,8 +64,8 @@
                         <header class="modal-header">
                             <h2>حذف آزمون</h2>
                         </header>
-                        <div class="content">
-                            <p>ایا مایل هستید آزمون درس به درس ایحاد شده حذف شود؟</p>
+                        <div class="content"  dir="rtl">
+                            <p>آیا مایل هستید آزمون درس به درس ایجاد شده حذف شود؟</p>
                         </div>
                         <footer class="modal-footer">
                             <a class="action">بله</a>
@@ -84,40 +77,4 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('script')
-
-    <script>
-        const buttons = document.querySelectorAll(`button[data-modal-trigger]`);
-
-        for (let button of buttons)
-        {
-            modalEvent(button);
-        }
-
-        function modalEvent(button)
-        {
-            button.addEventListener('click', () =>
-            {
-
-                const route          = button.getAttribute('data-remove-route');
-                const modal          = document.querySelector('[data-modal=remove-modal]');
-                const contentWrapper = modal.querySelector('.content-wrapper');
-                const close          = modal.querySelector('.close');
-                const closeBtn       = modal.querySelector('#close');
-                const remove         = modal.querySelector('a');
-
-                remove.href = route;
-
-                close.addEventListener('click', () => modal.classList.remove('open'));
-                closeBtn.addEventListener('click', () => modal.classList.remove('open'));
-                modal.addEventListener('click', () => modal.classList.remove('open'));
-                contentWrapper.addEventListener('click', (e) => e.stopPropagation());
-
-                modal.classList.toggle('open');
-            });
-        }
-    </script>
-
 @endsection

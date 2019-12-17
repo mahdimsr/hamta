@@ -46,7 +46,7 @@ class LoginController extends Controller
 				Cookie::queue('adminPass', '');
             }
 
-            return redirect()->route('admin_dashboard');
+            return redirect()->route('admin_exams');
 
         }
 

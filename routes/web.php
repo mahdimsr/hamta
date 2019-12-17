@@ -108,7 +108,6 @@
         Route::middleware('auth:admin')->namespace('Dashboard')->prefix('admin/dashboard')->group(function()
         {
 
-            Route::get('/', 'DashboardController@dashboard')->name('admin_dashboard');
             Route::prefix('admins')->group(function()
             {
 

@@ -27,10 +27,11 @@
 								<td>{{$gradeLesson->title}}</td>
 								<td>
 
-									<a href="{{route('admin_gradeLessons_remove',['code' => $gradeLesson->code])}}" id="remove-btn" type="button"
-											style="font-size: 12px;" class="btn btn-danger">
-										حذف
-									</a>
+                                    <button data-modal-trigger="remove-modal"
+                                            data-remove-route="{{route('admin_gradeLessons_remove',['code' => $gradeLesson->code])}}"
+                                            class="trigger btn btn-danger" style="font-size: 12px;">
+                                        حذف
+                                    </button>
 									<a href="{{route('admin_gradeLessons_editShow',['code' => $gradeLesson->code])}}" style="font-size: 12px;" class="btn btn-info">
 										ویرایش
 									</a>
@@ -42,7 +43,22 @@
 						</tbody>
 					</table>
 
-				</div>
+                </div>
+                <div data-modal="remove-modal" class="modal">
+                    <article class="content-wrapper">
+                        <button class="close"></button>
+                        <header class="modal-header">
+                            <h2>حذف دروس مختص هر پایه</h2>
+                        </header>
+                        <div class="content"  dir="rtl">
+                            <p>آیا مایل هستید مورد ایجاد شده حذف شود؟</p>
+                        </div>
+                        <footer class="modal-footer">
+                            <a class="action">بله</a>
+                            <button class="action" id="close">خیر</button>
+                        </footer>
+                    </article>
+                </div>
 			</div>
 		</div>
 	</div>

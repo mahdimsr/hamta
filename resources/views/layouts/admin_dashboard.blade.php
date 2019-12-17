@@ -22,7 +22,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     {{-- datePicker --}}
     <link href="{{asset('datePicker/persian-datepicker.min.css')}}" rel="stylesheet"/>
-	<link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
+    <link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/admin/dashboard/popup.css') }}">
     @yield('style')
 </head>
 <body>
@@ -47,12 +48,6 @@
 			</div>
 
 			<ul class="nav text-right ">
-				<li class="{{\Illuminate\Support\Facades\Route::currentRouteName() == 'admin_dashboard' ? 'active' : ''}}">
-					<a href="{{route('admin_dashboard')}}">
-						<i class="fas fa-tachometer-alt"></i>
-						<p>پنل کاربری</p>
-					</a>
-				</li>
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_exams' ? 'active' : ''}}">
 					<a href="{{route('admin_exams')}}">
 						<i class="fa fa-check"></i>
@@ -64,37 +59,47 @@
 						<i class="fa fa-question"></i>
 						<p>کد ها</p>
 					</a>
-				</li>
+                </li>
+                @if($adminUser->level=="A")
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_grades' ? 'active' : ''}}">
 					<a href="{{route('admin_grades')}}">
 						<i class="fas fa-level-up-alt"></i>
 						<p>مقاطع تحصیلی</p>
 					</a>
-				</li>
+                </li>
+                @endif
+                @if($adminUser->level=="A")
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_orientations' ? 'active' : ''}}">
 					<a href="{{route('admin_orientations')}}">
 						<i class="fa fa-filter"></i>
 						<p>گرایش ها</p>
 					</a>
                 </li>
+                @endif
+                @if($adminUser->level=="A")
                 <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_lessons' ? 'active' : ''}}">
 					<a href="{{route('admin_lessons')}}">
 						<i class="fa fa-book"></i>
 						<p>دروس</p>
 					</a>
                 </li>
+                @endif
+                @if($adminUser->level=="A")
                 <li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_categories' ? 'active' : ''}}">
 					<a href="{{route('admin_categories')}}">
 						<i class="fa fa-list-alt"></i>
 						<p>دسته بندی دروس</p>
 					</a>
-				</li>
+                </li>
+                @endif
+                @if($adminUser->level=="A")
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_gradeLessons' ? 'active' : ''}}">
 					<a href="{{route('admin_gradeLessons')}}">
 						<i class="fa fa-book-open"></i>
 						<p>دروس مختص هر پایه</p>
 					</a>
-				</li>
+                </li>
+                @endif
 				@if($adminUser->level=="A")
 				<li class="{{Illuminate\Support\Facades\Route::currentRouteName() == 'admin_admins' ? 'active' : ''}}">
 					<a href="{{route('admin_admins')}}">
@@ -203,7 +208,7 @@
 <script src="{{asset('js/admin/dashboard/dashboard.js')}}"></script>
 
 
-<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<!-- Light Bootstrap Table DEMO methods, dont include it in your project! -->
 <script src="{{asset('js/admin/dashboard/demo.js')}}"></script>
 <!-- Date Picker -->
 <script src="{{asset('datePicker/persian-date.min.js')}}" type="text/javascript"></script>
@@ -222,6 +227,35 @@
         minimumResultsForSearch: Infinity
     });
 
+    const buttons = document.querySelectorAll(`button[data-modal-trigger]`);
+
+    for (let button of buttons)
+    {
+        modalEvent(button);
+    }
+
+    function modalEvent(button)
+    {
+        button.addEventListener('click', () =>
+        {
+
+            const route          = button.getAttribute('data-remove-route');
+            const modal          = document.querySelector('[data-modal=remove-modal]');
+            const contentWrapper = modal.querySelector('.content-wrapper');
+            const close          = modal.querySelector('.close');
+            const closeBtn       = modal.querySelector('#close');
+            const remove         = modal.querySelector('a');
+
+            remove.href = route;
+
+            close.addEventListener('click', () => modal.classList.remove('open'));
+            closeBtn.addEventListener('click', () => modal.classList.remove('open'));
+            modal.addEventListener('click', () => modal.classList.remove('open'));
+            contentWrapper.addEventListener('click', (e) => e.stopPropagation());
+
+            modal.classList.toggle('open');
+        });
+    }
 </script>
 
 @yield('script')
