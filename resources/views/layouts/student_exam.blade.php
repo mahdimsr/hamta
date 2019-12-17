@@ -558,17 +558,27 @@
 
                 </div>
                 <hr id="sidebar-hr">
-                <form id="form" action="{{ route('student_dashboard_lessonExams_result',['exm' => $lessonExam->exm]) }}" method="POST">
+
                 <ul style="position: absolute; bottom: 30px; ">
                 <div class="col-md-6">
-                        <button  class="button-end" type="submit">اتمام</button>
+                        <button  class="button-end" data-toggle="modal" data-target="#end-modal"  >اتمام</button>
+
+
+
+
                 </div>
                 <div class="col-md-6">
-                        <button class="button-perv" type="">بازگشت</button>
+                        <button class="button-perv" data-toggle="modal" data-target="#perv-modal"  >بازگشت</button>
+
+
+
                 </div>
                 </ul>
 
-            </ul>
+
+
+
+</ul>
         </div>
     </div>
 

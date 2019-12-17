@@ -537,3 +537,21 @@ padding: 20px;
 
 
 }
+.close{
+    float: left!important;
+}
+.modal-header {
+    background-color: aliceblue!important;
+
+}
+.modal-footer{
+    text-align: left!important;
+    background-color: aliceblue!important;
+}
+.modal-title{
+    display: contents!important;
+}
+.modal-body p{
+    font-size: 15px;
+
+}
