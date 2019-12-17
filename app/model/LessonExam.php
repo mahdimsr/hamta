@@ -44,14 +44,6 @@
                'lessons',
             ];
 
-        protected $casts
-            = [
-
-                'isPublic' => 'boolean',
-
-            ];
-
-
         protected static function boot()
         {
 

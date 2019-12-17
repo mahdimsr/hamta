@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 use App\model\Student as Student;
 
 class AuthController extends Controller
@@ -25,9 +24,19 @@ class AuthController extends Controller
 
 	public function loginForm()
 	{
-        $studentInfo=cookie::get('studentInfo');
-        $studentPass=cookie::get('studentPass');
-        return view('student.auth.login',compact('studentInfo','studentPass'));
+
+        if (Auth::guard('student')->check())
+        {
+            return redirect()->route('student_dashboard_home');
+        }
+
+        else
+        {
+            $studentInfo=cookie::get('studentInfo');
+            $studentPass=cookie::get('studentPass');
+            return view('student.auth.login',compact('studentInfo','studentPass'));
+        }
+
     }
 
 	public function registerForm()
@@ -62,8 +71,6 @@ class AuthController extends Controller
 				Cookie::queue('studentPass', '');
 			}
 
-
-
 			return redirect()->route('student_dashboard_home');
 
         }
@@ -76,12 +83,14 @@ class AuthController extends Controller
 				Cookie::queue('studentInfo', $request->input('mobile_email'), 90 * 24 * 60);
 				Cookie::queue('studentPass', $request->input('password'), 90 * 24 * 60);
             }
+
             else
 			{
 				Cookie::queue('studentInfo', '');
 				Cookie::queue('studentPass', '');
 
-			}
+            }
+
             return redirect()->route('student_dashboard_home');
 
         }

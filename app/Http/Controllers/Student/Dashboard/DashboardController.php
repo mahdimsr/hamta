@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\model\StudentCode;
 use App\model\Transaction;
 use App\model\LessonExam;
-use App\model\Result;
 use Illuminate\Support\Facades\Auth;
 
 

@@ -27,8 +27,6 @@
                 $table->integer('price')->nullable()->default(0);
                 $table->date('activeDate')->nullable();
                 $table->integer('duration')->nullable();
-                $table->enum('status', ['COMPLETE', 'IN-QUESTION', 'IN-COMPLETE']);
-                $table->boolean('isPublic')->default(false);
                 $table->timestamps();
                 $table->softDeletes();
             });

@@ -17,6 +17,13 @@ class DashboardController extends Controller
         $lessonExams = count(LessonExam::all());
         $giftExams   = count(GiftExam::all());
 		return view('admin.dashboard.exams',compact('lessonExams','giftExams'));
-	}
+    }
+
+	public function logout()
+	{
+		Auth::guard('admin')->logout();
+
+		return redirect()->route('admin_auth_show');
+    }
 
 }

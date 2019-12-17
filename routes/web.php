@@ -103,8 +103,9 @@
 
             Route::get('/adminLogin', 'LoginController@show')->name('admin_auth_show');
             Route::post('/adminLogin', 'LoginController@login')->name('admin_login_submit');
-            Route::get('/adminLogOut', 'LoginController@logout')->name('admin_logout');
+
         });
+
         Route::middleware('auth:admin')->namespace('Dashboard')->prefix('admin/dashboard')->group(function()
         {
 
@@ -281,6 +282,8 @@
                          ->name('admin_students_discountRemove');
                 });
             });
+
+            Route::get('/adminLogOut', 'DashboardController@logout')->name('admin_logout');
         });
     });
 

@@ -23,8 +23,10 @@ class CreateStudentTable extends Migration
             $table->string('password');
             $table->string('mobile');
             $table->boolean('mobileVerified')->default(0);
+            $table->string('mobileToken')->nullable();
             $table->string('email')->nullable();
             $table->boolean('emailVerified')->default(0);
+            $table->string('emailToken')->nullable();
             $table->string('average')->nullable();
             $table->integer('orientationId')->nullable();
             $table->integer('gradeId')->nullable();
@@ -35,10 +37,7 @@ class CreateStudentTable extends Migration
 			$table->string('telePhone')->nullable();
 			$table->string('parentPhone')->nullable();
 			$table->integer('wallet')->default(0);
-			$table->string('mobileToken')->nullable();
-            $table->string('emailToken')->nullable();
             $table->string('profileImage')->nullable();
-			$table->boolean('isActive')->default(0);
 			$table->boolean('isComplete')->default(0);
             $table->rememberToken();
 			$table->timestamps();
