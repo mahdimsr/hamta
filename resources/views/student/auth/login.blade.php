@@ -146,8 +146,8 @@
                             <form action="{{ route ('student_forgetPassword') }}" method="POST">
                                {{ csrf_field() }}
                             <div class="md-form md-outline">
-                              <input type="text" name="forgetPassword" id="Form-email5" class="form-control white-text" value="{{ old('forgetPassword') }}">
-                              <label  for="Form-email5">پست الکترونیکی یا تلفن همراه</label>
+                              <input type="text" name="forgetPassword" maxlength="11" id="Form-email5" class="form-control white-text" value="{{ old('forgetPassword') }}">
+                              <label  for="Form-email5">شماره تلفن همراه</label>
                             </div>
                             <small class="text-danger font-weight-bold">{{$errors->first('forgetPassword')}}</small>
                             <div class="md-form pb-3 text-center">
@@ -217,21 +217,13 @@
     @if ($errors->has('forgetPassword'))
     $('#darkModalForm').modal('show');
     @endif
-    @if ($errors->has('invalidInfo'))
-    $('#darkModalForm').modal('show');
-    @{{ toastr.error('پست الکترونیکی یا شماره تلفن همراه وارد شده یافت نشد'); }}
-    @endif
     @if ($errors->has('forgetPasswordFailed'))
     $('#darkModalForm').modal('show');
     @{{ toastr.error('بازیابی رمز عبور ناموفق'); }}
     @endif
     @if (Session::get('status')=='sentToMobile')
     $('#darkModalForm').modal('show');
-    @{{ toastr.success('رمز عبور جدید برای تلفن همراه شما ارسال گردید'); }}
-    @endif
-    @if (Session::get('status')=='sentToEmail')
-    $('#darkModalForm').modal('show');
-    @{{ toastr.success('رمز عبور جدید برای پست الکترونیکی شما ارسال گردید'); }}
+    @{{ toastr.success('رمز عبور جدید برای شماره تلفن همراه شما ارسال گردید'); }}
     @endif
   </script>
 

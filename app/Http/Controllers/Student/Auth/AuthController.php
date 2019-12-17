@@ -100,8 +100,8 @@ class AuthController extends Controller
 
         $this->validate($request,
         [
-            'student_mobile' => ['required','digits:11','regex:/^(\+98|0)?9\d{9}$/','unique:student,mobile'],
-            'password_register'     => 'required|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X]).*$/|min:6|confirmed',
+            'student_mobile'                 => ['required','digits:11','regex:/^(\+98|0)?9\d{9}$/','unique:student,mobile'],
+            'password_register'              => 'required|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X]).*$/|min:6|confirmed',
             'password_register_confirmation' => 'required',
         ]
         );
@@ -121,41 +121,11 @@ class AuthController extends Controller
     {
         $this->validate($request,
         [
-            'forgetPassword' => 'required'
+            'forgetPassword' => ['required','digits:11','regex:/^(\+98|0)?9\d{9}$/','exists:student,mobile']
         ]
     );
 
-    if($student = Student::query()->where('email',$request->input('forgetPassword'))->first())
-    {
-
-        $newPassword = substr(md5(uniqid(mt_rand(), true)), 0, 6);
-
-        Mail::send('student.mail.forgetPassword', compact('student','newPassword'), function($message) use($student) {
-            $message->to($student->email)->subject('بازیابی رمز عبور');
-        });
-
-        if(Mail::failures())
-        {
-            return redirect()->back()->withErrors(['forgetPasswordFailed'=>['بازیابی رمز عبور ناموفق']]);
-        }
-        else
-        {
-            $student->password=Hash::make($newPassword);
-            $student->update();
-
-            return redirect()->back()->with('status','sentToEmail');
-        }
-    }
-
-    else if($student = Student::query()->where('mobile',$request->input('forgetPassword'))->first())
-    {
         return redirect()->back()->with('status','sentToMobile');
-    }
-
-    else
-    {
-        return redirect()->back()->withErrors(['invalidInfo'=>['پست الکترونیکی یا شماره تلفن همراه وارد شده یافت نشد']]);
-    }
 
     }
 
