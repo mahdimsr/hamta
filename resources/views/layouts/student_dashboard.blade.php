@@ -35,12 +35,24 @@
 
         }
         @media (max-width: 990px) {
+            .slider-par-money {
+
+                font-size: 12px !important;
+                }
+            ul.list-server-money {
+                text-align: center;
+                padding: 5px 10px 5px 2px!important;
+                list-style: none;
+                display: inline-flex;
+                font-weight: 600!important;
+                font-size: 10px;
+                color: #ffffff!important;}
             .card-money{
-                width: 77px;
+                width: 105px;
                 font-size: 10px!important;
             }
-            .card-money .card-body{
-                display: -webkit-inline-box;
+            .card-money {
+                margin-left: 10px!important;
             }
 
         }
@@ -553,10 +565,12 @@
 
                 <li style="margin-bottom: 8px; top:21px;">
 
-                        <div class="">
+
+
                             <div class="card-money">
+
                                     <div class="card-body">
-                                      <a href="{{ route('student_dashboard_wallet_form') }}">
+                                        <a href="{{ route('student_dashboard_wallet_form') }}">
                                           <ul class="list-server-money">
                                             <li>
                                                 <span class="card-money-par"> تومان </span>
@@ -565,15 +579,16 @@
                                                 <span class="list-server-money"> {{ $student->wallet }}</span>
                                             </li>
                                         </ul>
-                                      </a>
+                                        </a>
 
                                 </div>
+
                                 <span class="tooltiptext"> خرید اعتبار</span>
                             </div>
 
 
-                        </div>
-                        <div class="col-md-7 ">
+
+                        <div class="">
                             <p class="slider-par-money"> : باقیمانده کیف پول</p>
                         </div>
 

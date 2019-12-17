@@ -120,8 +120,55 @@ img {
 @endsection
 @section('content')
 {{ csrf_field() }}
+
+{{-- modal-erea starts --}}
+<div class="modal fade" id="end-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div dir="rtl" class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">توجه!!!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+         <p>  در صورت انتخاب این گزینه آزمون شما اتمام شده فرض میشود و دیگر قابل تکرار یا بازگشت نمی باشد.</p>
+           <p> آیا مطمئن هستید؟</p>
+            </div>
+            <div class="modal-footer ">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">خیر</button>
+                <button type="button" class="btn btn-green">بلی</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="perv-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div dir="rtl" class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">توجه!!!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>  در صورت انتخاب این گزینه آزمون شما اتمام شده فرض میشود و دیگر قابل تکرار یا بازگشت نمی باشد.</p>
+                <p> آیا مطمئن هستید؟</p>
+            </div>
+            <div class="modal-footer ">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">خیر</button>
+                <button type="button" class="btn btn-green">بلی</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- modal-erea ends --}}
 @foreach ($lessonExam->questions as $key => $question )
 @if($question->photo)
+
+
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
         <div class="card card-question">
