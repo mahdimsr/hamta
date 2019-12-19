@@ -129,12 +129,12 @@ img {
                 </button>
             </div>
             <div class="modal-body">
-         <p>  در صورت انتخاب این گزینه آزمون شما اتمام یافته فرض میشود و دیگر قابل تکرار یا بازگشت نمی باشد.</p>
+         <p>  در صورت انتخاب این گزینه آزمون شما اتمام یافته فرض می شود و دیگر قابل تکرار یا بازگشت نمی باشد.</p>
            <p> آیا مطمئن هستید؟</p>
             </div>
             <div class="modal-footer ">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">خیر</button>
-                <button type="submit" class="btn btn-green">بلی</button>
+                <button type="submit" class="btn btn-green">بله مطمئنم</button>
             </div>
         </div>
     </div>
@@ -150,12 +150,12 @@ img {
                 </button>
             </div>
             <div class="modal-body">
-                <p>  در صورت انتخاب این گزینه شما به صفحه ی آزمون های خود باز میگردید.  </p>
+                <p>  در صورت انتخاب این گزینه شما به صفحه ی آزمون های خود باز می گردید.  </p>
                 <p> آیا مطمئن هستید؟</p>
             </div>
             <div class="modal-footer ">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">خیر</button>
-                <a type="button" class="btn btn-secondary" href="{{ route('student_dashboard_purchasedExams') }}">بلی</a>
+                <a type="button" class="btn btn-secondary" href="{{ route('student_dashboard_purchasedExams') }}">بله مطمئنم</a>
             </div>
         </div>
     </div>
