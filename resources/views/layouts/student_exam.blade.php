@@ -432,7 +432,7 @@
 </head>
 <body>
 
-<div class="wrapper">
+<div class="wrapper" id="sina">
     <div class="sidebar" >
 
 

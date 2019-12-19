@@ -120,7 +120,7 @@ img {
 
 {{-- modal-erea starts --}}
 <div class="modal fade" id="end-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div dir="rtl" class="modal-dialog" role="document">
+    <div dir="rtl" class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">توجه!</h5>
@@ -141,7 +141,7 @@ img {
 </div>
 
 <div class="modal fade" id="perv-modal" tabindex="1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div dir="rtl" class="modal-dialog" role="document">
+    <div dir="rtl" class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">توجه!</h5>
@@ -155,7 +155,7 @@ img {
             </div>
             <div class="modal-footer ">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">خیر</button>
-                <a type="button" class="btn btn-green" href="{{ route('student_dashboard_purchasedExams') }}">بلی</a>
+                <a type="button" class="btn btn-secondary" href="{{ route('student_dashboard_purchasedExams') }}">بلی</a>
             </div>
         </div>
     </div>

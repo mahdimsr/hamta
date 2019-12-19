@@ -555,3 +555,22 @@ padding: 20px;
     font-size: 15px;
 
 }
+.modal-dialog-centered{
+    display: flex!important;
+    align-items: center;
+}
+.main-panel{
+
+}
+
+.modal-backdrop{
+    z-index: 6!important;
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px);
+}
+.modal-dialog{
+    margin-top: 200px!important;
+}

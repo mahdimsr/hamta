@@ -512,7 +512,7 @@ input:focus {
 
 .main-panel {
     position: relative;
-    z-index: 2;
+
     float: left;
     width: calc(100% - 351px);
     background-color: #ffffff;
