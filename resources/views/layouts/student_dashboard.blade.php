@@ -35,6 +35,10 @@
 
         }
         @media (max-width: 990px) {
+            .user-profile {
+                right: 57%;
+                transform: translate(27%,0%)!important;
+            }
             .slider-par-money {
 
                 font-size: 12px !important;
