@@ -12,13 +12,10 @@
     <!-- Animation library for notifications   -->
     <link href="{{asset('css/student/dashboard/animate.min.css')}}" rel="stylesheet"/>
     <!--  Light Bootstrap Table core CSS    -->
-
     <link href="{{asset('css/student/dashboard/dashboard.css')}}" rel="stylesheet"/>
     <link rel="icon" href="{{asset('favicon.png')}}" type="image/png">
     <!--  CSS for Demo Purpose, dont include it in your project     -->
     <link href="{{asset('css/student/dashboard/demo.css')}}" rel="stylesheet"/>
-    <link href="{{asset('css/student/dashboard/Input-style.css')}}" rel="stylesheet"/>
-    <link href="{{asset('css/student/dashboard/select2.min.css')}}" rel="stylesheet"/>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
@@ -737,49 +734,10 @@
 <!--   Core JS Files   -->
 <script src="{{asset('js/student/dashboard/jquery.3.2.1.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/student/dashboard/popup.js')}}"></script>
-
 <script src="{{asset('js/student/dashboard/bootstrap.min.js')}}" type="text/javascript"></script>
-
-
 <script src="{{asset('js/student/dashboard/dashboard.js')}}"></script>
-
-<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<!-- Light Bootstrap Table DEMO methods, dont include it in your project! -->
 <script src="{{asset('js/student/dashboard/demo.js')}}"></script>
-
-<script>
-
-
-    //Bootstrap Validation
-    /* (function() {
-     'use strict';
-     window.addEventListener('load', function() {
-     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-     var forms = document.getElementsByClassName('needs-validation');
-     // Loop over them and prevent submission
-     var validation = Array.prototype.filter.call(forms, function(form) {
-     form.addEventListener('submit', function(event) {
-     if (form.checkValidity() === false) {
-     event.preventDefault();
-     event.stopPropagation();
-     }
-     form.classList.add('was-validated');
-     }, false);
-     });
-     }, false);
-     })(); */
-    require('jquery-countdown');
-    //Drop down optional
-    $(".menu").select2({
-        allowClear : true,
-    });
-    $(".hide-search").select2({
-        minimumResultsForSearch : Infinity
-    });
-    $(".tags").select2({
-        tags            : true,
-        tokenSeparators : [',', ' ']
-    })
-</script>
 <script src="{{asset('js/student/dashboard/jquery.countdown.min.js')}}"></script>
 <script src="{{asset('js/student/dashboard/select2.min.js')}}"></script>
 

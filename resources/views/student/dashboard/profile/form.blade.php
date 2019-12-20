@@ -1,4 +1,9 @@
 @extends('layouts.student_dashboard')
+@section('style')
+<link href="{{asset('css/student/dashboard/Input-style.css')}}" rel="stylesheet"/>
+<link href="{{asset('css/student/dashboard/select2.min.css')}}" rel="stylesheet"/>
+<link href="{{asset('datePicker/persian-datepicker.min.css')}}" rel="stylesheet"/>
+@endsection
 @section('content')
 	<div class="row" dir="rtl">
 		<div class="col-md-3">
@@ -362,18 +367,7 @@
 @endsection
 
 @section('script')
-	<script>
-        $(".menu").select2({
-            allowClear : true,
-        });
-        $(".hide-search").select2({
-            minimumResultsForSearch : Infinity
-        });
-        $(".tags").select2({
-            tags            : true,
-            tokenSeparators : [',', ' ']
-        })
-	</script>
+    <script src="{{asset('datePicker/persian-datepicker.min.js')}}"></script>
 	<script>
 		$(document).ready(function()
 		{
@@ -388,11 +382,11 @@
 				responsive: true,
 				toolbox: {
 					calendarSwitch: {
-						enabled: false
+						enabled: false,
                     },
                     submitButton:{enabled:true},
                     todayButton:{
-                        enabled:false
+                        enabled:false,
                     }
 				}
             });
@@ -416,5 +410,16 @@
         }
 
         });
+
+        $(".menu").select2({
+            allowClear : true,
+        });
+        $(".hide-search").select2({
+            minimumResultsForSearch : Infinity
+        });
+        $(".tags").select2({
+            tags            : true,
+            tokenSeparators : [',', ' ']
+        })
 	</script>
 @endsection
