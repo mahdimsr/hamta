@@ -17,6 +17,8 @@
     <link rel="icon" href="{{asset('favicon.png')}}" type="image/png">
     <!--  CSS for Demo Purpose, dont include it in your project     -->
     <link href="{{asset('css/student/dashboard/demo.css')}}" rel="stylesheet"/>
+    <link href="{{asset('css/student/dashboard/Input-style.css')}}" rel="stylesheet"/>
+    <link href="{{asset('css/student/dashboard/select2.min.css')}}" rel="stylesheet"/>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
@@ -779,6 +781,7 @@
     })
 </script>
 <script src="{{asset('js/student/dashboard/jquery.countdown.min.js')}}"></script>
+<script src="{{asset('js/student/dashboard/select2.min.js')}}"></script>
 
 @yield('script')
 

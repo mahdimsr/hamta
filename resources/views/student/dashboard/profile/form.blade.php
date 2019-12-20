@@ -16,22 +16,22 @@
 
 
 
-                    <p class="description text-right"><br>
-                        @if($student->isComplete == 0)
-                        در این قسمت اطلاعات خود را تکمیل نمایید تا بتوانید از امکانات بینظیر سایت بهره مند شوید ! دقت کنید که بعد از تکمیل اطلاعات برخی از فیلد ها قابل ویرایش نخواهند بود.
-                        <br><br>
-                        لازم به ذکر است شماره تلفن منزل بدون پیش شماره سه رقمی استان وارد گردد.
-                        <br><br>
-                        ضمنا در بخش شماره تلفن همراه والدین فقط کافیست شماره تلفن یکی از آنها وارد گردد.
-                        <br><br>
-                        منظور از معدل ، معدل پایانی (نوبت دوم) آخرین مقطع تحصیلی گذرانده شده است.
-                        @else
-                        لازم به ذکر است شماره تلفن منزل بدون پیش شماره سه رقمی استان وارد گردد.
-                        <br><br>
-                        ضمنا در بخش شماره تلفن همراه والدین فقط کافیست شماره تلفن یکی از آنها وارد گردد.
-                        <br><br>
-                        دقت شود که در صورت تغییر پست الکترونیکی یا شماره تلفن همراه، کد اعتبارسنجی برای شما ارسال میگردد.
-                        @endif
+					<p class="description text-right"><br>
+						@if($student->isComplete == 0)
+							در این قسمت اطلاعات خود را تکمیل نمایید تا بتوانید از امکانات بینظیر سایت بهره مند شوید ! دقت کنید که بعد از تکمیل اطلاعات برخی از فیلد ها قابل ویرایش نخواهند بود.
+							<br><br>
+							لازم به ذکر است شماره تلفن منزل بدون پیش شماره سه رقمی استان وارد گردد.
+							<br><br>
+							ضمنا در بخش شماره تلفن همراه والدین فقط کافیست شماره تلفن یکی از آنها وارد گردد.
+							<br><br>
+							منظور از معدل ، معدل پایانی (نوبت دوم) آخرین مقطع تحصیلی گذرانده شده است.
+						@else
+							لازم به ذکر است شماره تلفن منزل بدون پیش شماره سه رقمی استان وارد گردد.
+							<br><br>
+							ضمنا در بخش شماره تلفن همراه والدین فقط کافیست شماره تلفن یکی از آنها وارد گردد.
+							<br><br>
+							دقت شود که در صورت تغییر پست الکترونیکی یا شماره تلفن همراه، کد اعتبارسنجی برای شما ارسال میگردد.
+						@endif
 					</p>
 				</div>
 				<hr>
@@ -40,6 +40,39 @@
 
 				</div>
 			</div>
+
+			<div class="card ">
+				<div class="content">
+					<div class=" text-center ">
+						<a href="#">
+							<div class="user-profile-edit">
+								<div class="avatarWrapper-edit">
+									<div class="avatar-edit">
+										<div class="uploadOverlay-edit"><img class="image-s-edit" src="{{ asset('image/student/dashboard/edit.png') }}"></div>
+
+										<img src="{{ asset('image/student/dashboard/user1.png') }}" width="100px" height="100px"  alt="">
+
+									</div>
+								</div>
+
+							</div>
+							<h4 class="title">راهنما<br/>
+								<small> فرم {{$student->isComplete==0?'تکمیل اطلاعات' : 'ویرایش اطلاعات'}}</small>
+							</h4>
+						</a>
+					</div>
+
+
+
+
+				</div>
+				<hr>
+				<div class="text-center">
+
+
+				</div>
+			</div>
+
 		</div>
 		<div class="col-md-9">
 			<div class="card text-right">
@@ -134,7 +167,7 @@
 							</div>
 							<div class="col-md-3 " style="margin-top:2px;">
 								<label for="city">شهر</label>
-								<select dir="rtl" name="city" id="city" class="form-control menu" tabindex="7">
+								<select dir="rtl" name="city" id="city" class="form-control dropdown-radius menu" tabindex="7">
 									<option id="0" value="" disabled selected>شهر خود را انتخاب نمایید</option>
 									@foreach ( $cities as $city )
 										<option id="{{ $city->provinceId }}" value="{{ $city->id }}" {{ old('city')==$city->id? 'selected' : '' }} {{ $student->isComplete==1 && $student->cityId==$city->id && !old('city')? 'selected' : '' }}> {{ $city->name }} </option>
@@ -329,6 +362,18 @@
 @endsection
 
 @section('script')
+	<script>
+        $(".menu").select2({
+            allowClear : true,
+        });
+        $(".hide-search").select2({
+            minimumResultsForSearch : Infinity
+        });
+        $(".tags").select2({
+            tags            : true,
+            tokenSeparators : [',', ' ']
+        })
+	</script>
 	<script>
 		$(document).ready(function()
 		{
