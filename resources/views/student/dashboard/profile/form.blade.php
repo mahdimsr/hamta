@@ -367,7 +367,8 @@
 @endsection
 
 @section('script')
-    <script src="{{asset('datePicker/persian-datepicker.min.js')}}"></script>
+    <script src="{{asset('datePicker/persian-date.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('datePicker/persian-datepicker.min.js')}}" type="text/javascript"></script>
 	<script>
 		$(document).ready(function()
 		{
