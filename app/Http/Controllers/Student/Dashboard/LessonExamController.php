@@ -52,7 +52,7 @@
                 $cart = new Cart();
                 $cart->lessonExamId = $lessonExam->id;
                 $cart->save();
-                return redirect()->route('student_dashboard_lessonExams');
+                return redirect()->back();
             }
 
             else
@@ -146,7 +146,7 @@
 
             else
             {
-                return redirect()->back();
+                return redirect()->route('student_dashboard_lessonExams');
             }
 
         }
