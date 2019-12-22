@@ -82,7 +82,7 @@
                             <div class="form-group">
                                 <label>کد ملی</label>
                                 <input dir="rtl" type="text" name="nationalCode" class="form-control"
-                                       placeholder="کد ملی خود را وارد نمایید"
+                                       placeholder="کد ملی خود را وارد نمایید" maxlength="10"
                                        value="{{ old('nationalCode') ? old('nationalCode') : $student->nationalCode}}"
                                        tabindex="5"
                                        >
@@ -246,7 +246,7 @@
                                     <div class="form-group">
                                         <label>شماره تلفن منزل بدون پیش شماره</label>
                                         <input dir="rtl" name="telePhone" type="text" class="form-control"
-                                               placeholder="شماره تلفن منزل را وارد نمایید"
+                                               placeholder="شماره تلفن منزل را وارد نمایید" maxlength="8"
                                                value="{{ old('telePhone')? old('telePhone') : $student->telePhone }}"
                                                tabindex="15"
                                                >
@@ -260,7 +260,7 @@
                                         <div class="form-group">
                                             <label>شماره تلفن همراه دانش آموز</label>
                                             <input dir="rtl" name="student_mobile_edit" type="text" class="form-control"
-                                                   placeholder="شماره تلفن همراه خود را وارد نمایید"
+                                                   placeholder="شماره تلفن همراه خود را وارد نمایید" maxlength="11"
                                                    value="{{ old('student_mobile_edit')? old('student_mobile_edit') : $student->mobile}}"
                                                    tabindex="14"
                                                    >
@@ -270,6 +270,35 @@
                                         </div>
                                     </div>
                     </div>
+                    <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>تکرار رمز عبور</label>
+                                    <input dir="rtl" name="newPassword_confirmation" type="password" class="form-control"
+                                           placeholder="تکرار رمز عبور را وارد نمایید"
+                                           value="{{ old('newPassword_confirmation')? old('newPassword_confirmation') : '' }}"
+                                           tabindex="16"
+                                           >
+
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('newPassword_confirmation') }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>رمز عبور جدید</label>
+                                    <input dir="rtl" name="newPassword" type="password" class="form-control"
+                                           placeholder="رمز عبور جدید را وارد نمایید"
+                                           value="{{ old('newPassword')? old('newPassword') : ''}}"
+                                           tabindex="17"
+                                           >
+                                    <div class="invalid-feedback">
+                                        <small>{{ $errors->first('newPassword') }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
                     <a href="{{route('admin_students')}}" class="btn btn-info pull-left"> بازگشت <span class="fas fa-arrow-left"></span></a>
                     <button type="submit" class="btn btn-info btn-fill pull-right">ثبت تغییرات</button>
                     <div class="clearfix"></div>

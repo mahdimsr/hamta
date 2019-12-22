@@ -95,7 +95,7 @@ return [
 	'numeric'              => ':attribute باید حتما عدد باشد',
 	'present'              => 'The :attribute field must be present.',
 	'regex'                => ':attribute فرمت معتبر ندارد',
-	'required'             => ':attribute باید حتما وارد شود',
+	'required'             => ':attribute باید حتما وارد شود.',
 	'required_if'          => 'The :attribute field is required when :other is :value.',
 	'required_unless'      => 'The :attribute field is required unless :other is in :values.',
 	'required_with'        => 'The :attribute field is required when :values is present.',
@@ -352,7 +352,9 @@ return [
 		'codeLesson'            => 'کد درس',
 		'titleLesson'           => 'عنوان درس',
 		'fullName'              => 'نام کامل',
-		'repeatPassword'        => 'تکرار رمزعبور',
+        'newPassword_confirmation'        => 'تکرار رمزعبور',
+        'newPassword'                     => 'رمز عبور جدید',
+        'title'           => 'عنوان'
 
 	],
 

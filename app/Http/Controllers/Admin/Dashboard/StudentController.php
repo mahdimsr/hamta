@@ -15,6 +15,7 @@
     use App\Http\Controllers\Controller;
     use Illuminate\Validation\Rule;
     use Morilog\Jalali\CalendarUtils;
+    use Illuminate\Support\Facades\Hash;
 
 
 
@@ -51,7 +52,7 @@
             $this->validate($request, ['name'         => 'required',
                                        'familyName'   => 'required',
                                        'birthday'     => 'required',
-                                       'email'        => ['required',
+                                       'email'        => ['nullable',
                                                           'email',
                                                           Rule::unique('student', 'email')->ignore($student)],
                                        'nationalCode' => ['required',
@@ -65,9 +66,11 @@
                                        'school'       => 'required',
                                        'averageUp'    => 'required|digits_between:1,2|min:5|max:20|numeric',
                                        'averageDown'  => 'required|digits:2|min:00|max:99|numeric',
-                                       'telePhone'    => 'required|digits:8',
+                                       'telePhone'    => 'nullable|digits:8',
                                        'parentPhone'  => ['required', 'digits:11', 'regex:/^(\+98|0)?9\d{9}$/'],
                                        'student_mobile_edit' => ['required','digits:11','regex:/^(\+98|0)?9\d{9}$/',Rule::unique('student', 'mobile')->ignore($student)],
+                                       'newPassword'       	      => ['nullable','confirmed',Rule::requiredIf($request->input('newPassword_confirmation') != null)],
+                                       'newPassword_confirmation' => ['nullable',Rule::requiredIf($request->input('newPassword') != null)],
                                        ]);
 
 
@@ -101,6 +104,11 @@
             $student->cityId        = $request->input('city');
             $student->orientationId = $request->input('orientation');
             $student->gradeId       = $request->input('grade');
+
+            if($request->has('newPassword'))
+            {
+                $student->password = Hash::make($request->input('newPassword'));
+            }
 
             $student->update();
 
