@@ -34,7 +34,7 @@
             {
                 $discount_code = Discount::query()->where('code', $request->input('charge_code'))->first();
 
-                if ($discount_code->generalChargeIsValid())
+                if ($discount_code && $discount_code->generalChargeIsValid())
                 {
 
                         $discountPrice = $price + ($price*$discount_code->value)/100;

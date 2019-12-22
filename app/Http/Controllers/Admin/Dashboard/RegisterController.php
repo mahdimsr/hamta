@@ -54,11 +54,11 @@ class RegisterController extends Controller
 	{
 		$this->validate($request,
 			[
-				'level'          		=> 'required',
-				'fullName'       		=> 'required|string|max:30',
-				'username'       		=> 'required|alpha_dash|unique:admin,username',
-				'password'       		=> 'required|alpha_dash|size:9|confirmed',
-				'password_confirmation' => 'required',
+				'level'          		      => 'required',
+				'fullName'       		      => 'required|string|max:30',
+				'username_admin'       	      => 'required|alpha_dash|unique:admin,username',
+				'password_admin'              => 'required|alpha_dash|size:9|confirmed',
+				'password_admin_confirmation' => 'required',
 			]);
 
 		$admin = new Admin();
@@ -66,8 +66,8 @@ class RegisterController extends Controller
 		$admin->parentId = Auth::guard('admin')->id();
 		$admin->level    = $request->input('level');
 		$admin->fullName = $request->input('fullName');
-		$admin->username = $request->input('username');
-		$admin->password = Hash::make($request->input('password'));
+		$admin->username = $request->input('username_admin');
+		$admin->password = Hash::make($request->input('password_admin'));
 
 		$admin->save();
 
@@ -94,19 +94,19 @@ class RegisterController extends Controller
 
 		$this->validate($request,
 			[
-				'fullName'       		=> 'required|string|max:30',
-				'username'       		=> ['required', 'alpha_dash', Rule::unique('admin', 'username')->ignore($admin)],
-				'password'       		=> ['nullable','alpha_dash','size:9','confirmed',Rule::requiredIf($request->input('password_confirmation') != null)],
-				'password_confirmation' => ['nullable',Rule::requiredIf($request->input('password') != null)],
+				'fullName'       		      => 'required|string|max:30',
+				'username_admin'       		  => ['required', 'alpha_dash', Rule::unique('admin', 'username')->ignore($admin)],
+				'password_admin'       		  => ['nullable','alpha_dash','size:9','confirmed',Rule::requiredIf($request->input('password_admin_confirmation') != null)],
+				'password_admin_confirmation' => ['nullable',Rule::requiredIf($request->input('password_admin') != null)],
 			]);
 
 		$admin->fullName = $request->input('fullName');
-		$admin->username = $request->input('username');
+		$admin->username = $request->input('username_admin');
 		$admin->level    = $request->input('level');
 
 		if ($request->has('password'))
 		{
-			$admin->password = Hash::make($request->input('password'));
+			$admin->password = Hash::make($request->input('password_admin'));
 		}
 
 		$admin->update();

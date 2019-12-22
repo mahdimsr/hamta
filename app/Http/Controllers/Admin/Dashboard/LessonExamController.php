@@ -47,15 +47,15 @@
         {
 
 
-            $this->validate($request, ['title'        => 'required|string|max:20',
-                                       'activeDate'   => 'required',
-                                       'orientation'  => 'required',
-                                       'gradeLessons' => 'required',
-                                       'category'     => 'required',
-                                       'answersheet'  => 'required|mimes:pdf|max:2000',
-                                       'price'        => 'required|integer|min:0',
-                                       'description'  => 'nullable|string|max:300',
-                                       'duration'     => 'required|integer|min:0',]);
+            $this->validate($request, ['title'              => 'required|string|max:20',
+                                       'activeDate'         => 'required',
+                                       'orientation_admin'  => 'required',
+                                       'gradeLessons'       => 'required',
+                                       'category'           => 'required',
+                                       'answersheet'        => 'required|mimes:pdf|max:2000',
+                                       'price'              => 'required|integer|min:0',
+                                       'description'        => 'nullable|string|max:300',
+                                       'duration'           => 'required|integer|min:0',]);
 
 
             $lessonExam              = new LessonExam();
@@ -219,7 +219,7 @@
 
                 'gradeLesson'  => 'required',
                 'questionType' => 'nullable',
-                'description'  => 'required',
+                'description_question'  => 'required',
                 'hardness'     => 'required|integer|between:0,6|digits:1',
                 'text'         => 'required',
                 'optionFour'   => 'required',
@@ -237,7 +237,7 @@
 
             $question->gradeLessonId = $request->input('gradeLesson');
             $question->questionType  = $request->input('questionType');
-            $question->description   = $request->input('description');
+            $question->description   = $request->input('description_question');
             $question->text          = $request->input('text');
             $question->optionOne     = $request->input('optionOne');
             $question->optionTwo     = $request->input('optionTwo');
@@ -296,7 +296,7 @@
             $this->validate($request, [
 
                 'questionType' => 'nullable',
-                'description'  => 'required',
+                'description_question'  => 'required',
                 'hardness'     => 'required|integer|between:0,6|digits:1',
                 'text'         => 'required',
                 'optionFour'   => 'required',
@@ -313,7 +313,7 @@
             $question = Question::query()->where('id', $id)->first();
 
             $question->questionType = $request->input('questionType');
-            $question->description  = $request->input('description');
+            $question->description  = $request->input('description_question');
             $question->text         = $request->input('text');
             $question->optionOne    = $request->input('optionOne');
             $question->optionTwo    = $request->input('optionTwo');

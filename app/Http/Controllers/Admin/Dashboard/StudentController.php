@@ -49,61 +49,61 @@
 
             $student = Student::query()->where('id', $id)->first();
 
-            $this->validate($request, ['name'         => 'required',
-                                       'familyName'   => 'required',
-                                       'birthday'     => 'required',
-                                       'email'        => ['nullable',
+            $this->validate($request, ['name_admin'         => 'required',
+                                       'familyName_admin'   => 'required',
+                                       'birthday_admin'     => 'required',
+                                       'email_admin'        => ['nullable',
                                                           'email',
                                                           Rule::unique('student', 'email')->ignore($student)],
-                                       'nationalCode' => ['required',
+                                       'nationalCode_admin' => ['required',
                                                           'digits:10',
                                                           Rule::unique('student', 'nationalCode')->ignore($student)],
-                                       'city'         => 'required|exists:city,id',
-                                       'province'     => 'required',
-                                       'address'      => 'required|string|max:200',
-                                       'orientation'  => 'required|exists:orientation,id',
-                                       'grade'        => 'required|exists:grade,id',
-                                       'school'       => 'required',
-                                       'averageUp'    => 'required|digits_between:1,2|min:5|max:20|numeric',
-                                       'averageDown'  => 'required|digits:2|min:00|max:99|numeric',
-                                       'telePhone'    => 'nullable|digits:8',
-                                       'parentPhone'  => ['required', 'digits:11', 'regex:/^(\+98|0)?9\d{9}$/'],
-                                       'student_mobile_edit' => ['required','digits:11','regex:/^(\+98|0)?9\d{9}$/',Rule::unique('student', 'mobile')->ignore($student)],
+                                       'city_admin'         => 'required|exists:city,id',
+                                       'province_admin'     => 'required',
+                                       'address_admin'      => 'required|string|max:200',
+                                       'orientation_admin'  => 'required|exists:orientation,id',
+                                       'grade_admin'        => 'required|exists:grade,id',
+                                       'school_admin'       => 'required',
+                                       'averageUp_admin'    => 'required|digits_between:1,2|min:5|max:20|numeric',
+                                       'averageDown_admin'  => 'required|digits:2|min:00|max:99|numeric',
+                                       'telePhone_admin'    => 'nullable|digits:8',
+                                       'parentPhone_admin'  => ['required', 'digits:11', 'regex:/^(\+98|0)?9\d{9}$/'],
+                                       'student_mobile_edit_admin' => ['required','digits:11','regex:/^(\+98|0)?9\d{9}$/',Rule::unique('student', 'mobile')->ignore($student)],
                                        'newPassword'       	      => ['nullable','confirmed',Rule::requiredIf($request->input('newPassword_confirmation') != null)],
                                        'newPassword_confirmation' => ['nullable',Rule::requiredIf($request->input('newPassword') != null)],
                                        ]);
 
 
-            if ($request->input('averageUp') == '20')
+            if ($request->input('averageUp_admin') == '20')
             {
-                $average = $request->input('averageUp') . '/00';
+                $average = $request->input('averageUp_admin') . '/00';
             }
             else
             {
-                $average = $request->input('averageUp') . '/' . $request->input('averageDown');
+                $average = $request->input('averageUp_admin') . '/' . $request->input('averageDown_admin');
             }
 
-            $student->name         = $request->input('name');
-            $student->familyName   = $request->input('familyName');
-            $student->email        = $request->input('email');
-            $student->nationalCode = $request->input('nationalCode');
-            $student->address      = $request->input('address');
+            $student->name         = $request->input('name_admin');
+            $student->familyName   = $request->input('familyName_admin');
+            $student->email        = $request->input('email_admin');
+            $student->nationalCode = $request->input('nationalCode_admin');
+            $student->address      = $request->input('address_admin');
             $student->average      = $average;
 
             // convert and insert birthday
-            $Jalalian          = Lib::convertFaToEn($request->input('birthday'));
+            $Jalalian          = Lib::convertFaToEn($request->input('birthday_admin'));
             $dateTime          = CalendarUtils::createDatetimeFromFormat('Y/m/d', $Jalalian);
             $carbon            = Carbon::createFromTimestamp($dateTime->getTimestamp());
             $student->birthday = $carbon->toDateTimeString();
             //end birthday section
 
-            $student->school        = $request->input('school');
-            $student->telePhone     = $request->input('telePhone');
-            $student->parentPhone   = $request->input('parentPhone');
-            $student->mobile        = $request->input('student_mobile_edit');
-            $student->cityId        = $request->input('city');
-            $student->orientationId = $request->input('orientation');
-            $student->gradeId       = $request->input('grade');
+            $student->school        = $request->input('school_admin');
+            $student->telePhone     = $request->input('telePhone_admin');
+            $student->parentPhone   = $request->input('parentPhone_admin');
+            $student->mobile        = $request->input('student_mobile_edit_admin');
+            $student->cityId        = $request->input('city_admin');
+            $student->orientationId = $request->input('orientation_admin');
+            $student->gradeId       = $request->input('grade_admin');
 
             if($request->has('newPassword'))
             {

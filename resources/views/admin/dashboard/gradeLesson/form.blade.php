@@ -60,14 +60,14 @@
 							<div class="col-md-6 s-floatR">
 								<div class="form-group">
 									<label>گرایش درس</label>
-									<select dir="rtl" name="orientation" id="orientation" class="form-control menu hide-search dropdown-radius">
+									<select dir="rtl" name="orientation_admin" id="orientation" class="form-control menu hide-search dropdown-radius">
 										<option value="" selected disabled>گرایش درس را انتخاب نمایید</option>
 										@foreach ( $orientations as $orientation )
-											<option value="{{ $orientation->id }}" {{ old('orientation')==$orientation->id ? 'selected' : '' }} {{ $modify == 1 && !old('orientation') && $gradeLesson->orientationId == $orientation->id? 'selected' : '' }}>{{ $orientation->title }}</option>
+											<option value="{{ $orientation->id }}" {{ old('orientation_admin')==$orientation->id ? 'selected' : '' }} {{ $modify == 1 && !old('orientation_admin') && $gradeLesson->orientationId == $orientation->id? 'selected' : '' }}>{{ $orientation->title }}</option>
 										@endforeach
 									</select>
 									<div class="invalid-feedback">
-										<small>{{ $errors->first('orientation') }}</small>
+										<small>{{ $errors->first('orientation_admin') }}</small>
 									</div>
 								</div>
 							</div>
@@ -110,13 +110,13 @@
                                     <div class="col-md-4 s-floatR">
                                         <div class="form-group">
                                             <label>نوع درس</label>
-                                            <select dir="rtl" name="type" class="form-control menu hide-search dropdown-radius">
+                                            <select dir="rtl" name="sort" class="form-control menu hide-search dropdown-radius">
                                                 <option value="" selected disabled>نوع درس را انتخاب نمایید</option>
-                                                <option value="EXPERT" {{ old('type')=='EXPERT' ? 'selected' : '' }}{{$modify == 1 && !old('type') && $gradeLesson->sort =='EXPERT'? 'selected' : '' }}>تخصصی</option>
-                                                <option value="GENERAL" {{ old('type')=='GENERAL' ? 'selected' : '' }}{{$modify == 1 && !old('type') && $gradeLesson->sort =='GENERAL'? 'selected' : '' }}>عمومی</option>
+                                                <option value="EXPERT" {{ old('sort')=='EXPERT' ? 'selected' : '' }}{{$modify == 1 && !old('sort') && $gradeLesson->sort =='EXPERT'? 'selected' : '' }}>تخصصی</option>
+                                                <option value="GENERAL" {{ old('sort')=='GENERAL' ? 'selected' : '' }}{{$modify == 1 && !old('sort') && $gradeLesson->sort =='GENERAL'? 'selected' : '' }}>عمومی</option>
                                             </select>
                                             <div class="invalid-feedback">
-                                                <small>{{ $errors->first('type') }}</small>
+                                                <small>{{ $errors->first('sort') }}</small>
                                             </div>
                                         </div>
                                     </div>

@@ -135,20 +135,20 @@
                                 <div class="col-md-6 s-floatR" >
                                     <div class="form-group">
                                         <label class="control-label">گرایش</label>
-                                        <select name="orientation" class="form-control menu dropdown-radius hide-search"
+                                        <select name="orientation_admin" class="form-control menu dropdown-radius hide-search"
                                                 id="ori-select">
                                             <option value="" disabled selected>گرایش آزمون را انتخاب نمایید
                                             </option>
                                             @foreach($orientations as $orientation)
                                                 <option
                                                         value="{{$orientation->id}}"
-                                                        {{old('orientation') == $orientation->id ? 'selected' : ''}}{{ $modify==1 && !old('orientation') && $lessonExam->orientation()[0]->id == $orientation->id ? 'selected' : '' }}>
+                                                        {{old('orientation_admin') == $orientation->id ? 'selected' : ''}}>
                                                     {{$orientation->title}}
                                                 </option>
                                             @endforeach
                                         </select>
                                         <div class="invalid-feedback">
-                                            <small>{{ $errors->first('orientation') }}</small>
+                                            <small>{{ $errors->first('orientation_admin') }}</small>
                                         </div>
                                     </div>
                                 </div>
@@ -184,8 +184,6 @@
                                 <div class="col-md-12 s-floatR" >
                                     <label for="lesson-select" class="control-label">درس های آزمون</label>
                                     <select class="form-control menu12 dropdown-radius" id="lesson-select" name="gradeLessons[]" multiple data-placeholder="درس های آزمون را انتخاب نمایید">
-                                        <option value="" id="0" disabled selected>دسته بندی دروس آزمون را انتخاب نمایید
-                                        </option>
                                         @foreach($gradeLessons as $gradeLesson)
                                             <option data-content="{{$gradeLesson->orientationId.$gradeLesson->lesson->parentId}}"
                                                     value="{{$gradeLesson->id}}" {{in_array($gradeLesson->id, old("gradeLessons") ?: []) ? 'selected': ''}}

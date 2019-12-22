@@ -50,15 +50,15 @@
             $this->validate($request,
             [
 
-                    'orientation'         => 'required',
-                    'grade'               => 'required',
-                    'lesson'              => 'required',
-                    'ratio'               => 'required|numeric|digits:1',
-                    'type'                => 'required'
+                    'orientation_admin'         => 'required',
+                    'grade'                     => 'required',
+                    'lesson'                    => 'required',
+                    'ratio'                     => 'required|numeric|digits:1',
+                    'sort'                      => 'required'
 
             ]);
 
-            $orientation = Orientation::query()->where('id', $request->input('orientation'))->first();
+            $orientation = Orientation::query()->where('id', $request->input('orientation_admin'))->first();
             $grade       = Grade::query()->where('id', $request->input('grade'))->first();
             $lesson      = Lesson::query()->where('id', $request->input('lesson'))->first();
 
@@ -73,11 +73,11 @@
             else
             {
                 $gradeLesson                        = new GradeLesson();
-                $gradeLesson->orientationId         = $request->input('orientation');
+                $gradeLesson->orientationId         = $request->input('orientation_admin');
                 $gradeLesson->lessonId              = $request->input('lesson');
                 $gradeLesson->gradeId               = $request->input('grade');
                 $gradeLesson->ratio                 = $request->input('ratio');
-                $gradeLesson->type                  = $request->input('type');
+                $gradeLesson->sort                  = $request->input('sort');
                 $gradeLesson->save();
 
                 return redirect()->route('admin_gradeLessons');
@@ -104,15 +104,15 @@
 
             $this->validate($request,
             [
-                'orientation'         => 'required',
+                'orientation_admin'         => 'required',
                 'grade'               => 'required',
                 'lesson'              => 'required',
                 'ratio'               => 'required|numeric|digits:1',
-                'type'                => 'required'
+                'sort'                => 'required'
 
             ]);
 
-            $orientation = Orientation::query()->where('id', $request->input('orientation'))->first();
+            $orientation = Orientation::query()->where('id', $request->input('orientation_admin'))->first();
             $grade       = Grade::query()->where('id', $request->input('grade'))->first();
             $lesson      = Lesson::query()->where('id', $request->input('lesson'))->first();
 
@@ -126,11 +126,11 @@
 
             else
             {
-                $gradeLesson->orientationId         = $request->input('orientation');
+                $gradeLesson->orientationId         = $request->input('orientation_admin');
                 $gradeLesson->lessonId              = $request->input('lesson');
                 $gradeLesson->gradeId               = $request->input('grade');
                 $gradeLesson->ratio                 = $request->input('ratio');
-                $gradeLesson->type                  = $request->input('type');
+                $gradeLesson->sort                  = $request->input('sort');
                 $gradeLesson->update();
 
                 return redirect()->route('admin_gradeLessons');

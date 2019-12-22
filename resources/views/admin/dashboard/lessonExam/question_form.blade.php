@@ -19,20 +19,19 @@
                         </a>
                     </div>
                     <p class="description text-right">
-                        <b>مشخصات آزمون</b> باید یک عدد دورقمی باشد مانند 02 یا 96. از کد درس در موارد مختلف تلاش میکنیم
-                        که
-                        با خواندن کد، درس را بفهمیم پس بهتره کدی که وارد میکنید در درس ها تکراری نباشد.
+                        <b>عکس برای سوال</b> در صورتی که سوال مورد نظر دارای عکس باشد باید بارگذاری گردد. دقت کنید که عکس آپلود شده می تواند هم دارای عکس متن سوال باشد هم عکس گزینه ها.
+                    </p
+                    <p class="description text-right">
+                        <b>عکس پاسخ تشریحی سوال</b> بهتر است برای هر سوال بارگذاری گردد برای استفاده از بانک سوالات در آینده.
+                    </p>
+                    <p class="description text-right">
+                        <b>نوع سوال</b> در این قسمت مشخص می شود سوال چه نوع و دسته بندی دارد مثلا از انواع سوالات درس عربی می توان به قواعد ، ترجمه و ... اشاره کرد.
+                    </p>
+                    <p class="description text-right">
+                        <b>توضیحات سوال</b> در این قسمت مشخص می شود سوال از چه فصل و درسی است یا حتی می توان مشخص کرد مربوط به کنکور است یا موسساتی مثل سنجش ، قلمچی و ... .
                     </p>
                     <p class="description text-right">
                         تعداد سوالات آزمون <b>{{ count($exam->questionExams) }}</b>
-                    </p>
-                    <p class="description text-right">
-                        <b>لینک درس</b> باید یک کلمه انگلیسی باشد. از لینک درس در بخش آدرس دهی در مرورگر استفاده
-                        میکنیم. پس پیشنهاد میشود که عنوان درس و لینک درس یک مفهوم را برسانند. برای مثال اگر عنوان درس
-                        ریاضی است بهتر است که لینک درس math باشد.
-                    </p>
-                    <p class="description text-right justify-content-center">
-                        <b>مثال</b> <br/> عنوان: ریاضی <br/> کد:03 <br/> لینک: math
                     </p>
                 </div>
                 <hr>
@@ -72,12 +71,12 @@
 
                             <div class="col-md-6 s-floatL">
                                 <div class="form-group">
-                                    <label>مباحث سوال</label>
-                                    <input name="description" dir="rtl" type="text" class="form-control "
-                                           placeholder="مباحث سوال را وارد نمایید"
-                                           value="{{old('description')}}{{ $modify==1 && !old('description') && $question->description ? $question->description : '' }}" tabindex="2">
+                                    <label>توضیحات سوال</label>
+                                    <input name="description_question" dir="rtl" type="text" class="form-control "
+                                           placeholder="توضیحات سوال را وارد نمایید"
+                                           value="{{old('description_question')}}{{ $modify==1 && !old('description_question') && $question->description ? $question->description : '' }}" tabindex="2">
                                     <div class="invalid-feedback">
-                                        <small>{{ $errors->first('description') }}</small>
+                                        <small>{{ $errors->first('description_question') }}</small>
                                     </div>
                                 </div>
                             </div>

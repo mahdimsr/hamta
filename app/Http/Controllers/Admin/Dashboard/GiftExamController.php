@@ -48,19 +48,22 @@
         {
 
 
-            $this->validate($request, ['title'        => 'required|string|max:20',
-                                       'activeTime'   => 'required',
-                                       'gradeLessons' => 'required',
-                                       'answersheet'  => 'required|mimes:pdf|max:2000',
-                                       'description'  => 'nullable|string|max:300',
-                                       'duration'     => 'nullable|integer|min:0',]);
+            $this->validate($request, ['title'             => 'required|string|max:20',
+                                       'gradeLessons'      => 'required',
+                                       'answersheet'       => 'required|mimes:pdf|max:2000',
+                                       'description'       => 'nullable|string|max:300',
+                                       'activeTime'        => 'required',
+                                       'description'       => 'nullable|string|max:300',
+                                       'orientation_admin' => 'required',
+                                       'resultDate'        => 'required',
+                                       'duration'          => 'required|integer|min:0',]);
 
 
             $giftExam              = new GiftExam();
             $giftExam->title       = $request->input('title');
             $giftExam->description = $request->input('description');
             $giftExam->duration    = $request->input('duration');
-            // convert and insert activeDate-resultDate
+            // convert and insert activeTime-resultDate
 
 
             $persianDateTime      = Lib::convertFaToEn($request->input('activeTime'));
@@ -116,18 +119,20 @@
         public function edit(Request $request, $exm)
         {
 
-            $this->validate($request, ['title'       => 'required|string|max:20',
-                                       'activeTime'  => 'required',
-                                       'description' => 'nullable|string|max:300',
-                                       'answersheet' => 'mimes:pdf|max:2000',
-                                       'duration'    => 'nullable|integer|min:0',]);
+            $this->validate($request, ['title'             => 'required|string|max:20',
+                                       'activeTime'        => 'required',
+                                       'description'       => 'nullable|string|max:300',
+                                       'orientation_admin' => 'required',
+                                       'answersheet'       => 'mimes:pdf|max:2000',
+                                       'resultDate'        => 'required',
+                                       'duration'          => 'required|integer|min:0',]);
 
 
             $giftExam              = GiftExam::query()->where('exm', $exm)->first();
             $giftExam->title       = $request->input('title');
             $giftExam->description = $request->input('description');
             $giftExam->duration    = $request->input('duration');
-            // convert and insert activeDate-resultDate
+            // convert and insert activeTime-resultDate
 
 
             $persianDateTime      = Lib::convertFaToEn($request->input('activeTime'));
@@ -209,7 +214,7 @@
 
                 'gradeLesson'  => 'required',
                 'questionType' => 'nullable',
-                'description'  => 'required',
+                'description_question'  => 'required',
                 'hardness'     => 'required|integer|between:0,6|digits:1',
                 'text'         => 'required',
                 'optionFour'   => 'required',
@@ -227,7 +232,7 @@
 
             $question->gradeLessonId = $request->input('gradeLesson');
             $question->questionType  = $request->input('questionType');
-            $question->description   = $request->input('description');
+            $question->description   = $request->input('description_question');
             $question->text          = $request->input('text');
             $question->optionOne     = $request->input('optionOne');
             $question->optionTwo     = $request->input('optionTwo');
@@ -292,7 +297,7 @@
             $this->validate($request, [
 
                 'questionType' => 'nullable',
-                'description'  => 'required',
+                'description_question'  => 'required',
                 'hardness'     => 'required|integer|between:0,6|digits:1',
                 'text'         => 'required',
                 'optionFour'   => 'required',
@@ -309,7 +314,7 @@
             $question = Question::query()->where('id', $id)->first();
 
             $question->questionType = $request->input('questionType');
-            $question->description  = $request->input('description');
+            $question->description  = $request->input('description_question');
             $question->text         = $request->input('text');
             $question->optionOne    = $request->input('optionOne');
             $question->optionTwo    = $request->input('optionTwo');

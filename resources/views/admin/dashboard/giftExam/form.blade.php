@@ -106,9 +106,9 @@
                                     <input dir="rtl" id="activeTime" name="activeTime" type="text"
                                            class="form-control"
                                            tabindex="3"
-                                           value="{{ old('activeDate') }}{{ $modify==1 && !old('activeDate') && $giftExam->activeTime ? $giftExam->activeTime : '' }}">
+                                           value="{{ old('activeTime') }}{{ $modify==1 && !old('activeTime') && $giftExam->activeTime ? $giftExam->activeTime : '' }}">
                                     <div class="invalid-feedback">
-                                        <small>{{ $errors->first('activeDate') }}</small>
+                                        <small>{{ $errors->first('activeTime') }}</small>
                                     </div>
                                 </div>
                             </div>
@@ -134,21 +134,21 @@
                                 <div class="col-md-6 s-floatR">
                                     <div class="form-group">
                                         <label class="control-label">گرایش</label>
-                                        <select name="orientation"
+                                        <select name="orientation_admin"
                                                 class="form-control menu dropdown-radius hide-search parent-select"
-                                                id="ori-select" {{ $modify==1? 'disabled' : '' }}>
+                                                id="ori-select" >
                                             <option id="0" value="" disabled selected>گرایش آزمون را انتخاب نمایید
                                             </option>
                                             @foreach($orientations as $orientation)
                                                 <option
                                                         value="{{$orientation->id}}"
-                                                        {{old('orientation') == $orientation->id ? 'selected' : ''}}{{ $modify==1 && !old('orientation') && $lessonExam->orientation()[0]->id == $orientation->id ? 'selected' : '' }}>
+                                                        {{old('orientation_admin') == $orientation->id ? 'selected' : ''}}>
                                                     {{$orientation->title}}
                                                 </option>
                                             @endforeach
                                         </select>
                                         <div class="invalid-feedback">
-                                            <small>{{ $errors->first('orientation') }}</small>
+                                            <small>{{ $errors->first('orientation_admin') }}</small>
                                         </div>
                                     </div>
                                 </div>
