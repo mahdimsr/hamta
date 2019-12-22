@@ -26,27 +26,38 @@
 
         public function details($exm)
         {
-            $lessonExam = LessonExam::query()->where('exm',$exm)->first();
-            return view('student.dashboard.lessonExam.details',compact('lessonExam'));
+            $student     = Auth::guard('student')->user();
+            $lessonExam  = LessonExam::query()->where('exm',$exm)->first();
+
+            if ($lessonExam && $student->isComplete==1)
+            {
+                return view('student.dashboard.lessonExam.details',compact('lessonExam'));
+            }
+
+            else
+            {
+                return redirect()->route('student_dashboard_lessonExams');
+            }
+
         }
 
 
         public function addToCart($exm)
         {
-
+            $student     = Auth::guard('student')->user();
             $lessonExam = LessonExam::query()->where('exm', $exm)->first();
 
-            if ($lessonExam->hasInCart() && !$lessonExam->hasPurchased())
-            {
-                return redirect()->back();
-            }
-
-            else
+            if (!$lessonExam->hasInCart() && !$lessonExam->hasPurchased() && $student->isComplete==1)
             {
                 $cart = new Cart();
                 $cart->lessonExamId = $lessonExam->id;
                 $cart->save();
-                return redirect()->back();
+                return redirect()->route('student_dashboard_lessonExams');
+            }
+
+            else
+            {
+                return redirect()->route('student_dashboard_lessonExams');
             }
 
         }
@@ -56,7 +67,7 @@
             $student    = Auth::guard('student')->user();
             $lessonExam = LessonExam::query()->where('exm', $exm)->first();
 
-            if($lessonExam && $lessonExam->hasPurchased() && !$lessonExam->hasUsed())
+            if($lessonExam && $lessonExam->hasPurchased() && !$lessonExam->hasUsed() && $student->isComplete==1)
             {
                 return view('student.dashboard.lessonExam.exam_questions', compact('student', 'lessonExam'));
             }
@@ -74,7 +85,7 @@
             $student    = Auth::guard('student')->user();
             $lessonExam = LessonExam::query()->where('exm', $exm)->first();
 
-            if($lessonExam && $lessonExam->hasPurchased() && !$lessonExam->hasUsed())
+            if($lessonExam && $lessonExam->hasPurchased() && !$lessonExam->hasUsed() && $student->isComplete==1)
             {
                 $correctAnswers= 0;
                 $wrongAnswers  = 0;
