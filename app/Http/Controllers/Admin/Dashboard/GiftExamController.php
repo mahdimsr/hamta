@@ -347,7 +347,7 @@
                 $question->update();
             }
 
-            return redirect()->back();
+            return redirect()->route('admin_giftExams_questionsShow',['exm'=>$exm]);
 
         }
 

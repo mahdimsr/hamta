@@ -258,8 +258,10 @@
 
                         </div>
 
-                        <button type="submit"
-                                class="btn btn-fill btn-info pull-left" tabindex="14">{{ $modify== 0 ? 'ذخیره و درج سوال بعدی' : 'ویرایش سوال' }}</button>
+
+                        <a href="{{route('admin_giftExams_questionsShow',['exm'=>$exam->exm])}}" class="btn btn-info pull-left" tabindex="15"> بازگشت <span class="fas fa-arrow-left"></span></a>
+                        <button type="submit" class="btn btn-fill btn-info pull-right" tabindex="14">{{ $modify== 0 ? 'ذخیره و درج سوال بعدی' : 'ویرایش سوال' }}</button>
+
                         <div class="clearfix"></div>
                     </form>
                 </div>

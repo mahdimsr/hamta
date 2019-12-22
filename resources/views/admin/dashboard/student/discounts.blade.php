@@ -10,6 +10,8 @@
                         <a href="{{route('admin_students_discountAddShow',['id' => $id])}}" style="font-size: 12px;" class="btn btn-info pull-right btn-table-header">
                                 افزودن کد تخفیف اختصاصی
                             </a>
+                            <a href="{{route('admin_students')}}" style="font-size: 12px;" class="btn btn-info pull-left btn-table-header"> بازگشت <span class="fas fa-arrow-left"></span></a>
+
                 </div>
                 <div dir="rtl" class="content table-responsive table-full-width">
                     <table class="table table-hover table-striped">
@@ -32,10 +34,11 @@
                                     <td>{{ $studentDiscount->discount->isValidAdmin($studentDiscount->student->id) ? 'فعال' : 'منقضی شده'}}</td>
                                     <td>{{$studentDiscount->discount->count}}</td>
                                     <td>
-                                        <a href="{{route('admin_students_discountRemove',['id' => $id ,'discountId' => $studentDiscount->discount->id])}}" id="remove-btn" type="button"
-                                           style="font-size: 12px;" class="btn btn-danger">
-                                            حذف
-                                        </a>
+                                        <button data-modal-trigger="remove-modal"
+                                        data-remove-route="{{route('admin_students_discountRemove',['id' => $id ,'discountId' => $studentDiscount->discount->id])}}"
+                                        class="trigger btn btn-danger" style="font-size: 12px;">
+                                         حذف
+                                        </button>
                                         <a href="{{route('admin_students_discountEditShow',['id' => $id ,'discountId' => $studentDiscount->discount->id])}}" style="font-size: 12px;" class="btn btn-info">
                                             ویرایش
                                         </a>
@@ -44,7 +47,21 @@
                                 @endforeach
                         </tbody>
                     </table>
-
+                </div>
+                <div data-modal="remove-modal" class="modal">
+                    <article class="content-wrapper">
+                        <button class="close"></button>
+                        <header class="modal-header">
+                            <h2>حذف کد تخفیف اختصاصی</h2>
+                        </header>
+                        <div class="content"  dir="rtl">
+                            <p>آیا مایل هستید کد تخفیف ایجاد شده حذف شود؟</p>
+                        </div>
+                        <footer class="modal-footer">
+                            <a class="action">بله</a>
+                            <button class="action" id="close">خیر</button>
+                        </footer>
+                    </article>
                 </div>
             </div>
         </div>

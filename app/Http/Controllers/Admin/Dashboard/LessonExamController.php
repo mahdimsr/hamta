@@ -353,7 +353,7 @@
                 $question->update();
             }
 
-            return redirect()->back();
+            return redirect()->route('admin_ltlExams_questionsShow',['exm'=>$exm]);
 
         }
 

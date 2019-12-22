@@ -14,9 +14,7 @@
                         <hr>
                     </a>
                 </div>
-                <p class="description text-right"><br>
-                    در این قسمت اطلاعات خود را تکمیل نمایید تا بتوانید از امکانات بینظیر سایت بهره مند شوید ! دقت کنید که بعد از تکمیل اطلاعات برخی از فیلد ها قابل ویرایش نخواهند بود.
-                    <br><br>
+                <p class="description text-right">
                     لازم به ذکر است شماره تلفن منزل بدون پیش شماره سه رقمی استان وارد گردد.
                     <br><br>
                     ضمنا در بخش شماره تلفن همراه والدین فقط کافیست شماره تلفن یکی از آنها وارد گردد.
@@ -272,6 +270,7 @@
                                         </div>
                                     </div>
                     </div>
+                    <a href="{{route('admin_students')}}" class="btn btn-info pull-left"> بازگشت <span class="fas fa-arrow-left"></span></a>
                     <button type="submit" class="btn btn-info btn-fill pull-right">ثبت تغییرات</button>
                     <div class="clearfix"></div>
                 </form>

@@ -152,7 +152,7 @@
             $studentCode->discountId = $discount->id;
             $studentCode->save();
 
-            return redirect()->back();
+            return redirect()->route('admin_students_discounts',['id'=>$id]);
         }
 
         public function discountEditShow($id,$discountId)
@@ -186,7 +186,7 @@
 
             $discount->save();
 
-            return redirect()->back();
+            return redirect()->route('admin_students_discounts',['id'=>$id]);
         }
 
         public function discountRemove($id,$discountId)

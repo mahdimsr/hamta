@@ -107,7 +107,8 @@
 							</div>
 						</div>
 
-						<button type="submit" class="btn btn-info btn-fill pull-right">اعمال</button>
+                        <a href="{{route('admin_scholarships')}}" class="btn btn-info pull-left"> بازگشت <span class="fas fa-arrow-left"></span></a>
+                        <button type="submit" class="btn btn-info btn-fill pull-right">اعمال</button>
 						<div class="clearfix"></div>
 					</form>
 				</div>

@@ -18,6 +18,7 @@
             <div class="card cards">
                 <div class="card-header" id="nomargin1">
                     <h4 class="title text-right ">مشخصات آزمون</h4>
+                    <a href="{{route('admin_giftExams')}}" class="btn btn-info"><span class="fas fa-arrow-left"></span> بازگشت</a>
                 </div>
                 <div dir="rtl" class="content ">
                     <div class="row">

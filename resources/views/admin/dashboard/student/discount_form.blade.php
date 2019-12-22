@@ -103,7 +103,8 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-info btn-fill pull-left" tabindex="5">اعمال</button>
+                        <a href="{{ route('admin_students_discounts',['id'=>$id])}}" class="btn btn-info pull-left" tabindex="6"> بازگشت <span class="fas fa-arrow-left"></span></a>
+                        <button type="submit" class="btn btn-info btn-fill pull-right" tabindex="5">اعمال</button>
                         <div class="clearfix"></div>
                     </form>
                 </div>

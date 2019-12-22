@@ -94,7 +94,8 @@
 
 						</div>
 
-						<button type="submit" class="btn btn-info btn-fill pull-left" tabindex="4">اعمال</button>
+                        <a href="{{route('admin_grades')}}" class="btn btn-info pull-left"> بازگشت <span class="fas fa-arrow-left"></span></a>
+                        <button type="submit" class="btn btn-info btn-fill pull-right">اعمال</button>
 						<div class="clearfix"></div>
 					</form>
 				</div>
