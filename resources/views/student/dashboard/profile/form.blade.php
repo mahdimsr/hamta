@@ -355,7 +355,7 @@
                                         </div>
                                 @endif
 						</div>
-						<button type="submit" class="btn btn-info btn-fill pull-right">ثبت تغییرات</button>
+						<button type="submit" class="btn btn-info btn-fill pull-left">ثبت تغییرات</button>
 						<div class="clearfix"></div>
 					</form>
 				</div>
