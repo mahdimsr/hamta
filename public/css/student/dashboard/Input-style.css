@@ -250,13 +250,14 @@ input[type="text"][required] + label[placeholder]:before {
 .avatar-edit{
     background-color: #c4c4c4;
     border-radius: 100%;
-    width: 108px;
+    width: 58px;
     padding: 4px 4px 1px 0px;
-    height: 108px;
+    height: 58px;
 }
 .user-profile-edit {
-    right: 56%;
-    transform: translate(39%,0%)!important;
+    float: left;
+    transform: translate(0%,0%)!important;
+    margin: 0px 5px 10px -5px;
 }
 .avatar-edit.active {
     border-radius: 100% 0 20px 100%;
@@ -273,8 +274,8 @@ input[type="text"][required] + label[placeholder]:before {
     background-position: center;
     border-radius: 100%;
     position: absolute;
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
     left: 4px;
     top: 4px;
     opacity: 0;
@@ -290,22 +291,22 @@ input[type="text"][required] + label[placeholder]:before {
     color: white;
 }
 .image-s-edit{
-    height: 30px!important;
-    width: 30px!important;
+    height: 50px!important;
+    width: 50px!important;
     border-radius: 0px!important;
-    top: 10px;
+    
     position: relative;
-    top: 34px;
-}
-/*.avatar:hover .uploadOverlay {*/
-/*-webkit-transition: all 250ms ease;*/
-/*-moz-transition: all 250ms ease;*/
-/*-ms-transition: all 250ms ease;*/
-/*-o-transition: all 250ms ease;*/
-/*transition: all 250ms ease;*/
-/*opacity: 1;*/
 
-/*}*/
+}
+.avatar-edit:hover .uploadOverlay-edit {
+-webkit-transition: all 250ms ease;
+-moz-transition: all 250ms ease;
+-ms-transition: all 250ms ease;
+-o-transition: all 250ms ease;
+transition: all 250ms ease;
+opacity: 1;
+
+}
 .avatar-edit .uploadCompleteOverlay-edit {
     background-color: rgba(104, 174, 0, 0.9);
     opacity: 1;
@@ -317,4 +318,19 @@ svg.svg-hover{
 }
 svg.svg-hover:hover{
     fill: rgb(111, 188, 255);
+}
+.title small{
+    font-size: 10px;
+    color: #556080;
+    font-weight: 100;
+}
+.card hr{
+    margin-top: 5px;
+}
+.image-s-pass {
+    height: 50px!important;
+    width: 50px!important;
+    border-radius: 0px!important;
+    top: 0px;
+    position: relative;
 }
