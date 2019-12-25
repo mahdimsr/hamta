@@ -1,5 +1,57 @@
 @extends('layouts.student_dashboard')
+@section('style')
+<style>
+
+
+</style>
+
+@endsection
 @section('content')
+
+    <div class="modal fade" id="upload-image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div dir="rtl" class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">توجه!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>  در صورت انتخاب این گزینه آزمون شما اتمام یافته فرض می شود و دیگر قابل تکرار یا بازگشت نمی باشد.</p>
+                    <p> آیا مطمئن هستید؟</p>
+                </div>
+                <div class="modal-footer ">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">خیر</button>
+                    <button type="submit" class="btn btn-green">بله مطمئنم</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="change-pass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div dir="rtl" class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">توجه!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>  در صورت انتخاب این گزینه آزمون شما اتمام یافته فرض می شود و دیگر قابل تکرار یا بازگشت نمی باشد.</p>
+                    <p> آیا مطمئن هستید؟</p>
+                </div>
+                <div class="modal-footer ">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">خیر</button>
+                    <button type="submit" class="btn btn-green">بله </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 	<div class="row" dir="rtl">
 		<div class="col-md-3">
 			<div class="card ">
@@ -40,28 +92,53 @@
 
 				</div>
 			</div>
-
+<div class="row">
+    <div class="col-md-12">
 			<div class="card ">
 				<div class="content">
+                    <div class="user-profile-edit">
+                        <div class="avatarWrapper-edit">
+                            <div class="avatar-edit">
+                                <div class="uploadOverlay-edit"><a href="#upload-image" data-target="#upload-image" data-toggle="modal"><img class="image-s-edit" src="{{ asset('image/student/dashboard/user-hover.png') }}"></a></div>
+
+
+
+                                <img src="{{ asset('image/student/dashboard/user1.png') }}" width="50px" height="50px"  alt="">
+
+                            </div>
+                        </div>
+
+                    </div>
 					<div class=" text-center ">
-						<a href="#">
-							<div class="user-profile-edit">
-								<div class="avatarWrapper-edit">
-									<div class="avatar-edit">
-										<div class="uploadOverlay-edit"><img class="image-s-edit" src="{{ asset('image/student/dashboard/edit.png') }}"></div>
 
-										<img src="{{ asset('image/student/dashboard/user1.png') }}" width="100px" height="100px"  alt="">
 
-									</div>
-								</div>
-
-							</div>
-							<h4 class="title">راهنما<br/>
-								<small> فرم {{$student->isComplete==0?'تکمیل اطلاعات' : 'ویرایش اطلاعات'}}</small>
+							<h4 class="title">ویرایش<br/>
+								<small> تغییر عکس کاربری </small>
 							</h4>
-						</a>
-					</div>
 
+					</div>
+<hr>
+                    <div class="user-profile-edit">
+                        <div class="avatarWrapper-edit">
+                            <div class="avatar-edit">
+                                <div class="uploadOverlay-edit"><a href="#change-pass" data-target="#change-pass" data-toggle="modal"><img class="image-s-pass" src="{{ asset('image/student/dashboard/pass-hover.png') }}"></a></div>
+
+
+
+                                <img src="{{ asset('image/student/dashboard/pass.png') }}" width="50px" height="50px"  alt="">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class=" text-center ">
+
+
+                            <h4 class="title">رمز عبور<br/>
+                                <small> تغییر رمز عبور </small>
+                            </h4>
+
+                    </div>
 
 
 
@@ -72,7 +149,8 @@
 
 				</div>
 			</div>
-
+    </div>
+</div>
 		</div>
 		<div class="col-md-9">
 			<div class="card text-right">
