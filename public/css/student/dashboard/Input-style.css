@@ -334,3 +334,91 @@ svg.svg-hover:hover{
     top: 0px;
     position: relative;
 }
+
+/*inpute file profile image css*/
+
+
+
+.avatarWrapper-profile{
+    position: relative;
+}
+.avatar-profile{
+    background-color: #c4c4c4;
+    border-radius: 100%;
+    width: 158px;
+    padding: 4px 4px 1px 0px;
+    height: 158px;
+}
+.user-profile-profile {
+
+    transform: translate(0%,0%)!important;
+    margin: 0px 5px 10px -5px;
+}
+.avatar-profile.active {
+    border-radius: 100% 0 20px 100%;
+    background-color: #CC0000;
+}
+.avatar-profile .uploadOverlay-profile, .avatar-profile .uploadCompleteOverlay-profile {
+    background-color: rgba(111, 188, 255, 0.63);
+    -webkit-transition: all 250ms ease;
+    -moz-transition: all 250ms ease;
+    -ms-transition: all 250ms ease;
+    -o-transition: all 250ms ease;
+    transition: all 250ms ease;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 100%;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    left: 4px;
+    top: 4px;
+    opacity: 0;
+}
+.avatar-profile .uploadOverlay-profile , .avatar-profile .uploadCompleteOverlay-profile .image-s-profile  {
+    vertical-align: bottom;
+    display: inline-block;
+    /*line-height: 200px;*/
+    text-align: center;
+
+    /*height: 200px;*/
+    /*width: 200px;*/
+    color: white;
+}
+.image-s-profile{
+    height: 50px!important;
+    width: 50px!important;
+    border-radius: 0px!important;
+
+    position: relative;
+
+}
+.avatar-profile:hover .uploadOverlay-profile {
+    -webkit-transition: all 250ms ease;
+    -moz-transition: all 250ms ease;
+    -ms-transition: all 250ms ease;
+    -o-transition: all 250ms ease;
+    transition: all 250ms ease;
+    opacity: 1;
+
+}
+.avatar-profile .uploadCompleteOverlay-profile {
+    background-color: rgba(104, 174, 0, 0.9);
+    opacity: 1;
+
+}
+svg.svg-hover{
+    transition: 200ms;
+    fill: #7b7b7b;
+}
+svg.svg-hover:hover{
+    fill: rgb(111, 188, 255);
+}
+
+.image-s-pass {
+    height: 50px!important;
+    width: 50px!important;
+    border-radius: 0px!important;
+    top: 0px;
+    position: relative;
+}

@@ -299,4 +299,27 @@ $('#clock').countdown('2020/10/10', function(event) {
         + '<span>%S</span> sec'));
 });
 
-//tab select
+//inpute file profile js
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#blah')
+                .attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+
+}
+var fullPath = document.getElementById('upload').value;
+if (fullPath) {
+    var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+    var filename = fullPath.substring(startIndex);
+    if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+        filename = filename.substring(1);
+    }
+    alert(filename);
+}

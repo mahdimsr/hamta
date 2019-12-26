@@ -12,17 +12,42 @@
 @section('content')
 
     <div class="modal fade" id="upload-image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div dir="rtl" class="modal-dialog modal-dialog-centered" role="document">
+        <div dir="rtl" class="modal-dialog " role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">توجه!</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">تغییر عکس کاربر</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>  در صورت انتخاب این گزینه آزمون شما اتمام یافته فرض می شود و دیگر قابل تکرار یا بازگشت نمی باشد.</p>
-                    <p> آیا مطمئن هستید؟</p>
+
+<div class="row">
+	<div class="col-md-4">
+		<div class="user-profile-profile">
+			<div class="avatarWrapper-profile">
+				<div class="avatar-profile">
+
+
+
+
+					<img style="border-radius: 100%; " id="blah" src="{{ asset('image/student/dashboard/user1.png') }}" alt="your image" width="150px" height="150px" />
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="col-md-8">
+		<input type='file' id="upload" onchange="readURL(this);" />
+		<div class="messages"></div>
+	</div>
+</div>
+
+
+
+
+
                 </div>
                 <div class="modal-footer ">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">خیر</button>
