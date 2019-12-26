@@ -4,8 +4,10 @@
 
     use App\Http\Controllers\Api\ApiHelper;
     use App\model\Cart;
+    use App\model\Discount;
     use App\model\Grade;
     use App\model\Orientation;
+    use App\model\StudentCode;
     use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
     use Illuminate\Support\Facades\Auth;
@@ -86,6 +88,25 @@
                                          'student' => $student]);
             }
 
+        }
+
+
+        public function discountCodes()
+        {
+
+            $student = Auth::user();
+
+            $studentCodes = StudentCode::query()->where('studentId', $student->id)->get();
+
+            $discounts = [];
+
+            foreach ($studentCodes as $item)
+            {
+                $discounts[] = $item->discount;
+            }
+
+            return response()->json(['status'    => ApiHelper::$statusType[ 'ok' ],
+                                     'discounts' => $discounts]);
         }
 
     }
