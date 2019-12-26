@@ -125,8 +125,8 @@
                             </div>
 
                         </div>
-                        <a href="{{route('admin_codes_show')}}" class="btn btn-info pull-left"> بازگشت <span class="fas fa-arrow-left"></span></a>
-                        <button type="submit" class="btn btn-info btn-fill pull-right">اعمال</button>
+                        <a href="{{route('admin_codes_show')}}" class="btn btn-info pull-right"> <span class="fas fa-arrow-right"></span>  بازگشت  </a>
+                        <button type="submit" class="btn btn-info btn-fill pull-left">اعمال</button>
                         <div class="clearfix"></div>
                     </form>
                 </div>

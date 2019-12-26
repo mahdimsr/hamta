@@ -232,7 +232,7 @@
                             <div class="col-md-4">
                                     <div class="form-group">
                                         <label>شماره تلفن همراه یکی از والدین</label>
-                                        <input dir="rtl" name="parentPhone_admin" type="text" class="form-control"
+                                        <input dir="rtl" name="parentPhone_admin" type="text" class="form-control "
                                                placeholder="شماره تلفن همراه یکی از والدین را وارد نمایید"
                                                value="{{ old('parentPhone_admin')? old('parentPhone_admin') : $student->parentPhone}}"
                                                tabindex="16"
@@ -274,7 +274,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>تکرار رمز عبور</label>
-                                    <input dir="rtl" name="newPassword_confirmation" type="password" class="form-control"
+                                    <input dir="rtl" name="newPassword_confirmation" type="password" class="form-control pass-radius "
                                            placeholder="تکرار رمز عبور را وارد نمایید"
                                            value="{{ old('newPassword_confirmation')? old('newPassword_confirmation') : '' }}"
                                            tabindex="16"
@@ -288,7 +288,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>رمز عبور جدید</label>
-                                    <input dir="rtl" name="newPassword" type="password" class="form-control"
+                                    <input dir="rtl" name="newPassword" type="password" class="form-control pass-radius"
                                            placeholder="رمز عبور جدید را وارد نمایید"
                                            value="{{ old('newPassword')? old('newPassword') : ''}}"
                                            tabindex="17"
@@ -299,8 +299,8 @@
                                 </div>
                             </div>
                 </div>
-                    <a href="{{route('admin_students')}}" class="btn btn-info pull-left"> بازگشت <span class="fas fa-arrow-left"></span></a>
-                    <button type="submit" class="btn btn-info btn-fill pull-right">ثبت تغییرات</button>
+                    <a href="{{route('admin_students')}}" class="btn btn-info pull-right"> <span class="fas fa-arrow-right"></span>  بازگشت </a>
+                    <button type="submit" class="btn btn-info btn-fill pull-left">ثبت تغییرات</button>
                     <div class="clearfix"></div>
                 </form>
             </div>

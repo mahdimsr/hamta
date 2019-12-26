@@ -157,6 +157,10 @@ li.list-li:nth-child(4){
     background-image: none;
     border: 1px solid #ccc;
 }
+.pass-radius{
+    border-radius: 1.5em;
+    border:1px solid #ccc;
+}
 .number-radius{
     border-radius: 1.5em;
     border:1px solid #ccc;
@@ -914,4 +918,19 @@ div.disabled {
 img#disableds {
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
+}
+textarea:focus {
+     transition: .7s!important;
+     box-shadow: 2px 3px 15px 0px rgba(52, 223, 224, 0.46), -1px 1px 7px 0px rgba(84, 152, 196, 0.06)!important;
+     border-color: #00bafa!important;
+ }
+input[type=number]:focus {
+    transition: .7s!important;
+    box-shadow: 2px 3px 15px 0px rgba(52, 223, 224, 0.46), -1px 1px 7px 0px rgba(84, 152, 196, 0.06)!important;
+    border-color: #00bafa!important;
+}
+input[type=password]:focus {
+    transition: .7s!important;
+    box-shadow: 2px 3px 15px 0px rgba(52, 223, 224, 0.46), -1px 1px 7px 0px rgba(84, 152, 196, 0.06)!important;
+    border-color: #00bafa!important;
 }
