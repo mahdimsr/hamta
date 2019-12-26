@@ -422,3 +422,71 @@ svg.svg-hover:hover{
     top: 0px;
     position: relative;
 }
+.input-container{
+    display: grid;
+
+    background-color: #596689;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 3px rgb(122, 143, 198), 0px 0px 4px 0px rgba(235, 243, 250, 0.31);
+    transition: 600ms;
+    cursor: hand;
+}
+
+
+
+
+.input-container input{
+display: none;
+
+}
+.input-container input + label {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 300;
+    color: white;
+    text-align: center;
+    padding: 10px 20px 4px 20px;
+    transition: 600ms;
+    cursor: pointer;
+
+}
+.input-container:hover {
+
+    box-shadow: none;
+
+}
+.pass-radius{
+    border-radius: 15px;
+    font-size: 10px;
+}
+input[type="password"]:focus {
+    border-color: #00bafa!important;
+}
+.modal-footer span{
+    float: right;
+    text-align: right;
+    direction: rtl;
+    width: 300px;
+    color: #707070;
+    font-size: 12px;
+    font-weight: 400;
+}
+@media (min-width: 990px) {
+    .input-container {
+        position: absolute!important;
+        top: 55px!important;
+    }
+    .col-right{
+        float: right!important;
+    }
+    .col-left{
+        float: left!important;
+    }
+}
+@media (max-width: 990px) {
+    .user-profile-profile {
+        transform: translate(-37%,-10%)!important;
+
+    }
+
+}
