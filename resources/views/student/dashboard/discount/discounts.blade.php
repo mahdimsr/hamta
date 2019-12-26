@@ -44,7 +44,15 @@
     </style>
 @endsection
 @section('content')
+    <div class="row">
+        <div class="col-md-5 col-md-offset-4">
 
+            <div  class="card-empty">
+               <img src="{{ asset('image/student/dashboard/empty1.jpg') }}" height="100%" width="100%">
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+            </div>
+        </div>
+    </div>
 
 <div class="row">
     <div class="col-md-12">

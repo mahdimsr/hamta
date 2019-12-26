@@ -4,7 +4,7 @@
 
 @endsection
 @section('content')
-    <div class="row">
+    <div class="row" style="margin-top: 30px;">
         <div class="col-md-4 col-md-offset-2">
 
             <a aria-controls="purchase" data-toggle="tab" href="#purchase" id="purchase-tab" role="tab" onclick="purchaseactive()" >   <div class="card-transaction-red" >
@@ -50,17 +50,18 @@
                </a>
         </div>
     </div>
+    <hr>
     <div class="tab-content">
         <div class="tab-pane active" id="charge" role="tabpanel">
 
 
                 @if($charges->isEmpty())
-                <div class="card-transaction">
-                    <div class="col-md-4 col-md-offset-4 ">
-                    <img src="{{ asset('image/student/dashboard/empty_cart.svg') }}" width="100%" height="100%">
+                <div class="">
+                    <div class="col-md-8 col-md-offset-2 ">
+                    <img class="transaction-image" src="{{ asset('image/student/dashboard/no-order.jpg') }}" width="100%" height="100%">
 
                     </div>
-                    <h4 style="display: table-footer-group; margin-top: 10px;" class="text-center" dir="rtl">هنوز تراکنشی ثبت نشده است.</h4>
+
             </div>
                 @else
             <section class="factor row">
@@ -102,11 +103,11 @@
         </div>
         <div class="tab-pane" id="purchase" role="tabpanel">
                 @if($purchases->isEmpty())
-                <div class="card-transaction">
-                        <div class="col-md-4 col-md-offset-4 ">
-                            <img src="{{ asset('image/student/dashboard/empty_cart.svg') }}" width="100%" height="100%">
+                <div class="">
+                        <div class="col-md-8 col-md-offset-2 ">
+                            <img class="transaction-image-red" src="{{ asset('image/student/dashboard/no_orders.jpg') }}" width="100%" height="100%">
                         </div>
-                        <h4 style="display: table-footer-group; margin-top: 10px;" class="text-center" dir="rtl">هنوز تراکنشی ثبت نشده است.</h4>
+
                 </div>
                 @else
             <section class="factor row">
