@@ -35,6 +35,11 @@
 
             Route::get('/index', 'IndexController@index')->name('api_student_index');
 
+            Route::get('/scholarShip','IndexController@scholarship')->name('api_student_scholarship');
+            Route::post('/submitScholarShip','IndexController@submitScholarShip')->name('api_student_submitScholarShip');
+
+
+
             Route::prefix('profile')->group(function()
             {
 
@@ -42,6 +47,10 @@
                 Route::get('/myProfile', 'ProfileController@myProfile')->name('api_student_myProfile');
                 Route::post('/updateMyProfile', 'ProfileController@updateMyProfile')
                      ->name('api_student_updateMyProfile');
+
+                Route::get('/discountCodes','ProfileController@discountCodes')->name('api_student_discounts');
+
+
 
             });
 

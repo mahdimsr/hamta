@@ -4,6 +4,7 @@
 
     use App\Http\Controllers\Api\ApiHelper;
     use App\model\Cart;
+    use App\model\Scholarship;
     use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
     use Illuminate\Support\Facades\Auth;
@@ -57,5 +58,32 @@
                                      'student'   => $student]);
         }
 
+
+        public function scholarship()
+        {
+
+            $student     = Auth::user();
+            $scholarship = $student->scholarship;
+
+            return response()->json(['status'      => ApiHelper::$statusType[ 'ok' ],
+                                     'scholarship' => $scholarship]);
+        }
+
+
+        public function submitScholarShip(Request $request)
+        {
+
+            $student = Auth::user();
+
+            $scholarship = new Scholarship();
+
+            $scholarship->studentId  = $student->id;
+            $scholarship->stdMessage = $request->input('stdMessage');
+
+            $scholarship->save();
+
+            return response()->json(['status'      => ApiHelper::$statusType[ 'ok' ],
+                                     'scholarship' => $student->scholarship]);
+        }
 
     }
