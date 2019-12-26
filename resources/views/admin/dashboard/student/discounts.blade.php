@@ -10,7 +10,7 @@
                         <a href="{{route('admin_students_discountAddShow',['id' => $id])}}" style="font-size: 12px;" class="btn btn-info pull-right btn-table-header">
                                 افزودن کد تخفیف اختصاصی
                             </a>
-                            <a href="{{route('admin_students')}}" style="font-size: 12px;" class="btn btn-info pull-left btn-table-header"> بازگشت <span class="fas fa-arrow-left"></span></a>
+                            <a href="{{route('admin_students')}}" style="font-size: 12px;" class="btn btn-info pull-left btn-table-header"><span class="fas fa-arrow-left"></span> بازگشت</a>
 
                 </div>
                 <div dir="rtl" class="content table-responsive table-full-width">
