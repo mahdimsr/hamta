@@ -126,12 +126,4 @@ class ProfileController extends Controller
 		return redirect()->route('student_dashboard_profile_form');
 
 	}
-
-	public function profileFormSettings()
-	{
-
-		$student      = Auth::guard('student')->user();
-		return view('student.dashboard.profile.settings', compact('student'));
-
-	}
 }

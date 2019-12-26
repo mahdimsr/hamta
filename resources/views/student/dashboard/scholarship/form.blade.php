@@ -3,6 +3,9 @@
     <style>
         @media (min-width:992px){.s-floatL{float:left!important;}.s-floatR{float: right!important;}}
     </style>
+    @section('style')
+    <link href="{{asset('css/student/dashboard/Input-style.css')}}" rel="stylesheet"/>
+<style>
     @endsection
 @section('content')
 
@@ -51,14 +54,14 @@
 
 
 
-                                        <label>توضیحات درخواست</label>
+                                        <label>توضیحات درخواست*</label>
                                         <textarea dir="rtl" maxlength="500" name="stdMessage" tabindex="1" rows="5" class="form-control textarea-radius" placeholder="متن درخواست خود را وارد نمایید" {{ $scholarship && $scholarship->status!='NOT-SEEN'?'disabled':''}}>{{ $scholarship && !old('stdMessage') ? $scholarship->stdMessage : '' }}{{ old('stdMessage') ? old('stdMessage') : '' }}</textarea>
                                         <div class="invalid-feedback">
                                             <small>{{ $errors->first('stdMessage') }}{{ $errors->first('notComplete') }}</small>
                                         </div>
                                     </div>
                                     @if ($scholarship && $scholarship->status =='NOT-SEEN' || !$scholarship)
-                                    <label>عکس کارنامه</label>
+                                    <label>عکس کارنامه*</label>
                                     <div  class="col-md-5 " style="float: none;">
                                         <div class="input-file-container">
                                             <input class="input-file" id="my-file" type="file" name="scholarshipImage">
