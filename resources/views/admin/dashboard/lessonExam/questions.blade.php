@@ -57,7 +57,7 @@
                             <div class="row" style="margin-top: 20px;">
                                 <div class="col-md-3" style="float: right;">
                                     <p> قیمت:
-                                    {{$exam->price}}</p>
+                                    {{$exam->price}} تومان</p>
                                 </div>
 
 

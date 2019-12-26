@@ -16,6 +16,7 @@
     use Illuminate\Support\Facades\Storage;
     use Illuminate\Validation\Rule;
     use Morilog\Jalali\CalendarUtils;
+    use Image;
 
 
     class GiftExamController extends Controller
@@ -83,9 +84,7 @@
             if ($request->hasFile('answersheet'))
             {
                 $answersheet = $request->file('answersheet');
-
                 Storage::disk('giftExam')->put($giftExam->id . '/answersheet', $answersheet);
-
                 $giftExam->answersheet = $answersheet->hashName();
 
                 $giftExam->update();
@@ -122,7 +121,6 @@
             $this->validate($request, ['title'             => 'required|string|max:20',
                                        'activeTime'        => 'required',
                                        'description'       => 'nullable|string|max:300',
-                                       'orientation_admin' => 'required',
                                        'answersheet'       => 'mimes:pdf|max:2000',
                                        'resultDate'        => 'required',
                                        'duration'          => 'required|integer|min:0',]);
@@ -151,9 +149,8 @@
             if ($request->hasFile('answersheet'))
             {
                 $answersheet = $request->file('answersheet');
-
+                Storage::disk('giftExam')->delete($giftExam->id . '/answersheet/'. $giftExam->answersheet);
                 Storage::disk('giftExam')->put($giftExam->id . '/answersheet', $answersheet);
-
                 $giftExam->answersheet = $answersheet->hashName();
 
             }
@@ -222,8 +219,8 @@
                 'optionTwo'    => 'required',
                 'optionOne'    => 'required',
                 'answer'       => ['required', Rule::in(['1', '2', '3', '4'])],
-                'photo'        => 'image|max:1000',
-                'answerImage'  => 'image|max:1000',
+                'photo'        => 'image|max:10000',
+                'answerImage'  => 'image|max:10000',
 
             ]);
 
@@ -247,21 +244,30 @@
             if ($request->hasFile('photo'))
             {
                 $photo = $request->file('photo');
-
                 Storage::disk('question')->put($question->id . '/photo', $photo);
-
                 $question->photo = $photo->hashName();
+                $path                     = public_path('storage/questions/'.$question->id.'/photo/'.$question->photo);
+                $resizeImage              = Image::make($path)->resize(700,700,function($constraint)
+                {
+                    $constraint->aspectRatio();
+                });
+                $resizeImage->save($path);
 
                 $question->update();
             }
 
+
             if ($request->hasFile('answerImage'))
             {
                 $answerImage = $request->file('answerImage');
-
                 Storage::disk('question')->put($question->id . '/answerImage', $answerImage);
-
                 $question->answerImage = $answerImage->hashName();
+                $path                     = public_path('storage/questions/'.$question->id.'/answerImage/'.$question->answerImage);
+                $resizeImage              = Image::make($path)->resize(700,700,function($constraint)
+                {
+                    $constraint->aspectRatio();
+                });
+                $resizeImage->save($path);
 
                 $question->update();
             }
@@ -305,8 +311,8 @@
                 'optionTwo'    => 'required',
                 'optionOne'    => 'required',
                 'answer'       => ['required', Rule::in(['1', '2', '3', '4'])],
-                'photo'        => 'image|max:1000',
-                'answerImage'  => 'image|max:1000',
+                'photo'        => 'image|max:10000',
+                'answerImage'  => 'image|max:10000',
 
             ]);
 
@@ -328,12 +334,15 @@
             if ($request->hasFile('photo'))
             {
                 $photo = $request->file('photo');
-
                 Storage::disk('question')->delete($question->id . '/photo/' . $question->photo);
-
                 Storage::disk('question')->put($question->id . '/photo', $photo);
-
                 $question->photo = $photo->hashName();
+                $path                     = public_path('storage/questions/'.$question->id.'/photo/'.$question->photo);
+                $resizeImage              = Image::make($path)->resize(700,700,function($constraint)
+                {
+                    $constraint->aspectRatio();
+                });
+                $resizeImage->save($path);
 
                 $question->update();
             }
@@ -342,12 +351,15 @@
             if ($request->hasFile('answerImage'))
             {
                 $answerImage = $request->file('answerImage');
-
                 Storage::disk('question')->delete($question->id . '/answerImage/' . $question->answerImage);
-
                 Storage::disk('question')->put($question->id . '/answerImage', $answerImage);
-
                 $question->answerImage = $answerImage->hashName();
+                $path                     = public_path('storage/questions/'.$question->id.'/answerImage/'.$question->answerImage);
+                $resizeImage              = Image::make($path)->resize(700,700,function($constraint)
+                {
+                    $constraint->aspectRatio();
+                });
+                $resizeImage->save($path);
 
                 $question->update();
             }

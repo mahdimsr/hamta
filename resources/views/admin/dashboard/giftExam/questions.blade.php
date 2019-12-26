@@ -23,7 +23,7 @@
                 <div dir="rtl" class="content ">
                     <div class="row">
                         <div class="col-md-3">
-                            <img class="image hover-bright" src="{{asset('image/admin/dashboard/exam.jpg')}}"
+                            <img class="image hover-bright" src="{{asset('image/admin/dashboard/gift-exam1.jpg')}}"
                                  width="100%" height="100%">
 
                         </div>
