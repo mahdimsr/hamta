@@ -22,7 +22,7 @@
 
         protected $table = 'student';
 
-        protected $appends = ['persian_birthday'];
+        protected $appends = ['persian_birthday','profileAvatar'];
 
         protected $casts
             = [
@@ -85,6 +85,12 @@
         {
 
             return $this->hasMany(Cart::class, 'studentId');
+        }
+
+        public function getProfileAvatarAttribute()
+        {
+            $url = asset('storage/students/'.$this->id.'/profileImage/'.$this->profileImage);
+            return $url;
         }
 
     }

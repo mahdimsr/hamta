@@ -20,8 +20,9 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                <form action="{{ route('student_dashboard_profile_Image') }}" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
                 <div class="modal-body">
-
 <div class="row">
 	<div class="col-md-5">
 		<div class="user-profile-profile">
@@ -31,18 +32,21 @@
 
 
 
-					<img style="border-radius: 100%; " id="blah" src="{{ asset('image/student/dashboard/user1.png') }}" alt="your image" width="150px" height="150px" />
-
+					<img style="border-radius: 100%; " id="blah" src="{{  $student->profileImage ? $student->profileAvatar : asset('image/student/dashboard/user1.png') }}" alt="your image" width="150px" height="150px" />
+                    <div class="invalid-feedback">
+                        <small>{{ $errors->first('profileImage')}}</small>
+                    </div>
 				</div>
 			</div>
 
 		</div>
-	</div>
+    </div>
+
 	<div class="col-md-5">
 		<div class="input-container">
-		<input type='file' id="upload" onchange="readURL(this);"  accept=" .jpg "/>
+		<input type='file' name="profileImage" id="upload" onchange="readURL(this);"  accept=" .jpg "/>
 		<label class="messages" for="upload">انتخاب کنید </label>
-		</div>
+        </div>
 	</div>
 </div>
 
@@ -50,12 +54,14 @@
                 </div>
                 <div class="modal-footer ">
 					<span>توجه شود که اندازه طول و عرض عکس انتخاب شده برابر باشد.
-						در کل اگر از انتخاب خود راضی هستید تایید را انتخاب کنید.</span>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">برگشت</button>
-                    <button type="submit" class="btn ">ثبت</button>
+					در کل اگر از انتخاب خود راضی هستید تایید را انتخاب نمایید.</span>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">بازگشت</button>
+                    <button type="submit" class="btn ">تایید</button>
                 </div>
+
             </div>
         </div>
+    </form>
     </div>
 
 
@@ -68,46 +74,48 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                <form action="{{ route('student_dashboard_profile_password') }}" method="POST">
+                    {{ csrf_field() }}
                 <div class="modal-body">
 					<div class="row">
 						<div class="col-md-4 col-right">
 							<div class="form-group">
-								<label>رمز عبور کنونی</label>
-								<input dir="rtl" name="oldpassword" type="password" class="form-control pass-radius " placeholder="تکرار رمز عبور را وارد نمایید" value="" tabindex="16">
-
+								<label>رمز عبور کنونی*</label>
+								<input dir="rtl" name="oldPassword" type="password" class="form-control pass-radius " placeholder="رمز عبور کنونی را وارد نمایید">
 								<div class="invalid-feedback">
-									<small></small>
+									<small>{{ $errors->first('oldPassword')}}</small>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-4 col-right">
 							<div class="form-group">
-								<label>رمز عبور جدید</label>
-								<input dir="rtl" name="newPassword" type="password" class="form-control pass-radius " placeholder="تکرار رمز عبور را وارد نمایید" value="" tabindex="16">
+								<label>رمز عبور جدید*</label>
+								<input dir="rtl" name="newPassword" type="password" class="form-control pass-radius " placeholder="تکرار رمز عبور را وارد نمایید">
 
 								<div class="invalid-feedback">
-									<small></small>
+									<small>{{ $errors->first('newPassword')}}</small>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-4 ">
 							<div class="form-group">
-								<label>تکرار رمز عبور جدید</label>
-								<input dir="rtl" name="newPassword_confirmation" type="password" class="form-control pass-radius" placeholder="رمز عبور جدید را وارد نمایید" value="" tabindex="17">
+								<label>تکرار رمز عبور جدید*</label>
+								<input dir="rtl" name="newPassword_confirmation" type="password" class="form-control pass-radius" placeholder="رمز عبور جدید را وارد نمایید">
 								<div class="invalid-feedback">
-									<small></small>
+									<small>{{ $errors->first('newPassword_confirmation')}}</small>
 								</div>
 							</div>
 						</div>
 					</div>
                 </div>
                 <div class="modal-footer ">
-					<span>	کاربر گرامی در صورتی که رمز عبور قدیمی خود را فراموش کرده اید. با
-						<a href="#">پشتیبانی</a>
+					<span>	کاربر گرامی در صورتی که رمز عبور کنونی خود را فراموش کرده اید با
+						پشتیبانی
 						تماس حاصل فرمایید.</span>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">بازگشت</button>
                     <button type="submit" class="btn btn-green">ثبت </button>
                 </div>
+                </form>
             </div>
         </div>
     </div>
@@ -173,8 +181,8 @@
 					<div class=" text-center ">
 
 
-							<h4 class="title">ویرایش<br/>
-								<small> تغییر عکس کاربری </small>
+							<h4 class="title">عکس پروفایل<br/>
+								<small> تغییر عکس پروفایل</small>
 							</h4>
 
 					</div>
@@ -556,5 +564,12 @@
             tags            : true,
             tokenSeparators : [',', ' ']
         })
+        @if ($errors->has('profileImage'))
+        $('#upload-image').modal('show');
+        @endif
+
+        @if ($errors->has('oldPassword') || $errors->has('newPassword') || $errors->has('newPassword_confirmation'))
+        $('#change-pass').modal('show');
+        @endif
 	</script>
 @endsection

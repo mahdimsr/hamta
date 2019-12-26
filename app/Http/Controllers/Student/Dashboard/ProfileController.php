@@ -13,6 +13,9 @@ use App\model\Orientation as Orientation;
 use Illuminate\Validation\Rule;
 use Morilog\Jalali\CalendarUtils;
 use App\Lib\Lib;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Image;
 
 
 class ProfileController extends Controller
@@ -125,5 +128,67 @@ class ProfileController extends Controller
 
 		return redirect()->route('student_dashboard_profile_form');
 
-	}
+    }
+
+    public function profileImage(Request $request)
+    {
+        $student = Auth::guard('student')->user();
+
+        $this->validate($request,
+        [
+            'profileImage' => 'image|max:10000'
+        ]
+        );
+
+        if ($request->hasFile('profileImage'))
+        {
+
+            if($student->profileImage)
+            {
+                Storage::disk('student')->delete($student->id . '/profileImage/' . $student->profileImage);
+            }
+
+            $profileImage = $request->file('profileImage');
+            Storage::disk('student')->put($student->id . '/profileImage', $profileImage);
+            $student->profileImage    = $profileImage->hashName();
+            $path                     = public_path('storage/students/'.$student->id.'/profileImage/'.$student->profileImage);
+            $resizeImage              = Image::make($path)->resize(200,200,function($constraint)
+            {
+                $constraint->aspectRatio();
+            });
+            $resizeImage->save($path);
+
+            $student->update();
+
+        }
+
+        return redirect()->route('student_dashboard_profile_form');
+    }
+
+    public function profilePassword(Request $request)
+    {
+        $student = Auth::guard('student')->user();
+
+        $this->validate($request,
+        [
+            'oldPassword'               => 'required',
+            'newPassword'               => 'required|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X]).*$/|min:6|confirmed',
+            'newPassword_confirmation'  => 'required',
+        ]
+        );
+
+        if (Hash::check($request->input('oldPassword'), $student->password))
+        {
+            $student->password = Hash::make($request->input('newPassword'));
+            $student->update();
+
+            return redirect()->route('student_dashboard_profile_form');
+        }
+
+        else
+        {
+            return redirect()->route('student_dashboard_profile_form')->withErrors(['oldPassword'=>'رمز عبور کنونی وارد شده صحیح نیست']);
+        }
+
+    }
 }
