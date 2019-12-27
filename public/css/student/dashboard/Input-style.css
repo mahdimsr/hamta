@@ -604,3 +604,6 @@ input[type="password"]:focus {
     border: 0;
     transition: all .2s ease;
 }
+.remaining-money{
+    margin-top: 15px;
+}
