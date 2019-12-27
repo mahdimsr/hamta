@@ -1,5 +1,8 @@
 @extends('layouts.student_dashboard')
 @section('style')
+    <link href="{{asset('css/student/dashboard/Input-style.css')}}" rel="stylesheet"/>
+    @endsection
+@section('style')
     <style>
         .errors-bg{
             margin: 10px 0;
