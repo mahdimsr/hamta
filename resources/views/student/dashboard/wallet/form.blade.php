@@ -62,15 +62,17 @@
                     <div class="header">
 
                         <h4 class="title">کیف پول</h4>
-                        <div class="remaining-money col-md-3">
+                        <div class="col-md-4 col-sm-4 remaining-money-media " style="float: right">
+                        <div class="remaining-money ">
                         <label>
                                 <i class="fas fa-money-check-alt"></i>
                             مبلغ کیف پول شما : {{ $student->wallet }} تومان</label>
                     </div>
+                        </div>
                 </div>
                     <div class="content ">
 
-                        <div class="content ">
+
 
                             <form action="{{ route('student_dashboard_wallet_charge') }}" method="POST" class="needs-validation" novalidate>
                                 {{ csrf_field() }}
@@ -126,7 +128,7 @@
                                 @endif
 
                             </form>
-                        </div>
+
                        </div>
                         </div>
                     </div>

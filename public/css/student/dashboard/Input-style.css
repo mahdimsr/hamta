@@ -484,6 +484,9 @@ input[type="password"]:focus {
     }
 }
 @media (max-width: 990px) {
+     .remaining-money-media {
+        display: contents!important;
+    }
     .user-profile-profile {
         transform: translate(-37%,-10%)!important;
 
@@ -606,4 +609,15 @@ input[type="password"]:focus {
 }
 .remaining-money{
     margin-top: 15px;
+    transition: 600ms;
+    background-color: #1DC7EA;
+    border-radius: 10px;
+    padding: 8px 8px 8px 8px ;
+margin-bottom: 15px;
+}
+.remaining-money label{
+    color: white!important;
+}
+.remaining-money:hover{
+    background-color: #296fea;
 }
