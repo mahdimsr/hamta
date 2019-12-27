@@ -302,7 +302,7 @@ $('#clock').countdown('2020/10/10', function(event) {
 
 //inpute file profile js
 
-function readURL(input) {
+function readURLProfile(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 

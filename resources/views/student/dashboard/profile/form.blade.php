@@ -44,7 +44,7 @@
 
 	<div class="col-md-5">
 		<div class="input-container">
-		<input type='file' name="profileImage" id="upload" onchange="readURL(this);"  accept=" .jpg "/>
+		<input type='file' name="profileImage" id="upload" onchange="readURLProfile(this);"  accept=" .jpg "/>
 		<label class="messages" for="upload">انتخاب کنید </label>
         </div>
 	</div>
