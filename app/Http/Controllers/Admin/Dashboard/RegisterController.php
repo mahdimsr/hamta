@@ -57,7 +57,7 @@ class RegisterController extends Controller
 				'level'          		      => 'required',
 				'fullName'       		      => 'required|string|max:30',
 				'username_admin'       	      => 'required|alpha_dash|unique:admin,username',
-				'password_admin'              => 'required|alpha_dash|size:9|confirmed',
+				'password_admin'              => 'required|alpha_dash|min:6|confirmed',
 				'password_admin_confirmation' => 'required',
 			]);
 
@@ -96,7 +96,7 @@ class RegisterController extends Controller
 			[
 				'fullName'       		      => 'required|string|max:30',
 				'username_admin'       		  => ['required', 'alpha_dash', Rule::unique('admin', 'username')->ignore($admin)],
-				'password_admin'       		  => ['nullable','alpha_dash','size:9','confirmed',Rule::requiredIf($request->input('password_admin_confirmation') != null)],
+				'password_admin'       		  => ['nullable','alpha_dash','min:6','confirmed',Rule::requiredIf($request->input('password_admin_confirmation') != null)],
 				'password_admin_confirmation' => ['nullable',Rule::requiredIf($request->input('password_admin') != null)],
 			]);
 
