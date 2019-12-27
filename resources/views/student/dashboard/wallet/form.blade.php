@@ -1,11 +1,9 @@
 @extends('layouts.student_dashboard')
 @section('style')
     <link href="{{asset('css/student/dashboard/Input-style.css')}}" rel="stylesheet"/>
-    @endsection
-@section('style')
     <style>
         .errors-bg{
-            margin: 10px 0;
+          margin: 10px 0;
           padding: 10px;
           border-radius: 3px 3px 3px 3px;
           color: #D8000C;
@@ -20,18 +18,6 @@
           background-color: #DFF2BF;
           font-size: 1.5rem
         }
-        .remaining-money{
-            background-color: #437FC9;
-            color: #fff;
-            border-radius: 25px 25px 25px 25px;
-            width: 40%;
-            float: none
-        }
-        .remaining-money label{
-            color: #fff;
-            padding: 5px
-        }
-
     </style>
 @endsection
 @section('content')

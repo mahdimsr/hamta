@@ -156,6 +156,11 @@
 @section('script')
     <script>
 
+    $(document).ready(function()
+    {
+        $('#charge-tab svg').removeClass('svg-hover-transaction');
+    });
+
     @if (Session::get('tab')=='purchase')
     $("#purchase-tab").tab('show');
     $('#purchase-tab svg').removeClass('svg-hover-transaction');

@@ -289,7 +289,7 @@ demo = {
 //     the_return.innerHTML = this.value;
 // });
 
-
+/*
 $('#clock').countdown('2020/10/10', function(event) {
     var $this = $(this).html(event.strftime(''
         + '<span>%w</span> weeks '
@@ -298,6 +298,7 @@ $('#clock').countdown('2020/10/10', function(event) {
         + '<span>%M</span> min '
         + '<span>%S</span> sec'));
 });
+*/
 
 //inpute file profile js
 
