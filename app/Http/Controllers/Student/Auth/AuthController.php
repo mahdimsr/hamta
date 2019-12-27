@@ -58,6 +58,7 @@ class AuthController extends Controller
 
 		if (Auth::guard('student')->attempt(['mobile'=> $request->input('mobile_email'),'password' => $request->input('password'),], $request->input('remember')))
 		{
+            $student=Auth::guard('student')->user();
 
 			if ($request->has('remember'))
 			{
@@ -71,7 +72,15 @@ class AuthController extends Controller
 				Cookie::queue('studentPass', '');
 			}
 
-			return redirect()->route('student_dashboard_home');
+            if($student->isComplete==0)
+            {
+                return redirect()->route('student_dashboard_profile_form');
+            }
+
+            else
+            {
+                return redirect()->route('student_dashboard_home');
+            }
 
         }
 
@@ -91,7 +100,15 @@ class AuthController extends Controller
 
             }
 
-            return redirect()->route('student_dashboard_home');
+            if($student->isComplete==0)
+            {
+                return redirect()->route('student_dashboard_profile_form');
+            }
+
+            else
+            {
+                return redirect()->route('student_dashboard_home');
+            }
 
         }
 

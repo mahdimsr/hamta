@@ -3,15 +3,20 @@
     <style>
         @media (min-width:992px){.s-floatL{float:left!important;}.s-floatR{float: right!important;}}
     </style>
-
     <link href="{{asset('css/student/dashboard/Input-style.css')}}" rel="stylesheet"/>
+@endsection
 
-    @endsection
-@section('script')
-    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    @endsection
 @section('content')
-
+@if($student->isComplete==0)
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div  class="card-empty">
+           <img src="{{ asset('image/student/dashboard/empty1.jpg') }}" height="100%" width="100%">
+            <p class="text-center">متاسفانه هنوز اطلاعات حساب کاربری خود را تکمیل نکرده اید. با مراجعه به بخش حساب کاربری اطلاعات ثبت نام خود را تکمیل نموده و دوباره امتحان نمایید.</p>
+        </div>
+    </div>
+</div>
+@else
     <div class="row" dir="rtl">
             <div class="col-md-3">
                     <div class="card ">
@@ -68,30 +73,21 @@
                                     <div  class="col-md-12 " style="float: none;">
 
                                         <div class="file-upload">
-                                            <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">عکس مورد نظر را انتخاب کنید</button>
+                                            <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">{{ $scholarship ? 'ویرایش عکس کارنامه' : 'بارگذاری عکس کارنامه'}}</button>
 
                                             <div class="image-upload-wrap">
-                                                <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+                                                <input class="file-upload-input" name="scholarshipImage" type='file' onchange="readURL(this);" accept="image/*" />
                                                 <div class="drag-text">
-                                                    <h3>همچنین میتوانید عکس خود را بکشید و اینجا رهایش کنید</h3>
+                                                    <h3>همچنین میتوانید عکس کارنامه را بکشید و اینجا رهایش کنید.</h3>
                                                 </div>
                                             </div>
                                             <div class="file-upload-content">
-                                                <img class="file-upload-image" src="#" alt="your image" />
+                                                <img class="file-upload-image" src="#" alt="عکس کارنامه" />
                                                 <div class="image-title-wrap">
-                                                    <button type="button" onclick="removeUpload()" class="remove-image">حذف <span class="image-title">Uploaded Image</span></button>
+                                                    <button type="button" onclick="removeUpload()" class="remove-image">حذف <span class="image-title">عکس مورد نظر</span></button>
                                                 </div>
                                             </div>
                                         </div>
-
-
-
-
-
-                                        {{--<div class="input-file-container">--}}
-                                            {{--<input class="input-file" id="my-file" type="file" name="scholarshipImage">--}}
-                                            {{--<label tabindex="2" for="my-file" class="input-file-trigger text-center">{{ $scholarship ? 'به روز رسانی عکس کارنامه' :'آپلود عکس کارنامه' }}</label>--}}
-                                        {{--</div>--}}
                                         <p class="file-return"></p>
                                         <div class="invalid-feedback">
                                             <small>{{ $errors->first('scholarshipImage') }}</small>
@@ -138,5 +134,8 @@
 
 
     </div>
+    @endif
 @endsection
-
+@section('script')
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+@endsection

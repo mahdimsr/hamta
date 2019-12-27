@@ -50,19 +50,14 @@
                </a>
         </div>
     </div>
-    <hr>
     <div class="tab-content">
         <div class="tab-pane active" id="charge" role="tabpanel">
 
 
                 @if($charges->isEmpty())
-                <div class="">
                     <div class="col-md-8 col-md-offset-2 ">
                     <img class="transaction-image" src="{{ asset('image/student/dashboard/no-order.jpg') }}" width="100%" height="100%">
-
                     </div>
-
-            </div>
                 @else
             <section class="factor row">
                 <div id="app">
@@ -103,12 +98,9 @@
         </div>
         <div class="tab-pane" id="purchase" role="tabpanel">
                 @if($purchases->isEmpty())
-                <div class="">
                         <div class="col-md-8 col-md-offset-2 ">
                             <img class="transaction-image-red" src="{{ asset('image/student/dashboard/no_orders.jpg') }}" width="100%" height="100%">
                         </div>
-
-                </div>
                 @else
             <section class="factor row">
                 <div id="app">

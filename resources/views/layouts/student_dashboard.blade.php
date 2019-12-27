@@ -592,7 +592,7 @@
 
 
                         <div class="">
-                            <p class="slider-par-money"> : باقیمانده کیف پول</p>
+                            <p class="slider-par-money"> : مبلغ کیف پول</p>
                         </div>
 
 

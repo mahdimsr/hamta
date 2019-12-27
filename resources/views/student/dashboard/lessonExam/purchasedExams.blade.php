@@ -10,7 +10,16 @@
 @endsection
 @section('content')
 
-
+@if(empty($purchasedExams))
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div  class="card-empty">
+           <img src="{{ asset('image/student/dashboard/empty1.jpg') }}" height="100%" width="100%">
+            <p class="text-center">شما هنوز آزمونی خریداری نکرده اید!</p>
+        </div>
+    </div>
+</div>
+@else
 <div class="jumbotron jumbotron-fluid" dir="rtl">
     <div class="container">
       <h4 class="display-4">
@@ -43,7 +52,7 @@
       @endforeach
   </div>
 
-
+@endif
 
 
 

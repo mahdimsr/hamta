@@ -66,7 +66,7 @@
                         <div class="remaining-money ">
                         <label>
                                 <i class="fas fa-money-check-alt"></i>
-                            مبلغ کیف پول شما : {{ $student->wallet }} تومان</label>
+                    مبلغ کیف پول : {{ $student->wallet }} تومان</label>
                     </div>
                         </div>
                 </div>

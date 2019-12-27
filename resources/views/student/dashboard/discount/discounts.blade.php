@@ -44,16 +44,16 @@
     </style>
 @endsection
 @section('content')
-    <div class="row">
-        <div class="col-md-5 col-md-offset-4">
-
-            <div  class="card-empty">
-               <img src="{{ asset('image/student/dashboard/empty1.jpg') }}" height="100%" width="100%">
-                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
-            </div>
+@if($studentDiscounts->isEmpty())
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div  class="card-empty">
+           <img src="{{ asset('image/student/dashboard/empty1.jpg') }}" height="100%" width="100%">
+            <p class="text-center">هنوز کد تخفیفی برای شما ثبت نشده است.</p>
         </div>
     </div>
-
+</div>
+@else
 <div class="row">
     <div class="col-md-12">
 
@@ -83,6 +83,7 @@
         </div>
     </div>
 </div>
+@endif
 @endsection
 
 

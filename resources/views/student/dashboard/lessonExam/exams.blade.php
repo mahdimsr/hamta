@@ -10,7 +10,16 @@
 @endsection
 @section('content')
 
-
+@if($student->isComplete==0)
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div  class="card-empty">
+           <img src="{{ asset('image/student/dashboard/empty1.jpg') }}" height="100%" width="100%">
+            <p class="text-center">متاسفانه هنوز اطلاعات حساب کاربری خود را تکمیل نکرده اید. با مراجعه به بخش حساب کاربری اطلاعات ثبت نام خود را تکمیل نموده و دوباره امتحان نمایید.</p>
+        </div>
+    </div>
+</div>
+@else
 <div class="jumbotron jumbotron-fluid" dir="rtl">
     <div class="container">
       <h4 class="display-4">
@@ -44,7 +53,7 @@
       @endif
       @endforeach
   </div>
-
+@endif
 
 
 
