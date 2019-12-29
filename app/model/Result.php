@@ -40,7 +40,7 @@
         public function getPersianCreatedAtAttribute()
         {
 
-            $date = Jalalian::fromCarbon($this->created_at)->format('%A, %d %B %y H:i:s');
+            $date = Jalalian::fromCarbon($this->created_at)->format('%A, %d %B %y');
 
             return $date;
         }

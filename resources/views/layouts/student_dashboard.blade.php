@@ -579,7 +579,7 @@
                                                 <span class="card-money-par"> تومان </span>
                                             </li>
                                             <li>
-                                                <span class="list-server-money"> {{ $student->wallet }}</span>
+                                                <span class="list-server-money"> {{ number_format($student->wallet) }}</span>
                                             </li>
                                         </ul>
                                         </a>
