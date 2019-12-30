@@ -104,7 +104,7 @@ class RegisterController extends Controller
 		$admin->username = $request->input('username_admin');
 		$admin->level    = $request->input('level');
 
-		if ($request->has('password'))
+		if ($request->has('password_admin'))
 		{
 			$admin->password = Hash::make($request->input('password_admin'));
 		}
