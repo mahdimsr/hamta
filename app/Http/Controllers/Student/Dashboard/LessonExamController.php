@@ -29,7 +29,7 @@
             $student     = Auth::guard('student')->user();
             $lessonExam  = LessonExam::query()->where('exm',$exm)->first();
 
-            if ($lessonExam && $student->isComplete==1)
+            if ($lessonExam && $student->isComplete==1 && $lessonExam->orientation()->id == $student->orientationId && $student->gradeId >= $lessonExam->grade()->id)
             {
                 return view('student.dashboard.lessonExam.details',compact('lessonExam'));
             }
@@ -47,7 +47,7 @@
             $student     = Auth::guard('student')->user();
             $lessonExam = LessonExam::query()->where('exm', $exm)->first();
 
-            if (!$lessonExam->hasInCart() && !$lessonExam->hasPurchased() && $student->isComplete==1)
+            if (!$lessonExam->hasInCart() && !$lessonExam->hasPurchased() && $student->isComplete==1 && $lessonExam->orientation()->id == $student->orientationId && $student->gradeId >= $lessonExam->grade()->id)
             {
                 $cart = new Cart();
                 $cart->lessonExamId = $lessonExam->id;
@@ -67,7 +67,7 @@
             $student    = Auth::guard('student')->user();
             $lessonExam = LessonExam::query()->where('exm', $exm)->first();
 
-            if($lessonExam && $lessonExam->hasPurchased() && !$lessonExam->hasUsed() && $student->isComplete==1)
+            if($lessonExam && $lessonExam->hasPurchased() && !$lessonExam->hasUsed() && $student->isComplete==1 && $lessonExam->orientation()->id == $student->orientationId && $student->gradeId >= $lessonExam->grade()->id)
             {
                 return view('student.dashboard.lessonExam.exam_questions', compact('student', 'lessonExam'));
             }
@@ -85,7 +85,7 @@
             $student    = Auth::guard('student')->user();
             $lessonExam = LessonExam::query()->where('exm', $exm)->first();
 
-            if($lessonExam && $lessonExam->hasPurchased() && !$lessonExam->hasUsed() && $student->isComplete==1)
+            if($lessonExam && $lessonExam->hasPurchased() && !$lessonExam->hasUsed() && $student->isComplete==1 && $lessonExam->orientation()->id == $student->orientationId && $student->gradeId >= $lessonExam->grade()->id)
             {
                 $correctAnswers= 0;
                 $wrongAnswers  = 0;
