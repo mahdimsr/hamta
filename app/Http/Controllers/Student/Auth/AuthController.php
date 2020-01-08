@@ -127,7 +127,7 @@ class AuthController extends Controller
         $this->validate($request,
         [
             'student_mobile'                 => ['required','digits:11','regex:/^(\+98|0)?9\d{9}$/','unique:student,mobile'],
-            'password_register'              => 'required|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X]).*$/|min:6|confirmed',
+            'password_register'              => 'required|min:6|confirmed',
             'password_register_confirmation' => 'required',
         ]
         );

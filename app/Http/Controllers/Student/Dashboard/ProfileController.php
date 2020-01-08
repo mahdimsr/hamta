@@ -172,7 +172,7 @@ class ProfileController extends Controller
         $this->validate($request,
         [
             'oldPassword'               => 'required',
-            'newPassword'               => 'required|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X]).*$/|min:6|confirmed',
+            'newPassword'               => 'required|min:6|confirmed',
             'newPassword_confirmation'  => 'required',
         ]
         );

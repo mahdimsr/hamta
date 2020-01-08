@@ -32,18 +32,6 @@ use Illuminate\Support\ServiceProvider;
         public function boot()
         {
 
-            //
-            view()->composer('*', function($view)
-            {
-                $view->with('adminUser', Auth::guard('admin')->user());
-            });
-
-            view()->composer('*', function($view)
-            {
-                $view->with('student', Auth::guard('student')->user());
-            });
-
-
             view()->composer('*', function($view)
             {
                 $authId             = Auth::guard('student')->id();
@@ -64,6 +52,17 @@ use Illuminate\Support\ServiceProvider;
                 $view->with('discountNumbers', $discountNumbers);
                 $view->with('scholarship', $scholarship);
                 $view->with('examNumbers', count($purchasedExams));
+
+                if (Auth::guard('student')->check())
+                {
+                    $view->with('student', Auth::guard('student')->user());
+                }
+
+                if (Auth::guard('admin')->check())
+                {
+                    $view->with('adminUser', Auth::guard('admin')->user());
+                }
+
             });
 
         }

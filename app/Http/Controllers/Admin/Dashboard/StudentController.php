@@ -63,7 +63,7 @@
                                        'address_admin'      => 'required|string|max:200',
                                        'orientation_admin'  => 'required|exists:orientation,id',
                                        'grade_admin'        => 'required|exists:grade,id',
-                                       'school_admin'       => 'required',
+                                       'school_admin'       => 'nullable',
                                        'averageUp_admin'    => 'required|digits_between:1,2|min:5|max:20|numeric',
                                        'averageDown_admin'  => 'required|digits:2|min:00|max:99|numeric',
                                        'telePhone_admin'    => 'nullable|digits:8',
