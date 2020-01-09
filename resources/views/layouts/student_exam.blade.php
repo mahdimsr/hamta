@@ -445,7 +445,7 @@
                         <div class="avatar" >
                             <div class="uploadOverlay"><img class="image-s"  src="{{ asset('image/student/dashboard/edit.png') }}"></div>
 
-                            <img style="display: inline;" src="{{ asset('image/student/dashboard/user1.png') }}" alt="">
+                            <img style="display: inline;" src="{{ $student->profileImage ? $student->profileAvatar : asset('image/student/dashboard/user1.png') }}" alt="">
 
                         </div>
                     </div>
