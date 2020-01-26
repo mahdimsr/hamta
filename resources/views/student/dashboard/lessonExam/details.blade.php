@@ -92,8 +92,8 @@
                                     <h2>{{ $lessonExam->exm }} پاسخنامه آزمون </h2>
                                 </header>
                                 <div class="content">
-                                    <div class="red-bg">{{$lessonExam->result()->correctAnswers  }}</div>
-                                    <div class="green-bg">{{ count($lessonExam->questionExams) }}</div>
+                                    <div class="red-bg" data-toggle="tooltip" data-placement="right" title="تعداد پاسخ های درست">{{$lessonExam->result()->correctAnswers  }}</div>
+                                    <div class="green-bg data-toggle="tooltip" data-placement="right" title="تعداد کل سوالات"">{{ count($lessonExam->questionExams) }}</div>
                                     <div class="main-bg">
                                         <ul>
                                             <li>
@@ -118,8 +118,8 @@
 
                                         </ul>
                                     </div>
-                                    <div class="yellow-bg">{{$lessonExam->result()->wrongAnswers  }}</div>
-                                    <div class="blue-bg">{{$lessonExam->result()->blankAnswers  }}</div>
+                                    <div class="yellow-bg" data-toggle="tooltip" data-placement="right" title="تعداد پاسخ های اشتباه">{{$lessonExam->result()->wrongAnswers  }}</div>
+                                    <div class="blue-bg" data-toggle="tooltip" data-placement="right" title="تعداد سوال های بدون جواب">{{$lessonExam->result()->blankAnswers  }}</div>
                                 </div>
                                 <footer class="modal-footer">
                                     <a class="action" href="{{ route('student_dashboard_lessonExams_downloadAnswersheet',['exm'=>$lessonExam->exm]) }}" target="_blank">فایل پیوست پاسخنامه</a>

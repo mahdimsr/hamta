@@ -25,12 +25,14 @@
 @section('content')
 @if(!$cart->isEmpty())
 @foreach($cart as $item)
+
 <section class="card-content">
 <div class="card" dir="rtl">
     <div class="card-body">
-        <div class="header row">
+        <div class="row">
+        
       <h5 class="card-title">{{ $item->lessonExam->title }}</h5>
-        </div>
+       
         <img class="hampa-logo" src="{{ asset('image/logo/logo.png') }}" dir="ltr" >
 
      <hr class="card-hr">
@@ -46,9 +48,15 @@
     <div class="cancel-icon">
      <a href="{{ route('student_dashboard_cart_remove',['id'=> $item->id]) }}"><i class="fas fa-window-close"></i></a>
     </div>
+
+</div>
     </div>
 </div>
 </section>
+
+
+          
+      
 @endforeach
 <section class="form-content">
 <form action="" dir="rtl" method="post">
