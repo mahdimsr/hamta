@@ -14,8 +14,8 @@
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <div  class="card-empty">
-           <img src="{{ asset('image/student/dashboard/empty1.jpg') }}" height="100%" width="100%">
-            <p class="text-center">شما هنوز آزمونی خریداری نکرده اید!</p>
+           <img src="{{ asset('image/student/dashboard/empty12.jpg') }}" height="100%" width="100%">
+            <p class="text-center empty-text">شما هنوز آزمونی خریداری نکرده اید!</p>
         </div>
     </div>
 </div>

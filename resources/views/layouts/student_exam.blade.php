@@ -559,21 +559,7 @@
                 </div>
                 <hr id="sidebar-hr">
 
-                <ul style="position: absolute; bottom: 30px; ">
-                <div class="col-md-6">
-                        <button  class="button-end" data-toggle="modal" data-target="#end-modal"  >اتمام</button>
-
-
-
-
-                </div>
-                <div class="col-md-6">
-                        <button class="button-perv" data-toggle="modal" data-target="#perv-modal"  >بازگشت</button>
-
-
-
-                </div>
-                </ul>
+                
 
 
 
