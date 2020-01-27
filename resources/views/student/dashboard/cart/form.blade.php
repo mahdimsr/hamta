@@ -30,9 +30,9 @@
 <div class="card" dir="rtl">
     <div class="card-body">
         <div class="row">
-        
+
       <h5 class="card-title">{{ $item->lessonExam->title }}</h5>
-       
+
         <img class="hampa-logo" src="{{ asset('image/logo/logo.png') }}" dir="ltr" >
 
      <hr class="card-hr">
@@ -42,7 +42,7 @@
     </ul>
     <ul class="price">
         <li class="price-item">قیمت :</li>
-        <li class="price-item">{{ $item->lessonExam->price }}<span> تومان </span></li>
+        <li class="price-item">{{ number_format($item->lessonExam->price) }}<span> تومان </span></li>
       </ul>
      <hr class="card-hr">
     <div class="cancel-icon">
@@ -55,8 +55,8 @@
 </section>
 
 
-          
-      
+
+
 @endforeach
 <section class="form-content">
 <form action="" dir="rtl" method="post">
@@ -78,7 +78,7 @@
 
           <ul class="form-price">
               <li class="form-price-item">قیمت :</li>
-              <li class="form-price-item-p">{{ $price }}<span> تومان </span></li>
+              <li class="form-price-item-p">{{ number_format($price) }}<span> تومان </span></li>
           </ul>
           <ul class="form-price-with">
                 <li class="form-price-with-item">قیمت با اعمال کد تخفیف :</li>
@@ -184,7 +184,7 @@
 
                     discountError.innerText = result.successMessage;
                     discountPrice = price * ((100 - result.discountCode.value) / 100);
-                    finalPrice.innerText = discountPrice + ' تومان ' ;
+                    finalPrice.innerText = discountPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + ' تومان ' ;
 
                     if(wallet > discountPrice && wallet < price)
                     {
