@@ -19,6 +19,7 @@
                     @foreach($lessonExam->lessons() as $lesson)
                     {{$lesson->title}}
                     @endforeach
+                    
                 </li>
                 <li class="header-item" dir="ltr">
                         <i class="fas fa-calendar-week"></i>

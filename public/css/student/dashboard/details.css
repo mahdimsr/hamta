@@ -3,7 +3,7 @@
     background-size: cover;
     position: absolute;
 
-    overflow: hidden;
+    overflow: auto;
     z-index: 1;
 }
 
@@ -60,7 +60,7 @@ h3.exam-title {
 }
 
 .header {
-    display: flex;
+    /* display: flex; */
     font-size: 19px;
 }
 
@@ -70,11 +70,14 @@ ul.header {
 
 .header-item-title {
     color: gray;
+    font-size: 13px;
+    margin-left: 7%;
 }
 
 .header-item {
     position: absolute;
     left: 7%;
+
 }
 
 ul.lead {

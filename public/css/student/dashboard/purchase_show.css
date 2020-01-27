@@ -195,4 +195,13 @@ li.form-price-item-p {
         margin-top: 20px;
         
     }
+    section.form-content {
+        margin: 0;
+        width: 100%;
+    }
+    section.form-content {
+        padding-right: 0px;
+        padding-left: 0px;
+     
+    }
   }
