@@ -2,6 +2,8 @@
 <html lang="per" >
 <head>
   <title>همپا | ثبت نام دانش آموزان</title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
   <link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
@@ -92,7 +94,7 @@
 
                   <!-- Body -->
                   <div class="md-form md-outline">
-                    <input type="text" id="orangeForm-name" class="form-control " maxlength="11"  name="student_mobile" value="{{old('student_mobile')}}">
+                    <input  type="text" id="orangeForm-name" class="form-control " maxlength="11"  name="student_mobile" value="{{old('student_mobile')}}">
                     <label for="orangeForm-name">شماره تلفن همراه</label>
                     <small class="text-danger font-weight-bold">{{$errors->first('student_mobile')}}</small>
 
