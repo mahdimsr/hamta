@@ -201,3 +201,16 @@ transform: scaleX(1);
 .md-form.md-outline .form-control {
     padding: .8rem 0.33rem;
 }
+/* sina style 1/27/2020 */
+.navbar-login{
+    background-color: #1a78c25c;
+    
+}
+.footer-login{
+    background-color: #32628dde;
+}
+@media(min-width:350px) and (max-width:900px){
+    .row-login{
+        margin-top: 70px;
+    }
+}

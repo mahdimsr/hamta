@@ -4,6 +4,9 @@
   <title> همپا | ورود دانش آموزان</title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
+
   <link rel='stylesheet' type='text/css' media='screen' href="{{asset('fonts/font.css')}}">
   <link href="{{asset('css/student/auth/bootstrap.min.css')}}" rel="stylesheet">
   <link rel="icon" href="{{asset('favicon.png')}}" type="image/png">
@@ -21,6 +24,9 @@
       height: 100%;
 
 
+    }
+    .md-form.md-outline.label-far label.active {
+    right: -25px!important;
     }
     /* @media (min-width: 560px) and (max-width: 740px) {
       html,
@@ -44,7 +50,7 @@
 </head>
 <body>
 
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar navbar-login">
                 <div class="container">
                   <a class="navbar-brand" href="{{ route('student_login_form') }}"><strong>همپا | دانش آموزان</strong></a>
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7"
@@ -75,7 +81,7 @@
       <div class="mask rgba-stylish-strong  h-100 d-flex justify-content-center align-items-center">
         <div class="container">
 
-          <div class="row">
+          <div class="row row-login">
             <div class="col-xl-5 col-lg-6 col-md-10 col-sm-12 mx-auto mt-5">
 
               <!-- Form with header -->
@@ -89,9 +95,9 @@
                   </div>
 
                   <!-- Body -->
-                  <div class="md-form md-outline">
+                  <div class="md-form md-outline label-far">
                     <input type="text" id="orangeForm-name" class="form-control "  name="mobile_email" value="{{ $studentInfo ? $studentInfo : old('mobile_email') }}">
-                    <label for="orangeForm-name">تلفن همراه یا پست الکترونیکی</label>
+                    <label  for="orangeForm-name">تلفن همراه یا پست الکترونیکی</label>
                     <small class="text-danger font-weight-bold">{{$errors->first('mobile_email')}}</small>
 
                   </div>
@@ -186,7 +192,7 @@
                         </section>
 
 <!-- Footer -->
-<footer class="page-footer font-small blue">
+<footer class="page-footer font-small footer-login">
 
   <!-- Copyright -->
   <div class="footer-copyright text-center py-3">
