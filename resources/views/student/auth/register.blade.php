@@ -50,7 +50,7 @@
 
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar navbar-login">
             <div class="container">
               <a class="navbar-brand" href="{{ route('student_register_form') }}"><strong>همپا | دانش آموزان</strong></a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7"
@@ -141,7 +141,7 @@
     </section>
 
 <!-- Footer -->
-<footer class="page-footer font-small blue">
+<footer class="page-footer font-small footer-login">
 
   <!-- Copyright -->
   <div class="footer-copyright text-center py-3">
