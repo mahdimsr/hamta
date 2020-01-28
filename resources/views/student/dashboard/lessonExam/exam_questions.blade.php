@@ -115,8 +115,32 @@ img {
   width: 100%;
   height: 100%;
 }
-
-
+@media (max-width:900px) and (min-width:600px){
+.timer--clock{
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    display: -webkit-box;
+    left:0% !important;
+}
+.timer--clock .clock-display-grp{
+    width:10% !important;
+}
+.timer--clock .clock-separator{
+    float: none !important;
+}
+}
+@media (max-width:600px) and (min-width:400px){
+    .timer--clock{
+        margin-left: 135px;
+        left:0% !important;
+    }
+}
+@media (max-width:400px){
+    .timer--clock{
+        margin-left: 81px;
+        left:0% !important;
+    }
+}
 </style>
 
 
@@ -130,8 +154,7 @@ img {
 <div class="card  card-invs">
             <div class="card-examDn">    
             
-<div class="row">
-<div class="col-md-5 offset-md-3">
+
     
             <div class="timer timer-num2">
                     <div class="timer--clock">
@@ -203,11 +226,30 @@ img {
            
 
             </div>
-</div>  
-</div> 
+
 </div>
 {{-- modal-erea starts --}}
 
+<div class="modal fade" id="end-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div dir="rtl" class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">توجه!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+         <p>  در صورت انتخاب این گزینه آزمون شما اتمام یافته فرض می شود و دیگر قابل تکرار یا بازگشت نمی باشد.</p>
+           <p> آیا مطمئن هستید؟</p>
+            </div>
+            <div class="modal-footer ">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">خیر</button>
+                <button type="submit" class="btn btn-green">بله مطمئنم</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="modal fade" id="perv-modal" tabindex="1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div dir="rtl" class="modal-dialog modal-dialog-centered" role="document">
@@ -382,26 +424,7 @@ img {
 
             
 
-            <div class="modal fade" id="end-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div dir="rtl" class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">توجه!</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-         <p>  در صورت انتخاب این گزینه آزمون شما اتمام یافته فرض می شود و دیگر قابل تکرار یا بازگشت نمی باشد.</p>
-           <p> آیا مطمئن هستید؟</p>
-            </div>
-            <div class="modal-footer ">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">خیر</button>
-                <button type="submit" class="btn btn-green">بله مطمئنم</button>
-            </div>
-        </div>
-    </div>
-</div>
+
             <button  class="button-end" data-toggle="modal" data-target="#end-modal"  >اتمام</button>
 
             </div>
