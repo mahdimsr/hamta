@@ -463,8 +463,8 @@ input[type="password"]:focus {
     border-color: #00bafa!important;
 }
 .modal-footer span{
-    float: right;
-    text-align: right;
+    
+    text-align: right !important;
     direction: rtl;
     width: 300px;
     color: #707070;
@@ -483,7 +483,7 @@ input[type="password"]:focus {
         float: left!important;
     }
 }
-@media (max-width: 990px) {
+@media (min-width: 601px ) and (max-width: 990px) {
      .remaining-money-media {
         display: contents!important;
     }
@@ -491,6 +491,35 @@ input[type="password"]:focus {
         transform: translate(-37%,-10%)!important;
 
     }
+
+}
+@media (min-width: 400px ) and (max-width: 600px) {
+    .remaining-money-media {
+        display: contents!important;
+    }
+   .user-profile-profile {
+       transform: translate(-28%,-10%)!important;
+
+   }
+
+}
+@media (max-width: 400px) {
+    .remaining-money-media {
+        display: contents!important;
+    }
+   .user-profile-profile {
+       transform: translate(-18%,-10%)!important;
+
+   }
+   .btn-responsive button{
+       margin-top: 10px;
+   }
+   .btn-1{
+       float: right !important;
+   }
+   .btn-2{
+       float: left !important;
+   }
 
 }
 

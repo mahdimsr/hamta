@@ -55,8 +55,10 @@
                 <div class="modal-footer ">
 					<span>توجه شود که اندازه طول و عرض عکس انتخاب شده برابر باشد.
 					در کل اگر از انتخاب خود راضی هستید تایید را انتخاب نمایید.</span>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">بازگشت</button>
-                    <button type="submit" class="btn ">تایید</button>
+					<div class="btn-responsive">
+					<button type="submit" class="btn btn-1 ">تایید</button>
+                    <button type="button" class="btn btn-2 btn-secondary" data-dismiss="modal">بازگشت</button>
+					</div>
                 </div>
 
             </div>
@@ -112,8 +114,10 @@
 					<span>	کاربر گرامی در صورتی که رمز عبور کنونی خود را فراموش کرده اید با
 						پشتیبانی
 						تماس حاصل فرمایید.</span>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">بازگشت</button>
-                    <button type="submit" class="btn btn-green">ثبت </button>
+						<div class="btn-responsive">
+					<button type="submit" class="btn btn-1 btn-green">ثبت </button>
+                    <button type="button" class="btn btn-2 btn-secondary" data-dismiss="modal">بازگشت</button>
+						</div>
                 </div>
                 </form>
             </div>

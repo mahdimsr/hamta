@@ -422,7 +422,7 @@ ul.list-server-money{
     padding: 10px 30px 9px 30px;
     background: linear-gradient(280deg, rgba(63, 255, 236, 0.52) 10%, rgb(161, 202, 255) 92%);
     transition: 1s;
-    margin-right: 40px;
+    
 }
 
 .button-end:hover{
@@ -544,10 +544,17 @@ padding: 20px;
     background-color: aliceblue!important;
 
 }
-.modal-footer{
-    text-align: left!important;
-    background-color: aliceblue!important;
+@media (min-width:400px){
+    .modal-footer{
+        
+        text-align: left!important;
+        background-color: aliceblue!important;
+    }
+    .modal-footer span{
+        float: right !important;
+    }
 }
+
 .modal-title{
     display: contents!important;
 }
@@ -588,4 +595,29 @@ padding: 20px;
     font-size: 15px;
     font-weight: 300;
     color: black;
+}
+/* sina exam question 1/27/2020 */
+.card-examDn{
+    background-color: #eff8ff !important;
+    border-radius: 6px !important;
+    padding: 30px;
+}
+@media (min-width:306px){
+    .button-end{
+        float: right !important;
+    }
+  
+}
+@media (max-width:400px){
+   .card-examDn{
+    padding: 10px !important;
+   }
+}
+@media (min-width:950px){
+    .timer-num2{
+        display: none !important;
+    }
+    .card-invs{
+        display: none !important;
+    }
 }

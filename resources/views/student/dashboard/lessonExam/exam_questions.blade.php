@@ -2,6 +2,13 @@
 @section('style')
 <style>
 
+
+
+
+
+
+
+
 img {
   display: block;
 }
@@ -108,17 +115,121 @@ img {
   width: 100%;
   height: 100%;
 }
-
-
+@media (max-width:900px) and (min-width:600px){
+.timer--clock{
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    display: -webkit-box;
+    left:0% !important;
+}
+.timer--clock .clock-display-grp{
+    width:10% !important;
+}
+.timer--clock .clock-separator{
+    float: none !important;
+}
+}
+@media (max-width:600px) and (min-width:400px){
+    .timer--clock{
+        margin-left: 135px;
+        left:0% !important;
+    }
+}
+@media (max-width:400px){
+    .timer--clock{
+        margin-left: 81px;
+        left:0% !important;
+    }
+}
 </style>
 
 
 @endsection
 @section('content')
+
+
+
 <form id="form" action="{{ route('student_dashboard_lessonExams_result',['exm' => $lessonExam->exm]) }}" method="POST">
 {{ csrf_field() }}
+<div class="card  card-invs">
+            <div class="card-examDn">    
+            
 
+    
+            <div class="timer timer-num2">
+                    <div class="timer--clock">
+                        <div class="minutes-group clock-display-grp">
+                            <div class="first number-grp">
+                                <div class="number-grp-wrp">
+                                    <div class="num num-0"><p>0</p></div>
+                                    <div class="num num-1"><p>1</p></div>
+                                    <div class="num num-2"><p>2</p></div>
+                                    <div class="num num-3"><p>3</p></div>
+                                    <div class="num num-4"><p>4</p></div>
+                                    <div class="num num-5"><p>5</p></div>
+                                    <div class="num num-6"><p>6</p></div>
+                                    <div class="num num-7"><p>7</p></div>
+                                    <div class="num num-8"><p>8</p></div>
+                                    <div class="num num-9"><p>9</p></div>
+                                </div>
+                            </div>
+                            <div class="second number-grp">
+                                <div class="number-grp-wrp">
+                                    <div class="num num-0"><p>0</p></div>
+                                    <div class="num num-1"><p>1</p></div>
+                                    <div class="num num-2"><p>2</p></div>
+                                    <div class="num num-3"><p>3</p></div>
+                                    <div class="num num-4"><p>4</p></div>
+                                    <div class="num num-5"><p>5</p></div>
+                                    <div class="num num-6"><p>6</p></div>
+                                    <div class="num num-7"><p>7</p></div>
+                                    <div class="num num-8"><p>8</p></div>
+                                    <div class="num num-9"><p>9</p></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clock-separator"><p>:</p></div>
+                        <div class="seconds-group clock-display-grp">
+                            <div class="first number-grp">
+                                <div class="number-grp-wrp">
+                                    <div class="num num-0"><p>0</p></div>
+                                    <div class="num num-1"><p>1</p></div>
+                                    <div class="num num-2"><p>2</p></div>
+                                    <div class="num num-3"><p>3</p></div>
+                                    <div class="num num-4"><p>4</p></div>
+                                    <div class="num num-5"><p>5</p></div>
+                                    <div class="num num-6"><p>6</p></div>
+                                    <div class="num num-7"><p>7</p></div>
+                                    <div class="num num-8"><p>8</p></div>
+                                    <div class="num num-9"><p>9</p></div>
+                                </div>
+                            </div>
+                            <div class="second number-grp">
+                                <div class="number-grp-wrp">
+                                    <div class="num num-0"><p>0</p></div>
+                                    <div class="num num-1"><p>1</p></div>
+                                    <div class="num num-2"><p>2</p></div>
+                                    <div class="num num-3"><p>3</p></div>
+                                    <div class="num num-4"><p>4</p></div>
+                                    <div class="num num-5"><p>5</p></div>
+                                    <div class="num num-6"><p>6</p></div>
+                                    <div class="num num-7"><p>7</p></div>
+                                    <div class="num num-8"><p>8</p></div>
+                                    <div class="num num-9"><p>9</p></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+           
+
+            </div>
+
+</div>
 {{-- modal-erea starts --}}
+
 <div class="modal fade" id="end-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div dir="rtl" class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -302,10 +413,23 @@ img {
 
     </div>
 </div>
+
 @endif
 
 @endforeach
+<div class="card">
+            <div class="card-examDn">    
+            <button class="button-perv" data-toggle="modal" data-target="#perv-modal"  >بازگشت</button>
 
+
+            
+
+
+            <button  class="button-end" data-toggle="modal" data-target="#end-modal"  >اتمام</button>
+
+            </div>
+                
+</div>
 
 </div>
 
