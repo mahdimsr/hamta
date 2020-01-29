@@ -195,7 +195,7 @@
 <footer class="page-footer font-small footer-login">
 
   <!-- Copyright -->
-  <div  class="footer-copyright text-center py-3" style="white-space:nowrap">
+  <div  class="footer-copyright text-center py-3" style="white-space:nowrap;">
     .تمامی حقوق مادی و معنوی این وب سایت متعلق به شرکت کاروفن گسترآراد می باشد
   </div>
   <!-- Copyright -->
