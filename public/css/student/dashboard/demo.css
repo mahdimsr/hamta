@@ -544,7 +544,17 @@ padding: 20px;
     background-color: aliceblue!important;
 
 }
+.modal-footer{
+        
+   
+    background-color: aliceblue!important;
+}
 @media (min-width:400px){
+
+    .btn-responsive {
+        margin-top: 10px;
+        float: left !important;
+    }
     .modal-footer{
         
         text-align: left!important;

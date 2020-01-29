@@ -115,7 +115,7 @@ img {
   width: 100%;
   height: 100%;
 }
-@media (max-width:900px) and (min-width:600px){
+@media (max-width:950px) and (min-width:600px){
 .timer--clock{
     -webkit-box-align: center;
     -webkit-box-pack: center;
@@ -123,13 +123,19 @@ img {
     left:0% !important;
 }
 .timer--clock .clock-display-grp{
-    width:10% !important;
+    width: 5em !important;
 }
 .timer--clock .clock-separator{
     float: none !important;
 }
 }
-@media (max-width:600px) and (min-width:400px){
+@media (max-width:600px) and (min-width:500px){
+    .timer--clock{
+        margin-left: 173px;
+        left:0% !important;
+    }
+}
+@media (max-width:500px) and (min-width:400px){
     .timer--clock{
         margin-left: 135px;
         left:0% !important;
@@ -140,6 +146,9 @@ img {
         margin-left: 81px;
         left:0% !important;
     }
+}
+.card-invs .card-examDn{
+    padding: 0px !important;
 }
 </style>
 
