@@ -152,10 +152,10 @@ img {
 <form id="form" action="{{ route('student_dashboard_lessonExams_result',['exm' => $lessonExam->exm]) }}" method="POST">
 {{ csrf_field() }}
 <div class="card  card-invs">
-            <div class="card-examDn">    
-            
+            <div class="card-examDn">
 
-    
+
+
             <div class="timer timer-num2">
                     <div class="timer--clock">
                         <div class="minutes-group clock-display-grp">
@@ -223,7 +223,7 @@ img {
 
                 </div>
 
-           
+
 
             </div>
 
@@ -417,23 +417,23 @@ img {
 @endif
 
 @endforeach
-<div class="card">
-            <div class="card-examDn">    
-            <button class="button-perv" data-toggle="modal" data-target="#perv-modal"  >بازگشت</button>
-
-
-            
-
-
-            <button  class="button-end" data-toggle="modal" data-target="#end-modal"  >اتمام</button>
-
-            </div>
-                
-</div>
 
 </div>
 
 </form>
+<div class="card">
+    <div class="card-examDn">
+    <button class="button-perv" data-toggle="modal" data-target="#perv-modal"  >بازگشت</button>
+
+
+
+
+
+    <button  class="button-end" data-toggle="modal" data-target="#end-modal"  >اتمام</button>
+
+    </div>
+
+</div>
 @endsection
 
 

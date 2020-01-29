@@ -559,7 +559,7 @@
                 </div>
                 <hr id="sidebar-hr">
 
-                
+
 
 
 
@@ -675,9 +675,11 @@
     TweenLite.defaultEase = Expo.easeOut;
 
     initTimer("{{ $lessonExam->duration }}:00"); // other ways --> "0:15" "03:5" "5:2"
+    initTimer1("{{ $lessonExam->duration }}:00"); // other ways --> "0:15" "03:5" "5:2"
 
     var reloadBtn = document.querySelector('.reload');
     var timerEl = document.querySelector('.timer');
+    var timerE2 = document.querySelector('.timer-num2');
 
     function initTimer (t) {
 
@@ -753,10 +755,85 @@
 
     }
 
+    function initTimer1 (t) {
+
+        var self = this,
+            timerE2 = document.querySelector('.timer-num2'),
+            minutesGroupE2 = timerE2.querySelector('.minutes-group'),
+            secondsGroupE2 = timerE2.querySelector('.seconds-group'),
+
+            minutesGroup = {
+                firstNum: minutesGroupE2.querySelector('.first'),
+                secondNum: minutesGroupE2.querySelector('.second')
+            },
+
+            secondsGroup = {
+                firstNum: secondsGroupE2.querySelector('.first'),
+                secondNum: secondsGroupE2.querySelector('.second')
+            };
+
+        var time = {
+            min: t.split(':')[0],
+            sec: t.split(':')[1]
+        };
+
+        var timeNumbers;
+
+        function updateTimer() {
+
+            var timestr;
+            var date = new Date();
+
+            date.setHours(0);
+            date.setMinutes(time.min);
+            date.setSeconds(time.sec);
+
+            var newDate = new Date(date.valueOf() - 1000);
+            var temp = newDate.toTimeString().split(" ");
+            var tempsplit = temp[0].split(':');
+
+            time.min = tempsplit[1];
+            time.sec = tempsplit[2];
+
+            timestr = time.min + time.sec;
+            timeNumbers = timestr.split('');
+            updateTimerDisplay(timeNumbers);
+
+//      if(timestr === '0000')
+//         countdownFinished();
+
+            if(timestr != '0000')
+                setTimeout(updateTimer, 1000);
+
+        }
+
+        function updateTimerDisplay(arr) {
+
+            animateNum(minutesGroup.firstNum, arr[0]);
+            animateNum(minutesGroup.secondNum, arr[1]);
+            animateNum(secondsGroup.firstNum, arr[2]);
+            animateNum(secondsGroup.secondNum, arr[3]);
+
+        }
+
+        function animateNum (group, arrayValue) {
+
+            TweenMax.killTweensOf(group.querySelector('.number-grp-wrp'));
+            TweenMax.to(group.querySelector('.number-grp-wrp'), 1, {
+                y: - group.querySelector('.num-' + arrayValue).offsetTop
+            });
+
+        }
+
+        setTimeout(updateTimer, 1000);
+
+    }
+
     function countdownFinished() {
         setTimeout(function () {
             TweenMax.set(reloadBtn, { scale: 0.8, display: 'block' });
             TweenMax.to(timerEl, 1, { opacity: 0.2 });
+            TweenMax.to(timerE2, 1, { opacity: 0.2 });
             TweenMax.to(reloadBtn, 0.5, { scale: 1, opacity: 1 });
         }, 1000);
         document.getElementById('form').submit();
@@ -769,6 +846,7 @@
             }
         });
         TweenMax.to(timerEl, 1, { opacity: 1 });
+        TweenMax.to(timerE2, 1, { opacity: 1 });
         initTimer("00:05");
     });
 </script>
