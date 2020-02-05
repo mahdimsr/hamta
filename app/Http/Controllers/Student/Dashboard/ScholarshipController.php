@@ -54,7 +54,7 @@ class ScholarshipController extends Controller
             {
             $image    = $request->file('scholarshipImage');
             Storage::disk('student')->putFileAs($student->id.'/scholarship',$image,$scholarship->verifyImage);
-            $path                     = public_path('storage/students/'.$student->id.'/scholarship/'.$scholarship->verifyImage);
+            $path                     = storage_path('app/public/students/'.$student->id.'/scholarship/'.$scholarship->verifyImage);
             $resizeImage              = Image::make($path)->resize(700,700,function($constraint)
             {
                 $constraint->aspectRatio();
@@ -75,7 +75,7 @@ class ScholarshipController extends Controller
             $image    = $request->file('scholarshipImage');
             Storage::disk('student')->put($student->id.'/scholarship',$image);
             $scholarship->verifyImage = $image->hashName();
-            $path                     = public_path('storage/students/'.$student->id.'/scholarship/'.$scholarship->verifyImage);
+            $path                     = storage_path('app/public/students/'.$student->id.'/scholarship/'.$scholarship->verifyImage);
             $resizeImage              = Image::make($path)->resize(700,700,function($constraint)
             {
                 $constraint->aspectRatio();
