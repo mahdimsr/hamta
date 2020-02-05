@@ -143,11 +143,7 @@ class ProfileController extends Controller
         if ($request->hasFile('profileImage'))
         {
 
-            if($student->profileImage)
-            {
-                Storage::disk('student')->delete($student->id . '/profileImage/' . $student->profileImage);
-            }
-
+            Storage::disk('student')->delete($student->id . '/profileImage/' . $student->profileImage);
             $profileImage = $request->file('profileImage');
             Storage::disk('student')->put($student->id . '/profileImage', $profileImage);
             $student->profileImage    = $profileImage->hashName();
