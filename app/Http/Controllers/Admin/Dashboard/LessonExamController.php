@@ -252,7 +252,7 @@
                 $photo = $request->file('photo');
                 Storage::disk('question')->put($question->id . '/photo', $photo);
                 $question->photo = $photo->hashName();
-                $path                     = public_path('storage/questions/'.$question->id.'/photo/'.$question->photo);
+                $path                     = storage_path('app/public/questions/'.$question->id.'/photo/'.$question->photo);
                 $resizeImage              = Image::make($path)->resize(700,700,function($constraint)
                 {
                     $constraint->aspectRatio();
@@ -268,7 +268,7 @@
                 $answerImage = $request->file('answerImage');
                 Storage::disk('question')->put($question->id . '/answerImage', $answerImage);
                 $question->answerImage = $answerImage->hashName();
-                $path                     = public_path('storage/questions/'.$question->id.'/answerImage/'.$question->answerImage);
+                $path                     = storage_path('app/public/questions/'.$question->id.'/answerImage/'.$question->answerImage);
                 $resizeImage              = Image::make($path)->resize(700,700,function($constraint)
                 {
                     $constraint->aspectRatio();
@@ -338,7 +338,7 @@
                 Storage::disk('question')->delete($question->id . '/photo/' . $question->photo);
                 Storage::disk('question')->put($question->id . '/photo', $photo);
                 $question->photo = $photo->hashName();
-                $path                     = public_path('storage/questions/'.$question->id.'/photo/'.$question->photo);
+                $path                     = storage_path('app/public/questions/'.$question->id.'/photo/'.$question->photo);
                 $resizeImage              = Image::make($path)->resize(700,700,function($constraint)
                 {
                     $constraint->aspectRatio();
@@ -355,7 +355,7 @@
                 Storage::disk('question')->delete($question->id . '/answerImage/' . $question->answerImage);
                 Storage::disk('question')->put($question->id . '/answerImage', $answerImage);
                 $question->answerImage = $answerImage->hashName();
-                $path                     = public_path('storage/questions/'.$question->id.'/answerImage/'.$question->answerImage);
+                $path                     = storage_path('app/public/questions/'.$question->id.'/answerImage/'.$question->answerImage);
                 $resizeImage              = Image::make($path)->resize(700,700,function($constraint)
                 {
                     $constraint->aspectRatio();

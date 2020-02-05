@@ -151,7 +151,7 @@ class ProfileController extends Controller
             $profileImage = $request->file('profileImage');
             Storage::disk('student')->put($student->id . '/profileImage', $profileImage);
             $student->profileImage    = $profileImage->hashName();
-            $path                     = public_path('storage/students/'.$student->id.'/profileImage/'.$student->profileImage);
+            $path                     = storage_path('app/public/students/'.$student->id.'/profileImage/'.$student->profileImage);
             $resizeImage              = Image::make($path)->resize(200,200,function($constraint)
             {
                 $constraint->aspectRatio();
