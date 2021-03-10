@@ -1,8 +1,8 @@
 <?php
-namespace App\lib;
+namespace App\Lib;
 use nusoap_client;
 
-class zarinpal
+class Zarinpal
 {
     public $MerchantID;
 
